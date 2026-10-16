@@ -1,0 +1,460 @@
+{
+ "scenes": [
+  {
+   "id": 1,
+   "text": "",
+   "duration_sec": 12.2,
+   "visual_prompt": "Владимир Зеленский профиль крупный план 2026",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский профиль крупный план 2026 реальное фото"
+  },
+  {
+   "id": 3,
+   "text": "",
+   "duration_sec": 14.16,
+   "visual_prompt": "микрофоны на пресс-подходе в Верховной Раде",
+   "source": "press_photo",
+   "source_query": "микрофоны на пресс-подходе в Верховной Раде"
+  },
+  {
+   "id": 4,
+   "text": "",
+   "duration_sec": 13.84,
+   "visual_prompt": "Владимир Зеленский в рабочем кабинете 2026",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский в рабочем кабинете 2026 реальное фото"
+  },
+  {
+   "id": 7,
+   "text": "",
+   "duration_sec": 6.48,
+   "visual_prompt": "здание Офиса президента Украины внутренний двор",
+   "source": "press_photo",
+   "source_query": "здание Офиса президента Украины внутренний двор"
+  },
+  {
+   "id": 8,
+   "text": "",
+   "duration_sec": 12.96,
+   "visual_prompt": "Алексей Гончаренко в парламенте Украины 2026",
+   "source": "press_photo",
+   "source_query": "Алексей Гончаренко в парламенте Украины 2026 реальное фото"
+  },
+  {
+   "id": 9,
+   "text": "",
+   "duration_sec": 12.96,
+   "visual_prompt": "здание Национального банка Украины Киев",
+   "source": "press_photo",
+   "source_query": "здание Национального банка Украины Киев"
+  },
+  {
+   "id": 10,
+   "text": "",
+   "duration_sec": 13.68,
+   "visual_prompt": "украинские гривны банкноты крупный план",
+   "source": "press_photo",
+   "source_query": "украинские гривны банкноты крупный план"
+  },
+  {
+   "id": 11,
+   "text": "",
+   "duration_sec": 12.85,
+   "visual_prompt": "Владимир Зеленский выходит из автомобиля 2026",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский выходит из автомобиля 2026 реальное фото"
+  },
+  {
+   "id": 13,
+   "text": "",
+   "duration_sec": 14.72,
+   "visual_prompt": "купол здания парламента Украины в Киеве",
+   "source": "press_photo",
+   "source_query": "купол здания парламента Украины в Киеве"
+  },
+  {
+   "id": 16,
+   "text": "",
+   "duration_sec": 13.2,
+   "visual_prompt": "Алексей Гончаренко на брифинге 2026",
+   "source": "press_photo",
+   "source_query": "Алексей Гончаренко на брифинге 2026 реальное фото"
+  },
+  {
+   "id": 17,
+   "text": "",
+   "duration_sec": 14.93,
+   "visual_prompt": "Запорожская атомная электростанция вид на реактор",
+   "source": "press_photo",
+   "source_query": "Запорожская атомная электростанция вид на реактор"
+  },
+  {
+   "id": 18,
+   "text": "",
+   "duration_sec": 12.05,
+   "visual_prompt": "нефтеналивной терминал танкер у причала",
+   "source": "press_photo",
+   "source_query": "нефтеналивной терминал танкер у причала"
+  },
+  {
+   "id": 19,
+   "text": "",
+   "duration_sec": 13.79,
+   "visual_prompt": "флаг США над Белым домом крупный план",
+   "source": "press_photo",
+   "source_query": "флаг США над Белым домом крупный план"
+  },
+  {
+   "id": 21,
+   "text": "",
+   "duration_sec": 13.68,
+   "visual_prompt": "Дональд Трамп выступает с трибуны 2026",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп выступает с трибуны 2026 реальное фото"
+  },
+  {
+   "id": 22,
+   "text": "",
+   "duration_sec": 8.21,
+   "visual_prompt": "военно-транспортный самолёт ВВС США на аэродроме",
+   "source": "press_photo",
+   "source_query": "военно-транспортный самолёт ВВС США на аэродроме"
+  },
+  {
+   "id": 23,
+   "text": "",
+   "duration_sec": 7.25,
+   "visual_prompt": "Дональд Трамп обращается к законодателям 2026",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп обращается к законодателям 2026 реальное фото"
+  },
+  {
+   "id": 24,
+   "text": "",
+   "duration_sec": 12.75,
+   "visual_prompt": "здание Госдепартамента США Вашингтон",
+   "source": "press_photo",
+   "source_query": "здание Госдепартамента США Вашингтон"
+  },
+  {
+   "id": 25,
+   "text": "",
+   "duration_sec": 15.11,
+   "visual_prompt": "Владимир Зеленский на трибуне парламента 2026",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский на трибуне парламента 2026 реальное фото"
+  },
+  {
+   "id": 29,
+   "text": "",
+   "duration_sec": 12.4,
+   "visual_prompt": "улица Банковая в Киеве ночью",
+   "source": "press_photo",
+   "source_query": "улица Банковая в Киеве ночью"
+  },
+  {
+   "id": 30,
+   "text": "",
+   "duration_sec": 14.72,
+   "visual_prompt": "ракета SpaceX на стартовом столе",
+   "source": "press_photo",
+   "source_query": "ракета SpaceX на стартовом столе"
+  },
+  {
+   "id": 33,
+   "text": "",
+   "duration_sec": 14.87,
+   "visual_prompt": "бронированный автомобиль кортежа в Киеве",
+   "source": "press_photo",
+   "source_query": "бронированный автомобиль кортежа в Киеве"
+  },
+  {
+   "id": 36,
+   "text": "",
+   "duration_sec": 12.64,
+   "visual_prompt": "Анна Скороход выступает в парламенте Украины",
+   "source": "press_photo",
+   "source_query": "Анна Скороход выступает в парламенте Украины реальное фото"
+  },
+  {
+   "id": 37,
+   "text": "",
+   "duration_sec": 12.24,
+   "visual_prompt": "Марк Рютте генеральный секретарь НАТО фото 2026",
+   "source": "press_photo",
+   "source_query": "Марк Рютте генеральный секретарь НАТО фото 2026 реальное фото"
+  },
+  {
+   "id": 40,
+   "text": "",
+   "duration_sec": 7.47,
+   "visual_prompt": "бетонные противотанковые ежи на улице Киева",
+   "source": "press_photo",
+   "source_query": "бетонные противотанковые ежи на улице Киева"
+  },
+  {
+   "id": 41,
+   "text": "",
+   "duration_sec": 14.64,
+   "visual_prompt": "Овальный кабинет Белого дома интерьер",
+   "source": "press_photo",
+   "source_query": "Овальный кабинет Белого дома интерьер"
+  },
+  {
+   "id": 42,
+   "text": "",
+   "duration_sec": 13.68,
+   "visual_prompt": "Джей Ди Вэнс выступление 2026",
+   "source": "press_photo",
+   "source_query": "Джей Ди Вэнс выступление 2026 реальное фото"
+  },
+  {
+   "id": 43,
+   "text": "",
+   "duration_sec": 13.52,
+   "visual_prompt": "доллары США банкноты крупный план",
+   "source": "press_photo",
+   "source_query": "доллары США банкноты крупный план"
+  },
+  {
+   "id": 45,
+   "text": "",
+   "duration_sec": 10.88,
+   "visual_prompt": "стол переговоров с флагами США и Украины",
+   "source": "press_photo",
+   "source_query": "стол переговоров с флагами США и Украины"
+  },
+  {
+   "id": 46,
+   "text": "",
+   "duration_sec": 14.05,
+   "visual_prompt": "Андрей Белецкий выступление",
+   "source": "press_photo",
+   "source_query": "Андрей Белецкий выступление реальное фото"
+  },
+  {
+   "id": 47,
+   "text": "",
+   "duration_sec": 11.28,
+   "visual_prompt": "украинские военные в окопе 2026",
+   "source": "press_photo",
+   "source_query": "украинские военные в окопе 2026 реальное фото"
+  },
+  {
+   "id": 48,
+   "text": "",
+   "duration_sec": 14.0,
+   "visual_prompt": "боевое знамя украинской воинской части",
+   "source": "press_photo",
+   "source_query": "боевое знамя украинской воинской части"
+  },
+  {
+   "id": 49,
+   "text": "",
+   "duration_sec": 6.32,
+   "visual_prompt": "Киев Майдан Независимости 2026",
+   "source": "press_photo",
+   "source_query": "Киев Майдан Независимости 2026"
+  },
+  {
+   "id": 51,
+   "text": "",
+   "duration_sec": 16.2,
+   "visual_prompt": "Александр Сырский главнокомандующий ВСУ фото 2026",
+   "source": "press_photo",
+   "source_query": "Александр Сырский главнокомандующий ВСУ фото 2026 реальное фото"
+  },
+  {
+   "id": 52,
+   "text": "",
+   "duration_sec": 10.76,
+   "visual_prompt": "Василий Малюк глава СБУ фото",
+   "source": "press_photo",
+   "source_query": "Василий Малюк глава СБУ фото реальное фото"
+  },
+  {
+   "id": 54,
+   "text": "",
+   "duration_sec": 13.36,
+   "visual_prompt": "Владимир Путин выступление 2026",
+   "source": "press_photo",
+   "source_query": "Владимир Путин выступление 2026 реальное фото"
+  },
+  {
+   "id": 56,
+   "text": "",
+   "duration_sec": 12.4,
+   "visual_prompt": "Мария Захарова на брифинге 2026",
+   "source": "press_photo",
+   "source_query": "Мария Захарова на брифинге 2026 реальное фото"
+  },
+  {
+   "id": 58,
+   "text": "",
+   "duration_sec": 12.88,
+   "visual_prompt": "Урсула фон дер Ляйен и Антониу Коста 2026",
+   "source": "press_photo",
+   "source_query": "Урсула фон дер Ляйен и Антониу Коста 2026 реальное фото"
+  },
+  {
+   "id": 59,
+   "text": "",
+   "duration_sec": 12.56,
+   "visual_prompt": "зал заседаний Европейской комиссии Брюссель",
+   "source": "press_photo",
+   "source_query": "зал заседаний Европейской комиссии Брюссель"
+  },
+  {
+   "id": 60,
+   "text": "",
+   "duration_sec": 14.56,
+   "visual_prompt": "флаги европейских стран перед зданием совета",
+   "source": "press_photo",
+   "source_query": "флаги европейских стран перед зданием совета"
+  },
+  {
+   "id": 61,
+   "text": "",
+   "duration_sec": 14.72,
+   "visual_prompt": "Роберта Метсола председатель Европарламента фото",
+   "source": "press_photo",
+   "source_query": "Роберта Метсола председатель Европарламента фото реальное фото"
+  },
+  {
+   "id": 64,
+   "text": "",
+   "duration_sec": 13.36,
+   "visual_prompt": "Дональд Трамп в окружении советников 2026",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп в окружении советников 2026 реальное фото"
+  },
+  {
+   "id": 65,
+   "text": "",
+   "duration_sec": 13.2,
+   "visual_prompt": "Антониу Коста председатель Евросовета фото 2026",
+   "source": "press_photo",
+   "source_query": "Антониу Коста председатель Евросовета фото 2026 реальное фото"
+  },
+  {
+   "id": 66,
+   "text": "",
+   "duration_sec": 11.15,
+   "visual_prompt": "Офис президента Украины вид с воздуха",
+   "source": "press_photo",
+   "source_query": "Офис президента Украины вид с воздуха"
+  },
+  {
+   "id": 69,
+   "text": "",
+   "duration_sec": 12.55,
+   "visual_prompt": "зал саммита НАТО с флагами",
+   "source": "press_photo",
+   "source_query": "зал саммита НАТО с флагами"
+  },
+  {
+   "id": 72,
+   "text": "",
+   "duration_sec": 13.1,
+   "visual_prompt": "здание Верховной Рады Украины колоннада",
+   "source": "press_photo",
+   "source_query": "здание Верховной Рады Украины колоннада"
+  },
+  {
+   "id": 73,
+   "text": "",
+   "duration_sec": 12.5,
+   "visual_prompt": "зал совещаний в Офисе президента Украины 2026",
+   "source": "press_photo",
+   "source_query": "зал совещаний в Офисе президента Украины 2026"
+  },
+  {
+   "id": 76,
+   "text": "",
+   "duration_sec": 12.56,
+   "visual_prompt": "Владимир Зеленский на фоне микрофонов 2026",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский на фоне микрофонов 2026 реальное фото"
+  },
+  {
+   "id": 77,
+   "text": "",
+   "duration_sec": 10.24,
+   "visual_prompt": "украинские чиновники на заседании 2026",
+   "source": "press_photo",
+   "source_query": "украинские чиновники на заседании 2026 реальное фото"
+  },
+  {
+   "id": 80,
+   "text": "",
+   "duration_sec": 13.79,
+   "visual_prompt": "здание Офиса президента Украины флаг Украины",
+   "source": "press_photo",
+   "source_query": "здание Офиса президента Украины флаг Украины"
+  },
+  {
+   "id": 81,
+   "text": "",
+   "duration_sec": 6.21,
+   "visual_prompt": "Линдси Грэм сенатор США фото 2026",
+   "source": "press_photo",
+   "source_query": "Линдси Грэм сенатор США фото 2026 реальное фото"
+  },
+  {
+   "id": 82,
+   "text": "",
+   "duration_sec": 14.19,
+   "visual_prompt": "здание Национальной полиции Украины Киев",
+   "source": "press_photo",
+   "source_query": "здание Национальной полиции Украины Киев"
+  },
+  {
+   "id": 84,
+   "text": "",
+   "duration_sec": 12.44,
+   "visual_prompt": "флаги Украины и Евросоюза вместе",
+   "source": "press_photo",
+   "source_query": "флаги Украины и Евросоюза вместе"
+  },
+  {
+   "id": 85,
+   "text": "",
+   "duration_sec": 15.16,
+   "visual_prompt": "Дональд Трамп и Урсула фон дер Ляйен 2026",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп и Урсула фон дер Ляйен 2026 реальное фото"
+  },
+  {
+   "id": 86,
+   "text": "",
+   "duration_sec": 12.28,
+   "visual_prompt": "танк украинской армии на учениях 2026",
+   "source": "press_photo",
+   "source_query": "танк украинской армии на учениях 2026"
+  },
+  {
+   "id": 87,
+   "text": "",
+   "duration_sec": 5.76,
+   "visual_prompt": "украинские генералы на совещании 2026",
+   "source": "press_photo",
+   "source_query": "украинские генералы на совещании 2026 реальное фото"
+  },
+  {
+   "id": 88,
+   "text": "",
+   "duration_sec": 12.88,
+   "visual_prompt": "Большой Кремлёвский дворец фасад Москва",
+   "source": "press_photo",
+   "source_query": "Большой Кремлёвский дворец фасад Москва"
+  },
+  {
+   "id": 89,
+   "text": "",
+   "duration_sec": 10.72,
+   "visual_prompt": "здание Центральной избирательной комиссии Украины",
+   "source": "press_photo",
+   "source_query": "здание Центральной избирательной комиссии Украины"
+  }
+ ]
+}

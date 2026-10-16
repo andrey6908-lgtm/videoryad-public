@@ -1,0 +1,826 @@
+{
+ "scenes": [
+  {
+   "id": 1,
+   "text": "",
+   "start_sec": 0.0,
+   "duration_sec": 12.2,
+   "visual_prompt": "бюст Цезаря",
+   "source": "pexels_video",
+   "source_query": "ancient roman marble bust sculpture museum closeup"
+  },
+  {
+   "id": 2,
+   "text": "",
+   "start_sec": 12.2,
+   "duration_sec": 12.64,
+   "visual_prompt": "одно кресло",
+   "source": "pexels_video",
+   "source_query": "single empty leather office chair in empty room no people"
+  },
+  {
+   "id": 3,
+   "text": "",
+   "start_sec": 24.84,
+   "duration_sec": 14.16,
+   "visual_prompt": "Скороход",
+   "source": "press_photo",
+   "source_query": "Анна Скороход народный депутат Украины фото 2026 реальное фото"
+  },
+  {
+   "id": 4,
+   "text": "",
+   "start_sec": 39.0,
+   "duration_sec": 13.84,
+   "visual_prompt": "Банковая",
+   "source": "press_photo",
+   "source_query": "здание Офиса президента Украины на Банковой в Киеве фасад"
+  },
+  {
+   "id": 5,
+   "text": "",
+   "start_sec": 52.84,
+   "duration_sec": 12.8,
+   "visual_prompt": "костюм",
+   "source": "pexels_video",
+   "source_query": "dark suit jacket on hanger closeup no people"
+  },
+  {
+   "id": 6,
+   "text": "",
+   "start_sec": 65.64,
+   "duration_sec": 8.28,
+   "visual_prompt": "зеркало",
+   "source": "pexels_video",
+   "source_query": "old mirror in empty room reflection closeup no people"
+  },
+  {
+   "id": 7,
+   "text": "",
+   "start_sec": 73.92,
+   "duration_sec": 6.48,
+   "visual_prompt": "Зеленский",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский выступление с обращением октябрь 2026 реальное фото"
+  },
+  {
+   "id": 8,
+   "text": "",
+   "start_sec": 80.4,
+   "duration_sec": 12.96,
+   "visual_prompt": "зал Рады",
+   "source": "press_photo",
+   "source_query": "зал заседаний Верховной Рады Украины голосование 2026"
+  },
+  {
+   "id": 9,
+   "text": "",
+   "start_sec": 93.36,
+   "duration_sec": 12.96,
+   "visual_prompt": "совещание",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский на совещании с главами ведомств 2026 реальное фото"
+  },
+  {
+   "id": 10,
+   "text": "",
+   "start_sec": 106.32,
+   "duration_sec": 13.68,
+   "visual_prompt": "НАБУ",
+   "source": "press_photo",
+   "source_query": "здание Национального антикоррупционного бюро Украины Киев"
+  },
+  {
+   "id": 11,
+   "text": "",
+   "start_sec": 119.99,
+   "duration_sec": 12.85,
+   "visual_prompt": "Банковая улица",
+   "source": "press_photo",
+   "source_query": "улица Банковая в Киеве бетонные блоки охрана"
+  },
+  {
+   "id": 12,
+   "text": "",
+   "start_sec": 132.84,
+   "duration_sec": 8.78,
+   "visual_prompt": "Кабмин",
+   "source": "press_photo",
+   "source_query": "заседание Кабинета министров Украины 2026"
+  },
+  {
+   "id": 13,
+   "text": "",
+   "start_sec": 141.62,
+   "duration_sec": 14.72,
+   "visual_prompt": "Гончаренко",
+   "source": "press_photo",
+   "source_query": "Алексей Гончаренко депутат Верховной Рады фото 2026 реальное фото"
+  },
+  {
+   "id": 14,
+   "text": "",
+   "start_sec": 156.34,
+   "duration_sec": 9.34,
+   "visual_prompt": "трибуна",
+   "source": "press_photo",
+   "source_query": "Алексей Гончаренко на трибуне Верховной Рады выступление 2026 реальное фото"
+  },
+  {
+   "id": 15,
+   "text": "",
+   "start_sec": 165.68,
+   "duration_sec": 14.58,
+   "visual_prompt": "Рада фасад",
+   "source": "press_photo",
+   "source_query": "здание Верховной Рады Украины в Киеве фасад"
+  },
+  {
+   "id": 16,
+   "text": "",
+   "start_sec": 180.26,
+   "duration_sec": 13.2,
+   "visual_prompt": "Грушевского",
+   "source": "press_photo",
+   "source_query": "Киев улица Грушевского правительственный квартал 2026"
+  },
+  {
+   "id": 17,
+   "text": "",
+   "start_sec": 193.46,
+   "duration_sec": 14.93,
+   "visual_prompt": "МАГАТЭ",
+   "source": "press_photo",
+   "source_query": "здание МАГАТЭ в Вене фасад"
+  },
+  {
+   "id": 18,
+   "text": "",
+   "start_sec": 208.39,
+   "duration_sec": 12.05,
+   "visual_prompt": "Донбасс",
+   "source": "press_photo",
+   "source_query": "Донецк вид на город терриконы 2026"
+  },
+  {
+   "id": 19,
+   "text": "",
+   "start_sec": 220.44,
+   "duration_sec": 13.79,
+   "visual_prompt": "Трамп",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп в Овальном кабинете Белого дома 2026 реальное фото"
+  },
+  {
+   "id": 20,
+   "text": "",
+   "start_sec": 234.23,
+   "duration_sec": 13.04,
+   "visual_prompt": "меню",
+   "source": "pexels_video",
+   "source_query": "restaurant menu on empty table closeup no people"
+  },
+  {
+   "id": 21,
+   "text": "",
+   "start_sec": 247.27,
+   "duration_sec": 13.68,
+   "visual_prompt": "флаги США-Украина",
+   "source": "press_photo",
+   "source_query": "флаг США и флаг Украины рядом на переговорах 2026"
+  },
+  {
+   "id": 22,
+   "text": "",
+   "start_sec": 260.95,
+   "duration_sec": 8.21,
+   "visual_prompt": "Patriot США",
+   "source": "press_photo",
+   "source_query": "зенитный ракетный комплекс Patriot США на позиции"
+  },
+  {
+   "id": 23,
+   "text": "",
+   "start_sec": 269.15,
+   "duration_sec": 7.25,
+   "visual_prompt": "Капитолий",
+   "source": "press_photo",
+   "source_query": "здание Конгресса США Капитолий Вашингтон фасад"
+  },
+  {
+   "id": 24,
+   "text": "",
+   "start_sec": 276.4,
+   "duration_sec": 12.75,
+   "visual_prompt": "Трамп брифинг",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп на брифинге в Белом доме октябрь 2026 реальное фото"
+  },
+  {
+   "id": 25,
+   "text": "",
+   "start_sec": 289.15,
+   "duration_sec": 15.11,
+   "visual_prompt": "Скороход Рада",
+   "source": "press_photo",
+   "source_query": "Анна Скороход выступление в Верховной Раде 2026 реальное фото"
+  },
+  {
+   "id": 26,
+   "text": "",
+   "start_sec": 304.27,
+   "duration_sec": 8.38,
+   "visual_prompt": "доска и маркеры",
+   "source": "pexels_video",
+   "source_query": "whiteboard with markers in empty office no people"
+  },
+  {
+   "id": 27,
+   "text": "",
+   "start_sec": 312.65,
+   "duration_sec": 15.38,
+   "visual_prompt": "Гончаренко интервью",
+   "source": "press_photo",
+   "source_query": "Алексей Гончаренко интервью журналистам Киев 2026 реальное фото"
+  },
+  {
+   "id": 28,
+   "text": "",
+   "start_sec": 328.03,
+   "duration_sec": 12.75,
+   "visual_prompt": "табличка на двери",
+   "source": "pexels_video",
+   "source_query": "empty office door with blank nameplate closeup no people"
+  },
+  {
+   "id": 29,
+   "text": "",
+   "start_sec": 340.78,
+   "duration_sec": 12.4,
+   "visual_prompt": "Трамп заявление",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп жестикулирует во время выступления 2026 реальное фото"
+  },
+  {
+   "id": 30,
+   "text": "",
+   "start_sec": 353.18,
+   "duration_sec": 14.72,
+   "visual_prompt": "Маск",
+   "source": "press_photo",
+   "source_query": "Илон Маск фото 2026 реальное фото"
+  },
+  {
+   "id": 31,
+   "text": "",
+   "start_sec": 367.9,
+   "duration_sec": 13.28,
+   "visual_prompt": "Белый дом",
+   "source": "press_photo",
+   "source_query": "фасад Белого дома в Вашингтоне днём"
+  },
+  {
+   "id": 32,
+   "text": "",
+   "start_sec": 381.18,
+   "duration_sec": 12.65,
+   "visual_prompt": "дверная ручка",
+   "source": "pexels_video",
+   "source_query": "old metal door handle closeup rusty hinge no people"
+  },
+  {
+   "id": 33,
+   "text": "",
+   "start_sec": 393.83,
+   "duration_sec": 14.87,
+   "visual_prompt": "Зеленский охрана",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский в окружении охраны 2026 реальное фото"
+  },
+  {
+   "id": 34,
+   "text": "",
+   "start_sec": 408.7,
+   "duration_sec": 13.0,
+   "visual_prompt": "стол",
+   "source": "pexels_video",
+   "source_query": "long empty banquet table with chairs no people"
+  },
+  {
+   "id": 35,
+   "text": "",
+   "start_sec": 421.7,
+   "duration_sec": 10.72,
+   "visual_prompt": "Киев",
+   "source": "press_photo",
+   "source_query": "вид на Киев с правого берега Днепра 2026"
+  },
+  {
+   "id": 36,
+   "text": "",
+   "start_sec": 432.42,
+   "duration_sec": 12.64,
+   "visual_prompt": "табло Рады",
+   "source": "press_photo",
+   "source_query": "зал пленарных заседаний Верховной Рады Украины табло голосования 2026"
+  },
+  {
+   "id": 37,
+   "text": "",
+   "start_sec": 445.06,
+   "duration_sec": 12.24,
+   "visual_prompt": "НАТО",
+   "source": "press_photo",
+   "source_query": "флаг НАТО у штаб-квартиры в Брюсселе"
+  },
+  {
+   "id": 38,
+   "text": "",
+   "start_sec": 457.3,
+   "duration_sec": 11.44,
+   "visual_prompt": "кулуары",
+   "source": "press_photo",
+   "source_query": "Алексей Гончаренко и депутаты в кулуарах Рады 2026 реальное фото"
+  },
+  {
+   "id": 39,
+   "text": "",
+   "start_sec": 468.74,
+   "duration_sec": 13.36,
+   "visual_prompt": "брифинг Рады",
+   "source": "press_photo",
+   "source_query": "пресс-центр Верховной Рады Украины брифинг депутата 2026"
+  },
+  {
+   "id": 40,
+   "text": "",
+   "start_sec": 482.1,
+   "duration_sec": 7.47,
+   "visual_prompt": "блокпост Киев",
+   "source": "press_photo",
+   "source_query": "Киев правительственный квартал блокпост 2026"
+  },
+  {
+   "id": 41,
+   "text": "",
+   "start_sec": 489.58,
+   "duration_sec": 14.64,
+   "visual_prompt": "Трамп-Зеленский",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп и Владимир Зеленский на встрече 2026 реальное фото"
+  },
+  {
+   "id": 42,
+   "text": "",
+   "start_sec": 504.22,
+   "duration_sec": 13.68,
+   "visual_prompt": "республиканцы",
+   "source": "press_photo",
+   "source_query": "съезд Республиканской партии США зал 2026"
+  },
+  {
+   "id": 43,
+   "text": "",
+   "start_sec": 517.9,
+   "duration_sec": 13.52,
+   "visual_prompt": "Минфин США",
+   "source": "press_photo",
+   "source_query": "здание Министерства финансов США в Вашингтоне фасад"
+  },
+  {
+   "id": 44,
+   "text": "",
+   "start_sec": 531.42,
+   "duration_sec": 15.11,
+   "visual_prompt": "Гончаренко лицо",
+   "source": "press_photo",
+   "source_query": "Алексей Гончаренко крупный план лицо 2026 реальное фото"
+  },
+  {
+   "id": 45,
+   "text": "",
+   "start_sec": 546.52,
+   "duration_sec": 10.88,
+   "visual_prompt": "Трамп переговоры",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп за столом переговоров 2026 реальное фото"
+  },
+  {
+   "id": 46,
+   "text": "",
+   "start_sec": 557.4,
+   "duration_sec": 14.05,
+   "visual_prompt": "блиндаж",
+   "source": "press_photo",
+   "source_query": "украинский блиндаж укрепление на линии фронта 2026"
+  },
+  {
+   "id": 47,
+   "text": "",
+   "start_sec": 571.45,
+   "duration_sec": 11.28,
+   "visual_prompt": "Белецкий",
+   "source": "press_photo",
+   "source_query": "Андрей Белецкий командир Азова фото реальное фото"
+  },
+  {
+   "id": 48,
+   "text": "",
+   "start_sec": 582.73,
+   "duration_sec": 14.0,
+   "visual_prompt": "корпус Азов",
+   "source": "press_photo",
+   "source_query": "военнослужащие третьего армейского корпуса Украины строй 2026"
+  },
+  {
+   "id": 49,
+   "text": "",
+   "start_sec": 596.73,
+   "duration_sec": 6.32,
+   "visual_prompt": "Зеленский флаг",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский на фоне флага Украины 2026 реальное фото"
+  },
+  {
+   "id": 50,
+   "text": "",
+   "start_sec": 603.05,
+   "duration_sec": 14.24,
+   "visual_prompt": "шампанское",
+   "source": "pexels_video",
+   "source_query": "champagne bottle and glasses on table no people"
+  },
+  {
+   "id": 51,
+   "text": "",
+   "start_sec": 617.29,
+   "duration_sec": 16.2,
+   "visual_prompt": "Генштаб",
+   "source": "press_photo",
+   "source_query": "здание Генерального штаба Украины в Киеве"
+  },
+  {
+   "id": 52,
+   "text": "",
+   "start_sec": 633.48,
+   "duration_sec": 10.76,
+   "visual_prompt": "СБУ",
+   "source": "press_photo",
+   "source_query": "здание Службы безопасности Украины в Киеве фасад"
+  },
+  {
+   "id": 53,
+   "text": "",
+   "start_sec": 644.25,
+   "duration_sec": 13.08,
+   "visual_prompt": "дождь",
+   "source": "pexels_video",
+   "source_query": "rain running down window glass closeup no people"
+  },
+  {
+   "id": 54,
+   "text": "",
+   "start_sec": 657.33,
+   "duration_sec": 13.36,
+   "visual_prompt": "Кремль",
+   "source": "press_photo",
+   "source_query": "Кремль Спасская башня Москва днём"
+  },
+  {
+   "id": 55,
+   "text": "",
+   "start_sec": 670.68,
+   "duration_sec": 12.8,
+   "visual_prompt": "Лавров",
+   "source": "press_photo",
+   "source_query": "Сергей Лавров пресс-конференция МИД 2026 реальное фото"
+  },
+  {
+   "id": 56,
+   "text": "",
+   "start_sec": 683.48,
+   "duration_sec": 12.4,
+   "visual_prompt": "МИД РФ",
+   "source": "press_photo",
+   "source_query": "здание МИД России на Смоленской площади Москва"
+  },
+  {
+   "id": 57,
+   "text": "",
+   "start_sec": 695.88,
+   "duration_sec": 12.44,
+   "visual_prompt": "Путин",
+   "source": "press_photo",
+   "source_query": "Владимир Путин на совещании в Кремле 2026 реальное фото"
+  },
+  {
+   "id": 58,
+   "text": "",
+   "start_sec": 708.33,
+   "duration_sec": 12.88,
+   "visual_prompt": "Берлемон",
+   "source": "press_photo",
+   "source_query": "здание Европейской комиссии Берлемон в Брюсселе"
+  },
+  {
+   "id": 59,
+   "text": "",
+   "start_sec": 721.2,
+   "duration_sec": 12.56,
+   "visual_prompt": "фон дер Ляйен",
+   "source": "press_photo",
+   "source_query": "Урсула фон дер Ляйен выступление 2026 реальное фото"
+  },
+  {
+   "id": 60,
+   "text": "",
+   "start_sec": 733.77,
+   "duration_sec": 14.56,
+   "visual_prompt": "саммит ЕС",
+   "source": "press_photo",
+   "source_query": "саммит Европейского союза лидеры за столом 2026 реальное фото"
+  },
+  {
+   "id": 61,
+   "text": "",
+   "start_sec": 748.33,
+   "duration_sec": 14.72,
+   "visual_prompt": "Европарламент",
+   "source": "press_photo",
+   "source_query": "Европейский парламент в Страсбурге зал заседаний 2026"
+  },
+  {
+   "id": 62,
+   "text": "",
+   "start_sec": 763.05,
+   "duration_sec": 12.48,
+   "visual_prompt": "пустая рамка",
+   "source": "pexels_video",
+   "source_query": "empty picture frame hanging on wall closeup no people"
+  },
+  {
+   "id": 63,
+   "text": "",
+   "start_sec": 775.53,
+   "duration_sec": 9.62,
+   "visual_prompt": "Трамп и Вэнс",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп и Джей Ди Вэнс вместе 2026 реальное фото"
+  },
+  {
+   "id": 64,
+   "text": "",
+   "start_sec": 785.15,
+   "duration_sec": 13.36,
+   "visual_prompt": "Западное крыло",
+   "source": "press_photo",
+   "source_query": "Белый дом Западное крыло вход"
+  },
+  {
+   "id": 65,
+   "text": "",
+   "start_sec": 798.51,
+   "duration_sec": 13.2,
+   "visual_prompt": "Евросовет",
+   "source": "press_photo",
+   "source_query": "здание Совета Европейского союза в Брюсселе"
+  },
+  {
+   "id": 66,
+   "text": "",
+   "start_sec": 811.72,
+   "duration_sec": 11.15,
+   "visual_prompt": "силовики Киев",
+   "source": "press_photo",
+   "source_query": "украинские силовики охрана правительственного квартала Киев 2026 реальное фото"
+  },
+  {
+   "id": 67,
+   "text": "",
+   "start_sec": 822.87,
+   "duration_sec": 7.24,
+   "visual_prompt": "делегация США",
+   "source": "press_photo",
+   "source_query": "делегация США на переговорах флаг 2026 реальное фото"
+  },
+  {
+   "id": 68,
+   "text": "",
+   "start_sec": 830.11,
+   "duration_sec": 9.41,
+   "visual_prompt": "пустая трибуна",
+   "source": "press_photo",
+   "source_query": "пустая трибуна в зале Верховной Рады Украины 2026"
+  },
+  {
+   "id": 69,
+   "text": "",
+   "start_sec": 839.52,
+   "duration_sec": 12.55,
+   "visual_prompt": "Трамп и Европа",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп и европейские лидеры на саммите 2026 реальное фото"
+  },
+  {
+   "id": 70,
+   "text": "",
+   "start_sec": 852.08,
+   "duration_sec": 13.28,
+   "visual_prompt": "Гончаренко зал",
+   "source": "press_photo",
+   "source_query": "Алексей Гончаренко выступает в зале Рады 2026 реальное фото"
+  },
+  {
+   "id": 71,
+   "text": "",
+   "start_sec": 865.36,
+   "duration_sec": 14.64,
+   "visual_prompt": "платформа",
+   "source": "pexels_video",
+   "source_query": "empty railway platform train departure board no people"
+  },
+  {
+   "id": 72,
+   "text": "",
+   "start_sec": 880.0,
+   "duration_sec": 13.1,
+   "visual_prompt": "Скороход камера",
+   "source": "press_photo",
+   "source_query": "Анна Скороход заявление на камеру 2026 реальное фото"
+  },
+  {
+   "id": 73,
+   "text": "",
+   "start_sec": 893.1,
+   "duration_sec": 12.5,
+   "visual_prompt": "Зеленский слушает",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский слушает на совещании 2026 реальное фото"
+  },
+  {
+   "id": 74,
+   "text": "",
+   "start_sec": 905.6,
+   "duration_sec": 8.83,
+   "visual_prompt": "Трамп телефон",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп говорит по телефону в Овальном кабинете реальное фото"
+  },
+  {
+   "id": 75,
+   "text": "",
+   "start_sec": 914.43,
+   "duration_sec": 12.64,
+   "visual_prompt": "коридор",
+   "source": "pexels_video",
+   "source_query": "empty office corridor long hallway no people"
+  },
+  {
+   "id": 76,
+   "text": "",
+   "start_sec": 927.07,
+   "duration_sec": 12.56,
+   "visual_prompt": "бюст Цезаря",
+   "source": "press_photo",
+   "source_query": "мраморный бюст Юлия Цезаря в музее реальное фото"
+  },
+  {
+   "id": 77,
+   "text": "",
+   "start_sec": 939.63,
+   "duration_sec": 10.24,
+   "visual_prompt": "Кабмин фасад",
+   "source": "press_photo",
+   "source_query": "здание Кабинета министров Украины в Киеве фасад"
+  },
+  {
+   "id": 78,
+   "text": "",
+   "start_sec": 949.87,
+   "duration_sec": 15.04,
+   "visual_prompt": "трон",
+   "source": "pexels_video",
+   "source_query": "ornate empty throne chair closeup no people"
+  },
+  {
+   "id": 79,
+   "text": "",
+   "start_sec": 964.91,
+   "duration_sec": 11.04,
+   "visual_prompt": "ключ",
+   "source": "pexels_video",
+   "source_query": "old brass key in door lock closeup no people"
+  },
+  {
+   "id": 80,
+   "text": "",
+   "start_sec": 975.95,
+   "duration_sec": 13.79,
+   "visual_prompt": "Зеленский лицо",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский крупный план лицо 2026 реальное фото"
+  },
+  {
+   "id": 81,
+   "text": "",
+   "start_sec": 989.74,
+   "duration_sec": 6.21,
+   "visual_prompt": "Сенат США",
+   "source": "press_photo",
+   "source_query": "Капитолий США зал заседаний Сената 2026"
+  },
+  {
+   "id": 82,
+   "text": "",
+   "start_sec": 995.95,
+   "duration_sec": 14.19,
+   "visual_prompt": "кулуары Рады",
+   "source": "press_photo",
+   "source_query": "кулуары Верховной Рады Украины депутаты 2026 реальное фото"
+  },
+  {
+   "id": 83,
+   "text": "",
+   "start_sec": 1010.14,
+   "duration_sec": 14.56,
+   "visual_prompt": "соратники",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский и его соратники на публичном мероприятии 2026 реальное фото"
+  },
+  {
+   "id": 84,
+   "text": "",
+   "start_sec": 1024.7,
+   "duration_sec": 12.44,
+   "visual_prompt": "Зеленский и ЕС",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский и европейские лидеры на встрече 2026 реальное фото"
+  },
+  {
+   "id": 85,
+   "text": "",
+   "start_sec": 1037.14,
+   "duration_sec": 15.16,
+   "visual_prompt": "три флага",
+   "source": "press_photo",
+   "source_query": "флаги США Украины и ЕС вместе 2026"
+  },
+  {
+   "id": 86,
+   "text": "",
+   "start_sec": 1052.3,
+   "duration_sec": 12.28,
+   "visual_prompt": "учения",
+   "source": "press_photo",
+   "source_query": "украинские военные на учениях полигон 2026 реальное фото"
+  },
+  {
+   "id": 87,
+   "text": "",
+   "start_sec": 1064.58,
+   "duration_sec": 5.76,
+   "visual_prompt": "Минобороны",
+   "source": "press_photo",
+   "source_query": "здание Министерства обороны Украины в Киеве"
+  },
+  {
+   "id": 88,
+   "text": "",
+   "start_sec": 1070.34,
+   "duration_sec": 12.88,
+   "visual_prompt": "Путин и Лавров",
+   "source": "press_photo",
+   "source_query": "Владимир Путин и Сергей Лавров на совещании 2026 реальное фото"
+  },
+  {
+   "id": 89,
+   "text": "",
+   "start_sec": 1083.22,
+   "duration_sec": 10.72,
+   "visual_prompt": "кабинки для голосования",
+   "source": "pexels_video",
+   "source_query": "empty voting booths polling station no people"
+  },
+  {
+   "id": 90,
+   "text": "",
+   "start_sec": 1093.94,
+   "duration_sec": 9.76,
+   "visual_prompt": "Зеленский уходит",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский уходит со сцены 2026 реальное фото"
+  }
+ ],
+ "context": "5 МИНУТ. Внутри украинской власти заговорили о замене Зеленского, инициатива из его же ближайшего окружения (Скороход); фон - Трамп публично ставит вопрос о новом лидере, Гончаренко с трибуны Рады требует прекратить конфликт с Вашингтоном. Узел: убрать мало, надо решить кто придёт и удержит ли армию/силовиков/улицу. Москве нужна не фамилия, а исполнимая подпись. Октябрь 2026.",
+ "lines": [
+  "украинская власть: Банковая, Офис президента, Кабмин, Генштаб, СБУ",
+  "Верховная Рада: трибуна, кулуары, депутаты Гончаренко и Скороход",
+  "американская власть: Белый дом, Капитолий, Минфин США, Трамп, Маск",
+  "европейские институты: Берлемон, Евросовет, Европарламент",
+  "правое военное крыло Украины: Белецкий, Азов, армейский корпус",
+  "Москва: Кремль, МИД на Смоленской, Путин, Лавров",
+  "античность, названная текстом: Цезарь, Брут, трон, ключ от кабинета"
+ ],
+ "library": "NO (search-only, канал 5 МИНУТ)",
+ "channel": "5 МИНУТ"
+}
