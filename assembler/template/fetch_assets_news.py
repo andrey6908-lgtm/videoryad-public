@@ -589,6 +589,22 @@ def fetch_local_library(tag_query, media_library_dir, out_base, usage_counts, ff
         # already at the per-build cap (2 — leitmotifs allowed, no 3rd use).
         _blk = (blocked_md5 or set())
         if h and (h in _blk or _USE_COUNT[h] >= _MAX_PER_BUILD):
+            # ГРОМКО, а не молча (2026-10-17, улов рабочей вкладки на
+            # planeta-svergnut-1810): раньше пин, попавший в бан/кулдаун/лимит,
+            # тихо подменялся round-robin'ом по папке — вкладка была уверена,
+            # что в сцене стоит выбранный глазами кадр, а стоял случайный.
+            # Три забаненных пина за один ролик ловились только сверкой md5
+            # руками. Теперь причина подмены видна в логе фетча.
+            try:
+                _why = ("забанен" if h in load_banned_md5()
+                        else ("лимит на ролик" if _USE_COUNT[h] >= _MAX_PER_BUILD
+                              else "кулдаун последних видео"))
+            except Exception:
+                _why = "бан/кулдаун/лимит"
+            print(f"[{seq:03d}] ПИН ОТКЛОНЁН ({_why}): {tag_query} "
+                  f"[md5 {h[:8]}] → беру round-robin по папке "
+                  f"'{os.path.dirname(tag_query)}'. Если нужен именно кадр — "
+                  f"выбери другой файл или снимай бан.")
             tag_query = os.path.dirname(tag_query)
         else:
             out_path = out_base + os.path.splitext(direct)[1].lower()
