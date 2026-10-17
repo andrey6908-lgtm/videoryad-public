@@ -771,6 +771,9 @@ def fetch_wikimedia(query, out_path):
             "action": "query", "generator": "search", "gsrsearch": query,
             "gsrnamespace": 6, "gsrlimit": 5, "prop": "imageinfo",
             "iiprop": "url|size", "format": "json",
+            # для КАРТ (ниже) нужен готовый растр из svg — Commons отдаёт его
+            # в thumburl, если попросить ширину
+            "iiurlwidth": 1600,
         }
     )
     try:
@@ -781,11 +784,26 @@ def fetch_wikimedia(query, out_path):
         return False
     pages = data.get("query", {}).get("pages", {})
     image_exts = (".jpg", ".jpeg", ".png", ".gif", ".webp")
+    # КАРТЫ — отдельный случай (2026-10-17). На Commons чистые контурные карты
+    # почти все в SVG, а этот цикл SVG всегда отбрасывал — поэтому «карта» как
+    # класс запроса не добывалась ВООБЩЕ (живой случай: «политическая карта
+    # Украины с областями», FAILED на двух формулировках, всплывашка потеряна).
+    # Для карт берём готовый растр из thumburl. Разрешаем это ТОЛЬКО когда
+    # запрос прямо про карту: иначе через SVG полезут схемы, диаграммы, флаги и
+    # логотипы, а инфографика и чужие логотипы запрещены правилом a1.
+    _map_q = any(w in query.lower() for w in
+                 ("карт", "map", "outline", "контурн", "очертани"))
     best = None
     for p in pages.values():
         for ii in p.get("imageinfo", []):
             url = ii.get("url", "")
-            if not url.lower().split("?")[0].endswith(image_exts):
+            low = url.lower().split("?")[0]
+            if low.endswith(".svg") and _map_q and ii.get("thumburl"):
+                w, h = ii.get("thumbwidth", 0), ii.get("thumbheight", 0)
+                if w * h > (best[1] if best else 0):
+                    best = (ii["thumburl"], w * h)
+                continue
+            if not low.endswith(image_exts):
                 continue  # Commons' File namespace also holds PDF/DjVu/SVG/audio - skip those
             w, h = ii.get("width", 0), ii.get("height", 0)
             if w * h > (best[1] if best else 0):
