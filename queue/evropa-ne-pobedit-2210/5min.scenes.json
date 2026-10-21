@@ -1,0 +1,808 @@
+{
+ "scenes": [
+  {
+   "id": 1,
+   "text": "",
+   "start_sec": 0.0,
+   "duration_sec": 13.63,
+   "visual_prompt": "modern european apartment building facade balconies evening",
+   "source": "pexels_video",
+   "source_query": "modern european apartment building facade balconies evening",
+   "line": "метафора: семья"
+  },
+  {
+   "id": 2,
+   "text": "",
+   "start_sec": 13.63,
+   "duration_sec": 12.89,
+   "visual_prompt": "car tyre and alloy wheel closeup parked",
+   "source": "pexels_video",
+   "source_query": "car tyre and alloy wheel closeup parked",
+   "line": "метафора: семья"
+  },
+  {
+   "id": 3,
+   "text": "",
+   "start_sec": 26.52,
+   "duration_sec": 13.04,
+   "visual_prompt": "Фридрих Мерц канцлер Германии октябрь 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Фридрих Мерц канцлер Германии октябрь 2026 реальное фото",
+   "line": "германская власть"
+  },
+  {
+   "id": 4,
+   "text": "",
+   "start_sec": 39.56,
+   "duration_sec": 14.41,
+   "visual_prompt": "https://cdn4.telesco.pe/file/3ec8bd62cf.mp4?token=o-ffYixnU2-B_a3SZhAghjofK_KmkXl6yNn3Ta9mRREXK0R-6etENXQeb5gqNAGMD0hc7DslkQvJxyC-H4NXZInd_8AdXpNwBxiAB85okHihUQ4DhvIC61DCQRhTe3wLkL_9fOZlPQENF5RNeCzh3wJvjDPOERx_Yh9QNlW211JSkhvbDLvxXQ60t1-4IJSRla50av9eqMwUCMufgZUwwggyJ78DAZtihVUfcYal0l12B7xjPWbSgPJqdjc8Ehg8qUHNDlSxWivKMkLr3eEJIaC_3jnLPsfPXLAlncBTrvohD7vDbQeH32oeHjE70K8Aj5KJQ_yo7MdKGt6YdIlzLw",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/3ec8bd62cf.mp4?token=o-ffYixnU2-B_a3SZhAghjofK_KmkXl6yNn3Ta9mRREXK0R-6etENXQeb5gqNAGMD0hc7DslkQvJxyC-H4NXZInd_8AdXpNwBxiAB85okHihUQ4DhvIC61DCQRhTe3wLkL_9fOZlPQENF5RNeCzh3wJvjDPOERx_Yh9QNlW211JSkhvbDLvxXQ60t1-4IJSRla50av9eqMwUCMufgZUwwggyJ78DAZtihVUfcYal0l12B7xjPWbSgPJqdjc8Ehg8qUHNDlSxWivKMkLr3eEJIaC_3jnLPsfPXLAlncBTrvohD7vDbQeH32oeHjE70K8Aj5KJQ_yo7MdKGt6YdIlzLw",
+   "line": "германская власть (видео из источника)"
+  },
+  {
+   "id": 5,
+   "text": "",
+   "start_sec": 53.96,
+   "duration_sec": 12.31,
+   "visual_prompt": "Дональд Трамп и Фридрих Мерц встреча в Белом доме 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп и Фридрих Мерц встреча в Белом доме 2026 реальное фото",
+   "line": "США + Германия"
+  },
+  {
+   "id": 6,
+   "text": "",
+   "start_sec": 66.27,
+   "duration_sec": 9.81,
+   "visual_prompt": "флаги стран Евросоюза у здания Еврокомиссии в Брюсселе реальное фото",
+   "source": "press_photo",
+   "source_query": "флаги стран Евросоюза у здания Еврокомиссии в Брюсселе реальное фото",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 7,
+   "text": "",
+   "start_sec": 76.08,
+   "duration_sec": 12.88,
+   "visual_prompt": "здание Еврокомиссии Берлемон в Брюсселе фотография здания",
+   "source": "press_photo",
+   "source_query": "здание Еврокомиссии Берлемон в Брюсселе фотография здания",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 8,
+   "text": "",
+   "start_sec": 88.97,
+   "duration_sec": 13.98,
+   "visual_prompt": "панорама европейского квартала Брюсселя реальное фото",
+   "source": "press_photo",
+   "source_query": "панорама европейского квартала Брюсселя реальное фото",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 9,
+   "text": "",
+   "start_sec": 102.95,
+   "duration_sec": 12.58,
+   "visual_prompt": "здание Европейского центрального банка во Франкфурте фотография здания",
+   "source": "press_photo",
+   "source_query": "здание Европейского центрального банка во Франкфурте фотография здания",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 10,
+   "text": "",
+   "start_sec": 115.52,
+   "duration_sec": 12.56,
+   "visual_prompt": "container terminal gantry cranes stacked containers rows",
+   "source": "pexels_video",
+   "source_query": "container terminal gantry cranes stacked containers rows",
+   "line": "рынок и логистика"
+  },
+  {
+   "id": 11,
+   "text": "",
+   "start_sec": 128.08,
+   "duration_sec": 14.12,
+   "visual_prompt": "американская военная база Рамштайн в Германии реальное фото",
+   "source": "press_photo",
+   "source_query": "американская военная база Рамштайн в Германии реальное фото",
+   "line": "американская власть"
+  },
+  {
+   "id": 12,
+   "text": "",
+   "start_sec": 142.2,
+   "duration_sec": 11.7,
+   "visual_prompt": "stacked steel pipes in industrial yard closeup",
+   "source": "pexels_video",
+   "source_query": "stacked steel pipes in industrial yard closeup",
+   "line": "германская промышленность"
+  },
+  {
+   "id": 13,
+   "text": "",
+   "start_sec": 153.9,
+   "duration_sec": 10.18,
+   "visual_prompt": "Белый дом южный фасад в Вашингтоне фотография здания",
+   "source": "press_photo",
+   "source_query": "Белый дом южный фасад в Вашингтоне фотография здания",
+   "line": "американская власть"
+  },
+  {
+   "id": 14,
+   "text": "",
+   "start_sec": 164.08,
+   "duration_sec": 12.6,
+   "visual_prompt": "pallet racking rows empty no people",
+   "source": "pexels_video",
+   "source_query": "pallet racking rows empty no people",
+   "line": "НАТО и железо"
+  },
+  {
+   "id": 15,
+   "text": "",
+   "start_sec": 176.68,
+   "duration_sec": 14.0,
+   "visual_prompt": "Марк Рютте генеральный секретарь НАТО пресс-конференция 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Марк Рютте генеральный секретарь НАТО пресс-конференция 2026 реальное фото",
+   "line": "НАТО и железо"
+  },
+  {
+   "id": 16,
+   "text": "",
+   "start_sec": 190.68,
+   "duration_sec": 12.64,
+   "visual_prompt": "пусковая установка Patriot армии США на базе в Германии 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "пусковая установка Patriot армии США на базе в Германии 2026 реальное фото",
+   "line": "НАТО и железо"
+  },
+  {
+   "id": 17,
+   "text": "",
+   "start_sec": 203.32,
+   "duration_sec": 15.71,
+   "visual_prompt": "Ведомство федерального канцлера в Берлине фотография здания",
+   "source": "press_photo",
+   "source_query": "Ведомство федерального канцлера в Берлине фотография здания",
+   "line": "германская власть"
+  },
+  {
+   "id": 18,
+   "text": "",
+   "start_sec": 219.03,
+   "duration_sec": 13.47,
+   "visual_prompt": "радиолокационная станция раннего предупреждения армии США реальное фото",
+   "source": "press_photo",
+   "source_query": "радиолокационная станция раннего предупреждения армии США реальное фото",
+   "line": "НАТО и железо"
+  },
+  {
+   "id": 19,
+   "text": "",
+   "start_sec": 232.49,
+   "duration_sec": 8.58,
+   "visual_prompt": "empty underground parking garage rows no people",
+   "source": "pexels_video",
+   "source_query": "empty underground parking garage rows no people",
+   "line": "метафора: семья"
+  },
+  {
+   "id": 20,
+   "text": "",
+   "start_sec": 241.07,
+   "duration_sec": 14.28,
+   "visual_prompt": "спутник в чистой комнате сборки Европейского космического агентства 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "спутник в чистой комнате сборки Европейского космического агентства 2026 реальное фото",
+   "line": "НАТО и железо"
+  },
+  {
+   "id": 21,
+   "text": "",
+   "start_sec": 255.35,
+   "duration_sec": 12.72,
+   "visual_prompt": "здание Европарламента в Брюсселе фотография здания",
+   "source": "press_photo",
+   "source_query": "здание Европарламента в Брюсселе фотография здания",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 22,
+   "text": "",
+   "start_sec": 268.07,
+   "duration_sec": 11.89,
+   "visual_prompt": "здание Госдепартамента США в Вашингтоне фотография здания",
+   "source": "press_photo",
+   "source_query": "здание Госдепартамента США в Вашингтоне фотография здания",
+   "line": "американская власть"
+  },
+  {
+   "id": 23,
+   "text": "",
+   "start_sec": 279.96,
+   "duration_sec": 12.16,
+   "visual_prompt": "Марко Рубио госсекретарь США пресс-конференция 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Марко Рубио госсекретарь США пресс-конференция 2026 реальное фото",
+   "line": "американская власть"
+  },
+  {
+   "id": 24,
+   "text": "",
+   "start_sec": 292.12,
+   "duration_sec": 12.69,
+   "visual_prompt": "Гвидо Крозетто министр обороны Италии 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Гвидо Крозетто министр обороны Италии 2026 реальное фото",
+   "line": "Италия (видео из источника)"
+  },
+  {
+   "id": 25,
+   "text": "",
+   "start_sec": 304.81,
+   "duration_sec": 12.11,
+   "visual_prompt": "здание Министерства обороны Италии в Риме фотография здания",
+   "source": "press_photo",
+   "source_query": "здание Министерства обороны Италии в Риме фотография здания",
+   "line": "Италия"
+  },
+  {
+   "id": 26,
+   "text": "",
+   "start_sec": 316.92,
+   "duration_sec": 12.48,
+   "visual_prompt": "здание Europa Европейский совет в Брюсселе фотография здания",
+   "source": "press_photo",
+   "source_query": "здание Europa Европейский совет в Брюсселе фотография здания",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 27,
+   "text": "",
+   "start_sec": 329.4,
+   "duration_sec": 14.16,
+   "visual_prompt": "ammunition wooden crates stacked rows warehouse no people",
+   "source": "pexels_video",
+   "source_query": "ammunition wooden crates stacked rows warehouse no people",
+   "line": "Украина как расход"
+  },
+  {
+   "id": 28,
+   "text": "",
+   "start_sec": 343.56,
+   "duration_sec": 14.48,
+   "visual_prompt": "пленарное заседание Бундестага в Берлине 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "пленарное заседание Бундестага в Берлине 2026 реальное фото",
+   "line": "германская власть"
+  },
+  {
+   "id": 29,
+   "text": "",
+   "start_sec": 358.04,
+   "duration_sec": 9.81,
+   "visual_prompt": "цех автомобильного завода в Германии 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "цех автомобильного завода в Германии 2026 реальное фото",
+   "line": "германская промышленность"
+  },
+  {
+   "id": 30,
+   "text": "",
+   "start_sec": 367.85,
+   "duration_sec": 12.56,
+   "visual_prompt": "сталелитейный завод в Дуйсбурге Германия 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "сталелитейный завод в Дуйсбурге Германия 2026 реальное фото",
+   "line": "германская промышленность"
+  },
+  {
+   "id": 31,
+   "text": "",
+   "start_sec": 380.41,
+   "duration_sec": 12.32,
+   "visual_prompt": "здание Министерства финансов Германии в Берлине фотография здания",
+   "source": "press_photo",
+   "source_query": "здание Министерства финансов Германии в Берлине фотография здания",
+   "line": "метафора: семья"
+  },
+  {
+   "id": 32,
+   "text": "",
+   "start_sec": 392.73,
+   "duration_sec": 12.8,
+   "visual_prompt": "terracotta roof tiles of a house closeup no people",
+   "source": "pexels_video",
+   "source_query": "terracotta roof tiles of a house closeup no people",
+   "line": "метафора: семья"
+  },
+  {
+   "id": 33,
+   "text": "",
+   "start_sec": 405.53,
+   "duration_sec": 14.4,
+   "visual_prompt": "электростанция в Германии градирни реальное фото",
+   "source": "press_photo",
+   "source_query": "электростанция в Германии градирни реальное фото",
+   "line": "германская промышленность"
+  },
+  {
+   "id": 34,
+   "text": "",
+   "start_sec": 419.93,
+   "duration_sec": 14.4,
+   "visual_prompt": "приёмный терминал газопровода Северный поток в Любмине реальное фото",
+   "source": "press_photo",
+   "source_query": "приёмный терминал газопровода Северный поток в Любмине реальное фото",
+   "line": "энергетика"
+  },
+  {
+   "id": 35,
+   "text": "",
+   "start_sec": 434.33,
+   "duration_sec": 8.28,
+   "visual_prompt": "утечка газа на газопроводе Северный поток в Балтийском море 2022 реальное фото",
+   "source": "press_photo",
+   "source_query": "утечка газа на газопроводе Северный поток в Балтийском море 2022 реальное фото",
+   "line": "энергетика"
+  },
+  {
+   "id": 36,
+   "text": "",
+   "start_sec": 442.61,
+   "duration_sec": 13.12,
+   "visual_prompt": "Бранденбургские ворота в Берлине реальное фото",
+   "source": "press_photo",
+   "source_query": "Бранденбургские ворота в Берлине реальное фото",
+   "line": "германская власть"
+  },
+  {
+   "id": 37,
+   "text": "",
+   "start_sec": 455.73,
+   "duration_sec": 12.4,
+   "visual_prompt": "терминал сжиженного газа в Вильгельмсхафене Германия реальное фото",
+   "source": "press_photo",
+   "source_query": "терминал сжиженного газа в Вильгельмсхафене Германия реальное фото",
+   "line": "энергетика"
+  },
+  {
+   "id": 38,
+   "text": "",
+   "start_sec": 468.13,
+   "duration_sec": 13.84,
+   "visual_prompt": "депутаты АдГ в зале Бундестага 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "депутаты АдГ в зале Бундестага 2026 реальное фото",
+   "line": "германская власть"
+  },
+  {
+   "id": 39,
+   "text": "",
+   "start_sec": 481.97,
+   "duration_sec": 6.08,
+   "visual_prompt": "Сара Вагенкнехт политик Германии 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Сара Вагенкнехт политик Германии 2026 реальное фото",
+   "line": "германская власть"
+  },
+  {
+   "id": 40,
+   "text": "",
+   "start_sec": 488.05,
+   "duration_sec": 11.2,
+   "visual_prompt": "стеклянный купол Бундестага в Берлине фотография здания",
+   "source": "press_photo",
+   "source_query": "стеклянный купол Бундестага в Берлине фотография здания",
+   "line": "германская власть"
+  },
+  {
+   "id": 41,
+   "text": "",
+   "start_sec": 499.25,
+   "duration_sec": 8.1,
+   "visual_prompt": "нефтеперерабатывающий завод в Германии реальное фото",
+   "source": "press_photo",
+   "source_query": "нефтеперерабатывающий завод в Германии реальное фото",
+   "line": "германская промышленность"
+  },
+  {
+   "id": 42,
+   "text": "",
+   "start_sec": 507.35,
+   "duration_sec": 12.74,
+   "visual_prompt": "зал пленарных заседаний Бундестага в Берлине пустой реальное фото",
+   "source": "press_photo",
+   "source_query": "зал пленарных заседаний Бундестага в Берлине пустой реальное фото",
+   "line": "германская власть"
+  },
+  {
+   "id": 43,
+   "text": "",
+   "start_sec": 520.09,
+   "duration_sec": 5.92,
+   "visual_prompt": "высоковольтная линия электропередачи в Германии реальное фото",
+   "source": "press_photo",
+   "source_query": "высоковольтная линия электропередачи в Германии реальное фото",
+   "line": "германская промышленность"
+  },
+  {
+   "id": 44,
+   "text": "",
+   "start_sec": 526.0,
+   "duration_sec": 14.48,
+   "visual_prompt": "Дональд Трамп пресс-конференция в Белом доме 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп пресс-конференция в Белом доме 2026 реальное фото",
+   "line": "американская власть"
+  },
+  {
+   "id": 45,
+   "text": "",
+   "start_sec": 540.49,
+   "duration_sec": 12.0,
+   "visual_prompt": "пункт пограничного контроля на границе Германии 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "пункт пограничного контроля на границе Германии 2026 реальное фото",
+   "line": "американская власть"
+  },
+  {
+   "id": 46,
+   "text": "",
+   "start_sec": 552.49,
+   "duration_sec": 12.16,
+   "visual_prompt": "флаг США на здании американского посольства в Берлине реальное фото",
+   "source": "press_photo",
+   "source_query": "флаг США на здании американского посольства в Берлине реальное фото",
+   "line": "американская власть"
+  },
+  {
+   "id": 47,
+   "text": "",
+   "start_sec": 564.65,
+   "duration_sec": 12.72,
+   "visual_prompt": "Джорджа Мелони премьер-министр Италии 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Джорджа Мелони премьер-министр Италии 2026 реальное фото",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 48,
+   "text": "",
+   "start_sec": 577.37,
+   "duration_sec": 10.77,
+   "visual_prompt": "Педро Санчес премьер-министр Испании 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Педро Санчес премьер-министр Испании 2026 реальное фото",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 49,
+   "text": "",
+   "start_sec": 588.14,
+   "duration_sec": 9.06,
+   "visual_prompt": "зал заседаний Европарламента в Брюсселе пустой реальное фото",
+   "source": "press_photo",
+   "source_query": "зал заседаний Европарламента в Брюсселе пустой реальное фото",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 50,
+   "text": "",
+   "start_sec": 597.19,
+   "duration_sec": 13.98,
+   "visual_prompt": "здание парламента Венгрии в Будапеште фотография здания",
+   "source": "press_photo",
+   "source_query": "здание парламента Венгрии в Будапеште фотография здания",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 51,
+   "text": "",
+   "start_sec": 611.18,
+   "duration_sec": 12.08,
+   "visual_prompt": "зерновой терминал в порту Одессы 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "зерновой терминал в порту Одессы 2026 реальное фото",
+   "line": "Украина как расход"
+  },
+  {
+   "id": 52,
+   "text": "",
+   "start_sec": 623.26,
+   "duration_sec": 12.56,
+   "visual_prompt": "здание Казначейства Великобритании в Лондоне фотография здания",
+   "source": "press_photo",
+   "source_query": "здание Казначейства Великобритании в Лондоне фотография здания",
+   "line": "Украина как расход"
+  },
+  {
+   "id": 53,
+   "text": "",
+   "start_sec": 635.82,
+   "duration_sec": 13.36,
+   "visual_prompt": "здание Банка Англии в Лондоне фотография здания",
+   "source": "press_photo",
+   "source_query": "здание Банка Англии в Лондоне фотография здания",
+   "line": "Украина как расход"
+  },
+  {
+   "id": 54,
+   "text": "",
+   "start_sec": 649.18,
+   "duration_sec": 12.2,
+   "visual_prompt": "здание парламента Канады в Оттаве фотография здания",
+   "source": "press_photo",
+   "source_query": "здание парламента Канады в Оттаве фотография здания",
+   "line": "Украина как расход"
+  },
+  {
+   "id": 55,
+   "text": "",
+   "start_sec": 661.38,
+   "duration_sec": 11.84,
+   "visual_prompt": "tower crane silhouette against evening sky",
+   "source": "pexels_video",
+   "source_query": "tower crane silhouette against evening sky",
+   "line": "метафора: семья"
+  },
+  {
+   "id": 56,
+   "text": "",
+   "start_sec": 673.22,
+   "duration_sec": 8.63,
+   "visual_prompt": "площадь Шумана в Брюсселе реальное фото",
+   "source": "press_photo",
+   "source_query": "площадь Шумана в Брюсселе реальное фото",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 57,
+   "text": "",
+   "start_sec": 681.85,
+   "duration_sec": 12.22,
+   "visual_prompt": "здание МИД России на Смоленской площади фотография здания",
+   "source": "press_photo",
+   "source_query": "здание МИД России на Смоленской площади фотография здания",
+   "line": "американская власть"
+  },
+  {
+   "id": 58,
+   "text": "",
+   "start_sec": 694.07,
+   "duration_sec": 13.71,
+   "visual_prompt": "газораспределительная станция в Германии реальное фото",
+   "source": "press_photo",
+   "source_query": "газораспределительная станция в Германии реальное фото",
+   "line": "энергетика"
+  },
+  {
+   "id": 59,
+   "text": "",
+   "start_sec": 707.78,
+   "duration_sec": 13.76,
+   "visual_prompt": "natural gas burner blue flame closeup",
+   "source": "pexels_video",
+   "source_query": "natural gas burner blue flame closeup",
+   "line": "энергетика"
+  },
+  {
+   "id": 60,
+   "text": "",
+   "start_sec": 721.54,
+   "duration_sec": 14.59,
+   "visual_prompt": "контейнерный терминал в порту Роттердама реальное фото",
+   "source": "press_photo",
+   "source_query": "контейнерный терминал в порту Роттердама реальное фото",
+   "line": "рынок и логистика"
+  },
+  {
+   "id": 61,
+   "text": "",
+   "start_sec": 736.13,
+   "duration_sec": 13.04,
+   "visual_prompt": "Урсула фон дер Ляйен председатель Еврокомиссии 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Урсула фон дер Ляйен председатель Еврокомиссии 2026 реальное фото",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 62,
+   "text": "",
+   "start_sec": 749.17,
+   "duration_sec": 14.24,
+   "visual_prompt": "Эммануэль Макрон президент Франции 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Эммануэль Макрон президент Франции 2026 реальное фото",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 63,
+   "text": "",
+   "start_sec": 763.41,
+   "duration_sec": 14.24,
+   "visual_prompt": "флаги двадцати семи стран Евросоюза у здания в Брюсселе реальное фото",
+   "source": "press_photo",
+   "source_query": "флаги двадцати семи стран Евросоюза у здания в Брюсселе реальное фото",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 64,
+   "text": "",
+   "start_sec": 777.65,
+   "duration_sec": 12.68,
+   "visual_prompt": "штаб-квартира НАТО в Брюсселе фотография здания",
+   "source": "press_photo",
+   "source_query": "штаб-квартира НАТО в Брюсселе фотография здания",
+   "line": "НАТО и железо"
+  },
+  {
+   "id": 65,
+   "text": "",
+   "start_sec": 790.32,
+   "duration_sec": 12.8,
+   "visual_prompt": "цех по производству боеприпасов Rheinmetall в Германии 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "цех по производству боеприпасов Rheinmetall в Германии 2026 реальное фото",
+   "line": "германская промышленность"
+  },
+  {
+   "id": 66,
+   "text": "",
+   "start_sec": 803.12,
+   "duration_sec": 12.72,
+   "visual_prompt": "зал заседаний Еврокомиссии в Брюсселе 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "зал заседаний Еврокомиссии в Брюсселе 2026 реальное фото",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 67,
+   "text": "",
+   "start_sec": 815.84,
+   "duration_sec": 12.56,
+   "visual_prompt": "жилой квартал в Берлине улица реальное фото",
+   "source": "press_photo",
+   "source_query": "жилой квартал в Берлине улица реальное фото",
+   "line": "германская промышленность"
+  },
+  {
+   "id": 68,
+   "text": "",
+   "start_sec": 828.4,
+   "duration_sec": 12.17,
+   "visual_prompt": "wooden boat drifting away from shore calm water no people",
+   "source": "pexels_video",
+   "source_query": "wooden boat drifting away from shore calm water no people",
+   "line": "метафора: семья"
+  },
+  {
+   "id": 69,
+   "text": "",
+   "start_sec": 840.57,
+   "duration_sec": 12.95,
+   "visual_prompt": "цех точного машиностроения в Германии 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "цех точного машиностроения в Германии 2026 реальное фото",
+   "line": "германская промышленность"
+  },
+  {
+   "id": 70,
+   "text": "",
+   "start_sec": 853.52,
+   "duration_sec": 12.99,
+   "visual_prompt": "промышленный район Рурской области в Германии реальное фото",
+   "source": "press_photo",
+   "source_query": "промышленный район Рурской области в Германии реальное фото",
+   "line": "германская промышленность"
+  },
+  {
+   "id": 71,
+   "text": "",
+   "start_sec": 866.52,
+   "duration_sec": 13.05,
+   "visual_prompt": "Фридрих Мерц и Эммануэль Макрон встреча 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Фридрих Мерц и Эммануэль Макрон встреча 2026 реальное фото",
+   "line": "германская власть"
+  },
+  {
+   "id": 72,
+   "text": "",
+   "start_sec": 879.57,
+   "duration_sec": 10.46,
+   "visual_prompt": "запуск спутников Starlink ракетой SpaceX 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "запуск спутников Starlink ракетой SpaceX 2026 реальное фото",
+   "line": "НАТО и железо"
+  },
+  {
+   "id": 73,
+   "text": "",
+   "start_sec": 890.03,
+   "duration_sec": 12.56,
+   "visual_prompt": "Капитолий в Вашингтоне фотография здания",
+   "source": "press_photo",
+   "source_query": "Капитолий в Вашингтоне фотография здания",
+   "line": "американская власть"
+  },
+  {
+   "id": 74,
+   "text": "",
+   "start_sec": 902.6,
+   "duration_sec": 12.88,
+   "visual_prompt": "зал для пресс-конференций Еврокомиссии в Брюсселе реальное фото",
+   "source": "press_photo",
+   "source_query": "зал для пресс-конференций Еврокомиссии в Брюсселе реальное фото",
+   "line": "институты ЕС"
+  },
+  {
+   "id": 75,
+   "text": "",
+   "start_sec": 915.48,
+   "duration_sec": 13.95,
+   "visual_prompt": "флаги США и Евросоюза у здания представительства в Брюсселе реальное фото",
+   "source": "press_photo",
+   "source_query": "флаги США и Евросоюза у здания представительства в Брюсселе реальное фото",
+   "line": "американская власть"
+  },
+  {
+   "id": 76,
+   "text": "",
+   "start_sec": 929.43,
+   "duration_sec": 7.95,
+   "visual_prompt": "здание Министерства обороны Германии в Берлине фотография здания",
+   "source": "press_photo",
+   "source_query": "здание Министерства обороны Германии в Берлине фотография здания",
+   "line": "германская власть"
+  },
+  {
+   "id": 77,
+   "text": "",
+   "start_sec": 937.38,
+   "duration_sec": 13.49,
+   "visual_prompt": "rain gutter and downpipe on house wall closeup",
+   "source": "pexels_video",
+   "source_query": "rain gutter and downpipe on house wall closeup",
+   "line": "метафора: семья"
+  },
+  {
+   "id": 78,
+   "text": "",
+   "start_sec": 950.87,
+   "duration_sec": 13.68,
+   "visual_prompt": "Берлин ночью панорама города реальное фото",
+   "source": "press_photo",
+   "source_query": "Берлин ночью панорама города реальное фото",
+   "line": "германская власть"
+  },
+  {
+   "id": 79,
+   "text": "",
+   "start_sec": 964.55,
+   "duration_sec": 5.4,
+   "visual_prompt": "closed wooden front door with handle exterior closeup",
+   "source": "pexels_video",
+   "source_query": "closed wooden front door with handle exterior closeup",
+   "line": "метафора: семья"
+  }
+ ],
+ "context": "Европа объявляет стратегическую самостоятельность, но критические инструменты её политики остаются американскими. Стороны: Германия (Мерц, Зёдер, АдГ, Блок Вагенкнехт), США (Трамп, Рубио), НАТО (Рютте), институты ЕС (Еврокомиссия, Евросовет, Европарламент), Италия (Крозетто, Мелони), Венгрия, Украина. Физически это Берлин, Брюссель, Вашингтон и немецкая промышленность с Балтикой. Узел: платить за автономию надо ровно тогда, когда у европейской промышленности самой нет денег, и чем самостоятельнее Европа, тем сильнее расходится с Вашингтоном. Время: октябрь 2026, после слов Мерца и Рютте, на фоне саммита ЕС по миграции и блокировки Венгрией кластеров. Кончается тем, что взрослость это платить самому: «осталось забрать ключи». Чувство: ироничная трезвость, семейная метафора про выросшего ребёнка на содержании.",
+ "lines": [
+  "германская власть и Мерц: Ведомство федерального канцлера, Бундестаг, Мерц, Зёдер, АдГ, Вагенкнехт",
+  "американская власть: Белый дом, Капитолий, Госдеп, Пентагон, посольство США в Берлине, Трамп, Рубио",
+  "НАТО и его железо: штаб в Брюсселе, Рютте, Patriot армии США, спутниковые антенны, запуск Starlink",
+  "институты ЕС в Брюсселе: Берлемон, Europa, Европарламент, ЕЦБ, флаги ЕС, фон дер Ляйен",
+  "германская промышленность: автозаводы, сталь, градирни, НПЗ, ЛЭП, Рурская область, цеха боеприпасов",
+  "энергетика и Северные потоки: терминал в Любмине, утечка в Балтике, СПГ в Вильгельмсхафене, газовое пламя",
+  "Украина как статья расходов: погрузка помощи, склады боеприпасов, зерновой терминал, плательщики (Британия, Канада, Япония)",
+  "метафора семьи, названная самим текстом: дом, гараж, купюры, крыша, стройка, лодка, ключи"
+ ],
+ "channel": "5 МИНУТ",
+ "library": "NO (search-only, кроме КАРТЫ во всплывашках)",
+ "production_id": "PROD_20261021_EUROPE_STRATEGIC_DEPENDENCE_V1"
+}

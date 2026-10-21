@@ -1,0 +1,84 @@
+{
+ "scenes": [
+  {
+   "id": 12,
+   "text": "",
+   "duration_sec": 11.7,
+   "source": "press_photo",
+   "source_query": "авианосец ВМС США в море 2026 реальное фото",
+   "visual_prompt": "авианосец ВМС США в море 2026 реальное фото"
+  },
+  {
+   "id": 16,
+   "text": "",
+   "duration_sec": 12.64,
+   "source": "press_photo",
+   "source_query": "терминал Starlink на позиции военных 2026 реальное фото",
+   "visual_prompt": "терминал Starlink на позиции военных 2026 реальное фото"
+  },
+  {
+   "id": 19,
+   "text": "",
+   "duration_sec": 8.58,
+   "source": "press_photo",
+   "source_query": "Пентагон в Арлингтоне вид сверху реальное фото",
+   "visual_prompt": "Пентагон в Арлингтоне вид сверху реальное фото"
+  },
+  {
+   "id": 23,
+   "text": "",
+   "duration_sec": 12.16,
+   "source": "local_library",
+   "source_query": "КАРТЫ/УКРАИНА/Europe-Ukraine.jpg",
+   "visual_prompt": "КАРТЫ/УКРАИНА/Europe-Ukraine.jpg"
+  },
+  {
+   "id": 35,
+   "text": "",
+   "duration_sec": 8.28,
+   "source": "press_photo",
+   "source_query": "здание Федерального суда Германии в Карлсруэ фотография здания",
+   "visual_prompt": "здание Федерального суда Германии в Карлсруэ фотография здания"
+  },
+  {
+   "id": 36,
+   "text": "",
+   "duration_sec": 13.12,
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/CnmFjfOENUbEGLV2N8y8RSWsBOU05Kj5AIskQRoyVzyxQXprh0pnERQknU1w2A10goMlOGfoB3jRrwdM26GxG0DX1Qz6OrZuOKcLu_pcZrCJ3ot6Pf_Ej8-rbAo8lIIr4QLP3tvYo3zXEYsI0qlWDyF_RuJHJA5nDrND8XP0n4dLWzm-jEksgDI3yupfaSdgG6qm_u_RNdDfgbw13cnJjG9eQXANBgBn7LLnWRmTF_Evoi-imRKTEbcJmYKrBbcwFMXXZTu1-Yw6AKtEu2bYQMe_MVlzhEhDIgkOtK_wqTfhm6GAVkmnTbauylBeQjXy_jL9xh2mW78yuWshIYv_dg.jpg",
+   "visual_prompt": "https://cdn4.telesco.pe/file/CnmFjfOENUbEGLV2N8y8RSWsBOU05Kj5AIskQRoyVzyxQXprh0pnERQknU1w2A10goMlOGfoB3jRrwdM26GxG0DX1Qz6OrZuOKcLu_pcZrCJ3ot6Pf_Ej8-rbAo8lIIr4QLP3tvYo3zXEYsI0qlWDyF_RuJHJA5nDrND8XP0n4dLWzm-jEksgDI3yupfaSdgG6qm_u_RNdDfgbw13cnJjG9eQXANBgBn7LLnWRmTF_Evoi-imRKTEbcJmYKrBbcwFMXXZTu1-Yw6AKtEu2bYQMe_MVlzhEhDIgkOtK_wqTfhm6GAVkmnTbauylBeQjXy_jL9xh2mW78yuWshIYv_dg.jpg"
+  },
+  {
+   "id": 39,
+   "text": "",
+   "duration_sec": 6.08,
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/dda6cbe31a.mp4?token=ceFCkG2iHMxK65z2Cp4-6fcRDcF9o28kVmsTPiYXpK8YZAe5bOviQwnt11_Epul5YRKF8G7wupBL9G4rF5w_CwwlA0RgejFw6DL1pFbJhQI_4dJXWjmnLPAsykUFGVXDDJNMIv6aB0v9qyedIopiP_fd1ncbNYJ244JQPXyiY3JOGl2P2gXPLHc0D_zcd8rvSFPoCIPAQCFP4kR175oLD5DOXtDqie8JLF9q1on2pwNBT1wc9wpIqRgnTLPmOxSJuQQToua9BtSzWF9Uzjzxl6d9rrGqIWmwUzY5rzyZo48x6mP3ndvMpI6fyCOc7nMAhygb9p16nb96SLZq8ffiPnTqvjPO_A1MT0QPIr3g7CIslnKXoIWvq-SWGBixrghuEi88QuPm9FFlt_tipBGzxMNFo8nm1BcWuTi0-kYGAsYwuuBTPS0k3sQ_dXGn1Caht79lV7y_6iwuvh0sBu3cHVkVAtGPQpUfaJcVbL-JWUdlcZ7Ndj7ljwgwIoivi1wV4_VtNbqzzpbCZLL2TPQ4MmXwWQ4HrU2AxmKSYgARyOVXGio-cJF9MOTYibuF5OvpMpqXsq1lafkn9QFz7oOYh7u2ogYzTQlk4Aqc61BFrfOHyabSqYEO-pdgo8UOKS1h_e3EVIBwXMHpObPnftNr9xHZGxlitLFt7DT2ZQw3gqM",
+   "visual_prompt": "Маркус Зёдер премьер-министр Баварии 2026 реальное фото"
+  },
+  {
+   "id": 53,
+   "text": "",
+   "duration_sec": 13.36,
+   "source": "press_photo",
+   "source_query": "здание парламента Японии в Токио фотография здания",
+   "visual_prompt": "здание парламента Японии в Токио фотография здания"
+  },
+  {
+   "id": 58,
+   "text": "",
+   "duration_sec": 13.71,
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/vdhOBfpXv49iJCh5l6Nn_ytJzOpMoJKQJ88DjVMM_XnWEIgfqrbknAlXLjrnYaM-dMiV3rSX60ZbwXryBEmXOvex3u0IeliQRIbeTvrt3CgHN08qPoOdU-HFIJZ5f3nat4nlI7Yw6ZoRyYX6DvwcTWO1MXHOGOOBxURWyJ9S08-LNykgKzJQJUPHjDac_on9rMxgUWTItIyhn3Zl6g8VRDJRWVE8LB5Yx7CuOus7_2JBe1-BQB4gZwmHtB3v8HVXGcMG7KStEwZlJJfKsNv-tLpu-6j_zx-xi1RBIjhX3bB7S-Z49jdsX69fiUhAFK7rDCgRTxf0jkYQW7eWK7ZmBQ.jpg",
+   "visual_prompt": "https://cdn4.telesco.pe/file/vdhOBfpXv49iJCh5l6Nn_ytJzOpMoJKQJ88DjVMM_XnWEIgfqrbknAlXLjrnYaM-dMiV3rSX60ZbwXryBEmXOvex3u0IeliQRIbeTvrt3CgHN08qPoOdU-HFIJZ5f3nat4nlI7Yw6ZoRyYX6DvwcTWO1MXHOGOOBxURWyJ9S08-LNykgKzJQJUPHjDac_on9rMxgUWTItIyhn3Zl6g8VRDJRWVE8LB5Yx7CuOus7_2JBe1-BQB4gZwmHtB3v8HVXGcMG7KStEwZlJJfKsNv-tLpu-6j_zx-xi1RBIjhX3bB7S-Z49jdsX69fiUhAFK7rDCgRTxf0jkYQW7eWK7ZmBQ.jpg"
+  },
+  {
+   "id": 64,
+   "text": "",
+   "duration_sec": 12.68,
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/bb07fa1c49.mp4?token=bDQmTioccwY9Epyl6Vu8rpdWmnX2E6iDPQoUqH1S_DTcmHm_N6M8b0ygxfFeyCqnxQFcWRTqzqS85Qgmg9n5rguGp7-XeihVO3aQyQDRMOJQVi8EstT2pIW4PARYYqMng9pxhkq79RnXjW3XTfNOROeaRHgX_6Tjh3mcg3h4bdOtNvZuQHftzfbGBGO72CTpUVnoNdg0Bqhq8xRU35gFfnvoFQVpzpOJNHd_w_pFKc9vsuX64XeVn3cyX7jMFy2VBBSjZNh7EMdD89Iy60sdS89-vWf3KTTzS2A9OOBOWXNFE3WkxPgLr_y8Gkch9niZws9sh03owJau1WBgRR0EVw",
+   "visual_prompt": "https://cdn4.telesco.pe/file/bb07fa1c49.mp4?token=bDQmTioccwY9Epyl6Vu8rpdWmnX2E6iDPQoUqH1S_DTcmHm_N6M8b0ygxfFeyCqnxQFcWRTqzqS85Qgmg9n5rguGp7-XeihVO3aQyQDRMOJQVi8EstT2pIW4PARYYqMng9pxhkq79RnXjW3XTfNOROeaRHgX_6Tjh3mcg3h4bdOtNvZuQHftzfbGBGO72CTpUVnoNdg0Bqhq8xRU35gFfnvoFQVpzpOJNHd_w_pFKc9vsuX64XeVn3cyX7jMFy2VBBSjZNh7EMdD89Iy60sdS89-vWf3KTTzS2A9OOBOWXNFE3WkxPgLr_y8Gkch9niZws9sh03owJau1WBgRR0EVw"
+  }
+ ]
+}
