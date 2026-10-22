@@ -1,0 +1,818 @@
+{
+ "scenes": [
+  {
+   "id": 1,
+   "text": "",
+   "start_sec": 0.0,
+   "duration_sec": 13.08,
+   "visual_prompt": "A: институты ЕС — зал, где выбирают",
+   "source": "press_photo",
+   "source_query": "пустой зал заседаний Европейского совета в Брюсселе реальное фото"
+  },
+  {
+   "id": 2,
+   "text": "",
+   "start_sec": 13.08,
+   "duration_sec": 6.63,
+   "visual_prompt": "B: власть США — сосед уже дома",
+   "source": "press_photo",
+   "source_query": "Белый дом в Вашингтоне фасад вечером реальное фото"
+  },
+  {
+   "id": 3,
+   "text": "",
+   "start_sec": 19.71,
+   "duration_sec": 12.63,
+   "visual_prompt": "C+B: встреча уже состоялась",
+   "source": "press_photo",
+   "source_query": "Владимир Путин и Стив Уиткофф на встрече в Санкт-Петербурге 21 октября 2026"
+  },
+  {
+   "id": 4,
+   "text": "",
+   "start_sec": 32.33,
+   "duration_sec": 5.75,
+   "visual_prompt": "A: Европа собирается",
+   "source": "press_photo",
+   "source_query": "флаг Европейского союза на флагштоке у здания Еврокомиссии реальное фото"
+  },
+  {
+   "id": 5,
+   "text": "",
+   "start_sec": 38.09,
+   "duration_sec": 12.18,
+   "visual_prompt": "A: место за столом",
+   "source": "press_photo",
+   "source_query": "зал заседаний Совета Европейского союза в Брюсселе 2026 реальное фото"
+  },
+  {
+   "id": 6,
+   "text": "",
+   "start_sec": 50.27,
+   "duration_sec": 14.73,
+   "visual_prompt": "D: кандидат Стубб",
+   "source": "press_photo",
+   "source_query": "Александр Стубб президент Финляндии 2026 реальное фото"
+  },
+  {
+   "id": 7,
+   "text": "",
+   "start_sec": 65.0,
+   "duration_sec": 7.48,
+   "visual_prompt": "A: кандидат фон дер Ляйен",
+   "source": "press_photo",
+   "source_query": "Урсула фон дер Ляйен председатель Еврокомиссии 2026 реальное фото"
+  },
+  {
+   "id": 8,
+   "text": "",
+   "start_sec": 72.48,
+   "duration_sec": 12.64,
+   "visual_prompt": "A: четыре года заявлений",
+   "source": "press_photo",
+   "source_query": "здание Европейской комиссии Берлемон в Брюсселе реальное фото"
+  },
+  {
+   "id": 9,
+   "text": "",
+   "start_sec": 85.12,
+   "duration_sec": 12.88,
+   "visual_prompt": "КАРТОЧКА: тезис про расстановку сил",
+   "source": "card:quote",
+   "source_query": ""
+  },
+  {
+   "id": 10,
+   "text": "",
+   "start_sec": 98.0,
+   "duration_sec": 12.4,
+   "visual_prompt": "A: Европа не единый организм",
+   "source": "press_photo",
+   "source_query": "флаги стран Евросоюза на флагштоках перед зданием Евросовета реальное фото"
+  },
+  {
+   "id": 11,
+   "text": "",
+   "start_sec": 110.4,
+   "duration_sec": 7.88,
+   "visual_prompt": "A: линия Каллас",
+   "source": "press_photo",
+   "source_query": "Кая Каллас глава дипломатии Европейского союза 2026 реальное фото"
+  },
+  {
+   "id": 12,
+   "text": "",
+   "start_sec": 118.28,
+   "duration_sec": 12.84,
+   "visual_prompt": "A: фон дер Ляйен обещает бесконечные санкции — ВИДЕО из досье, 1920x1080",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/674b55c1d1.mp4?token=hCmzwN4TGhy3nYkQLmLFlMQXV7vPmY9i3xHfvEgbJh9I6tSbIPu8mSGdAOYiP0srwONcsfjhyGz2KWLN37bXrn9IF1WEBcqJkSGw-ICjUXDZk6MUShViphJ2CQJp3kBbVcsJ7oVnxarPFEfIoctlRFnRMGh1yMsEUqzJ0oaJlYPqdYc-gWSPMyAD27yhM-e-dER0jqm4059EHIITVD0NThA7oNZqXkTCJutpT1OSi9HHWIbe1siApoknKEwzm8VvNon1m8Fb92heB0tI_fuFtokWJ1MFiNHEj_s1z1Jo3Iyvewgf_1_sBTDf2ve8nIvwO8NX-978v6KIq-MLTV1Hog"
+  },
+  {
+   "id": 13,
+   "text": "",
+   "start_sec": 131.11,
+   "duration_sec": 14.56,
+   "visual_prompt": "C: ирония про танки у Кремля",
+   "source": "press_photo",
+   "source_query": "Спасская башня Московского Кремля реальное фото"
+  },
+  {
+   "id": 14,
+   "text": "",
+   "start_sec": 145.68,
+   "duration_sec": 12.04,
+   "visual_prompt": "C: Песков про Стубба",
+   "source": "press_photo",
+   "source_query": "Дмитрий Песков пресс-секретарь Кремля на брифинге 2026 реальное фото"
+  },
+  {
+   "id": 15,
+   "text": "",
+   "start_sec": 157.72,
+   "duration_sec": 12.67,
+   "visual_prompt": "D: Финляндия рядом с Россией",
+   "source": "press_photo",
+   "source_query": "президентский дворец в Хельсинки Финляндия реальное фото"
+  },
+  {
+   "id": 16,
+   "text": "",
+   "start_sec": 170.4,
+   "duration_sec": 13.33,
+   "visual_prompt": "A: второй кандидат",
+   "source": "press_photo",
+   "source_query": "Антониу Кошта председатель Европейского совета 2026 реальное фото"
+  },
+  {
+   "id": 17,
+   "text": "",
+   "start_sec": 183.72,
+   "duration_sec": 14.0,
+   "visual_prompt": "B: Уиткофф не ждёт",
+   "source": "press_photo",
+   "source_query": "Стив Уиткофф специальный посланник президента США 2026 реальное фото"
+  },
+  {
+   "id": 18,
+   "text": "",
+   "start_sec": 197.72,
+   "duration_sec": 12.48,
+   "visual_prompt": "C: Ушаков про новый раунд",
+   "source": "press_photo",
+   "source_query": "Юрий Ушаков помощник президента России 2026 реальное фото"
+  },
+  {
+   "id": 19,
+   "text": "",
+   "start_sec": 210.2,
+   "duration_sec": 14.05,
+   "visual_prompt": "C: российская дипломатия",
+   "source": "press_photo",
+   "source_query": "здание Министерства иностранных дел России на Смоленской площади реальное фото"
+  },
+  {
+   "id": 20,
+   "text": "",
+   "start_sec": 224.25,
+   "duration_sec": 11.56,
+   "visual_prompt": "метафора зарядки, названа текстом",
+   "source": "pexels_video",
+   "source_query": "smartphone charging cable plugged in closeup no people"
+  },
+  {
+   "id": 21,
+   "text": "",
+   "start_sec": 235.81,
+   "duration_sec": 10.52,
+   "visual_prompt": "метафора: сколько процентов",
+   "source": "pexels_video",
+   "source_query": "phone battery charging indicator screen macro closeup"
+  },
+  {
+   "id": 22,
+   "text": "",
+   "start_sec": 246.33,
+   "duration_sec": 6.99,
+   "visual_prompt": "C: канал связи",
+   "source": "press_photo",
+   "source_query": "Кирилл Дмитриев глава Российского фонда прямых инвестиций 2026 реальное фото"
+  },
+  {
+   "id": 23,
+   "text": "",
+   "start_sec": 253.32,
+   "duration_sec": 8.53,
+   "visual_prompt": "C: публичная информация",
+   "source": "press_photo",
+   "source_query": "здание Администрации президента России Старая площадь реальное фото"
+  },
+  {
+   "id": 24,
+   "text": "",
+   "start_sec": 261.85,
+   "duration_sec": 14.64,
+   "visual_prompt": "КАРТОЧКА: приблизились к миру",
+   "source": "card:quote",
+   "source_query": ""
+  },
+  {
+   "id": 25,
+   "text": "",
+   "start_sec": 276.49,
+   "duration_sec": 12.72,
+   "visual_prompt": "A: экран никто не показывает",
+   "source": "press_photo",
+   "source_query": "зал для пресс-конференций Европейской комиссии в Брюсселе 2026 реальное фото"
+  },
+  {
+   "id": 26,
+   "text": "",
+   "start_sec": 289.21,
+   "duration_sec": 13.25,
+   "visual_prompt": "A: НАТО в списке тем",
+   "source": "press_photo",
+   "source_query": "штаб-квартира НАТО в Брюсселе реальное фото"
+  },
+  {
+   "id": 27,
+   "text": "",
+   "start_sec": 302.46,
+   "duration_sec": 10.18,
+   "visual_prompt": "A: где новый козырь",
+   "source": "press_photo",
+   "source_query": "здание Европейского совета Europa в Брюсселе фасад реальное фото"
+  },
+  {
+   "id": 28,
+   "text": "",
+   "start_sec": 312.64,
+   "duration_sec": 11.82,
+   "visual_prompt": "E: российский дизель",
+   "source": "press_photo",
+   "source_query": "нефтеперерабатывающий завод в России технологические установки реальное фото"
+  },
+  {
+   "id": 29,
+   "text": "",
+   "start_sec": 324.46,
+   "duration_sec": 9.03,
+   "visual_prompt": "E: первая партия к отправке",
+   "source": "pexels_video",
+   "source_query": "railway tank cars oil train moving industrial closeup no people"
+  },
+  {
+   "id": 30,
+   "text": "",
+   "start_sec": 333.49,
+   "duration_sec": 7.28,
+   "visual_prompt": "E: сорок тысяч тонн",
+   "source": "pexels_video",
+   "source_query": "oil tanker ship at port terminal aerial view no people"
+  },
+  {
+   "id": 31,
+   "text": "",
+   "start_sec": 340.77,
+   "duration_sec": 13.93,
+   "visual_prompt": "C: обсуждали исполнение",
+   "source": "press_photo",
+   "source_query": "Владимир Путин на переговорах в Санкт-Петербурге октябрь 2026 реальное фото"
+  },
+  {
+   "id": 32,
+   "text": "",
+   "start_sec": 354.7,
+   "duration_sec": 14.32,
+   "visual_prompt": "E: механизм работает",
+   "source": "press_photo",
+   "source_query": "насосная станция магистрального нефтепровода Россия 2026 реальное фото"
+  },
+  {
+   "id": 33,
+   "text": "",
+   "start_sec": 369.02,
+   "duration_sec": 7.48,
+   "visual_prompt": "E: удобрения, рынки",
+   "source": "pexels_video",
+   "source_query": "fertilizer granules on conveyor belt industrial closeup no people"
+  },
+  {
+   "id": 34,
+   "text": "",
+   "start_sec": 376.49,
+   "duration_sec": 12.88,
+   "visual_prompt": "B: Вашингтон заключает сделки",
+   "source": "press_photo",
+   "source_query": "здание Государственного департамента США в Вашингтоне реальное фото"
+  },
+  {
+   "id": 35,
+   "text": "",
+   "start_sec": 389.37,
+   "duration_sec": 14.04,
+   "visual_prompt": "A: потерять влияние",
+   "source": "press_photo",
+   "source_query": "пустые кресла в зале Европейской комиссии Брюссель 2026 реальное фото"
+  },
+  {
+   "id": 36,
+   "text": "",
+   "start_sec": 403.41,
+   "duration_sec": 6.61,
+   "visual_prompt": "D: выходит Павел",
+   "source": "press_photo",
+   "source_query": "Пётр Павел президент Чехии 2026 реальное фото"
+  },
+  {
+   "id": 37,
+   "text": "",
+   "start_sec": 410.01,
+   "duration_sec": 12.39,
+   "visual_prompt": "D: откуда он говорит",
+   "source": "press_photo",
+   "source_query": "Пражский град резиденция президента Чехии реальное фото"
+  },
+  {
+   "id": 38,
+   "text": "",
+   "start_sec": 422.4,
+   "duration_sec": 12.25,
+   "visual_prompt": "E: и тут бац, дизель",
+   "source": "press_photo",
+   "source_query": "нефтяной терминал погрузка танкера Приморск реальное фото"
+  },
+  {
+   "id": 39,
+   "text": "",
+   "start_sec": 434.65,
+   "duration_sec": 13.92,
+   "visual_prompt": "A: санкционное давление",
+   "source": "press_photo",
+   "source_query": "заседание Совета Европейского союза по санкциям Брюссель 2026 реальное фото"
+  },
+  {
+   "id": 40,
+   "text": "",
+   "start_sec": 448.57,
+   "duration_sec": 13.22,
+   "visual_prompt": "E: топливная договорённость",
+   "source": "press_photo",
+   "source_query": "факел на нефтеперерабатывающем заводе ночью Россия реальное фото"
+  },
+  {
+   "id": 41,
+   "text": "",
+   "start_sec": 461.79,
+   "duration_sec": 6.09,
+   "visual_prompt": "C: что Москва согласилась принять",
+   "source": "press_photo",
+   "source_query": "флаг России на здании Московского Кремля реальное фото"
+  },
+  {
+   "id": 42,
+   "text": "",
+   "start_sec": 467.88,
+   "duration_sec": 7.73,
+   "visual_prompt": "КАРТОЧКА: где этот момент",
+   "source": "card:quote",
+   "source_query": ""
+  },
+  {
+   "id": 43,
+   "text": "",
+   "start_sec": 475.61,
+   "duration_sec": 8.0,
+   "visual_prompt": "C: Москва ключи не сдаёт",
+   "source": "press_photo",
+   "source_query": "Владимир Путин на заседании Совета безопасности России 2026 реальное фото"
+  },
+  {
+   "id": 44,
+   "text": "",
+   "start_sec": 483.61,
+   "duration_sec": 12.52,
+   "visual_prompt": "F: обойти интересы Украины",
+   "source": "press_photo",
+   "source_query": "Офис президента Украины на Банковой в Киеве реальное фото"
+  },
+  {
+   "id": 45,
+   "text": "",
+   "start_sec": 496.12,
+   "duration_sec": 14.24,
+   "visual_prompt": "A: европейский страх",
+   "source": "press_photo",
+   "source_query": "Антониу Кошта на пресс-конференции в Брюсселе октябрь 2026"
+  },
+  {
+   "id": 46,
+   "text": "",
+   "start_sec": 510.36,
+   "duration_sec": 12.48,
+   "visual_prompt": "A: единство Запада",
+   "source": "press_photo",
+   "source_query": "зал заседаний Европейского парламента в Страсбурге реальное фото"
+  },
+  {
+   "id": 47,
+   "text": "",
+   "start_sec": 522.84,
+   "duration_sec": 14.28,
+   "visual_prompt": "B: Трамп требует закончить",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп выступает в Белом доме октябрь 2026 реальное фото"
+  },
+  {
+   "id": 48,
+   "text": "",
+   "start_sec": 537.13,
+   "duration_sec": 6.73,
+   "visual_prompt": "F: Зеленский должен захотеть",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский президент Украины октябрь 2026 реальное фото"
+  },
+  {
+   "id": 49,
+   "text": "",
+   "start_sec": 543.86,
+   "duration_sec": 9.0,
+   "visual_prompt": "B: заявление Рубио",
+   "source": "press_photo",
+   "source_query": "Марко Рубио государственный секретарь США 2026 реальное фото"
+  },
+  {
+   "id": 50,
+   "text": "",
+   "start_sec": 552.86,
+   "duration_sec": 12.38,
+   "visual_prompt": "B: кто обеспечивал возможности",
+   "source": "press_photo",
+   "source_query": "Капитолий здание Конгресса США в Вашингтоне реальное фото"
+  },
+  {
+   "id": 51,
+   "text": "",
+   "start_sec": 565.24,
+   "duration_sec": 13.81,
+   "visual_prompt": "B: Трамп не будет согласовывать",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп на переговорах в Овальном кабинете октябрь 2026"
+  },
+  {
+   "id": 52,
+   "text": "",
+   "start_sec": 579.05,
+   "duration_sec": 9.52,
+   "visual_prompt": "A: проблема Каллас глубже",
+   "source": "press_photo",
+   "source_query": "Кая Каллас на заседании Совета министров ЕС октябрь 2026"
+  },
+  {
+   "id": 53,
+   "text": "",
+   "start_sec": 588.57,
+   "duration_sec": 12.45,
+   "visual_prompt": "A: что может предложить переговорщик",
+   "source": "press_photo",
+   "source_query": "длинный стол для переговоров в зале Евросовета Брюссель 2026"
+  },
+  {
+   "id": 54,
+   "text": "",
+   "start_sec": 601.01,
+   "duration_sec": 13.12,
+   "visual_prompt": "A: список требований",
+   "source": "press_photo",
+   "source_query": "здание Совета Европейского союза Юстус Липсиус Брюссель реальное фото"
+  },
+  {
+   "id": 55,
+   "text": "",
+   "start_sec": 614.13,
+   "duration_sec": 7.53,
+   "visual_prompt": "КАРТОЧКА: зачем садиться за этот стол",
+   "source": "card:quote",
+   "source_query": ""
+  },
+  {
+   "id": 56,
+   "text": "",
+   "start_sec": 621.67,
+   "duration_sec": 11.18,
+   "visual_prompt": "D+B: канал разговора",
+   "source": "press_photo",
+   "source_query": "Александр Стубб и Дональд Трамп на встрече 2026 реальное фото"
+  },
+  {
+   "id": 57,
+   "text": "",
+   "start_sec": 632.85,
+   "duration_sec": 14.61,
+   "visual_prompt": "D: длинная граница",
+   "source": "press_photo",
+   "source_query": "граница Финляндии и России пограничный переход реальное фото"
+  },
+  {
+   "id": 58,
+   "text": "",
+   "start_sec": 647.46,
+   "duration_sec": 13.23,
+   "visual_prompt": "C: Кремль не устраивает",
+   "source": "press_photo",
+   "source_query": "Дмитрий Песков отвечает журналистам в Кремле октябрь 2026"
+  },
+  {
+   "id": 59,
+   "text": "",
+   "start_sec": 660.7,
+   "duration_sec": 9.31,
+   "visual_prompt": "C: новые нюансы после Осло",
+   "source": "press_photo",
+   "source_query": "Юрий Ушаков на переговорах в Кремле октябрь 2026 реальное фото"
+  },
+  {
+   "id": 60,
+   "text": "",
+   "start_sec": 670.0,
+   "duration_sec": 8.57,
+   "visual_prompt": "B: Уиткофф приезжает",
+   "source": "press_photo",
+   "source_query": "Стив Уиткофф прибывает на переговоры в Санкт-Петербург 21 октября 2026"
+  },
+  {
+   "id": 61,
+   "text": "",
+   "start_sec": 678.57,
+   "duration_sec": 13.92,
+   "visual_prompt": "E: договорённость реализуется",
+   "source": "press_photo",
+   "source_query": "состав с нефтяными цистернами в пути Россия 2026 реальное фото"
+  },
+  {
+   "id": 62,
+   "text": "",
+   "start_sec": 692.49,
+   "duration_sec": 12.8,
+   "visual_prompt": "восстановление, бюджеты",
+   "source": "pexels_video",
+   "source_query": "concrete pouring at construction site closeup no people"
+  },
+  {
+   "id": 63,
+   "text": "",
+   "start_sec": 705.29,
+   "duration_sec": 13.92,
+   "visual_prompt": "энергетика, торговля",
+   "source": "pexels_video",
+   "source_query": "high voltage power lines towers at sunset no people"
+  },
+  {
+   "id": 64,
+   "text": "",
+   "start_sec": 719.21,
+   "duration_sec": 12.09,
+   "visual_prompt": "A: окно закрывается",
+   "source": "press_photo",
+   "source_query": "здание Еврокомиссии в Брюсселе вечером окна реальное фото"
+  },
+  {
+   "id": 65,
+   "text": "",
+   "start_sec": 731.3,
+   "duration_sec": 6.55,
+   "visual_prompt": "A: любое смягчение как поражение",
+   "source": "press_photo",
+   "source_query": "зал пленарных заседаний Европарламента пустой реальное фото"
+  },
+  {
+   "id": 66,
+   "text": "",
+   "start_sec": 737.85,
+   "duration_sec": 14.52,
+   "visual_prompt": "D: реакция Павела",
+   "source": "press_photo",
+   "source_query": "Пётр Павел на пресс-конференции в Праге октябрь 2026"
+  },
+  {
+   "id": 67,
+   "text": "",
+   "start_sec": 752.37,
+   "duration_sec": 11.32,
+   "visual_prompt": "КАРТОЧКА: продолжение конфликта даёт время",
+   "source": "card:quote",
+   "source_query": ""
+  },
+  {
+   "id": 68,
+   "text": "",
+   "start_sec": 763.69,
+   "duration_sec": 13.08,
+   "visual_prompt": "A: защищает конструкцию",
+   "source": "press_photo",
+   "source_query": "Урсула фон дер Ляйен на заседании Еврокомиссии октябрь 2026"
+  },
+  {
+   "id": 69,
+   "text": "",
+   "start_sec": 776.77,
+   "duration_sec": 14.08,
+   "visual_prompt": "D: Польша смотрит на свою безопасность",
+   "source": "press_photo",
+   "source_query": "здание Сейма Польши в Варшаве реальное фото"
+  },
+  {
+   "id": 70,
+   "text": "",
+   "start_sec": 790.84,
+   "duration_sec": 6.3,
+   "visual_prompt": "D: Германия на свои интересы",
+   "source": "press_photo",
+   "source_query": "Бундестаг здание Рейхстага в Берлине реальное фото"
+  },
+  {
+   "id": 71,
+   "text": "",
+   "start_sec": 797.14,
+   "duration_sec": 10.5,
+   "visual_prompt": "D: Франция на свои интересы",
+   "source": "press_photo",
+   "source_query": "Елисейский дворец в Париже резиденция президента Франции реальное фото"
+  },
+  {
+   "id": 72,
+   "text": "",
+   "start_sec": 807.64,
+   "duration_sec": 14.09,
+   "visual_prompt": "B: заявление Клинтон",
+   "source": "press_photo",
+   "source_query": "Хиллари Клинтон выступает 2026 реальное фото"
+  },
+  {
+   "id": 73,
+   "text": "",
+   "start_sec": 821.73,
+   "duration_sec": 12.45,
+   "visual_prompt": "B: внешняя политика Трампа",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп на пресс-конференции в Вашингтоне октябрь 2026"
+  },
+  {
+   "id": 74,
+   "text": "",
+   "start_sec": 834.18,
+   "duration_sec": 14.8,
+   "visual_prompt": "сферы влияния: Китай",
+   "source": "press_photo",
+   "source_query": "штаб-квартира Европейской комиссии в Брюсселе флаги у входа реальное фото"
+  },
+  {
+   "id": 75,
+   "text": "",
+   "start_sec": 848.98,
+   "duration_sec": 12.88,
+   "visual_prompt": "Китай как игрок",
+   "source": "press_photo",
+   "source_query": "Дом народных собраний на площади Тяньаньмэнь в Пекине реальное фото"
+  },
+  {
+   "id": 76,
+   "text": "",
+   "start_sec": 861.86,
+   "duration_sec": 13.04,
+   "visual_prompt": "D: Павел переживает",
+   "source": "press_photo",
+   "source_query": "Пётр Павел президент Чехии на заседании 2026 реальное фото"
+  },
+  {
+   "id": 77,
+   "text": "",
+   "start_sec": 874.9,
+   "duration_sec": 10.48,
+   "visual_prompt": "A: Еврокомиссия подчёркивает",
+   "source": "press_photo",
+   "source_query": "Европарламент здание в Страсбурге фасад реальное фото"
+  },
+  {
+   "id": 78,
+   "text": "",
+   "start_sec": 885.37,
+   "duration_sec": 9.34,
+   "visual_prompt": "A: зачем напоминать",
+   "source": "press_photo",
+   "source_query": "зал заседаний Еврокомиссии с флагами ЕС Брюссель 2026"
+  },
+  {
+   "id": 79,
+   "text": "",
+   "start_sec": 894.71,
+   "duration_sec": 11.83,
+   "visual_prompt": "A: проверять наличие стула",
+   "source": "press_photo",
+   "source_query": "пустое кресло у стола заседаний Евросовета Брюссель 2026 реальное фото"
+  },
+  {
+   "id": 80,
+   "text": "",
+   "start_sec": 906.54,
+   "duration_sec": 9.95,
+   "visual_prompt": "D: допустим, назначают Стубба",
+   "source": "press_photo",
+   "source_query": "Александр Стубб на переговорах 2026 реальное фото"
+  },
+  {
+   "id": 81,
+   "text": "",
+   "start_sec": 916.5,
+   "duration_sec": 6.21,
+   "visual_prompt": "E: отменить дизельную договорённость",
+   "source": "press_photo",
+   "source_query": "нефтеналивная эстакада налив в цистерны Россия 2026 реальное фото"
+  },
+  {
+   "id": 82,
+   "text": "",
+   "start_sec": 922.7,
+   "duration_sec": 9.41,
+   "visual_prompt": "B+F: европейская схема",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп и Владимир Зеленский на встрече октябрь 2026"
+  },
+  {
+   "id": 83,
+   "text": "",
+   "start_sec": 932.12,
+   "duration_sec": 9.62,
+   "visual_prompt": "C: требования по безопасности",
+   "source": "press_photo",
+   "source_query": "здание Министерства обороны России на Фрунзенской набережной реальное фото"
+  },
+  {
+   "id": 84,
+   "text": "",
+   "start_sec": 941.74,
+   "duration_sec": 6.72,
+   "visual_prompt": "КАРТОЧКА: дипломатия без рычагов",
+   "source": "card:quote",
+   "source_query": ""
+  },
+  {
+   "id": 85,
+   "text": "",
+   "start_sec": 948.46,
+   "duration_sec": 14.67,
+   "visual_prompt": "танкеры с дизелем",
+   "source": "pexels_video",
+   "source_query": "oil tanker ship sailing open sea aerial no people"
+  },
+  {
+   "id": 86,
+   "text": "",
+   "start_sec": 963.14,
+   "duration_sec": 12.69,
+   "visual_prompt": "A: Европа пытается ускориться",
+   "source": "press_photo",
+   "source_query": "Кая Каллас на брифинге в Брюсселе октябрь 2026 реальное фото"
+  },
+  {
+   "id": 87,
+   "text": "",
+   "start_sec": 975.82,
+   "duration_sec": 14.2,
+   "visual_prompt": "A: можно опоздать",
+   "source": "press_photo",
+   "source_query": "здание Евросовета в Брюсселе интерьер коридор 2026 реальное фото"
+  },
+  {
+   "id": 88,
+   "text": "",
+   "start_sec": 990.03,
+   "duration_sec": 12.32,
+   "visual_prompt": "метафора ресторана, названа текстом",
+   "source": "pexels_video",
+   "source_query": "restaurant table set with menu candles no people"
+  },
+  {
+   "id": 89,
+   "text": "",
+   "start_sec": 1002.35,
+   "duration_sec": 3.16,
+   "visual_prompt": "финал: заказ уже приняли",
+   "source": "pexels_video",
+   "source_query": "restaurant menu open on table closeup no people"
+  }
+ ],
+ "channel": "ПЛАНЕТА",
+ "context": "О чём: страны ЕС спешно ищут спецпредставителя для прямых переговоров по Украине (Стубб, Кошта, фон дер Ляйен, Каллас), пока США и Россия уже договариваются напрямую. Стороны: ЕС (Брюссель) — США (Трамп, Уиткофф, Рубио) — Россия (Путин, Песков, Ушаков, Дмитриев) — Украина (Зеленский, Киев) — отдельные лидеры (Стубб/Финляндия, Павел/Чехия). Где физически: Брюссель, Москва, Вашингтон, Хельсинки, Прага, Осло, Киев. Узел: у Европы нет рычагов — она требует, но ничего не может положить на стол; США и РФ исполняют дизельную договорённость от 9 октября (40 тыс. тонн первой партией). Время: октябрь 2026, после встречи в Осло, встреча Уиткофф—Путин, заявления Трампа 20 октября. Финал: метафора ресторана — Европу позовут, когда основные блюда уже заказаны. Чувство: Европа опаздывает и суетится. ФАКТУРА ДОСЬЕ: 10.10 телефонный разговор Трамп-Путин, объявлена дизельная сделка; 20.10 Осло — Зеленский + Уиткофф + Кушнер, три темы по версии ЕК; 21.10 САНКТ-ПЕТЕРБУРГ — встреча Путин-Уиткофф (НЕ Кремль); 21.10 Ушаков: трёхсторонние только в 10-х числах ноября; 22.10 Politico — ЕС ищет спецпредставителя.",
+ "lines": [
+  "A. Институты ЕС в Брюсселе: Еврокомиссия (Берлемон), Евросовет (Europa, Юстус Липсиус), Совет ЕС, Европарламент в Страсбурге, штаб-квартира НАТО, флаги ЕС; лица — фон дер Ляйен, Каллас, Кошта",
+  "B. Власть США: Белый дом, Овальный кабинет, Капитолий, Госдеп; лица — Трамп, Уиткофф, Рубио, Клинтон",
+  "C. Власть России: Московский Кремль, МИД на Смоленской, Старая площадь, Совбез; лица — Путин, Песков, Ушаков, Дмитриев, Лавров",
+  "D. Национальные лидеры Европы: Хельсинки (Стубб), Прага (Павел), Варшава, Берлин, Париж",
+  "E. Дизельно-нефтяной слой РФ: НПЗ, нефтебазы, цистерны, эстакада налива, терминал Приморск, танкеры",
+  "F. Украинская власть: Банковая в Киеве, Зеленский",
+  "G. Карточки-цитаты (card:quote) на абстрактные сцены-рассуждения: 9, 24, 42, 55, 67, 84"
+ ],
+ "library": "YES (ПЛАНЕТА, потолок 20%); карты — только во всплывашки",
+ "text_overlays": "NO (ПЛАНЕТА: надписи запрещены, selfcheck валит)"
+}
