@@ -304,7 +304,10 @@ def paper_hand(out=None, **kw):
     волной. Шрифт системный (Segoe Script) — на машине есть, в облаке
     карточка всё равно рисуется локально, но зависимость стоит помнить."""
     kw.setdefault("font_path", F_HAND if os.path.exists(F_HAND) else F_SERIF)
-    kw.setdefault("font_size", 54)
+    # у рукописных шрифтов сильно разная высота строчных: Segoe Script при 54
+    # и Caveat при 54 — это два разных кегля на глаз (видно на облачном
+    # прогоне 22.10), поэтому размер подбирается под шрифт, а не задан числом
+    kw.setdefault("font_size", 68 if "caveat" in os.path.basename(kw["font_path"]).lower() else 54)
     kw.setdefault("ink", INK_PEN)
     kw.setdefault("underline", "wave")
     kw.setdefault("quotes", False)

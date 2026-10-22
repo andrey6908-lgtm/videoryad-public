@@ -123,8 +123,53 @@ def render(view, outdir, fps=30):
             "mb": round(size, 2)}
 
 
+# ---------------------------------------------------------------------------
+# РЕЖИМ ЗАДАНИЙ: рисуем карточки КОНКРЕТНОГО ролика, а не демо витрины.
+# jobs.json кладёт `cards_cloud.py`, имена клипов — как ждёт сборщик.
+# ---------------------------------------------------------------------------
+def render_jobs(jobs_path, outdir, fps=30):
+    import quote_variants as qv
+    FN = {"quote": None, "split": qv.quote_split, "tape": qv.quote_tape,
+          "doc": qv.quote_doc, "strike": qv.quote_strike, "duel": qv.quote_duel,
+          "pull": qv.quote_pull, "marker_serif": qv.marker_glyph,
+          "paper_typed": qv.paper_typed, "paper_hand": qv.paper_hand}
+    import quote_paper as _qp
+    FN["quote"] = _qp.quote_paper
+    jobs = json.load(open(jobs_path, encoding="utf-8"))
+    os.makedirs(outdir, exist_ok=True)
+    rep = []
+    for job in jobs:
+        view, sid = job["view"], int(job["scene"])
+        kw = dict(job.get("kwargs") or {})
+        # фото едет рядом с заданием: путь на машине пользователя раннеру не виден
+        if kw.get("photo"):
+            kw["photo"] = os.path.join(os.path.dirname(jobs_path),
+                                       os.path.basename(kw["photo"]))
+        fn = FN[view]
+        mp4 = os.path.join(outdir, f"scene_{sid:03d}.mp4")
+        jpg = os.path.join(outdir, f"scene_{sid:03d}.jpg")
+        t0 = time.time()
+        fn(out=jpg, **kw)
+        sc.render_anim(fn, kw, float(job["dur"]), mp4, fps=fps,
+                       anim_seconds=float(job.get("anim") or 2.6),
+                       tail_zoom=float(job.get("tail_zoom") or 0.045), sfx_out=True)
+        took = time.time() - t0
+        print(f"  сцена {sid} ({view}): {job['dur']} с, {took:.1f} с счёта", flush=True)
+        rep.append({"scene": sid, "view": view, "dur": job["dur"],
+                    "seconds_spent": round(took, 1)})
+    json.dump(rep, open(os.path.join(outdir, "report.json"), "w", encoding="utf-8"),
+              ensure_ascii=False, indent=1)
+    return rep
+
+
 if __name__ == "__main__":
     out = sys.argv[1] if len(sys.argv) > 1 else "cards_out"
+    jobs = os.path.join(os.path.dirname(os.path.abspath(__file__)), "jobs.json")
+    if os.path.exists(jobs):                 # есть задания ролика — рисуем их
+        rep = render_jobs(jobs, out)
+        print("итого:", round(sum(r["seconds_spent"] for r in rep), 1), "с на",
+              len(rep), "карточек")
+        raise SystemExit(0)
     views = sys.argv[2:] or list(VIEWS)
     rep = [render(v, out) for v in views]
     json.dump(rep, open(os.path.join(out, "report.json"), "w", encoding="utf-8"),
