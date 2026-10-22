@@ -5,9 +5,9 @@
    "text": "",
    "start_sec": 0.0,
    "duration_sec": 13.08,
-   "visual_prompt": "A: институты ЕС — зал, где выбирают",
-   "source": "press_photo",
-   "source_query": "пустой зал заседаний Европейского совета в Брюсселе реальное фото"
+   "visual_prompt": "A: заседание ЕС — там и выбирают, кого отправить",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЕС-форумы-Украина/Павел Медведев 2.0 - Мерц саммит ЕС3.mp4"
   },
   {
    "id": 2,
@@ -23,18 +23,18 @@
    "text": "",
    "start_sec": 19.71,
    "duration_sec": 12.63,
-   "visual_prompt": "C+B: встреча уже состоялась",
-   "source": "press_photo",
-   "source_query": "Владимир Путин и Стив Уиткофф на встрече в Санкт-Петербурге 21 октября 2026"
+   "visual_prompt": "C: Путин на встрече — «кто достоин разговаривать с Путиным»",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ПУТИН/Нарезки - Путин2.mp4"
   },
   {
    "id": 4,
    "text": "",
    "start_sec": 32.33,
    "duration_sec": 5.75,
-   "visual_prompt": "A: Европа собирается",
-   "source": "press_photo",
-   "source_query": "флаг Европейского союза на флагштоке у здания Еврокомиссии реальное фото"
+   "visual_prompt": "A: флаги ЕС у Берлемона — Европа собирается",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЕВРОПА/2-1.mp4"
   },
   {
    "id": 5,
@@ -79,16 +79,16 @@
    "duration_sec": 12.88,
    "visual_prompt": "КАРТОЧКА: тезис про расстановку сил",
    "source": "card:quote",
-   "source_query": ""
+   "source_query": "карточка рисуется локально, фетч за ней не идёт"
   },
   {
    "id": 10,
    "text": "",
    "start_sec": 98.0,
    "duration_sec": 12.4,
-   "visual_prompt": "A: Европа не единый организм",
-   "source": "press_photo",
-   "source_query": "флаги стран Евросоюза на флагштоках перед зданием Евросовета реальное фото"
+   "visual_prompt": "A: расходятся со встречи — Европа не единый организм",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЕС-форумы-Украина/Павел Медведев 2.0 - Мерц саммит ЕС6.mp4"
   },
   {
    "id": 11,
@@ -214,16 +214,16 @@
    "duration_sec": 14.64,
    "visual_prompt": "КАРТОЧКА: приблизились к миру",
    "source": "card:quote",
-   "source_query": ""
+   "source_query": "карточка рисуется локально, фетч за ней не идёт"
   },
   {
    "id": 25,
    "text": "",
    "start_sec": 276.49,
    "duration_sec": 12.72,
-   "visual_prompt": "A: экран никто не показывает",
-   "source": "press_photo",
-   "source_query": "зал для пресс-конференций Европейской комиссии в Брюсселе 2026 реальное фото"
+   "visual_prompt": "A: пресс-конференция саммита — ЕК назвала три темы",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЕС-форумы-Украина/Павел Медведев 2.0 - Мерц саммит ЕС1.mp4"
   },
   {
    "id": 26,
@@ -239,9 +239,9 @@
    "text": "",
    "start_sec": 302.46,
    "duration_sec": 10.18,
-   "visual_prompt": "A: где новый козырь",
-   "source": "press_photo",
-   "source_query": "здание Европейского совета Europa в Брюсселе фасад реальное фото"
+   "visual_prompt": "A: Еврокомиссия в ночной подсветке — где новый козырь",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЕВРОПА/9-1.mp4"
   },
   {
    "id": 28,
@@ -376,7 +376,7 @@
    "duration_sec": 7.73,
    "visual_prompt": "КАРТОЧКА: где этот момент",
    "source": "card:quote",
-   "source_query": ""
+   "source_query": "карточка рисуется локально, фетч за ней не идёт"
   },
   {
    "id": 43,
@@ -384,8 +384,8 @@
    "start_sec": 475.61,
    "duration_sec": 8.0,
    "visual_prompt": "C: Москва ключи не сдаёт",
-   "source": "press_photo",
-   "source_query": "Владимир Путин на заседании Совета безопасности России 2026 реальное фото"
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ПУТИН/Нарезки - Путин8.mp4"
   },
   {
    "id": 44,
@@ -419,9 +419,9 @@
    "text": "",
    "start_sec": 522.84,
    "duration_sec": 14.28,
-   "visual_prompt": "B: Трамп требует закончить",
-   "source": "press_photo",
-   "source_query": "Дональд Трамп выступает в Белом доме октябрь 2026 реальное фото"
+   "visual_prompt": "B: Трамп на брифинге требует закончить",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/TRAMP/Нарезки Политак ТРамп-США - Трамп сборка.mp4"
   },
   {
    "id": 48,
@@ -493,7 +493,7 @@
    "duration_sec": 7.53,
    "visual_prompt": "КАРТОЧКА: зачем садиться за этот стол",
    "source": "card:quote",
-   "source_query": ""
+   "source_query": "карточка рисуется локально, фетч за ней не идёт"
   },
   {
    "id": 56,
@@ -581,9 +581,9 @@
    "text": "",
    "start_sec": 731.3,
    "duration_sec": 6.55,
-   "visual_prompt": "A: любое смягчение как поражение",
-   "source": "press_photo",
-   "source_query": "зал пленарных заседаний Европарламента пустой реальное фото"
+   "visual_prompt": "метафора санкций — смягчение как поражение",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/SANKCII/санкц-1-1.mp4"
   },
   {
    "id": 66,
@@ -601,16 +601,16 @@
    "duration_sec": 11.32,
    "visual_prompt": "КАРТОЧКА: продолжение конфликта даёт время",
    "source": "card:quote",
-   "source_query": ""
+   "source_query": "карточка рисуется локально, фетч за ней не идёт"
   },
   {
    "id": 68,
    "text": "",
    "start_sec": 763.69,
    "duration_sec": 13.08,
-   "visual_prompt": "A: защищает конструкцию",
-   "source": "press_photo",
-   "source_query": "Урсула фон дер Ляйен на заседании Еврокомиссии октябрь 2026"
+   "visual_prompt": "A: фон дер Ляйен на трибуне защищает конструкцию",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЕС-форумы-Украина/Павел Медведев 2.0 - Мерц саммит ЕС5.mp4"
   },
   {
    "id": 69,
@@ -689,9 +689,9 @@
    "text": "",
    "start_sec": 874.9,
    "duration_sec": 10.48,
-   "visual_prompt": "A: Еврокомиссия подчёркивает",
-   "source": "press_photo",
-   "source_query": "Европарламент здание в Страсбурге фасад реальное фото"
+   "visual_prompt": "A: зал Европарламента — ЕС ищет спецпредставителя",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЕВРОПА/ессам-1.mp4"
   },
   {
    "id": 78,
@@ -754,7 +754,7 @@
    "duration_sec": 6.72,
    "visual_prompt": "КАРТОЧКА: дипломатия без рычагов",
    "source": "card:quote",
-   "source_query": ""
+   "source_query": "карточка рисуется локально, фетч за ней не идёт"
   },
   {
    "id": 85,
