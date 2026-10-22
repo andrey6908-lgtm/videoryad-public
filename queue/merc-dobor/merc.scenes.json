@@ -1,0 +1,944 @@
+{
+ "scenes": [
+  {
+   "id": 1,
+   "text": "",
+   "start_sec": 0.0,
+   "duration_sec": 13.24,
+   "visual_prompt": "кирпичная стена крупным планом — метафора стены, названная текстом",
+   "source": "pexels_video",
+   "source_query": "old red brick wall surface texture closeup"
+  },
+  {
+   "id": 2,
+   "text": "",
+   "start_sec": 13.24,
+   "duration_sec": 9.09,
+   "visual_prompt": "флаги ЕС на флагштоках у Берлемона",
+   "source": "press_photo",
+   "source_query": "флаги Евросоюза у здания Еврокомиссии в Брюсселе реальное фото"
+  },
+  {
+   "id": 3,
+   "text": "",
+   "start_sec": 22.33,
+   "duration_sec": 11.63,
+   "visual_prompt": "видео Мерца: «безоговорочная капитуляция неприемлема» (вложение досье, 1280x720)",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/b1765c018f.mp4?token=r7OS8J_n_1Pteo_Qe0k5lzdrZY8_lYIQ0pYH8-RenJwPf_1P-G8J9WrqWPc3F_bv81GRl8dmpgNWNJig48bAvuCHA5RRpOTNYtqwxhHEvepLHlRS2DBR0OfImr4TlcKBJYMJi7_7GbqjOP1Hc-g5Csi_6OTlyv-JPKGNGp1f1RksuCUjUfGRmi5gY2rW43BziaRHG5HT0odJXvbgQj2Yb3yqcSBdlCj_I7L7rNpoDAIOGhxWHy4R7i4NwWSPOa3REkT1qCNAL_p0PGEHpsHb8AUxbiOMIUaihWxG9BEhclOUdKYKV04dMVPgWBGrLNEoNiiLXUuWktAdNtUudSoUrw",
+   "dossier_link": "https://t.me/Media_Post_UA/34613"
+  },
+  {
+   "id": 4,
+   "text": "",
+   "start_sec": 33.96,
+   "duration_sec": 12.52,
+   "visual_prompt": "зал Евросовета",
+   "source": "press_photo",
+   "source_query": "зал заседаний Европейского совета в Брюсселе реальное фото"
+  },
+  {
+   "id": 5,
+   "text": "",
+   "start_sec": 46.48,
+   "duration_sec": 6.28,
+   "visual_prompt": "карточка-лоскут: тезис про коллективную собственность",
+   "source": "card:quote",
+   "source_query": "карточка нарисована локально (quote_card.py), фетч за ней не идёт",
+   "card": {
+    "kind": "quote_paper",
+    "text": "Капитуляция — или даже безоговорочная капитуляция — Украины неприемлема, поскольку это означало бы капитуляцию всех нас",
+    "accent": "капитуляцию всех нас",
+    "kick": "21.10.2026",
+    "title": "ЧТО СКАЗАЛ МЕРЦ",
+    "author": "Фридрих Мерц",
+    "watermark": "5 МИНУТ",
+    "anim": 2.0,
+    "seed": 17
+   }
+  },
+  {
+   "id": 6,
+   "text": "",
+   "start_sec": 52.76,
+   "duration_sec": 15.36,
+   "visual_prompt": "корпус канцлера в Берлине",
+   "source": "press_photo",
+   "source_query": "Ведомство федерального канцлера в Берлине фотография здания"
+  },
+  {
+   "id": 7,
+   "text": "",
+   "start_sec": 68.12,
+   "duration_sec": 8.36,
+   "visual_prompt": "видео Мерца: «влияние России на наши общества» (вложение досье, 1280x720)",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/be5f780470.mp4?token=XxaakPcqorIjlVdDYMBq7FIvYp28F4SG-fm4Ai1xo6L-I08528AUhUE1NC_dmF3hFFVVTbE8fIM7TY5S9tJuE-Q_gxp-HlRk-i8YnEW9rTYxE8UcL4m0pnI87zp4b7B-TvB4I5sHQ8E1FKzyxV8aBdoIDOy9ttdlNJEAaCzN1nTWfwcFW5tf9GCJM4e28P_8119qws48XjRFyXQtMFEHeV5ridvIefWnkpafVPUQC8rPw8hhfw-XVa9FOTe4UXg1myh2Fqv0K8biFiTqp037sKBNttZTIwLWPwJYREJIfqjHboeOJ1JI5y5vwe66M1U04JUdPPAqJR4MXO911JrShA",
+   "dossier_link": "https://t.me/ZeRada1/32726"
+  },
+  {
+   "id": 8,
+   "text": "",
+   "start_sec": 76.48,
+   "duration_sec": 13.04,
+   "visual_prompt": "завод BASF, современный кадр",
+   "source": "press_photo",
+   "source_query": "химический завод BASF в Людвигсхафене 2026 реальное фото"
+  },
+  {
+   "id": 9,
+   "text": "",
+   "start_sec": 89.52,
+   "duration_sec": 12.62,
+   "visual_prompt": "железнодорожная стрелка — метафора поезда, названная текстом",
+   "source": "pexels_video",
+   "source_query": "railway switch track points mechanism moving closeup"
+  },
+  {
+   "id": 10,
+   "text": "",
+   "start_sec": 102.13,
+   "duration_sec": 11.33,
+   "visual_prompt": "Елисейский дворец",
+   "source": "press_photo",
+   "source_query": "Елисейский дворец в Париже фотография здания"
+  },
+  {
+   "id": 11,
+   "text": "",
+   "start_sec": 113.46,
+   "duration_sec": 14.46,
+   "visual_prompt": "колёсные тележки вагона",
+   "source": "pexels_video",
+   "source_query": "railway carriage wheels bogie rolling closeup"
+  },
+  {
+   "id": 12,
+   "text": "",
+   "start_sec": 127.92,
+   "duration_sec": 12.24,
+   "visual_prompt": "качалка в сибирской тайге",
+   "source": "press_photo",
+   "source_query": "нефтедобывающая установка в Западной Сибири реальное фото"
+  },
+  {
+   "id": 13,
+   "text": "",
+   "start_sec": 140.16,
+   "duration_sec": 14.92,
+   "visual_prompt": "доменная печь, разливка металла — текст называет доменную печь",
+   "source": "pexels_video",
+   "source_query": "blast furnace molten iron pouring industrial closeup"
+  },
+  {
+   "id": 14,
+   "text": "",
+   "start_sec": 155.08,
+   "duration_sec": 12.72,
+   "visual_prompt": "приёмная станция газопровода в Любмине",
+   "source": "press_photo",
+   "source_query": "газоизмерительная станция в Любмине Германия 2026 реальное фото"
+  },
+  {
+   "id": 15,
+   "text": "",
+   "start_sec": 167.8,
+   "duration_sec": 12.8,
+   "visual_prompt": "стекольная печь крупным планом",
+   "source": "pexels_video",
+   "source_query": "molten glass furnace glowing industrial closeup"
+  },
+  {
+   "id": 16,
+   "text": "",
+   "start_sec": 180.6,
+   "duration_sec": 12.56,
+   "visual_prompt": "счётчик электроэнергии крупным планом",
+   "source": "pexels_video",
+   "source_query": "electricity meter dial spinning closeup macro"
+  },
+  {
+   "id": 17,
+   "text": "",
+   "start_sec": 193.16,
+   "duration_sec": 12.56,
+   "visual_prompt": "наливной терминал Приморска",
+   "source": "press_photo",
+   "source_query": "нефтеналивной терминал в порту Приморск реальное фото"
+  },
+  {
+   "id": 18,
+   "text": "",
+   "start_sec": 205.72,
+   "duration_sec": 14.32,
+   "visual_prompt": "Спасская башня",
+   "source": "press_photo",
+   "source_query": "Московский Кремль Спасская башня реальное фото"
+  },
+  {
+   "id": 19,
+   "text": "",
+   "start_sec": 220.04,
+   "duration_sec": 6.24,
+   "visual_prompt": "комплекс Ямал СПГ",
+   "source": "press_photo",
+   "source_query": "завод Ямал СПГ в Сабетте реальное фото"
+  },
+  {
+   "id": 20,
+   "text": "",
+   "start_sec": 226.28,
+   "duration_sec": 8.6,
+   "visual_prompt": "портовый кран грузит контейнеры",
+   "source": "pexels_video",
+   "source_query": "container terminal crane loading cargo ship"
+  },
+  {
+   "id": 21,
+   "text": "",
+   "start_sec": 234.88,
+   "duration_sec": 9.28,
+   "visual_prompt": "состав цистерн на наливе",
+   "source": "press_photo",
+   "source_query": "нефтяные цистерны на наливной эстакаде в России 2026 реальное фото"
+  },
+  {
+   "id": 22,
+   "text": "",
+   "start_sec": 244.16,
+   "duration_sec": 13.05,
+   "visual_prompt": "Казначейство США",
+   "source": "press_photo",
+   "source_query": "здание Министерства финансов США в Вашингтоне реальное фото"
+  },
+  {
+   "id": 23,
+   "text": "",
+   "start_sec": 257.21,
+   "duration_sec": 9.91,
+   "visual_prompt": "карточка-лоскут: хозяин должен перестать быть хозяином",
+   "source": "card:quote",
+   "source_query": "карточка нарисована локально (quote_card.py), фетч за ней не идёт",
+   "card": {
+    "kind": "quote_paper",
+    "text": "Названия можно подбирать красивые, но смысл не меняется: хозяин должен перестать быть хозяином",
+    "accent": "перестать быть хозяином",
+    "watermark": "5 МИНУТ",
+    "anim": 2.0,
+    "seed": 17
+   }
+  },
+  {
+   "id": 24,
+   "text": "",
+   "start_sec": 267.12,
+   "duration_sec": 14.16,
+   "visual_prompt": "Капитолий",
+   "source": "press_photo",
+   "source_query": "Капитолий США в Вашингтоне реальное фото"
+  },
+  {
+   "id": 25,
+   "text": "",
+   "start_sec": 281.28,
+   "duration_sec": 12.88,
+   "visual_prompt": "Трамп в Белом доме",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп в Белом доме 2026 реальное фото"
+  },
+  {
+   "id": 26,
+   "text": "",
+   "start_sec": 294.16,
+   "duration_sec": 11.96,
+   "visual_prompt": "дверь банковского хранилища — метафора сейфа, названная текстом",
+   "source": "pexels_video",
+   "source_query": "bank vault steel door mechanism closing closeup"
+  },
+  {
+   "id": 27,
+   "text": "",
+   "start_sec": 306.12,
+   "duration_sec": 11.36,
+   "visual_prompt": "торговый зал NYSE",
+   "source": "press_photo",
+   "source_query": "Нью-Йоркская фондовая биржа торговый зал 2026 реальное фото"
+  },
+  {
+   "id": 28,
+   "text": "",
+   "start_sec": 317.48,
+   "duration_sec": 7.2,
+   "visual_prompt": "российский комплекс Ярс",
+   "source": "press_photo",
+   "source_query": "пусковая установка Ярс на параде в Москве реальное фото"
+  },
+  {
+   "id": 29,
+   "text": "",
+   "start_sec": 324.68,
+   "duration_sec": 11.65,
+   "visual_prompt": "техника Бундесвера на полигоне",
+   "source": "press_photo",
+   "source_query": "бронетехника Бундесвера на учениях в Германии реальное фото"
+  },
+  {
+   "id": 30,
+   "text": "",
+   "start_sec": 336.33,
+   "duration_sec": 7.58,
+   "visual_prompt": "резервуарный парк с высоты",
+   "source": "pexels_video",
+   "source_query": "oil storage tanks aerial view industrial facility"
+  },
+  {
+   "id": 31,
+   "text": "",
+   "start_sec": 343.91,
+   "duration_sec": 12.28,
+   "visual_prompt": "российская подлодка у пирса",
+   "source": "press_photo",
+   "source_query": "подводная лодка ВМФ России у пирса реальное фото"
+  },
+  {
+   "id": 32,
+   "text": "",
+   "start_sec": 356.2,
+   "duration_sec": 13.2,
+   "visual_prompt": "карточка-лоскут: доску могут вынести вместе с комнатой",
+   "source": "card:quote",
+   "source_query": "карточка нарисована локально (quote_card.py), фетч за ней не идёт",
+   "card": {
+    "kind": "quote_paper",
+    "text": "Это уже не шахматы. Это игра, где доску после последнего хода могут вынести вместе с комнатой",
+    "accent": "вместе с комнатой",
+    "watermark": "5 МИНУТ",
+    "anim": 2.0,
+    "seed": 17
+   }
+  },
+  {
+   "id": 33,
+   "text": "",
+   "start_sec": 369.4,
+   "duration_sec": 10.05,
+   "visual_prompt": "заседание Совбеза России",
+   "source": "press_photo",
+   "source_query": "заседание Совета безопасности России 2026 реальное фото"
+  },
+  {
+   "id": 34,
+   "text": "",
+   "start_sec": 379.44,
+   "duration_sec": 14.0,
+   "visual_prompt": "здание НАТО в Брюсселе",
+   "source": "press_photo",
+   "source_query": "штаб-квартира НАТО в Брюсселе реальное фото"
+  },
+  {
+   "id": 35,
+   "text": "",
+   "start_sec": 393.44,
+   "duration_sec": 13.36,
+   "visual_prompt": "высотка МИД на Смоленской",
+   "source": "press_photo",
+   "source_query": "здание МИД России на Смоленской площади реальное фото"
+  },
+  {
+   "id": 36,
+   "text": "",
+   "start_sec": 406.8,
+   "duration_sec": 12.72,
+   "visual_prompt": "Путин за трибуной",
+   "source": "press_photo",
+   "source_query": "Владимир Путин выступление 2026 реальное фото"
+  },
+  {
+   "id": 37,
+   "text": "",
+   "start_sec": 419.52,
+   "duration_sec": 10.88,
+   "visual_prompt": "тайга с высоты — масштаб России",
+   "source": "pexels_video",
+   "source_query": "aerial view endless taiga forest river wilderness"
+  },
+  {
+   "id": 38,
+   "text": "",
+   "start_sec": 430.4,
+   "duration_sec": 9.67,
+   "visual_prompt": "Трамп отвечает прессе",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп общается с прессой в Овальном кабинете 2026 реальное фото"
+  },
+  {
+   "id": 39,
+   "text": "",
+   "start_sec": 440.07,
+   "duration_sec": 13.25,
+   "visual_prompt": "Пентагон с высоты — расходы США",
+   "source": "press_photo",
+   "source_query": "Пентагон министерство обороны США аэрофотосъёмка реальное фото"
+  },
+  {
+   "id": 40,
+   "text": "",
+   "start_sec": 453.32,
+   "duration_sec": 13.18,
+   "visual_prompt": "флагштоки у Евросовета",
+   "source": "press_photo",
+   "source_query": "флаги стран Евросоюза у здания Европейского совета в Брюсселе реальное фото"
+  },
+  {
+   "id": 41,
+   "text": "",
+   "start_sec": 466.5,
+   "duration_sec": 13.3,
+   "visual_prompt": "ЛЭП в сумерках",
+   "source": "pexels_video",
+   "source_query": "high voltage power lines pylons dusk landscape"
+  },
+  {
+   "id": 42,
+   "text": "",
+   "start_sec": 479.8,
+   "duration_sec": 13.6,
+   "visual_prompt": "Новак на совещании",
+   "source": "press_photo",
+   "source_query": "Александр Новак вице-премьер России 2026 реальное фото"
+  },
+  {
+   "id": 43,
+   "text": "",
+   "start_sec": 493.39,
+   "duration_sec": 9.52,
+   "visual_prompt": "колонны НПЗ",
+   "source": "press_photo",
+   "source_query": "нефтеперерабатывающий завод в России реальное фото"
+  },
+  {
+   "id": 44,
+   "text": "",
+   "start_sec": 502.92,
+   "duration_sec": 11.84,
+   "visual_prompt": "карточка-лоскут: сначала закрыть дверь, потом возмущаться",
+   "source": "card:quote",
+   "source_query": "карточка нарисована локально (quote_card.py), фетч за ней не идёт",
+   "card": {
+    "kind": "quote_paper",
+    "text": "Сначала самим закрыть дверь, потом возмущаться, что американцы нашли другой вход",
+    "accent": "нашли другой вход",
+    "watermark": "5 МИНУТ",
+    "anim": 2.0,
+    "seed": 17
+   }
+  },
+  {
+   "id": 45,
+   "text": "",
+   "start_sec": 514.76,
+   "duration_sec": 13.32,
+   "visual_prompt": "киевский блокпост",
+   "source": "press_photo",
+   "source_query": "блокпост на въезде в Киев реальное фото"
+  },
+  {
+   "id": 46,
+   "text": "",
+   "start_sec": 528.08,
+   "duration_sec": 14.96,
+   "visual_prompt": "видео Мерца про финансирование Украины (вложение досье, 1280x720)",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/3ec8bd62cf.mp4?token=aEHdu_oDTOZLSHTdWjDACI_usJN-tue9DVgtv5fUCvqmnDv9tfaoW4diEG81J-bCxb-qWO0DmzbQRM2eajb6bTbTxCobzqRe3_0wmMctdYnxVzeKm9oDvI3c_-S-4CoHr3Ulz4P1bbG3uod4mm0N0VvVmKwpxyJyffvRUwsuohhHhrH1lZrbM_NSG2onAWOyqNC8oqv0F8rN5YGPmvKFx7E9E3JFq0g1rjLl0s6oPe6q4jaO0Kl45hW0TItzIu_zRJfNfbtP2FL6KJ3uiY1ZmCaQk8I96JCMPJ_Lar8Ys_EzuOW7rMxeWvt89XSKDwddVlNIVusZQPnvsY339xU4Iw",
+   "dossier_link": "https://t.me/ZeRada1/32708"
+  },
+  {
+   "id": 47,
+   "text": "",
+   "start_sec": 543.04,
+   "duration_sec": 13.84,
+   "visual_prompt": "конвейер Volkswagen",
+   "source": "press_photo",
+   "source_query": "сборочный конвейер завода Volkswagen в Вольфсбурге 2026 реальное фото"
+  },
+  {
+   "id": 48,
+   "text": "",
+   "start_sec": 556.88,
+   "duration_sec": 14.24,
+   "visual_prompt": "авиабаза Вунсторф",
+   "source": "press_photo",
+   "source_query": "авиабаза Бундесвера Вунсторф реальное фото"
+  },
+  {
+   "id": 49,
+   "text": "",
+   "start_sec": 571.12,
+   "duration_sec": 13.6,
+   "visual_prompt": "грузовой терминал Лейпциг-Галле",
+   "source": "press_photo",
+   "source_query": "аэропорт Лейпциг Галле грузовой терминал реальное фото"
+  },
+  {
+   "id": 50,
+   "text": "",
+   "start_sec": 584.72,
+   "duration_sec": 12.92,
+   "visual_prompt": "комплекс ЦРУ",
+   "source": "press_photo",
+   "source_query": "штаб-квартира ЦРУ в Лэнгли реальное фото"
+  },
+  {
+   "id": 51,
+   "text": "",
+   "start_sec": 597.64,
+   "duration_sec": 7.63,
+   "visual_prompt": "МИД Германии",
+   "source": "press_photo",
+   "source_query": "здание МИД Германии в Берлине реальное фото"
+  },
+  {
+   "id": 52,
+   "text": "",
+   "start_sec": 605.27,
+   "duration_sec": 12.37,
+   "visual_prompt": "цех Rheinmetall",
+   "source": "press_photo",
+   "source_query": "производство боеприпасов Rheinmetall в Германии реальное фото"
+  },
+  {
+   "id": 53,
+   "text": "",
+   "start_sec": 617.64,
+   "duration_sec": 12.56,
+   "visual_prompt": "корпус правительства Словакии",
+   "source": "press_photo",
+   "source_query": "здание правительства Словакии в Братиславе реальное фото"
+  },
+  {
+   "id": 54,
+   "text": "",
+   "start_sec": 630.21,
+   "duration_sec": 5.84,
+   "visual_prompt": "заколоченная дверь — метафора, названная текстом",
+   "source": "pexels_video",
+   "source_query": "boarded up wooden door planks nailed closeup"
+  },
+  {
+   "id": 55,
+   "text": "",
+   "start_sec": 636.05,
+   "duration_sec": 12.96,
+   "visual_prompt": "корпус правительства Словакии",
+   "source": "press_photo",
+   "source_query": "здание правительства Словакии в Братиславе реальное фото"
+  },
+  {
+   "id": 56,
+   "text": "",
+   "start_sec": 649.0,
+   "duration_sec": 10.24,
+   "visual_prompt": "трубы немецкого завода",
+   "source": "press_photo",
+   "source_query": "промышленный завод в Германии дымящие трубы реальное фото"
+  },
+  {
+   "id": 57,
+   "text": "",
+   "start_sec": 659.24,
+   "duration_sec": 13.32,
+   "visual_prompt": "Вайдель за трибуной",
+   "source": "press_photo",
+   "source_query": "Алиса Вайдель АдГ выступление 2026 реальное фото"
+  },
+  {
+   "id": 58,
+   "text": "",
+   "start_sec": 672.56,
+   "duration_sec": 8.64,
+   "visual_prompt": "газовая горелка крупным планом",
+   "source": "pexels_video",
+   "source_query": "gas stove burner blue flame closeup macro"
+  },
+  {
+   "id": 59,
+   "text": "",
+   "start_sec": 681.2,
+   "duration_sec": 12.4,
+   "visual_prompt": "колёса грузового состава на рельсах",
+   "source": "pexels_video",
+   "source_query": "freight train wheels passing rails closeup"
+  },
+  {
+   "id": 60,
+   "text": "",
+   "start_sec": 693.6,
+   "duration_sec": 12.4,
+   "visual_prompt": "карточка-лоскут: калькулятор всё-таки существует",
+   "source": "card:quote",
+   "source_query": "карточка нарисована локально (quote_card.py), фетч за ней не идёт",
+   "card": {
+    "kind": "quote_paper",
+    "text": "Интересно не кто за кого болеет, а кто первым признает, что калькулятор всё-таки существует",
+    "accent": "калькулятор всё-таки существует",
+    "watermark": "5 МИНУТ",
+    "anim": 2.0,
+    "seed": 17
+   }
+  },
+  {
+   "id": 61,
+   "text": "",
+   "start_sec": 706.0,
+   "duration_sec": 13.02,
+   "visual_prompt": "Госдеп в Вашингтоне",
+   "source": "press_photo",
+   "source_query": "здание Госдепартамента США в Вашингтоне реальное фото"
+  },
+  {
+   "id": 62,
+   "text": "",
+   "start_sec": 719.02,
+   "duration_sec": 15.14,
+   "visual_prompt": "АЗС ЛУКОЙЛ",
+   "source": "press_photo",
+   "source_query": "автозаправочная станция ЛУКОЙЛ в Москве реальное фото"
+  },
+  {
+   "id": 63,
+   "text": "",
+   "start_sec": 734.16,
+   "duration_sec": 10.11,
+   "visual_prompt": "зал Московской биржи",
+   "source": "press_photo",
+   "source_query": "Московская биржа торговый зал 2026 реальное фото"
+  },
+  {
+   "id": 64,
+   "text": "",
+   "start_sec": 744.27,
+   "duration_sec": 13.44,
+   "visual_prompt": "Лавров на пресс-конференции",
+   "source": "press_photo",
+   "source_query": "Сергей Лавров пресс-конференция 2026 реальное фото"
+  },
+  {
+   "id": 65,
+   "text": "",
+   "start_sec": 757.71,
+   "duration_sec": 10.71,
+   "visual_prompt": "магистральная труба Транснефти",
+   "source": "press_photo",
+   "source_query": "магистральный нефтепровод Транснефть в России реальное фото"
+  },
+  {
+   "id": 66,
+   "text": "",
+   "start_sec": 768.43,
+   "duration_sec": 12.66,
+   "visual_prompt": "башня ЕЦБ",
+   "source": "press_photo",
+   "source_query": "здание Европейского центрального банка во Франкфурте реальное фото"
+  },
+  {
+   "id": 67,
+   "text": "",
+   "start_sec": 781.09,
+   "duration_sec": 13.1,
+   "visual_prompt": "Минфин Германии",
+   "source": "press_photo",
+   "source_query": "здание Министерства финансов Германии в Берлине реальное фото"
+  },
+  {
+   "id": 68,
+   "text": "",
+   "start_sec": 794.19,
+   "duration_sec": 13.2,
+   "visual_prompt": "видео Зеленского про мир по линии соприкосновения (вложение досье, 1920x1080)",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/46122ad9c1.mp4?token=vsHBXyqTDD3pMpz72FzC1QTcf9D15E5MRzWEQJumhm6ut7_HnAJHdqkMp2tmIFc3I1X5bkVsHCRS8X3nE7lrqx0m-Da6xkjkK_S3w17H_WmimQazPlhqnTjAgy1FIneGjsqe6AlnJYSvD8XAprU1txcvgi3GXWK-JbTa0FO6l2g-lKjf30Yx1GytNjq9aRSDqUnIFxNC2Ign0kbvnAumRVlCaxtWaTfw9b_K0rMW_zXxMXqeEXZ_p9xQJY03ebXi-MBp-BMEf1nHxsZt7u9NVD_KY2AmT9MVyouWShLnRH5v26zy5MfpJiBJgzbFSQcmCKPMXfMP-CMSJSC0wQrnvg",
+   "dossier_link": "https://t.me/ZeRada1/32728"
+  },
+  {
+   "id": 69,
+   "text": "",
+   "start_sec": 807.39,
+   "duration_sec": 8.61,
+   "visual_prompt": "Каллас",
+   "source": "press_photo",
+   "source_query": "Кая Каллас глава дипломатии Евросоюза 2026 реальное фото"
+  },
+  {
+   "id": 70,
+   "text": "",
+   "start_sec": 816.0,
+   "duration_sec": 14.96,
+   "visual_prompt": "видео Рубио: «без США Украины бы не было» (вложение досье, 1280x720)",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/f24f15dbe6.mp4?token=tHRB8EK5RIOvEbmPp0adAeNpP0LzvcXYxmNkSJQOGfz4Cuh5D_TgN3nE8UzCDZ9v4d0X8ygQ3C-PntmjWXZNQ6J1qrSgzCiwfblifTx77etduWaUQS3hciH6lVLAehZzfHHxr6laRH-lnmtPUpTFNzdDR7Njemu6Vo3oEfpv3NgyEiTcfcxz5mMIjKI6pxG0KUvKpUNGF79K33cIUFuxUkr7zZelIDerJXmBaZ9E439yCSmchqFLMJa4dZQaBHDxx2E31OiM2VBBouCW5MrxQ7IzC5F6yZFn2qbYmmouahiy7Cjvtqh9N00IlqcpFLfhe40vSD6jO1YttMdBz2qG7WMw7aMbKUTRvgLxyVF49v-nm9sJXLGilRG_L_9pwi8M_Qj3uIvCiBARdP95S4ZtcT5EfH81ONsni2ke5DnD6q2gb8uQR87TGjBufWk3w0sZIrSug9GNeAFrG0XvPd9ycdgu8BmRPcBjv5GjaUBVnaCLJAr9TvBS1VjRB9RHNhPcuYN8Jkq9ABqU8Rw88HNTfGdyTfvGfqtgk5NDoJaC95I2wqf5LMYjsM5TaL9HWXsOWE00ovkq6wqYQU8CXEvVtxEQWSqVaRV8oPQuyC6oHJOPHRBSKBuGSpVEk5vpV_UM-VE9WmcRDfT27bQ35xG8TWbKi387H12JLLAqBk1F8XA",
+   "dossier_link": "https://t.me/piramida_2023/16543"
+  },
+  {
+   "id": 71,
+   "text": "",
+   "start_sec": 830.96,
+   "duration_sec": 12.32,
+   "visual_prompt": "терминал Starlink на позиции",
+   "source": "press_photo",
+   "source_query": "терминал Starlink у украинских военных на позиции реальное фото"
+  },
+  {
+   "id": 72,
+   "text": "",
+   "start_sec": 843.28,
+   "duration_sec": 12.32,
+   "visual_prompt": "Зеленский в Осло",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский на переговорах в Норвегии октябрь 2026 реальное фото"
+  },
+  {
+   "id": 73,
+   "text": "",
+   "start_sec": 855.6,
+   "duration_sec": 12.89,
+   "visual_prompt": "видео про Starlink (вложение досье, 1280x720)",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/10c15d080d.mp4?token=ep_Ls063zGLaqBcR-LI7vHABTaygGjdVlv5gYwyRf8iRFMCwrfmTwhW77Qz3hUIwgAj77qdqWV75Vz6m1EIqOe54B9A7eCGmTytOAn6tpUum9fEyJuSdCBrZ_uOWHc08vbdUFarpa6cEaDY1m9ukAPMBxInP_AZZ-DnOw5GUQMuTVzxWEUZ7ghx123speoL3pDZaFECf2R8_gyOvT8rVhs0-mafnxKAA-4oRwR65y8_t_AHZ0RDLRCxZtBU57iUtfeuiR3PMIx3ulVa92LYKuMq2pp-DV6_BDSd6wA4X0WnDsUVKNc53OAbJaVFTZhNpEBwvZeEj7AXtLFUes9tABb5nNktJjgOUIZimzUA87aQhJgR3DPElRX1Jg42rX5wYejGF16q9ujf5wJXm_lzVhkFyruMogCboFZeX8sVZdHdfc1qaVoY-d8NPNiHwf02C_S07Be5RxYjHtW2BKWCQ8r6aOTYnzdG5mBuiVgE-E5OR4BP2POxiE2oyBIDFL1qHPyaGCDGdIek4N42ZtWpSL5GSgug-aw_ryEapmvzQhbAdWUSgdhjdOUri344j6ln7iQiuITXaEMJEYpTo_ht7FcQ8N1ZTcTPuVFB-jcJmcnkb0J1yf3fZd9lHYYejeMfbjQpW5vWG54S4icyvKurDpn5miBFdWNv34WprBLNseFA",
+   "dossier_link": "https://t.me/Media_Post_UA/34591"
+  },
+  {
+   "id": 74,
+   "text": "",
+   "start_sec": 868.49,
+   "duration_sec": 13.33,
+   "visual_prompt": "железобетон крупным планом — метафора «железобетонных гарантий», названная текстом",
+   "source": "pexels_video",
+   "source_query": "reinforced concrete bunker wall rebar closeup"
+  },
+  {
+   "id": 75,
+   "text": "",
+   "start_sec": 881.82,
+   "duration_sec": 11.09,
+   "visual_prompt": "здание на Банковой",
+   "source": "press_photo",
+   "source_query": "Офис президента Украины на Банковой в Киеве реальное фото"
+  },
+  {
+   "id": 76,
+   "text": "",
+   "start_sec": 892.91,
+   "duration_sec": 6.0,
+   "visual_prompt": "карточка-лоскут: кто и что обязан делать по документу",
+   "source": "card:quote",
+   "source_query": "карточка нарисована локально (quote_card.py), фетч за ней не идёт",
+   "card": {
+    "kind": "quote_paper",
+    "text": "А кто и что обязан делать по этому документу — видимо, будет в следующей серии",
+    "accent": "в следующей серии",
+    "watermark": "5 МИНУТ",
+    "anim": 2.0,
+    "seed": 17
+   }
+  },
+  {
+   "id": 77,
+   "text": "",
+   "start_sec": 898.9,
+   "duration_sec": 13.44,
+   "visual_prompt": "Уиткофф",
+   "source": "press_photo",
+   "source_query": "Стив Уиткофф специальный посланник США 2026 реальное фото"
+  },
+  {
+   "id": 78,
+   "text": "",
+   "start_sec": 912.35,
+   "duration_sec": 5.28,
+   "visual_prompt": "зал Рады",
+   "source": "press_photo",
+   "source_query": "Верховная Рада Украины зал заседаний реальное фото"
+  },
+  {
+   "id": 79,
+   "text": "",
+   "start_sec": 917.63,
+   "duration_sec": 12.64,
+   "visual_prompt": "Зеленский на совещании",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский на совещании в Киеве 2026 реальное фото"
+  },
+  {
+   "id": 80,
+   "text": "",
+   "start_sec": 930.27,
+   "duration_sec": 13.12,
+   "visual_prompt": "Трамп и Зеленский",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп и Владимир Зеленский встреча 2026 реальное фото"
+  },
+  {
+   "id": 81,
+   "text": "",
+   "start_sec": 943.38,
+   "duration_sec": 13.76,
+   "visual_prompt": "МИД Норвегии",
+   "source": "press_photo",
+   "source_query": "здание Министерства иностранных дел Норвегии в Осло реальное фото"
+  },
+  {
+   "id": 82,
+   "text": "",
+   "start_sec": 957.15,
+   "duration_sec": 8.67,
+   "visual_prompt": "Путин в Кремле",
+   "source": "press_photo",
+   "source_query": "Владимир Путин в Кремле на встрече 2026 реальное фото"
+  },
+  {
+   "id": 83,
+   "text": "",
+   "start_sec": 965.82,
+   "duration_sec": 12.32,
+   "visual_prompt": "Песков",
+   "source": "press_photo",
+   "source_query": "Дмитрий Песков пресс-секретарь Кремля 2026 реальное фото"
+  },
+  {
+   "id": 84,
+   "text": "",
+   "start_sec": 978.13,
+   "duration_sec": 6.61,
+   "visual_prompt": "Ушаков",
+   "source": "press_photo",
+   "source_query": "Юрий Ушаков помощник президента России 2026 реальное фото"
+  },
+  {
+   "id": 85,
+   "text": "",
+   "start_sec": 984.74,
+   "duration_sec": 12.59,
+   "visual_prompt": "связка ключей — метафора, названная текстом",
+   "source": "pexels_video",
+   "source_query": "old iron keys hanging on hook closeup"
+  },
+  {
+   "id": 86,
+   "text": "",
+   "start_sec": 997.33,
+   "duration_sec": 12.48,
+   "visual_prompt": "танкеры на рейде",
+   "source": "press_photo",
+   "source_query": "нефтяные танкеры в море аэрофотосъёмка реальное фото"
+  },
+  {
+   "id": 87,
+   "text": "",
+   "start_sec": 1009.81,
+   "duration_sec": 10.56,
+   "visual_prompt": "ТЭС в Германии",
+   "source": "press_photo",
+   "source_query": "тепловая электростанция в Германии охлаждающие башни реальное фото"
+  },
+  {
+   "id": 88,
+   "text": "",
+   "start_sec": 1020.37,
+   "duration_sec": 14.16,
+   "visual_prompt": "Трамп за столом",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп за рабочим столом в Белом доме 2026 реальное фото"
+  },
+  {
+   "id": 89,
+   "text": "",
+   "start_sec": 1034.53,
+   "duration_sec": 8.52,
+   "visual_prompt": "крупный план Мерца",
+   "source": "press_photo",
+   "source_query": "Фридрих Мерц крупный план 2026 реальное фото"
+  },
+  {
+   "id": 90,
+   "text": "",
+   "start_sec": 1043.06,
+   "duration_sec": 10.36,
+   "visual_prompt": "флаг на здании в Киеве",
+   "source": "press_photo",
+   "source_query": "украинский флаг на здании администрации в Киеве реальное фото"
+  },
+  {
+   "id": 91,
+   "text": "",
+   "start_sec": 1053.42,
+   "duration_sec": 13.13,
+   "visual_prompt": "СПГ-терминал Вильгельмсхафен",
+   "source": "press_photo",
+   "source_query": "терминал сжиженного газа в Вильгельмсхафене Германия реальное фото"
+  },
+  {
+   "id": 92,
+   "text": "",
+   "start_sec": 1066.55,
+   "duration_sec": 12.51,
+   "visual_prompt": "карточка-лоскут: перестал пытаться разбить витрину",
+   "source": "card:quote",
+   "source_query": "карточка нарисована локально (quote_card.py), фетч за ней не идёт",
+   "card": {
+    "kind": "quote_paper",
+    "text": "Трамп просто перестал пытаться разбить витрину. А Европа всё ещё стоит рядом с ломом",
+    "accent": "стоит рядом с ломом",
+    "watermark": "5 МИНУТ",
+    "anim": 2.0,
+    "seed": 17
+   }
+  },
+  {
+   "id": 93,
+   "text": "",
+   "start_sec": 1079.06,
+   "duration_sec": 13.04,
+   "visual_prompt": "Мерц на пресс-конференции",
+   "source": "press_photo",
+   "source_query": "Фридрих Мерц пресс-конференция в Берлине реальное фото"
+  },
+  {
+   "id": 94,
+   "text": "",
+   "start_sec": 1092.1,
+   "duration_sec": 10.76,
+   "visual_prompt": "открывающаяся дверь — закрывающая метафора",
+   "source": "pexels_video",
+   "source_query": "wooden door opening slowly light interior"
+  }
+ ],
+ "channel": "5 МИНУТ",
+ "library": "NO (search-only, кроме КАРТЫ во всплывашках)",
+ "context": "О чём: Фридрих Мерц заявил, что капитуляция Украины неприемлема и станет 'капитуляцией всех союзников'; разбор — почему Европа боится сделки Трампа с Москвой. Стороны: Германия и евроинституты (Мерц, Брюссель, Каллас) против США Трампа (Трамп, Рубио, Уиткофф), Россия (Путин, Лавров, Песков, Ушаков, Новак), Украина (Зеленский), национально ориентированные (Словакия, Венгрия, АдГ/Вайдель). Где физически: Берлин (Ведомство федерального канцлера, Бундестаг), Брюссель (Еврокомиссия, Евросовет, НАТО), Вашингтон (Белый дом, Госдеп, Капитолий), Москва (Кремль, МИД), Киев (Банковая, Рада), Осло (переговоры), авиабаза Вунсторф, аэропорт Лейпциг-Галле, Братислава. Узел: доступ к российским ресурсам — силой (старый европейский способ) или сделкой (способ Трампа). Время: октябрь 2026. Чем кончается: Трамп нашёл дверь, Европа стоит с ломом у стены. Чувство: Европа боится не за Украину, а за собственную политическую конструкцию.",
+ "lines": [
+  "1. ГЕРМАНСКАЯ ВЛАСТЬ: Ведомство федерального канцлера в Берлине, Бундестаг, МИД Германии, Минфин Германии, Мерц, Вайдель (АдГ)",
+  "2. ГЕРМАНСКИЙ БУНДЕСВЕР И ДИВЕРСИИ: авиабаза Вунсторф, аэропорт Лейпциг-Галле, бронетехника Бундесвера, производство Rheinmetall",
+  "3. ЕВРОПЕЙСКИЕ ИНСТИТУТЫ: Еврокомиссия (Берлемон), Евросовет, Европарламент, ЕЦБ во Франкфурте, штаб-квартира НАТО, Каллас",
+  "4. АМЕРИКАНСКАЯ ВЛАСТЬ ТРАМПА: Белый дом, Капитолий, Госдеп, Казначейство США, ЦРУ в Лэнгли, Трамп, Рубио, Уиткофф",
+  "5. РОССИЙСКАЯ ВЛАСТЬ: Московский Кремль, МИД на Смоленской, Совбез России, Путин, Лавров, Песков, Ушаков, Новак; российское вооружение (Ярс, ВМФ)",
+  "6. ГЕРМАНСКАЯ ПРОМЫШЛЕННОСТЬ НА РОССИЙСКОМ СЫРЬЕ: BASF в Людвигсхафене, Volkswagen в Вольфсбурге, ТЭС, СПГ-терминал Вильгельмсхафен, компрессорная станция в Любмине",
+  "7. РОССИЙСКИЙ СЫРЬЕВОЙ СЛОЙ: Западная Сибирь, Ямал СПГ, нефтепровод Транснефти, НПЗ, терминал Приморск, ЛУКОЙЛ, Московская биржа",
+  "8. УКРАИНСКАЯ ВЛАСТЬ: Зеленский, Офис президента на Банковой, Верховная Рада, блокпост в Киеве, Starlink на позициях",
+  "9. НАЦИОНАЛЬНО ОРИЕНТИРОВАННАЯ ЕВРОПА: правительство Словакии в Братиславе, газопровод Дружба, АдГ"
+ ],
+ "cards_plan": "7 карточек card:quote (норма 94/15=6,3 ±1): сцены 5, 23, 32, 44, 60, 76, 92; минимальный зазор 9",
+ "dossier": {
+  "production_id": "PROD_20261022_MERZ_CAPITULATION_5MIN",
+  "storyline": "GEO2_MERZ_CAPITULATION_GLOBAL_PROJECT_20261022",
+  "event": "заявления Мерца 21.10.2026; формат высказывания в источниках НЕ назван — не указывать",
+  "numbers": [
+   "496 000 промышленных рабочих мест Германии потеряно 2019-2025 (Ifo); 123 500 автопром",
+   "Starlink — восстановление в течение 48 часов",
+   "угроза диверсий РФ в Германии поднята до «значительного»",
+   "дрон у Вунсторфа — сентябрь, атака на Лейпциг-Галле — август",
+   "Словакия: межправкомиссия после почти пятилетнего перерыва",
+   "НАТО-границы 1997 года",
+   "90 млрд евро кредита ЕС"
+  ]
+ }
+}

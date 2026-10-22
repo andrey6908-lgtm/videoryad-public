@@ -1,0 +1,108 @@
+{
+ "scenes": [
+  {
+   "id": 3,
+   "text": "",
+   "duration_sec": 11.63,
+   "source": "local_library",
+   "source_query": "КАРТЫ/УКРАИНА/Europe-Ukraine.jpg",
+   "visual_prompt": "база — Мерц на видео; всплывашка — место, о котором он говорит (Украина в Европе)"
+  },
+  {
+   "id": 12,
+   "text": "",
+   "duration_sec": 12.24,
+   "source": "local_library",
+   "source_query": "КАРТЫ/РОССИЯ/Blank Map of Russia With Borders of Subdivions Small Scale M.jpg",
+   "visual_prompt": "текст дословно: «Россия это не только территория на карте» — карта и есть предмет фразы"
+  },
+  {
+   "id": 36,
+   "text": "",
+   "duration_sec": 12.72,
+   "source": "press_photo",
+   "source_query": "Дональд Трамп крупный план 2026 реальное фото",
+   "visual_prompt": "база — Путин; текст НАЗЫВАЕТ Трампа («Трамп именно это и понял») — второй участник, которого нет в кадре"
+  },
+  {
+   "id": 42,
+   "text": "",
+   "duration_sec": 13.6,
+   "source": "press_photo",
+   "source_query": "цистерны на наливной эстакаде нефтебазы 2026 реальное фото",
+   "visual_prompt": "база — лицо Новака; всплывашка — товар, о поставках которого он говорит"
+  },
+  {
+   "id": 50,
+   "text": "",
+   "duration_sec": 12.92,
+   "source": "press_photo",
+   "source_query": "газета Wall Street Journal первая страница реальное фото",
+   "visual_prompt": "сцена ДОСЛОВНО называет Wall Street Journal — издание и есть предмет фразы"
+  },
+  {
+   "id": 53,
+   "text": "",
+   "duration_sec": 12.56,
+   "source": "local_library",
+   "source_query": "КАРТЫ/СЛОВАКИЯ/Slovakia map modern.jpg",
+   "visual_prompt": "конкретное место, которого зритель не представляет; контрастная заливка 84%"
+  },
+  {
+   "id": 62,
+   "text": "",
+   "duration_sec": 15.14,
+   "source": "press_photo",
+   "source_query": "склад минеральных удобрений в Белоруссии реальное фото",
+   "visual_prompt": "база — АЗС ЛУКОЙЛ; текст НАЗЫВАЕТ белорусские удобрения — второй предмет торга"
+  },
+  {
+   "id": 69,
+   "text": "",
+   "duration_sec": 8.61,
+   "source": "press_photo",
+   "source_query": "Белый дом в Вашингтоне фасад реальное фото",
+   "visual_prompt": "база — Каллас; всплывашка — тот, кого она обвиняет (США), чего нет в кадре"
+  },
+  {
+   "id": 71,
+   "text": "",
+   "duration_sec": 12.32,
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/l68_OwvEGqK1FZmpaXZJmJCw00d5hpHNK9GEA6ukgg6CA2mgk3Rc2xkSpeR3lJOOaetHf3vKkfL_oq06LkrRB1aabkjD1dj4piRVH1REZJxU7mjEN1_d83Qk_jXvGhrTIkhx1I4I0UxZMD690orWprYm5TrR-HbGDBF9pyIrrxQYrs-aLc513DvjaCA355NVHqHjoDWnh3F0gdMeLejymc8Ca1NELzMZiK8IErZyIHVbdYFohPL5UUp7jFhsfgmtTjGywllSQNoqddKEnv_X1x7-e6XbIS8VQ6Yd6zIUGGeErxD5nG2a-IvRMO349715eDl_-h24vm5oJ25PqF3GxQ.jpg",
+   "visual_prompt": "база — терминал Starlink у военных; всплывашка — владелец Starlink (эталонная формула: продукт в базе, автор решения во всплывашке)"
+  },
+  {
+   "id": 72,
+   "text": "",
+   "duration_sec": 12.32,
+   "source": "press_photo",
+   "source_query": "радар системы предупреждения о ракетном нападении реальное фото",
+   "visual_prompt": "база — Зеленский в Осло; всплывашка — та самая система, за которую он благодарит"
+  },
+  {
+   "id": 81,
+   "text": "",
+   "duration_sec": 13.76,
+   "source": "press_photo",
+   "source_query": "Стив Уиткофф крупный план 2026 реальное фото",
+   "visual_prompt": "база — МИД Норвегии; текст НАЗЫВАЕТ Уиткоффа — человек, который не вышел к прессе"
+  },
+  {
+   "id": 83,
+   "text": "",
+   "duration_sec": 12.32,
+   "source": "press_photo",
+   "source_query": "электрическая подстанция в России реальное фото",
+   "visual_prompt": "база — Песков; всплывашка — объект энергоперемирия, о котором он говорит"
+  },
+  {
+   "id": 88,
+   "text": "",
+   "duration_sec": 14.16,
+   "source": "press_photo",
+   "source_query": "контейнерный терминал порта в США реальное фото",
+   "visual_prompt": "база — Трамп; текст НАЗЫВАЕТ логистику как предмет контроля"
+  }
+ ]
+}
