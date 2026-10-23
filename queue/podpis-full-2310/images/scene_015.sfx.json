@@ -1,0 +1,22 @@
+[
+ {
+  "at": 0.1,
+  "role": "accent"
+ },
+ {
+  "at": 0.42,
+  "role": "label"
+ },
+ {
+  "at": 0.72,
+  "role": "label"
+ },
+ {
+  "at": 1.02,
+  "role": "label"
+ },
+ {
+  "at": 1.32,
+  "role": "label"
+ }
+]

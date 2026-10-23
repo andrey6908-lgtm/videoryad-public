@@ -1,0 +1,22 @@
+[
+ {
+  "at": 0.12,
+  "role": "card"
+ },
+ {
+  "at": 0.5,
+  "role": "accent"
+ },
+ {
+  "at": 0.95,
+  "role": "label"
+ },
+ {
+  "at": 1.12,
+  "role": "label"
+ },
+ {
+  "at": 1.29,
+  "role": "label"
+ }
+]
