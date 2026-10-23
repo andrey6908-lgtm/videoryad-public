@@ -273,7 +273,7 @@ def _render_one(FN, job, sid, view, kw, mode, mp4, jpg, jobs_path, fps):
             for _m in reg.values():
                 patch_fonts(_m, FONTS)
         fn = FN.get(view) or resolve(view, reg)
-        if fn is None:
+        if fn is None and mode != "cli":   # у cli вида нет, есть свой скрипт
             print(f"  сцена {sid}: вид «{view}» не разрешён — пропуск", file=sys.stderr,
                   flush=True)
             return False

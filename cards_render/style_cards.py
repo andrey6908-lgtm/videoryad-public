@@ -1065,7 +1065,7 @@ def strip_canvas(cards, kick="", watermark="ДО ПРИГОВОРА"):
 
 
 def scroll_clip(page, out_mp4, seconds=12.0, direction="up", hold=1.1,
-                fps=25, watermark=True, sfx_out=True):
+                fps=25, watermark=True, sfx_out=True, crf=19):
     """Прокрутка полотна, как страницы сайта.
 
     direction: "up"   — контент уезжает вверх (читаем сверху вниз, обычный скролл)
