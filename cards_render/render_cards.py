@@ -334,6 +334,20 @@ def _render_one(FN, job, sid, view, kw, mode, mp4, jpg, jobs_path, fps):
                 return False
         elif mode == "clip":
             fn(mp4, seconds=float(job["dur"]), fps=fps, **kw)
+            # ПОСТЕР ДЛЯ КЛИПОВЫХ ЭЛЕМЕНТОВ (2026-10-23): без него в ячейку
+            # дашборда подставлялся исходный кадр сцены, и выглядело это как
+            # «элемент пустой». Рисуем кадровой парой того же элемента.
+            PAIR = {"devices.device_clip": "devices.device_scene",
+                    "torn_split.torn_split_clip": "torn_split.torn_split",
+                    "torn_split.photo_seam_clip": "torn_split.photo_seam",
+                    "torn_photo.torn_clip": "torn_photo.torn_photo"}
+            pf = resolve(PAIR.get(view, ""), reg)
+            if pf is not None:
+                try:
+                    pf(out=jpg, **kw)
+                except Exception as e:
+                    print(f"  сцена {sid}: постер не нарисован ({type(e).__name__})",
+                          file=sys.stderr, flush=True)
         elif mode == "scroll":
             cf = resolve(job["canvas"], reg)
             if cf is None:
