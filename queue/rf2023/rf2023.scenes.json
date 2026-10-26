@@ -1,0 +1,817 @@
+{
+ "scenes": [
+  {
+   "id": 1,
+   "text": "",
+   "start_sec": 0.0,
+   "duration_sec": 7.94,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Сенатский дворец Московского Кремля Россия 2023"
+  },
+  {
+   "id": 2,
+   "text": "",
+   "start_sec": 7.94,
+   "duration_sec": 14.42,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Главный вход Офиса президента Украины Владимир Зеленский Киев 2023"
+  },
+  {
+   "id": 3,
+   "text": "",
+   "start_sec": 22.36,
+   "duration_sec": 12.64,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Фасад Верховной Рады Украины Киев 2026"
+  },
+  {
+   "id": 4,
+   "text": "",
+   "start_sec": 35.0,
+   "duration_sec": 12.46,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Георгиевский зал Московского Кремля Владимир Путин Владимир Зеленский 2019"
+  },
+  {
+   "id": 5,
+   "text": "",
+   "start_sec": 47.47,
+   "duration_sec": 14.25,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Конференц-зал европейского отеля Ричард Конн Боб Форесман Маттиас Варниг Александр Роднянский 2023"
+  },
+  {
+   "id": 6,
+   "text": "",
+   "start_sec": 61.72,
+   "duration_sec": 5.8,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Дом правительства России у Москвы-реки 2023"
+  },
+  {
+   "id": 7,
+   "text": "",
+   "start_sec": 67.51,
+   "duration_sec": 15.21,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Автомобильная дорога у линии соприкосновения Украина февраль 2022"
+  },
+  {
+   "id": 8,
+   "text": "",
+   "start_sec": 82.72,
+   "duration_sec": 14.08,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Крымский мост со стороны Керчи 2023"
+  },
+  {
+   "id": 9,
+   "text": "",
+   "start_sec": 96.8,
+   "duration_sec": 11.56,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Высотное здание МИД России Смоленская площадь Москва 2023"
+  },
+  {
+   "id": 10,
+   "text": "",
+   "start_sec": 108.36,
+   "duration_sec": 14.36,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Центральный вход Верховной Рады Украины Киев 2023"
+  },
+  {
+   "id": 11,
+   "text": "",
+   "start_sec": 122.72,
+   "duration_sec": 9.52,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Северо-Крымский канал на территории Крыма 2023"
+  },
+  {
+   "id": 12,
+   "text": "",
+   "start_sec": 132.25,
+   "duration_sec": 9.25,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Офис президента Украины на Банковой Киев 2023"
+  },
+  {
+   "id": 13,
+   "text": "",
+   "start_sec": 141.5,
+   "duration_sec": 11.31,
+   "visual_prompt": "",
+   "source": "card:pull",
+   "source_query": "карточка «pull» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 14,
+   "text": "",
+   "start_sec": 152.8,
+   "duration_sec": 5.94,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Фасад Министерства иностранных дел Украины Киев 2026"
+  },
+  {
+   "id": 15,
+   "text": "",
+   "start_sec": 158.74,
+   "duration_sec": 12.36,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Белый дом северный фасад Вашингтон 2023"
+  },
+  {
+   "id": 16,
+   "text": "",
+   "start_sec": 171.09,
+   "duration_sec": 12.96,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Министерство обороны Украины Воздухофлотский проспект Киев 2023"
+  },
+  {
+   "id": 17,
+   "text": "",
+   "start_sec": 184.05,
+   "duration_sec": 14.99,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Въезд во двор Офиса президента Украины Киев 2023"
+  },
+  {
+   "id": 18,
+   "text": "",
+   "start_sec": 199.04,
+   "duration_sec": 12.64,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Овальный кабинет Белого дома Владимир Зеленский Вашингтон 2023"
+  },
+  {
+   "id": 19,
+   "text": "",
+   "start_sec": 211.68,
+   "duration_sec": 8.38,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Зал пленарных заседаний Верховной Рады Украины 2023"
+  },
+  {
+   "id": 20,
+   "text": "",
+   "start_sec": 220.06,
+   "duration_sec": 14.5,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Дом правительства России на Краснопресненской набережной 2023"
+  },
+  {
+   "id": 21,
+   "text": "",
+   "start_sec": 234.56,
+   "duration_sec": 6.63,
+   "visual_prompt": "",
+   "source": "card:tape",
+   "source_query": "карточка «tape» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 22,
+   "text": "",
+   "start_sec": 241.19,
+   "duration_sec": 12.81,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Доменные печи металлургического предприятия Украины 2023"
+  },
+  {
+   "id": 23,
+   "text": "",
+   "start_sec": 254.0,
+   "duration_sec": 14.56,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Грузовые локомотивы украинской железной дороги в депо 2023"
+  },
+  {
+   "id": 24,
+   "text": "",
+   "start_sec": 268.56,
+   "duration_sec": 8.43,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Металлический каркас нового промышленного предприятия Украины 2023"
+  },
+  {
+   "id": 25,
+   "text": "",
+   "start_sec": 276.99,
+   "duration_sec": 13.12,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Центральный вход Министерства обороны Украины Киев 2023"
+  },
+  {
+   "id": 26,
+   "text": "",
+   "start_sec": 290.11,
+   "duration_sec": 12.32,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Комплекс Министерства обороны Украины в Киеве 2023"
+  },
+  {
+   "id": 27,
+   "text": "",
+   "start_sec": 302.43,
+   "duration_sec": 9.75,
+   "visual_prompt": "",
+   "source": "card:doc",
+   "source_query": "карточка «doc» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 28,
+   "text": "",
+   "start_sec": 312.18,
+   "duration_sec": 11.17,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Зенитный ракетный комплекс Patriot армии США на позиции 2026"
+  },
+  {
+   "id": 29,
+   "text": "",
+   "start_sec": 323.36,
+   "duration_sec": 12.03,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Конференц-зал дворца Европа Брюссель саммит 2023"
+  },
+  {
+   "id": 30,
+   "text": "",
+   "start_sec": 335.39,
+   "duration_sec": 13.96,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Фасад Министерства финансов США Вашингтон 2026"
+  },
+  {
+   "id": 31,
+   "text": "",
+   "start_sec": 349.35,
+   "duration_sec": 9.59,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Здание Госдепартамента США Вашингтон 2023"
+  },
+  {
+   "id": 32,
+   "text": "",
+   "start_sec": 358.94,
+   "duration_sec": 12.18,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Восточное крыло Капитолия США Вашингтон 2023"
+  },
+  {
+   "id": 33,
+   "text": "",
+   "start_sec": 371.11,
+   "duration_sec": 6.07,
+   "visual_prompt": "",
+   "source": "card:strike",
+   "source_query": "карточка «strike» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 34,
+   "text": "",
+   "start_sec": 377.19,
+   "duration_sec": 15.05,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Разрушенные жилые кварталы Бахмута 2023"
+  },
+  {
+   "id": 35,
+   "text": "",
+   "start_sec": 392.23,
+   "duration_sec": 11.91,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Артёмовск Бахмут разрушенные дома Донецкая область 2023"
+  },
+  {
+   "id": 36,
+   "text": "",
+   "start_sec": 404.14,
+   "duration_sec": 9.77,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Фасад Дворца Наций в Женеве Швейцария 2026"
+  },
+  {
+   "id": 37,
+   "text": "",
+   "start_sec": 413.91,
+   "duration_sec": 11.8,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Площадка подержанных автомобилей под открытым небом 2026"
+  },
+  {
+   "id": 38,
+   "text": "",
+   "start_sec": 425.71,
+   "duration_sec": 13.04,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Разбитый автомобиль без двигателя на свалке 2026"
+  },
+  {
+   "id": 39,
+   "text": "",
+   "start_sec": 438.74,
+   "duration_sec": 12.88,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Офисная башня делового квартала Франкфурта 2023"
+  },
+  {
+   "id": 40,
+   "text": "",
+   "start_sec": 451.63,
+   "duration_sec": 15.37,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Деловой салон венского отеля для встречи посредников 2023"
+  },
+  {
+   "id": 41,
+   "text": "",
+   "start_sec": 466.99,
+   "duration_sec": 12.39,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Автомобильная трасса между Херсоном и Крымом 2023"
+  },
+  {
+   "id": 42,
+   "text": "",
+   "start_sec": 479.38,
+   "duration_sec": 13.2,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Керченский пролив и побережье Крыма 2023"
+  },
+  {
+   "id": 43,
+   "text": "",
+   "start_sec": 492.59,
+   "duration_sec": 5.81,
+   "visual_prompt": "",
+   "source": "card:marker_serif",
+   "source_query": "карточка «marker_serif» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 44,
+   "text": "",
+   "start_sec": 498.4,
+   "duration_sec": 12.62,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Береговая линия Крыма у Севастополя 2023"
+  },
+  {
+   "id": 45,
+   "text": "",
+   "start_sec": 511.02,
+   "duration_sec": 13.92,
+   "visual_prompt": "",
+   "source": "local_library",
+   "source_query": "КАРТЫ/УКРАИНА/Ukraine oblasts outline with Dnipro.jpg"
+  },
+  {
+   "id": 46,
+   "text": "",
+   "start_sec": 524.94,
+   "duration_sec": 12.16,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Ценник на витрине магазина крупным планом 2026"
+  },
+  {
+   "id": 47,
+   "text": "",
+   "start_sec": 537.1,
+   "duration_sec": 13.6,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Дорожное заграждение на линии контроля Украина 2026"
+  },
+  {
+   "id": 48,
+   "text": "",
+   "start_sec": 550.7,
+   "duration_sec": 7.63,
+   "visual_prompt": "",
+   "source": "card:duel",
+   "source_query": "карточка «duel» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 49,
+   "text": "",
+   "start_sec": 558.33,
+   "duration_sec": 12.93,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Банк России на Неглинной улице Москва 2023"
+  },
+  {
+   "id": 50,
+   "text": "",
+   "start_sec": 571.26,
+   "duration_sec": 14.52,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Игровой стол рулетки в казино 2026"
+  },
+  {
+   "id": 51,
+   "text": "",
+   "start_sec": 585.78,
+   "duration_sec": 12.72,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Игровые жетоны на зелёном сукне крупным планом 2026"
+  },
+  {
+   "id": 52,
+   "text": "",
+   "start_sec": 598.5,
+   "duration_sec": 13.01,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Турбинный зал украинской электростанции 2025"
+  },
+  {
+   "id": 53,
+   "text": "",
+   "start_sec": 611.51,
+   "duration_sec": 8.95,
+   "visual_prompt": "",
+   "source": "card:paper_hand",
+   "source_query": "карточка «paper_hand» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 54,
+   "text": "",
+   "start_sec": 620.47,
+   "duration_sec": 13.48,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Разрушенный автомобильный мост через реку Украина 2026"
+  },
+  {
+   "id": 55,
+   "text": "",
+   "start_sec": 633.94,
+   "duration_sec": 9.12,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Зерновой терминал Одесского порта Украина 2026"
+  },
+  {
+   "id": 56,
+   "text": "",
+   "start_sec": 643.06,
+   "duration_sec": 8.63,
+   "visual_prompt": "",
+   "source": "local_library",
+   "source_query": "КАРТЫ/ГАЛИЦИЯ/Lviv Oblast highlighted in Ukraine.jpg"
+  },
+  {
+   "id": 57,
+   "text": "",
+   "start_sec": 651.69,
+   "duration_sec": 13.88,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Грузовой тепловоз Укрзализныци на станции Львова 2026"
+  },
+  {
+   "id": 58,
+   "text": "",
+   "start_sec": 665.57,
+   "duration_sec": 12.64,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Разрушенный мост через реку в Бахмуте 2023"
+  },
+  {
+   "id": 59,
+   "text": "",
+   "start_sec": 678.21,
+   "duration_sec": 8.38,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Офисная башня компании Ди-эйч-эл Бонн 2024"
+  },
+  {
+   "id": 60,
+   "text": "",
+   "start_sec": 686.59,
+   "duration_sec": 8.73,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Фасад Госдепартамента США со стороны Вирджиния-авеню Вашингтон 2024"
+  },
+  {
+   "id": 61,
+   "text": "",
+   "start_sec": 695.33,
+   "duration_sec": 12.5,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Посольство России в Вашингтоне фасад 2024"
+  },
+  {
+   "id": 62,
+   "text": "",
+   "start_sec": 707.82,
+   "duration_sec": 12.39,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Рабочий кабинет Владимира Путина в Московском Кремле 2024"
+  },
+  {
+   "id": 63,
+   "text": "",
+   "start_sec": 720.21,
+   "duration_sec": 11.15,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Правительственный комплекс на Краснопресненской набережной Москва 2023"
+  },
+  {
+   "id": 64,
+   "text": "",
+   "start_sec": 731.37,
+   "duration_sec": 13.47,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Западный фасад Капитолия США Вашингтон 2024"
+  },
+  {
+   "id": 65,
+   "text": "",
+   "start_sec": 744.83,
+   "duration_sec": 13.25,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Прибрежная автодорога вдоль Азовского моря 2026"
+  },
+  {
+   "id": 66,
+   "text": "",
+   "start_sec": 758.09,
+   "duration_sec": 11.27,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Капитолийский холм с южной стороны Вашингтон 2026"
+  },
+  {
+   "id": 67,
+   "text": "",
+   "start_sec": 769.36,
+   "duration_sec": 9.67,
+   "visual_prompt": "",
+   "source": "card:bullets",
+   "source_query": "карточка «bullets» — кадр рисуется в облаке, фетч за сценой не идёт",
+   "card": {
+    "kind": "bullets",
+    "kick": "НА ЧТО СТАВИЛИ",
+    "lines": [
+     "На санкции",
+     "На западные поставки",
+     "На технологическое превосходство"
+    ],
+    "watermark": "ПЛАНЕТА",
+    "anim": 2.5
+   }
+  },
+  {
+   "id": 68,
+   "text": "",
+   "start_sec": 779.03,
+   "duration_sec": 14.18,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Центральное здание Банка России Москва 2025"
+  },
+  {
+   "id": 69,
+   "text": "",
+   "start_sec": 793.21,
+   "duration_sec": 7.05,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Административный корпус МИД России Москва 2025"
+  },
+  {
+   "id": 70,
+   "text": "",
+   "start_sec": 800.26,
+   "duration_sec": 9.95,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Факельная установка нефтеперерабатывающего завода в России 2026"
+  },
+  {
+   "id": 71,
+   "text": "",
+   "start_sec": 810.2,
+   "duration_sec": 13.44,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Силовые трансформаторы электрической подстанции Украины 2026"
+  },
+  {
+   "id": 72,
+   "text": "",
+   "start_sec": 823.64,
+   "duration_sec": 13.88,
+   "visual_prompt": "",
+   "source": "card:paper_typed",
+   "source_query": "карточка «paper_typed» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 73,
+   "text": "",
+   "start_sec": 837.53,
+   "duration_sec": 11.99,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Капитолий США со стороны Национальной аллеи Вашингтон 2025"
+  },
+  {
+   "id": 74,
+   "text": "",
+   "start_sec": 849.51,
+   "duration_sec": 12.53,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Конференц-комната женевского отеля встреча посредников 2026"
+  },
+  {
+   "id": 75,
+   "text": "",
+   "start_sec": 862.04,
+   "duration_sec": 7.2,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Фасад Дома правительства Украины Киев 2026"
+  },
+  {
+   "id": 76,
+   "text": "",
+   "start_sec": 869.24,
+   "duration_sec": 10.56,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Повреждённая контактная сеть над путями Укрзализныци 2026"
+  },
+  {
+   "id": 77,
+   "text": "",
+   "start_sec": 879.8,
+   "duration_sec": 14.01,
+   "visual_prompt": "",
+   "source": "card:quote",
+   "source_query": "карточка «quote» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 78,
+   "text": "",
+   "start_sec": 893.81,
+   "duration_sec": 14.99,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Зал ожидания частной авиации аэропорт Женева 2023"
+  },
+  {
+   "id": 79,
+   "text": "",
+   "start_sec": 908.8,
+   "duration_sec": 13.92,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Западное крыло Белого дома Вашингтон 2023"
+  },
+  {
+   "id": 80,
+   "text": "",
+   "start_sec": 922.72,
+   "duration_sec": 12.32,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Прокатный стан металлургического предприятия Украины 2026"
+  },
+  {
+   "id": 81,
+   "text": "",
+   "start_sec": 935.04,
+   "duration_sec": 13.5,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Портовые элеваторы Одессы Украина 2026"
+  },
+  {
+   "id": 82,
+   "text": "",
+   "start_sec": 948.53,
+   "duration_sec": 8.65,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Главный вестибюль МИД России Смоленская площадь 2023"
+  },
+  {
+   "id": 83,
+   "text": "",
+   "start_sec": 957.18,
+   "duration_sec": 10.26,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Деловой центр Бонна офис компании Ди-эйч-эл 2024"
+  },
+  {
+   "id": 84,
+   "text": "",
+   "start_sec": 967.45,
+   "duration_sec": 11.61,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Бетонные заграждения на дороге линии соприкосновения Украина 2026"
+  },
+  {
+   "id": 85,
+   "text": "",
+   "start_sec": 979.05,
+   "duration_sec": 12.63,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Вестибюль отеля в Вене встреча посредников 2023"
+  },
+  {
+   "id": 86,
+   "text": "",
+   "start_sec": 991.68,
+   "duration_sec": 13.15,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Зона частной авиации аэропорта Цюрих 2023"
+  },
+  {
+   "id": 87,
+   "text": "",
+   "start_sec": 1004.83,
+   "duration_sec": 12.62,
+   "visual_prompt": "",
+   "source": "press_photo",
+   "source_query": "Зерновые силосы в порту Одессы Украина 2026"
+  },
+  {
+   "id": 88,
+   "text": "",
+   "start_sec": 1017.45,
+   "duration_sec": 4.38,
+   "visual_prompt": "",
+   "source": "card:tape",
+   "source_query": "карточка «tape» — кадр рисуется в облаке, фетч не нужен"
+  }
+ ],
+ "channel": "ПЛАНЕТА",
+ "context": "FT 24.10.2026 о неофициальном канале 2023 (Конн, Форесман, Варниг, Роднянский): линия 24.02.2022, отказ от НАТО, Крым, сухопутный коридор, гарантии. Москва изучала, Киев не принял, США не поддержали. Автор иронизирует: условия подозрительно мягкие — не приукрашены ли. Вопрос ценой: территория, люди, заводы, металлургия, зерно, железные дороги, энергетика. Поворот — DHL 2024 у Томаса Райта.",
+ "lines": [
+  "российская власть (Кремль, МИД, Дом правительства)",
+  "украинская власть (Банковая, Рада, Минобороны Украины)",
+  "американская власть (Белый дом, Госдеп, Капитолий)",
+  "неофициальный канал (переговорные залы Европы, посредники)",
+  "ЦЕНА ВОЙНЫ МАТЕРИАЛЬНО (металлургия, зерно, локомотивы, подстанции)",
+  "территория (Крым, сухопутный коридор, линия соприкосновения)"
+ ]
+}
