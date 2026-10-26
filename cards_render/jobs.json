@@ -1,0 +1,30 @@
+[
+ {
+  "scene": 3,
+  "view": "film.film_newsreel",
+  "dur": 12.64,
+  "anim": 0,
+  "tail_zoom": 0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "images/scene_003.jpg",
+   "watermark": "ПЛАНЕТА",
+   "seconds": 12.64
+  }
+ },
+ {
+  "scene": 34,
+  "view": "cinematic.battle_flashback",
+  "dur": 15.05,
+  "anim": 0,
+  "tail_zoom": 0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "images/scene_034.jpg",
+   "watermark": "ПЛАНЕТА",
+   "seconds": 15.05
+  }
+ }
+]
