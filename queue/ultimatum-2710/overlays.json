@@ -1,0 +1,156 @@
+{
+ "anchor": "top",
+ "19": {
+  "photo": "overlays/scene_019.jpg",
+  "sound": "whoosh",
+  "at": 3.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "26": {
+  "photo": "overlays/scene_026.jpg",
+  "sound": "zatvor",
+  "at": 4.0,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "32": {
+  "photo": "overlays/scene_032.jpg",
+  "sound": "pop",
+  "at": 3.4,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "42": {
+  "photo": "overlays/scene_042.jpg",
+  "sound": "zatvor",
+  "at": 3.1,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "44": {
+  "photo": "overlays/scene_044.jpg",
+  "sound": "pop",
+  "at": 3.8,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "53": {
+  "photo": "overlays/scene_053.jpg",
+  "sound": "whoosh",
+  "at": 4.9,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "3": {
+  "text": {
+   "words": "25 ОКТЯБРЯ: ЗАЯВЛЕНИЕ ПЕРЕД ПЕРЕГОВОРАМИ",
+   "color": "white",
+   "pos": "mc",
+   "at": 4.8,
+   "scale": 1.0
+  }
+ },
+ "4": {
+  "text": {
+   "words": "НЕЙТРАЛИТЕТ · АРМИЯ · ГАРАНТИИ — ВНЕ ОБСУЖДЕНИЯ",
+   "color": "yellow",
+   "pos": "mc",
+   "at": 5.0,
+   "scale": 1.0
+  }
+ },
+ "9": {
+  "text": {
+   "words": "МОСКВА: БЕЗОПАСНОСТЬ, ТЕРРИТОРИИ, СТАТУС УКРАИНЫ",
+   "color": "red",
+   "pos": "mc",
+   "at": 4.4,
+   "scale": 1.0
+  }
+ },
+ "14": {
+  "text": {
+   "words": "КРАСНЫЕ ЛИНИИ ОБЪЯВЛЕНЫ ДО ВСТРЕЧИ",
+   "color": "white",
+   "pos": "mc",
+   "at": 5.4,
+   "scale": 1.0
+  }
+ },
+ "17": {
+  "text": {
+   "words": "ЦЕЛЬ КИЕВА — ВСТРЕЧА ВТРОЁМ С ТРАМПОМ",
+   "color": "yellow",
+   "pos": "mc",
+   "at": 4.2,
+   "scale": 1.0
+  }
+ },
+ "22": {
+  "text": {
+   "words": "ТЕРРИТОРИИ — ТОЛЬКО НА УРОВНЕ ПЕРВЫХ ЛИЦ",
+   "color": "red",
+   "pos": "mc",
+   "at": 5.5,
+   "scale": 1.0
+  }
+ },
+ "24": {
+  "text": {
+   "words": "КИЕВ ТРЕБУЕТ И БЕЗОПАСНОСТИ СУДОХОДСТВА",
+   "color": "white",
+   "pos": "mc",
+   "at": 5.4,
+   "scale": 1.0
+  }
+ },
+ "31": {
+  "text": {
+   "words": "90 МЛРД ЕВРО НА ДВА ГОДА",
+   "color": "yellow",
+   "pos": "mc",
+   "at": 4.2,
+   "scale": 1.0
+  }
+ },
+ "35": {
+  "text": {
+   "words": "БЮДЖЕТ УКРАИНЫ ОПЛАЧИВАЕТ НЕ ТОЛЬКО КИЕВ",
+   "color": "red",
+   "pos": "mc",
+   "at": 5.0,
+   "scale": 1.0
+  }
+ },
+ "40": {
+  "text": {
+   "words": "СЕВЕРНАЯ ВОЙНА: 1700-1721",
+   "color": "white",
+   "pos": "mc",
+   "at": 4.6,
+   "scale": 1.0
+  }
+ },
+ "51": {
+  "text": {
+   "words": "ВСТРЕЧА ГОТОВИТСЯ НА НОЯБРЬ",
+   "color": "yellow",
+   "pos": "mc",
+   "at": 4.5,
+   "scale": 1.0
+  }
+ }
+}
