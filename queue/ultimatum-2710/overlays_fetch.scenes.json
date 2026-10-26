@@ -1,0 +1,58 @@
+{
+ "scenes": [
+  {
+   "id": 19,
+   "text": "",
+   "duration_sec": 9.9,
+   "visual_prompt": "Зеленский официальный портрет 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Зеленский официальный портрет 2026 реальное фото",
+   "_dest": "overlays"
+  },
+  {
+   "id": 26,
+   "text": "",
+   "duration_sec": 11.3,
+   "visual_prompt": "КАРТЫ/УКРАИНА/Map of Ukraine Oblasts simple 4 colors.jpg",
+   "source": "local_library",
+   "source_query": "КАРТЫ/УКРАИНА/Map of Ukraine Oblasts simple 4 colors.jpg",
+   "_dest": "overlays"
+  },
+  {
+   "id": 32,
+   "text": "",
+   "duration_sec": 9.8,
+   "visual_prompt": "флаг Евросоюза на флагштоке у здания Еврокомиссии Брюссель реальное фото",
+   "source": "press_photo",
+   "source_query": "флаг Евросоюза на флагштоке у здания Еврокомиссии Брюссель реальное фото",
+   "_dest": "overlays"
+  },
+  {
+   "id": 42,
+   "text": "",
+   "duration_sec": 8.9,
+   "visual_prompt": "Московский Кремль общий план с Москворецкого моста 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "Московский Кремль общий план с Москворецкого моста 2026 реальное фото",
+   "_dest": "overlays"
+  },
+  {
+   "id": 44,
+   "text": "",
+   "duration_sec": 11.0,
+   "visual_prompt": "повреждённый цех промышленного предприятия Украина 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "повреждённый цех промышленного предприятия Украина 2026 реальное фото",
+   "_dest": "overlays"
+  },
+  {
+   "id": 53,
+   "text": "",
+   "duration_sec": 13.9,
+   "visual_prompt": "тёмные окна жилого дома вечером Украина 2026 реальное фото",
+   "source": "press_photo",
+   "source_query": "тёмные окна жилого дома вечером Украина 2026 реальное фото",
+   "_dest": "overlays"
+  }
+ ]
+}
