@@ -1,0 +1,133 @@
+{
+ "channel": "ПЛАНЕТА",
+ "scenes": [
+  {
+   "id": 2,
+   "text": "",
+   "duration_sec": 10.173,
+   "visual_prompt": "Карта-локатор Сербии в Европе",
+   "source": "local_library",
+   "source_query": "КАРТЫ/СЕРБИЯ"
+  },
+  {
+   "id": 4,
+   "text": "",
+   "duration_sec": 9.372,
+   "visual_prompt": "Офис НИС Газпром нефть в Нови-Саде",
+   "source": "press_photo",
+   "source_query": "офис компании НИС Газпром нефть Нови-Сад 2026"
+  },
+  {
+   "id": 16,
+   "text": "",
+   "duration_sec": 12.652,
+   "visual_prompt": "Здание «Инфраструктуры железных дорог Сербии»",
+   "source": "press_photo",
+   "source_query": "здание Инфраструктуры железных дорог Сербии Белград 2026"
+  },
+  {
+   "id": 18,
+   "text": "",
+   "duration_sec": 10.445,
+   "visual_prompt": "Урна для голосования на участке в Сербии",
+   "source": "web_search",
+   "source_query": "избирательный участок в Сербии урна для голосования 2026"
+  },
+  {
+   "id": 21,
+   "text": "",
+   "duration_sec": 12.739,
+   "visual_prompt": "Здание Клинического центра Сербии",
+   "source": "press_photo",
+   "source_query": "здание Клинического центра Сербии Белград 2026"
+  },
+  {
+   "id": 24,
+   "text": "",
+   "duration_sec": 10.79,
+   "visual_prompt": "Здание Минфина США в Вашингтоне",
+   "source": "press_photo",
+   "source_query": "здание Министерства финансов США Вашингтон 2026"
+  },
+  {
+   "id": 30,
+   "text": "",
+   "duration_sec": 12.32,
+   "visual_prompt": "ТЭС «Никола Тесла» в Обреновце",
+   "source": "press_photo",
+   "source_query": "ТЭС Никола Тесла Обреновац Сербия 2026"
+  },
+  {
+   "id": 33,
+   "text": "",
+   "duration_sec": 11.919,
+   "visual_prompt": "Здание посольства России в Белграде",
+   "source": "press_photo",
+   "source_query": "посольство России в Белграде здание 2026"
+  },
+  {
+   "id": 36,
+   "text": "",
+   "duration_sec": 8.093,
+   "visual_prompt": "Парламент Венгрии в Будапеште",
+   "source": "press_photo",
+   "source_query": "парламент Венгрии в Будапеште 2026"
+  },
+  {
+   "id": 37,
+   "text": "",
+   "duration_sec": 14.563,
+   "visual_prompt": "Роберт Фицо говорит на камеру",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/76e39fe6fb.mp4?token=sD9JPIElCfcj5J94k5YAPoBUGIKqYi9XRcDOvwGj86A-r6tuBWgd7Dzgzd2QRL4YDvKt7Y9b0XBwoON9Ab_iAP-5nVJ81X3Cj9kAtomoJANpURwguywDWiydSOQAwcGBhdXHHZ3sMl-WD-A-tF4PBNQS5qHcytJfiHeWVwHQlDk07dOaU9hzz95hCHzNVRiX5i0M_HAdS9QQeaHax3yzI4-NfPo3NA_-2OMsJfiBEU27Y1EgRAhTaeVGTNJ4DelfpNKb-4cykoN65aGWve1TVCF6xKuiy3Zf8V78SEFPMFJt3LmwzuOdQ1sHogRtv9X_1x5ctyJsxDVQWO6MwlXKkQ"
+  },
+  {
+   "id": 38,
+   "text": "",
+   "duration_sec": 13.166,
+   "visual_prompt": "Фасад Дома правительства России в Москве",
+   "source": "press_photo",
+   "source_query": "Дом правительства России в Москве фасад 2026"
+  },
+  {
+   "id": 39,
+   "text": "",
+   "duration_sec": 12.073,
+   "visual_prompt": "Карта Словакии",
+   "source": "local_library",
+   "source_query": "КАРТЫ/СЛОВАКИЯ"
+  },
+  {
+   "id": 51,
+   "text": "",
+   "duration_sec": 12.006,
+   "visual_prompt": "Мозаика в храме Святого Саввы в Белграде",
+   "source": "press_photo",
+   "source_query": "храм Святого Саввы в Белграде мозаика интерьера 2026"
+  },
+  {
+   "id": 54,
+   "text": "",
+   "duration_sec": 13.448,
+   "visual_prompt": "Флаг НАТО у штаб-квартиры в Брюсселе",
+   "source": "press_photo",
+   "source_query": "флаг НАТО у штаб-квартиры в Брюсселе 2026"
+  },
+  {
+   "id": 55,
+   "text": "",
+   "duration_sec": 11.84,
+   "visual_prompt": "Флаги Сербии и Евросоюза рядом",
+   "source": "press_photo",
+   "source_query": "флаги Сербии и Евросоюза на флагштоках Белград 2026"
+  },
+  {
+   "id": 73,
+   "text": "",
+   "duration_sec": 12.626,
+   "visual_prompt": "Мемориальная табличка о бомбардировках 1999 года",
+   "source": "press_photo",
+   "source_query": "мемориальная табличка о бомбардировках 1999 года Белград 2026"
+  }
+ ]
+}

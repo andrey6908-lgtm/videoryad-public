@@ -1,0 +1,707 @@
+{
+ "channel": "ПЛАНЕТА",
+ "scenes": [
+  {
+   "id": 1,
+   "text": "",
+   "start_sec": 0.0,
+   "duration_sec": 12.007,
+   "visual_prompt": "Два соседних магазина в Белграде как единственный сквозной образ выбора между двумя сторонами",
+   "source": "press_photo",
+   "source_query": "витрины двух магазинов Белград вечер 2026"
+  },
+  {
+   "id": 2,
+   "text": "",
+   "start_sec": 12.007,
+   "duration_sec": 10.173,
+   "visual_prompt": "Белград и государственные кварталы Сербии накануне политического выбора",
+   "source": "press_photo",
+   "source_query": "панорама Белграда над Савой октябрь 2026"
+  },
+  {
+   "id": 3,
+   "text": "",
+   "start_sec": 22.18,
+   "duration_sec": 14.568,
+   "visual_prompt": "Официальная резиденция президента Сербии после завершения голосования",
+   "source": "press_photo",
+   "source_query": "резиденция президента Сербии фасад Белград 2026"
+  },
+  {
+   "id": 4,
+   "text": "",
+   "start_sec": 36.748,
+   "duration_sec": 9.372,
+   "visual_prompt": "Синее пламя газовой горелки крупным планом",
+   "source": "pexels_video",
+   "source_query": "blue gas flame burner close up"
+  },
+  {
+   "id": 5,
+   "text": "",
+   "start_sec": 46.12,
+   "duration_sec": 10.8,
+   "visual_prompt": "Газоизмерительный объект сербского участка Балканского потока",
+   "source": "press_photo",
+   "source_query": "газоизмерительная станция Балканского потока сербская граница 2026"
+  },
+  {
+   "id": 6,
+   "text": "",
+   "start_sec": 56.92,
+   "duration_sec": 12.314,
+   "visual_prompt": "Александр Вучич в рабочем кабинете во время своего многолетнего правления",
+   "source": "press_photo",
+   "source_query": "портрет Александра Вучича рабочий кабинет Белград"
+  },
+  {
+   "id": 7,
+   "text": "",
+   "start_sec": 69.234,
+   "duration_sec": 11.503,
+   "visual_prompt": "Фасад Дома правительства Сербии на улице Неманина",
+   "source": "press_photo",
+   "source_query": "Дом правительства Сербии улица Неманина Белград 2026"
+  },
+  {
+   "id": 8,
+   "text": "",
+   "start_sec": 80.737,
+   "duration_sec": 10.296,
+   "visual_prompt": "Дом Народного собрания Сербии после досрочных парламентских выборов",
+   "source": "press_photo",
+   "source_query": "Дом Народного собрания Сербии Белград октябрь 2026"
+  },
+  {
+   "id": 9,
+   "text": "",
+   "start_sec": 91.033,
+   "duration_sec": 11.562,
+   "visual_prompt": "Сотрудники Республиканской избирательной комиссии Сербии во время ночного подсчёта",
+   "source": "web_search",
+   "source_query": "Республиканская избирательная комиссия Сербии подсчёт голосов 26 октября 2026"
+  },
+  {
+   "id": 10,
+   "text": "",
+   "start_sec": 102.595,
+   "duration_sec": 13.782,
+   "visual_prompt": "Вучич признаёт поражение на ночной пресс-конференции после подсчёта",
+   "source": "web_search",
+   "source_query": "ночная пресс-конференция Александра Вучича признание поражения 26 октября 2026"
+  },
+  {
+   "id": 11,
+   "text": "",
+   "start_sec": 116.377,
+   "duration_sec": 9.797,
+   "visual_prompt": "Цитата о просчётах окружения и неверных данных",
+   "source": "card:quote",
+   "source_query": "Штабы неправильно считали поддержку. Люди вокруг давали неверные данные."
+  },
+  {
+   "id": 12,
+   "text": "",
+   "start_sec": 126.174,
+   "duration_sec": 10.938,
+   "visual_prompt": "Избирательный штаб списка Вучича в ночь неудачного подсчёта",
+   "source": "web_search",
+   "source_query": "избирательный штаб списка Вучича ночь подсчёта Белград 2026"
+  },
+  {
+   "id": 13,
+   "text": "",
+   "start_sec": 137.112,
+   "duration_sec": 12.69,
+   "visual_prompt": "Опустевший пресс-центр президентской администрации после признания поражения",
+   "source": "press_photo",
+   "source_query": "пустой микрофон пресс-центра президентской администрации Сербии"
+  },
+  {
+   "id": 14,
+   "text": "",
+   "start_sec": 149.802,
+   "duration_sec": 9.838,
+   "visual_prompt": "Вечерняя Теразие в центре Белграда",
+   "source": "press_photo",
+   "source_query": "Теразие центральная улица Белграда вечером 2026"
+  },
+  {
+   "id": 15,
+   "text": "",
+   "start_sec": 159.64,
+   "duration_sec": 12.322,
+   "visual_prompt": "Фасад железнодорожного вокзала Нови-Сада",
+   "source": "press_photo",
+   "source_query": "железнодорожный вокзал Нови-Сада Сербия фасад здания 2026"
+  },
+  {
+   "id": 16,
+   "text": "",
+   "start_sec": 171.962,
+   "duration_sec": 12.652,
+   "visual_prompt": "Обрушившийся бетонный навес перрона вокзала Нови-Сада",
+   "source": "web_search",
+   "source_query": "обрушившийся навес перрона вокзала Нови-Сад Сербия ограждение 2024"
+  },
+  {
+   "id": 17,
+   "text": "",
+   "start_sec": 184.614,
+   "duration_sec": 12.422,
+   "visual_prompt": "Цветы и свечи у вокзала Нови-Сада",
+   "source": "press_photo",
+   "source_query": "цветы и свечи у вокзала Нови-Сада Сербия мемориальное место 2026"
+  },
+  {
+   "id": 18,
+   "text": "",
+   "start_sec": 197.036,
+   "duration_sec": 10.445,
+   "visual_prompt": "Мирное студенческое шествие по центральным улицам Белграда",
+   "source": "web_search",
+   "source_query": "шествие студентов по центру Белграда осень 2026"
+  },
+  {
+   "id": 19,
+   "text": "",
+   "start_sec": 207.481,
+   "duration_sec": 12.511,
+   "visual_prompt": "Фасад здания Социалистической партии Сербии",
+   "source": "press_photo",
+   "source_query": "здание Социалистической партии Сербии в Белграде 2026"
+  },
+  {
+   "id": 20,
+   "text": "",
+   "start_sec": 219.992,
+   "duration_sec": 9.661,
+   "visual_prompt": "Фасад Государственного архива Сербии",
+   "source": "press_photo",
+   "source_query": "Государственный архив Сербии фасад здания Белград 2026"
+  },
+  {
+   "id": 21,
+   "text": "",
+   "start_sec": 229.653,
+   "duration_sec": 12.739,
+   "visual_prompt": "Преподаватели и медики в общей мирной колонне студенческого движения",
+   "source": "web_search",
+   "source_query": "колонна преподавателей и медиков Белград протест 2026"
+  },
+  {
+   "id": 22,
+   "text": "",
+   "start_sec": 242.392,
+   "duration_sec": 11.25,
+   "visual_prompt": "Большая аудитория Белградского университета во время собрания движения",
+   "source": "press_photo",
+   "source_query": "аудитория Белградского университета собрание студентов 2026"
+  },
+  {
+   "id": 23,
+   "text": "",
+   "start_sec": 253.642,
+   "duration_sec": 12.68,
+   "visual_prompt": "Вучич у микрофонов говорит о возможных санкциях новой власти",
+   "source": "web_search",
+   "source_query": "Александр Вучич у микрофонов после выборов Сербия 2026"
+  },
+  {
+   "id": 24,
+   "text": "",
+   "start_sec": 266.322,
+   "duration_sec": 10.79,
+   "visual_prompt": "Современный Кремль как адрес российской стороны санкционного спора",
+   "source": "press_photo",
+   "source_query": "Кремль со стороны Москвы-реки октябрь 2026"
+  },
+  {
+   "id": 25,
+   "text": "",
+   "start_sec": 277.112,
+   "duration_sec": 12.059,
+   "visual_prompt": "Диск электросчётчика крупным планом",
+   "source": "pexels_video",
+   "source_query": "electricity meter dial close up"
+  },
+  {
+   "id": 26,
+   "text": "",
+   "start_sec": 289.171,
+   "duration_sec": 9.111,
+   "visual_prompt": "Наземные установки НПЗ в Панчево как уязвимый элемент экономики Сербии",
+   "source": "press_photo",
+   "source_query": "НПЗ Панчево трубы и установки с земли 2026"
+  },
+  {
+   "id": 27,
+   "text": "",
+   "start_sec": 298.282,
+   "duration_sec": 13.689,
+   "visual_prompt": "Цитата о возможности торговаться при нескольких поставщиках",
+   "source": "card:quote",
+   "source_query": "Пока можно покупать энергию у нескольких поставщиков, можно торговаться."
+  },
+  {
+   "id": 28,
+   "text": "",
+   "start_sec": 311.971,
+   "duration_sec": 12.043,
+   "visual_prompt": "Наземный газопровод на закате",
+   "source": "pexels_video",
+   "source_query": "industrial gas pipeline above ground sunset"
+  },
+  {
+   "id": 29,
+   "text": "",
+   "start_sec": 324.014,
+   "duration_sec": 13.548,
+   "visual_prompt": "Станок в цехе крупным планом",
+   "source": "pexels_video",
+   "source_query": "industrial workshop machinery close up"
+  },
+  {
+   "id": 30,
+   "text": "",
+   "start_sec": 337.562,
+   "duration_sec": 12.32,
+   "visual_prompt": "Пар над башней охлаждения электростанции",
+   "source": "pexels_video",
+   "source_query": "power plant cooling tower steam"
+  },
+  {
+   "id": 31,
+   "text": "",
+   "start_sec": 349.882,
+   "duration_sec": 13.356,
+   "visual_prompt": "Коммунальная квитанция на столе крупным планом",
+   "source": "pexels_video",
+   "source_query": "utility bill paper on table close up"
+  },
+  {
+   "id": 32,
+   "text": "",
+   "start_sec": 363.238,
+   "duration_sec": 13.489,
+   "visual_prompt": "Терминал приёма сжиженного газа в Александруполисе",
+   "source": "press_photo",
+   "source_query": "терминал приёма сжиженного газа Александруполис Греция 2026"
+  },
+  {
+   "id": 33,
+   "text": "",
+   "start_sec": 376.727,
+   "duration_sec": 11.919,
+   "visual_prompt": "Йово Бакич озвучивает позицию победившего студенческого списка",
+   "source": "web_search",
+   "source_query": "Йово Бакич заявление об отношениях с Россией Белград 2026"
+  },
+  {
+   "id": 34,
+   "text": "",
+   "start_sec": 388.646,
+   "duration_sec": 12.435,
+   "visual_prompt": "Главный вход в Берлемон как источник возможного европейского давления",
+   "source": "press_photo",
+   "source_query": "вход Еврокомиссии Берлемон Брюссель октябрь 2026"
+  },
+  {
+   "id": 35,
+   "text": "",
+   "start_sec": 401.081,
+   "duration_sec": 14.27,
+   "visual_prompt": "МИД России в Москве как сторона, по отношению к которой проверят новый курс",
+   "source": "press_photo",
+   "source_query": "Смоленская площадь здание МИД России осень 2026"
+  },
+  {
+   "id": 36,
+   "text": "",
+   "start_sec": 415.351,
+   "duration_sec": 8.093,
+   "visual_prompt": "Виктор Орбан после потери власти как часть изменившегося европейского фона",
+   "source": "press_photo",
+   "source_query": "Виктор Орбан после поражения на выборах Венгрия 2026"
+  },
+  {
+   "id": 37,
+   "text": "",
+   "start_sec": 423.444,
+   "duration_sec": 14.563,
+   "visual_prompt": "Здание правительства Словакии в Братиславе",
+   "source": "press_photo",
+   "source_query": "офис правительства Словакии Братислава 2026"
+  },
+  {
+   "id": 38,
+   "text": "",
+   "start_sec": 438.007,
+   "duration_sec": 13.166,
+   "visual_prompt": "Установки НПЗ Словнафт в Братиславе",
+   "source": "press_photo",
+   "source_query": "НПЗ Словнафт в Братиславе 2026"
+  },
+  {
+   "id": 39,
+   "text": "",
+   "start_sec": 451.173,
+   "duration_sec": 12.073,
+   "visual_prompt": "Энергоблоки АЭС Моховце как конкретный энергетический интерес Словакии",
+   "source": "press_photo",
+   "source_query": "АЭС Моховце энергоблоки Словакия 2026"
+  },
+  {
+   "id": 40,
+   "text": "",
+   "start_sec": 463.246,
+   "duration_sec": 10.319,
+   "visual_prompt": "Комплекс Евросовета в Брюсселе как место объединения европейских решений",
+   "source": "press_photo",
+   "source_query": "комплекс Евросовета Европа Брюссель октябрь 2026"
+  },
+  {
+   "id": 41,
+   "text": "",
+   "start_sec": 473.565,
+   "duration_sec": 8.971,
+   "visual_prompt": "Брифинг Еврокомиссии в пресс-центре в Брюсселе",
+   "source": "web_search",
+   "source_query": "брифинг Еврокомиссии в пресс-центре Брюссель 2026"
+  },
+  {
+   "id": 42,
+   "text": "",
+   "start_sec": 482.536,
+   "duration_sec": 14.56,
+   "visual_prompt": "Фасад Министерства горного дела и энергетики Сербии",
+   "source": "press_photo",
+   "source_query": "Министерство горного дела и энергетики Сербии Белград 2026"
+  },
+  {
+   "id": 43,
+   "text": "",
+   "start_sec": 497.096,
+   "duration_sec": 10.0,
+   "visual_prompt": "Цитата о европейском будущем и сохранении старых связей",
+   "source": "card:quote",
+   "source_query": "Где надо, говорил про европейское будущее. Где надо, напоминал про старые связи."
+  },
+  {
+   "id": 44,
+   "text": "",
+   "start_sec": 507.096,
+   "duration_sec": 11.36,
+   "visual_prompt": "Организаторы студенческого списка перед Домом Народного собрания Сербии",
+   "source": "web_search",
+   "source_query": "организаторы студенческого списка у парламента Сербии 2026"
+  },
+  {
+   "id": 45,
+   "text": "",
+   "start_sec": 518.456,
+   "duration_sec": 13.15,
+   "visual_prompt": "Сербская делегация прибывает к зданию Еврокомиссии в Брюсселе",
+   "source": "press_photo",
+   "source_query": "сербская делегация прибывает к Берлемону Брюссель 2026"
+  },
+  {
+   "id": 46,
+   "text": "",
+   "start_sec": 531.606,
+   "duration_sec": 10.072,
+   "visual_prompt": "Фасад Палаты правосудия в Белграде",
+   "source": "press_photo",
+   "source_query": "Палата правосудия Высший суд Сербии фасад Белград 2026"
+  },
+  {
+   "id": 47,
+   "text": "",
+   "start_sec": 541.678,
+   "duration_sec": 12.868,
+   "visual_prompt": "Вход в Европарламент как символ долгого пути Сербии к Евросоюзу",
+   "source": "press_photo",
+   "source_query": "вход в Европарламент Брюссель осень 2026"
+  },
+  {
+   "id": 48,
+   "text": "",
+   "start_sec": 554.546,
+   "duration_sec": 11.512,
+   "visual_prompt": "Здание представительства Евросоюза в Белграде",
+   "source": "press_photo",
+   "source_query": "здание представительства Евросоюза в Белграде 2026"
+  },
+  {
+   "id": 49,
+   "text": "",
+   "start_sec": 566.058,
+   "duration_sec": 9.55,
+   "visual_prompt": "Мост на Ибаре в Косовска-Митровице с сербской стороны",
+   "source": "press_photo",
+   "source_query": "мост на Ибаре Косовска-Митровица сербская сторона 2026"
+  },
+  {
+   "id": 50,
+   "text": "",
+   "start_sec": 575.608,
+   "duration_sec": 9.534,
+   "visual_prompt": "МИД Сербии как место формирования будущего курса в отношении России",
+   "source": "press_photo",
+   "source_query": "МИД Сербии фасад Белград после выборов 2026"
+  },
+  {
+   "id": 51,
+   "text": "",
+   "start_sec": 585.142,
+   "duration_sec": 12.006,
+   "visual_prompt": "Флаги Сербии и России на официальной встрече",
+   "source": "press_photo",
+   "source_query": "сербские и российские флаги на официальной встрече в Белграде 2026"
+  },
+  {
+   "id": 52,
+   "text": "",
+   "start_sec": 597.148,
+   "duration_sec": 11.625,
+   "visual_prompt": "Фасад Министерства финансов Сербии",
+   "source": "press_photo",
+   "source_query": "Министерство финансов Сербии фасад Белград 2026"
+  },
+  {
+   "id": 53,
+   "text": "",
+   "start_sec": 608.773,
+   "duration_sec": 11.752,
+   "visual_prompt": "Панорама Киева над Днепром",
+   "source": "press_photo",
+   "source_query": "панорама Киева над Днепром 2026"
+  },
+  {
+   "id": 54,
+   "text": "",
+   "start_sec": 620.525,
+   "duration_sec": 13.448,
+   "visual_prompt": "Общий вид базы НАТО Кэмп-Бондстил в Косове",
+   "source": "press_photo",
+   "source_query": "база НАТО Кэмп-Бондстил в Косове общий вид 2026"
+  },
+  {
+   "id": 55,
+   "text": "",
+   "start_sec": 633.973,
+   "duration_sec": 11.84,
+   "visual_prompt": "Сербский пограничный переход и международный поток грузовых автомобилей",
+   "source": "press_photo",
+   "source_query": "погранпереход Сербии колонна фур октябрь 2026"
+  },
+  {
+   "id": 56,
+   "text": "",
+   "start_sec": 645.813,
+   "duration_sec": 13.169,
+   "visual_prompt": "Наземный комплекс хранилища газа Банатски-Двор",
+   "source": "press_photo",
+   "source_query": "подземное хранилище газа Банатски-Двор Сербия наземный комплекс 2026"
+  },
+  {
+   "id": 57,
+   "text": "",
+   "start_sec": 658.982,
+   "duration_sec": 10.506,
+   "visual_prompt": "Фасад Народного банка Сербии",
+   "source": "press_photo",
+   "source_query": "Народный банк Сербии фасад Белград 2026"
+  },
+  {
+   "id": 58,
+   "text": "",
+   "start_sec": 669.488,
+   "duration_sec": 10.565,
+   "visual_prompt": "Шествие на площади Республики в Белграде",
+   "source": "web_search",
+   "source_query": "площадь Республики в Белграде шествие октябрь 2026"
+  },
+  {
+   "id": 59,
+   "text": "",
+   "start_sec": 680.053,
+   "duration_sec": 10.302,
+   "visual_prompt": "Служебный кабинет главы правительства Сербии после смены власти",
+   "source": "press_photo",
+   "source_query": "служебный кабинет премьер-министра Сербии Белград"
+  },
+  {
+   "id": 60,
+   "text": "",
+   "start_sec": 690.355,
+   "duration_sec": 12.416,
+   "visual_prompt": "Офис государственной компании Электропривреда Сербии",
+   "source": "press_photo",
+   "source_query": "офис Электропривреда Сербии Белград 2026"
+  },
+  {
+   "id": 61,
+   "text": "",
+   "start_sec": 702.771,
+   "duration_sec": 9.23,
+   "visual_prompt": "Цитата о начале настоящей работы после победы",
+   "source": "card:quote",
+   "source_query": "Вот с этой минуты начинается настоящая работа. Студенческий список собрал очень разных людей."
+  },
+  {
+   "id": 62,
+   "text": "",
+   "start_sec": 712.001,
+   "duration_sec": 9.856,
+   "visual_prompt": "Представители победившего студенческого списка после объявления результатов",
+   "source": "web_search",
+   "source_query": "представители студенческого списка Сербии после победы 2026"
+  },
+  {
+   "id": 63,
+   "text": "",
+   "start_sec": 721.857,
+   "duration_sec": 8.48,
+   "visual_prompt": "Республиканская прокуратура Сербии как место будущих расследований",
+   "source": "press_photo",
+   "source_query": "Республиканская прокуратура Сербии фасад Белград 2026"
+  },
+  {
+   "id": 64,
+   "text": "",
+   "start_sec": 730.337,
+   "duration_sec": 9.52,
+   "visual_prompt": "Монастырь Грачаница в Косове",
+   "source": "press_photo",
+   "source_query": "монастырь Грачаница в Косове 2026"
+  },
+  {
+   "id": 65,
+   "text": "",
+   "start_sec": 739.857,
+   "duration_sec": 10.635,
+   "visual_prompt": "Ценники на полке супермаркета крупным планом",
+   "source": "pexels_video",
+   "source_query": "supermarket price tags on shelf close up"
+  },
+  {
+   "id": 66,
+   "text": "",
+   "start_sec": 750.492,
+   "duration_sec": 12.245,
+   "visual_prompt": "Старый дворец в Белграде, здание городской скупщины",
+   "source": "press_photo",
+   "source_query": "Старый дворец Белград здание городской скупщины 2026"
+  },
+  {
+   "id": 67,
+   "text": "",
+   "start_sec": 762.737,
+   "duration_sec": 11.405,
+   "visual_prompt": "Сторонники списка Вучича возле партийного офиса в Белграде",
+   "source": "press_photo",
+   "source_query": "сторонники списка Вучича у партийного офиса Белград 2026"
+  },
+  {
+   "id": 68,
+   "text": "",
+   "start_sec": 774.142,
+   "duration_sec": 12.283,
+   "visual_prompt": "Здание Радио-телевидения Сербии",
+   "source": "press_photo",
+   "source_query": "здание Радио-телевидения Сербии РТС Белград 2026"
+  },
+  {
+   "id": 69,
+   "text": "",
+   "start_sec": 786.425,
+   "duration_sec": 10.828,
+   "visual_prompt": "Велосипедный марш сербских студентов как напоминание об ожиданиях улицы",
+   "source": "web_search",
+   "source_query": "велосипедный марш студентов Белград 2026"
+  },
+  {
+   "id": 70,
+   "text": "",
+   "start_sec": 797.253,
+   "duration_sec": 13.518,
+   "visual_prompt": "Площадь Славия в Белграде",
+   "source": "press_photo",
+   "source_query": "площадь Славия в Белграде движение транспорта 2026"
+  },
+  {
+   "id": 71,
+   "text": "",
+   "start_sec": 810.771,
+   "duration_sec": 12.158,
+   "visual_prompt": "Полицейские автомобили на улице в центре Белграда",
+   "source": "press_photo",
+   "source_query": "полицейские автомобили на улице в центре Белграда 2026"
+  },
+  {
+   "id": 72,
+   "text": "",
+   "start_sec": 822.929,
+   "duration_sec": 12.705,
+   "visual_prompt": "Митинг сторонников Сербской прогрессивной партии",
+   "source": "web_search",
+   "source_query": "митинг сторонников Сербской прогрессивной партии в Белграде 2026"
+  },
+  {
+   "id": 73,
+   "text": "",
+   "start_sec": 835.634,
+   "duration_sec": 12.626,
+   "visual_prompt": "Разрушенное здание Генштаба на улице Кнеза Милоша",
+   "source": "press_photo",
+   "source_query": "разрушенное здание Генштаба Сербии улица Кнеза Милоша Белград 2026"
+  },
+  {
+   "id": 74,
+   "text": "",
+   "start_sec": 848.26,
+   "duration_sec": 11.271,
+   "visual_prompt": "Патруль КФОР в Косовска-Митровице",
+   "source": "press_photo",
+   "source_query": "патруль КФОР в Косовска-Митровице 2026"
+  },
+  {
+   "id": 75,
+   "text": "",
+   "start_sec": 859.531,
+   "duration_sec": 10.889,
+   "visual_prompt": "Цитата о наследстве, которое получает новая власть",
+   "source": "card:quote",
+   "source_query": "Вот этот клубок и получает новая власть. Вучич годами его не развязывал."
+  },
+  {
+   "id": 76,
+   "text": "",
+   "start_sec": 870.42,
+   "duration_sec": 11.096,
+   "visual_prompt": "Депутаты нового созыва у входа в Дом Народного собрания",
+   "source": "web_search",
+   "source_query": "депутаты нового созыва у входа в Дом Народного собрания Сербии 2026"
+  },
+  {
+   "id": 77,
+   "text": "",
+   "start_sec": 881.516,
+   "duration_sec": 8.504,
+   "visual_prompt": "Вечерние витрины магазинов на Кнез-Михайловой",
+   "source": "press_photo",
+   "source_query": "вечерние витрины магазинов на улице Кнез-Михайлова Белград 2026"
+  },
+  {
+   "id": 78,
+   "text": "",
+   "start_sec": 890.02,
+   "duration_sec": 10.18,
+   "visual_prompt": "Чековая лента выходит из печати крупным планом",
+   "source": "pexels_video",
+   "source_query": "receipt paper roll printing close up"
+  }
+ ]
+}
