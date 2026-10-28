@@ -151,11 +151,26 @@ try:
     data = json.loads(m.group(1))
 except ValueError as e:
     sys.exit("JSON в ответе битый: %s" % e)
-sc = data.get("scenes") if isinstance(data, dict) else data
+# КЛЮЧ ОТВЕТА ЗАВИСИТ ОТ ЗАДАНИЯ (28.10). Раньше здесь требовался ровно
+# `scenes` — и ответ на любое ДРУГОЕ задание молча не сохранялся: отбор
+# кадров в базу возвращает `sheets`, и 7 разобранных листов едва не уехали
+# в корзину вместе с лимитом агента. Берём первый непустой список верхнего
+# уровня, как бы он ни назывался.
+if isinstance(data, dict):
+    key, sc = "", None
+    for k in ("scenes", "sheets", "items", "picks"):
+        if isinstance(data.get(k), list) and data[k]:
+            key, sc = k, data[k]; break
+    if sc is None:
+        for k, v in data.items():
+            if isinstance(v, list) and v:
+                key, sc = k, v; break
+else:
+    key, sc = "записей", data
 if not sc:
-    sys.exit("в JSON нет сцен")
+    sys.exit("в JSON нет ни одного непустого списка — класть нечего")
 json.dump(data, open(sys.argv[2], "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-print("JSON принят и записан: %d сцен -> %s" % (len(sc), sys.argv[2]))
+print("JSON принят и записан: %d %s -> %s" % (len(sc), key, sys.argv[2]))
 PYJ
   # НЕ РОНЯТЬ ВЕСЬ ВЫЗОВ, ЕСЛИ JSON НЕ НАШЁЛСЯ (24.10): ответ агента уже
   # получен и стоит его лимита — его надо показать и сохранить, даже когда

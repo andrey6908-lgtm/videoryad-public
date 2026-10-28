@@ -51,6 +51,11 @@ def candidates(q, q_en):
     Сток не зовём вовсе: запрещён пользователем 28.10."""
     out, seen = [], set()
     for name, fn in (
+        # ОЧЕНЬ КРУПНЫЕ ПЕРВЫМИ (замер 28.10): порог ширины 1600 отбил 127
+        # кадров из 186 скачанных — две трети работы впустую. Фильтр
+        # "exlarge" даёт 15 новых адресов из 20 по сравнению с "large",
+        # и это именно те версии, что проходят порог.
+        ("yandex·очень крупные", lambda: SO.yandex_images(q, n=30, isize="exlarge")),
         ("yandex",    lambda: SO.yandex_images(q, n=30)),
         ("ddg",       lambda: SO.ddg_images(q_en, n=25)),
         ("openverse", lambda: SO.openverse(q_en, n=15)),
@@ -198,6 +203,14 @@ def harvest_one(item, out_dir, want, tries, deadline):
             nm = "%s__%s%s.jpg" % (layer, safe, "" if part == 0 else "_%d" % (part // 12 + 1))
             sheets.append(sheet(chunk, os.path.join(out_dir, "sheets", nm),
                                 "%s · %s" % (layer, q)))
+            # КАРТА «ПЛИТКА → ФАЙЛ» РЯДОМ С ЛИСТОМ. Без неё приёмке пришлось бы
+            # вычислять соответствие по порядку имён — то есть делать ровно то
+            # допущение, на котором уже горели («номер плитки пересчитали
+            # неверно»). Здесь порядок известен точно, он и записывается.
+            json.dump({"sheet": nm, "layer": layer, "dir": safe, "q": q,
+                       "tiles": [os.path.relpath(c, out_dir) for c in chunk]},
+                      open(os.path.join(out_dir, "sheets", nm[:-4] + ".map.json"),
+                           "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     _say("    ИТОГ: прошло %d из %d скачанных, отказы: %s"
          % (len(kept), tried, ", ".join("%s×%d" % (k, v) for k, v in sorted(rej.items())) or "нет"))
     return {"layer": layer, "q": q, "dir": safe, "need_video": item.get("need_video", False),
@@ -214,7 +227,7 @@ def main():
     ap.add_argument("env", nargs="?", default="")
     ap.add_argument("--shard", default="1/1", help="k/n — чья часть плана")
     ap.add_argument("--want", type=int, default=25)
-    ap.add_argument("--tries", type=int, default=40)
+    ap.add_argument("--tries", type=int, default=70)
     ap.add_argument("--deadline", type=float, default=0.0,
                     help="секунд на весь шард; 0 — без дедлайна")
     a = ap.parse_args()

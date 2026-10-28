@@ -99,6 +99,26 @@ def mines_text():
         return ""
 
 
+def _base_catalog():
+    """Блок каталога базы кадров для брифа; пусто, если база ещё не набрана."""
+    try:
+        import importlib.util
+        here = os.path.dirname(os.path.abspath(__file__))
+        cat_py = os.path.join(here, "..", "base", "catalog.py")
+        spec = importlib.util.spec_from_file_location("base_catalog", cat_py)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        ml = os.environ.get("MEDIA_LIBRARY_DIR") or os.path.expanduser("~/projects/media-library")
+        if not os.path.isabs(ml):
+            ml = os.path.expanduser(os.path.join("~/projects", ml))
+        return mod.text_block(mod.scan(ml, 6))
+    except Exception as e:
+        # каталога нет — не повод валить бриф, но молчать тоже нельзя
+        print("каталог базы не прочитан (%s) — в бриф он не попал" % e,
+              file=sys.stderr)
+        return ""
+
+
 def write_scenes_task(dest, srt, channel, out_name="ЗАДАНИЕ-РАСКАДРОВКА.txt"):
     """Задание на раскадровку: числа цифрами + ЖИВОЙ список мин линтера."""
     total = srt_end_sec(srt)
@@ -160,6 +180,13 @@ def write_scenes_task(dest, srt, channel, out_name="ЗАДАНИЕ-РАСКАД�
         "(другое ведомство, другой город, другую сторону события), а не",
         "новое определение к прежнему.",
         "",
+        # КАТАЛОГ БАЗЫ КАДРОВ (28.10). Сцена медиатеки несёт в `source_query`
+        # ПУТЬ ПАПКИ, а не смысловой текст: сопоставления «смысл → папка» в
+        # фетче нет вовсе. Значит папку обязан назвать тот, кто пишет
+        # раскадровку, а узнать о ней он может ТОЛЬКО отсюда. Без этого блока
+        # собранная ночью база физически не попадает ни в один ролик — фетч не
+        # найдёт папку по описанию и молча уйдёт в пресс-водопад.
+        _base_catalog(),
         "Субтитры приложены файлом в этой же папке, путей вида D:\\ здесь нет.",
         "Результат верни ОДНИМ блоком ```json, на диск ничего не записывай.",
         "Числами в ответе не отчитывайся — их проверит приёмка.",
