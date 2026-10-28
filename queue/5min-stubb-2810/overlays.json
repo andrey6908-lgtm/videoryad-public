@@ -1,0 +1,364 @@
+{
+  "anchor": "top",
+  "3": {
+    "text": {
+      "words": "АЛЕКСАНДР СТУББ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "zatvor",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "whoosh",
+    "anchor": "top"
+  },
+  "4": {
+    "text": {
+      "words": "ЙОНАС ГАР СТЁРЕ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 2.4,
+    "shape": "rect",
+    "style": "right",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "zatvor",
+    "anchor": "top"
+  },
+  "8": {
+    "text": {
+      "words": "РАЗГОВОР ШЁЛ ПОЛТОРА ЧАСА",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "zatvor",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "whoosh",
+    "anchor": "top"
+  },
+  "11": {
+    "text": {
+      "words": "БАЛТИКА",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "mashinka",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 3.0,
+    "shape": "rect",
+    "style": "right",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "zatvor",
+    "anchor": "top"
+  },
+  "13": {
+    "text": {
+      "words": "ВЛАДИМИР ЗЕЛЕНСКИЙ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "zatvor",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 2.5,
+    "shape": "rect",
+    "style": "left",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "whoosh",
+    "anchor": "top"
+  },
+  "19": {
+    "text": {
+      "words": "КОНЕЦ СЕНТЯБРЯ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 3.0,
+    "shape": "rect",
+    "style": "right",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "zatvor",
+    "anchor": "top"
+  },
+  "21": {
+    "text": {
+      "words": "ЮРАЙ БЛАНАР",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "mashinka",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "whoosh",
+    "anchor": "top"
+  },
+  "26": {
+    "text": {
+      "words": "ТРЁХСТОРОННИЙ ФОРМАТ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "mashinka",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 2.4,
+    "shape": "rect",
+    "style": "right",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "zatvor",
+    "anchor": "top"
+  },
+  "29": {
+    "text": {
+      "words": "ПЁТР ПАВЕЛ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "whoosh",
+    "anchor": "top"
+  },
+  "32": {
+    "text": {
+      "words": "МЕТТЕ ФРЕДЕРИКСЕН",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "pshik",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 2.4,
+    "shape": "rect",
+    "style": "right",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "zatvor",
+    "anchor": "top"
+  },
+  "37": {
+    "text": {
+      "words": "НОРВЕГИЯ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "pshik",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "whoosh",
+    "anchor": "top"
+  },
+  "41": {
+    "text": {
+      "words": "СОСЕДИ РОССИИ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "mashinka",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 2.3,
+    "shape": "rect",
+    "style": "right",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "zatvor",
+    "anchor": "top"
+  },
+  "44": {
+    "text": {
+      "words": "ФИНЛЯНДИЯ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 2.5,
+    "shape": "rect",
+    "style": "left",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "whoosh",
+    "anchor": "top"
+  },
+  "52": {
+    "text": {
+      "words": "ВОПРОС О ПРАВИЛАХ ПОСЛЕ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "pshik",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 3.0,
+    "shape": "rect",
+    "style": "right",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "zatvor",
+    "anchor": "top"
+  },
+  "59": {
+    "text": {
+      "words": "ПОЗИЦИЯ МОСКВЫ НЕ ИЗМЕНИЛАСЬ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "whoosh",
+    "anchor": "top"
+  },
+  "65": {
+    "text": {
+      "words": "ДОПОЛНИТЕЛЬНЫЙ КАНАЛ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "pop",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 2.2,
+    "shape": "rect",
+    "style": "right",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "zatvor",
+    "anchor": "top"
+  },
+  "70": {
+    "text": {
+      "words": "ЭНЕРГЕТИКА",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "pop",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 2.4,
+    "shape": "rect",
+    "style": "left",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "whoosh",
+    "anchor": "top"
+  },
+  "75": {
+    "text": {
+      "words": "ДОНБАСС",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "pop",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 2.5,
+    "shape": "rect",
+    "style": "right",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "zatvor",
+    "anchor": "top"
+  },
+  "76": {
+    "text": {
+      "words": "СЕРГЕЙ ЛАВРОВ",
+      "color": "yellow",
+      "pos": "bc",
+      "font": "default",
+      "sound": "mashinka",
+      "at": 2.0,
+      "scale": 1.0,
+      "approved": true
+    },
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "s",
+    "scale": 1.0,
+    "sound": "whoosh",
+    "anchor": "top"
+  }
+}
