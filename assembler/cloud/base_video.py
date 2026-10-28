@@ -54,9 +54,29 @@ def _run(cmd, timeout=600):
         return None
 
 
-def channels_for(layer):
-    d = json.load(open(os.path.join(BASE, "channels.json"), encoding="utf-8"))
-    return [c for c in d["каналы"] if layer in c.get("слои", [])]
+def channels_path(plan_path):
+    """Справочник каналов едет ВМЕСТЕ С ЗАДАНИЕМ. В облако синхронизируются
+    только `template/` и `cloud/`, папки `base/` там нет вовсе — первый
+    прогон 28.10 упал именно на этом: шесть машин честно отработали ноль
+    клипов, а ошибка выглядела как «YouTube не пустил»."""
+    near = os.path.join(os.path.dirname(os.path.abspath(plan_path)), "channels.json")
+    if os.path.exists(near):
+        return near
+    local = os.path.join(BASE, "channels.json")
+    if os.path.exists(local):
+        return local
+    raise SystemExit("ОШИБКА: нет channels.json ни рядом с заданием (%s), "
+                     "ни в base/ — сбор клипов невозможен" % near)
+
+
+_CH_CACHE = {}
+
+
+def channels_for(layer, plan_path):
+    cp = channels_path(plan_path)
+    if cp not in _CH_CACHE:
+        _CH_CACHE[cp] = json.load(open(cp, encoding="utf-8"))
+    return [c for c in _CH_CACHE[cp]["каналы"] if layer in c.get("слои", [])]
 
 
 def probe(path):
@@ -179,12 +199,70 @@ def cut_clips(src, dst_dir, base_name, clip_len, want, seen_md5):
     return out, ""
 
 
+def sweep_channel(item, out_dir, per_object, clip_len, deadline):
+    """СВЕЖИЕ РОЛИКИ ОДНОГО КАНАЛА (решение пользователя 28.10): «если
+    говорится про Зеленского — пускай он просто крутится». Объект здесь не
+    ищется: берём последние записи официального канала и режем их. Привязка
+    к событию и дате НЕ нужна — новее значит лучше, и кадр политика при этом
+    всегда показывает его СЕЙЧАС, а не десять лет назад.
+
+    Говорящая голова тут НЕ брак, а именно то, что нужно: это кадр персоны."""
+    ch, folder = item["channel"], item["dir"]
+    dst = os.path.join(out_dir, "frames", item["layer"], folder)
+    os.makedirs(dst, exist_ok=True)
+    _say("\n── %s → %s (свежие ролики канала)" % (ch, folder))
+    seen_md5 = set(item.get("known_md5") or [])
+    r = _run(["yt-dlp", "--flat-playlist", "--playlist-end", str(per_object * 3),
+              "--print", "%(id)s\t%(duration)s\t%(upload_date)s\t%(title)s",
+              "https://www.youtube.com/%s/videos" % ch], 180)
+    vids = []
+    for line in ((r.stdout if r else "") or "").splitlines():
+        parts = line.split("\t")
+        if len(parts) < 4 or not parts[0].strip():
+            continue
+        try:
+            dur = float(parts[1])
+        except (ValueError, TypeError):
+            dur = 0.0
+        if dur and (dur < 12 or dur > 1800):
+            continue
+        vids.append((parts[0].strip(), dur, (parts[2] or "")[:8], parts[3][:60]))
+    _say("    свежих роликов годной длины: %d" % len(vids))
+    kept = []
+    for vid, dur, day, title in vids:
+        if len(kept) >= per_object or (deadline and time.time() > deadline):
+            break
+        raw = os.path.join(dst, ".src.mp4")
+        sec = "*%d-%d" % (int(max(3, dur * 0.08)), int(max(3, dur * 0.08)) + 90)
+        rr = _run(["yt-dlp", "-q", "--no-warnings", "-f",
+                   "bv*[height<=1080][ext=mp4]+ba[ext=m4a]/b[height<=1080][ext=mp4]/b",
+                   "--download-sections", sec, "--force-keyframes-at-cuts",
+                   "-o", raw, "--", vid], 600)
+        if not os.path.exists(raw):
+            _say("      %s: не скачалось (%s)" % (vid, ((rr.stderr or "")[:110] if rr else "нет ответа").replace("\n", " ")))
+            continue
+        # ИМЯ НЕСЁТ ДАТУ: папка персоны живёт скользящим окном, и свежее
+        # вытесняет старое само, без правок боевого фетча
+        got, why = cut_clips(raw, dst, "%s_%s" % (day or "00000000", vid[:6]),
+                             clip_len, per_object - len(kept), seen_md5)
+        os.remove(raw)
+        if why:
+            _say("      %s: %s" % (vid, why))
+        for g in got:
+            _say("      + %s  ← %s · %s" % (os.path.basename(g), day, title[:40]))
+        kept += got
+    _say("    ИТОГ: клипов %d" % len(kept))
+    return {"layer": item["layer"], "q": item.get("q", ch), "dir": folder,
+            "channel": ch, "kept": len(kept),
+            "files": [os.path.relpath(p, out_dir) for p in kept]}
+
+
 def harvest_one(item, out_dir, per_object, clip_len, deadline):
     layer, q = item["layer"], item["q"]
     safe = item["dir"]
     dst = os.path.join(out_dir, "frames", layer, safe)
     os.makedirs(dst, exist_ok=True)
-    chans = channels_for(layer)
+    chans = channels_for(layer, item["_plan"])
     _say("\n── %s / %s" % (layer, q))
     if not chans:
         _say("    официального канала для этого слоя нет — пропускаю")
@@ -270,8 +348,10 @@ def main():
     a = ap.parse_args()
 
     plan = json.load(open(a.plan, encoding="utf-8"))
-    items = [it for it in (plan["items"] if isinstance(plan, dict) else plan)
-             if it.get("need_video")]
+    allit = plan["items"] if isinstance(plan, dict) else plan
+    for it in allit:
+        it["_plan"] = a.plan
+    items = [it for it in allit if it.get("need_video") or it.get("channel")]
     k, n = (int(x) for x in a.shard.split("/"))
     mine = [it for i, it in enumerate(items) if i % n == (k - 1) % n]
     os.makedirs(a.out_dir, exist_ok=True)
@@ -298,7 +378,9 @@ def main():
             _say("[дедлайн] шард остановлен, необработанных: %d" % (len(mine) - len(rep)))
             break
         try:
-            r = harvest_one(it, a.out_dir, a.per_object, a.clip, dl)
+            r = (sweep_channel(it, a.out_dir, a.per_object, a.clip, dl)
+                 if it.get("channel")
+                 else harvest_one(it, a.out_dir, a.per_object, a.clip, dl))
         except Exception as e:
             _say("ОШИБКА на объекте %r: %s" % (it.get("q"), e))
             r = {"layer": it.get("layer"), "q": it.get("q"), "dir": it.get("dir"),
@@ -321,8 +403,8 @@ def main():
     _say("\n=== ШАРД %d/%d: клипов %d, объектов %d, %.0f с ==="
          % (k, n, out["kept_total"], len(rep), out["seconds"]))
     if rep and out["kept_total"] == 0:
-        _say("::error::ни одного клипа — смотри причины выше (часто YouTube "
-             "не пускает раннер: 'Sign in to confirm you're not a bot')")
+        _say("::error::ни одного клипа — причина НАЗВАНА в строках выше по "
+             "каждому ролику; не гадай, читай их")
         raise SystemExit(1)
 
 
