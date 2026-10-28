@@ -18,6 +18,7 @@
 cloud/.gitignore
 cloud/README-CLOUD.md
 cloud/base_harvest.py
+cloud/base_video.py
 cloud/battle_manifest.txt
 cloud/busy.sh
 cloud/classify_prompt.md
@@ -30,6 +31,7 @@ cloud/fetch_shard.py
 cloud/get.sh
 cloud/harvest.sh
 cloud/harvest_get.sh
+cloud/harvest_video.sh
 cloud/merge_shards.py
 cloud/notify.sh
 cloud/preflight.sh
@@ -43,6 +45,7 @@ cloud/traffic.sh
 cloud/use_account.sh
 cloud/va.sh
 cloud/workflows/base-harvest.yml
+cloud/workflows/base-video.yml
 cloud/workflows/cards-render.yml
 cloud/workflows/videoryad-cloud.yml
 cloud/youtube_upload.py
