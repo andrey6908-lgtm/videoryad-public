@@ -226,12 +226,26 @@ def sweep_channel(item, out_dir, per_object, clip_len, deadline):
             dur = 0.0
         if dur and (dur < 12 or dur > 1800):
             continue
-        vids.append((parts[0].strip(), dur, (parts[2] or "")[:8], parts[3][:60]))
+        # ДАТА ВЫГРУЗКИ В ЛЕНТЕ КАНАЛА НЕ ОТДАЁТСЯ (проверено 28.10: приходит
+        # "NA"), а на ней держится скользящее окно свежести. Берём дату
+        # СБОРА: лента канала и так отсортирована от свежего к старому,
+        # поэтому «собрано сегодня» и значит «самое новое, что есть».
+        day = (parts[2] or "").strip()
+        if not day or not day[:8].isdigit():
+            day = time.strftime("%Y%m%d")
+        vids.append((parts[0].strip(), dur, day[:8], parts[3][:60]))
     _say("    свежих роликов годной длины: %d" % len(vids))
     kept = []
     for vid, dur, day, title in vids:
         if len(kept) >= per_object or (deadline and time.time() > deadline):
             break
+        if os.environ.get("BASE_VIDEO_COPY") == "1":
+            got, why = grab_sections(vid, dur, dst, "%s_%s" % (day or "00000000", vid[:6]),
+                                     clip_len, per_object - len(kept), seen_md5)
+            for g in got:
+                _say("      + %s  ← %s · %s" % (os.path.basename(g), day, title[:40]))
+            kept += got
+            continue
         raw = os.path.join(dst, ".src.mp4")
         sec = "*%d-%d" % (int(max(3, dur * 0.08)), int(max(3, dur * 0.08)) + 90)
         rr = _run(["yt-dlp", "-q", "--no-warnings", "-f",
@@ -255,6 +269,50 @@ def sweep_channel(item, out_dir, per_object, clip_len, deadline):
     return {"layer": item["layer"], "q": item.get("q", ch), "dir": folder,
             "channel": ch, "kept": len(kept),
             "files": [os.path.relpath(p, out_dir) for p in kept]}
+
+
+def grab_sections(vid, dur, dst_dir, base_name, clip_len, want, seen_md5):
+    """КУСКИ КАЧАЕМ ГОТОВЫМИ, БЕЗ ПЕРЕКОДИРОВАНИЯ (локальный режим).
+
+    Машину пользователя считать нельзя (его прямое слово 23.10), а YouTube
+    отдаёт файлы только с домашнего адреса — на раннерах GitHub ответ один:
+    «Sign in to confirm you're not a bot» (проверено 28.10, 12 джобов из 12).
+    Выход: просим у YouTube сразу нужный отрезок и кладём его как есть.
+    Процессор при этом не работает — идёт только скачивание."""
+    out = []
+    starts = []
+    t = max(3.0, dur * 0.12)
+    while t + clip_len < dur * 0.95 and len(starts) < want:
+        starts.append(t)
+        t += clip_len + 2.0
+    for i, st in enumerate(starts, 1):
+        dst = os.path.join(dst_dir, "%s_%02d.mp4" % (base_name, i))
+        r = _run(["yt-dlp", "-q", "--no-warnings", "-f",
+                  "bv*[height<=1080][ext=mp4]/b[height<=1080][ext=mp4]/b",
+                  "--download-sections", "*%d-%d" % (int(st), int(st + clip_len + 1)),
+                  "-o", dst, "--", vid], 300)
+        if not os.path.exists(dst) or os.path.getsize(dst) < 50000:
+            if r and r.stderr:
+                _say("      кусок %d не скачался: %s" % (i, r.stderr[:100].replace("\n", " ")))
+            continue
+        w, h, cdur = probe(dst)
+        if w < MIN_W or h < MIN_H:
+            os.remove(dst); _say("      кусок %d: мелкий %dx%d" % (i, w, h)); continue
+        if cdur < MIN_CLIP:
+            os.remove(dst); _say("      кусок %d: короткий %.1f с" % (i, cdur)); continue
+        try:
+            h5 = F.file_md5(dst)
+        except OSError:
+            h5 = None
+        if h5 and h5 in seen_md5:
+            os.remove(dst); continue
+        ok, why = clip_is_clean(dst, cdur)
+        if not ok:
+            os.remove(dst); _say("      кусок %d отбит: %s" % (i, why)); continue
+        if h5:
+            seen_md5.add(h5)
+        out.append(dst)
+    return out, ""
 
 
 def harvest_one(item, out_dir, per_object, clip_len, deadline):
