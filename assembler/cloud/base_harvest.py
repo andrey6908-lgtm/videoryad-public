@@ -161,7 +161,10 @@ def harvest_one(item, out_dir, want, tries, deadline):
 
     cands = candidates(q, q_en)
     _say("    всего кандидатов: %d" % len(cands))
-    kept, seen_md5, rej = [], set(), {}
+    # то, что уже лежит в базе у этого объекта, качать заново незачем
+    kept, seen_md5, rej = [], set(item.get("known_md5") or []), {}
+    if seen_md5:
+        _say("    в базе уже есть %d кадров — их md5 отбиваю сразу" % len(seen_md5))
     tried = 0
     for src, u in cands:
         if len(kept) >= want or tried >= tries:
