@@ -1,0 +1,243 @@
+{
+ "anchor": "top",
+ "1": {
+  "photo": "overlays/scene_001.jpg",
+  "shape": "rounded",
+  "at": 2.6,
+  "scale": 1.0,
+  "sound": "whoosh",
+  "style": "right",
+  "anchor": "top"
+ },
+ "11": {
+  "at": 2.6,
+  "scale": 1.0,
+  "anchor": "top",
+  "text": {
+   "words": "СНАЧАЛА — БЕЗОПАСНОСТЬ УКРАИНЫ",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "26": {
+  "photo": "overlays/scene_026.jpg",
+  "shape": "rounded",
+  "at": 2.6,
+  "scale": 1.0,
+  "sound": "whoosh",
+  "style": "left",
+  "anchor": "top"
+ },
+ "32": {
+  "photo": "overlays/scene_032.jpg",
+  "shape": "rounded",
+  "at": 2.6,
+  "scale": 1.0,
+  "sound": "whoosh",
+  "style": "left",
+  "anchor": "top"
+ },
+ "47": {
+  "photo": "overlays/scene_047.jpg",
+  "shape": "rounded",
+  "at": 2.6,
+  "scale": 1.0,
+  "sound": "whoosh",
+  "style": "right",
+  "anchor": "top"
+ },
+ "50": {
+  "at": 2.6,
+  "scale": 1.0,
+  "anchor": "top",
+  "text": {
+   "words": "МЕСТА ЗА СТОЛОМ НЕТ",
+   "color": "red",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "2": {
+  "text": {
+   "words": "АМЕРИКАНЦЫ ЗОВУТ НЕ ВСЕХ",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "10": {
+  "text": {
+   "words": "ВПЕРВЫЕ — ГАРАНТИИ И ДЛЯ РОССИИ",
+   "color": "yellow",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "18": {
+  "text": {
+   "words": "ПЕСКОВ: ГАРАНТИИ ВЗАИМНЫЕ",
+   "color": "yellow",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "20": {
+  "text": {
+   "words": "ФОРМАТ: РОССИЯ · США · УКРАИНА",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "23": {
+  "text": {
+   "words": "БЕЗ ЕВРОПЫ",
+   "color": "red",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "28": {
+  "text": {
+   "words": "ОДНОЙ КАРТЫ МАЛО",
+   "color": "yellow",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "30": {
+  "text": {
+   "words": "ДЕКАБРЬ 2021: ПРОЕКТЫ СОГЛАШЕНИЙ",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "31": {
+  "text": {
+   "words": "ОГРАНИЧЕНИЯ РАСШИРЕНИЯ НАТО",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "34": {
+  "text": {
+   "words": "ВОЙСКА · РАКЕТЫ · ПВО · АВИАЦИЯ",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "36": {
+  "text": {
+   "words": "ФЕВРАЛЬ 2022",
+   "color": "red",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "41": {
+  "text": {
+   "words": "ВАРШАВА НАРАЩИВАЕТ РАСХОДЫ",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "49": {
+  "text": {
+   "words": "УШАКОВ: ЕВРОПУ НЕ ОБСУЖДАЛИ",
+   "color": "yellow",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "52": {
+  "text": {
+   "words": "КИЕВ: СНАЧАЛА ГАРАНТИИ НАМ",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "55": {
+  "text": {
+   "words": "ИНОСТРАННЫЕ ВОЙСКА — НЕПРИЕМЛЕМО",
+   "color": "red",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "57": {
+  "text": {
+   "words": "ОГРАНИЧЕНИЯ НАТО В ВОСТОЧНОЙ ЕВРОПЕ",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "60": {
+  "text": {
+   "words": "ПУТИН: УБРАТЬ ПРИЧИНЫ СТОЛКНОВЕНИЯ",
+   "color": "yellow",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "63": {
+  "text": {
+   "words": "ЧТОБЫ НЕ ОБСУЖДАТЬ ЧЕРЕЗ ДЕСЯТЬ ЛЕТ",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "64": {
+  "text": {
+   "words": "ОБЯЗАТЕЛЬСТВА НА БУМАГЕ",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "65": {
+  "text": {
+   "words": "СИЛЫ И ВООРУЖЕНИЯ ПО ОБЕ СТОРОНЫ",
+   "color": "white",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ },
+ "67": {
+  "text": {
+   "words": "ДО СОГЛАШЕНИЯ ЕЩЁ ДАЛЕКО",
+   "color": "yellow",
+   "pos": "tc",
+   "at": 2.4,
+   "scale": 1.0
+  }
+ }
+}
