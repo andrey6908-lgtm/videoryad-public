@@ -240,23 +240,22 @@ def koza_eye(t):
 
 
 def koza_shadow(t):
-    """Тень козы на стене рядом с ёлкой — её нет в кадре, а она есть."""
+    """Тень козы на освещённой стене: силуэт того же профиля, что и у зверей."""
+    import re
     s = '<rect width="960" height="540" fill="url(#roomc)"/>'
-    s += ('<g opacity=".2" stroke="#f0c98a" stroke-width="3" fill="none">'
+    s += '<ellipse cx="420" cy="230" rx="470" ry="330" fill="#c79a52" opacity=".42"/>'
+    s += '<ellipse cx="420" cy="230" rx="330" ry="240" fill="#e0b263" opacity=".3"/>'
+    s += ('<g opacity=".22" stroke="#7a5a2a" stroke-width="3" fill="none">'
           + "".join(f'<path d="M{60+i*110} {70+(i%2)*90} q16 22 0 44 q-16 -22 0 -44"/>' for i in range(9)) + '</g>')
-    w1 = 2.2 * A.w(t, 4.4)
-    s += (f'<g opacity=".42" fill="#120b06" transform="translate(470,120) rotate({w1:.2f}) scale(1.35,1.5) translate(-470,-120)">'
-          '<path d="M452 86 C520 94 550 154 542 214 C534 278 498 330 436 348 C380 364 322 354 286 328'
-          ' C250 302 246 258 276 212 C312 158 388 78 452 86 Z"/>'
-          '<path d="M394 92 C374 36 398 -14 458 -42 C492 -58 522 -46 526 -24 C504 -36 480 -28 460 -12'
-          ' C416 24 402 64 410 102 Z"/>'
-          '<path d="M394 90 C374 34 396 -16 452 -44 C484 -60 512 -50 516 -28 C496 -40 472 -32 454 -16'
-          ' C416 18 402 58 410 104 Z" transform="translate(-56,8)"/>'
-          '<path d="M532 150 C576 140 618 154 636 180 C616 200 570 202 532 180 Z"/>'
-          '<path d="M320 348 C304 394 312 424 336 436 L288 436 C278 402 290 368 310 350 Z"/></g>')
-    s += tree(820, 470, t, 0.72, 1.0)
-    s += table(470)
-    s += A.candle(150, 392, t, 78, 70)
+    body = _goat_side(470, 320, t, .15)
+    body = re.sub(r'fill="#[0-9a-fA-F]{6}"', 'fill="#1a120a"', body)
+    body = re.sub(r'stroke="#[0-9a-fA-F]{6}"', 'stroke="#1a120a"', body)
+    body = re.sub(r'fill="#[0-9a-fA-F]{3}"', 'fill="#1a120a"', body)
+    body = body.replace('opacity=".3"', 'opacity="0"').replace('opacity=".4"', 'opacity="0"')
+    s += f'<g opacity=".82" transform="translate(40,-20) scale(1.06)">{body}</g>'
+    s += tree(862, 492, t, 0.62, 1.0)
+    s += table(492)
+    s += A.candle(120, 420, t, 70, 86)
     s += A.confetti(t, 14, seed=5)
     return s
 
@@ -595,7 +594,7 @@ def ded(t):
           '<path d="M0 108 L96 136 L40 152 L140 186 L72 198 L176 236 L0 236 Z" fill="#2f5c2a"/></g>')
     s += A.lights([(64, 164, "#d6202f"), (118, 206, "#c9922f"), (30, 212, "#7fd0ff")], t)
     s += table(470)
-    s += _ded(450, 240, t, 1.0)
+    s += _ded(392, 252, t, 0.92)
     s += A.confetti(t, 20, seed=2)
     return s
 
@@ -743,19 +742,22 @@ def cozy(t):
 
 
 def yang(t):
-    """Иероглиф 羊: две откидные точки, три черты, вертикаль насквозь."""
+    """Иероглиф 羊: две откидные сверху, три горизонтали, вертикаль насквозь."""
     s = '<rect width="960" height="540" fill="url(#roomb)"/>'
     s += tinsel(20)
-    s += tree(874, 452, t, 0.4, 0.4)
-    g = .14 + .05 * A.w(t, 3.3)
-    s += f'<circle cx="470" cy="286" r="238" fill="#d6202f" opacity="{g:.2f}"/>'
-    k = '<g fill="#f2e3c6" stroke="#2a1105" stroke-width="10" stroke-linejoin="round">'
-    k += '<path d="M396 164 C386 134 378 116 366 100 L394 84 C408 108 416 134 422 160 Z"/>'
-    k += '<path d="M544 164 C554 134 562 116 574 100 L546 84 C532 108 524 134 518 160 Z"/>'
-    k += '<path d="M352 192 L588 192 L588 222 L352 222 Z"/>'
-    k += '<path d="M330 278 L610 278 L610 308 L330 308 Z"/>'
-    k += '<path d="M308 364 L632 364 L632 396 L308 396 Z"/>'
-    k += '<path d="M452 150 L488 150 L488 472 L452 472 Z"/>'
+    s += tree(876, 452, t, 0.38, 0.4)
+    g = .15 + .05 * A.w(t, 3.3)
+    s += f'<circle cx="470" cy="290" r="226" fill="#d6202f" opacity="{g:.2f}"/>'
+    k = '<g fill="#f6ead2" stroke="#2a1105" stroke-width="9" stroke-linejoin="round">'
+    # откидные точки: расходятся кверху, сходятся книзу
+    k += '<path d="M408 104 L436 96 L462 176 L440 182 Z"/>'
+    k += '<path d="M548 104 L520 96 L494 176 L516 182 Z"/>'
+    # три горизонтали, книзу шире
+    k += '<path d="M356 190 L600 190 L600 220 L356 220 Z"/>'
+    k += '<path d="M332 276 L624 276 L624 308 L332 308 Z"/>'
+    k += '<path d="M308 364 L648 364 L648 398 L308 398 Z"/>'
+    # вертикаль насквозь, выходит ниже
+    k += '<path d="M462 178 L498 178 L498 468 L462 468 Z"/>'
     k += '</g>'
     s += k
     s += A.confetti(t, 16, seed=13)
