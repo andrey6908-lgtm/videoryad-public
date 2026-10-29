@@ -143,7 +143,7 @@ def pick_videos(channel, query, want):
                 dur = 0.0
             # слишком длинное качать незачем: брифинг на 55 минут даст тот же
             # кадр трибуны, что и трёхминутный, а весит в двадцать раз больше
-            if dur and (dur < 12 or dur > 1800):
+            if dur and (dur < 12 or dur > 10800):
                 continue
             if vid in [u[0] for u in urls]:
                 continue
@@ -199,7 +199,7 @@ def cut_clips(src, dst_dir, base_name, clip_len, want, seen_md5):
     return out, ""
 
 
-def sweep_channel(item, out_dir, per_object, clip_len, deadline):
+def sweep_channel(item, out_dir, per_object, clip_len, deadline, per_video=3):
     """СВЕЖИЕ РОЛИКИ ОДНОГО КАНАЛА (решение пользователя 28.10): «если
     говорится про Зеленского — пускай он просто крутится». Объект здесь не
     ищется: берём последние записи официального канала и режем их. Привязка
@@ -212,7 +212,9 @@ def sweep_channel(item, out_dir, per_object, clip_len, deadline):
     os.makedirs(dst, exist_ok=True)
     _say("\n── %s → %s (свежие ролики канала)" % (ch, folder))
     seen_md5 = set(item.get("known_md5") or [])
-    r = _run(["yt-dlp", "--flat-playlist", "--playlist-end", str(per_object * 3),
+    # роликов запрашиваем с запасом: часть отсеется по длине и по гейтам
+    r = _run(["yt-dlp", "--flat-playlist", "--playlist-end",
+              str(max(12, per_object * 2)),
               "--print", "%(id)s\t%(duration)s\t%(upload_date)s\t%(title)s",
               "https://www.youtube.com/%s/videos" % ch], 180)
     vids = []
@@ -224,7 +226,12 @@ def sweep_channel(item, out_dir, per_object, clip_len, deadline):
             dur = float(parts[1])
         except (ValueError, TypeError):
             dur = 0.0
-        if dur and (dur < 12 or dur > 1800):
+        # ДЛИННЫЕ ЗАПИСИ БРАТЬ (28.10, его слово: «если там Путин совещание,
+        # НАТО совещание — пускай будет, отрежешь кусочек»). Потолок 30 минут
+        # отсекал ровно то, что нужно: ленты Кремля, НАТО и ООН состоят из
+        # заседаний на час-два, из-за фильтра Путин дал ОДИН клип, НАТО один.
+        # Кусок берём всё равно короткий, длина исходника роли не играет.
+        if dur and (dur < 12 or dur > 10800):
             continue
         # ДАТА ВЫГРУЗКИ В ЛЕНТЕ КАНАЛА НЕ ОТДАЁТСЯ (проверено 28.10: приходит
         # "NA"), а на ней держится скользящее окно свежести. Берём дату
@@ -240,8 +247,14 @@ def sweep_channel(item, out_dir, per_object, clip_len, deadline):
         if len(kept) >= per_object or (deadline and time.time() > deadline):
             break
         if os.environ.get("BASE_VIDEO_COPY") == "1":
+            # С ОДНОГО РОЛИКА — НЕ БОЛЬШЕ `per_video` КУСКОВ (28.10, его
+            # замечание: «если там будет только 12, мы будем гонять одни и те
+            # же клипы, это будет херня»). Набирать норму из одного часового
+            # совещания бессмысленно: двенадцать кусков одной сцены зритель
+            # прочтёт как один кадр, повторённый двенадцать раз.
+            want_here = min(per_video, per_object - len(kept))
             got, why = grab_sections(vid, dur, dst, "%s_%s" % (day or "00000000", vid[:6]),
-                                     clip_len, per_object - len(kept), seen_md5)
+                                     clip_len, want_here, seen_md5)
             for g in got:
                 _say("      + %s  ← %s · %s" % (os.path.basename(g), day, title[:40]))
             kept += got
@@ -400,7 +413,11 @@ def main():
     ap.add_argument("plan")
     ap.add_argument("out_dir")
     ap.add_argument("--shard", default="1/1")
-    ap.add_argument("--per-object", type=int, default=3)
+    ap.add_argument("--per-object", type=int, default=15,
+                    help="сколько клипов набрать в папку за заход")
+    ap.add_argument("--per-video", type=int, default=3,
+                    help="сколько кусков брать ИЗ ОДНОГО ролика: больше — и"
+                         " папка превращается в нарезку одного совещания")
     ap.add_argument("--clip", type=float, default=12.0)
     ap.add_argument("--deadline", type=float, default=0.0)
     a = ap.parse_args()
@@ -436,7 +453,7 @@ def main():
             _say("[дедлайн] шард остановлен, необработанных: %d" % (len(mine) - len(rep)))
             break
         try:
-            r = (sweep_channel(it, a.out_dir, a.per_object, a.clip, dl)
+            r = (sweep_channel(it, a.out_dir, a.per_object, a.clip, dl, a.per_video)
                  if it.get("channel")
                  else harvest_one(it, a.out_dir, a.per_object, a.clip, dl))
         except Exception as e:
