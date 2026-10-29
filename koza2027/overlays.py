@@ -65,7 +65,7 @@ def plate(head_lines, sub_lines, x=110, y=170, w=None):
     """Плашка: ширина ПОДБИРАЕТСЯ под текст, поля сверху и снизу."""
     PT, HL, RG, SL, PB, PAD = 50, 64, 26, 42, 36, 38
     need = max([wid(l, SER, 58, True) for l in head_lines] +
-               [wid(l, SAN, 30, True) for l in sub_lines]) + PAD * 2
+               [wid(l, SAN, 30, True) for l in sub_lines]) + PAD * 2 + 44
     w = max(900, min(1560, need)) if w is None else w
     hh = PT + HL * len(head_lines) + RG + SL * len(sub_lines) + PB
     s = (f'<rect x="{x+5}" y="{y+8}" width="{w}" height="{hh}" rx="14" fill="#000000" opacity=".35"/>'
@@ -87,7 +87,7 @@ def plate(head_lines, sub_lines, x=110, y=170, w=None):
 def myth_fact(myth, fact_lines, x=110, y=150, w=None):
     PAD = 38
     mw = wid(myth, SAN, 33)
-    need = max([mw] + [wid(l, SAN, 38, True) for l in fact_lines]) + PAD * 2 + 20
+    need = max([mw] + [wid(l, SAN, 38, True) for l in fact_lines]) + PAD * 2 + 56
     w = max(900, min(1620, need)) if w is None else w
     hh = 150 + 48 * len(fact_lines)
     s = (f'<rect x="{x+5}" y="{y+8}" width="{w}" height="{hh}" rx="14" fill="#000000" opacity=".35"/>'
@@ -125,7 +125,7 @@ def badge(q_lines, x=140, y=380):
 
 def slab(a, b, c, x=140, y=300):
     def blk(tx, ty, txt, bg, fg, fs, rot, ital=False):
-        wpx = wid(txt, SAN, fs, True) + 60
+        wpx = wid(txt, SAN, fs, True) + 76
         hpx = int(fs * 1.42)
         return (f'<g transform="rotate({rot} {tx} {ty})">'
                 f'<rect x="{tx+5}" y="{ty+7}" width="{wpx}" height="{hpx}" fill="#000000" opacity=".4"/>'
