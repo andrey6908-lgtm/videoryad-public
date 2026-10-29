@@ -89,7 +89,9 @@ def myth_fact(myth, fact_lines, x=110, y=150, w=None):
     mw = wid(myth, SAN, 33)
     need = max([mw] + [wid(l, SAN, 38, True) for l in fact_lines]) + PAD * 2 + 56
     w = max(900, min(1620, need)) if w is None else w
-    hh = 150 + 48 * len(fact_lines)
+    # высота считается ОТ ПОСЛЕДНЕЙ БАЗОВОЙ ЛИНИИ, а не на глаз:
+    # первая строка факта лежит на y+244, шаг 48, снизу поле 44
+    hh = 288 + 48 * (len(fact_lines) - 1)
     s = (f'<rect x="{x+5}" y="{y+8}" width="{w}" height="{hh}" rx="14" fill="#000000" opacity=".35"/>'
          f'<rect x="{x}" y="{y}" width="{w}" height="{hh}" rx="14" fill="#0e0e0e" opacity=".9"/>')
     cx, cy = x + 56, y + 52
