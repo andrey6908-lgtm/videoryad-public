@@ -1,84 +1,64 @@
 # -*- coding: utf-8 -*-
-"""Рендер немого видео «Год козы 2027». Запускается на раннере GitHub.
-Звук НЕ трогает: озвучка в облако не уезжает, она подмешивается на машине."""
-import os, subprocess, sys, json
+"""Покадровый рендер «Год козы 2027». Каждый кадр рисуется вектором заново:
+зум идёт окном просмотра (без ступенек), внутри кадра всё живёт.
+Звука здесь нет и не будет — озвучка в облако не уезжает."""
+import os, sys, io, subprocess, argparse, time
 import cairosvg
+from PIL import Image
 import art, plan
 
-OUT = sys.argv[1] if len(sys.argv) > 1 else "koza_out"
-TMP = os.path.join(OUT, "tmp")
+ap = argparse.ArgumentParser()
+ap.add_argument("out")
+ap.add_argument("--shard", default="1/1")
+a = ap.parse_args()
+si, sn = (int(x) for x in a.shard.split("/"))
+os.makedirs(a.out, exist_ok=True)
+TMP = os.path.join(a.out, "f%02d" % si)
 os.makedirs(TMP, exist_ok=True)
-FPS = 30
-SRC_W, SRC_H = 2880, 1620
+
+N = plan.NFRAMES
+lo = (N * (si - 1)) // sn
+hi = (N * si) // sn
+print("часть %d/%d: кадры %d..%d (всего %d)" % (si, sn, lo, hi - 1, N), flush=True)
+
+OW, OH = 1920, 1080
 
 
-def run(cmd):
-    r = subprocess.run(cmd, capture_output=True, text=True)
-    if r.returncode:
-        print("КОМАНДА УПАЛА:", " ".join(cmd[:14]), "...")
-        print(r.stderr[-3000:])
-        raise SystemExit(1)
+def png(name, t, gt, z, cx, cy):
+    return cairosvg.svg2png(bytestring=art.svg(name, t, gt, z, cx, cy, (OW, OH)).encode("utf-8"),
+                            output_width=OW, output_height=OH)
 
 
-print("1/4 рисую кадры")
-used = sorted({s[2] for s in plan.SHOTS})
-for nm in used:
-    png = f"{TMP}/art_{nm}.png"
-    cairosvg.svg2png(bytestring=art.svg(nm).encode("utf-8"),
-                     write_to=png, output_width=SRC_W, output_height=SRC_H)
-    print("   ", nm, os.path.getsize(png) // 1024, "КБ")
+t0 = time.time()
+for i in range(lo, hi):
+    cur, nxt, mix = plan.frame_info(i)
+    gt = i / plan.FPS
+    nm, lt, z, cx, cy = cur
+    buf = png(nm, lt, gt, z, cx, cy)
+    if nxt is not None and mix > 0.001:
+        nm2, lt2, z2, cx2, cy2 = nxt
+        b2 = png(nm2, lt2, gt, z2, cx2, cy2)
+        im = Image.blend(Image.open(io.BytesIO(buf)).convert("RGB"),
+                         Image.open(io.BytesIO(b2)).convert("RGB"), mix)
+        im.save("%s/f%05d.png" % (TMP, i), compress_level=1)
+    else:
+        with open("%s/f%05d.png" % (TMP, i), "wb") as f:
+            f.write(buf)
+    if (i - lo) % 60 == 0:
+        done = i - lo + 1
+        sp = done / max(0.001, time.time() - t0)
+        print("   кадр %d/%d  %.1f кадр/с  осталось %.0f с" % (done, hi - lo, sp, (hi - lo - done) / sp), flush=True)
 
-print("2/4 рисую наложения")
-for nm, svg_src, a, b in plan.OVERLAYS:
-    cairosvg.svg2png(bytestring=svg_src.encode("utf-8"),
-                     write_to=f"{TMP}/ov_{nm}.png", output_width=1920, output_height=1080)
-    print("   ", nm, "%.1f-%.1f с" % (a, b))
-
-print("3/4 движение по сценам")
-lst = []
-for i, (a, b, nm, z0, z1, cx, cy) in enumerate(plan.SHOTS):
-    dur = b - a
-    nf = max(2, round(dur * FPS))
-    out = f"{TMP}/sc{i:03d}.mp4"
-    vf = (f"scale={SRC_W}:{SRC_H},"
-          f"zoompan=z='{z0:.4f}+({z1 - z0:.4f})*on/{nf}'"
-          f":x='(iw-iw/zoom)*{cx}':y='(ih-ih/zoom)*{cy}'"
-          f":d=1:s=1920x1080:fps={FPS},format=yuv420p")
-    run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-framerate", str(FPS),
-         "-t", f"{dur:.4f}", "-i", f"{TMP}/art_{nm}.png",
-         "-vf", vf, "-c:v", "libx264", "-crf", "16", "-preset", "veryfast",
-         "-pix_fmt", "yuv420p", "-r", str(FPS), out])
-    lst.append(out)
-    print("   сцена %2d  %-12s %.2f с" % (i + 1, nm, dur))
-
-with open(f"{TMP}/list.txt", "w") as f:
-    for p in lst:
-        f.write("file '%s'\n" % os.path.abspath(p))
-run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0",
-     "-i", f"{TMP}/list.txt", "-c", "copy", f"{TMP}/base.mp4"])
-
-print("4/4 кладу наложения")
-inputs, fc, cur = ["-i", f"{TMP}/base.mp4"], [], "0:v"
-for k, (nm, _s, a, b) in enumerate(plan.OVERLAYS, start=1):
-    d = b - a
-    inputs += ["-loop", "1", "-framerate", str(FPS), "-t", f"{d:.4f}", "-i", f"{TMP}/ov_{nm}.png"]
-    fc.append(f"[{k}:v]format=rgba,fade=in:st=0:d=0.35:alpha=1,"
-              f"fade=out:st={max(0.0, d - 0.55):.3f}:d=0.55:alpha=1,"
-              f"setpts=PTS-STARTPTS+{a:.4f}/TB[o{k}]")
-    fc.append(f"[{cur}][o{k}]overlay=0:0:eof_action=pass:enable='between(t,{a:.3f},{b:.3f})'[v{k}]")
-    cur = f"v{k}"
-final = os.path.join(OUT, "koza2027_chasti1-3_nemoe.mp4")
-run(["ffmpeg", "-v", "error", "-y"] + inputs +
-    ["-filter_complex", ";".join(fc), "-map", f"[{cur}]",
-     "-c:v", "libx264", "-crf", "19", "-preset", "medium",
-     "-pix_fmt", "yuv420p", "-r", str(FPS), "-movflags", "+faststart", final])
-
-dur = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                      "-of", "csv=p=0", final], capture_output=True, text=True).stdout.strip()
-sz = os.path.getsize(final) // 1024
-print("ГОТОВО:", final, sz, "КБ,", dur, "с")
-json.dump({"file": os.path.basename(final), "seconds": float(dur),
-           "shots": len(plan.SHOTS), "overlays": len(plan.OVERLAYS)},
-          open(os.path.join(OUT, "report.json"), "w"), ensure_ascii=False, indent=1)
-for p in lst:
-    os.remove(p)
+seg = os.path.join(a.out, "seg%02d.mp4" % si)
+r = subprocess.run(["ffmpeg", "-v", "error", "-y", "-framerate", str(plan.FPS),
+                    "-start_number", str(lo), "-i", "%s/f%%05d.png" % TMP,
+                    "-c:v", "libx264", "-crf", "15", "-preset", "veryfast",
+                    "-pix_fmt", "yuv420p", "-r", str(plan.FPS), seg],
+                   capture_output=True, text=True)
+if r.returncode:
+    print(r.stderr[-3000:]); raise SystemExit(1)
+nf = len(os.listdir(TMP))
+print("часть %d готова: %d кадров, %d КБ, %.0f с" % (si, nf, os.path.getsize(seg) // 1024, time.time() - t0))
+for f in os.listdir(TMP):
+    os.remove(os.path.join(TMP, f))
+os.rmdir(TMP)

@@ -1,7 +1,7 @@
 name: koza-render
-# Рендер немого видео «Год козы 2027». Считать на машине пользователя нельзя
-# (его прямое слово 22.10), поэтому картинка целиком рисуется здесь.
-# Озвучки и музыки тут НЕТ и быть не должно — звук подмешивается локально.
+# Покадровый рендер «Год козы 2027»: 3962 кадра рисуются вектором заново,
+# поэтому зум плавный, а внутри кадра всё живёт. Матрица из 10 машин.
+# Озвучки и музыки тут НЕТ: звук подмешивается на машине пользователя.
 on:
   workflow_dispatch:
   push:
@@ -10,9 +10,14 @@ concurrency:
   group: koza-render-${{ github.sha }}
   cancel-in-progress: false
 jobs:
-  render:
+  frames:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      max-parallel: 10
+      matrix:
+        shard: [1,2,3,4,5,6,7,8,9,10]
     steps:
       - uses: actions/checkout@v4
       - name: системные пакеты
@@ -21,21 +26,48 @@ jobs:
           timeout 150 sudo apt-get update -qq || true
           timeout 240 sudo apt-get install -y -qq ffmpeg libcairo2 fonts-dejavu-core fonts-dejavu-extra || true
           command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
-          fc-list | grep -ci dejavu || true
       - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - name: библиотеки
-        run: pip install --quiet cairosvg
-      - name: рендер
+        with: { python-version: '3.11' }
+      - run: pip install --quiet cairosvg pillow
+      - name: кадры
         working-directory: koza2027
-        run: python3 render.py "$GITHUB_WORKSPACE/koza_out"
-      - name: страж — файл должен быть и быть не пустым
+        run: python3 render.py "$GITHUB_WORKSPACE/parts" --shard ${{ matrix.shard }}/10
+      - name: страж — часть должна быть не пустой
+        run: |
+          f=parts/seg$(printf %02d ${{ matrix.shard }}).mp4
+          [ -s "$f" ] || { echo "::error::часть не отрисована"; exit 1; }
+          echo "часть: $(( $(stat -c%s "$f") / 1024 )) КБ"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: seg-${{ matrix.shard }}
+          path: parts/seg*.mp4
+          retention-days: 1
+
+  finish:
+    needs: frames
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: системные пакеты
+        timeout-minutes: 6
+        run: |
+          timeout 150 sudo apt-get update -qq || true
+          timeout 240 sudo apt-get install -y -qq ffmpeg libcairo2 fonts-dejavu-core fonts-dejavu-extra || true
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install --quiet cairosvg
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'seg-*', path: parts, merge-multiple: true }
+      - name: склейка и наложения
+        working-directory: koza2027
+        run: python3 finish.py "$GITHUB_WORKSPACE/parts" "$GITHUB_WORKSPACE/koza_out"
+      - name: страж
         run: |
           f=koza_out/koza2027_chasti1-3_nemoe.mp4
-          [ -s "$f" ] || { echo "::error::видео не отрисовано"; exit 1; }
+          [ -s "$f" ] || { echo "::error::видео не собрано"; exit 1; }
           sz=$(stat -c%s "$f"); echo "размер: $((sz/1024)) КБ"
-          [ "$sz" -gt 400000 ] || { echo "::error::файл подозрительно мал — рендер пустой"; exit 1; }
+          [ "$sz" -gt 2000000 ] || { echo "::error::файл подозрительно мал"; exit 1; }
           cat koza_out/report.json
       - uses: actions/upload-artifact@v4
         with:

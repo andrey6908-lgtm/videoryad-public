@@ -19,38 +19,41 @@ def _t(x, y, s, font, size, fill, *, bold=False, ital=False, ls=0, shadow=True, 
     if shadow:
         for dx, dy, o in ((0, 5, .5), (3, 4, .35)):
             out += (f'<text x="{x+dx}" y="{y+dy}" font-family="{font}" font-size="{size}"{w}{i}{l}'
-                    f' fill="#000000" opacity="{o}">{s}</text>')
+                    f' xml:space="preserve" fill="#000000" opacity="{o}">{s}</text>')
     out += (f'<text x="{x}" y="{y}" font-family="{font}" font-size="{size}"{w}{i}{l}'
-            f' fill="{fill}" opacity="{op}">{s}</text>')
+            f' xml:space="preserve" fill="{fill}" opacity="{op}">{s}</text>')
     return out
 
 
-def name(pre, big_lines, post, x=130, y=430):
+def name(pre, big_lines, post, x=110, y=560):
     s = _t(x, y, pre, SAN, 25, "#ffffff", ls=13)
     yy = y + 92
     for ln in big_lines:
         s += _t(x - 4, yy, ln, SER, 104, "#ffffff", bold=True)
         yy += 104
-    s += f'<rect x="{x}" y="{yy-44}" width="430" height="6" fill="{GREEN}"/>'
-    s += f'<rect x="{x+430}" y="{yy-44}" width="200" height="6" fill="{GREEN}" opacity=".35"/>'
+    s += f'<rect x="{x}" y="{yy-44}" width="330" height="6" fill="{GREEN}"/>'
+    s += f'<rect x="{x+330}" y="{yy-44}" width="150" height="6" fill="{GREEN}" opacity=".35"/>'
     s += _t(x, yy + 16, post, SAN, 27, "#e8e0d2", ls=11)
     return _wrap(s)
 
 
-def plate(head_lines, sub_lines, x=110, y=170, w=940):
-    hh = 76 + 66 * len(head_lines) + 44 * len(sub_lines)
+def plate(head_lines, sub_lines, x=110, y=170, w=1180):
+    """Плашка: поля сверху и СНИЗУ, межстрочное плотнее, ширина как у МИФ/ФАКТ."""
+    PT, HL, RG, SL, PB = 50, 64, 26, 42, 36
+    hh = PT + HL * len(head_lines) + RG + SL * len(sub_lines) + PB
     s = (f'<rect x="{x+5}" y="{y+8}" width="{w}" height="{hh}" rx="14" fill="#000000" opacity=".35"/>'
          f'<rect x="{x}" y="{y}" width="{w}" height="{hh}" rx="14" fill="#0e0e0e" opacity=".88"/>')
-    yy = y + 76
+    yy = y + PT + 48
     for ln in head_lines:
-        s += _t(x + 38, yy, ln, SER, 60, "#ffffff", bold=True, shadow=False)
-        yy += 66
-    s += f'<rect x="{x+38}" y="{yy-20}" width="96" height="6" fill="{GREEN}"/>'
-    s += f'<rect x="{x+38}" y="{yy-16}" width="{w-76}" height="2" fill="#ffffff" opacity=".2"/>'
-    yy += 42
+        s += _t(x + 38, yy, ln, SER, 58, "#ffffff", bold=True, shadow=False)
+        yy += HL
+    ry = y + PT + HL * len(head_lines) + 8
+    s += f'<rect x="{x+38}" y="{ry}" width="96" height="6" fill="{GREEN}"/>'
+    s += f'<rect x="{x+38}" y="{ry+4}" width="{w-76}" height="2" fill="#ffffff" opacity=".2"/>'
+    yy = ry + RG + 34
     for ln in sub_lines:
-        s += _t(x + 38, yy, ln, SAN, 31, "#efe8dc", bold=True, shadow=False)
-        yy += 44
+        s += _t(x + 38, yy, ln, SAN, 30, "#efe8dc", bold=True, shadow=False)
+        yy += SL
     return _wrap(s)
 
 
