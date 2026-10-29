@@ -1,0 +1,44 @@
+name: koza-render
+# Рендер немого видео «Год козы 2027». Считать на машине пользователя нельзя
+# (его прямое слово 22.10), поэтому картинка целиком рисуется здесь.
+# Озвучки и музыки тут НЕТ и быть не должно — звук подмешивается локально.
+on:
+  workflow_dispatch:
+  push:
+    paths: ["koza2027/**"]
+concurrency:
+  group: koza-render-${{ github.sha }}
+  cancel-in-progress: false
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: системные пакеты
+        timeout-minutes: 6
+        run: |
+          timeout 150 sudo apt-get update -qq || true
+          timeout 240 sudo apt-get install -y -qq ffmpeg libcairo2 fonts-dejavu-core fonts-dejavu-extra || true
+          command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
+          fc-list | grep -ci dejavu || true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: библиотеки
+        run: pip install --quiet cairosvg
+      - name: рендер
+        working-directory: koza2027
+        run: python3 render.py "$GITHUB_WORKSPACE/koza_out"
+      - name: страж — файл должен быть и быть не пустым
+        run: |
+          f=koza_out/koza2027_chasti1-3_nemoe.mp4
+          [ -s "$f" ] || { echo "::error::видео не отрисовано"; exit 1; }
+          sz=$(stat -c%s "$f"); echo "размер: $((sz/1024)) КБ"
+          [ "$sz" -gt 400000 ] || { echo "::error::файл подозрительно мал — рендер пустой"; exit 1; }
+          cat koza_out/report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: koza2027-nemoe
+          path: koza_out
+          retention-days: 2
