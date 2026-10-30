@@ -851,6 +851,353 @@ def horse(t):
     return s
 
 
+# ---------------- ЧАСТЬ 4: нрав Лошади против нрава Козы ----------------
+
+def _garland(t, y=16):
+    """Гирлянда через весь верх: провис, лампочки мигают вразнобой."""
+    s = (f'<path d="M0 {y} Q160 {y+46} 320 {y+8} Q480 {y-30} 640 {y+8} Q800 {y+46} 960 {y}"'
+         ' stroke="#4a3a22" stroke-width="5" fill="none"/>')
+    pts = ((80, y+32), (160, y+38), (240, y+28), (320, y+8), (400, y-8), (480, y-16),
+           (560, y-8), (640, y+8), (720, y+28), (800, y+38), (880, y+32))
+    cols = ("#ffd45e", "#ff8c6b", "#9ae06a", "#7fd0ff")
+    return s + A.lights([(x, yy, cols[i % 4]) for i, (x, yy) in enumerate(pts)], t)
+
+
+def _silho(x, y, t, sc=1.0, ph=0.0):
+    """Силуэт гостя в тёплом контровом свете: покачивается, живой."""
+    a = A.sway(t, 6.0, ph, 1.2)
+    return (f'<g transform="rotate({a:.2f} {x} {y+150}) translate({x},{y}) scale({sc})">'
+            '<path d="M-98 180 C-98 76 -56 38 0 38 C56 38 98 76 98 180 Z" fill="#2a150c"/>'
+            '<circle cx="0" cy="-12" r="48" fill="#2a150c"/>'
+            '<path d="M-42 -40 C-26 -66 26 -66 42 -40 L42 -24 L-42 -24 Z" fill="#2a150c"/>'
+            '<path d="M46 -28 C62 -4 64 36 50 64" stroke="#e08a3c" stroke-width="7" fill="none" opacity=".45"/>'
+            '<path d="M-46 -28 C-62 -4 -64 36 -50 64" stroke="#e08a3c" stroke-width="5" fill="none" opacity=".25"/>'
+            '</g>')
+
+
+def _bunch(x, y, t, sc=1.0, ph=0.0):
+    """Пучок зелени на бечёвке: висит и качается."""
+    a = A.sway(t, 6.6, ph, 1.6)
+    g = f'<g transform="rotate({a:.2f} {x} {y-150}) translate({x},{y}) scale({sc})">'
+    g += '<path d="M0 -150 L0 -16" stroke="#8a7a58" stroke-width="5"/>'
+    g += '<g stroke="#4e7a35" stroke-width="8" fill="none" stroke-linecap="round">'
+    for dx, dy in ((-48, 86), (-26, 106), (0, 116), (26, 106), (48, 86), (-14, 112), (14, 112)):
+        g += '<path d="M0 -10 C%d %d %d %d %d %d"/>' % (dx * 0.5, dy * 0.4, dx * 0.9, dy * 0.75, dx, dy)
+    g += '</g><g fill="#3f6b2c" stroke="#1b1309" stroke-width="4">'
+    for dx, dy, r in ((-50, 88, 13), (-28, 108, 12), (0, 118, 14), (28, 108, 12), (50, 88, 13),
+                      (-14, 114, 10), (14, 114, 10), (-38, 70, 10), (38, 68, 10)):
+        g += '<circle cx="%d" cy="%d" r="%d"/>' % (dx, dy, r)
+    g += '</g>'
+    g += ('<rect x="-17" y="-26" width="34" height="20" rx="5" fill="#c9922f"'
+          ' stroke="#1b1309" stroke-width="5"/>')
+    return g + '</g>'
+
+
+def _bowl(cx, cy, rx, ry, col, heap=1.0, berry=None, bowl="#dccbab", rot=0.0):
+    """Салатница с горкой: чаша, горка салата, вкрапления."""
+    s = f'<g transform="rotate({rot} {cx} {cy})">' if rot else '<g>'
+    s += ('<g stroke="#1b0f07" stroke-width="8" stroke-linejoin="round">'
+          f'<path d="M{cx-rx} {cy} C{cx-rx} {cy+ry*1.6:.0f} {cx+rx} {cy+ry*1.6:.0f} {cx+rx} {cy} Z" fill="{bowl}"/>'
+          f'<path d="M{cx-rx} {cy} C{cx-rx*0.62:.0f} {cy-ry*heap:.0f} {cx+rx*0.62:.0f} {cy-ry*heap:.0f} {cx+rx} {cy}'
+          f' C{cx+rx*0.5:.0f} {cy+ry*0.34:.0f} {cx-rx*0.5:.0f} {cy+ry*0.34:.0f} {cx-rx} {cy} Z" fill="{col}"/></g>')
+    if berry:
+        for bx, by, rr in ((-rx*0.44, -ry*0.44, 9), (0, -ry*0.70, 10), (rx*0.40, -ry*0.38, 8)):
+            s += (f'<circle cx="{cx+bx:.0f}" cy="{cy+by:.0f}" r="{rr}" fill="{berry}"'
+                  ' stroke="#1b0f07" stroke-width="4"/>')
+    return s + '</g>'
+
+
+def _bottle(x, y, col, h=78, rot=0.0):
+    s = f'<g transform="rotate({rot} {x} {y})">' if rot else '<g>'
+    s += ('<g stroke="#1b1309" stroke-width="8" stroke-linejoin="round">'
+          f'<path d="M{x-22} {y} L{x-22} {y-h} C{x-22} {y-h-18} {x-9} {y-h-22} {x-9} {y-h-40}'
+          f' L{x+9} {y-h-40} C{x+9} {y-h-22} {x+22} {y-h-18} {x+22} {y-h} L{x+22} {y} Z" fill="{col}"/>'
+          f'<rect x="{x-11}" y="{y-h-62}" width="22" height="24" rx="3" fill="#c9922f"/>'
+          f'<rect x="{x-20}" y="{y-h+12}" width="40" height="30" rx="3" fill="#e4d4b6"/></g>')
+    return s + '</g>'
+
+
+def _goblet(x, y, t, sc=1.0, ph=0.0, wine="#9b1b28"):
+    """Бокал на ножке: вино в нём колышется, сам бокал чуть качается."""
+    a = 1.7 * A.w(t, 3.4, ph)
+    return (f'<g transform="rotate({a:.2f} {x} {y})"><g transform="translate({x},{y}) scale({sc})">'
+            '<path d="M-26 -78 L26 -78 L20 -26 C18 -12 -18 -12 -20 -26 Z" fill="url(#glass)"'
+            ' stroke="#1b1309" stroke-width="7" stroke-linejoin="round"/>'
+            f'<path d="M-23 -50 L23 -50 L19 -27 C17 -14 -17 -14 -19 -27 Z" fill="{wine}" opacity=".85"/>'
+            '<path d="M0 -12 L0 8" stroke="#1b1309" stroke-width="7"/>'
+            '<path d="M-17 10 L17 10" stroke="#1b1309" stroke-width="8" stroke-linecap="round"/>'
+            '</g></g>')
+
+
+def _roast(cx, cy, sc=1.0, dark="#8d3a12", light="#b4541c", bone=True, rot=0.0, cut=True):
+    """Запечённое мясо: неровный бок, косая решётка надрезов, срез с мякотью, кость."""
+    g = f'<g transform="rotate({rot} {cx} {cy}) translate({cx},{cy}) scale({sc})">'
+    g += '<g stroke="#1b0806" stroke-width="9" stroke-linejoin="round">'
+    if bone:
+        g += ('<path d="M104 -2 C126 -14 148 -14 158 -4 C168 6 164 22 150 26 C136 30 118 24 106 14 Z"'
+              ' fill="#efe6d2"/>'
+              '<path d="M150 -8 C160 -14 170 -6 166 4 C174 8 174 22 162 24" fill="#efe6d2"/>')
+    g += ('<path d="M-116 44 C-128 12 -112 -18 -84 -30 C-62 -40 -44 -26 -24 -36 C-4 -46 10 -34 28 -40'
+          ' C52 -48 72 -34 90 -24 C114 -10 126 10 118 40 C114 58 62 56 0 56 C-62 56 -104 60 -116 44 Z"'
+          f' fill="{dark}"/></g>')
+    g += (f'<path d="M-92 20 C-98 -6 -78 -24 -54 -26 C-34 -28 -22 -16 -2 -22 C16 -27 30 -16 48 -14'
+          f' C72 -11 90 2 92 22 C54 2 -56 2 -92 20 Z" fill="{light}"/>')
+    d1 = "".join('<path d="M%d 34 L%d -14"/>' % (-78 + k * 30, -46 + k * 30) for k in range(7))
+    d2 = "".join('<path d="M%d 34 L%d -14"/>' % (-46 + k * 30, -78 + k * 30) for k in range(7))
+    g += ('<g stroke="#5c2208" stroke-width="5" fill="none" opacity=".45" stroke-linecap="round">'
+          + d1 + d2 + '</g>')
+    if cut:
+        g += ('<g stroke="#1b0806" stroke-width="8" stroke-linejoin="round">'
+              '<path d="M-116 44 C-128 12 -112 -18 -84 -30 C-74 -16 -70 16 -78 48 C-92 50 -110 52 -116 44 Z"'
+              ' fill="#f0ddc4"/>'
+              '<path d="M-110 38 C-118 14 -108 -10 -88 -20 C-82 -8 -80 14 -86 40 C-96 42 -106 42 -110 38 Z"'
+              ' fill="#c2563f"/></g>'
+              '<path d="M-104 28 C-108 12 -102 -2 -94 -10" stroke="#e59a86" stroke-width="5"'
+              ' fill="none" stroke-linecap="round" opacity=".8"/>')
+    g += ('<path d="M-56 -14 C-18 -30 34 -28 66 -10" stroke="#f2c98a" stroke-width="7" fill="none"'
+          ' stroke-linecap="round" opacity=".4"/>')
+    return g + '</g>'
+
+
+def _cutlery(x, y, fork=False):
+    """Нож или вилка, лежит на столе."""
+    s = '<g stroke="#1b0f07" stroke-width="7" stroke-linejoin="round">'
+    s += f'<rect x="{x}" y="{y}" width="58" height="18" rx="6" fill="#6b4320"/>'
+    if fork:
+        s += f'<path d="M{x+58} {y+2} L{x+112} {y+2} L{x+112} {y+16} L{x+58} {y+16} Z" fill="#cfd4d9"/>'
+        s += (f'<g stroke="#1b0f07" stroke-width="6">'
+              f'<path d="M{x+112} {y+2} L{x+150} {y-2} M{x+112} {y+7} L{x+152} {y+6}'
+              f' M{x+112} {y+12} L{x+152} {y+13} M{x+112} {y+16} L{x+150} {y+20}"/></g>')
+    else:
+        s += (f'<path d="M{x+58} {y+2} L{x+150} {y+1} C{x+164} {y+1} {x+164} {y+15} {x+150} {y+16}'
+              f' L{x+58} {y+16} Z" fill="#cfd4d9"/>')
+    return s + '</g>'
+
+
+def feast(t):
+    """Застолье Лошади: мясо на открытом огне, поднятые бокалы, стол ломится."""
+    s = '<rect width="960" height="540" fill="url(#roomr)"/>'
+    gl = .30 + .07 * A.w(t, 3.1)
+    s += (f'<g opacity="{gl:.2f}"><ellipse cx="470" cy="330" rx="340" ry="190" fill="#d9601a"/>'
+          '<ellipse cx="110" cy="240" rx="150" ry="110" fill="#b8320f"/></g>')
+    s += window(34, 70, 140, 148, t)
+    s += _garland(t, 20)
+    s += tree(886, 338, t, 0.42, 0.8)
+    s += _silho(228, 182, t, 0.92, .0) + _silho(866, 190, t, 0.88, .5)
+    s += '<path d="M0 352 L960 352 L960 540 L0 540 Z" fill="url(#cloth)"/>'
+    s += '<path d="M0 344 L960 344 L960 368 L0 368 Z" fill="#c6523a"/>'
+    s += ('<g stroke="#1b0806" stroke-width="9" stroke-linejoin="round">'
+          '<path d="M338 502 L622 502 L596 430 L364 430 Z" fill="#3a2a1d"/></g>')
+    for i, (ex, ec) in enumerate(((396, "#e8701b"), (448, "#f7b740"), (500, "#e8701b"), (552, "#c23a0d"))):
+        o = .5 + .5 * A.w(t, 1.3 + .21 * i, i * .3)
+        s += f'<ellipse cx="{ex}" cy="464" rx="25" ry="10" fill="{ec}" opacity="{o:.2f}"/>'
+    for i, fx in enumerate((386, 432, 478, 524, 570)):
+        s += A.flame(fx, 448, t, .58, 26, i * .23)
+    s += ('<g stroke="#2a1e14" stroke-width="7" stroke-linecap="round">'
+          + "".join('<path d="M%d 418 L%d 434"/>' % (352 + i * 38, 352 + i * 38) for i in range(8))
+          + '<path d="M344 418 L616 418"/></g>')
+    s += _roast(484, 362, 1.0, "#7a2d0c", "#9c4414")
+    s += A.smoke(484, 318, t, 3, 190, 1.1, .3)
+    s += _bowl(148, 450, 86, 34, "#efe3c8", 1.0, "#c0203a")
+    s += _bowl(816, 446, 80, 32, "#e8dcc0", 0.9, "#4e7a35")
+    s += _bottle(256, 500, "#2c4a2a")
+    s += _bottle(708, 496, "#5c1f16")
+    s += _goblet(300, 404, t, 1.0, .1)
+    s += _goblet(668, 398, t, 1.05, .55)
+    s += A.candle(900, 420, t, 56, 42)
+    s += A.confetti(t, 26, seed=14)
+    return s
+
+
+def heap(t):
+    """Стол ломится: посуда налезает друг на друга, беспорядок, гонка за количеством."""
+    s = '<rect width="960" height="540" fill="url(#cloth)"/>'
+    s += '<g opacity=".16" stroke="#f0c98a" stroke-width="4" fill="none">'
+    for i in range(6):
+        for j in range(4):
+            s += '<path d="M%d %d q18 24 0 48 q-18 -24 0 -48"/>' % (70 + i * 170, 50 + j * 140)
+    s += '</g>'
+    s += (f'<g opacity="{.22 + .05 * A.w(t, 3.7):.2f}">'
+          '<ellipse cx="480" cy="250" rx="360" ry="220" fill="#e8701b"/></g>')
+    s += ('<g stroke="#1b0f07" stroke-width="7" stroke-linejoin="round" opacity=".95">'
+          '<g transform="rotate(-7 128 150)"><ellipse cx="128" cy="150" rx="88" ry="42" fill="#dccbab"/>'
+          '<ellipse cx="128" cy="146" rx="58" ry="25" fill="#b8431f"/></g>'
+          '<g transform="rotate(6 296 124)"><ellipse cx="296" cy="124" rx="82" ry="39" fill="#e8dac0"/>'
+          '<ellipse cx="296" cy="120" rx="54" ry="23" fill="#8a6b3f"/></g>'
+          '<g transform="rotate(-5 842 158)"><ellipse cx="842" cy="158" rx="88" ry="41" fill="#dccbab"/>'
+          '<ellipse cx="842" cy="154" rx="58" ry="24" fill="#4e7a35"/></g>'
+          '<g transform="rotate(9 712 120)"><ellipse cx="712" cy="120" rx="70" ry="34" fill="#e8dac0"/>'
+          '<ellipse cx="712" cy="116" rx="44" ry="19" fill="#c0203a"/></g></g>')
+    s += _bottle(466, 214, "#2c4a2a", 70, -6)
+    s += _bottle(552, 204, "#5c1f16", 64, 4)
+    s += _bottle(624, 216, "#2c4a2a", 58, -3)
+    s += _bowl(168, 302, 104, 43, "#efe3c8", 1.05, "#c0203a", rot=-4)
+    s += _bowl(348, 286, 92, 39, "#e9dfc2", 1.0, "#4e7a35", rot=5)
+    s += _bowl(792, 300, 98, 40, "#efe3c8", 1.1, "#e07f23", rot=-6)
+    s += _bowl(652, 268, 72, 30, "#e4d8bb", 0.95, "#c9922f", rot=7)
+    s += ('<g stroke="#1b0f07" stroke-width="9" stroke-linejoin="round" transform="rotate(-3 520 400)">'
+          '<ellipse cx="520" cy="402" rx="252" ry="58" fill="#c9b89a"/>'
+          '<ellipse cx="520" cy="392" rx="218" ry="44" fill="#e8dac0"/></g>')
+    s += _roast(520, 346, 1.18, rot=-3)
+    s += A.smoke(520, 296, t, 3, 150, 1.0, .22)
+    s += ('<g stroke="#1b0f07" stroke-width="9" stroke-linejoin="round">'
+          '<g transform="rotate(5 128 488)"><ellipse cx="128" cy="488" rx="130" ry="53" fill="#e8dac0"/>'
+          '<path d="M46 474 C42 430 82 402 134 402 C186 402 222 428 220 470 Z" fill="#9a4a14"/></g>'
+          '<g transform="rotate(-6 846 492)"><ellipse cx="846" cy="492" rx="126" ry="51" fill="#dccbab"/>'
+          '<path d="M784 480 L824 432 L864 480 Z" fill="#f0d98a"/>'
+          '<rect x="866" y="452" width="46" height="30" rx="4" fill="#f6edd2"/></g></g>')
+    s += _goblet(388, 502, t, 1.1, .2)
+    s += _goblet(650, 508, t, 1.05, .7)
+    s += A.confetti(t, 20, seed=18)
+    return s
+
+
+def pork(t):
+    """Запечённая свинина крупно: тяжёлое блюдо, пар, нож и вилка."""
+    s = '<rect width="960" height="540" fill="url(#roomr)"/>'
+    gl = .26 + .06 * A.w(t, 3.3)
+    s += f'<g opacity="{gl:.2f}"><ellipse cx="480" cy="300" rx="330" ry="200" fill="#d9601a"/></g>'
+    s += _garland(t, 18)
+    s += ('<g opacity=".5" stroke="#10180c" stroke-width="6" stroke-linejoin="round">'
+          '<path d="M842 118 L906 200 L878 200 L942 276 L766 276 L826 200 L798 200 Z" fill="#2f5c2a"/></g>')
+    s += '<path d="M0 368 L960 368 L960 540 L0 540 Z" fill="url(#cloth)"/>'
+    s += '<path d="M0 360 L960 360 L960 384 L0 384 Z" fill="#c6523a"/>'
+    s += A.candle(92, 300, t, 68, 50)
+    s += ('<g stroke="#1b0f07" stroke-width="9" stroke-linejoin="round">'
+          '<ellipse cx="470" cy="452" rx="302" ry="64" fill="#c9b89a"/>'
+          '<ellipse cx="470" cy="438" rx="266" ry="50" fill="#e8dac0"/></g>')
+    s += ('<g fill="#4e7a35" stroke="#1b0f07" stroke-width="5">'
+          '<ellipse cx="236" cy="446" rx="46" ry="15"/><ellipse cx="706" cy="446" rx="46" ry="15"/></g>')
+    s += ('<g stroke="#1b0f07" stroke-width="5">'
+          '<circle cx="292" cy="456" r="27" fill="#e8963a"/>'
+          '<circle cx="292" cy="456" r="18" fill="#f6b85e"/>'
+          '<circle cx="650" cy="456" r="25" fill="#e8963a"/>'
+          '<circle cx="650" cy="456" r="16" fill="#f6b85e"/></g>')
+    s += ('<g stroke="#43703a" stroke-width="7" fill="none" stroke-linecap="round">'
+          '<path d="M178 452 L268 432"/>'
+          '<path d="M196 442 L190 424 M216 438 L210 420 M236 434 L230 416"/>'
+          '<path d="M700 450 L780 430"/>'
+          '<path d="M716 440 L710 422 M736 436 L730 418 M756 432 L750 414"/></g>')
+    s += _roast(470, 356, 1.62)
+    s += A.smoke(470, 282, t, 3, 200, 1.3, .32)
+    s += _cutlery(30, 484, fork=True)
+    s += '<g transform="translate(960,0) scale(-1,1)">' + _cutlery(30, 488, fork=False) + '</g>'
+    s += A.confetti(t, 14, seed=21)
+    return s
+
+
+def koza_door(t):
+    """Гостья входит в дом: светлый проём, коза на пороге, впереди угол заваленного стола."""
+    s = '<rect width="960" height="540" fill="#1d1309"/>'
+    s += ('<g opacity=".18" stroke="#7a5a2a" stroke-width="3" fill="none">'
+          + "".join('<path d="M%d %d q16 22 0 44 q-16 -22 0 -44"/>' % (556 + i * 104, 56 + (i % 2) * 92)
+                    for i in range(4)) + '</g>')
+    s += _garland(t, 10)
+    s += ('<g stroke="#120b06" stroke-width="12" stroke-linejoin="round">'
+          '<rect x="92" y="60" width="380" height="480" rx="4" fill="#31240f"/></g>')
+    s += '<rect x="112" y="80" width="340" height="460" fill="url(#roomc)"/>'
+    gl = .32 + .07 * A.w(t, 3.4)
+    s += f'<ellipse cx="282" cy="280" rx="200" ry="250" fill="#e8a24a" opacity="{gl:.2f}"/>'
+    s += ('<g transform="translate(564,0) scale(-1,1)">'
+          '<g transform="translate(-96,128) scale(0.62)">' + _koza_head(t, blink_ph=.25) + '</g></g>')
+    s += ('<g stroke="#120b06" stroke-width="10" stroke-linejoin="round">'
+          '<path d="M472 44 L578 86 L578 526 L472 540 Z" fill="#4a3520"/>'
+          '<path d="M492 96 L558 122 L558 300 L492 288 Z" fill="#5c4228"/>'
+          '<circle cx="556" cy="330" r="10" fill="#c9922f"/></g>')
+    s += '<path d="M112 512 L452 512 L560 540 L60 540 Z" fill="#e8a24a" opacity=".15"/>'
+    s += ('<g stroke="#120b06" stroke-width="10" stroke-linejoin="round">'
+          '<path d="M596 540 L628 386 L960 356 L960 540 Z" fill="#5a1f15"/></g>')
+    s += '<path d="M628 386 L960 356 L960 380 L624 410 Z" fill="#8a2f20"/>'
+    s += '<g opacity=".9">'
+    s += ('<g stroke="#120b06" stroke-width="9" stroke-linejoin="round">'
+          '<ellipse cx="886" cy="432" rx="120" ry="44" fill="#a99b80"/></g>')
+    s += _roast(886, 392, 0.92, "#5e2a11", "#7c3a16", rot=-4)
+    s += _bowl(690, 474, 80, 33, "#b8ab8e", 1.0, "#7d2030", bowl="#8e8169")
+    s += _goblet(744, 520, t, 1.0, .35, "#6d1620")
+    s += '</g>'
+    s += A.confetti(t, 12, seed=24)
+    return s
+
+
+def greens(t):
+    """Опора 1: зелень в стаканах и на доске — то, что ценит хозяйка года."""
+    s = '<rect width="960" height="540" fill="url(#roomc)"/>'
+    s += _garland(t, 14)
+    s += ('<g opacity=".45" stroke="#10180c" stroke-width="6" stroke-linejoin="round">'
+          '<path d="M828 108 L896 194 L866 194 L936 278 L720 278 L790 194 L760 194 Z" fill="#2f5c2a"/></g>')
+    s += ('<g opacity=".5"><circle cx="806" cy="206" r="12" fill="#d6202f"/>'
+          '<circle cx="866" cy="240" r="11" fill="#c9922f"/></g>')
+    s += _bunch(632, 158, t, 1.15, .2)
+    s += '<path d="M0 352 L960 352 L960 540 L0 540 Z" fill="url(#cloth)"/>'
+    s += '<path d="M0 344 L960 344 L960 366 L0 366 Z" fill="#c6523a"/>'
+    s += A.candle(70, 246, t, 98, 56)
+    s += ('<g stroke="#1b1309" stroke-width="8" stroke-linejoin="round">'
+          '<rect x="520" y="396" width="330" height="86" rx="12" fill="#b07d3f"/>'
+          '<circle cx="836" cy="420" r="11" fill="#8a5c2a"/></g>')
+    s += ('<g stroke="#8a5c2a" stroke-width="4" opacity=".7">'
+          '<path d="M540 420 L820 420 M540 448 L820 448"/></g>')
+    s += ('<g stroke="#1b1309" stroke-width="5">'
+          '<ellipse cx="586" cy="410" rx="46" ry="14" fill="#4e7a35"/>'
+          '<ellipse cx="668" cy="416" rx="40" ry="12" fill="#5e9a4a"/>'
+          '<circle cx="748" cy="412" r="27" fill="#f2d24a"/>'
+          '<circle cx="748" cy="412" r="19" fill="#f8ea9e"/></g>'
+          '<g stroke="#e0b62a" stroke-width="4" stroke-linecap="round">'
+          '<path d="M748 393 L748 431 M731 403 L765 421 M731 421 L765 403"/></g>'
+          '<g stroke="#1b1309" stroke-width="5">'
+          '<circle cx="806" cy="440" r="24" fill="#c0203a"/>'
+          '<path d="M806 416 L800 404 L812 404 Z" fill="#8c2130"/>'
+          '<circle cx="778" cy="452" r="15" fill="#d6202f"/></g>')
+    s += ('<g stroke="#1b1309" stroke-width="8" stroke-linejoin="round">'
+          '<path d="M96 374 L196 374 L186 492 C184 506 108 506 106 492 Z" fill="url(#glass)"/>'
+          '<path d="M240 382 L332 382 L323 490 C321 503 251 503 249 490 Z" fill="url(#glass)"/>'
+          '<path d="M372 376 L466 376 L457 488 C455 501 383 501 381 488 Z" fill="url(#glass)"/></g>')
+    s += ('<g stroke="#2f5c2a" stroke-width="8" fill="none" stroke-linecap="round" opacity=".55">'
+          '<path d="M120 420 L124 486 M160 420 L156 486 M268 428 L272 486 M300 428 L296 486'
+          ' M400 422 L404 484 M436 422 L432 484"/></g>')
+    # петрушка
+    s += (f'<g transform="rotate({A.sway(t, 5.4, .0, 1.1):.2f} 146 374)'
+          f' translate(146,374) scale(1.2) translate(-146,-374)">')
+    s += ('<g stroke="#4e7a35" stroke-width="9" fill="none" stroke-linecap="round">'
+          '<path d="M146 374 L140 262"/><path d="M140 290 C106 268 96 230 104 202"/>'
+          '<path d="M140 318 C178 298 192 258 184 228"/><path d="M140 250 C116 232 110 206 116 186"/></g>'
+          '<g fill="#3f6b2c" stroke="#1b1309" stroke-width="4">'
+          '<circle cx="100" cy="196" r="18"/><circle cx="124" cy="178" r="15"/>'
+          '<circle cx="188" cy="222" r="18"/><circle cx="170" cy="198" r="14"/>'
+          '<circle cx="112" cy="178" r="13"/><circle cx="82" cy="214" r="13"/>'
+          '<circle cx="152" cy="206" r="12"/><circle cx="200" cy="246" r="13"/>'
+          '<circle cx="134" cy="170" r="12"/></g></g>')
+    # укроп
+    s += (f'<g transform="rotate({A.sway(t, 4.7, .35, 1.3):.2f} 286 382)'
+          f' translate(286,382) scale(1.2) translate(-286,-382)">')
+    s += ('<g stroke="#5c8f3a" stroke-width="7" fill="none" stroke-linecap="round">'
+          '<path d="M286 382 L282 276"/><path d="M282 302 C256 286 248 258 254 236"/>'
+          '<path d="M282 326 C312 310 322 280 316 256"/><path d="M282 290 C306 272 316 248 312 226"/>'
+          '<path d="M282 314 C258 302 246 280 250 258"/></g>'
+          '<g stroke="#79b34c" stroke-width="4" fill="none" stroke-linecap="round" opacity=".95">'
+          '<path d="M254 236 L240 216 M254 236 L268 214 M254 236 L236 240 M316 256 L332 236'
+          ' M316 256 L302 232 M316 256 L336 260 M282 276 L266 254 M282 276 L300 252'
+          ' M312 226 L300 206 M312 226 L328 208 M282 258 L262 244 M282 258 L302 240'
+          ' M268 268 L252 258 M296 268 L312 258 M250 258 L234 240 M250 258 L264 236'
+          ' M250 258 L232 262 M266 286 L250 272 M298 286 L314 272 M254 248 L238 230'
+          ' M312 240 L326 222 M300 218 L288 198 M312 226 L330 214"/></g></g>')
+    # розмарин
+    s += (f'<g transform="rotate({A.sway(t, 6.1, .6, 1.0):.2f} 418 376)'
+          f' translate(418,376) scale(1.2) translate(-418,-376)">')
+    s += ('<g stroke="#43703a" stroke-width="8" fill="none" stroke-linecap="round">'
+          '<path d="M418 376 L412 254"/><path d="M412 300 C390 288 382 266 386 248"/>'
+          '<path d="M412 330 C438 318 448 294 444 274"/><path d="M412 276 C434 262 442 240 438 222"/></g>'
+          '<g stroke="#5e9a4a" stroke-width="4" stroke-linecap="round">'
+          '<path d="M404 266 L386 258 M420 272 L438 262 M404 292 L384 284 M420 298 L440 288'
+          ' M404 318 L386 312 M420 324 L440 316 M408 346 L390 340 M418 352 L438 344'
+          ' M406 242 L388 234 M418 248 L436 238 M408 222 L392 212 M416 226 L432 216'
+          ' M430 236 L444 226 M434 258 L450 250 M410 282 L392 274 M422 286 L440 276'
+          ' M410 308 L390 300 M422 312 L442 302 M412 334 L394 328 M420 338 L440 330'
+          ' M406 254 L390 246 M418 258 L434 248 M410 212 L396 200 M414 214 L428 202'
+          ' M412 364 L396 358 M416 366 L432 360"/></g></g>')
+    s += A.confetti(t, 14, seed=27)
+    return s
+
+
 SCENES = {
     "open": open_newyear, "dish": dish, "table_top": table_top, "three": three_animals,
     "yang": yang, "cozy": cozy, "makers": makers, "koza": koza, "koza_fire": koza_fire,
@@ -858,6 +1205,8 @@ SCENES = {
     "koza_shadow": koza_shadow, "koza_far": koza_far,
     "guests": guests, "ded": ded, "horse": horse,
     "retro": retro, "retro_child": retro_child,
+    "feast": feast, "heap": heap, "pork": pork, "koza_door": koza_door,
+    "greens": greens,
 }
 
 NO_GLARE = {"yang", "table_top"}

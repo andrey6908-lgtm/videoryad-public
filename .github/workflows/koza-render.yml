@@ -64,8 +64,9 @@ jobs:
         run: python3 finish.py "$GITHUB_WORKSPACE/parts" "$GITHUB_WORKSPACE/koza_out"
       - name: страж
         run: |
-          f=koza_out/koza2027_chasti1-3_nemoe.mp4
-          [ -s "$f" ] || { echo "::error::видео не собрано"; exit 1; }
+          f=$(ls koza_out/*.mp4 2>/dev/null | head -1)
+          [ -n "$f" ] && [ -s "$f" ] || { echo "::error::видео не собрано"; exit 1; }
+          echo "файл: $f"
           sz=$(stat -c%s "$f"); echo "размер: $((sz/1024)) КБ"
           [ "$sz" -gt 2000000 ] || { echo "::error::файл подозрительно мал"; exit 1; }
           cat koza_out/report.json

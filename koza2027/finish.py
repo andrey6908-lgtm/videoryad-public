@@ -39,7 +39,7 @@ for k, (nm, _s, aa, bb) in enumerate(plan.OVERLAYS, start=1):
               % (cur, k, aa, bb, k))
     cur = "v%d" % k
 
-final = os.path.join(OUT, "koza2027_chasti1-3_nemoe.mp4")
+final = os.path.join(OUT, "koza2027_%s_nemoe.mp4" % plan.TAG)
 run(["ffmpeg", "-v", "error", "-y"] + inputs +
     ["-filter_complex", ";".join(fc), "-map", "[%s]" % cur,
      "-c:v", "libx264", "-crf", "19", "-preset", "medium",
