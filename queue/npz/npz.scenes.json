@@ -1,0 +1,711 @@
+{
+ "channel": "ПЛАНЕТА",
+ "scenes": [
+  {
+   "id": 1,
+   "text": "",
+   "start_sec": 0.0,
+   "duration_sec": 10.0,
+   "visual_prompt": "Крупный пожар и столб чёрного дыма над нефтеперерабатывающим предприятием в Новокуйбышевске.",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/tTOau8dyyGTSk71-3kOH0piy7Z6sBc8pH_r1wsF5T0VeqJVHuyhBmlC_gFqT07wYC2Fwnjqvx2a-S4X2tn1pSme1WCz3tp91fBWYPH675ZjaHyLeqFxuKGw0QJR9U9VxSTDWjGD9KCVBeR3bRxV1ey-F2miIw0ZdG1NQho2agmILjr0om60-1BKFmMDJ5InYAWhmhpyIBYOk_DDCZF-w4XfEoUOZf9YX5qup2r606ScbOkzHQDdZtCQyRjrFqqJprFVxYJJYUe9bPCFHE0eK8GSmk-TeupYpYV7MvC3j3b0OxGxIVMTPQviJHE41UaybTdIUwTEaxmsDsG280CDZog.jpg",
+   "overlays": []
+  },
+  {
+   "id": 2,
+   "text": "",
+   "start_sec": 10.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Офис президента Украины на Банковой, движение служебных автомобилей у здания.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-УКРАИНА/ОФИС-ПРЕЗИДЕНТА-УКРАИНЫ",
+   "overlays": []
+  },
+  {
+   "id": 3,
+   "text": "",
+   "start_sec": 19.0,
+   "duration_sec": 12.0,
+   "visual_prompt": "Рабочие собирают украинские дальнобойные беспилотники FP-1 компании Fire Point.",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/UVy3yIfDVaUk0bX_P9VgV43SvMMc3zM1TT95ff6_UZQ64Se2U1Ki44_FQw8DSudaUnqfum_vgkeXvPtP8IKoMkrK7D95aOfTqoywMr14y4cD1zWfEowF1_io6qbJf6zxfznrjVlmkWbC6F9dE-I3i-ywzfko_cHNPshzRBtGcrUT_JQKwY0bjkfpN4Gg5NCaEJfCJKn2Ts8VF1pOdjIMiXpHjf553bBlchajd2z-8scJNEGBYUEHga97QLO7SLiUnwG-pspxD_tkcO9M-bf8Qx-b9EypqLQwG2aszlH_dAZl30JaN9qClHx8vLrr6mRWvJiNH5hLIzN9B44wPJm5AQ.jpg",
+   "overlays": [],
+   "is_map": true
+  },
+  {
+   "id": 4,
+   "text": "",
+   "start_sec": 31.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Карта России: по очереди подсвечиваются Новокуйбышевск, Самарская область, Уфа, Башкортостан, Ямал и Западная Сибирь; отдельно обозначена украинская граница.",
+   "source": "press_photo",
+   "source_query": "Новокуйбышевский нефтеперерабатывающий завод Самарская область установки колонны",
+   "overlays": []
+  },
+  {
+   "id": 5,
+   "text": "",
+   "start_sec": 40.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Колонны и факел современного российского нефтеперерабатывающего предприятия.",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/ICWaqfmtdaq-zaiRn2Pht4BnGTTnLhNmnFcCIhuxy1ROfTY_kLSwDjloJksq0S7-KOhyQ8y1wjYIu8zRetitOPiRofEMadRNIuj9U7uf0KFAp0mIUDV-k3yKQlFBMvRr4IKAF3NEp_TScqzBfKgIuWLG6aFcCiZovg0qCKlxuMIgZMUTFt-KXSmjhIo3lgW2Wzi-e87Wfdne1qHjFh44lGaBiyRWkmKgwoDZvtaMmShQ01V8KYJuS3PkAFp2jRsd-PQIWUjiSfoLvDCRiGPJjvbMPsVDDwPqi6e3XAKIHkEp5tZ3xAcFImSoMKh3AecjoFGA8gpYoa5qu1wcj1Sh2g.jpg",
+   "overlays": []
+  },
+  {
+   "id": 6,
+   "text": "",
+   "start_sec": 49.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Дым поднимается над нефтеперерабатывающим предприятием в Уфе 31 октября 2026 года.",
+   "source": "web_search",
+   "source_query": "дым над НПЗ в Уфе 31 октября 2026",
+   "overlays": []
+  },
+  {
+   "id": 7,
+   "text": "",
+   "start_sec": 58.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Пожарные автомобили и расчёты работают возле российского промышленного объекта.",
+   "source": "local_library",
+   "source_query": "БАЗА/УНИВЕРСАЛЬНОЕ/ПОЖАРНЫЕ-РАСЧЁТЫ-ЗДАНИЯ",
+   "overlays": []
+  },
+  {
+   "id": 8,
+   "text": "",
+   "start_sec": 67.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Российские города и промышленные объекты в глубине страны, снятые с движущегося транспорта.",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/РОССИЯ",
+   "overlays": []
+  },
+  {
+   "id": 9,
+   "text": "",
+   "start_sec": 76.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Кабинет министров Украины на Грушевского, автомобили проезжают вдоль фасада.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-УКРАИНА/КАБИНЕТ-МИНИСТРОВ-УКРАИНЫ",
+   "overlays": []
+  },
+  {
+   "id": 10,
+   "text": "",
+   "start_sec": 85.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Дональд Трамп направляется к журналистам возле президентского самолёта.",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/ТРАМП",
+   "overlays": []
+  },
+  {
+   "id": 11,
+   "text": "",
+   "start_sec": 94.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Белый дом со стороны Южного газона, сотрудники проходят к западному крылу.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/БЕЛЫЙ-ДОМ-СО",
+   "overlays": []
+  },
+  {
+   "id": 12,
+   "text": "",
+   "start_sec": 103.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Московский Кремль со стороны набережной, служебные машины движутся вдоль стен.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/МОСКОВСКИЙ-КРЕМЛЬ-СО",
+   "overlays": []
+  },
+  {
+   "id": 13,
+   "text": "",
+   "start_sec": 112.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Досье Юрия Ушакова: помощник президента России, комментирует отказ Киева выполнить требование Трампа.",
+   "source": "card:dossier",
+   "source_query": "card:dossier",
+   "overlays": []
+  },
+  {
+   "id": 14,
+   "text": "",
+   "start_sec": 121.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Зеленский и Трамп стоят рядом крупным планом после личной встречи.",
+   "source": "press_photo",
+   "source_query": "Дональд Трамп и Владимир Зеленский встреча октябрь 2026 реальное фото",
+   "overlays": []
+  },
+  {
+   "id": 15,
+   "text": "",
+   "start_sec": 130.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Брифинг-зал Белого дома перед заявлением американской администрации.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/БРИФИНГ-ЗАЛ-БЕЛОГО-ДОМА",
+   "overlays": [
+    {
+     "source": "direct_url",
+     "source_query": "ДОСЬЕ-8"
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "text": "",
+   "start_sec": 139.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Порт Новороссийска, суда и нефтяная инфраструктура у причалов.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/ПОРТ-НОВОРОССИЙСКА-ПРИЧАЛЫ",
+   "overlays": []
+  },
+  {
+   "id": 17,
+   "text": "",
+   "start_sec": 148.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Газовый терминал СПГ в Европе, по трубам идёт погрузка сырья.",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ГАЗОВЫЙ-ТЕРМИНАЛ-СПГ",
+   "overlays": []
+  },
+  {
+   "id": 18,
+   "text": "",
+   "start_sec": 157.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Контейнерный порт Лос-Анджелеса, краны перемещают грузы между судном и терминалом.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/КОНТЕЙНЕРНЫЙ-ПОРТ-ЛОС-АНДЖЕЛЕСА",
+   "overlays": []
+  },
+  {
+   "id": 19,
+   "text": "",
+   "start_sec": 166.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Нефтяные терминалы и танкеры как основа коммерческих интересов вокруг российских ресурсов.",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/НЕФТЬ",
+   "overlays": []
+  },
+  {
+   "id": 20,
+   "text": "",
+   "start_sec": 175.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Порт Гамбурга с воздуха, контейнеровоз подходит к причалу международного терминала.",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ПОРТ-ГАМБУРГА-ВОЗДУХА",
+   "overlays": []
+  },
+  {
+   "id": 21,
+   "text": "",
+   "start_sec": 184.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Трамп на деловой встрече с представителями американских энергетических компаний.",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/TRAMP",
+   "overlays": []
+  },
+  {
+   "id": 22,
+   "text": "",
+   "start_sec": 193.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Белый дом в Вашингтоне как центр решения по российской нефтяной теме.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/САМОЛЁТ-AIR-FORCE",
+   "overlays": []
+  },
+  {
+   "id": 23,
+   "text": "",
+   "start_sec": 202.0,
+   "duration_sec": 9.0,
+   "visual_prompt": "Капитолий в Вашингтоне и поток служебных автомобилей у здания американской власти.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/КАПИТОЛИЙ-ВАШИНГТОНЕ-ДНЁМ",
+   "overlays": []
+  },
+  {
+   "id": 24,
+   "text": "",
+   "start_sec": 211.0,
+   "duration_sec": 12.7,
+   "visual_prompt": "Кинолента из кадров европейских институтов, поддержки Киева и параллельных контактов США с Россией.",
+   "source": "card:film",
+   "source_query": "card:film",
+   "overlays": []
+  },
+  {
+   "id": 25,
+   "text": "",
+   "start_sec": 223.7,
+   "duration_sec": 12.7,
+   "visual_prompt": "Здание Еврокомиссии в Брюсселе во время встречи европейских представителей по Украине.",
+   "source": "press_photo",
+   "source_query": "Берлаймон в Брюсселе встреча по Украине 2026",
+   "overlays": []
+  },
+  {
+   "id": 26,
+   "text": "",
+   "start_sec": 236.4,
+   "duration_sec": 12.7,
+   "visual_prompt": "Овальный кабинет Белого дома во время рабочего совещания по России.",
+   "source": "press_photo",
+   "source_query": "Овальный кабинет Белого дома совещание по России 2026",
+   "overlays": []
+  },
+  {
+   "id": 27,
+   "text": "",
+   "start_sec": 249.1,
+   "duration_sec": 12.7,
+   "visual_prompt": "Представители Евросоюза ожидают начала закрытой встречи в коридоре Берлаймона.",
+   "source": "press_photo",
+   "source_query": "Представители Евросоюза у закрытой встречи Берлаймон 2026",
+   "overlays": []
+  },
+  {
+   "id": 28,
+   "text": "",
+   "start_sec": 261.8,
+   "duration_sec": 12.7,
+   "visual_prompt": "Зеленский прибывает в европейский институт на встречу с руководителями Евросоюза.",
+   "source": "press_photo",
+   "source_query": "Зеленский прибывает в Еврокомиссию встреча 2026",
+   "overlays": []
+  },
+  {
+   "id": 29,
+   "text": "",
+   "start_sec": 274.5,
+   "duration_sec": 12.7,
+   "visual_prompt": "Европейский форум по поддержке Украины, Зеленский среди руководителей стран Евросоюза.",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЕС-форумы-Украина",
+   "overlays": []
+  },
+  {
+   "id": 30,
+   "text": "",
+   "start_sec": 287.2,
+   "duration_sec": 12.7,
+   "visual_prompt": "Карта России: по очереди подсвечиваются и подписываются Самарская область, Уфа, Ямал, Западная Сибирь — рубежи, о которых говорит Зеленский. Без цифр и шкалы.",
+   "source": "card:map",
+   "source_query": "card:map",
+   "overlays": []
+  },
+  {
+   "id": 31,
+   "text": "",
+   "start_sec": 299.9,
+   "duration_sec": 12.7,
+   "visual_prompt": "Украинский дальнобойный беспилотник FP-1 компании Fire Point перед испытательным вылетом.",
+   "source": "web_search",
+   "source_query": "украинский дрон FP-1 Fire Point испытания 2026",
+   "overlays": []
+  },
+  {
+   "id": 32,
+   "text": "",
+   "start_sec": 312.6,
+   "duration_sec": 12.7,
+   "visual_prompt": "Пусковая установка украинского ударного беспилотника FP-1 перед стартом.",
+   "source": "press_photo",
+   "source_query": "пусковая установка Fire Point FP-1 Украина 2026",
+   "overlays": []
+  },
+  {
+   "id": 33,
+   "text": "",
+   "start_sec": 325.3,
+   "duration_sec": 12.7,
+   "visual_prompt": "Офис президента Украины на Банковой во время совещания по дальнобойным средствам.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-УКРАИНА/ФАСАД-ЗДАНИЯ-ВЕРХОВНОЙ",
+   "overlays": []
+  },
+  {
+   "id": 34,
+   "text": "",
+   "start_sec": 338.0,
+   "duration_sec": 12.7,
+   "visual_prompt": "Современный сборочный участок Fire Point с корпусами украинских беспилотников FP-1.",
+   "source": "web_search",
+   "source_query": "сборочный участок Fire Point Украина современные беспилотники 2026",
+   "overlays": []
+  },
+  {
+   "id": 35,
+   "text": "",
+   "start_sec": 350.7,
+   "duration_sec": 12.7,
+   "visual_prompt": "Московский Кремль во время прибытия участников совещания по безопасности России.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/ДОМ-ПРАВИТЕЛЬСТВА-РОССИИ",
+   "overlays": []
+  },
+  {
+   "id": 36,
+   "text": "",
+   "start_sec": 363.4,
+   "duration_sec": 12.7,
+   "visual_prompt": "Ударный БПЛА компании Fire Point летит над украинским испытательным маршрутом.",
+   "source": "press_photo",
+   "source_query": "ударный БПЛА Fire Point в полёте Украина 2026",
+   "overlays": []
+  },
+  {
+   "id": 37,
+   "text": "",
+   "start_sec": 376.1,
+   "duration_sec": 12.7,
+   "visual_prompt": "Штаб НАТО в Брюсселе во время совещания союзников по Украине.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ШТАБ-НАТО-БРЮССЕЛЕ",
+   "overlays": []
+  },
+  {
+   "id": 38,
+   "text": "",
+   "start_sec": 388.8,
+   "duration_sec": 12.7,
+   "visual_prompt": "Украина, Европа и Россия показаны отдельными пересекающимися кругами интересов без числовых значений.",
+   "source": "card:bubbles",
+   "source_query": "card:bubbles",
+   "overlays": []
+  },
+  {
+   "id": 39,
+   "text": "",
+   "start_sec": 401.5,
+   "duration_sec": 12.7,
+   "visual_prompt": "Дом правительства России, к центральному входу подъезжают служебные автомобили.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/ЗДАНИЕ-МИД-РОССИИ",
+   "overlays": []
+  },
+  {
+   "id": 40,
+   "text": "",
+   "start_sec": 414.2,
+   "duration_sec": 12.7,
+   "visual_prompt": "Дмитрий Песков крупным планом во время ответа на вопросы.",
+   "source": "press_photo",
+   "source_query": "Дмитрий Песков брифинг для журналистов Кремль 2026",
+   "overlays": []
+  },
+  {
+   "id": 41,
+   "text": "",
+   "start_sec": 426.9,
+   "duration_sec": 12.7,
+   "visual_prompt": "Путин проводит рабочее совещание с представителями российской власти.",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/ПУТИН",
+   "overlays": []
+  },
+  {
+   "id": 42,
+   "text": "",
+   "start_sec": 439.6,
+   "duration_sec": 12.7,
+   "visual_prompt": "Здание МИД России на Смоленской площади перед подготовкой международной встречи.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/ГАЗОВАЯ-КОМПРЕССОРНАЯ-СТАНЦИЯ",
+   "overlays": []
+  },
+  {
+   "id": 43,
+   "text": "",
+   "start_sec": 452.3,
+   "duration_sec": 12.7,
+   "visual_prompt": "Западное крыло Белого дома, куда прибывают советники президента США.",
+   "source": "press_photo",
+   "source_query": "западное крыло Белого дома советники президента 2026",
+   "overlays": []
+  },
+  {
+   "id": 44,
+   "text": "",
+   "start_sec": 465.0,
+   "duration_sec": 12.7,
+   "visual_prompt": "Российские чиновники направляются на совещание в Доме правительства.",
+   "source": "press_photo",
+   "source_query": "российские чиновники входят в Дом правительства 2026",
+   "overlays": []
+  },
+  {
+   "id": 45,
+   "text": "",
+   "start_sec": 477.7,
+   "duration_sec": 12.7,
+   "visual_prompt": "Американская администрация проводит брифинг по требованию прекратить удары по российским предприятиям.",
+   "source": "press_photo",
+   "source_query": "брифинг-зал Белого дома пустая кафедра с эмблемой без людей",
+   "overlays": []
+  },
+  {
+   "id": 46,
+   "text": "",
+   "start_sec": 490.4,
+   "duration_sec": 12.7,
+   "visual_prompt": "Кабинет министров Украины на Грушевского во время прибытия правительственного кортежа.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-УКРАИНА/КАБИНЕТ-МИНИСТРОВ-УКРАИНЫ",
+   "overlays": []
+  },
+  {
+   "id": 47,
+   "text": "",
+   "start_sec": 503.1,
+   "duration_sec": 12.7,
+   "visual_prompt": "Государственный департамент США во время встречи представителей американской администрации.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ГОСДЕП-США",
+   "overlays": []
+  },
+  {
+   "id": 48,
+   "text": "",
+   "start_sec": 515.8,
+   "duration_sec": 12.7,
+   "visual_prompt": "Полукруг Европарламента в Страсбурге во время обсуждения поддержки Украины.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ЗАЛ-ЕВРОПАРЛАМЕНТА-СТРАСБУРГЕ",
+   "overlays": []
+  },
+  {
+   "id": 49,
+   "text": "",
+   "start_sec": 528.5,
+   "duration_sec": 12.7,
+   "visual_prompt": "Юрий Ушаков отвечает российским журналистам после кремлёвского совещания.",
+   "source": "press_photo",
+   "source_query": "Юрий Ушаков отвечает журналистам Кремль 2026",
+   "overlays": []
+  },
+  {
+   "id": 50,
+   "text": "",
+   "start_sec": 541.2,
+   "duration_sec": 12.7,
+   "visual_prompt": "Берлаймон в Брюсселе, европейские чиновники покидают вечернее заседание.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ЗДАНИЕ-БЕРЛАЙМОН-БРЮССЕЛЕ",
+   "overlays": []
+  },
+  {
+   "id": 51,
+   "text": "",
+   "start_sec": 553.9,
+   "duration_sec": 12.7,
+   "visual_prompt": "Хронология: третье ноября — американские выборы; четвёртое ноября — ожидание перемен; следующий понедельник — проблемы остаются.",
+   "source": "press_photo",
+   "source_query": "Капитолий США избирательный участок день голосования 2026",
+   "overlays": []
+  },
+  {
+   "id": 52,
+   "text": "",
+   "start_sec": 566.6,
+   "duration_sec": 12.7,
+   "visual_prompt": "Дым над российским нефтеперерабатывающим предприятием, внизу работают пожарные расчёты.",
+   "source": "web_search",
+   "source_query": "российский НПЗ дым пожарные расчёты октябрь 2026",
+   "overlays": []
+  },
+  {
+   "id": 53,
+   "text": "",
+   "start_sec": 579.3,
+   "duration_sec": 12.7,
+   "visual_prompt": "Капитолий в Вашингтоне после выборов, служебный транспорт движется по подъездной дороге.",
+   "source": "card:quote",
+   "source_query": "card:quote",
+   "overlays": []
+  },
+  {
+   "id": 54,
+   "text": "",
+   "start_sec": 592.0,
+   "duration_sec": 12.7,
+   "visual_prompt": "Зеленский отвечает на вопросы о дальнобойных ударах на площадке WSJ.",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский заявление для прессы октябрь 2026",
+   "overlays": []
+  },
+  {
+   "id": 55,
+   "text": "",
+   "start_sec": 604.7,
+   "duration_sec": 12.7,
+   "visual_prompt": "Промышленные колонны нефтеперерабатывающего предприятия в Уфе после объявления беспилотной опасности.",
+   "source": "web_search",
+   "source_query": "промышленные колонны НПЗ Уфа беспилотная опасность 2026",
+   "overlays": []
+  },
+  {
+   "id": 56,
+   "text": "",
+   "start_sec": 617.4,
+   "duration_sec": 12.7,
+   "visual_prompt": "Ремонтная бригада восстанавливает технологические колонны российского предприятия в Самарской области.",
+   "source": "press_photo",
+   "source_query": "ремонтная бригада Самарского НПЗ восстанавливает установки 2026",
+   "overlays": []
+  },
+  {
+   "id": 57,
+   "text": "",
+   "start_sec": 630.1,
+   "duration_sec": 12.7,
+   "visual_prompt": "Дом правительства России во время прибытия заместителя председателя Александра Новака.",
+   "source": "press_photo",
+   "source_query": "Дом правительства России Александр Новак прибытие 2026",
+   "overlays": []
+  },
+  {
+   "id": 58,
+   "text": "",
+   "start_sec": 642.8,
+   "duration_sec": 12.7,
+   "visual_prompt": "Российская делегация входит в здание МИД на Смоленской перед международной встречей.",
+   "source": "press_photo",
+   "source_query": "российская делегация входит в МИД на Смоленской 2026",
+   "overlays": []
+  },
+  {
+   "id": 59,
+   "text": "",
+   "start_sec": 655.5,
+   "duration_sec": 12.7,
+   "visual_prompt": "Путин обсуждает российские условия будущего соглашения с членами правительства.",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ПУТИН",
+   "overlays": []
+  },
+  {
+   "id": 60,
+   "text": "",
+   "start_sec": 668.2,
+   "duration_sec": 12.7,
+   "visual_prompt": "Белый дом во время прибытия украинской делегации на встречу с американской администрацией.",
+   "source": "press_photo",
+   "source_query": "украинская делегация прибывает в Белый дом 2026",
+   "overlays": []
+  },
+  {
+   "id": 61,
+   "text": "",
+   "start_sec": 680.9,
+   "duration_sec": 12.7,
+   "visual_prompt": "Пентагон с воздуха как центр американской военной и разведывательной поддержки.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/ПЕНТАГОН-ВОЗДУХА",
+   "overlays": []
+  },
+  {
+   "id": 62,
+   "text": "",
+   "start_sec": 693.6,
+   "duration_sec": 12.7,
+   "visual_prompt": "Европарламент в Страсбурге во время обсуждения возможностей дальнейшей поддержки Киева.",
+   "source": "press_photo",
+   "source_query": "здание Европарламента в Брюсселе фасад с флагами стран ЕС",
+   "overlays": []
+  },
+  {
+   "id": 63,
+   "text": "",
+   "start_sec": 706.3,
+   "duration_sec": 12.7,
+   "visual_prompt": "Фасад Верховной Рады в Киеве во время заседания украинского руководства.",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-УКРАИНА/ФАСАД-ЗДАНИЯ-ВЕРХОВНОЙ",
+   "overlays": []
+  },
+  {
+   "id": 64,
+   "text": "",
+   "start_sec": 719.0,
+   "duration_sec": 12.7,
+   "visual_prompt": "Сенатский дворец Московского Кремля перед совещанием по будущим условиям мира.",
+   "source": "press_photo",
+   "source_query": "Сенатский дворец Московского Кремля совещание 2026",
+   "overlays": []
+  },
+  {
+   "id": 65,
+   "text": "",
+   "start_sec": 731.7,
+   "duration_sec": 12.7,
+   "visual_prompt": "Дмитрий Песков отвечает журналистам после заявления о сохранении предстоящей встречи.",
+   "source": "press_photo",
+   "source_query": "Дмитрий Песков отвечает журналистам о встрече 2026",
+   "overlays": []
+  },
+  {
+   "id": 66,
+   "text": "",
+   "start_sec": 744.4,
+   "duration_sec": 12.7,
+   "visual_prompt": "Российская делегация выходит из МИД после подготовки позиции к трёхсторонней встрече.",
+   "source": "press_photo",
+   "source_query": "делегация России выходит из МИД после совещания 2026",
+   "overlays": []
+  },
+  {
+   "id": 67,
+   "text": "",
+   "start_sec": 757.1,
+   "duration_sec": 12.7,
+   "visual_prompt": "Украинская мобильная пусковая платформа с дальнобойным беспилотником FP-1.",
+   "source": "web_search",
+   "source_query": "здание Министерства обороны Украины в Киеве фасад",
+   "overlays": []
+  },
+  {
+   "id": 68,
+   "text": "",
+   "start_sec": 769.8,
+   "duration_sec": 12.7,
+   "visual_prompt": "Украинский дальнобойный беспилотник на площадке компании Fire Point перед вылетом.",
+   "source": "press_photo",
+   "source_query": "Георгиевский зал Кремля накрытый стол для делегаций",
+   "overlays": []
+  },
+  {
+   "id": 69,
+   "text": "",
+   "start_sec": 782.5,
+   "duration_sec": 12.7,
+   "visual_prompt": "Штаб НАТО в Брюсселе во время прибытия европейских делегаций на встречу по Украине.",
+   "source": "press_photo",
+   "source_query": "штаб НАТО Брюссель европейские делегации Украина 2026",
+   "overlays": []
+  },
+  {
+   "id": 70,
+   "text": "",
+   "start_sec": 795.2,
+   "duration_sec": 13.7,
+   "visual_prompt": "Офис президента Украины на Банковой вечером после заявлений о будущих договорённостях.",
+   "source": "press_photo",
+   "source_query": "Офис президента Украины Банковая вечер октябрь 2026",
+   "overlays": []
+  }
+ ]
+}
