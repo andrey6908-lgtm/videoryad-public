@@ -87,7 +87,7 @@ def encode(last):
     if last:
         return ["-c:v", "libx264", "-crf", "19", "-preset", "medium",
                 "-pix_fmt", "yuv420p", "-r", str(plan.FPS), "-movflags", "+faststart"]
-    return ["-c:v", "libx264", "-crf", "16", "-preset", "veryfast",
+    return ["-c:v", "libx264", "-crf", "14", "-preset", "ultrafast",
             "-pix_fmt", "yuv420p", "-r", str(plan.FPS)]
 
 
@@ -95,41 +95,49 @@ FINAL = os.path.join(OUT, "koza2027_%s_nemoe.mp4" % plan.TAG)
 total_layers = len(STOCK) + len(plan.OVERLAYS)
 done_layers = 0
 
-for i, (aa, bb, url, box) in enumerate(STOCK):
-    x, y, w, h = box
-    d = bb - aa
-    done_layers += 1
-    out = FINAL if done_layers == total_layers else stage_out()
+SV_GROUP = 2
+for gi in range(0, len(STOCK), SV_GROUP):
+    chunk = STOCK[gi:gi + SV_GROUP]
     inputs = ["-i", CUR,
               "-loop", "1", "-framerate", str(plan.FPS), "-t", "%.3f" % plan.TOTAL,
               "-i", "/tmp/sv_mask.png",
               "-loop", "1", "-framerate", str(plan.FPS), "-t", "%.3f" % plan.TOTAL,
-              "-i", "/tmp/sv_frame.png",
-              "-itsoffset", "%.4f" % aa, "-stream_loop", "-1", "-t", "%.3f" % d,
-              "-i", stock_files[url]]
-    fc = [
-        "[3:v]scale=%d:%d:force_original_aspect_ratio=increase,crop=%d:%d,setsar=1,fps=%d,"
-        "colorbalance=rm=.07:gm=.01:bm=-.06,eq=saturation=.94:contrast=1.03:brightness=-.02,"
-        "format=rgba,fade=in:st=%.3f:d=0.25:alpha=1,fade=out:st=%.3f:d=0.35:alpha=1[sv]"
-        % (w, h, w, h, plan.FPS, aa, max(aa, bb - 0.35)),
-        "[1:v]format=gray,setsar=1[m]",
-        "[sv][m]alphamerge[svm]",
-        "[0:v][svm]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[o1]"
-        % (x, y, aa, bb),
-        "[2:v]format=rgba,setsar=1,fade=in:st=%.3f:d=0.25:alpha=1,"
-        "fade=out:st=%.3f:d=0.35:alpha=1[fr]" % (aa, max(aa, bb - 0.35)),
-        "[o1][fr]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[v]"
-        % (x - 30, y - 30, aa, bb),
-    ]
-    print("слой %d/%d: живая вставка %.0f-%.0f с" % (done_layers, total_layers, aa, bb), flush=True)
+              "-i", "/tmp/sv_frame.png"]
+    fc = ["[1:v]format=gray,setsar=1[mraw]",
+          "[mraw]split=%d%s" % (len(chunk), "".join("[m%d]" % i for i in range(len(chunk)))),
+          "[2:v]format=rgba,setsar=1[frraw]",
+          "[frraw]split=%d%s" % (len(chunk), "".join("[fx%d]" % i for i in range(len(chunk))))]
+    cur, nin = "0:v", 3
+    for i, (aa, bb, url, box) in enumerate(chunk):
+        x, y, w, h = box
+        d = bb - aa
+        inputs += ["-itsoffset", "%.4f" % aa, "-stream_loop", "-1", "-t", "%.3f" % d,
+                   "-i", stock_files[url]]
+        fc.append("[%d:v]scale=%d:%d:force_original_aspect_ratio=increase,crop=%d:%d,setsar=1,"
+                  "fps=%d,colorbalance=rm=.07:gm=.01:bm=-.06,"
+                  "eq=saturation=.94:contrast=1.03:brightness=-.02,format=rgba,"
+                  "fade=in:st=%.3f:d=0.25:alpha=1,fade=out:st=%.3f:d=0.35:alpha=1[sv%d]"
+                  % (nin, w, h, w, h, plan.FPS, aa, max(aa, bb - 0.35), i))
+        nin += 1
+        fc.append("[sv%d][m%d]alphamerge[svm%d]" % (i, i, i))
+        fc.append("[%s][svm%d]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[so%d]"
+                  % (cur, i, x, y, aa, bb, i))
+        fc.append("[fx%d]fade=in:st=%.3f:d=0.25:alpha=1,fade=out:st=%.3f:d=0.35:alpha=1[fr%d]"
+                  % (i, aa, max(aa, bb - 0.35), i))
+        fc.append("[so%d][fr%d]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[v%d]"
+                  % (i, i, x - 30, y - 30, aa, bb, i))
+        cur = "v%d" % i
+    done_layers += len(chunk)
+    last = (done_layers == total_layers)
+    out = FINAL if last else stage_out()
+    print("слои %d/%d: живые вставки" % (done_layers, total_layers), flush=True)
     run(["ffmpeg", "-v", "error", "-y"] + inputs +
-        ["-filter_complex", ";".join(fc), "-map", "[v]"] +
-        encode(done_layers == total_layers) + [out])
+        ["-filter_complex", ";".join(fc), "-map", "[%s]" % cur] + encode(last) + [out])
     if CUR.startswith("/tmp/stage"):
         os.remove(CUR)
     CUR = out
 
-GROUP = 6
+GROUP = 13
 ovs = list(plan.OVERLAYS)
 for g0 in range(0, len(ovs), GROUP):
     chunk = ovs[g0:g0 + GROUP]
