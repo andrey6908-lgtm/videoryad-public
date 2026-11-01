@@ -144,3 +144,84 @@ def anchor(year, x=1540, y=110):
          f'<rect x="{x}" y="{y}" width="248" height="104" rx="8" fill="#0e0e0e" opacity=".84"/>')
     s += _t(x + 30, y + 76, year, SAN, 62, "#ffffff", bold=True, ls=4, shadow=False)
     return _wrap(s)
+
+def tag(title, sub="", x=110, y=250, idx=0):
+    """Ярлычок-подпись: выскакивает в столбик по мере того, как название
+    звучит в озвучке. Ширина МЕРЯЕТСЯ ШРИФТОМ, не прикидывается.
+    idx — номер в столбике: ярлыки накапливаются, а не сменяют друг друга."""
+    TS, SS, PAD = 44, 26, 26
+    h = 92 if sub else 64
+    yy = y + idx * (h + 12)
+    w = max(wid(title, SAN, TS, True), wid(sub, SAN, SS)) + PAD * 2 + 22
+    w = max(300, w)
+    s = (f'<rect x="{x+5}" y="{yy+7}" width="{w}" height="{h}" rx="9" fill="#000000" opacity=".4"/>'
+         f'<rect x="{x}" y="{yy}" width="{w}" height="{h}" rx="9" fill="#0e0e0e" opacity=".9"/>'
+         f'<rect x="{x}" y="{yy}" width="8" height="{h}" rx="4" fill="{GREEN}"/>')
+    s += _t(x + PAD, yy + (46 if sub else 44), title, SAN, TS, "#ffffff", bold=True, shadow=False)
+    if sub:
+        s += _t(x + PAD, yy + 78, sub, SAN, SS, "#cfc8bd", shadow=False)
+    return _wrap(s)
+
+def recipe(title, steps, active=0, x=None, y=150):
+    """Карточка рецепта: шаги списком, активный подсвечен. Висит, пока
+    озвучка ведёт по шагам, — голый кадр блюда сам по себе пустоват.
+    Ширина и высота МЕРЯЮТСЯ ШРИФТОМ."""
+    TS, SS, PAD, LH = 40, 29, 32, 52
+    w = max([wid(title, SAN, TS, True)] + [wid(t, SAN, SS, True) for t in steps]) + PAD * 2 + 56
+    w = max(520, min(760, w))
+    h = PAD + 54 + 22 + LH * len(steps) + PAD - 6
+    if x is None:
+        x = W - w - 90
+    s = (f'<rect x="{x+6}" y="{y+8}" width="{w}" height="{h}" rx="14" fill="#000000" opacity=".4"/>'
+         f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="#0e0e0e" opacity=".9"/>')
+    s += _t(x + PAD, y + PAD + 40, title, SAN, TS, "#ffffff", bold=True, shadow=False)
+    ry = y + PAD + 58
+    s += f'<rect x="{x+PAD}" y="{ry}" width="86" height="6" fill="{GREEN}"/>'
+    s += f'<rect x="{x+PAD}" y="{ry+4}" width="{w-PAD*2}" height="2" fill="#ffffff" opacity=".18"/>'
+    yy = ry + 46
+    for i, t in enumerate(steps):
+        on = (i == active)
+        s += (f'<circle cx="{x+PAD+10}" cy="{yy-9}" r="{9 if on else 6}"'
+              f' fill="{GREEN if on else "#5a5349"}"/>')
+        if i < active:
+            s += (f'<path d="M{x+PAD+5} {yy-9} L{x+PAD+9} {yy-5} L{x+PAD+16} {yy-14}"'
+                  ' stroke="#0e0e0e" stroke-width="3" fill="none" stroke-linecap="round"/>')
+        s += _t(x + PAD + 34, yy, t, SAN, SS, "#ffffff" if on else "#8e877c",
+                bold=on, shadow=False)
+        yy += LH
+    return _wrap(s)
+
+_CHIP_ICONS = {
+    "апельсин": ('<circle cx="0" cy="0" r="30" fill="#f0921f" stroke="#1b0f07" stroke-width="7"/>'
+                 '<circle cx="0" cy="0" r="20" fill="#ffb455" stroke="#1b0f07" stroke-width="4"/>'
+                 '<g stroke="#e07f23" stroke-width="4" stroke-linecap="round">'
+                 '<path d="M0 -18 L0 18 M-18 0 L18 0 M-13 -13 L13 13 M13 -13 L-13 13"/></g>'),
+    "имбирь":   ('<path d="M-30 6 C-34 -10 -22 -20 -8 -18 C-2 -30 14 -30 18 -18'
+                 ' C32 -18 36 -4 28 6 C32 16 22 26 10 22 C2 32 -14 30 -18 18'
+                 ' C-30 18 -34 12 -30 6 Z" fill="#e9c98a" stroke="#1b0f07" stroke-width="7"'
+                 ' stroke-linejoin="round"/>'
+                 '<g stroke="#c49a56" stroke-width="4" fill="none" stroke-linecap="round">'
+                 '<path d="M-14 -6 C-4 -2 6 -4 14 -10 M-10 8 C0 12 12 10 20 4"/></g>'),
+    "мёд":      ('<path d="M-22 -16 C-22 -26 22 -26 22 -16 L18 16 C16 28 -16 28 -18 16 Z"'
+                 ' fill="#d8982a" stroke="#1b0f07" stroke-width="7" stroke-linejoin="round"/>'
+                 '<path d="M-16 -8 C-6 -13 8 -13 16 -8" stroke="#f3c75a" stroke-width="5" fill="none"/>'),
+    "гранат":   ('<circle cx="0" cy="2" r="28" fill="#a8172c" stroke="#1b0f07" stroke-width="7"/>'
+                 '<path d="M0 -26 L-8 -40 L8 -36 Z" fill="#7a0f20" stroke="#1b0f07" stroke-width="5"'
+                 ' stroke-linejoin="round"/>'
+                 '<g fill="#c0203a"><circle cx="-11" cy="-4" r="7"/><circle cx="10" cy="0" r="6"/>'
+                 '<circle cx="-2" cy="13" r="6"/></g>'),
+}
+
+
+def chip(kind, text, x=110, y=760, idx=0):
+    """Предмет выскакивает кружком с подписью: «апельсин», «имбирь».
+    Рисунок тот же, что в сценах, поэтому вставка читается как часть кадра."""
+    h, gap = 96, 14
+    yy = y + idx * (h + gap)
+    tw = wid(text, SAN, 38, True)
+    w = 96 + tw + 44
+    s = (f'<rect x="{x+5}" y="{yy+7}" width="{w}" height="{h}" rx="48" fill="#000000" opacity=".4"/>'
+         f'<rect x="{x}" y="{yy}" width="{w}" height="{h}" rx="48" fill="#0e0e0e" opacity=".9"/>')
+    s += f'<g transform="translate({x+50},{yy+h//2}) scale(1.12)">{_CHIP_ICONS[kind]}</g>'
+    s += _t(x + 96, yy + 62, text, SAN, 38, "#ffffff", bold=True, shadow=False)
+    return _wrap(s)
