@@ -1,6 +1,7 @@
 name: koza-render
-# Покадровый рендер «Год козы 2027»: 3962 кадра рисуются вектором заново,
-# поэтому зум плавный, а внутри кадра всё живёт. Матрица из 10 машин.
+# Покадровый рендер «Год козы 2027»: каждый кадр рисуется вектором заново,
+# поэтому зум плавный, а внутри кадра всё живёт. Матрица из 16 машин
+# (часть 5 — 11652 кадра, на десяти машинах она шла бы вдвое дольше).
 # Озвучки и музыки тут НЕТ: звук подмешивается на машине пользователя.
 on:
   workflow_dispatch:
@@ -15,9 +16,9 @@ jobs:
     timeout-minutes: 50
     strategy:
       fail-fast: false
-      max-parallel: 10
+      max-parallel: 16
       matrix:
-        shard: [1,2,3,4,5,6,7,8,9,10]
+        shard: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
     steps:
       - uses: actions/checkout@v4
       - name: системные пакеты
@@ -31,7 +32,7 @@ jobs:
       - run: pip install --quiet cairosvg pillow
       - name: кадры
         working-directory: koza2027
-        run: python3 render.py "$GITHUB_WORKSPACE/parts" --shard ${{ matrix.shard }}/10
+        run: python3 render.py "$GITHUB_WORKSPACE/parts" --shard ${{ matrix.shard }}/16
       - name: страж — часть должна быть не пустой
         run: |
           f=parts/seg$(printf %02d ${{ matrix.shard }}).mp4
