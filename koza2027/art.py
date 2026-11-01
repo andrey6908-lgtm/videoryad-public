@@ -2567,6 +2567,161 @@ def cheese_slice(t):
     return s
 
 
+def guests_toast(t):
+    """Гости поднимают бокалы: третий вариант застолья, свой план."""
+    s = '<rect width="960" height="540" fill="url(#roomr)"/>'
+    s += _boke([(130, 84, 18, "#ffd45e"), (250, 124, 14, "#ff8c6b"), (58, 158, 12, "#9ae06a")])
+    s += tree(846, 310, t, 0.5, 0.55, star=True)
+    s += _garland(t, 10)
+    for x, sc, ph, coat in ((170, .96, .0, "#5e3f6b"), (330, 1.04, .3, "#2f5c6b"),
+                            (560, 1.0, .6, "#8c4a2a"), (706, .92, .85, "#4e6b3a")):
+        a = A.sway(t, 6.2, ph, 1.4)
+        s += (f'<g transform="rotate({a:.2f} {x} 430) translate({x},150) scale({sc})">'
+              f'<path d="M-84 230 C-84 136 -48 100 0 100 C48 100 84 136 84 230 Z" fill="{coat}"'
+              ' stroke="#1b0f07" stroke-width="9"/>'
+              '<circle cx="0" cy="54" r="46" fill="#edcfa4" stroke="#1b0f07" stroke-width="9"/>'
+              + _eyes(-16, 16, 48, t, 6, ph)
+              + '<path d="M-14 74 C-5 84 7 84 16 74" stroke="#1b0f07" stroke-width="6"'
+              ' fill="none" stroke-linecap="round"/>'
+              # поднятая рука с бокалом
+              '<path d="M56 150 C86 120 104 86 104 56" stroke="#1b0f07" stroke-width="16"'
+              ' fill="none" stroke-linecap="round"/>'
+              '<g stroke="#1b0f07" stroke-width="7" stroke-linejoin="round">'
+              '<path d="M80 10 L130 10 L122 48 C120 58 90 58 88 48 Z" fill="url(#glass)"/>'
+              '<path d="M86 26 L124 26 L118 46 C116 54 94 54 92 46 Z" fill="#9b1b28"/>'
+              '<path d="M105 58 L105 80" stroke="#1b0f07" stroke-width="7"/>'
+              '<ellipse cx="105" cy="84" rx="20" ry="6" fill="url(#glass)"/></g></g>')
+    s += table(416)
+    s += ('<g stroke="#1b0f07" stroke-width="8">'
+          '<ellipse cx="150" cy="492" rx="112" ry="30" fill="#dccbab"/>'
+          '<ellipse cx="820" cy="498" rx="118" ry="32" fill="#dccbab"/></g>')
+    s += A.candle(470, 420, t, 60, 44, phase=.25, s=.8)
+    s += A.confetti(t, 20, seed=239)
+    return s
+
+
+def pumpkin_slice(t):
+    """Тыкву режут: половина, долька на доске и нож — рабочий план рецепта."""
+    s = '<rect width="960" height="540" fill="url(#roomb)"/>'
+    s += _boke([(838, 86, 17, "#ffd45e"), (734, 124, 13, "#ff8c6b"), (904, 156, 12, "#9ae06a")])
+    s += tree(118, 284, t, 0.46, 0.4, star=False)
+    s += _garland(t, 10)
+    s += table(336)
+    s += ('<g stroke="#1b1309" stroke-width="9" stroke-linejoin="round">'
+          '<rect x="80" y="396" width="700" height="120" rx="16" fill="#b07d3f"/>'
+          '<path d="M780 422 L840 422 C856 422 864 434 864 450 C864 468 856 480 840 480'
+          ' L780 480 Z" fill="#9a6a33"/></g>')
+    # половина тыквы срезом к зрителю
+    s += ('<g stroke="#1b0f07" stroke-width="9" stroke-linejoin="round">'
+          '<path d="M150 466 C130 406 176 356 250 356 C324 356 372 406 352 466 Z" fill="#d97119"/>'
+          '<path d="M172 452 C158 408 196 376 250 376 C304 376 342 408 328 452 Z" fill="#ef9a2e"/>'
+          '<path d="M202 440 C194 414 220 398 250 398 C280 398 306 414 298 440'
+          ' C282 452 218 452 202 440 Z" fill="#e9c98a"/></g>'
+          '<g fill="#f4e3bb" stroke="#1b0f07" stroke-width="3">'
+          '<ellipse cx="232" cy="424" rx="7" ry="10"/><ellipse cx="252" cy="418" rx="7" ry="10"/>'
+          '<ellipse cx="272" cy="424" rx="7" ry="10"/></g>')
+    # отрезанные дольки веером
+    for i, (x, rot, col) in enumerate(((440, -16, "#ef9a2e"), (520, -4, "#d97119"),
+                                       (600, 8, "#e08523"))):
+        s += (f'<g transform="rotate({rot} {x} 450)">'
+              f'<path d="M{x-46} 486 C{x-54} 430 {x-24} 398 {x+16} 396'
+              f' C{x+28} 438 {x+12} 476 {x-16} 494 Z" fill="{col}"'
+              ' stroke="#1b0f07" stroke-width="8" stroke-linejoin="round"/>'
+              f'<path d="M{x-34} 462 C{x-38} 428 {x-18} 410 {x+6} 406"'
+              ' stroke="#9c4a12" stroke-width="6" fill="none" opacity=".75"/></g>')
+    # нож
+    a = A.sway(t, 7.0, .2, 1.2)
+    s += (f'<g transform="rotate({a:.2f} 700 380)">'
+          '<g stroke="#1b1309" stroke-width="8" stroke-linejoin="round">'
+          '<path d="M672 384 L860 344 L866 372 L678 414 Z" fill="#cfc8bd"/>'
+          '<rect x="636" y="378" width="52" height="28" rx="9" fill="#6b3f1c"'
+          ' transform="rotate(-12 636 378)"/></g></g>')
+    s += A.candle(886, 320, t, 64, 44, phase=.4, s=.8)
+    s += A.confetti(t, 11, seed=241)
+    return s
+
+
+def fish_left(t):
+    """Рыбу не доедают: часть съедена, хвост и голова остались на блюде."""
+    s = '<rect width="960" height="540" fill="url(#roomc)"/>'
+    s += _boke([(128, 84, 18, "#ffd45e"), (246, 124, 13, "#ff8c6b"), (58, 156, 12, "#9ae06a")])
+    s += tree(850, 272, t, 0.48, 0.42, star=False)
+    s += _garland(t, 10)
+    s += table(312)
+    s += _plate_oval(480, 444, 388, 84, "#cfc0a2", "#eee3cb")
+    # голова и передняя треть
+    s += ('<g stroke="#1b0f07" stroke-width="10" stroke-linejoin="round">'
+          '<path d="M182 414 C238 348 330 318 404 316 C398 374 398 448 404 490'
+          ' C330 486 240 468 182 414 Z" fill="#bcc6cc"/>'
+          '<path d="M182 414 C208 380 238 360 266 348 L274 476 C238 464 206 442 182 414 Z"'
+          ' fill="#aab8c0"/></g>'
+          '<circle cx="230" cy="398" r="17" fill="#f4efe3" stroke="#1b0f07" stroke-width="6"/>'
+          '<circle cx="230" cy="398" r="8" fill="#241208"/>'
+          '<path d="M186 434 C204 444 224 446 242 442" stroke="#1b0f07" stroke-width="6"'
+          ' fill="none" stroke-linecap="round"/>')
+    # хребет и объеденная середина
+    s += ('<path d="M404 400 L676 396" stroke="#e4ddd0" stroke-width="10"'
+          ' stroke-linecap="round"/>')
+    s += '<g stroke="#cfc6b6" stroke-width="6" stroke-linecap="round">'
+    for k in range(9):
+        x = 418 + k * 30
+        s += f'<path d="M{x} 400 L{x-8} 356" /><path d="M{x} 400 L{x-8} 444"/>'
+    s += '</g>'
+    # хвост
+    s += ('<g stroke="#1b0f07" stroke-width="10" stroke-linejoin="round">'
+          '<path d="M676 396 L690 344 L724 392 L764 330 L744 396 L768 462 L724 408 L690 452 Z"'
+          ' fill="#9fb0b8"/></g>')
+    # лимон и зелень
+    s += ('<g stroke="#1b0f07" stroke-width="7">'
+          '<circle cx="190" cy="490" r="34" fill="#f2d24a"/><circle cx="190" cy="490" r="22" fill="#f8ea9e"/></g>'
+          '<g stroke="#e0b62a" stroke-width="4" stroke-linecap="round">'
+          '<path d="M190 468 L190 512 M168 490 L212 490 M174 474 L206 506 M206 474 L174 506"/></g>')
+    a = A.sway(t, 5.8, .3, 2.0)
+    s += (f'<g transform="rotate({a:.2f} 560 486)">'
+          '<g stroke="#4e7a35" stroke-width="7" fill="none" stroke-linecap="round">'
+          '<path d="M560 486 L652 468"/><path d="M578 478 L572 458 M604 472 L598 452"/></g></g>')
+    s += A.confetti(t, 10, seed=251)
+    return s
+
+
+def fruit_basket(t):
+    """Фруктовая корзина отдельным кадром: мандарины, яблоки, гранат."""
+    s = '<rect width="960" height="540" fill="url(#roomc)"/>'
+    s += _boke([(132, 88, 18, "#ffd45e"), (252, 126, 13, "#ff8c6b"), (60, 160, 12, "#9ae06a")])
+    s += tree(118, 286, t, 0.46, 0.42, star=False)
+    s += _garland(t, 10)
+    s += table(348)
+    # корзина крупно по центру
+    s += ('<g stroke="#1b0f07" stroke-width="10" stroke-linejoin="round">'
+          '<path d="M276 406 C276 384 684 384 684 406 L656 512 C650 532 310 532 304 512 Z"'
+          ' fill="#a9762f"/></g>'
+          '<g stroke="#7f5420" stroke-width="6" opacity=".8">'
+          '<path d="M292 444 L668 444 M300 482 L660 482"/>'
+          '<path d="M360 392 L348 524 M470 388 L470 528 M580 392 L592 524"/></g>'
+          '<path d="M276 406 C340 352 620 352 684 406" stroke="#8a5c2a" stroke-width="12"'
+          ' fill="none"/>')
+    # фрукты горкой
+    for cx, cy, r, col, inner in ((352, 384, 46, "#f0921f", "#ffb455"),
+                                  (452, 364, 52, "#ef9a2e", "#ffc06a"),
+                                  (560, 378, 48, "#f0921f", "#ffb455"),
+                                  (650, 396, 42, "#ef9a2e", "#ffc06a"),
+                                  (404, 330, 44, "#c0203a", "#d8465c"),
+                                  (512, 322, 46, "#a8172c", "#c0203a")):
+        s += (f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="{col}" stroke="#1b0f07" stroke-width="8"/>'
+              f'<circle cx="{cx-r//4}" cy="{cy-r//3}" r="{r//3}" fill="{inner}" opacity=".75"/>')
+    s += ('<g stroke="#4e7a35" stroke-width="7" fill="none" stroke-linecap="round">'
+          '<path d="M404 286 L398 266"/><path d="M512 276 L518 256"/></g>'
+          '<g fill="#3f8c3c" stroke="#1b0f07" stroke-width="5">'
+          '<path d="M398 266 C382 254 386 236 404 234 C420 232 430 246 424 258 Z"/></g>')
+    s += ('<g stroke="#1b0f07" stroke-width="7">'
+          '<circle cx="786" cy="486" r="44" fill="#a8172c"/>'
+          '<path d="M786 442 L778 422 L794 426 Z" fill="#7a0f20"/></g>'
+          '<g fill="#c0203a"><circle cx="772" cy="478" r="8"/><circle cx="800" cy="482" r="7"/></g>')
+    s += A.candle(140, 352, t, 66, 46, phase=.35, s=.82)
+    s += A.confetti(t, 12, seed=257)
+    return s
+
+
 SCENES = {
     "open": open_newyear, "dish": dish, "table_top": table_top, "three": three_animals,
     "yang": yang, "cozy": cozy, "makers": makers, "koza": koza, "koza_fire": koza_fire,
@@ -2589,6 +2744,8 @@ SCENES = {
     "guests_close": guests_close, "koza_window": koza_window, "koza_bokal": koza_bokal,
     "table_wide": table_wide, "koza_profile": koza_profile,
     "greens_board": greens_board, "duck_cut": duck_cut, "cheese_slice": cheese_slice,
+    "guests_toast": guests_toast, "pumpkin_slice": pumpkin_slice,
+    "fish_left": fish_left, "fruit_basket": fruit_basket,
 }
 
 NO_GLARE = {"yang", "table_top"}
