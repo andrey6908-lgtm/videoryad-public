@@ -67,8 +67,12 @@ if STOCK:
         stock_files[url] = dst
         print("   вставка: %s -> %d КБ" % (url[-28:], os.path.getsize(dst) // 1024))
 
-# Сборка идёт ЭТАПАМИ, а не одним гигантским фильтром: один проход на
-# полсотни входов раннер убивает по памяти (exit 143, проверено 01.11).
+# Сборка идёт ЭТАПАМИ, и каждый слой едет СВОИМ проходом с -itsoffset.
+# Почему не одним фильтром: сдвиг слоя через setpts=PTS-STARTPTS+t/TB
+# заставляет ffmpeg копить кадры слоя до его начала — на вставке, которая
+# появляется на 283-й секунде, это гигабайты, и раннер убивает процесс
+# (exit 143, поймано дважды 01.11). -itsoffset двигает метки на ВХОДЕ,
+# ничего не накапливая.
 CUR = "/tmp/base.mp4"
 STAGE = 0
 
@@ -79,46 +83,53 @@ def stage_out():
     return "/tmp/stage%d.mp4" % STAGE
 
 
-if STOCK:
-    bw, bh = STOCK[0][3][2], STOCK[0][3][3]
+def encode(last):
+    if last:
+        return ["-c:v", "libx264", "-crf", "19", "-preset", "medium",
+                "-pix_fmt", "yuv420p", "-r", str(plan.FPS), "-movflags", "+faststart"]
+    return ["-c:v", "libx264", "-crf", "16", "-preset", "veryfast",
+            "-pix_fmt", "yuv420p", "-r", str(plan.FPS)]
+
+
+FINAL = os.path.join(OUT, "koza2027_%s_nemoe.mp4" % plan.TAG)
+total_layers = len(STOCK) + len(plan.OVERLAYS)
+done_layers = 0
+
+for i, (aa, bb, url, box) in enumerate(STOCK):
+    x, y, w, h = box
+    d = bb - aa
+    done_layers += 1
+    out = FINAL if done_layers == total_layers else stage_out()
     inputs = ["-i", CUR,
               "-loop", "1", "-framerate", str(plan.FPS), "-t", "%.3f" % plan.TOTAL,
               "-i", "/tmp/sv_mask.png",
               "-loop", "1", "-framerate", str(plan.FPS), "-t", "%.3f" % plan.TOTAL,
-              "-i", "/tmp/sv_frame.png"]
-    fc = ["[1:v]format=gray,setsar=1[svmask]",
-          "[svmask]split=%d%s" % (len(STOCK), "".join("[m%d]" % i for i in range(len(STOCK)))),
-          "[2:v]format=rgba,setsar=1[svfrraw]",
-          "[svfrraw]split=%d%s" % (len(STOCK), "".join("[fr%d]" % i for i in range(len(STOCK))))]
-    cur, nin = "0:v", 3
-    for i, (aa, bb, url, box) in enumerate(STOCK):
-        x, y, w, h = box
-        d = bb - aa
-        inputs += ["-stream_loop", "-1", "-t", "%.3f" % d, "-i", stock_files[url]]
-        fc.append("[%d:v]scale=%d:%d:force_original_aspect_ratio=increase,crop=%d:%d,"
-                  "setsar=1,fps=%d,colorbalance=rm=.07:gm=.01:bm=-.06,"
-                  "eq=saturation=.94:contrast=1.03:brightness=-.02,format=rgba,"
-                  "fade=in:st=0:d=0.25:alpha=1,fade=out:st=%.3f:d=0.35:alpha=1,"
-                  "setpts=PTS-STARTPTS+%.4f/TB[sv%d]"
-                  % (nin, w, h, w, h, plan.FPS, max(0.0, d - 0.35), aa, i))
-        nin += 1
-        fc.append("[sv%d][m%d]alphamerge[svm%d]" % (i, i, i))
-        fc.append("[%s][svm%d]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[svo%d]"
-                  % (cur, i, x, y, aa, bb, i))
-        fc.append("[fr%d]fade=in:st=0:d=0.25:alpha=1,fade=out:st=%.3f:d=0.35:alpha=1,"
-                  "setpts=PTS-STARTPTS+%.4f/TB[frt%d]" % (i, max(0.0, d - 0.35), aa, i))
-        fc.append("[svo%d][frt%d]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[v%d]"
-                  % (i, i, x - 30, y - 30, aa, bb, i))
-        cur = "v%d" % i
-    out = stage_out()
-    print("этап: живые вставки (%d шт)" % len(STOCK), flush=True)
+              "-i", "/tmp/sv_frame.png",
+              "-itsoffset", "%.4f" % aa, "-stream_loop", "-1", "-t", "%.3f" % d,
+              "-i", stock_files[url]]
+    fc = [
+        "[3:v]scale=%d:%d:force_original_aspect_ratio=increase,crop=%d:%d,setsar=1,fps=%d,"
+        "colorbalance=rm=.07:gm=.01:bm=-.06,eq=saturation=.94:contrast=1.03:brightness=-.02,"
+        "format=rgba,fade=in:st=%.3f:d=0.25:alpha=1,fade=out:st=%.3f:d=0.35:alpha=1[sv]"
+        % (w, h, w, h, plan.FPS, aa, max(aa, bb - 0.35)),
+        "[1:v]format=gray,setsar=1[m]",
+        "[sv][m]alphamerge[svm]",
+        "[0:v][svm]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[o1]"
+        % (x, y, aa, bb),
+        "[2:v]format=rgba,setsar=1,fade=in:st=%.3f:d=0.25:alpha=1,"
+        "fade=out:st=%.3f:d=0.35:alpha=1[fr]" % (aa, max(aa, bb - 0.35)),
+        "[o1][fr]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[v]"
+        % (x - 30, y - 30, aa, bb),
+    ]
+    print("слой %d/%d: живая вставка %.0f-%.0f с" % (done_layers, total_layers, aa, bb), flush=True)
     run(["ffmpeg", "-v", "error", "-y"] + inputs +
-        ["-filter_complex", ";".join(fc), "-map", "[%s]" % cur,
-         "-c:v", "libx264", "-crf", "16", "-preset", "veryfast",
-         "-pix_fmt", "yuv420p", "-r", str(plan.FPS), out])
+        ["-filter_complex", ";".join(fc), "-map", "[v]"] +
+        encode(done_layers == total_layers) + [out])
+    if CUR.startswith("/tmp/stage"):
+        os.remove(CUR)
     CUR = out
 
-GROUP = 12
+GROUP = 6
 ovs = list(plan.OVERLAYS)
 for g0 in range(0, len(ovs), GROUP):
     chunk = ovs[g0:g0 + GROUP]
@@ -126,30 +137,26 @@ for g0 in range(0, len(ovs), GROUP):
     for k, (nm, _s, aa, bb) in enumerate(chunk, start=1):
         d = bb - aa
         fi, fo = (0.07, 0.22) if nm.startswith("tag") else (0.35, 0.55)
-        inputs += ["-loop", "1", "-framerate", str(plan.FPS), "-t", "%.4f" % d,
+        inputs += ["-itsoffset", "%.4f" % aa,
+                   "-loop", "1", "-framerate", str(plan.FPS), "-t", "%.4f" % d,
                    "-i", "/tmp/ov_%s.png" % nm]
-        fc.append("[%d:v]format=rgba,fade=in:st=0:d=%.2f:alpha=1,"
-                  "fade=out:st=%.3f:d=%.2f:alpha=1,setpts=PTS-STARTPTS+%.4f/TB[o%d]"
-                  % (k, fi, max(0.0, d - fo), fo, aa, k))
+        fc.append("[%d:v]format=rgba,fade=in:st=%.3f:d=%.2f:alpha=1,"
+                  "fade=out:st=%.3f:d=%.2f:alpha=1[o%d]"
+                  % (k, aa, fi, max(aa, bb - fo), fo, k))
         fc.append("[%s][o%d]overlay=0:0:eof_action=pass:enable='between(t,%.3f,%.3f)'[v%d]"
                   % (cur, k, aa, bb, k))
         cur = "v%d" % k
-    last = (g0 + GROUP >= len(ovs))
-    out = os.path.join(OUT, "koza2027_%s_nemoe.mp4" % plan.TAG) if last else stage_out()
-    print("этап: наложения %d-%d из %d" % (g0 + 1, g0 + len(chunk), len(ovs)), flush=True)
-    enc = (["-c:v", "libx264", "-crf", "19", "-preset", "medium",
-            "-pix_fmt", "yuv420p", "-r", str(plan.FPS), "-movflags", "+faststart"]
-           if last else
-           ["-c:v", "libx264", "-crf", "16", "-preset", "veryfast",
-            "-pix_fmt", "yuv420p", "-r", str(plan.FPS)])
+    done_layers += len(chunk)
+    last = (done_layers == total_layers)
+    out = FINAL if last else stage_out()
+    print("слои %d/%d: наложения" % (done_layers, total_layers), flush=True)
     run(["ffmpeg", "-v", "error", "-y"] + inputs +
-        ["-filter_complex", ";".join(fc), "-map", "[%s]" % cur] + enc + [out])
-    if not last:
-        if CUR.startswith("/tmp/stage"):
-            os.remove(CUR)
-        CUR = out
+        ["-filter_complex", ";".join(fc), "-map", "[%s]" % cur] + encode(last) + [out])
+    if CUR.startswith("/tmp/stage"):
+        os.remove(CUR)
+    CUR = out
 
-final = os.path.join(OUT, "koza2027_%s_nemoe.mp4" % plan.TAG)
+final = FINAL
 
 dur = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
                       "-of", "csv=p=0", final], capture_output=True, text=True).stdout.strip()
