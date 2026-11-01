@@ -67,62 +67,89 @@ if STOCK:
         stock_files[url] = dst
         print("   вставка: %s -> %d КБ" % (url[-28:], os.path.getsize(dst) // 1024))
 
-inputs, fc, cur = ["-i", "/tmp/base.mp4"], [], "0:v"
-nin = 1
+# Сборка идёт ЭТАПАМИ, а не одним гигантским фильтром: один проход на
+# полсотни входов раннер убивает по памяти (exit 143, проверено 01.11).
+CUR = "/tmp/base.mp4"
+STAGE = 0
+
+
+def stage_out():
+    global STAGE
+    STAGE += 1
+    return "/tmp/stage%d.mp4" % STAGE
+
+
 if STOCK:
     bw, bh = STOCK[0][3][2], STOCK[0][3][3]
-    # ВАЖНО: картинка без -loop даёт ОДИН кадр, и маска со скруглением
-    # ложится только на первый кадр вставки — углы дальше остаются прямыми.
-    inputs += ["-loop", "1", "-framerate", str(plan.FPS), "-t", "%.3f" % plan.TOTAL,
-               "-i", "/tmp/sv_mask.png",
-               "-loop", "1", "-framerate", str(plan.FPS), "-t", "%.3f" % plan.TOTAL,
-               "-i", "/tmp/sv_frame.png"]
-    MASK, FRAME = 1, 2
-    nin = 3
-    fc.append("[%d:v]format=gray,setsar=1[svmask]" % MASK)
-    fc.append("[svmask]split=%d%s" % (len(STOCK), "".join("[m%d]" % i for i in range(len(STOCK)))))
-    fc.append("[%d:v]format=rgba,setsar=1[svfrraw]" % FRAME)
-    fc.append("[svfrraw]split=%d%s" % (len(STOCK), "".join("[fr%d]" % i for i in range(len(STOCK)))))
+    inputs = ["-i", CUR,
+              "-loop", "1", "-framerate", str(plan.FPS), "-t", "%.3f" % plan.TOTAL,
+              "-i", "/tmp/sv_mask.png",
+              "-loop", "1", "-framerate", str(plan.FPS), "-t", "%.3f" % plan.TOTAL,
+              "-i", "/tmp/sv_frame.png"]
+    fc = ["[1:v]format=gray,setsar=1[svmask]",
+          "[svmask]split=%d%s" % (len(STOCK), "".join("[m%d]" % i for i in range(len(STOCK)))),
+          "[2:v]format=rgba,setsar=1[svfrraw]",
+          "[svfrraw]split=%d%s" % (len(STOCK), "".join("[fr%d]" % i for i in range(len(STOCK))))]
+    cur, nin = "0:v", 3
     for i, (aa, bb, url, box) in enumerate(STOCK):
         x, y, w, h = box
         d = bb - aa
         inputs += ["-stream_loop", "-1", "-t", "%.3f" % d, "-i", stock_files[url]]
-        idx = nin
-        nin += 1
-        # подгонка под палитру: тёплый сдвиг и мягкий контраст, иначе
-        # стоковый кусок выпадает из рисованного кадра холодным пятном
         fc.append("[%d:v]scale=%d:%d:force_original_aspect_ratio=increase,crop=%d:%d,"
                   "setsar=1,fps=%d,colorbalance=rm=.07:gm=.01:bm=-.06,"
                   "eq=saturation=.94:contrast=1.03:brightness=-.02,format=rgba,"
                   "fade=in:st=0:d=0.25:alpha=1,fade=out:st=%.3f:d=0.35:alpha=1,"
                   "setpts=PTS-STARTPTS+%.4f/TB[sv%d]"
-                  % (idx, w, h, w, h, plan.FPS, max(0.0, d - 0.35), aa, i))
+                  % (nin, w, h, w, h, plan.FPS, max(0.0, d - 0.35), aa, i))
+        nin += 1
         fc.append("[sv%d][m%d]alphamerge[svm%d]" % (i, i, i))
         fc.append("[%s][svm%d]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[svo%d]"
                   % (cur, i, x, y, aa, bb, i))
         fc.append("[fr%d]fade=in:st=0:d=0.25:alpha=1,fade=out:st=%.3f:d=0.35:alpha=1,"
                   "setpts=PTS-STARTPTS+%.4f/TB[frt%d]" % (i, max(0.0, d - 0.35), aa, i))
-        fc.append("[svo%d][frt%d]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[v_sv%d]"
+        fc.append("[svo%d][frt%d]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[v%d]"
                   % (i, i, x - 30, y - 30, aa, bb, i))
-        cur = "v_sv%d" % i
+        cur = "v%d" % i
+    out = stage_out()
+    print("этап: живые вставки (%d шт)" % len(STOCK), flush=True)
+    run(["ffmpeg", "-v", "error", "-y"] + inputs +
+        ["-filter_complex", ";".join(fc), "-map", "[%s]" % cur,
+         "-c:v", "libx264", "-crf", "16", "-preset", "veryfast",
+         "-pix_fmt", "yuv420p", "-r", str(plan.FPS), out])
+    CUR = out
 
-for k, (nm, _s, aa, bb) in enumerate(plan.OVERLAYS, start=nin):
-    d = bb - aa
-    inputs += ["-loop", "1", "-framerate", str(plan.FPS), "-t", "%.4f" % d, "-i", "/tmp/ov_%s.png" % nm]
-    # ярлычки выскакивают мгновенно, плашки проявляются мягко
-    fi, fo = (0.07, 0.22) if nm.startswith("tag") else (0.35, 0.55)
-    fc.append("[%d:v]format=rgba,fade=in:st=0:d=%.2f:alpha=1,"
-              "fade=out:st=%.3f:d=%.2f:alpha=1,setpts=PTS-STARTPTS+%.4f/TB[o%d]"
-              % (k, fi, max(0.0, d - fo), fo, aa, k))
-    fc.append("[%s][o%d]overlay=0:0:eof_action=pass:enable='between(t,%.3f,%.3f)'[v%d]"
-              % (cur, k, aa, bb, k))
-    cur = "v%d" % k
+GROUP = 12
+ovs = list(plan.OVERLAYS)
+for g0 in range(0, len(ovs), GROUP):
+    chunk = ovs[g0:g0 + GROUP]
+    inputs, fc, cur = ["-i", CUR], [], "0:v"
+    for k, (nm, _s, aa, bb) in enumerate(chunk, start=1):
+        d = bb - aa
+        fi, fo = (0.07, 0.22) if nm.startswith("tag") else (0.35, 0.55)
+        inputs += ["-loop", "1", "-framerate", str(plan.FPS), "-t", "%.4f" % d,
+                   "-i", "/tmp/ov_%s.png" % nm]
+        fc.append("[%d:v]format=rgba,fade=in:st=0:d=%.2f:alpha=1,"
+                  "fade=out:st=%.3f:d=%.2f:alpha=1,setpts=PTS-STARTPTS+%.4f/TB[o%d]"
+                  % (k, fi, max(0.0, d - fo), fo, aa, k))
+        fc.append("[%s][o%d]overlay=0:0:eof_action=pass:enable='between(t,%.3f,%.3f)'[v%d]"
+                  % (cur, k, aa, bb, k))
+        cur = "v%d" % k
+    last = (g0 + GROUP >= len(ovs))
+    out = os.path.join(OUT, "koza2027_%s_nemoe.mp4" % plan.TAG) if last else stage_out()
+    print("этап: наложения %d-%d из %d" % (g0 + 1, g0 + len(chunk), len(ovs)), flush=True)
+    enc = (["-c:v", "libx264", "-crf", "19", "-preset", "medium",
+            "-pix_fmt", "yuv420p", "-r", str(plan.FPS), "-movflags", "+faststart"]
+           if last else
+           ["-c:v", "libx264", "-crf", "16", "-preset", "veryfast",
+            "-pix_fmt", "yuv420p", "-r", str(plan.FPS)])
+    run(["ffmpeg", "-v", "error", "-y"] + inputs +
+        ["-filter_complex", ";".join(fc), "-map", "[%s]" % cur] + enc + [out])
+    if not last:
+        if CUR.startswith("/tmp/stage"):
+            os.remove(CUR)
+        CUR = out
 
 final = os.path.join(OUT, "koza2027_%s_nemoe.mp4" % plan.TAG)
-run(["ffmpeg", "-v", "error", "-y"] + inputs +
-    ["-filter_complex", ";".join(fc), "-map", "[%s]" % cur,
-     "-c:v", "libx264", "-crf", "19", "-preset", "medium",
-     "-pix_fmt", "yuv420p", "-r", str(plan.FPS), "-movflags", "+faststart", final])
 
 dur = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
                       "-of", "csv=p=0", final], capture_output=True, text=True).stdout.strip()
