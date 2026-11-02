@@ -171,10 +171,23 @@ def fire_word(text, x=110, y=470, size=118):
     return _wrap(s)
 
 
-def badge(q_lines, x=140, y=380):
-    s = f'<circle cx="{x+20}" cy="{y}" r="20" fill="#2f9e3f"/>'
-    s += _t(x + 11, y + 10, "?", SAN, 26, "#ffffff", bold=True, shadow=False)
-    s += _t(x + 56, y + 9, "ВОПРОС", SAN, 22, "#ded5c7", ls=10)
+_BADGE_KIND = {                       # знак, подпись, цвет кружка
+    "вопрос":   ("?", "ВОПРОС", "#2f9e3f"),
+    "совет":    ("!", "СОВЕТ", "#2f9e3f"),
+    "запрет":   ("\u00d7", "ЗАПРЕТ", "#c0203a"),
+    "внимание": ("!", "ВНИМАНИЕ", "#e07f23"),
+}
+
+
+def badge(q_lines, x=140, y=380, kind="вопрос"):
+    """Бейдж. ВИД ПОДПИСИ ОБЯЗАТЕЛЕН К ПРОВЕРКЕ: «ВОПРОС» ставится только
+    там, где в кадре действительно вопрос. Совет, запрет и предупреждение
+    получают свой знак — иначе зритель читает утверждение как вопрос
+    (его правка 02.11)."""
+    mark, label, col = _BADGE_KIND.get(kind, _BADGE_KIND["вопрос"])
+    s = f'<circle cx="{x+20}" cy="{y}" r="20" fill="{col}"/>'
+    s += _t(x + 11, y + 10, mark, SAN, 26, "#ffffff", bold=True, shadow=False)
+    s += _t(x + 56, y + 9, label, SAN, 22, "#ded5c7", ls=10)
     yy = y + 86
     for ln in q_lines:
         s += _t(x, yy, ln, SER, 68, "#ffffff")

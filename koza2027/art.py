@@ -1506,6 +1506,26 @@ def pumpkin_goat(t):
     return s
 
 
+def _mushroom(cx, base, sc=1.0, cap="#9c6a3e", rim="#7d5128", tilt=0.0):
+    """Гриб, который УЗНАЁТСЯ: купол шляпки с тёмным ободом, светлая ножка
+    с юбочкой и пластинки под шляпкой. Без пластинок и юбочки коричневый
+    купол читался как булка (его правка 02.11)."""
+    g = (f'<g transform="translate({cx},{base}) rotate({tilt}) scale({sc})">'
+         '<g stroke="#1b1309" stroke-width="8" stroke-linejoin="round">'
+         '<path d="M-17 0 C-21 -34 -19 -54 -15 -62 L15 -62 C19 -54 21 -34 17 0 Z" fill="#efe0c2"/>'
+         '<path d="M-58 -58 C-58 -98 -32 -124 0 -124 C32 -124 58 -98 58 -58'
+         ' C58 -48 34 -42 0 -42 C-34 -42 -58 -48 -58 -58 Z" fill="' + cap + '"/></g>'
+         '<path d="M-52 -62 C-40 -52 -16 -46 0 -46 C16 -46 40 -52 52 -62'
+         ' C52 -52 30 -46 0 -46 C-30 -46 -52 -52 -52 -62 Z" fill="' + rim + '"/>'
+         '<g stroke="' + rim + '" stroke-width="4" opacity=".85">'
+         '<path d="M-36 -50 L-34 -62 M-18 -46 L-18 -60 M0 -45 L0 -60 M18 -46 L18 -60 M36 -50 L34 -62"/></g>'
+         '<path d="M-44 -96 C-28 -108 -4 -112 12 -108" stroke="#ffffff" stroke-width="7"'
+         ' fill="none" opacity=".22" stroke-linecap="round"/>'
+         '<path d="M-19 -54 C-8 -48 8 -48 19 -54" stroke="#d9c7a2" stroke-width="6" fill="none"/>'
+         '</g>')
+    return g
+
+
 def pate(t):
     """Опора 4: грибной паштет с грецкими орехами на поджаренном хлебе."""
     s = '<rect width="960" height="540" fill="url(#roomr)"/>'
@@ -1539,6 +1559,10 @@ def pate(t):
           '<g stroke="#5e3f24" stroke-width="4" fill="none" opacity=".7">'
           '<path d="M158 400 C180 388 226 388 246 400 M364 400 C386 388 432 388 452 400'
           ' M570 400 C592 388 638 388 658 400"/></g>')
+    # на каждом тосте лежит целый гриб: иначе коричневая масса не читается
+    for i, bx in enumerate((198, 404, 610)):
+        s += _mushroom(bx + 26, 412, .30, "#8a5c34" if i % 2 else "#a0693a",
+                       "#6b4322", tilt=-8 + i * 8)
     # зелень на тостах качается
     for i, bx in enumerate((198, 404, 610)):
         a = A.sway(t, 5.2 + i * .5, i * .3, 2.6)
@@ -1547,14 +1571,11 @@ def pate(t):
               f'<path d="M{bx-8} 388 L{bx-18} 368 M{bx+8} 388 L{bx+18} 366"/></g>'
               '<g fill="#3f8c3c" stroke="#1b1309" stroke-width="3">'
               f'<circle cx="{bx-20}" cy="364" r="8"/><circle cx="{bx+22}" cy="362" r="7"/></g></g>')
-    # грибы
-    s += ('<g stroke="#1b1309" stroke-width="8" stroke-linejoin="round">'
-          '<path d="M772 500 L772 462 L812 462 L812 500 Z" fill="#cfae7e"/>'
-          '<path d="M746 462 C746 424 768 404 792 404 C816 404 838 424 838 462 Z" fill="#9c6a3e"/>'
-          '<path d="M858 504 L858 474 L888 474 L888 504 Z" fill="#cfae7e"/>'
-          '<path d="M838 474 C838 444 856 428 874 428 C892 428 910 444 910 474 Z" fill="#8a5c34"/></g>'
-          '<g stroke="#6e4a26" stroke-width="4" fill="none" opacity=".7">'
-          '<path d="M762 440 C782 430 804 430 822 440 M848 456 C862 448 884 448 898 456"/></g>')
+    # ГРИБЫ, которые узнаются: три штуки целиком стоят на доске, крупно
+    # и целиком в кадре (прежние были мелкие, у самого края — его правка 02.11)
+    s += _mushroom(806, 516, .92)
+    s += _mushroom(884, 522, .70, "#8a5c34", "#6b4322", tilt=7)
+    s += _mushroom(742, 524, .58, "#b07c47", "#8a5c34", tilt=-9)
     # тимьян
     a = A.sway(t, 6.8, .25, 1.6)
     s += (f'<g transform="rotate({a:.2f} 740 528)">'
@@ -2123,27 +2144,53 @@ def pelmeni_gold(t):
     s += ('<g stroke="#1b0f07" stroke-width="9">'
           '<ellipse cx="470" cy="456" rx="300" ry="76" fill="#cfbf9f"/>'
           '<ellipse cx="470" cy="444" rx="262" ry="62" fill="#f2ead6"/></g>')
-    # слиток-ладья: плоское дно, загнутые вверх концы, золотая корочка
-    for i, (cx, cy, sc, bright) in enumerate(((298, 438, 1.0, False), (418, 420, 1.08, True),
-                                              (542, 430, 1.0, True), (656, 450, .94, False),
-                                              (358, 482, .92, True), (486, 488, .96, False),
-                                              (598, 484, .9, True))):
-        col = "#edc75c" if bright else "#dcb349"
-        hi = "#f8e39a" if bright else "#ecd083"
-        s += (f'<g transform="translate({cx},{cy}) scale({sc})">'
-              '<path d="M-62 26 C-58 2 -30 -8 0 -8 C30 -8 58 2 62 26 C40 34 -40 34 -62 26 Z"'
-              f' fill="{col}" stroke="#1b0f07" stroke-width="8" stroke-linejoin="round"/>'
-              '<path d="M-62 26 C-78 14 -80 -10 -64 -24 C-50 -14 -52 6 -44 20 Z"'
-              f' fill="{hi}" stroke="#1b0f07" stroke-width="8" stroke-linejoin="round"/>'
-              '<path d="M62 26 C78 14 80 -10 64 -24 C50 -14 52 6 44 20 Z"'
-              f' fill="{hi}" stroke="#1b0f07" stroke-width="8" stroke-linejoin="round"/>'
-              '<path d="M-38 6 C-18 -2 18 -2 38 6" stroke="#fdf2c6" stroke-width="7"'
-              ' fill="none" stroke-linecap="round" opacity=".85"/>'
-              '<path d="M-52 26 C-26 18 26 18 52 26" stroke="#9c7a2a" stroke-width="5"'
-              ' fill="none" opacity=".6"/></g>')
+    # ПЕЛЬМЕНИ: тесто, защип гребешком и загнутые уголки. Раньше здесь
+    # лежали золотые слитки — слиток пельменем не читался (его правка 02.11)
+    for i, (cx, cy, sc, rot, bright) in enumerate(((298, 438, 1.0, -6, False),
+                                                   (418, 418, 1.06, 4, True),
+                                                   (542, 428, 1.0, -3, True),
+                                                   (656, 448, .94, 7, False),
+                                                   (358, 480, .92, 5, True),
+                                                   (486, 486, .96, -5, False),
+                                                   (598, 482, .9, 3, True))):
+        dough = "#f3e6c6" if bright else "#e8d8b2"
+        edge = "#e0cb9e" if bright else "#d4bd8d"
+        s += f'<g transform="translate({cx},{cy}) rotate({rot}) scale({sc})">'
+        # брюшко с начинкой
+        s += ('<path d="M-58 16 C-62 -14 -32 -34 0 -34 C32 -34 62 -14 58 16'
+              ' C34 30 -34 30 -58 16 Z"'
+              f' fill="{dough}" stroke="#1b0f07" stroke-width="8" stroke-linejoin="round"/>')
+        # загнутые уголки — пельмень, а не вареник
+        s += ('<path d="M-58 16 C-74 10 -78 -8 -66 -18 C-56 -8 -58 4 -48 14 Z"'
+              f' fill="{edge}" stroke="#1b0f07" stroke-width="7" stroke-linejoin="round"/>'
+              '<path d="M58 16 C74 10 78 -8 66 -18 C56 -8 58 4 48 14 Z"'
+              f' fill="{edge}" stroke="#1b0f07" stroke-width="7" stroke-linejoin="round"/>')
+        # ЗАЩИП ГРЕБЕШКОМ по верхнему краю — главный признак пельменя
+        s += f'<path d="M-50 -14 C-30 -30 30 -30 50 -14" stroke="{edge}" stroke-width="13" fill="none" stroke-linecap="round"/>'
+        s += '<g stroke="#1b0f07" stroke-width="5" fill="none" stroke-linecap="round">'
+        for k, (px, py) in enumerate(((-40, -20), (-24, -26), (-8, -29), (8, -29), (24, -26), (40, -20))):
+            s += f'<path d="M{px} {py+12} L{px} {py+1}"/>'
+        s += ('<path d="M-50 -14 C-30 -30 30 -30 50 -14"/></g>')
+        # блик теста и тень на блюде
+        s += ('<path d="M-34 2 C-18 -6 10 -8 28 -2" stroke="#fffaec" stroke-width="7"'
+              ' fill="none" stroke-linecap="round" opacity=".6"/>'
+              '<path d="M-48 18 C-24 26 24 26 48 18" stroke="#b9a075" stroke-width="5"'
+              ' fill="none" opacity=".55"/>')
+        s += '</g>'
         if bright:
-            o = .35 + .45 * (0.5 + 0.5 * A.w(t, 2.6, i * .3))
-            s += f'<circle cx="{cx-22}" cy="{cy-12}" r="8" fill="#fff6cf" opacity="{o:.2f}"/>'
+            o = .25 + .35 * (0.5 + 0.5 * A.w(t, 2.6, i * .3))
+            s += f'<circle cx="{cx-20}" cy="{cy-10}" r="7" fill="#fff6cf" opacity="{o:.2f}"/>'
+    # два золотых слитка рядом с блюдом — та самая форма, о которой речь
+    for gx, gy, gs in ((132, 498, .62), (826, 506, .56)):
+        s += (f'<g transform="translate({gx},{gy}) scale({gs})">'
+              '<path d="M-62 26 C-58 2 -30 -8 0 -8 C30 -8 58 2 62 26 C40 34 -40 34 -62 26 Z"'
+              ' fill="#edc75c" stroke="#1b0f07" stroke-width="9" stroke-linejoin="round"/>'
+              '<path d="M-62 26 C-78 14 -80 -10 -64 -24 C-50 -14 -52 6 -44 20 Z"'
+              ' fill="#f8e39a" stroke="#1b0f07" stroke-width="9" stroke-linejoin="round"/>'
+              '<path d="M62 26 C78 14 80 -10 64 -24 C50 -14 52 6 44 20 Z"'
+              ' fill="#f8e39a" stroke="#1b0f07" stroke-width="9" stroke-linejoin="round"/>'
+              '<path d="M-38 6 C-18 -2 18 -2 38 6" stroke="#fdf2c6" stroke-width="7"'
+              ' fill="none" stroke-linecap="round" opacity=".85"/></g>')
     s += A.smoke(470, 400, t, 3, 140, .9, .24)
     s += A.confetti(t, 11, seed=167)
     return s
@@ -2276,6 +2323,64 @@ def lanterns(t):
     return s
 
 
+def finale_2027(t):
+    """Финал после озвучки: башенные часы бьют полночь, расходится звон,
+    и цифра 2027 вырастает на весь кадр. Его просьба 02.11: пара секунд
+    музыки с курантами в самом конце."""
+    import math as _m
+    s = '<rect width="960" height="540" fill="url(#roomr)"/>'
+    s += _boke([(132, 92, 19, "#ffd45e"), (250, 128, 14, "#ff8c6b"),
+                (58, 166, 13, "#9ae06a"), (820, 104, 16, "#ffd45e"),
+                (900, 168, 12, "#ff8c6b")], ".34")
+    s += _garland(t, 12)
+    s += tree(110, 470, t, 0.62, 0.5, star=True)
+    s += tree(852, 470, t, 0.58, 0.45, star=True)
+    # часы: стрелки сходятся на двенадцати
+    cx, cy, R = 480, 188, 116
+    s += (f'<circle cx="{cx}" cy="{cy}" r="{R+18}" fill="#6b3f1c" stroke="#1b0f07" stroke-width="9"/>'
+          f'<circle cx="{cx}" cy="{cy}" r="{R}" fill="#f4efe3" stroke="#1b0f07" stroke-width="8"/>')
+    s += '<g stroke="#1a140e" stroke-width="6" stroke-linecap="round">'
+    for k in range(12):
+        a = 2 * _m.pi * k / 12
+        r1 = R - (22 if k % 3 == 0 else 13)
+        s += (f'<path d="M{cx + _m.cos(a)*r1:.0f} {cy + _m.sin(a)*r1:.0f}'
+              f' L{cx + _m.cos(a)*(R-5):.0f} {cy + _m.sin(a)*(R-5):.0f}"/>')
+    s += '</g>'
+    # стрелки подходят к двенадцати слева и сходятся на ней
+    k = min(1.0, t / 2.2)
+    ang = _m.radians(-16.0 * (1 - k))
+    for ln, wd in ((R - 38, 12), (R - 20, 8)):
+        s += (f'<path d="M{cx} {cy} L{cx + _m.sin(ang)*ln:.0f} {cy - _m.cos(ang)*ln:.0f}"'
+              f' stroke="#1a140e" stroke-width="{wd}" stroke-linecap="round"/>')
+    s += (f'<path d="M{cx} {cy} L{cx + _m.sin(ang)*(R-26):.0f} {cy - _m.cos(ang)*(R-26):.0f}"'
+          ' stroke="#c0203a" stroke-width="4" stroke-linecap="round"/>'
+          f'<circle cx="{cx}" cy="{cy}" r="11" fill="#c0203a" stroke="#1a140e" stroke-width="5"/>')
+    # звон расходится кругами
+    for i in range(4):
+        ph = (t / 1.5 + i * .25) % 1.0
+        op = max(0.0, 1 - ph) * .45
+        s += (f'<circle cx="{cx}" cy="{cy}" r="{R + 30 + ph * 150:.0f}" fill="none"'
+              f' stroke="#f6c84e" stroke-width="4" opacity="{op:.2f}"/>')
+    # ЦИФРА РАСТЁТ: от маленькой до полного кадра, с лёгким перелётом
+    gk = min(1.0, t / 1.9)
+    sc = 0.22 + 0.86 * (1 - (1 - gk) ** 3)
+    if gk >= 1.0:
+        sc = 1.08 + 0.02 * A.w(t, 3.0)
+    gy = 452
+    s += (f'<g transform="translate(480,{gy}) scale({sc:.3f})">'
+          f'<ellipse cx="0" cy="-26" rx="300" ry="120" fill="#e07f23" opacity="{0.16*gk:.2f}"/>'
+          '<text x="6" y="12" font-family="DejaVu Serif" font-size="176" font-weight="bold"'
+          ' fill="#1b0f07" text-anchor="middle" opacity=".55">2027</text>'
+          '<text x="0" y="0" font-family="DejaVu Serif" font-size="176" font-weight="bold"'
+          ' fill="#f6c84e" text-anchor="middle">2027</text>'
+          '<text x="0" y="0" font-family="DejaVu Serif" font-size="176" font-weight="bold"'
+          ' fill="none" stroke="#1b0f07" stroke-width="7" text-anchor="middle">2027</text>'
+          '</g>')
+    s += A.confetti(t, 34, seed=2027)
+    s += A.snowfall(t, 26, seed=77) if hasattr(A, "snowfall") else ""
+    return s
+
+
 def kuranty(t):
     """Куранты бьют: у нас свой праздник, тридцать первого."""
     s = '<rect width="960" height="540" fill="url(#roomr)"/>'
@@ -2295,12 +2400,16 @@ def kuranty(t):
         s += (f'<path d="M{cx + _m.cos(a)*r1:.0f} {cy + _m.sin(a)*r1:.0f}'
               f' L{cx + _m.cos(a)*(R-6):.0f} {cy + _m.sin(a)*(R-6):.0f}"/>')
     s += '</g>'
-    # стрелки на двенадцати, секундная идёт
-    s += (f'<path d="M{cx} {cy} L{cx} {cy-R+44}" stroke="#1a140e" stroke-width="13"'
-          ' stroke-linecap="round"/>'
-          f'<path d="M{cx} {cy} L{cx} {cy-R+24}" stroke="#1a140e" stroke-width="9"'
-          ' stroke-linecap="round"/>')
-    sa = 2 * _m.pi * ((t * 1.0) % 60) / 60.0
+    # ДО полуночи: все стрелки СЛЕВА от двенадцати и подходят к ней.
+    # Раньше секундная уходила вправо — читалось, что полночь уже прошла
+    # (его правка 02.11).
+    ha = _m.radians(-6.0)
+    ma = _m.radians(-3.0)
+    s += (f'<path d="M{cx} {cy} L{cx + _m.sin(ha)*(R-44):.0f} {cy - _m.cos(ha)*(R-44):.0f}"'
+          ' stroke="#1a140e" stroke-width="13" stroke-linecap="round"/>'
+          f'<path d="M{cx} {cy} L{cx + _m.sin(ma)*(R-24):.0f} {cy - _m.cos(ma)*(R-24):.0f}"'
+          ' stroke="#1a140e" stroke-width="9" stroke-linecap="round"/>')
+    sa = _m.radians(max(-26.0 + 7.0 * t, -4.0))
     s += (f'<path d="M{cx} {cy} L{cx + _m.sin(sa)*(R-30):.0f} {cy - _m.cos(sa)*(R-30):.0f}"'
           ' stroke="#c0203a" stroke-width="5" stroke-linecap="round"/>'
           f'<circle cx="{cx}" cy="{cy}" r="12" fill="#c0203a" stroke="#1a140e" stroke-width="5"/>')
@@ -2333,40 +2442,57 @@ def koza_figure(t):
           '<ellipse cx="820" cy="478" rx="136" ry="38" fill="#dccbab"/>'
           '<ellipse cx="820" cy="470" rx="108" ry="28" fill="#f2ead6"/></g>')
     s += _bunch(300, 300, t, .8, .25)
-    # фигурка: коза в профиль, выточенная из дерева, на подставке
-    s += ('<g transform="translate(470,392)">'
-          '<path d="M-104 96 L104 96 L88 116 L-88 116 Z" fill="#8a5c2a" stroke="#1b0f07"'
+    # ФИГУРКА КОЗЫ, которая читается козой: тонкие прямые ноги, высокая
+    # шея, клиновидная морда, рога назад, борода и короткий хвост торчком.
+    # Прежняя была сплошным комом и козой не читалась (его правка 02.11).
+    s += ('<g transform="translate(470,396)">'
+          # подставка
+          '<path d="M-110 92 L110 92 L94 114 L-94 114 Z" fill="#8a5c2a" stroke="#1b0f07"'
           ' stroke-width="8" stroke-linejoin="round"/>'
-          # тело
-          '<path d="M-84 36 C-88 -10 -56 -36 -6 -38 C44 -40 78 -18 80 22'
-          ' C82 58 56 74 10 76 C-44 78 -80 70 -84 36 Z" fill="#a8702f"'
+          # четыре тонкие прямые ноги с копытцами
+          '<g stroke="#1b0f07" stroke-width="7" stroke-linejoin="round">'
+          '<rect x="-62" y="26" width="16" height="66" rx="4" fill="#96631f"/>'
+          '<rect x="-34" y="30" width="16" height="62" rx="4" fill="#8a5c2a"/>'
+          '<rect x="34" y="28" width="16" height="64" rx="4" fill="#96631f"/>'
+          '<rect x="60" y="32" width="16" height="60" rx="4" fill="#8a5c2a"/>'
+          '<rect x="-64" y="80" width="20" height="14" rx="4" fill="#6f4718"/>'
+          '<rect x="-36" y="80" width="20" height="14" rx="4" fill="#6f4718"/>'
+          '<rect x="32" y="80" width="20" height="14" rx="4" fill="#6f4718"/>'
+          '<rect x="58" y="80" width="20" height="14" rx="4" fill="#6f4718"/></g>'
+          # вытянутое тело с прогнутой спиной и подтянутым животом
+          '<path d="M-78 -2 C-72 -26 -40 -36 2 -36 C46 -36 74 -26 80 -4'
+          ' C84 14 72 34 36 38 C0 42 -46 42 -68 32 C-82 26 -84 12 -78 -2 Z"'
+          ' fill="#a8702f" stroke="#1b0f07" stroke-width="9" stroke-linejoin="round"/>'
+          # короткий хвост торчком
+          '<path d="M-76 -14 C-94 -26 -102 -44 -96 -58" stroke="#8a5c2a" stroke-width="11"'
+          ' fill="none" stroke-linecap="round"/>'
+          # высокая шея
+          '<path d="M52 -22 C58 -62 72 -88 92 -98 C108 -106 120 -96 114 -80'
+          ' C106 -56 94 -34 80 -14 Z" fill="#b67d36" stroke="#1b0f07" stroke-width="9"'
+          ' stroke-linejoin="round"/>'
+          # КЛИНОВИДНАЯ МОРДА вперёд-вправо — главный признак козы
+          '<path d="M86 -104 C86 -124 104 -134 124 -132 C150 -130 170 -116 168 -100'
+          ' C166 -86 146 -78 120 -78 C98 -78 86 -88 86 -104 Z" fill="#c08a40"'
           ' stroke="#1b0f07" stroke-width="9" stroke-linejoin="round"/>'
-          # ноги
-          '<g stroke="#1b0f07" stroke-width="8" stroke-linejoin="round" fill="#96631f">'
-          '<rect x="-64" y="62" width="22" height="36" rx="6"/>'
-          '<rect x="-26" y="68" width="22" height="30" rx="6"/>'
-          '<rect x="26" y="66" width="22" height="32" rx="6"/>'
-          '<rect x="58" y="60" width="22" height="38" rx="6"/></g>'
-          # шея и голова
-          '<path d="M56 -6 C70 -44 86 -64 104 -70 C120 -74 130 -62 124 -48'
-          ' C116 -28 96 -8 76 6 Z" fill="#b67d36" stroke="#1b0f07" stroke-width="9"'
-          ' stroke-linejoin="round"/>'
-          '<path d="M104 -70 C124 -80 142 -74 146 -58 C150 -42 138 -30 120 -32'
-          ' C108 -34 102 -50 104 -70 Z" fill="#c08a40" stroke="#1b0f07" stroke-width="9"'
-          ' stroke-linejoin="round"/>'
-          # рог назад, ухо, бородка, глаз
-          '<path d="M118 -74 C128 -100 118 -118 96 -124" stroke="#8a5c2a" stroke-width="12"'
+          # ухо назад
+          '<path d="M96 -116 C78 -126 64 -122 62 -110 C70 -100 86 -102 96 -116 Z"'
+          ' fill="#8a5c2a" stroke="#1b0f07" stroke-width="6" stroke-linejoin="round"/>'
+          # РОГА дугой назад — две штуки, задний короче
+          '<path d="M104 -128 C122 -156 114 -180 88 -188" stroke="#7a4e1f" stroke-width="13"'
           ' fill="none" stroke-linecap="round"/>'
-          '<path d="M112 -58 C98 -62 88 -56 88 -46 C96 -40 108 -46 112 -58 Z" fill="#8a5c2a"'
-          ' stroke="#1b0f07" stroke-width="6"/>'
-          '<path d="M134 -30 C136 -14 130 -4 120 0" stroke="#8a5c2a" stroke-width="9"'
+          '<path d="M92 -126 C106 -150 100 -170 80 -178" stroke="#6f4718" stroke-width="10"'
           ' fill="none" stroke-linecap="round"/>'
-          '<circle cx="132" cy="-56" r="6" fill="#241208"/>'
-          # хвостик и текстура дерева
-          '<path d="M-84 20 C-100 12 -108 -4 -102 -18" stroke="#8a5c2a" stroke-width="10"'
+          # БОРОДКА под мордой
+          '<path d="M118 -80 C124 -58 118 -40 104 -32" stroke="#8a5c2a" stroke-width="11"'
           ' fill="none" stroke-linecap="round"/>'
+          # глаз, ноздря и линия рта
+          '<circle cx="134" cy="-110" r="7" fill="#241208"/>'
+          '<circle cx="163" cy="-99" r="4" fill="#241208"/>'
+          '<path d="M150 -88 C158 -90 164 -94 166 -98" stroke="#1b0f07" stroke-width="5"'
+          ' fill="none" stroke-linecap="round"/>'
+          # текстура дерева по телу
           '<g stroke="#8a5c2a" stroke-width="4" fill="none" opacity=".55">'
-          '<path d="M-66 8 C-30 -2 24 -2 58 10 M-70 40 C-30 30 24 30 62 40"/></g></g>')
+          '<path d="M-58 -12 C-24 -22 26 -22 60 -10 M-58 18 C-24 8 26 8 62 18"/></g></g>')
     g = .3 + .25 * (0.5 + 0.5 * A.w(t, 3.2))
     s += f'<ellipse cx="470" cy="350" rx="170" ry="130" fill="#e07f23" opacity="{g*0.12:.2f}"/>'
     s += A.candle(680, 330, t, 70, 46, phase=.35, s=.85)
@@ -2730,6 +2856,78 @@ def pumpkin_slice(t):
     return s
 
 
+def fish_serve(t):
+    """ПОДАЧА: рыба целиком — с головой и хвостом, как положено на Востоке.
+    Длинное блюдо наискосок, палочки, пиала соевого соуса, пар. Прежде
+    здесь стоял объеденный хребет — а озвучка как раз про подачу целиком
+    (его правка 02.11)."""
+    s = '<rect width="960" height="540" fill="url(#roomr)"/>'
+    s += _boke([(842, 80, 18, "#ffd45e"), (740, 120, 13, "#ff8c6b"), (906, 154, 12, "#9ae06a")],
+               ".32")
+    s += tree(96, 282, t, 0.44, 0.38, star=False)
+    s += _garland(t, 10)
+    s += table(318)
+    # вся подача мельче и выше — иначе блюдо упирается в нижний край
+    s += '<g transform="translate(470,404) scale(0.76) translate(-470,-440)">'
+    # длинное блюдо наискосок
+    s += ('<g transform="rotate(-6 470 440)">'
+          '<g stroke="#1b0f07" stroke-width="10" stroke-linejoin="round">'
+          '<rect x="126" y="376" width="716" height="136" rx="56" fill="#cfc0a2"/>'
+          '<rect x="146" y="392" width="676" height="104" rx="46" fill="#eee3cb"/></g>'
+          '</g>')
+    # рыба целиком: голова слева с глазом, хвост справа веером
+    s += '<g transform="rotate(-6 470 440)">'
+    s += ('<g stroke="#1b0f07" stroke-width="10" stroke-linejoin="round">'
+          '<path d="M186 440 C244 382 348 354 470 354 C592 354 684 382 730 436'
+          ' C684 492 590 520 470 520 C348 520 244 496 186 440 Z" fill="#c3ccd2"/>'
+          '<path d="M716 392 C772 404 806 356 846 336 C836 388 820 420 816 440'
+          ' C822 462 840 494 852 544 C808 520 770 476 716 486 Z" fill="#a4b4bc"/>'
+          '<path d="M186 440 C212 406 242 388 270 378 L278 500 C242 490 212 468 186 440 Z"'
+          ' fill="#aab8c0"/></g>')
+    s += ('<path d="M270 378 C296 416 296 462 278 500" stroke="#6d7d86" stroke-width="7"'
+          ' fill="none"/>'
+          '<circle cx="234" cy="424" r="17" fill="#f4efe3" stroke="#1b0f07" stroke-width="6"/>'
+          '<circle cx="234" cy="424" r="8" fill="#241208"/>'
+          '<path d="M190 460 C208 470 228 472 246 468" stroke="#1b0f07" stroke-width="6"'
+          ' fill="none" stroke-linecap="round"/>')
+    # спинной плавник — чтобы рыба читалась рыбой, а не батоном
+    s += ('<path d="M366 366 C420 320 520 316 578 356 C512 344 430 346 366 366 Z" fill="#a4b4bc" stroke="#1b0f07"'
+          ' stroke-width="8" stroke-linejoin="round"/>')
+    s += '<g stroke="#8d9ba3" stroke-width="4" fill="none" opacity=".75">'
+    for k in range(5):
+        xx = 336 + k * 86
+        s += f'<path d="M{xx} 390 C{xx+24} 428 {xx+24} 458 {xx} 494"/>'
+    s += '</g>'
+    # зелёный лук и ломтики имбиря сверху
+    s += '<g stroke="#1b0f07" stroke-width="5">'
+    for ex, ey, rot, col in ((382, 424, -8, "#e9c98a"), (486, 416, 6, "#f0d9a4"),
+                             (596, 424, -5, "#e9c98a")):
+        s += (f'<ellipse cx="{ex}" cy="{ey}" rx="30" ry="12" fill="{col}"'
+              f' transform="rotate({rot} {ex} {ey})"/>')
+    s += '</g>'
+    for i, lx in enumerate((428, 534, 638)):
+        a = A.sway(t, 5.4 + i * .6, i * .3, 2.2)
+        s += (f'<g transform="rotate({a:.2f} {lx} 440)">'
+              f'<path d="M{lx-34} 452 C{lx-10} 428 {lx+18} 428 {lx+42} 444" stroke="#5e9a4a"'
+              ' stroke-width="9" fill="none" stroke-linecap="round"/>'
+              f'<path d="M{lx-24} 468 C{lx-2} 448 {lx+22} 448 {lx+40} 462" stroke="#79b34c"'
+              ' stroke-width="7" fill="none" stroke-linecap="round"/></g>')
+    s += '</g>'
+    # палочки и пиала соевого соуса — восточная подача
+    s += ('<g stroke="#1b0f07" stroke-width="6" stroke-linejoin="round">'
+          '<path d="M120 556 L306 512 L312 528 L126 572 Z" fill="#c98f46"/>'
+          '<path d="M130 572 L314 536 L318 550 L134 586 Z" fill="#b87f3c"/></g>')
+    s += ('<g stroke="#1b0f07" stroke-width="8" stroke-linejoin="round">'
+          '<path d="M726 560 C726 518 838 518 838 560 Z" fill="#dccbab"/>'
+          '<path d="M736 550 C740 528 824 528 828 550 Z" fill="#4a2f18"/></g>')
+    s += '</g>'
+    s += A.smoke(440, 346, t, 3, 110, .7, .2)
+    s += A.smoke(584, 352, t, 2, 100, .6, .16)
+    s += A.candle(886, 322, t, 62, 44, phase=.35, s=.76)
+    s += A.confetti(t, 11, seed=457)
+    return s
+
+
 def fish_left(t):
     """Рыбу не доедают: часть съедена, хвост и голова остались на блюде."""
     s = '<rect width="960" height="540" fill="url(#roomc)"/>'
@@ -2997,6 +3195,100 @@ def herb_glasses(t):
     s += A.confetti(t, 11, seed=305)
     return s
 
+
+def herb_three(t):
+    """Три стакана зелени В РЯД НА ЛИНИИ СТОЛА, у каждого СВОЯ трава,
+    и каждая узнаётся по рисунку: розмарин — жёсткие иголки, кинза —
+    веер резных листиков, базилик — крупные парные листья. Под стаканами
+    деревянные бирки с названием (его правка 02.11)."""
+    s = '<rect width="960" height="540" fill="url(#roomb)"/>'
+    s += _boke([(846, 86, 17, "#ffd45e"), (742, 124, 13, "#ff8c6b"), (904, 156, 12, "#9ae06a")])
+    s += tree(84, 292, t, 0.40, 0.32, star=False)
+    s += _garland(t, 10)
+    s += table(350)
+    s += '<ellipse cx="470" cy="462" rx="300" ry="22" fill="#1b0f07" opacity=".28"/>'
+    # --- три стакана: основания стоят на ОДНОЙ линии ------------------------
+    for i, (x, name, col, dark) in enumerate(((150, "РОЗМАРИН", "#6f8a52", "#55703d"),
+                                              (424, "КИНЗА", "#5e9a4a", "#3f6b2c"),
+                                              (700, "БАЗИЛИК", "#46772f", "#2f5820"))):
+        w, h = 112, 92
+        y = 452 - h                      # верх стакана: бирка должна влезть ниже
+        cx = x + w / 2
+        a = A.sway(t, 5.2 + i * .7, i * .33, 1.4)
+        s += f'<g transform="rotate({a:.2f} {cx:.0f} {y})">'
+        if i == 0:
+            # РОЗМАРИН: прямые ветки, на каждой частые короткие иголки
+            for k, (dx, tip, lean) in enumerate(((-30, -150, -16), (-8, -186, -4),
+                                                 (18, -170, 10), (38, -132, 22))):
+                x0, y0 = cx + dx, y + 16
+                x1, y1 = cx + dx + lean, y + tip
+                s += (f'<path d="M{x0:.0f} {y0} L{x1:.0f} {y1}" stroke="{dark}"'
+                      ' stroke-width="7" stroke-linecap="round"/>')
+                n = 9
+                for j in range(1, n + 1):
+                    p = j / (n + 1.0)
+                    px, py = x0 + (x1 - x0) * p, y0 + (y1 - y0) * p
+                    L = 19 - 7 * p
+                    s += (f'<path d="M{px:.0f} {py:.0f} L{px-L:.0f} {py-L*0.55:.0f}'
+                          f' M{px:.0f} {py:.0f} L{px+L:.0f} {py-L*0.55:.0f}"'
+                          f' stroke="{col}" stroke-width="5" stroke-linecap="round"/>')
+        elif i == 1:
+            # КИНЗА: тонкие черешки веером, на конце — тройка резных листиков
+            for dx, tip, lean in ((-34, -120, -34), (-12, -156, -14), (14, -150, 16), (36, -118, 34)):
+                x0, y0 = cx + dx * .4, y + 16
+                x1, y1 = cx + dx + lean, y + tip
+                s += (f'<path d="M{x0:.0f} {y0} C{x0:.0f} {y0-40} {x1:.0f} {y1+46} {x1:.0f} {y1:.0f}"'
+                      f' stroke="{dark}" stroke-width="6" fill="none" stroke-linecap="round"/>')
+                for lx, ly, r in ((-20, -8, 17), (20, -8, 17), (0, -24, 18)):
+                    ex, ey = x1 + lx, y1 + ly
+                    s += (f'<path d="M{ex:.0f} {ey+r*0.9:.0f} C{ex-r*1.15:.0f} {ey+r*0.5:.0f}'
+                          f' {ex-r*1.0:.0f} {ey-r*0.9:.0f} {ex:.0f} {ey-r*1.0:.0f}'
+                          f' C{ex+r*1.0:.0f} {ey-r*0.9:.0f} {ex+r*1.15:.0f} {ey+r*0.5:.0f}'
+                          f' {ex:.0f} {ey+r*0.9:.0f} Z" fill="{col}" stroke="#1b1309"'
+                          ' stroke-width="4" stroke-linejoin="round"/>')
+                    s += (f'<path d="M{ex:.0f} {ey+r*0.7:.0f} L{ex:.0f} {ey-r*0.8:.0f}"'
+                          f' stroke="{dark}" stroke-width="3"/>')
+        else:
+            # БАЗИЛИК: толстые стебли, КРУПНЫЕ парные листья с прожилкой
+            for dx, tip, lean in ((-26, -128, -26), (0, -166, 2), (26, -132, 26)):
+                x0, y0 = cx + dx * .5, y + 16
+                x1, y1 = cx + dx + lean, y + tip
+                s += (f'<path d="M{x0:.0f} {y0} C{x0:.0f} {y0-50} {x1:.0f} {y1+50} {x1:.0f} {y1:.0f}"'
+                      f' stroke="{dark}" stroke-width="8" fill="none" stroke-linecap="round"/>')
+                for p, side, L in ((.42, -1, 40), (.42, 1, 40), (.74, -1, 33), (.74, 1, 33)):
+                    bx = x0 + (x1 - x0) * p
+                    by = y0 + (y1 - y0) * p
+                    ex, ey = bx + side * L * 1.05, by - L * 0.72
+                    s += (f'<path d="M{bx:.0f} {by:.0f} C{bx + side*L*0.25:.0f} {by - L*0.72:.0f}'
+                          f' {ex - side*L*0.25:.0f} {ey - L*0.55:.0f} {ex:.0f} {ey:.0f}'
+                          f' C{ex - side*L*0.45:.0f} {ey + L*0.42:.0f} {bx + side*L*0.4:.0f}'
+                          f' {by + L*0.22:.0f} {bx:.0f} {by:.0f} Z" fill="{col}"'
+                          ' stroke="#1b1309" stroke-width="5" stroke-linejoin="round"/>')
+                    s += (f'<path d="M{bx:.0f} {by:.0f} C{bx + side*L*0.4:.0f} {by - L*0.38:.0f}'
+                          f' {ex - side*L*0.3:.0f} {ey - L*0.1:.0f} {ex:.0f} {ey:.0f}"'
+                          f' stroke="{dark}" stroke-width="4" fill="none"/>')
+        s += '</g>'
+        # стакан поверх стеблей — видно, что трава СТОИТ В НЁМ
+        s += (f'<g stroke="#1b1309" stroke-width="7" stroke-linejoin="round">'
+              f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="7" fill="url(#glass)"/>'
+              f'<rect x="{x+7}" y="{y+h*0.44:.0f}" width="{w-14}" height="{h*0.5:.0f}" rx="4"'
+              ' fill="#cfe6f2" opacity=".38"/></g>')
+        s += (f'<path d="M{x+16} {y+14} L{x+16} {y+h-14}" stroke="#ffffff"'
+              ' stroke-width="6" opacity=".45" stroke-linecap="round"/>')
+        # деревянная бирка с названием — чтобы трава ещё и ЧИТАЛАСЬ.
+        # ширина МЕРЯЕТСЯ ШРИФТОМ (правило 3), а не прикидывается
+        try:
+            import overlays as _O
+            bw = _O.wid(name, "DejaVu Sans", 23, True) + 46
+        except Exception:
+            bw = 150
+        s += (f'<g stroke="#1b1309" stroke-width="6" stroke-linejoin="round">'
+              f'<rect x="{cx-bw/2:.0f}" y="460" width="{bw}" height="34" rx="8" fill="#d8a85c"/></g>'
+              f'<text x="{cx:.0f}" y="485" font-family="DejaVu Sans" font-size="23"'
+              f' font-weight="bold" fill="#2a1a08" text-anchor="middle">{name}</text>')
+    s += A.candle(898, 330, t, 62, 44, phase=.4, s=.78)
+    s += A.confetti(t, 10, seed=317)
+    return s
 
 def cheese_trio(t):
     """Три сыра по отдельности: круг с белой корочкой, фета в рассоле, твёрдый клин."""
@@ -3674,16 +3966,16 @@ SCENES = {
     "lamb_dishes": lamb_dishes, "koza_head_table": koza_head_table,
     "round_fruits": round_fruits, "pelmeni_gold": pelmeni_gold, "pear_no": pear_no,
     "white_no": white_no, "calendar_feb": calendar_feb, "lanterns": lanterns,
-    "kuranty": kuranty, "koza_figure": koza_figure, "final_warm": final_warm,
+    "kuranty": kuranty, "finale_2027": finale_2027, "koza_figure": koza_figure, "final_warm": final_warm,
     # варианты служебных кадров против сквозного повтора
     "guests_close": guests_close, "koza_window": koza_window, "koza_bokal": koza_bokal,
     "table_wide": table_wide, "koza_profile": koza_profile,
     "greens_board": greens_board, "duck_cut": duck_cut, "cheese_slice": cheese_slice,
     "guests_toast": guests_toast, "pumpkin_slice": pumpkin_slice,
-    "fish_left": fish_left, "fruit_basket": fruit_basket,
+    "fish_left": fish_left, "fish_serve": fish_serve, "fruit_basket": fruit_basket,
     # новые кадры против сквозного повтора (02.11)
     "basics_six": basics_six, "empty_plate": empty_plate, "seafood": seafood,
-    "herb_glasses": herb_glasses, "cheese_trio": cheese_trio, "honey_nuts": honey_nuts,
+    "herb_glasses": herb_glasses, "herb_three": herb_three, "cheese_trio": cheese_trio, "honey_nuts": honey_nuts,
     "goat_milk": goat_milk, "pumpkin_raw": pumpkin_raw, "pumpkin_topping": pumpkin_topping,
     "mushrooms_pan": mushrooms_pan, "pate_toast": pate_toast, "duck_spices": duck_spices,
     "duck_glaze": duck_glaze, "fish_steam": fish_steam, "apple_cream": apple_cream,
