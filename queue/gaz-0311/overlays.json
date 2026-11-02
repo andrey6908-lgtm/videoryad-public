@@ -1,0 +1,313 @@
+{
+  "anchor": "top",
+  "5": {
+    "photo": "overlays/scene_005.jpg",
+    "sound": "whoosh",
+    "at": 3.0,
+    "shape": "rect",
+    "style": "right",
+    "size": "l",
+    "scale": 1.25,
+    "approved": true
+  },
+  "16": {
+    "photo": "overlays/scene_016.jpg",
+    "sound": "pop",
+    "at": 3.0,
+    "shape": "rect",
+    "style": "right",
+    "size": "l",
+    "scale": 1.25,
+    "approved": true
+  },
+  "22": {
+    "photo": "overlays/scene_022.jpg",
+    "sound": "ding",
+    "at": 3.0,
+    "shape": "rect",
+    "style": "right",
+    "size": "m",
+    "scale": 1.0,
+    "approved": true
+  },
+  "50": {
+    "photo": "overlays/scene_050.jpg",
+    "sound": "zatvor",
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "m",
+    "scale": 1.0,
+    "approved": true
+  },
+  "58": {
+    "photo": "overlays/scene_058.jpg",
+    "sound": "whoosh",
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "m",
+    "scale": 1.0,
+    "approved": true
+  },
+  "63": {
+    "photo": "overlays/scene_063.jpg",
+    "sound": "pop",
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "m",
+    "scale": 1.0,
+    "approved": true
+  },
+  "3": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "ГАЗ РОССИЙСКИЙ · ТРУБА УКРАИНСКАЯ · ПОСРЕДНИК АМЕРИКАНСКИЙ",
+      "color": "white",
+      "pos": "tc",
+      "font": "default",
+      "sound": "zatvor",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "7": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "В ЕВРОПЕ ЭТОТ ГАЗ НАЗЫВАЛИ АБСОЛЮТНЫМ ЗЛОМ",
+      "color": "white",
+      "pos": "tc",
+      "font": "default",
+      "sound": "ding",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "11": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "ЧИНОВНИКИ ЕС ВСПОМНИЛИ ЧЕМБЕРЛЕНА",
+      "color": "yellow",
+      "pos": "tc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "17": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "ЗЕРНО · ЭНЕРГОРЕСУРСЫ · СУДА · ПОРТЫ",
+      "color": "white",
+      "pos": "tc",
+      "font": "default",
+      "sound": "pop",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "21": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "ПЕРЕМИРИЕ У АЛЁШЕК: ЭВАКУАЦИЯ И ПОМОЩЬ",
+      "color": "white",
+      "pos": "tc",
+      "font": "default",
+      "sound": "zatvor",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "24": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "ОСНОВНЫЕ ПОСТАВЩИКИ — НОРВЕГИЯ И США",
+      "color": "white",
+      "pos": "tc",
+      "font": "default",
+      "sound": "ding",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "26": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "ИНДИЯ ПЕРЕРАБАТЫВАЕТ И ОТПРАВЛЯЕТ ДАЛЬШЕ",
+      "color": "white",
+      "pos": "tc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "28": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "ИСПАНСКИЕ СМИ, 2024: ДИЗЕЛЬ НА МИЛЛИАРДЫ ЕВРО",
+      "color": "yellow",
+      "pos": "tc",
+      "font": "default",
+      "sound": "pop",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "34": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "ДВЕСТИ ЧЕТЫРЕ МИЛЛИАРДА ЕВРО РОССИЙСКИХ АКТИВОВ",
+      "color": "red",
+      "pos": "tc",
+      "font": "default",
+      "sound": "zatvor",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "36": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "ЕВРОСОЮЗУ ПЕРЕЧИСЛЕНО ОКОЛО ВОСЬМИ МИЛЛИАРДОВ",
+      "color": "yellow",
+      "pos": "tc",
+      "font": "default",
+      "sound": "ding",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "40": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "РОССИЯ ЭТУ ИСТОРИЮ ЗАКРЫТОЙ НЕ СЧИТАЕТ",
+      "color": "white",
+      "pos": "tc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "46": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "ЦЕЛЕВОЙ УРОВЕНЬ БЫЛ ОКОЛО СЕМИДЕСЯТИ ПРОЦЕНТОВ",
+      "color": "yellow",
+      "pos": "tc",
+      "font": "default",
+      "sound": "pop",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "51": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "ВОПРОС НЕ В ХОЛОДЕ, А В ЦЕНЕ",
+      "color": "red",
+      "pos": "tc",
+      "font": "default",
+      "sound": "zatvor",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "57": {
+    "at": 2.6,
+    "scale": 1.0,
+    "anchor": "top",
+    "text": {
+      "words": "КАЖДЫЙ ЗАЩИЩАЕТ СВОЁ",
+      "color": "white",
+      "pos": "tc",
+      "font": "default",
+      "sound": "ding",
+      "at": 2.6,
+      "scale": 1.0,
+      "approved": true
+    }
+  },
+  "31": {
+    "photo": "overlays/scene_031.jpg",
+    "sound": "pop",
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "m",
+    "scale": 1.0,
+    "approved": true
+  },
+  "44": {
+    "photo": "overlays/scene_044.jpg",
+    "sound": "ding",
+    "at": 3.0,
+    "shape": "rect",
+    "style": "right",
+    "size": "m",
+    "scale": 1.0,
+    "approved": true
+  },
+  "47": {
+    "photo": "overlays/scene_047.jpg",
+    "sound": "whoosh",
+    "at": 3.0,
+    "shape": "rect",
+    "style": "left",
+    "size": "m",
+    "scale": 1.0,
+    "approved": true
+  },
+  "55": {
+    "photo": "overlays/scene_055.jpg",
+    "sound": "zatvor",
+    "at": 3.0,
+    "shape": "rect",
+    "style": "right",
+    "size": "m",
+    "scale": 1.0,
+    "approved": true
+  }
+}

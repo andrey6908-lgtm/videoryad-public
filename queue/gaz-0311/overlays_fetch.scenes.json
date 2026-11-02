@@ -1,0 +1,84 @@
+{
+ "scenes": [
+  {
+   "id": 5,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/B6l8_wmYoPzuMqLUTD_7f_BM_tgGNHnkdijyLTGOj08bGPV5ENA7zMlnUix38TQtvUeInkHg8S1dKDwRZSf1jOBSBUB2vKJEuv54srHlFUqmrLdTTkvm40oCRz4yZ0OGiAb1hhrfghxI8v9SSrKsvTRGkvHqsrZuhHbEYoPhjLo1yMpFUNKidvyIiC90vN5Vhm4zvvCoG2dKUwyDyN0_YY9pzHBJU5X1Mb7IxNJUUrkTGs0Vd17ohCcVkP47CxWz63vZDOvfm2eP67nVnUmFA_0tbnafg9W9OCkyj1r70VEoQr-er_Ol9RVsSMXJxNB77wZct4Rab6J4B5IHOHnXWA.jpg",
+   "visual_prompt": "https://cdn4.telesco.pe/file/B6l8_wmYoPzuMqLUTD_7f_BM_tgGNHnkdijyLTGOj08bGPV5ENA7zMlnUix38TQtvUeInkHg8S1dKDwRZSf1jOBSBUB2vKJEuv54srHlFUqmrLdTTkvm40oCRz4yZ0OGiAb1hhrfghxI8v9SSrKsvTRGkvHqsrZuhHbEYoPhjLo1yMpFUNKidvyIiC90vN5Vhm4zvvCoG2dKUwyDyN0_YY9pzHBJU5X1Mb7IxNJUUrkTGs0Vd17ohCcVkP47CxWz63vZDOvfm2eP67nVnUmFA_0tbnafg9W9OCkyj1r70VEoQr-er_Ol9RVsSMXJxNB77wZct4Rab6J4B5IHOHnXWA.jpg"
+  },
+  {
+   "id": 16,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/neEpPcK6J__B9oqeVTvb-h9VlPinYnMnNHcmwPXYszbkd3iufi9spy-2QJHVGZ2uu-76RqRBigbXnSgleCttL7PWs_q4x_KxRmNKmcJBRpe2b5Lrr3G_J5T2TGPnpjZIf7zZ1r-1SnylMijBnbJ-GbtTcdHd4GQ3mycP84r6Pv-tQiMJCq80dChVbbU9-g9xxAXqBd55AcluO7-TKTPoC0R9w97-76Dl5JkmGkMWta_rB7DXmgctBtWQTg_Q8x8UFpZBCSJBIsd59gfyIxA1aOc_Dv9aKBNFlgPB1HcD-GpwkHZR4pD88Ow_AnnmRqkGkhdaAZEILcXBCVtuod-vRw.jpg",
+   "visual_prompt": "https://cdn4.telesco.pe/file/neEpPcK6J__B9oqeVTvb-h9VlPinYnMnNHcmwPXYszbkd3iufi9spy-2QJHVGZ2uu-76RqRBigbXnSgleCttL7PWs_q4x_KxRmNKmcJBRpe2b5Lrr3G_J5T2TGPnpjZIf7zZ1r-1SnylMijBnbJ-GbtTcdHd4GQ3mycP84r6Pv-tQiMJCq80dChVbbU9-g9xxAXqBd55AcluO7-TKTPoC0R9w97-76Dl5JkmGkMWta_rB7DXmgctBtWQTg_Q8x8UFpZBCSJBIsd59gfyIxA1aOc_Dv9aKBNFlgPB1HcD-GpwkHZR4pD88Ow_AnnmRqkGkhdaAZEILcXBCVtuod-vRw.jpg"
+  },
+  {
+   "id": 22,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "КАРТЫ/ТУРЦИЯ",
+   "visual_prompt": "КАРТЫ/ТУРЦИЯ"
+  },
+  {
+   "id": 31,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/НЕФТЕПЕРЕРАБАТЫВАЮЩИЙ-ЗАВОД-ФАКЕЛ",
+   "visual_prompt": "БАЗА/ВЛАСТЬ-РОССИЯ/НЕФТЕПЕРЕРАБАТЫВАЮЩИЙ-ЗАВОД-ФАКЕЛ"
+  },
+  {
+   "id": 44,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ВЕТРОПАРК-СЕВЕРНОМ-МОРЕ/08_4248x2390.jpg",
+   "visual_prompt": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ВЕТРОПАРК-СЕВЕРНОМ-МОРЕ/08_4248x2390.jpg"
+  },
+  {
+   "id": 47,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ПОРТ-ГАМБУРГА-ВОЗДУХА",
+   "visual_prompt": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ПОРТ-ГАМБУРГА-ВОЗДУХА"
+  },
+  {
+   "id": 50,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "КАРТЫ/ГЕРМАНИЯ",
+   "visual_prompt": "КАРТЫ/ГЕРМАНИЯ"
+  },
+  {
+   "id": 55,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/МОСКОВСКИЙ-КРЕМЛЬ-СО",
+   "visual_prompt": "БАЗА/ВЛАСТЬ-РОССИЯ/МОСКОВСКИЙ-КРЕМЛЬ-СО"
+  },
+  {
+   "id": 58,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ПРИЛАВОК-НЕМЕЦКОГО-СУПЕРМАРКЕТА",
+   "visual_prompt": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ПРИЛАВОК-НЕМЕЦКОГО-СУПЕРМАРКЕТА"
+  },
+  {
+   "id": 63,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "БАЗА/УНИВЕРСАЛЬНОЕ/ОЧЕРЕДЬ-ЛЮДЕЙ-ВХОДА",
+   "visual_prompt": "БАЗА/УНИВЕРСАЛЬНОЕ/ОЧЕРЕДЬ-ЛЮДЕЙ-ВХОДА"
+  }
+ ]
+}
