@@ -114,6 +114,63 @@ def myth_fact(myth, fact_lines, x=110, y=150, w=None):
     return _wrap(s)
 
 
+def fire_word(text, x=110, y=470, size=118):
+    """Слово огнём: языки пламени поднимаются прямо с букв (его просьба 02.11).
+    Ширина меряется шрифтом, чтобы пламя село ровно по длине слова."""
+    w = wid(text, SER, size, True, ls=4)
+    s = ('<defs>'
+         '<linearGradient id="fw" x1="0" y1="1" x2="0" y2="0">'
+         '<stop offset="0" stop-color="#b8320f"/><stop offset=".45" stop-color="#e8701b"/>'
+         '<stop offset="1" stop-color="#f7b740"/></linearGradient>'
+         '<linearGradient id="fwt" x1="0" y1="1" x2=".2" y2="0">'
+         '<stop offset="0" stop-color="#d6202f"/><stop offset=".5" stop-color="#e07f23"/>'
+         '<stop offset="1" stop-color="#ffd36e"/></linearGradient>'
+         '</defs>')
+    # тёплое свечение под словом
+    s += (f'<ellipse cx="{x + w/2:.0f}" cy="{y - size*0.32:.0f}" rx="{w*0.68:.0f}" ry="{size*0.95:.0f}"'
+          ' fill="#d9601a" opacity=".22"/>')
+    # языки пламени по верхней кромке букв
+    # Пламя: КАПЛИ, которые перекрывают друг друга и сливаются в общий огонь.
+    # Отдельно стоящие язычки читались как свечки на торте, а залитая лента —
+    # как светлый прямоугольник под словом.
+    import math as _m
+    step = size * 0.40
+    n = max(5, int(w / step) + 1)
+    base = y - size * 0.20                      # основание прячется за буквами
+    hs = []
+    for i in range(n):
+        bell = _m.sin(_m.pi * (i + 0.6) / (n + 0.2)) ** 0.5
+        hs.append(size * bell * (0.62 + 0.52 * ((i * 5) % 4) / 3.0))
+
+    def tongue(cx, h, hw, lean, fill, op):
+        return (f'<path d="M{cx:.0f} {base:.0f}'
+                f' C{cx - hw:.0f} {base - h*0.22:.0f} {cx - hw*0.92 + lean:.0f} {base - h*0.60:.0f}'
+                f' {cx + lean:.0f} {base - h:.0f}'
+                f' C{cx + hw*0.92 + lean:.0f} {base - h*0.58:.0f} {cx + hw:.0f} {base - h*0.20:.0f}'
+                f' {cx:.0f} {base:.0f} Z" fill="{fill}" opacity="{op}"/>')
+
+    for layer, (ks, hw_k, fill, op) in enumerate(
+            ((1.00, 0.34, "url(#fwt)", ".92"), (0.68, 0.24, "#ffb347", ".80"),
+             (0.38, 0.15, "#ffd98a", ".65"))):
+        for i in range(n):
+            cx = x - 8 + i * (w + 16) / max(1, n - 1)
+            lean = size * 0.08 * (1 if i % 2 else -0.65)
+            s += tongue(cx, hs[i] * ks, size * hw_k, lean * ks, fill, op)
+    # искры
+    for i, (dx, dy, r) in enumerate(((0.18, 1.42, 7), (0.52, 1.66, 5), (0.80, 1.34, 6),
+                                     (0.34, 1.86, 4), (0.68, 1.94, 4))):
+        s += (f'<circle cx="{x + w*dx:.0f}" cy="{y - size*dy:.0f}" r="{r}" fill="#ffd36e"'
+              f' opacity="{0.8 - i*0.1:.2f}"/>')
+    # само слово: тень, затем заливка огнём с тёмной обводкой
+    for ddx, ddy, o in ((0, 7, .55), (4, 6, .35)):
+        s += (f'<text x="{x+ddx}" y="{y+ddy}" font-family="{SER}" font-size="{size}" font-weight="bold"'
+              f' letter-spacing="4" xml:space="preserve" fill="#000000" opacity="{o}">{text}</text>')
+    s += (f'<text x="{x}" y="{y}" font-family="{SER}" font-size="{size}" font-weight="bold"'
+          f' letter-spacing="4" fill="url(#fw)" stroke="#2a1105"'
+          f' stroke-width="6" paint-order="stroke" xml:space="preserve">{text}</text>')
+    return _wrap(s)
+
+
 def badge(q_lines, x=140, y=380):
     s = f'<circle cx="{x+20}" cy="{y}" r="20" fill="#2f9e3f"/>'
     s += _t(x + 11, y + 10, "?", SAN, 26, "#ffffff", bold=True, shadow=False)

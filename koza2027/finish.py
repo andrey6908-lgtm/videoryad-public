@@ -32,25 +32,41 @@ for nm, svg_src, aa, bb in plan.OVERLAYS:
 # Клипы качает САМ раннер по прямым публичным ссылкам: ключ Pexels в облако
 # не едет. Окно одного размера на весь ролик, поэтому маска скругления и
 # рамка считаются по одному разу, а не на каждую вставку.
-STOCK = list(getattr(plan, "STOCK", []))
+STOCK = [tuple(e) + ("",) if len(e) == 4 else tuple(e) for e in getattr(plan, "STOCK", [])]
 stock_files = {}
+# Окна бывают РАЗНОГО размера (обычная вставка и экран телевизора), поэтому
+# маска и рамка считаются на каждый размер отдельно, а не один раз на ролик.
+sv_art = {}
+
+
+def _sv_art(w, h, style):
+    key = (w, h, style)
+    if key in sv_art:
+        return sv_art[key]
+    R = 10 if style == "tv" else 44
+    mask = "/tmp/sv_mask_%dx%d_%s.png" % (w, h, style or "n")
+    cairosvg.svg2png(bytestring=(
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{w}" height="{h}">'
+        f'<rect x="0" y="0" width="{w}" height="{h}" rx="{R}" fill="#ffffff"/></svg>'
+    ).encode(), write_to=mask, output_width=w, output_height=h)
+    frame = None
+    if style != "tv":          # у телевизора рамка своя, нарисована в кадре
+        PAD = 30
+        frame = "/tmp/sv_frame_%dx%d.png" % (w, h)
+        cairosvg.svg2png(bytestring=(
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{w+PAD*2}" height="{h+PAD*2}">'
+            f'<rect x="{PAD-9}" y="{PAD-3}" width="{w+18}" height="{h+18}" rx="{R+9}"'
+            ' fill="#000000" opacity=".38"/>'
+            f'<rect x="{PAD-6}" y="{PAD-6}" width="{w+12}" height="{h+12}" rx="{R+6}"'
+            ' fill="none" stroke="#17130f" stroke-width="15"/></svg>'
+        ).encode(), write_to=frame, output_width=w+PAD*2, output_height=h+PAD*2)
+    sv_art[key] = (mask, frame)
+    return sv_art[key]
+
+
 if STOCK:
     import urllib.request
-    bw, bh = STOCK[0][3][2], STOCK[0][3][3]
-    R = 44
-    cairosvg.svg2png(bytestring=(
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{bw}" height="{bh}">'
-        f'<rect x="0" y="0" width="{bw}" height="{bh}" rx="{R}" fill="#ffffff"/></svg>'
-    ).encode(), write_to="/tmp/sv_mask.png", output_width=bw, output_height=bh)
-    PAD = 30
-    cairosvg.svg2png(bytestring=(
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{bw+PAD*2}" height="{bh+PAD*2}">'
-        f'<rect x="{PAD-9}" y="{PAD-3}" width="{bw+18}" height="{bh+18}" rx="{R+9}"'
-        ' fill="#000000" opacity=".38"/>'
-        f'<rect x="{PAD-6}" y="{PAD-6}" width="{bw+12}" height="{bh+12}" rx="{R+6}"'
-        ' fill="none" stroke="#17130f" stroke-width="15"/></svg>'
-    ).encode(), write_to="/tmp/sv_frame.png", output_width=bw+PAD*2, output_height=bh+PAD*2)
-    for k, (aa, bb, url, box) in enumerate(STOCK):
+    for k, (aa, bb, url, box, style) in enumerate(STOCK):
         if url in stock_files:
             continue
         dst = "/tmp/sv_%02d.mp4" % len(stock_files)
@@ -96,37 +112,55 @@ total_layers = len(STOCK) + len(plan.OVERLAYS)
 done_layers = 0
 
 SV_GROUP = 2
-for gi in range(0, len(STOCK), SV_GROUP):
-    chunk = STOCK[gi:gi + SV_GROUP]
+_groups = {}
+for e in STOCK:
+    _groups.setdefault((e[3][2], e[3][3], e[4]), []).append(e)
+_chunks = []
+for (gw, gh, gstyle), items in _groups.items():
+    for gi in range(0, len(items), SV_GROUP):
+        _chunks.append(((gw, gh, gstyle), items[gi:gi + SV_GROUP]))
+
+for (gw, gh, gstyle), chunk in _chunks:
+    mask_png, frame_png = _sv_art(gw, gh, gstyle)
     inputs = ["-i", CUR,
               "-loop", "1", "-framerate", str(plan.FPS), "-t", "%.3f" % plan.TOTAL,
-              "-i", "/tmp/sv_mask.png",
-              "-loop", "1", "-framerate", str(plan.FPS), "-t", "%.3f" % plan.TOTAL,
-              "-i", "/tmp/sv_frame.png"]
+              "-i", mask_png]
     fc = ["[1:v]format=gray,setsar=1[mraw]",
-          "[mraw]split=%d%s" % (len(chunk), "".join("[m%d]" % i for i in range(len(chunk)))),
-          "[2:v]format=rgba,setsar=1[frraw]",
-          "[frraw]split=%d%s" % (len(chunk), "".join("[fx%d]" % i for i in range(len(chunk))))]
-    cur, nin = "0:v", 3
-    for i, (aa, bb, url, box) in enumerate(chunk):
+          "[mraw]split=%d%s" % (len(chunk), "".join("[m%d]" % i for i in range(len(chunk))))]
+    nin = 2
+    if frame_png:
+        inputs += ["-loop", "1", "-framerate", str(plan.FPS), "-t", "%.3f" % plan.TOTAL,
+                   "-i", frame_png]
+        fc += ["[2:v]format=rgba,setsar=1[frraw]",
+               "[frraw]split=%d%s" % (len(chunk), "".join("[fx%d]" % i for i in range(len(chunk))))]
+        nin = 3
+    cur = "0:v"
+    for i, (aa, bb, url, box, style) in enumerate(chunk):
         x, y, w, h = box
         d = bb - aa
+        # ч/б под старую плёнку — для экрана телевизора в ретро-кадре
+        look = ("hue=s=0,eq=contrast=1.16:brightness=.03,"
+                "noise=alls=14:allf=t+u," if style == "tv" else
+                "colorbalance=rm=.07:gm=.01:bm=-.06,"
+                "eq=saturation=.94:contrast=1.03:brightness=-.02,")
         inputs += ["-itsoffset", "%.4f" % aa, "-stream_loop", "-1", "-t", "%.3f" % d,
                    "-i", stock_files[url]]
         fc.append("[%d:v]scale=%d:%d:force_original_aspect_ratio=increase,crop=%d:%d,setsar=1,"
-                  "fps=%d,colorbalance=rm=.07:gm=.01:bm=-.06,"
-                  "eq=saturation=.94:contrast=1.03:brightness=-.02,format=rgba,"
+                  "fps=%d,%sformat=rgba,"
                   "fade=in:st=%.3f:d=0.25:alpha=1,fade=out:st=%.3f:d=0.35:alpha=1[sv%d]"
-                  % (nin, w, h, w, h, plan.FPS, aa, max(aa, bb - 0.35), i))
+                  % (nin, w, h, w, h, plan.FPS, look, aa, max(aa, bb - 0.35), i))
         nin += 1
         fc.append("[sv%d][m%d]alphamerge[svm%d]" % (i, i, i))
         fc.append("[%s][svm%d]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[so%d]"
                   % (cur, i, x, y, aa, bb, i))
-        fc.append("[fx%d]fade=in:st=%.3f:d=0.25:alpha=1,fade=out:st=%.3f:d=0.35:alpha=1[fr%d]"
-                  % (i, aa, max(aa, bb - 0.35), i))
-        fc.append("[so%d][fr%d]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[v%d]"
-                  % (i, i, x - 30, y - 30, aa, bb, i))
-        cur = "v%d" % i
+        if frame_png:
+            fc.append("[fx%d]fade=in:st=%.3f:d=0.25:alpha=1,fade=out:st=%.3f:d=0.35:alpha=1[fr%d]"
+                      % (i, aa, max(aa, bb - 0.35), i))
+            fc.append("[so%d][fr%d]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[v%d]"
+                      % (i, i, x - 30, y - 30, aa, bb, i))
+            cur = "v%d" % i
+        else:
+            cur = "so%d" % i
     done_layers += len(chunk)
     last = (done_layers == total_layers)
     out = FINAL if last else stage_out()
