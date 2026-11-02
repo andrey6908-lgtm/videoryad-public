@@ -1,0 +1,85 @@
+{
+ "scenes": [
+  {
+   "id": 4,
+   "text": "",
+   "duration_sec": 10.0,
+   "visual_prompt": "Стройка нового жилого квартала",
+   "source": "press_photo",
+   "source_query": "подъёмный кран на стройке жилого квартала Брюссель 2026",
+   "overlays": []
+  },
+  {
+   "id": 7,
+   "text": "",
+   "duration_sec": 11.549,
+   "visual_prompt": "Очередь людей у входа",
+   "source": "local_library",
+   "source_query": "БАЗА/УНИВЕРСАЛЬНОЕ/ОЧЕРЕДЬ-ЛЮДЕЙ-ВХОДА",
+   "overlays": []
+  },
+  {
+   "id": 13,
+   "text": "",
+   "duration_sec": 10.24,
+   "visual_prompt": "БАЗА/ЛОГИСТИКА-ЕВРОПА/УГОЛЬНАЯ-ЭЛЕКТРОСТАНЦИЯ-ГЕРМАНИИ/03_1920x1080.jpg",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/УГОЛЬНАЯ-ЭЛЕКТРОСТАНЦИЯ-ГЕРМАНИИ/03_1920x1080.jpg",
+   "overlays": []
+  },
+  {
+   "id": 22,
+   "text": "",
+   "duration_sec": 10.0,
+   "visual_prompt": "Атомный объект в Натанзе, Иран",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/ИРАН-ЯДЕРНАЯ-ДОКТРИНА-3110_АТОМНЫЙ-ОБЪЕКТ-НАТАНЗЕ",
+   "overlays": []
+  },
+  {
+   "id": 24,
+   "text": "",
+   "duration_sec": 12.845,
+   "visual_prompt": "БАЗА/ВЛАСТЬ-РОССИЯ/ГАЗОВАЯ-КОМПРЕССОРНАЯ-СТАНЦИЯ/05_2048x1157.jpg",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/ГАЗОВАЯ-КОМПРЕССОРНАЯ-СТАНЦИЯ/05_2048x1157.jpg",
+   "overlays": []
+  },
+  {
+   "id": 34,
+   "text": "",
+   "duration_sec": 12.854,
+   "visual_prompt": "Норвежская газовая платформа в море",
+   "source": "press_photo",
+   "source_query": "газодобывающая платформа в Северном море Норвегия 2026",
+   "overlays": []
+  },
+  {
+   "id": 38,
+   "text": "",
+   "duration_sec": 10.4,
+   "visual_prompt": "Владимир Путин на совещании",
+   "source": "press_photo",
+   "source_query": "Владимир Путин на совещании в Кремле 2026",
+   "overlays": []
+  },
+  {
+   "id": 46,
+   "text": "",
+   "duration_sec": 12.228,
+   "visual_prompt": "Пузырь газа на поверхности Балтики над повреждённой трубой",
+   "source": "press_photo",
+   "source_query": "выход газа на поверхность моря над повреждённым газопроводом Балтика 2022",
+   "overlays": []
+  },
+  {
+   "id": 55,
+   "text": "",
+   "duration_sec": 11.84,
+   "visual_prompt": "Скриншот публикации Berliner Zeitung об усталости немцев от украинской темы",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/akVMeF4wuev8Ffca5MWYa-8mTDl2fnWd7JtEKBdIvfNt156eH8fqA4nCpOlYSIJi38O0eNhdccIjZN3Fabj1LM0T8qQQXy9T29_PivC_NIOyIrubX3wIx8ASLlAuxL_pCjWvy38HFjCHR_7G-EV6Piup5FVYOkY-f5OLm0s2l1L4nstktFSkv3tXMOAxdWzjzU3pQ_g8ySg6ayzPy1chFwi2KIfw3QEE-B9NnAqHLzQQRjgO_2ZheX5OFhCo-ONld8Xt1FbSaIDDvuunBxJWrPt7cCzMtkpOqwO1Ufd6lONqiP5ddpvowK3kHlKHNlFqdXvoR9rqKSJoP7hR6RCICA.jpg",
+   "overlays": []
+  }
+ ]
+}
