@@ -1,0 +1,674 @@
+{
+ "channel": "ПЛАНЕТА",
+ "scenes": [
+  {
+   "id": 1,
+   "text": "",
+   "start_sec": 0.0,
+   "duration_sec": 10.918,
+   "visual_prompt": "Газопроводный узел на границе Евросоюза, современные трубы и измерительное оборудование",
+   "source": "press_photo",
+   "source_query": "газопроводный узел на границе Евросоюза 2026",
+   "overlays": []
+  },
+  {
+   "id": 2,
+   "text": "",
+   "start_sec": 10.918,
+   "duration_sec": 12.802,
+   "visual_prompt": "Вечерний фасад Еврокомиссии в Брюсселе",
+   "source": "press_photo",
+   "source_query": "фасад Еврокомиссии в Брюсселе вечером 2026",
+   "overlays": []
+  },
+  {
+   "id": 3,
+   "text": "",
+   "start_sec": 23.72,
+   "duration_sec": 12.24,
+   "visual_prompt": "Досье Дана Йёргенсена с указанием должности и сферы ответственности",
+   "source": "card:dossier",
+   "source_query": "карточка «dossier» — кадр рисуется в облаке, фетч не нужен",
+   "overlays": []
+  },
+  {
+   "id": 4,
+   "text": "",
+   "start_sec": 35.96,
+   "duration_sec": 10.0,
+   "visual_prompt": "Представители Еврокомиссии обсуждают социальную и энергетическую политику",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ЕВРОКОМИССИЯ",
+   "overlays": []
+  },
+  {
+   "id": 5,
+   "text": "",
+   "start_sec": 45.96,
+   "duration_sec": 9.818,
+   "visual_prompt": "Современная городская жизнь взрослых жителей Германии",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ГЕРМАНИЯ",
+   "overlays": []
+  },
+  {
+   "id": 6,
+   "text": "",
+   "start_sec": 55.778,
+   "duration_sec": 9.462,
+   "visual_prompt": "Рабочая обстановка Европарламента во время обсуждения социальных проблем",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ЕВРОПАРЛАМЕНТ",
+   "overlays": []
+  },
+  {
+   "id": 7,
+   "text": "",
+   "start_sec": 65.24,
+   "duration_sec": 11.549,
+   "visual_prompt": "Новые многоквартирные дома в Брюсселе с объявлениями об аренде",
+   "source": "press_photo",
+   "source_query": "фасады новых жилых домов Брюссель 2026",
+   "overlays": []
+  },
+  {
+   "id": 8,
+   "text": "",
+   "start_sec": 76.789,
+   "duration_sec": 9.68,
+   "visual_prompt": "Европейские чиновники обсуждают доступность жилья",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ЕВРОКОМИССИЯ",
+   "overlays": []
+  },
+  {
+   "id": 9,
+   "text": "",
+   "start_sec": 86.469,
+   "duration_sec": 9.6,
+   "visual_prompt": "Представитель Еврокомиссии за трибуной с флагом ЕС — брифинг",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/Nm4BpLkPV7boKxjw0axVQo_ddgJT1UmonIGUcy3MD1A4NetCRQ37C8p69SOGf5P4MVtiBr6qkbQ-xBCjQs8_0Z_2dTmc7WevPVNRGk3eNRjsTsjXU6RweF2WMBpaA6MJRs5ZPnOf0AQONodGLbyETb0WjBI0k57L2hVc3u5F94AG1U0bSNbu2_1d6Bhp6MlcCPKEhDc3FL6dnq8LVinLVcTOzfcmZ3JSr366sxUuq3GbU4Fv7clrDQttlmJ-F3kg9lWk_iQ-uOpp8DzWdToEkz8GVPDQ343JMgr_OmAWa-ZnJlw953y-kDcta2bEYBFZMyp52hciHOrjNpDujTyf0Q.jpg",
+   "overlays": []
+  },
+  {
+   "id": 10,
+   "text": "",
+   "start_sec": 96.069,
+   "duration_sec": 8.0,
+   "visual_prompt": "Заседание европейского института",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЕС-форумы-Украина",
+   "overlays": []
+  },
+  {
+   "id": 11,
+   "text": "",
+   "start_sec": 104.069,
+   "duration_sec": 9.44,
+   "visual_prompt": "Люди на городской площади европейского города",
+   "source": "local_library",
+   "source_query": "БАЗА/УНИВЕРСАЛЬНОЕ/ТОЛПА-ГОРОДСКОЙ-ПЛОЩАДИ",
+   "overlays": []
+  },
+  {
+   "id": 12,
+   "text": "",
+   "start_sec": 113.509,
+   "duration_sec": 11.04,
+   "visual_prompt": "Взрослые покупатели выбирают продукты у прилавка немецкого супермаркета",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ПРИЛАВОК-НЕМЕЦКОГО-СУПЕРМАРКЕТА",
+   "overlays": []
+  },
+  {
+   "id": 13,
+   "text": "",
+   "start_sec": 124.549,
+   "duration_sec": 10.24,
+   "visual_prompt": "Радиатор отопления и регулятор температуры в европейской квартире",
+   "source": "press_photo",
+   "source_query": "радиатор отопления в жилой квартире Европа 2026",
+   "overlays": []
+  },
+  {
+   "id": 14,
+   "text": "",
+   "start_sec": 134.789,
+   "duration_sec": 8.4,
+   "visual_prompt": "Повседневная жизнь взрослых жителей Германии на фоне роста расходов",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ГЕРМАНИЯ",
+   "overlays": []
+  },
+  {
+   "id": 15,
+   "text": "",
+   "start_sec": 143.189,
+   "duration_sec": 10.348,
+   "visual_prompt": "Запорная задвижка на газопроводе крупным планом",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ТРУБОПРОВОДНАЯ-ЗАДВИЖКА-КРУПНЫМ",
+   "overlays": []
+  },
+  {
+   "id": 16,
+   "text": "",
+   "start_sec": 153.537,
+   "duration_sec": 9.51,
+   "visual_prompt": "Заседание Еврокомиссии",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ЕВРОКОМИССИЯ",
+   "overlays": []
+  },
+  {
+   "id": 17,
+   "text": "",
+   "start_sec": 163.047,
+   "duration_sec": 9.369,
+   "visual_prompt": "Терминал сжиженного газа, резервуары и причал",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ГАЗОВЫЙ-ТЕРМИНАЛ-СПГ",
+   "overlays": []
+  },
+  {
+   "id": 18,
+   "text": "",
+   "start_sec": 172.416,
+   "duration_sec": 10.561,
+   "visual_prompt": "Газоизмерительная станция с трубами на европейском направлении",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/ЭНЕРГОРАЗРЫВ-ЕС-РФ-3110_ГАЗОИЗМЕРИТЕЛЬНАЯ-СТАНЦИЯ-ТРУБЫ",
+   "overlays": []
+  },
+  {
+   "id": 19,
+   "text": "",
+   "start_sec": 182.977,
+   "duration_sec": 9.427,
+   "visual_prompt": "Трейдеры за мониторами с биржевыми графиками",
+   "source": "local_library",
+   "source_query": "БАЗА/УНИВЕРСАЛЬНОЕ/ЛЮДИ-ОФИСЕ-МОНИТОРАМИ",
+   "overlays": []
+  },
+  {
+   "id": 20,
+   "text": "",
+   "start_sec": 192.404,
+   "duration_sec": 7.933,
+   "visual_prompt": "Газовоз у европейского причала во время ценового кризиса 2022 года",
+   "source": "press_photo",
+   "source_query": "газовоз у европейского причала энергетический кризис 2022",
+   "overlays": []
+  },
+  {
+   "id": 21,
+   "text": "",
+   "start_sec": 200.337,
+   "duration_sec": 9.758,
+   "visual_prompt": "Нефтяная инфраструктура и морские перевозки энергоресурсов",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/НЕФТЬ",
+   "overlays": []
+  },
+  {
+   "id": 22,
+   "text": "",
+   "start_sec": 210.095,
+   "duration_sec": 10.0,
+   "visual_prompt": "Танкеры идут Ормузским проливом",
+   "source": "press_photo",
+   "source_query": "танкеры в Ормузском проливе 2026",
+   "overlays": []
+  },
+  {
+   "id": 23,
+   "text": "",
+   "start_sec": 220.095,
+   "duration_sec": 13.194,
+   "visual_prompt": "Газораспределительная станция нидерландского хаба в рабочем режиме",
+   "source": "press_photo",
+   "source_query": "газораспределительная станция Нидерланды европейский хаб 2026",
+   "overlays": []
+  },
+  {
+   "id": 24,
+   "text": "",
+   "start_sec": 233.289,
+   "duration_sec": 12.845,
+   "visual_prompt": "Валдис Домбровскис выступает перед журналистами в Брюсселе",
+   "source": "web_search",
+   "source_query": "Валдис Домбровскис выступление в Брюсселе энергетика 2026",
+   "overlays": []
+  },
+  {
+   "id": 25,
+   "text": "",
+   "start_sec": 246.134,
+   "duration_sec": 11.927,
+   "visual_prompt": "Карточка-цитата: тезис про сотую шпалу",
+   "source": "card:quote",
+   "source_query": "карточка «quote» — кадр рисуется в облаке, фетч за сценой не идёт",
+   "overlays": [],
+   "card": {
+    "kind": "quote",
+    "text": "Работа кипит, достижение есть. А впереди, кажется, ещё миллион шпал.",
+    "accent": "ещё миллион шпал",
+    "watermark": "ПЛАНЕТА"
+   }
+  },
+  {
+   "id": 26,
+   "text": "",
+   "start_sec": 258.061,
+   "duration_sec": 10.642,
+   "visual_prompt": "Грузовой состав движется по европейской железнодорожной магистрали",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ГРУЗОВОЙ-ПОЕЗД-КОНТЕЙНЕРАМИ",
+   "overlays": []
+  },
+  {
+   "id": 27,
+   "text": "",
+   "start_sec": 268.703,
+   "duration_sec": 12.16,
+   "visual_prompt": "Терминал сжиженного газа с газовозом у причала",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/ЭНЕРГОРАЗРЫВ-ЕС-РФ-3110_ТЕРМИНАЛ-СЖИЖЕННОГО-ГАЗА",
+   "overlays": []
+  },
+  {
+   "id": 28,
+   "text": "",
+   "start_sec": 280.863,
+   "duration_sec": 11.28,
+   "visual_prompt": "Трубные линии газоизмерительной станции крупным планом",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/ЭНЕРГОРАЗРЫВ-ЕС-РФ-3110_ГАЗОИЗМЕРИТЕЛЬНАЯ-СТАНЦИЯ-ТРУБЫ",
+   "overlays": []
+  },
+  {
+   "id": 29,
+   "text": "",
+   "start_sec": 292.143,
+   "duration_sec": 10.762,
+   "visual_prompt": "Вход в Европейский инвестиционный банк в Люксембурге",
+   "source": "press_photo",
+   "source_query": "вход в Европейский инвестиционный банк Люксембург 2026",
+   "overlays": []
+  },
+  {
+   "id": 30,
+   "text": "",
+   "start_sec": 302.905,
+   "duration_sec": 12.96,
+   "visual_prompt": "Фасад Европейского центрального банка во Франкфурте",
+   "source": "press_photo",
+   "source_query": "фасад Европейского центрального банка Франкфурт 2026",
+   "overlays": []
+  },
+  {
+   "id": 31,
+   "text": "",
+   "start_sec": 315.865,
+   "duration_sec": 12.682,
+   "visual_prompt": "Сотрудники расчётного центра работают за рядами мониторов",
+   "source": "local_library",
+   "source_query": "БАЗА/УНИВЕРСАЛЬНОЕ/ЛЮДИ-ОФИСЕ-МОНИТОРАМИ",
+   "overlays": []
+  },
+  {
+   "id": 32,
+   "text": "",
+   "start_sec": 328.547,
+   "duration_sec": 13.158,
+   "visual_prompt": "Газовоз проекта Ямал СПГ подходит к причалу Сабетты",
+   "source": "press_photo",
+   "source_query": "газовоз Ямал СПГ у причала Сабетты 2026",
+   "overlays": []
+  },
+  {
+   "id": 33,
+   "text": "",
+   "start_sec": 341.705,
+   "duration_sec": 10.93,
+   "visual_prompt": "Российская газовая станция с трубами и технологическими установками",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/ГАЗОВАЯ-КОМПРЕССОРНАЯ-СТАНЦИЯ",
+   "overlays": []
+  },
+  {
+   "id": 34,
+   "text": "",
+   "start_sec": 352.635,
+   "duration_sec": 12.854,
+   "visual_prompt": "Премьер Норвегии Йонас Гар Стёре выступает на пресс-конференции",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/ЕВРОПА-ЗВОНИТ-МОСКВЕ-3110_ЙОНАС-ГАР-СТЁРЕ",
+   "overlays": []
+  },
+  {
+   "id": 35,
+   "text": "",
+   "start_sec": 365.489,
+   "duration_sec": 12.256,
+   "visual_prompt": "Морской ветропарк в Северном море с движущимися лопастями",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ВЕТРОПАРК-СЕВЕРНОМ-МОРЕ",
+   "overlays": []
+  },
+  {
+   "id": 36,
+   "text": "",
+   "start_sec": 377.745,
+   "duration_sec": 11.902,
+   "visual_prompt": "Европейский терминал СПГ с трубами и причальными сооружениями",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ГАЗОВЫЙ-ТЕРМИНАЛ-СПГ",
+   "overlays": []
+  },
+  {
+   "id": 37,
+   "text": "",
+   "start_sec": 389.647,
+   "duration_sec": 11.859,
+   "visual_prompt": "Телефонная трубка на столе в кабинете европейского чиновника",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/ЕВРОПА-ЗВОНИТ-МОСКВЕ-3110_ТЕЛЕФОННАЯ-ТРУБКА-СТОЛЕ",
+   "overlays": []
+  },
+  {
+   "id": 38,
+   "text": "",
+   "start_sec": 401.506,
+   "duration_sec": 10.4,
+   "visual_prompt": "Илиана Йотова выступает перед прессой в Софии",
+   "source": "web_search",
+   "source_query": "Илиана Йотова выступление в Софии 2026",
+   "overlays": []
+  },
+  {
+   "id": 39,
+   "text": "",
+   "start_sec": 411.906,
+   "duration_sec": 10.96,
+   "visual_prompt": "Здание болгарского парламента в Софии",
+   "source": "press_photo",
+   "source_query": "здание Народного собрания Болгарии в Софии 2026",
+   "overlays": []
+  },
+  {
+   "id": 40,
+   "text": "",
+   "start_sec": 422.866,
+   "duration_sec": 10.24,
+   "visual_prompt": "Хронология от изоляции к контактам, встречам и посредникам",
+   "source": "card:timeline",
+   "source_query": "карточка «timeline» — кадр рисуется в облаке, фетч за сценой не идёт",
+   "overlays": [],
+   "card": {
+    "kind": "timeline",
+    "kick": "КАК ЭТО ШЛО",
+    "lines": [
+     "Россия должна быть в изоляции",
+     "появились контакты",
+     "встречи",
+     "посредники",
+     "звонить напрямую"
+    ],
+    "watermark": "ПЛАНЕТА",
+    "anim": 10.24
+   }
+  },
+  {
+   "id": 41,
+   "text": "",
+   "start_sec": 433.106,
+   "duration_sec": 10.48,
+   "visual_prompt": "Телефон на рабочем столе перед разговором европейского чиновника",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/ЕВРОПА-ЗВОНИТ-МОСКВЕ-3110_ТЕЛЕФОННАЯ-ТРУБКА-СТОЛЕ",
+   "overlays": []
+  },
+  {
+   "id": 42,
+   "text": "",
+   "start_sec": 443.586,
+   "duration_sec": 10.281,
+   "visual_prompt": "Владимир Путин выступает на рабочем совещании",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/ПУТИН",
+   "overlays": []
+  },
+  {
+   "id": 43,
+   "text": "",
+   "start_sec": 453.867,
+   "duration_sec": 10.076,
+   "visual_prompt": "Зал Европарламента в Страсбурге",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ЗАЛ-ЕВРОПАРЛАМЕНТА-СТРАСБУРГЕ",
+   "overlays": []
+  },
+  {
+   "id": 44,
+   "text": "",
+   "start_sec": 463.943,
+   "duration_sec": 10.884,
+   "visual_prompt": "Штаб НАТО в Брюсселе во время встречи делегаций",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ШТАБ-НАТО-БРЮССЕЛЕ",
+   "overlays": []
+  },
+  {
+   "id": 45,
+   "text": "",
+   "start_sec": 474.827,
+   "duration_sec": 11.852,
+   "visual_prompt": "Встреча европейских лидеров в Брюсселе за рабочим столом",
+   "source": "press_photo",
+   "source_query": "встреча европейских лидеров в Брюсселе 2026",
+   "overlays": []
+  },
+  {
+   "id": 46,
+   "text": "",
+   "start_sec": 486.679,
+   "duration_sec": 12.228,
+   "visual_prompt": "Сергей Кузнецов в зале суда рядом с адвокатами",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/iDcr21LaeaG_wLLDUhFIUvP5MNK4_yNoqO9WRXbI49I0yzTuvVpPYSnJa5n7NQXNjyO2kf3UwZkop6zumhlX9Rp-MvE0kVkd9Y5G46-9EX9HazHRdEIudmIuD9GvqdNTEnqEKWTZT-2wO-6apVRpHUvDp61CMcukiJOerBUQluooN-O-1BFssMPUqcF7_PN21b9VsJcD3YFCsjU43bm86Pvj8LTkJzhaE6K2eswEcTYeRYtW1428KnJC0YjoqoiPvK453odXgInbyfP24frepTL5CGbww5hvL0fwVCV1FFBUCAb1yngT6XD_agXcKT032tS7N4poirB3NLVmd_PruQ.jpg",
+   "overlays": []
+  },
+  {
+   "id": 47,
+   "text": "",
+   "start_sec": 498.907,
+   "duration_sec": 12.32,
+   "visual_prompt": "Задержание Сергея Кузнецова, конвой и полицейские машины",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/js2Mzs-VEkAl-nVL5s00r7YLD22ZVLIQDFQXgbDMdZfeXgusfQnibztU8Ij6tjVdAxEpEdN9V0fFpH9rMKbosMdOBZx3ov2f3ip8gqtCP5mWLJC3oP7cDUcUgGWWY0_RgjHSlj7r8RYyimLjGNaXIk5Wz43TfQS9c6L81Oa3oay0UZyzP9KluUaoIdo_C3yRlR9OB3mhG173CRAtDhSHKnNEmLzX8nWAbUL1X37yJPI0c6zGCequ5HBlixVS--NNTubvHNpI-c3wKyehwjvX13AHLagsz9E1dZlilxYGEnf2vvZKL_XaM-IJJVGgfaINxUSlQ3CmC46ApvK-bH8E3g.jpg",
+   "overlays": []
+  },
+  {
+   "id": 48,
+   "text": "",
+   "start_sec": 511.227,
+   "duration_sec": 14.88,
+   "visual_prompt": "Владимир Зеленский записывает официальное обращение",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/ЗЕЛЕНСКИЙ",
+   "overlays": []
+  },
+  {
+   "id": 49,
+   "text": "",
+   "start_sec": 526.107,
+   "duration_sec": 14.767,
+   "visual_prompt": "Поставка европейской помощи Украине в ноябре",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/НОЯБРЬ-ПОМОЩЬ-УКРАИНЕ",
+   "overlays": []
+  },
+  {
+   "id": 50,
+   "text": "",
+   "start_sec": 540.874,
+   "duration_sec": 14.88,
+   "visual_prompt": "Стеклянный купол Бундестага и правительственный район Берлина",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/БУНДЕСТАГ-БЕРЛИНЕ-СТЕКЛЯННЫЙ",
+   "overlays": []
+  },
+  {
+   "id": 51,
+   "text": "",
+   "start_sec": 555.754,
+   "duration_sec": 9.28,
+   "visual_prompt": "Исследовательское судно обследует район Северных потоков в Балтийском море",
+   "source": "press_photo",
+   "source_query": "судно обследует район Северных потоков Балтийское море 2022",
+   "overlays": []
+  },
+  {
+   "id": 52,
+   "text": "",
+   "start_sec": 565.034,
+   "duration_sec": 10.45,
+   "visual_prompt": "Современный правительственный квартал Берлина",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/МЕРЦ-КОАЛИЦИЯ-3110_ПРАВИТЕЛЬСТВЕННЫЙ-КВАРТАЛ-БЕРЛИНА",
+   "overlays": []
+  },
+  {
+   "id": 53,
+   "text": "",
+   "start_sec": 575.484,
+   "duration_sec": 12.99,
+   "visual_prompt": "Фасад земельного суда Гамбурга",
+   "source": "press_photo",
+   "source_query": "здание земельного суда Гамбурга фасад 2026",
+   "overlays": []
+  },
+  {
+   "id": 54,
+   "text": "",
+   "start_sec": 588.474,
+   "duration_sec": 10.19,
+   "visual_prompt": "Депутаты на заседании Бундестага в Берлине",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/МЕРЦ-КОАЛИЦИЯ-3110_ЗАЛ-ЗАСЕДАНИЙ-БУНДЕСТАГА",
+   "overlays": []
+  },
+  {
+   "id": 55,
+   "text": "",
+   "start_sec": 598.664,
+   "duration_sec": 11.84,
+   "visual_prompt": "Взрослые жители Берлина отвечают на вопросы уличного опроса",
+   "source": "press_photo",
+   "source_query": "взрослые участники уличного опроса Берлин 2026",
+   "overlays": []
+  },
+  {
+   "id": 56,
+   "text": "",
+   "start_sec": 610.504,
+   "duration_sec": 11.52,
+   "visual_prompt": "Линия снижения поддержки вступления Украины в Евросоюз с 61 до 41 процента",
+   "source": "card:slope",
+   "source_query": "карточка «slope» — кадр рисуется в облаке, фетч не нужен",
+   "overlays": []
+  },
+  {
+   "id": 57,
+   "text": "",
+   "start_sec": 622.024,
+   "duration_sec": 12.48,
+   "visual_prompt": "Взрослые покупатели сравнивают цены у полок немецкого супермаркета",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ПРИЛАВОК-НЕМЕЦКОГО-СУПЕРМАРКЕТА",
+   "overlays": []
+  },
+  {
+   "id": 58,
+   "text": "",
+   "start_sec": 634.504,
+   "duration_sec": 12.241,
+   "visual_prompt": "Федеральное министерство финансов Германии в Берлине",
+   "source": "press_photo",
+   "source_query": "фасад здания министерства финансов Германии в Берлине 2026 без людей",
+   "overlays": []
+  },
+  {
+   "id": 59,
+   "text": "",
+   "start_sec": 646.745,
+   "duration_sec": 12.239,
+   "visual_prompt": "Европейская помощь Украине перед отправкой",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/НОЯБРЬ-ПОМОЩЬ-УКРАИНЕ",
+   "overlays": []
+  },
+  {
+   "id": 60,
+   "text": "",
+   "start_sec": 658.984,
+   "duration_sec": 13.2,
+   "visual_prompt": "Полукруг кресел Европарламента в Страсбурге",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ЗАЛ-ЕВРОПАРЛАМЕНТА-СТРАСБУРГЕ",
+   "overlays": []
+  },
+  {
+   "id": 61,
+   "text": "",
+   "start_sec": 672.184,
+   "duration_sec": 14.767,
+   "visual_prompt": "Угольная электростанция Германии с трубами и паром",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/УГОЛЬНАЯ-ЭЛЕКТРОСТАНЦИЯ-ГЕРМАНИИ",
+   "overlays": []
+  },
+  {
+   "id": 62,
+   "text": "",
+   "start_sec": 686.951,
+   "duration_sec": 15.04,
+   "visual_prompt": "Газовая станция с действующими трубопроводами и технологическими колоннами",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/ГАЗОВАЯ-КОМПРЕССОРНАЯ-СТАНЦИЯ",
+   "overlays": []
+  },
+  {
+   "id": 63,
+   "text": "",
+   "start_sec": 701.991,
+   "duration_sec": 14.88,
+   "visual_prompt": "Владимир Путин выступает на международном совещании",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/ПУТИН",
+   "overlays": []
+  },
+  {
+   "id": 64,
+   "text": "",
+   "start_sec": 716.871,
+   "duration_sec": 14.007,
+   "visual_prompt": "Табло цен на немецкой заправке",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ЦЕНЫ-АЗС-ГЕРМАНИИ",
+   "overlays": []
+  },
+  {
+   "id": 65,
+   "text": "",
+   "start_sec": 730.878,
+   "duration_sec": 13.722,
+   "visual_prompt": "Терминал сжиженного газа и газовоз у европейского причала",
+   "source": "local_library",
+   "source_query": "БАЗА/ТЕМЫ/ЭНЕРГОРАЗРЫВ-ЕС-РФ-3110_ТЕРМИНАЛ-СЖИЖЕННОГО-ГАЗА",
+   "overlays": []
+  }
+ ]
+}

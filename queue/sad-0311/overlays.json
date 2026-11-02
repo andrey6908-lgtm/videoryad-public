@@ -1,0 +1,120 @@
+{
+ "anchor": "bottom",
+ "4": {
+  "photo": "overlays/scene_004.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "7": {
+  "photo": "overlays/scene_007.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "13": {
+  "photo": "overlays/scene_013.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "18": {
+  "photo": "overlays/scene_018.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "22": {
+  "photo": "overlays/scene_022.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "24": {
+  "photo": "overlays/scene_024.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "34": {
+  "photo": "overlays/scene_034.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "36": {
+  "photo": "overlays/scene_036.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "38": {
+  "photo": "overlays/scene_038.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "44": {
+  "photo": "overlays/scene_044.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "46": {
+  "photo": "overlays/scene_046.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "55": {
+  "photo": "overlays/scene_055.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ },
+ "58": {
+  "photo": "overlays/scene_058.jpg",
+  "sound": "pop",
+  "at": 1.5,
+  "shape": "rect",
+  "style": "left",
+  "size": "m",
+  "scale": 1.0
+ }
+}
