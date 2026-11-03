@@ -1,0 +1,85 @@
+{
+ "channel": "ПЛАНЕТА",
+ "scenes": [
+  {
+   "id": 4,
+   "text": "",
+   "duration_sec": 9.52,
+   "visual_prompt": "https://cdn4.telesco.pe/file/4fc609000e.mp4?token=lHJ07Q7bKNjCH4tDfDr5rm2Rx7pExkM31wyKNTuoV3nBmwb31OqN8kZpmA_ir0QHIYm6HjvYMDHQE5Z1vtDz83_XLgp2p7VAzUIF_3oGE72RcQCW85H1gA07QKOBQqh_oumk9sfH29xb5SjcI8xY0atseds3acJ0xBGZkf3SPtp1qZlpj1MBugjvxg41HkzdAkUVb2iwb4-TBR96M5BAg2JkK78ffMZaHedTZl71gOEcQkTZ9BKiwNvmYgIYFflPV2_KZEPTh1vmN1r_VBI6oAxMf1sxa8DOuyxly3rBy4fSVBbaqA5Cnf5X9ZNgdNtcdDYqafq_b-JBhTPG6jy88BEioS8ADaGH7r8dHju5jF9HVMzEHbdAqnt4A5-c9R9yH2tFnxJPGUysiVQHlse_aiDMGtTFDatuctpcs3SbBoevoWPTl9ZXYgaQwbsVJKTnMT_utjQL2pdLnGmZLVdQGuaggxW-UNHggu_i_q54quesrt4O7dtd-7OfYiHxEpNDc4GKHCOMzmkRM3Ep9bYcWrKcyRouuYHKstyF8DSyLypdfNxUJqiBZ_dOpIlUaqXKPCC4wZJy-H6292pe8KtH0LCSvCFRApqvewIPbpBFK5K32kqOHVmjqVkJpxc7n-eGlIQh9jLYePhGRZBGS_POytjk4lPL7ZmG2xuElTJDQqA",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/4fc609000e.mp4?token=lHJ07Q7bKNjCH4tDfDr5rm2Rx7pExkM31wyKNTuoV3nBmwb31OqN8kZpmA_ir0QHIYm6HjvYMDHQE5Z1vtDz83_XLgp2p7VAzUIF_3oGE72RcQCW85H1gA07QKOBQqh_oumk9sfH29xb5SjcI8xY0atseds3acJ0xBGZkf3SPtp1qZlpj1MBugjvxg41HkzdAkUVb2iwb4-TBR96M5BAg2JkK78ffMZaHedTZl71gOEcQkTZ9BKiwNvmYgIYFflPV2_KZEPTh1vmN1r_VBI6oAxMf1sxa8DOuyxly3rBy4fSVBbaqA5Cnf5X9ZNgdNtcdDYqafq_b-JBhTPG6jy88BEioS8ADaGH7r8dHju5jF9HVMzEHbdAqnt4A5-c9R9yH2tFnxJPGUysiVQHlse_aiDMGtTFDatuctpcs3SbBoevoWPTl9ZXYgaQwbsVJKTnMT_utjQL2pdLnGmZLVdQGuaggxW-UNHggu_i_q54quesrt4O7dtd-7OfYiHxEpNDc4GKHCOMzmkRM3Ep9bYcWrKcyRouuYHKstyF8DSyLypdfNxUJqiBZ_dOpIlUaqXKPCC4wZJy-H6292pe8KtH0LCSvCFRApqvewIPbpBFK5K32kqOHVmjqVkJpxc7n-eGlIQh9jLYePhGRZBGS_POytjk4lPL7ZmG2xuElTJDQqA"
+  },
+  {
+   "id": 13,
+   "text": "",
+   "duration_sec": 9.8,
+   "visual_prompt": "ПОЛИТИКА/КАРТЫ/ДОНБАСС",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/КАРТЫ/ДОНБАСС"
+  },
+  {
+   "id": 21,
+   "text": "",
+   "duration_sec": 9.8,
+   "visual_prompt": "здание Еврокомиссии Берлемон в Брюсселе реальное фото",
+   "source": "press_photo",
+   "source_query": "здание Еврокомиссии Берлемон в Брюсселе реальное фото"
+  },
+  {
+   "id": 24,
+   "text": "",
+   "duration_sec": 9.8,
+   "visual_prompt": "флаг НАТО у штаб-квартиры в Брюсселе реальное фото",
+   "source": "press_photo",
+   "source_query": "флаг НАТО у штаб-квартиры в Брюсселе реальное фото"
+  },
+  {
+   "id": 30,
+   "text": "",
+   "duration_sec": 12,
+   "visual_prompt": "Дворец наций в Женеве фасад здания реальное фото",
+   "source": "web_search",
+   "source_query": "Дворец наций в Женеве фасад здания реальное фото"
+  },
+  {
+   "id": 35,
+   "text": "",
+   "duration_sec": 12.5,
+   "visual_prompt": "британский военно-транспортный самолёт A400M на аэродроме реальное фото",
+   "source": "press_photo",
+   "source_query": "британский военно-транспортный самолёт A400M на аэродроме реальное фото"
+  },
+  {
+   "id": 54,
+   "text": "",
+   "duration_sec": 11,
+   "visual_prompt": "Офис президента Украины на Банковой в Киеве реальное фото",
+   "source": "press_photo",
+   "source_query": "Офис президента Украины на Банковой в Киеве реальное фото"
+  },
+  {
+   "id": 59,
+   "text": "",
+   "duration_sec": 13,
+   "visual_prompt": "ПОЛИТИКА/КАРТЫ/БЕЛАРУСЬ",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/КАРТЫ/БЕЛАРУСЬ"
+  },
+  {
+   "id": 63,
+   "text": "",
+   "duration_sec": 13,
+   "visual_prompt": "ПОЛИТИКА/ПУТИН",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ПУТИН"
+  },
+  {
+   "id": 67,
+   "text": "",
+   "duration_sec": 10,
+   "visual_prompt": "государственные флаги России США и Украины в зале переговоров реальное фото",
+   "source": "press_photo",
+   "source_query": "государственные флаги России США и Украины в зале переговоров реальное фото"
+  }
+ ]
+}
