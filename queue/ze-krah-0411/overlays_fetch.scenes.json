@@ -1,0 +1,60 @@
+{
+ "scenes": [
+  {
+   "id": 3,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "КАРТЫ/ГЕРМАНИЯ",
+   "visual_prompt": "карта Германии"
+  },
+  {
+   "id": 20,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "press_photo",
+   "source_query": "Небоскрёбы Абу-Даби панорама города реальное фото",
+   "visual_prompt": "панорама Абу-Даби, высотные здания"
+  },
+  {
+   "id": 24,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "КАРТЫ/ДОНБАСС",
+   "visual_prompt": "карта Донбасса"
+  },
+  {
+   "id": 32,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/LXZAk-VtYHtRNRfVlr_ha_kfLWMGzivifUEGvIBGlbBKarJhzeiIs50kAtkI2b-Sh9gnRYocpKu1St11K7--2_TqYBX7Vf_yzcMS8Hz9P6hsC_tAzFvXLd5o2TOQscFxvgUa68jOkjnFC4e0EKbMibWCNEZgqRAq3xlevdyCu1ycT9pKYDKsAQQb281zwlzN0gChlvllEH512HI6JSYfo7fnlU-dVaOUwwsPFRAWl2lkUkaMfEZfr_MZv2Lrf4Zay5b_2NxzG0bvrwDqrxcLGZd_2YLSl9tN_CetFFFvXEw7EB-vCSJbtEabwA6RrfX1C771tQtVbbZ1tuAdU_hRyg.jpg",
+   "visual_prompt": "сообщение облэнерго о введении специальных аварийных отключений"
+  },
+  {
+   "id": 46,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "КАРТЫ/УКРАИНА",
+   "visual_prompt": "карта Украины"
+  },
+  {
+   "id": 17,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "КАРТЫ/РОССИЯ",
+   "visual_prompt": "карта России"
+  },
+  {
+   "id": 19,
+   "text": "",
+   "duration_sec": 3.0,
+   "source": "local_library",
+   "source_query": "КАРТЫ/БЛИЖНИЙ ВОСТОК",
+   "visual_prompt": "карта Ближнего Востока"
+  }
+ ]
+}
