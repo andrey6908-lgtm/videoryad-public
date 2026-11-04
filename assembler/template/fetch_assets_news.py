@@ -1406,7 +1406,29 @@ def fetch_local_library(tag_query, media_library_dir, out_base, usage_counts, ff
     # the library. Hand-picked per scene during the audit so the exact frame
     # is chosen, not round-robin. Repetition across the video is still capped
     # by the manifest audit (rule 5).
+    # ПИН ТОЧНОГО ФАЙЛА ТОЖЕ ИЩЕТСЯ В СОСЕДНЕЙ БИБЛИОТЕКЕ (04.11, улов
+    # `usuario-75`, пять FAILED-сцен). Откат `media-library-2` →
+    # `media-library` был сделан 29.10 только для ПАПКИ (`tag_dir`), а пин
+    # конкретного файла проверялся ВЫШЕ и до отката не доживал: на 5 МИНУТ
+    # пин «ПОЛИТИКА/ГЕРМАНИЯ/армия германии.mp4» падал со строкой «пин
+    # медиатеки недоступна (в облаке медиатеки нет)», хотя фетч шёл локально
+    # и файл лежал на диске. `check_pins.py` при этом печатал «все пины
+    # чистые», потому что ищет в обеих библиотеках — проверка и фетч
+    # расходились.
+    def _alt_lib(d):
+        b = os.path.basename(os.path.normpath(d))
+        if b.endswith("-2"):
+            return os.path.join(os.path.dirname(os.path.normpath(d)), b[:-2])
+        if b == "media-library":
+            return os.path.normpath(d) + "-2"
+        return ""
+
     direct = os.path.join(media_library_dir, tag_query)
+    if not os.path.isfile(direct):
+        _a = _alt_lib(media_library_dir)
+        if _a and os.path.isfile(os.path.join(_a, tag_query)):
+            direct = os.path.join(_a, tag_query)
+            print("  пин найден в соседней библиотеке: %s" % direct, flush=True)
     if os.path.isfile(direct):
         try:
             h = file_md5(direct)
@@ -1478,7 +1500,33 @@ def fetch_local_library(tag_query, media_library_dir, out_base, usage_counts, ff
         if alt and os.path.isdir(os.path.join(alt, tag)):
             tag_dir = os.path.join(alt, tag)
         else:
-            return None
+            # КОРОТКОЕ НАПИСАНИЕ БЕЗ «БАЗА/» (04.11, улов `usuario-eb`).
+            # Каталог и `--check-dir` принимают `ТЕМЫ/X`, а фетчер требовал
+            # полный путь `БАЗА/ТЕМЫ/X` — и отвечал «папка медиатеки
+            # недоступна (в облаке медиатеки нет)», то есть уводил в сторону:
+            # выглядит как отсутствие медиатеки, а на деле другое написание.
+            # Пробуем оба варианта, как это делает каталог.
+            _cands = []
+            _t = tag.replace("\\", "/").strip("/")
+            if not _t.upper().startswith("БАЗА/"):
+                _cands.append("БАЗА/" + _t)
+            else:
+                _cands.append(_t.split("/", 1)[1])
+            for _base in (media_library_dir, alt):
+                if not _base:
+                    continue
+                for _c in _cands:
+                    _p = os.path.join(_base, _c)
+                    if os.path.isdir(_p):
+                        print("  папка медиатеки найдена как «%s» (в сцене "
+                              "написано «%s») — беру её" % (_c, tag),
+                              flush=True)
+                        tag_dir = _p
+                        break
+                if tag_dir != os.path.join(media_library_dir, tag):
+                    break
+            if tag_dir == os.path.join(media_library_dir, tag):
+                return None
 
     if keyword:
         index_path = os.path.join(tag_dir, "index.json")
