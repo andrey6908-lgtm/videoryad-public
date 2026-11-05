@@ -22,16 +22,24 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: системные пакеты
-        timeout-minutes: 14
+        timeout-minutes: 10
         run: |
-          # три захода: при четырёх прогонах разом (64 машины) зеркала apt
-          # не успевают, и один-два шарда падали на «нет ffmpeg» (05.11)
-          for i in 1 2 3; do
-            timeout 150 sudo apt-get update -qq || true
-            timeout 300 sudo apt-get install -y -qq ffmpeg libcairo2 fonts-dejavu-core fonts-dejavu-extra || true
+          # 05.11: зеркала apt на раннерах то отваливаются, то висят по 14 минут.
+          # Поэтому: сначала смотрим, не стоит ли ffmpeg уже; потом два коротких
+          # захода apt; в крайнем случае берём статическую сборку одним файлом.
+          command -v ffmpeg >/dev/null || for i in 1 2; do
+            timeout 90 sudo apt-get update -qq || true
+            timeout 150 sudo apt-get install -y -qq --no-install-recommends ffmpeg || true
             command -v ffmpeg >/dev/null && break
-            echo "заход $i не дал ffmpeg, пробуем ещё"; sleep 15
           done
+          if ! command -v ffmpeg >/dev/null; then
+            echo "apt не дал ffmpeg — берём статическую сборку"
+            curl -fsSL --retry 3 -o /tmp/ff.tar.xz https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
+              && tar -xJf /tmp/ff.tar.xz -C /tmp \
+              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/ || true
+          fi
+          python3 -c "import ctypes;ctypes.CDLL('libcairo.so.2')" 2>/dev/null \
+            || timeout 150 sudo apt-get install -y -qq --no-install-recommends libcairo2 || true
           command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
@@ -57,15 +65,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: системные пакеты
-        timeout-minutes: 14
+        timeout-minutes: 10
         run: |
-          for i in 1 2 3; do
-            timeout 150 sudo apt-get update -qq || true
-            timeout 300 sudo apt-get install -y -qq ffmpeg libcairo2 fonts-dejavu-core fonts-dejavu-extra || true
+          # 05.11: зеркала apt на раннерах то отваливаются, то висят по 14 минут.
+          # Поэтому: сначала смотрим, не стоит ли ffmpeg уже; потом два коротких
+          # захода apt; в крайнем случае берём статическую сборку одним файлом.
+          command -v ffmpeg >/dev/null || for i in 1 2; do
+            timeout 90 sudo apt-get update -qq || true
+            timeout 150 sudo apt-get install -y -qq --no-install-recommends ffmpeg || true
             command -v ffmpeg >/dev/null && break
-            echo "заход $i не дал ffmpeg, пробуем ещё"; sleep 15
           done
-          command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg на склейке"; exit 1; }
+          if ! command -v ffmpeg >/dev/null; then
+            echo "apt не дал ffmpeg — берём статическую сборку"
+            curl -fsSL --retry 3 -o /tmp/ff.tar.xz https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
+              && tar -xJf /tmp/ff.tar.xz -C /tmp \
+              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/ || true
+          fi
+          python3 -c "import ctypes;ctypes.CDLL('libcairo.so.2')" 2>/dev/null \
+            || timeout 150 sudo apt-get install -y -qq --no-install-recommends libcairo2 || true
+          command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
       - run: pip install --quiet cairosvg
