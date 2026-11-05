@@ -24,8 +24,14 @@ jobs:
       - name: системные пакеты
         timeout-minutes: 6
         run: |
-          timeout 150 sudo apt-get update -qq || true
-          timeout 240 sudo apt-get install -y -qq ffmpeg libcairo2 fonts-dejavu-core fonts-dejavu-extra || true
+          # три захода: при четырёх прогонах разом (64 машины) зеркала apt
+          # не успевают, и один-два шарда падали на «нет ffmpeg» (05.11)
+          for i in 1 2 3; do
+            timeout 150 sudo apt-get update -qq || true
+            timeout 300 sudo apt-get install -y -qq ffmpeg libcairo2 fonts-dejavu-core fonts-dejavu-extra || true
+            command -v ffmpeg >/dev/null && break
+            echo "заход $i не дал ffmpeg, пробуем ещё"; sleep 15
+          done
           command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
