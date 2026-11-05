@@ -295,3 +295,48 @@ def chip(kind, text, x=110, y=760, idx=0):
     s += f'<g transform="translate({x+50},{yy+h//2}) scale(1.12)">{_CHIP_ICONS[kind]}</g>'
     s += _t(x + 96, yy + 62, text, SAN, 38, "#ffffff", bold=True, shadow=False)
     return _wrap(s)
+
+
+# значки для ярлычков: маленький рисунок слева от подписи (его просьба 05.11)
+_ICON = {
+    "сыр":    '<path d="M-16 8 L16 8 L12 -10 L-10 -10 Z" fill="#f2d85a" stroke="#17130f" stroke-width="3"/>'
+              '<circle cx="-4" cy="0" r="3.4" fill="#d9bd3c"/><circle cx="7" cy="3" r="2.6" fill="#d9bd3c"/>',
+    "мёд":    '<path d="M-11 10 L11 10 L9 -6 L-9 -6 Z" fill="#c9922f" stroke="#17130f" stroke-width="3"/>'
+              '<path d="M-12 -6 L12 -6 L12 -11 L-12 -11 Z" fill="#8a5a2c" stroke="#17130f" stroke-width="2.5"/>',
+    "орехи":  '<circle cx="-6" cy="2" r="9" fill="#a8703a" stroke="#17130f" stroke-width="3"/>'
+              '<circle cx="8" cy="6" r="7" fill="#8a5a2c" stroke="#17130f" stroke-width="3"/>',
+    "инжир":  '<path d="M0 12 C-11 12 -15 2 -11 -5 C-7 -12 7 -12 11 -5 C15 2 11 12 0 12 Z"'
+              ' fill="#7a3b63" stroke="#17130f" stroke-width="3"/>'
+              '<path d="M0 -10 L0 -15 M-5 -13 L5 -13" stroke="#4e7a35" stroke-width="3"/>',
+    "салат":  '<ellipse cx="0" cy="6" rx="16" ry="7" fill="#e4d4b6" stroke="#17130f" stroke-width="3"/>'
+              '<path d="M-12 3 C-8 -8 8 -8 12 3 Z" fill="#efe7d2" stroke="#17130f" stroke-width="2.5"/>',
+    "рыба":   '<path d="M-14 0 C-8 -8 6 -8 12 0 C6 8 -8 8 -14 0 Z" fill="#9fb6c4" stroke="#17130f" stroke-width="3"/>'
+              '<path d="M12 0 L18 -6 L18 6 Z" fill="#9fb6c4" stroke="#17130f" stroke-width="3"/>',
+    "мясо":   '<path d="M-14 6 C-14 -6 -4 -11 4 -9 C13 -7 15 3 10 8 C4 12 -8 12 -14 6 Z"'
+              ' fill="#b8463f" stroke="#17130f" stroke-width="3"/>'
+              '<path d="M-6 -2 L2 4 M0 -6 L8 0" stroke="#7a2b26" stroke-width="2.5"/>',
+    "зелень": '<path d="M0 12 L0 -2" stroke="#4e7a35" stroke-width="3"/>'
+              '<path d="M0 -2 q-10 -6 -12 -12 q10 0 12 8 q2 -10 12 -10 q-2 8 -12 14 Z"'
+              ' fill="#6abf4b" stroke="#17130f" stroke-width="2.5"/>',
+}
+
+
+def tag_icon(title, sub="", x=110, y=250, idx=0, icon=None):
+    """Ярлычок со значком: картинка слева, подпись справа.
+    Ширина меряется шрифтом, как и у обычного ярлычка."""
+    TS, SS, PAD = 44, 26, 26
+    h = 92 if sub else 64
+    yy = y + idx * (h + 12)
+    ic = _ICON.get(icon or "", "")
+    icw = 52 if ic else 0
+    w = max(wid(title, SAN, TS, True), wid(sub, SAN, SS)) + PAD * 2 + 22 + icw
+    w = max(300, w)
+    s = (f'<rect x="{x+5}" y="{yy+7}" width="{w}" height="{h}" rx="9" fill="#000000" opacity=".4"/>'
+         f'<rect x="{x}" y="{yy}" width="{w}" height="{h}" rx="9" fill="#0e0e0e" opacity=".9"/>'
+         f'<rect x="{x}" y="{yy}" width="8" height="{h}" rx="4" fill="{GREEN}"/>')
+    if ic:
+        s += f'<g transform="translate({x+PAD+16},{yy+h/2}) scale(1.25)">{ic}</g>'
+    s += _t(x + PAD + icw, yy + (46 if sub else 44), title, SAN, TS, "#ffffff", bold=True, shadow=False)
+    if sub:
+        s += _t(x + PAD + icw, yy + 78, sub, SAN, SS, "#cfc8bd", shadow=False)
+    return _wrap(s)

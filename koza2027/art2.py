@@ -385,7 +385,7 @@ def cam_koza(t, dur=10.0):
     s = f'<rect width="{W}" height="{H}" fill="url(#room)"/>'
     s += plane(art.window(44, 70, 220, 164, t) + art.tinsel(34), Z_WALL, cx, cz)
     s += plane(tree_new(t, 840, 470, .46), Z_TREE, cx, cz)
-    s += plane(koza_head(t, 468, 258, .80), Z_HERO, cx, cz)
+    s += plane(koza_head(t, 468, 282, .60), Z_HERO, cx, cz)
     s += plane(candles([(150, 430, 78, 1.05), (820, 436, 68, .95)], t), Z_NEAR, cx, cz)
     s += warm_light(170, 350, 300, .4) + warm_light(820, 370, 230, .26) + air(.08)
     s += side_dark("right", .24) + f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".65"/>'

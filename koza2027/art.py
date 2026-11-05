@@ -4004,3 +4004,11 @@ try:
     NO_GLARE |= _a2.NO_GLARE
 except Exception as _e:          # пробник не должен ронять уже принятые части
     print("art2 не подключён:", _e)
+
+# ---- предметные кадры второго ролика, нарисованные заново (art3.py) ----
+try:
+    import art3 as _a3
+    SCENES.update(_a3.SCENES)
+    NO_GLARE |= _a3.NO_GLARE
+except Exception as _e:
+    print("art3 не подключён:", _e)
