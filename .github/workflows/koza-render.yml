@@ -22,7 +22,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: системные пакеты
-        timeout-minutes: 6
+        timeout-minutes: 14
         run: |
           # три захода: при четырёх прогонах разом (64 машины) зеркала apt
           # не успевают, и один-два шарда падали на «нет ffmpeg» (05.11)
@@ -57,7 +57,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: системные пакеты
-        timeout-minutes: 6
+        timeout-minutes: 14
         run: |
           timeout 150 sudo apt-get update -qq || true
           timeout 240 sudo apt-get install -y -qq ffmpeg libcairo2 fonts-dejavu-core fonts-dejavu-extra || true
