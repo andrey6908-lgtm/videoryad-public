@@ -3995,3 +3995,12 @@ def svg(name, t=0.0, gt=0.0, zoom=1.0, cx=0.5, cy=0.5, out=(1920, 1080)):
     vx, vy = cx * (W - vw), cy * (H - vh)
     return (f'<svg xmlns="http://www.w3.org/2000/svg" width="{out[0]}" height="{out[1]}"'
             f' viewBox="{vx:.4f} {vy:.4f} {vw:.4f} {vh:.4f}">{DEFS}{body}</svg>')
+
+
+# ---- второй ролик серии: новые персонажи и камера по глубине (art2.py) ----
+try:
+    import art2 as _a2
+    SCENES.update(_a2.SCENES)
+    NO_GLARE |= _a2.NO_GLARE
+except Exception as _e:          # пробник не должен ронять уже принятые части
+    print("art2 не подключён:", _e)
