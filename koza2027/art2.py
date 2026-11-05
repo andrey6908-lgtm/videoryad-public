@@ -891,6 +891,226 @@ def cam_svet(t, dur=10.0):
     return s
 
 
+
+# ============ ОСТАЛЬНЫЕ ХОДЫ КАМЕРЫ (блоки 6-15 лаборатории) ============
+def rig(planes, *, camx=0.0, camz=0.0, pan=0.0, tilt=0.0, roll=0.0, over=1.0):
+    """Сборка кадра из планов плюс ходы камеры, которых нет в формуле глубины.
+    pan/tilt — ПОВОРОТ камеры: сдвиг одинаковый для всех планов, параллакса
+    нет (этим панорама и отличается от проезда). roll — наклон горизонта.
+    over — оверскан, чтобы при сдвиге не оголялись края кадра."""
+    inner = "".join(plane(b, z, camx, camz) for z, b in planes)
+    return (f'<g transform="translate({W/2},{H/2}) rotate({roll:.3f}) scale({over:.4f})'
+            f' translate({-W/2 + pan:.2f},{-H/2 + tilt:.2f})">{inner}</g>')
+
+
+def punch(u):
+    """Кривая удара: скорость на входе и выходе нулевая, но 65% хода
+    проходит за первую треть — глаз читает удар, а не проезд."""
+    return ease(max(0.0, min(1.0, u))) ** 0.62
+
+
+def beats(t, table):
+    """Серия ударов: (время удара, ход по глубине). Между ударами кадр живёт
+    малым подъездом, полная остановка читается как стоп-кадр."""
+    cz = 0.0
+    for at, step in table:
+        if t >= at:
+            cz += step * punch((t - at) / 0.6)
+    return cz + 6.0 * t
+
+
+def _room(t, wins=((70, 80, 210, 158), (690, 80, 210, 158)), tins=30):
+    return "".join(art.window(*w, t) for w in wins) + art.tinsel(tins)
+
+
+def cam_pan(t, dur=10.0):
+    """БЛОК 6 — ПАНОРАМА: камера стоит на месте и поворачивается.
+    Планы уезжают ОДНИМ темпом, параллакса нет; движение читается по граням
+    окон, ёлке и свечам, которые проходят через кадр."""
+    k = ease(t / max(.1, dur))
+    pan = -150 + 300 * k
+    planes = [(Z_WALL, _room(t, ((40, 76, 230, 170), (430, 70, 230, 170), (820, 80, 230, 170)), 34)),
+              (Z_TREE, tree_new(t, 300, 470, .72) + tree_new(t, 760, 470, .56)),
+              (Z_TABLE, art.table(466) + candles([(180, 466, 58, 1.0), (560, 466, 52, .95),
+                                                  (880, 466, 50, .9)], t)),
+              (Z_NEAR, dish_fruit(120, 430, .7) + jug_mors(860, 420, .66))]
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomc)"/>'
+    s += rig(planes, camx=0, camz=40, pan=pan, over=1.22)
+    s += warm_light(480 - pan * .4, 360, 340, .32) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
+def cam_crane(t, dur=10.0):
+    """БЛОК 7 — ПОДЪЁМ-КРАН: камера идёт снизу вверх и раскрывает стол.
+    Видно, как у блюд открываются «крыши», а свечи уходят вниз кадра."""
+    k = ease(t / max(.1, dur))
+    planes = [(Z_WALL, _room(t, ((60, 60, 220, 164), (680, 60, 220, 164)), 28)),
+              (Z_TREE, tree_new(t, 820, 470, .66)),
+              (Z_HERO, koza_head(t, 250, 300, .52)),
+              (Z_TABLE, art.table(430, "#b8463f") + dish_greens(430, 414, .62)
+               + dish_bird(660, 408, .66) + candles([(150, 430, 58, 1.0)], t)),
+              (Z_NEAR, dish_fruit(300, 500, .8))]
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomc)"/>'
+    s += rig(planes, camz=30 + 90 * k, tilt=150 - 230 * k, over=1.3)
+    s += warm_light(300, 330, 340, .33) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".64"/>'
+    return s
+
+
+def cam_wipe(t, dur=10.0):
+    """БЛОК 8 — УХОД ПЕРЕДНЕГО ПЛАНА: мимо объектива проходит кувшин и на
+    треть секунды закрывает кадр целиком. Под этим прикрытием место
+    меняется — склейки не видно, камера не останавливается."""
+    k = t / max(.1, dur)
+    fx = -520 + 2000 * k                       # кувшин идёт слева направо
+    covered = abs(fx - 480) < 150              # окно полного накрытия
+    first = fx < 480
+    if first:
+        planes = [(Z_WALL, _room(t, ((60, 76, 220, 166), (690, 76, 220, 166)), 30)),
+                  (Z_TREE, tree_new(t, 810, 466, .64)),
+                  (Z_TABLE, art.table(442) + dish_cheese(300, 424, .66)
+                   + candles([(150, 442, 56, 1.0)], t))]
+        bg = "roomc"
+    else:
+        planes = [(Z_WALL, _room(t, ((120, 70, 230, 170), (620, 70, 230, 170)), 26)),
+                  (Z_HERO, koza_head(t, 470, 296, .66)),
+                  (Z_TABLE, art.table(430, "#b8463f") + dish_bird(700, 410, .6)
+                   + candles([(180, 430, 58, 1.0)], t))]
+        bg = "roomr"
+    s = f'<rect width="{W}" height="{H}" fill="url(#{bg})"/>'
+    s += rig(planes, camx=-60 + 120 * k, camz=40)
+    s += warm_light(300, 360, 300, .3) + air()
+    # сам накрывающий предмет: ближе всех к объективу, поэтому огромный
+    s += plane(jug_mors(fx, 300, 3.4), 700, 0, 0)
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
+def cam_push(t, dur=10.0):
+    """БЛОК 9 — PUSH: три коротких удара по 0,6 с под слово, между ними
+    выдержка; камера назад не отходит никогда."""
+    cz = beats(t, ((1.2, 150.0), (4.6, 140.0), (7.8, 130.0)))
+    planes = [(Z_WALL, _room(t, ((70, 80, 210, 158),), 30)),
+              (Z_HERO, koza_head(t, 470, 292, .72)),
+              (Z_TABLE, art.table(448) + candles([(140, 448, 60, 1.0), (820, 448, 54, .95)], t))]
+    s = f'<rect width="{W}" height="{H}" fill="url(#room)"/>'
+    s += rig(planes, camz=cz)
+    s += warm_light(170, 360, 300, .34) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
+def cam_follow(t, dur=10.0):
+    """БЛОК 10 — ПРОВОДКА: коза идёт, камера идёт вместе с ней. Она стоит
+    в кадре на месте, а комната проносится мимо."""
+    k = t / max(.1, dur)
+    shift = 1700 * k
+    wall = ""
+    for i in range(6):
+        x = 60 + i * 320 - (shift % 1920)
+        wall += art.window(x, 76, 210, 160, t)
+    wall += art.tinsel(30)
+    trees = tree_new(t, 1200 - (shift * .72) % 2400, 470, .62)
+    tbl = art.table(452)
+    for i in range(7):
+        x = 120 + i * 300 - (shift * .9) % 2100
+        tbl += candles([(x, 452, 56, 1.0)], t)
+    bob = 5 * A.w(t, 0.9)
+    planes = [(Z_WALL, wall), (Z_TREE, trees), (Z_TABLE, tbl),
+              (Z_HERO, koza_head(t, 470, 300 + bob, .74))]
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomb)"/>'
+    s += rig(planes, camz=40)
+    s += warm_light(470, 360, 320, .3) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
+def cam_tilt(t, dur=10.0):
+    """БЛОК 11 — НАКЛОН ВВЕРХ: камера стоит, взгляд идёт снизу вверх по ёлке
+    до звезды. Нужен предмет с гранями — потому ёлка, окна и подарки."""
+    k = ease(t / max(.1, dur))
+    planes = [(Z_WALL, _room(t, ((60, 110, 200, 150), (700, 110, 200, 150)), 40)),
+              (Z_TREE, tree_new(t, 480, 620, 1.22)),
+              (Z_TABLE, art.table(620) + candles([(150, 620, 60, 1.0), (810, 620, 54, .95)], t))]
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomb)"/>'
+    s += rig(planes, camz=30, tilt=-250 + 420 * k, over=1.34)
+    s += warm_light(480, 300 + 120 * (1 - k), 340, .3) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".64"/>'
+    return s
+
+
+def cam_arc(t, dur=10.0):
+    """БЛОК 12 — ДУГА 32°: обрезанный облёт. Ракурс меняется, но кадр не
+    превращается в номер, поэтому приём можно повторять в ролике."""
+    import math
+    k = ease(t / max(.1, dur))
+    a = math.radians(-16 + 32 * k)
+    ca, sa = math.cos(a), math.sin(a)
+    planes = [(Z_WALL, _room(t, ((60, 76, 220, 166), (690, 76, 220, 166)), 30)),
+              (Z_TREE, tree_new(t, 820, 468, .6))]
+    fig = f'<g transform="translate(470,300) scale({ca:.3f},1) translate(-470,-300)">' \
+          f'{koza_head(t, 470, 300, .74)}</g>'
+    planes.append((Z_HERO, ground_shadow(470, 450, 150 * ca + 30, 26, .5)
+                   + light_figure(fig, "left" if sa < 0 else "right", .6, .4, 470, 210)))
+    planes.append((Z_TABLE, art.table(452) + candles([(150, 452, 58, 1.0), (820, 452, 52, .95)], t)))
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomc)"/>'
+    s += rig(planes, camx=150 * sa, camz=60 - 20 * k)
+    s += warm_light(470 - 220 * sa, 360, 320, .34) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
+def cam_down(t, dur=10.0):
+    """БЛОК 13 — СНИЖЕНИЕ: сверху над столом вниз, к одной тарелке.
+    По дороге у блюд закрываются «крыши» и открываются бока."""
+    k = ease(t / max(.1, dur))
+    planes = [(Z_WALL, _room(t, ((60, 70, 220, 164), (690, 70, 220, 164)), 28)),
+              (Z_TREE, tree_new(t, 830, 470, .6)),
+              (Z_TABLE, art.table(420, "#b8463f") + dish_greens(200, 404, .6)
+               + dish_cheese(760, 404, .58) + candles([(470, 420, 58, 1.0)], t)),
+              (Z_HERO, dish_bird(470, 388, .9))]
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomc)"/>'
+    s += rig(planes, camz=20 + 150 * k, tilt=-210 + 250 * k, over=1.3)
+    s += warm_light(470, 380, 330, .34) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".64"/>'
+    return s
+
+
+def cam_dutch(t, dur=10.0):
+    """БЛОК 14 — НАКЛОН ГОРИЗОНТА: кадр медленно валится набок под подъезд.
+    Потолок 9°: дальше читается как ошибка, а не приём."""
+    k = ease(t / max(.1, dur))
+    planes = [(Z_WALL, _room(t, ((60, 76, 220, 166), (690, 76, 220, 166)), 30)),
+              (Z_HERO, koza_head(t, 470, 296, .7)),
+              (Z_TABLE, art.table(452) + candles([(150, 452, 58, 1.0), (820, 452, 52, .95)], t))]
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomr)"/>'
+    s += rig(planes, camz=30 + 70 * k, roll=9.0 * k, over=1.26)
+    s += warm_light(200, 360, 300, .32) + air() + side_dark("right", .22)
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
+def cam_vertigo(t, dur=10.0):
+    """БЛОК 15 — ДОЛЛИ-ЗУМ: камера ОТЪЕЗЖАЕТ, а фокус растёт ровно настолько,
+    чтобы коза осталась того же размера. Уменьшается не она — наваливается
+    комната за ней. Нужна ГЛУБИНА, поэтому стена тут отнесена дальше обычного.
+    Приём один раз на ролик и только под сильный смысл."""
+    k = ease(t / max(.1, dur))
+    ZW, ZT, ZH, ZN = 5200, 3000, 2000, 1500
+    camz = -900 * k
+    comp = (ZH - camz) / ZH            # зум ровно компенсирует отъезд
+    planes = [(ZW, _room(t, ((20, 70, 250, 180), (690, 70, 250, 180)), 26)),
+              (ZT, tree_new(t, 840, 470, .66) + tree_new(t, 120, 474, .5)),
+              (ZH, koza_head(t, 470, 300, .72)),
+              (ZN, art.table(452) + candles([(140, 452, 60, 1.0), (820, 452, 54, .95)], t))]
+    s = f'<rect width="{W}" height="{H}" fill="url(#room)"/>'
+    s += rig(planes, camz=camz, over=comp)
+    s += warm_light(470, 360, 320, .32) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
 # -------- старые рисунки с камерой: мягкий наезд вместо зума окна --------
 def pushin(name, z1=120.0, x1=0.0):
     """Готовый рисунок из art.py, снятый камерой: плавный перспективный наезд.
@@ -912,7 +1132,10 @@ PUSH = ["salat_mayo", "pork", "meat_only", "cake_no", "two_floors", "heap", "lam
 
 SCENES = {
     "cam_room": cam_room, "cam_room2": cam_room2,
-    "cam_koza": cam_koza, "cam_oblet": cam_oblet, "cam_svet": cam_svet, "cam_koza_eye": cam_koza_eye, "cam_koza_turn": cam_koza_turn,
+    "cam_koza": cam_koza, "cam_oblet": cam_oblet, "cam_svet": cam_svet,
+    "cam_pan": cam_pan, "cam_crane": cam_crane, "cam_wipe": cam_wipe, "cam_push": cam_push,
+    "cam_follow": cam_follow, "cam_tilt": cam_tilt, "cam_arc": cam_arc, "cam_down": cam_down,
+    "cam_dutch": cam_dutch, "cam_vertigo": cam_vertigo, "cam_koza_eye": cam_koza_eye, "cam_koza_turn": cam_koza_turn,
     "cam_koza_door": cam_koza_door, "cam_koza_window": cam_koza_window,
     "cam_tree": cam_tree, "cam_ded": cam_ded, "cam_zapret": cam_zapret, "cam_okna": cam_okna,
     "cam_stol_kozy": cam_stol_kozy, "cam_stol_kozy2": cam_stol_kozy2,
