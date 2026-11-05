@@ -447,12 +447,351 @@ def cam_okna(t, dur=10.0):
     return s
 
 
+# ---------------------- предметы стола (кирпичики) ----------------------
+def dish_greens(x, y, s=1.0):
+    b = f'<ellipse cx="0" cy="0" rx="118" ry="34" fill="{CRM}"{ST(7)}/>'
+    b += f'<path d="M-88 -8 C-54 -68 54 -68 88 -8 C54 14 -54 14 -88 -8 Z" fill="{HRB}"{ST(7)}/>'
+    b += "".join(f'<path d="M{-64+i*26} -14 q10 -32 22 -42" stroke="{GRN}" stroke-width="7" fill="none"/>' for i in range(6))
+    return g(b, x, y, s)
+
+
+def dish_bird(x, y, s=1.0):
+    b = f'<ellipse cx="0" cy="0" rx="128" ry="36" fill="{CRM}"{ST(7)}/>'
+    b += (f'<path d="M-92 -12 C-80 -74 -24 -104 12 -98 C62 -90 96 -56 96 -12 C56 12 -52 12 -92 -12 Z"'
+          f' fill="url(#duck)"{ST(8)}/>')
+    b += f'<path d="M-52 -58 C-30 -74 10 -76 34 -62" stroke="#5d2f0d" stroke-width="5" fill="none" opacity=".8"/>'
+    for i, cx2 in enumerate((-66, -22, 28, 70)):
+        b += f'<circle cx="{cx2}" cy="{-4 - (i%2)*10}" r="17" fill="{ORA}"{ST(5)}/>'
+    return g(b, x, y, s)
+
+
+def dish_cheese(x, y, s=1.0):
+    b = f'<path d="M-104 0 L104 0 L92 26 L-92 26 Z" fill="#8a5a2c"{ST(7)}/>'
+    b += f'<path d="M-84 -2 L-18 -2 L-28 -46 L-74 -46 Z" fill="#f2d85a"{ST(6)}/>'
+    b += f'<circle cx="-56" cy="-26" r="7" fill="#d9bd3c"/><circle cx="-36" cy="-14" r="5" fill="#d9bd3c"/>'
+    b += f'<path d="M-6 -2 L52 -2 L44 -40 L4 -40 Z" fill="{SNOW}"{ST(6)}/>'
+    b += f'<path d="M58 -2 L100 -2 L96 -30 L62 -30 Z" fill="{PCH}"{ST(6)}/>'
+    b += "".join(f'<circle cx="{-70+i*34}" cy="8" r="7" fill="{TER}"{ST(4)}/>' for i in range(6))
+    return g(b, x, y, s)
+
+
+def dish_fruit(x, y, s=1.0):
+    b = f'<path d="M-96 -10 C-96 44 -60 72 0 72 C60 72 96 44 96 -10 Z" fill="#9a6a34"{ST(8)}/>'
+    for i, (fx, fy, r, c) in enumerate(((-54, -22, 26, "#d8622a"), (-6, -34, 28, "#e2b23c"),
+                                        (46, -20, 25, "#d8622a"), (18, 2, 24, "#b8463f"),
+                                        (-32, 6, 23, "#e2b23c"))):
+        b += f'<circle cx="{fx}" cy="{fy}" r="{r}" fill="{c}"{ST(6)}/>'
+        b += f'<circle cx="{fx-r*.3:.0f}" cy="{fy-r*.35:.0f}" r="{r*.22:.1f}" fill="#fff" opacity=".45"/>'
+    return g(b, x, y, s)
+
+
+def jug_mors(x, y, s=1.0):
+    b = (f'<path d="M-44 -70 L44 -70 L52 46 C52 66 -52 66 -52 46 Z" fill="#b8463f" opacity=".92"{ST(8)}/>')
+    b += f'<path d="M44 -52 C86 -44 88 6 48 18" stroke="{OUT}" stroke-width="9" fill="none"/>'
+    b += f'<path d="M-40 -34 L40 -34" stroke="{SNOW}" stroke-width="6" opacity=".5"/>'
+    b += f'<path d="M-18 -92 C-10 -112 10 -112 18 -92" stroke="{HRB}" stroke-width="7" fill="none"/>'
+    return g(b, x, y, s)
+
+
+def sausage_plate(x, y, s=1.0):
+    """Нарезка веером: ломтики ложатся по дуге, а не кучей в центре."""
+    b = f'<ellipse cx="0" cy="0" rx="176" ry="50" fill="{CRM}"{ST(8)}/>'
+    b += f'<ellipse cx="0" cy="-6" rx="152" ry="40" fill="#efe7d2"/>'
+    for i in range(9):
+        a = -64 + i * 16
+        b += (f'<g transform="rotate({a} 0 46)"><ellipse cx="0" cy="-54" rx="50" ry="21"'
+              f' fill="{"#b8463f" if i%2 else "#d98b6a"}"{ST(6)}/>'
+              + "".join(f'<circle cx="{-28+j*14}" cy="{-58+(j%2)*9}" r="4.2" fill="{CRM}" opacity=".85"/>'
+                        for j in range(5))
+              + '</g>')
+    return g(b, x, y, s)
+
+
+# ---------------------- новые камерные сцены ----------------------
+def _wall(t, pairs, tins=34):
+    return "".join(art.window(x, y, w, h, t) for x, y, w, h in pairs) + art.tinsel(tins)
+
+
+def cam_room2(t, dur=10.0):
+    """Комната с другого угла: ёлка слева, гости справа, камера ведёт влево."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=150, x0=40, x1=-34)
+    s = f'<rect width="{W}" height="{H}" fill="url(#room)"/>'
+    s += plane(_wall(t, [(560, 92, 240, 176)]), Z_WALL, cx, cz)
+    s += plane(tree_new(t, 190, 460, .8), Z_TREE, cx, cz)
+    s += plane(guest(t, 560, 288, .84, "#eec49c", "#4a2c18", RED, "cap", .15)
+               + guest(t, 740, 296, .80, "#f0c9a4", "#5a3a22", HRB, "bun", .55), Z_HERO, cx, cz)
+    s += plane(art.table(412) + dish_greens(300, 402, .62) + dish_cheese(640, 400, .6)
+               + candles([(470, 412, 54, 1.0)], t), Z_TABLE, cx, cz)
+    s += plane(candles([(830, 436, 72, 1.1)], t), Z_NEAR, cx, cz)
+    s += warm_light(470, 360, 320, .34) + air() + side_dark("right", .24)
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".68"/>'
+    return s
+
+
+def cam_koza_eye(t, dur=10.0):
+    """Глаз хозяйки года крупно: огонь по краю кадра, медленный наезд."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=120, x0=-10, x1=10)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomr)"/>'
+    s += plane(koza_head(t, 480, 300, 2.1), Z_HERO, cx, cz)
+    s += warm_light(300, 240, 340, .3) + air(.05) + side_dark("right", .26)
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".7"/>'
+    return s
+
+
+def cam_koza_turn(t, dur=10.0):
+    """«Она просто отвернётся»: голова медленно уходит в сторону, глаза
+    закрываются, пламя гривы опадает."""
+    u = ease(min(1.0, t / max(.1, dur * .72)))
+    cx, cz, _ = dolly(t, dur, z0=0, z1=90, x0=0, x1=26)
+    s = f'<rect width="{W}" height="{H}" fill="url(#room)"/>'
+    s += plane(_wall(t, [(62, 78, 210, 158)]), Z_WALL, cx, cz)
+    head = koza_head(t if u < .55 else t + 100.0, 0, 0, .84)
+    s += plane(f'<g transform="translate({480 - 60*u:.1f},{300 + 10*u:.1f}) rotate({-26*u:.2f})'
+               f' scale({1 - .12*u:.3f},1)">{head}</g>', Z_HERO, cx, cz)
+    s += plane(candles([(140, 436, 76, 1.05)], t), Z_NEAR, cx, cz)
+    s += warm_light(170, 360, 280, .34 - .1 * u) + air(.06)
+    s += side_dark("right", .24 + .16 * u) + f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".7"/>'
+    return s
+
+
+def cam_koza_door(t, dur=10.0):
+    """Гостья на пороге: светлый проём, снег за дверью, коза входит в дом."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=160, x0=30, x1=-24)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomc)"/>'
+    door = (f'<rect x="300" y="60" width="360" height="420" rx="10" fill="{NGT}"{ST(9)}/>'
+            f'<rect x="318" y="78" width="324" height="384" rx="6" fill="#33496f"/>'
+            + A.snowfall(t, 24, 3) .replace('width="960"', 'width="360"') if False else
+            f'<rect x="300" y="60" width="360" height="420" rx="10" fill="{NGT}"{ST(9)}/>'
+            f'<rect x="318" y="78" width="324" height="384" rx="6" fill="#33496f"/>')
+    for i in range(14):
+        ph = (t / (3.2 + i % 4) + i * .13) % 1.0
+        door += (f'<circle cx="{330 + (i*23) % 300:.0f}" cy="{80 + 380*ph:.0f}" r="{2.6 + (i%3):.1f}"'
+                 f' fill="#eef5fb" opacity=".8"/>')
+    door += f'<path d="M300 480 L660 480 L690 500 L270 500 Z" fill="{SNOW}"{ST(8)}/>'
+    s += plane(door + art.tinsel(30), Z_WALL, cx, cz)
+    s += plane(ground_shadow(470, 486, 150, 28, .45) + koza_head(t, 470, 300, .78), Z_HERO, cx, cz)
+    s += plane(candles([(118, 442, 78, 1.05), (846, 446, 70, .95)], t), Z_NEAR, cx, cz)
+    s += warm_light(480, 230, 360, .34) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
+def cam_koza_window(t, dur=10.0):
+    """Коза у окна: снег за стеклом, тёплая комната, камера чуть отъезжает вбок."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=110, x0=-30, x1=24)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomb)"/>'
+    s += plane(art.window(520, 70, 330, 250, t) + art.tinsel(30), Z_WALL, cx, cz)
+    s += plane(koza_head(t, 330, 306, .72), Z_HERO, cx, cz)
+    s += plane(art.table(470) + candles([(640, 470, 58, 1.0)], t), Z_TABLE, cx, cz)
+    s += plane(candles([(120, 440, 80, 1.1)], t), Z_NEAR, cx, cz)
+    s += warm_light(160, 370, 300, .36) + air() + side_dark("right", .22)
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
+def cam_stol_kozy(t, dur=10.0):
+    """Стол хозяйки года: зелень, сыры, птица, фрукты, морс — и воздух
+    между тарелками. Камера медленно наезжает."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=150, x0=-20, x1=18)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomc)"/>'
+    s += plane(_wall(t, [(60, 84, 220, 168), (680, 84, 220, 168)], 30), Z_WALL, cx, cz)
+    s += plane(tree_new(t, 480, 300, .4), Z_TREE, cx, cz)
+    s += plane(art.table(372, "#b8463f")
+               + dish_greens(170, 356, .68) + dish_bird(470, 350, .78) + dish_cheese(760, 352, .66)
+               + candles([(300, 372, 58, 1.0), (640, 372, 52, .95)], t), Z_TABLE, cx, cz)
+    s += plane(dish_fruit(190, 470, .72) + jug_mors(780, 452, .72), Z_NEAR, cx, cz)
+    s += warm_light(300, 340, 320, .34) + warm_light(650, 344, 290, .3) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".62"/>'
+    return s
+
+
+def cam_stol_kozy2(t, dur=10.0):
+    """Тот же стол ближе: фрукты и морс на переднем плане, свечи горят."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=120, x0=26, x1=-22)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomr)"/>'
+    s += plane(_wall(t, [(640, 70, 230, 172)], 28), Z_WALL, cx, cz)
+    s += plane(art.table(340, "#b8463f") + dish_bird(300, 324, .72) + dish_greens(650, 326, .6)
+               + candles([(150, 340, 60, 1.0), (820, 340, 54, .95)], t), Z_TABLE, cx, cz)
+    s += plane(dish_fruit(620, 468, .8) + jug_mors(240, 450, .8), Z_NEAR, cx, cz)
+    s += warm_light(240, 360, 300, .34) + air() + side_dark("left", .22)
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".62"/>'
+    return s
+
+
+def cam_stol_loshadi(t, dur=10.0):
+    """Стол Лошади: всё навалено, тарелки в два этажа, бокал ставить некуда."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=140, x0=22, x1=-18)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomr)"/>'
+    s += plane(_wall(t, [(690, 76, 200, 150)], 30), Z_WALL, cx, cz)
+    s += plane(art.table(356, "#b8463f")
+               + sausage_plate(260, 336, .58) + dish_greens(560, 332, .5)
+               + g(f'<ellipse cx="0" cy="0" rx="96" ry="30" fill="{CRM}"{ST(7)}/>'
+                   f'<path d="M-74 -6 C-54 -42 54 -42 74 -6 C50 10 -50 10 -74 -6 Z" fill="{SNOW}"{ST(6)}/>', 760, 330, .9)
+               + candles([(120, 356, 50, .9)], t), Z_TABLE, cx, cz)
+    s += plane(g(f'<ellipse cx="0" cy="0" rx="104" ry="32" fill="{CRM}"{ST(7)}/>'
+                 f'<ellipse cx="0" cy="-30" rx="86" ry="27" fill="{PCH}"{ST(7)}/>'
+                 f'<ellipse cx="0" cy="-58" rx="68" ry="22" fill="{CRM}"{ST(7)}/>'
+                 f'<path d="M-50 -70 C-30 -96 30 -96 50 -70 C30 -58 -30 -58 -50 -70 Z" fill="#b8463f"{ST(6)}/>',
+                 380, 470, .92)
+               + sausage_plate(790, 472, .6), Z_NEAR, cx, cz)
+    s += warm_light(300, 360, 280, .3) + air() + side_dark("right", .24)
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".68"/>'
+    return s
+
+
+def cam_kolbasa(t, dur=10.0):
+    """Колбасная нарезка веером и запрещающий знак."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=140, x0=-14, x1=12)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomb)"/>'
+    s += plane(_wall(t, [(96, 72, 196, 148)], 28), Z_WALL, cx, cz)
+    s += plane(art.table(376, "#a8512c"), Z_TABLE, cx, cz)
+    s += plane(ground_shadow(520, 398, 150, 26, .4) + sausage_plate(490, 362, 1.15), Z_HERO, cx, cz)
+    s += plane(no_sign(490, 316, 178, 28), Z_HERO - 120, cx, cz)
+    s += plane(candles([(140, 432, 76, 1.05)], t), Z_NEAR, cx, cz)
+    s += warm_light(180, 370, 270, .3) + air() + side_dark("right", .22)
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
+def cam_guests_new(t, dur=10.0):
+    """Гости за столом: моргают, покачиваются, поднимают бокалы."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=130, x0=-26, x1=22)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomc)"/>'
+    s += plane(_wall(t, [(70, 84, 210, 160), (700, 84, 210, 160)], 32), Z_WALL, cx, cz)
+    s += plane(guest(t, 220, 292, .84, "#f0c9a4", "#5a3a22", TER, "hat", .0)
+               + guest(t, 420, 284, .88, "#e8bd94", "#3b2416", HRB, "bun", .35)
+               + guest(t, 620, 290, .86, "#f2d2ae", "#6b4a2c", NGT, "bald", .7)
+               + guest(t, 800, 300, .80, "#eec49c", "#4a2c18", RED, "cap", .15), Z_HERO, cx, cz)
+    s += plane(art.table(420) + candles([(160, 420, 56, 1.0), (760, 420, 50, .9)], t), Z_TABLE, cx, cz)
+    s += warm_light(200, 368, 300, .32) + warm_light(760, 372, 280, .3) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
+def cam_kuranty_new(t, dur=10.0):
+    """Полночь: часы, стол под ними, свечи и тёплый свет."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=130, x0=16, x1=-14)
+    ang = -6 + 12 * ease(t / max(.1, dur))
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomb)"/>'
+    s += plane(art.tinsel(28), Z_WALL, cx, cz)
+    clock = (f'<circle cx="480" cy="230" r="146" fill="{CRM}"{ST(10)}/>'
+             f'<circle cx="480" cy="230" r="120" fill="{SNOW}"{ST(6)}/>')
+    for i in range(12):
+        import math
+        a = math.radians(i * 30)
+        clock += (f'<circle cx="{480 + 100*math.sin(a):.1f}" cy="{230 - 100*math.cos(a):.1f}"'
+                  f' r="{7 if i%3==0 else 4.5}" fill="{OUT}"/>')
+    import math
+    ra = math.radians(ang)
+    clock += (f'<path d="M480 230 L{480 + 72*math.sin(ra):.1f} {230 - 72*math.cos(ra):.1f}"'
+              f' stroke="{OUT}" stroke-width="12" stroke-linecap="round"/>')
+    clock += (f'<path d="M480 230 L{480 + 96*math.sin(ra*1.4):.1f} {230 - 96*math.cos(ra*1.4):.1f}"'
+              f' stroke="{TER}" stroke-width="8" stroke-linecap="round"/>')
+    clock += f'<circle cx="480" cy="230" r="12" fill="{RED}"{ST(5)}/>'
+    s += plane(clock, Z_HERO, cx, cz)
+    s += plane(art.table(440, "#b8463f") + dish_fruit(760, 432, .62)
+               + candles([(220, 440, 64, 1.05), (560, 440, 56, .95)], t), Z_TABLE, cx, cz)
+    s += warm_light(480, 250, 330, .34) + air() + f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".64"/>'
+    return s
+
+
+def cam_finale_new(t, dur=10.0):
+    """Финал: коза у накрытого стола, 2027 растёт, конфетти."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=120, x0=0, x1=0)
+    u = ease(min(1.0, t / max(.1, dur)))
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomc)"/>'
+    s += plane(_wall(t, [(70, 80, 210, 160)], 30), Z_WALL, cx, cz)
+    s += plane(tree_new(t, 800, 430, .62), Z_TREE, cx, cz)
+    s += plane(koza_head(t, 300, 286, .66), Z_HERO, cx, cz)
+    s += plane(art.table(420, "#b8463f") + dish_bird(620, 404, .64) + dish_greens(840, 408, .5)
+               + candles([(470, 420, 58, 1.0)], t), Z_TABLE, cx, cz)
+    sc = .5 + .5 * u
+    s += (f'<g transform="translate(640,210) scale({sc:.3f})" opacity="{min(1.0, u*1.6):.2f}">'
+          f'<text x="0" y="0" text-anchor="middle" font-family="DejaVu Serif" font-size="150"'
+          f' font-weight="bold" fill="{GLD}" stroke="{OUT}" stroke-width="8">2027</text></g>')
+    s += A.confetti(t, 26)
+    s += warm_light(300, 330, 320, .34) + air() + f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".6"/>'
+    return s
+
+
+
+def cam_koza_fire(t, dur=10.0):
+    """Огненная сторона хозяйки: пламя гривы во весь кадр, искры летят,
+    камера идёт вбок — огонь проходит мимо зрителя."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=100, x0=28, x1=-26)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomr)"/>'
+    s += plane(koza_head(t, 500, 330, 1.45), Z_HERO, cx, cz)
+    for i in range(14):
+        ph = (t / (2.2 + i % 5 * .4) + i * .17) % 1.0
+        s += (f'<circle cx="{60 + (i*77) % 860:.0f}" cy="{H - 540*ph:.0f}" r="{2.6 + (i%3)*1.4:.1f}"'
+              f' fill="#ffd36e" opacity="{.75*(1-ph):.2f}"/>')
+    s += warm_light(500, 300, 380, .4) + air(.06) + side_dark("left", .24)
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
+def cam_koza_table(t, dur=10.0):
+    """Хозяйка года за столом: смотрит на блюда, свечи между ними."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=130, x0=-24, x1=20)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomc)"/>'
+    s += plane(_wall(t, [(640, 74, 220, 166)], 30), Z_WALL, cx, cz)
+    s += plane(koza_head(t, 300, 268, .62), Z_HERO, cx, cz)
+    s += plane(art.table(396, "#b8463f") + dish_greens(620, 378, .58) + dish_cheese(830, 380, .54)
+               + candles([(470, 396, 56, 1.0)], t), Z_TABLE, cx, cz)
+    s += plane(dish_fruit(700, 486, .66), Z_NEAR, cx, cz)
+    s += warm_light(470, 350, 310, .34) + air() + side_dark("right", .2)
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".64"/>'
+    return s
+
+
+def cam_kitchen(t, dur=10.0):
+    """Кухня тридцать первого: кастрюли, пар, доска с ножом — руки устали."""
+    cx, cz, _ = dolly(t, dur, z0=0, z1=140, x0=18, x1=-16)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomb)"/>'
+    s += plane(_wall(t, [(120, 66, 190, 146)], 26), Z_WALL, cx, cz)
+    pot = (f'<path d="M-104 -40 L104 -40 L88 70 C88 86 -88 86 -88 70 Z" fill="#6f6a60"{ST(9)}/>'
+           f'<path d="M-118 -46 L118 -46 L118 -26 L-118 -26 Z" fill="#8a847a"{ST(7)}/>')
+    s += plane(g(pot, 430, 300, 1.0) + A.smoke(430, 214, t, 3, 160, 1.0, .34)
+               + g(f'<rect x="-150" y="86" width="300" height="26" rx="6" fill="#4a443c"{ST(7)}/>', 430, 300, 1.0),
+               Z_HERO, cx, cz)
+    s += plane(art.table(392) + g(f'<rect x="-120" y="-16" width="240" height="32" rx="8" fill="#9a6a34"{ST(7)}/>'
+                                  f'<path d="M60 -30 L150 -52 L158 -38 L68 -14 Z" fill="#c9c4bb"{ST(6)}/>',
+                                  700, 374, .8)
+               + candles([(180, 392, 54, 1.0)], t), Z_TABLE, cx, cz)
+    s += warm_light(480, 320, 330, .32) + air() + f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".68"/>'
+    return s
+
+
+# -------- старые рисунки с камерой: мягкий наезд вместо зума окна --------
+def pushin(name, z1=120.0, x1=0.0):
+    """Готовый рисунок из art.py, снятый камерой: плавный перспективный наезд.
+    Масштаб всегда > 1, поэтому края кадра не оголяются."""
+    def f(t, dur=8.0, _n=name, _z=z1, _x=x1):
+        cx, cz, _ = dolly(t, dur, z0=55, z1=_z, x0=-_x, x1=_x)
+        return plane(art.SCENES[_n](t), Z_HERO, cx, cz)
+    return f
+
+
+PUSH = ["salat_mayo", "pork", "meat_only", "cake_no", "two_floors", "heap", "lamb_no",
+        "lamb_dishes", "empty_plate", "feast", "horse", "duck", "duck_cut", "duck_glaze",
+        "cheese", "cheese_trio", "cheese_slice", "pumpkin", "pumpkin_goat", "pumpkin_slice",
+        "pumpkin_topping", "pate_toast", "fish", "fish_serve", "fish_steam", "fish_left",
+        "apples", "apple_cream", "fruit_basket", "round_fruits", "honey_nuts", "goat_milk",
+        "mors", "greens", "greens_board", "herb_glasses", "herb_three", "white_no", "pear_no",
+        "pelmeni_gold", "lanterns", "calendar_feb", "kuranty", "basics_six", "seafood",
+        "table_wide", "table_top", "guests_toast", "retro", "finale_2027", "mushrooms_pan"]
+
 SCENES = {
-    "cam_room": cam_room,
-    "cam_koza": cam_koza,
-    "cam_tree": cam_tree,
-    "cam_ded": cam_ded,
-    "cam_zapret": cam_zapret,
-    "cam_okna": cam_okna,
+    "cam_room": cam_room, "cam_room2": cam_room2,
+    "cam_koza": cam_koza, "cam_koza_eye": cam_koza_eye, "cam_koza_turn": cam_koza_turn,
+    "cam_koza_door": cam_koza_door, "cam_koza_window": cam_koza_window,
+    "cam_tree": cam_tree, "cam_ded": cam_ded, "cam_zapret": cam_zapret, "cam_okna": cam_okna,
+    "cam_stol_kozy": cam_stol_kozy, "cam_stol_kozy2": cam_stol_kozy2,
+    "cam_stol_loshadi": cam_stol_loshadi, "cam_kolbasa": cam_kolbasa,
+    "cam_guests": cam_guests_new, "cam_koza_fire": cam_koza_fire,
+    "cam_koza_table": cam_koza_table, "cam_kitchen": cam_kitchen, "cam_kuranty": cam_kuranty_new, "cam_finale": cam_finale_new,
 }
-NO_GLARE = set()
+for _n in PUSH:
+    if _n in art.SCENES:
+        SCENES["p_" + _n] = pushin(_n)
+NO_GLARE = {"cam_koza_eye"}

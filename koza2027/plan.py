@@ -697,6 +697,25 @@ OVERLAYSP = [
                           "внутри нарисованного кадра"], y=640),         51.20, 59.00),
 ]
 
+
+# ============ ВТОРОЙ РОЛИК: «ЧТО НЕЛЬЗЯ ГОТОВИТЬ» (849,6 с + 6 с финала) ============
+# Раскадровка целиком лежит в nelzya.py абсолютными временами; здесь она
+# только режется на четыре части, чтобы считаться в облаке параллельно.
+import nelzya as _NZ
+
+
+def _cut(k):
+    lo, hi = _NZ.BOUNDS[k], _NZ.BOUNDS[k + 1]
+    sh, ends = [], [x[0] for x in _NZ.SHOTS[1:]] + [_NZ.TOTAL]
+    for (a, nm), b in zip(_NZ.SHOTS, ends):
+        if b <= lo or a >= hi:
+            continue
+        sh.append((max(a, lo) - lo, min(b, hi) - lo, nm, 1.00, 1.00, .50, .50))
+    ov = [(nm, src, a - lo, b - lo) for nm, src, a, b in _NZ.OVERLAYS if a >= lo and b <= hi]
+    st = [(a - lo, b - lo, url, box) for a, b, url, box in _NZ.STOCK if a >= lo and b <= hi]
+    return ("nelzya%d" % (k + 1), sh, ov, hi - lo, st)
+
+
 # ============================ выбор части ============================
 _PARTS = {
     "1-3": ("chasti1-3", SHOTS13, OVERLAYS13, TOTAL13, STOCK13),
@@ -704,6 +723,7 @@ _PARTS = {
     "5":   ("chast5",    SHOTS5,  OVERLAYS5,  TOTAL5,  STOCK5),
     "6":   ("chast6",    SHOTS6,  OVERLAYS6,  TOTAL6,  STOCK6),
     "proba": ("proba",   SHOTSP,  OVERLAYSP,  TOTALP,  []),
+    "n1": _cut(0), "n2": _cut(1), "n3": _cut(2), "n4": _cut(3),
 }
 if PART not in _PARTS:
     raise SystemExit("неизвестная часть: %r (знаю %s)" % (PART, ", ".join(_PARTS)))
