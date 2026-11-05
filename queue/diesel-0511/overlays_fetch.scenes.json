@@ -1,0 +1,85 @@
+{
+ "channel": "ПЛАНЕТА",
+ "scenes": [
+  {
+   "id": 3,
+   "text": "",
+   "duration_sec": 6.0,
+   "visual_prompt": "БАЗА/ВЛАСТЬ-РОССИЯ/НЕФТЕПЕРЕРАБАТЫВАЮЩИЙ-ЗАВОД-ФАКЕЛ",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/НЕФТЕПЕРЕРАБАТЫВАЮЩИЙ-ЗАВОД-ФАКЕЛ"
+  },
+  {
+   "id": 8,
+   "text": "",
+   "duration_sec": 6.0,
+   "visual_prompt": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ФУРЫ-ОЧЕРЕДИ-СКЛАДСКОМ",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ФУРЫ-ОЧЕРЕДИ-СКЛАДСКОМ"
+  },
+  {
+   "id": 14,
+   "text": "",
+   "duration_sec": 6.0,
+   "visual_prompt": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ГАЗОВЫЙ-ТЕРМИНАЛ-СПГ",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ГАЗОВЫЙ-ТЕРМИНАЛ-СПГ"
+  },
+  {
+   "id": 24,
+   "text": "",
+   "duration_sec": 6.0,
+   "visual_prompt": "БАЗА/ВЛАСТЬ-США/КОНТЕЙНЕРНЫЙ-ПОРТ-ЛОС-АНДЖЕЛЕСА",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/КОНТЕЙНЕРНЫЙ-ПОРТ-ЛОС-АНДЖЕЛЕСА"
+  },
+  {
+   "id": 26,
+   "text": "",
+   "duration_sec": 6.0,
+   "visual_prompt": "БАЗА/ЛОГИСТИКА-ЕВРОПА/УГОЛЬНАЯ-ЭЛЕКТРОСТАНЦИЯ-ГЕРМАНИИ",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/УГОЛЬНАЯ-ЭЛЕКТРОСТАНЦИЯ-ГЕРМАНИИ"
+  },
+  {
+   "id": 53,
+   "text": "",
+   "duration_sec": 6.0,
+   "visual_prompt": "ПОЛИТИКА/CHINA",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/CHINA"
+  },
+  {
+   "id": 58,
+   "text": "",
+   "duration_sec": 6.0,
+   "visual_prompt": "БАЗА/ВЛАСТЬ-РОССИЯ/НЕФТЕПЕРЕРАБАТЫВАЮЩИЙ-ЗАВОД-ФАКЕЛ",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/НЕФТЕПЕРЕРАБАТЫВАЮЩИЙ-ЗАВОД-ФАКЕЛ"
+  },
+  {
+   "id": 65,
+   "text": "",
+   "duration_sec": 6.0,
+   "visual_prompt": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ПРИЛАВОК-НЕМЕЦКОГО-СУПЕРМАРКЕТА",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ПРИЛАВОК-НЕМЕЦКОГО-СУПЕРМАРКЕТА"
+  },
+  {
+   "id": 67,
+   "text": "",
+   "duration_sec": 6.0,
+   "visual_prompt": "БАЗА/ВЛАСТЬ-США/САМОЛЁТ-AIR-FORCE",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/САМОЛЁТ-AIR-FORCE"
+  },
+  {
+   "id": 77,
+   "text": "",
+   "duration_sec": 6.0,
+   "visual_prompt": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ГРУЗОВОЙ-ПОЕЗД-КОНТЕЙНЕРАМИ",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ГРУЗОВОЙ-ПОЕЗД-КОНТЕЙНЕРАМИ"
+  }
+ ]
+}
