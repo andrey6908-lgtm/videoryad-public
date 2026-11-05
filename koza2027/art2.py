@@ -762,6 +762,135 @@ def cam_kitchen(t, dur=10.0):
     return s
 
 
+
+# ===================== СВЕТОТЕНЬ ПО ФИГУРЕ (блок 3 лаборатории) =====================
+import re as _re
+_MASK = 0
+
+
+def _white(body):
+    """Тот же рисунок, залитый белым — из него делается маска по альфе."""
+    b = _re.sub(r'fill="(?!none)[^"]*"', 'fill="#ffffff"', body)
+    b = _re.sub(r'stroke="(?!none)[^"]*"', 'stroke="#ffffff"', b)
+    b = _re.sub(r'opacity="[^"]*"', 'opacity="1"', b)
+    return b
+
+
+def light_figure(body, side="left", shade=.5, warm=.3, cx=480, half=230):
+    """Свет ложится РОВНО ПО ФИГУРЕ, ни пикселя мимо: тёмный бок и тёплый
+    освещённый. Приём из camera-lab (там вуаль умножалась на альфу слоя),
+    здесь то же самое делает маска из того же рисунка, залитого белым."""
+    global _MASK
+    _MASK += 1
+    m, d, w = f"mk{_MASK}", f"mkd{_MASK}", f"mkw{_MASK}"
+    x1, x2 = ("1", "0") if side == "left" else ("0", "1")
+    return (f'<defs><mask id="{m}" maskUnits="userSpaceOnUse" x="0" y="0" width="{W}" height="{H}">'
+            f'{_white(body)}</mask>'
+            f'<linearGradient id="{d}" x1="{x1}" y1="0" x2="{x2}" y2="0">'
+            f'<stop offset="0" stop-color="#140d07" stop-opacity="{shade}"/>'
+            f'<stop offset=".62" stop-color="#140d07" stop-opacity="0"/></linearGradient>'
+            f'<linearGradient id="{w}" x1="{x2}" y1="0" x2="{x1}" y2="0">'
+            f'<stop offset="0" stop-color="#ffcf7a" stop-opacity="{warm}"/>'
+            f'<stop offset=".55" stop-color="#ffcf7a" stop-opacity="0"/></linearGradient></defs>'
+            f'{body}'
+            f'<g mask="url(#{m})"><rect width="{W}" height="{H}" fill="url(#{d})"/>'
+            f'<rect width="{W}" height="{H}" fill="url(#{w})"/></g>')
+
+
+# ===================== ОБЛЁТ 360° (блок 5 лаборатории) =====================
+def koza_back(t, cx=480, cy=292, s=.86):
+    """Коза со спины: затылок, рога уходят от зрителя, уши по бокам.
+    Нужна для облёта — когда камера заходит за персонажа."""
+    b = f'<circle cx="0" cy="-6" r="206" fill="{ORA}" opacity=".13"/>'
+    for i, (ax, ay, sc, per, ph) in enumerate(((-150, -70, .9, 1.9, .0), (-50, -170, .95, 1.6, .3),
+                                               (60, -168, .9, 2.2, .6), (158, -62, .9, 1.8, .2))):
+        k = 1 + .09 * A.w(t, per, ph)
+        fill = "url(#fl1)" if i % 2 else "url(#fl2)"
+        b += (f'<g transform="translate({ax},{ay}) scale({sc*k:.3f})">'
+              f'<path d="M0 54 C-42 26 -46 -18 -22 -54 C-26 -24 -10 -16 -2 -30'
+              f' C6 -46 2 -70 -12 -92 C34 -72 62 -30 56 6 C52 36 28 58 0 54 Z"'
+              f' fill="{fill}"{ST(7)}/></g>')
+    HORN, HORN2 = "#6d5740", "#463726"
+    for sg in (-1, 1):
+        b += (f'<path d="M{sg*52} -116 C{sg*70} -168 {sg*120} -200 {sg*178} -198'
+              f' C{sg*204} -196 {sg*210} -174 {sg*188} -166 C{sg*146} -152 {sg*110} -130 {sg*92} -92 Z"'
+              f' fill="{HORN}" stroke="{OUT}" stroke-width="9" stroke-linejoin="round"/>')
+        for i in range(5):
+            b += (f'<path d="M{sg*(70+i*24)} {-128-i*14} q{sg*11} {-12} {sg*23} {-14}"'
+                  f' stroke="{HORN2}" stroke-width="5" fill="none" opacity=".8"/>')
+    for sg in (-1, 1):
+        rot = A.sway(t, 6.1, .2 + .3 * (sg > 0), 2.0)
+        b += (f'<g transform="rotate({rot*sg:.2f} {sg*96} 4)">'
+              f'<path d="M{sg*86} -16 C{sg*140} -24 {sg*186} 6 {sg*188} 44'
+              f' C{sg*152} 60 {sg*100} 38 {sg*80} 10 Z" fill="#e2d6bc"{ST(8)}/></g>')
+    b += (f'<path d="M0 -136 C82 -136 136 -82 136 -14 C136 44 118 86 92 120'
+          f' C70 150 42 176 0 190 C-42 176 -70 150 -92 120 C-118 86 -136 44 -136 -14'
+          f' C-136 -82 -82 -136 0 -136 Z" fill="#ece0c8"{ST(9)}/>')
+    b += (f'<g stroke="#d3c4a6" stroke-width="5" fill="none" opacity=".9">'
+          f'<path d="M-70 -70 C-40 -46 -40 10 -62 54 M0 -92 C24 -50 22 14 -2 70'
+          f' M70 -68 C96 -40 92 12 66 56"/></g>')
+    b += (f'<path d="M-128 190 C-62 224 62 224 128 190 C136 218 130 240 116 252'
+          f' C46 286 -46 286 -116 252 C-132 240 -136 218 -128 190 Z" fill="{RED}"{ST(9)}/>')
+    return g(b, cx, cy, s)
+
+
+def cam_oblet(t, dur=12.0):
+    """ОБЛЁТ 360° вокруг хозяйки года: фигура стоит, кружит КАМЕРА.
+    Когда камера заходит за спину, видно затылок и рога с обратной стороны;
+    комната за ней едет в другую сторону, кольцо на полу показывает,
+    что это именно облёт, а не поворот картинки."""
+    import math
+    k = ease(t / max(.1, dur))
+    a = 2 * math.pi * k
+    ca, sa = math.cos(a), math.sin(a)
+    cx = 190 * sa                    # камера объезжает — фон едет в противоход
+    cz = 60 + 40 * (1 - ca)
+    s = f'<rect width="{W}" height="{H}" fill="url(#roomc)"/>'
+    wall = (art.window(40, 70, 210, 158, t) + art.window(700, 70, 210, 158, t) + art.tinsel(32))
+    s += plane(wall, Z_WALL, cx, cz)
+    s += plane(tree_new(t, 820, 456, .62), Z_TREE, cx * .8, cz)
+    # кольцо на полу: эллипс, который ходит вместе с камерой
+    ring = ""
+    for r, op in ((210, .5), (150, .34), (96, .22)):
+        ring += (f'<ellipse cx="470" cy="430" rx="{r}" ry="{r*0.26:.0f}" fill="none"'
+                 f' stroke="{GLD}" stroke-width="4" opacity="{op}"/>')
+    for i in range(12):
+        ang = a + i * math.pi / 6
+        ring += (f'<path d="M{470 + 96*math.cos(ang):.1f} {430 + 25*math.sin(ang):.1f}'
+                 f' L{470 + 210*math.cos(ang):.1f} {430 + 55*math.sin(ang):.1f}"'
+                 f' stroke="{GLD}" stroke-width="3" opacity=".22"/>')
+    s += plane(ring, Z_TABLE, cx, cz)
+    # фигура: спереди или со спины, по знаку косинуса; ширина сжимается как cos
+    squeeze = max(.18, abs(ca))
+    body = koza_head(t, 0, 0, .78) if ca >= 0 else koza_back(t, 0, 0, .78)
+    turn = (f'<g transform="translate(470,300) scale({squeeze:.3f},1)'
+            f' translate({-0:.1f},{-0:.1f})">{body}</g>')
+    s += plane(ground_shadow(470, 452, 150 * squeeze + 40, 26, .5)
+               + light_figure(turn, "left" if sa < 0 else "right", .62, .42, 470, 210), Z_HERO, 0, cz)
+    s += plane(candles([(130, 452, 78, 1.05), (830, 456, 70, .95)], t), Z_NEAR, cx * 1.3, cz)
+    s += warm_light(160 if sa < 0 else 820, 360, 320, .36) + air()
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".64"/>'
+    return s
+
+
+def cam_svet(t, dur=10.0):
+    """Светотень по фигуре: источник едет, тёмный бок переезжает по козе."""
+    import math
+    k = ease(t / max(.1, dur))
+    side = "left" if k < .5 else "right"
+    cx, cz, _ = dolly(t, dur, z0=0, z1=120, x0=-18, x1=16)
+    s = f'<rect width="{W}" height="{H}" fill="url(#room)"/>'
+    s += plane(art.window(70, 70, 210, 160, t) + art.tinsel(30), Z_WALL, cx, cz)
+    fig = koza_head(t, 470, 296, .74)
+    s += plane(ground_shadow(470, 452, 150, 26, .5)
+               + light_figure(fig, side, .66, .46, 470, 215), Z_HERO, cx, cz)
+    lx = 150 + 660 * k
+    s += plane(candles([(lx, 452, 82, 1.1)], t), Z_NEAR, cx, cz)
+    s += warm_light(lx, 370, 300, .4) + air(.06)
+    s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    return s
+
+
 # -------- старые рисунки с камерой: мягкий наезд вместо зума окна --------
 def pushin(name, z1=120.0, x1=0.0):
     """Готовый рисунок из art.py, снятый камерой: плавный перспективный наезд.
@@ -783,7 +912,7 @@ PUSH = ["salat_mayo", "pork", "meat_only", "cake_no", "two_floors", "heap", "lam
 
 SCENES = {
     "cam_room": cam_room, "cam_room2": cam_room2,
-    "cam_koza": cam_koza, "cam_koza_eye": cam_koza_eye, "cam_koza_turn": cam_koza_turn,
+    "cam_koza": cam_koza, "cam_oblet": cam_oblet, "cam_svet": cam_svet, "cam_koza_eye": cam_koza_eye, "cam_koza_turn": cam_koza_turn,
     "cam_koza_door": cam_koza_door, "cam_koza_window": cam_koza_window,
     "cam_tree": cam_tree, "cam_ded": cam_ded, "cam_zapret": cam_zapret, "cam_okna": cam_okna,
     "cam_stol_kozy": cam_stol_kozy, "cam_stol_kozy2": cam_stol_kozy2,
