@@ -59,8 +59,13 @@ jobs:
       - name: системные пакеты
         timeout-minutes: 14
         run: |
-          timeout 150 sudo apt-get update -qq || true
-          timeout 240 sudo apt-get install -y -qq ffmpeg libcairo2 fonts-dejavu-core fonts-dejavu-extra || true
+          for i in 1 2 3; do
+            timeout 150 sudo apt-get update -qq || true
+            timeout 300 sudo apt-get install -y -qq ffmpeg libcairo2 fonts-dejavu-core fonts-dejavu-extra || true
+            command -v ffmpeg >/dev/null && break
+            echo "заход $i не дал ffmpeg, пробуем ещё"; sleep 15
+          done
+          command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg на склейке"; exit 1; }
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
       - run: pip install --quiet cairosvg
