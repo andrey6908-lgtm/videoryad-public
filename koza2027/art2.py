@@ -376,6 +376,8 @@ def cam_room(t, dur=10.0):
     s += plane(candles([(140, 438, 74, 1.1)], t), Z_NEAR, cx, cz)
     s += warm_light(200, 360, 330, .34) + warm_light(740, 366, 280, .3) + air()
     s += side_dark("left", .26) + f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".7"/>'
+    s += lens_flare([scr(190, 408, Z_TABLE, cx, cz)[:2] + (.5, 17 * scr(190, 408, Z_TABLE, cx, cz)[2]),
+                     scr(742, 408, Z_TABLE, cx, cz)[:2] + (.42, 15 * scr(742, 408, Z_TABLE, cx, cz)[2])])
     return s
 
 
@@ -402,6 +404,8 @@ def cam_tree(t, dur=10.0):
     s += plane(art.table(452) + candles([(206, 452, 60, 1.0), (714, 452, 52, .9)], t), Z_TABLE, cx, cz)
     s += plane(candles([(96, 440, 86, 1.15)], t), Z_NEAR, cx, cz)
     s += warm_light(480, 300, 380, .3) + air() + f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".7"/>'
+    s += lens_flare([scr(206, 452, Z_TABLE, cx, cz)[:2] + (.5, 17 * scr(206, 452, Z_TABLE, cx, cz)[2]),
+                     scr(96, 440, Z_NEAR, cx, cz)[:2] + (.6, 19 * scr(96, 440, Z_NEAR, cx, cz)[2])])
     return s
 
 
@@ -416,6 +420,8 @@ def cam_ded(t, dur=10.0):
                + candles([(130, 470, 66, 1.0), (826, 470, 58, .95)], t), Z_TABLE, cx, cz)
     s += warm_light(170, 400, 290, .3) + warm_light(810, 400, 260, .3) + air()
     s += side_dark("left", .22) + f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".65"/>'
+    s += lens_flare([scr(130, 470, Z_TABLE, cx, cz)[:2] + (.5, 17 * scr(130, 470, Z_TABLE, cx, cz)[2]),
+                     scr(826, 470, Z_TABLE, cx, cz)[:2] + (.45, 16 * scr(826, 470, Z_TABLE, cx, cz)[2])])
     return s
 
 
@@ -692,6 +698,8 @@ def cam_kuranty_new(t, dur=10.0):
     s += plane(art.table(440, "#b8463f") + dish_fruit(760, 432, .62)
                + candles([(220, 440, 64, 1.05), (560, 440, 56, .95)], t), Z_TABLE, cx, cz)
     s += warm_light(480, 250, 330, .34) + air() + f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".64"/>'
+    s += lens_flare([scr(220, 440, Z_TABLE, cx, cz)[:2] + (.5, 18 * scr(220, 440, Z_TABLE, cx, cz)[2]),
+                     scr(560, 440, Z_TABLE, cx, cz)[:2] + (.45, 16 * scr(560, 440, Z_TABLE, cx, cz)[2])])
     return s
 
 
@@ -711,6 +719,7 @@ def cam_finale_new(t, dur=10.0):
           f' font-weight="bold" fill="{GLD}" stroke="{OUT}" stroke-width="8">2027</text></g>')
     s += A.confetti(t, 26)
     s += warm_light(300, 330, 320, .34) + air() + f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".6"/>'
+    s += lens_flare([scr(470, 420, Z_TABLE, cx, cz)[:2] + (.6, 19 * scr(470, 420, Z_TABLE, cx, cz)[2])])
     return s
 
 
@@ -870,6 +879,8 @@ def cam_oblet(t, dur=12.0):
     s += plane(candles([(130, 452, 78, 1.05), (830, 456, 70, .95)], t), Z_NEAR, cx * 1.3, cz)
     s += warm_light(160 if sa < 0 else 820, 360, 320, .36) + air()
     s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".64"/>'
+    s += lens_flare([scr(130, 452, Z_NEAR, cx * 1.3, cz)[:2] + (.55, 18 * scr(130, 452, Z_NEAR, cx * 1.3, cz)[2]),
+                     scr(830, 456, Z_NEAR, cx * 1.3, cz)[:2] + (.5, 17 * scr(830, 456, Z_NEAR, cx * 1.3, cz)[2])])
     return s
 
 
@@ -888,8 +899,66 @@ def cam_svet(t, dur=10.0):
     s += plane(candles([(lx, 452, 82, 1.1)], t), Z_NEAR, cx, cz)
     s += warm_light(lx, 370, 300, .4) + air(.06)
     s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity=".66"/>'
+    s += lens_flare([scr(lx, 452, Z_NEAR, cx, cz)[:2] + (.7, 20 * scr(lx, 452, Z_NEAR, cx, cz)[2])])
     return s
 
+
+
+
+# ============ БЛОК 16 — АНАМОРФНЫЙ БЛИК В ОБЪЕКТИВ ============
+_FL = 0
+
+
+def lens_flare(srcs, cx=W / 2, cy=H / 2):
+    """Блик объектива от ярких источников в кадре: холодная горизонтальная
+    полоса с ядром, тёплый ореол, кольца-призраки по линии «источник — центр»
+    и слабая вуаль у оси. Кладётся ПОСЛЕДНИМ, на собранный кадр.
+    srcs — [(x, y, сила 0..1, радиус)]; больше четырёх не ставить,
+    слабее 0.012 не рисовать (правило лаборатории)."""
+    global _FL
+    out = ""
+    srcs = sorted((s for s in srcs if s[2] >= .012), key=lambda s: -s[2])[:4]
+    for x, y, k, r in srcs:
+        _FL += 1
+        a, b, c = f"fla{_FL}", f"flb{_FL}", f"flc{_FL}"
+        # у оси кадра блик разгорается, у края слабеет — так ведёт себя объектив
+        ax = 1.0 - min(1.0, (abs(x - cx) / (W * .62) + abs(y - cy) / (H * .9)))
+        kk = k * (.35 + .65 * max(0.0, ax))
+        L = r * 9.5
+        out += (f'<defs><linearGradient id="{a}" gradientUnits="userSpaceOnUse"'
+                f' x1="{x - L}" y1="0" x2="{x + L}" y2="0">'
+                f'<stop offset="0" stop-color="#bfe6ff" stop-opacity="0"/>'
+                f'<stop offset=".5" stop-color="#dff2ff" stop-opacity="{kk*.5:.3f}"/>'
+                f'<stop offset="1" stop-color="#bfe6ff" stop-opacity="0"/></linearGradient>'
+                f'<radialGradient id="{b}"><stop offset="0" stop-color="#ffe6b8" stop-opacity="{kk*.75:.3f}"/>'
+                f'<stop offset=".45" stop-color="#ffcf7a" stop-opacity="{kk*.28:.3f}"/>'
+                f'<stop offset="1" stop-color="#ffcf7a" stop-opacity="0"/></radialGradient>'
+                f'<radialGradient id="{c}"><stop offset="0" stop-color="#ffffff" stop-opacity="{kk*.9:.3f}"/>'
+                f'<stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient></defs>')
+        out += f'<rect x="{x - L:.1f}" y="{y - r*.42:.1f}" width="{2*L:.1f}" height="{r*.84:.1f}" fill="url(#{a})"/>'
+        out += f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="{r*2.6:.1f}" ry="{r*2.6:.1f}" fill="url(#{b})"/>'
+        out += f'<ellipse cx="{x:.1f}" cy="{y:.1f}" rx="{r*1.5:.1f}" ry="{r*.5:.1f}" fill="url(#{c})"/>'
+        # призраки по линии «источник — центр» и дальше за центр
+        for i, (p, rr, col, op) in enumerate(((.42, .5, "#9ad0ff", .16), (.78, .34, "#ffd1a0", .13),
+                                              (1.26, .62, "#9ae0b0", .10), (1.62, .42, "#ffb0c0", .09))):
+            gx, gy = x + (cx - x) * p, y + (cy - y) * p
+            out += (f'<circle cx="{gx:.1f}" cy="{gy:.1f}" r="{r*rr*1.9:.1f}" fill="none"'
+                    f' stroke="{col}" stroke-width="{max(2.0, r*rr*.7):.1f}" opacity="{kk*op:.3f}"/>')
+        if ax > .45:                      # вуаль, когда источник близко к оси
+            out += f'<rect width="{W}" height="{H}" fill="#cfe4ff" opacity="{kk*.05:.3f}"/>'
+    return out
+
+
+def scr(x, y, z, camx=0.0, camz=0.0, F=BASE_Z):
+    """Куда уезжает точка плана на экране — чтобы блик держался на источнике,
+    а не висел в воздухе, когда камера едет."""
+    k = F / max(60.0, z - camz)
+    return (W / 2 + (x - W / 2 - camx) * k, H / 2 + (y - H / 2) * k, k)
+
+
+def flare_from_candles(items, table_y, k=.55):
+    """Источники блика прямо из свечей сцены: координата пламени и сила."""
+    return [(x, table_y + dy - h * sc - 6 * sc, k * sc, 16 * sc) for x, dy, h, sc in items]
 
 
 # ============ ОСТАЛЬНЫЕ ХОДЫ КАМЕРЫ (блоки 6-15 лаборатории) ============
@@ -1133,7 +1202,7 @@ PUSH = ["salat_mayo", "pork", "meat_only", "cake_no", "two_floors", "heap", "lam
 SCENES = {
     "cam_room": cam_room, "cam_room2": cam_room2,
     "cam_koza": cam_koza, "cam_oblet": cam_oblet, "cam_svet": cam_svet,
-    "cam_pan": cam_pan, "cam_crane": cam_crane, "cam_wipe": cam_wipe, "cam_push": cam_push,
+    "cam_pan": cam_pan, "cam_wipe_s": (lambda t, dur=3.5: cam_wipe(t, 3.5)), "cam_crane": cam_crane, "cam_wipe": cam_wipe, "cam_push": cam_push,
     "cam_follow": cam_follow, "cam_tilt": cam_tilt, "cam_arc": cam_arc, "cam_down": cam_down,
     "cam_dutch": cam_dutch, "cam_vertigo": cam_vertigo, "cam_koza_eye": cam_koza_eye, "cam_koza_turn": cam_koza_turn,
     "cam_koza_door": cam_koza_door, "cam_koza_window": cam_koza_window,

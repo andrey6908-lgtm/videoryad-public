@@ -16,40 +16,68 @@ from art2 import (W, H, OUT, RED, ORA, TER, PCH, CRM, GLD, GRN, HRB, NGT, SNOW, 
 WIN = {"л": (70, 80, 200, 152), "п": (690, 80, 200, 152), "ц": (390, 70, 210, 160)}
 
 
+_MOVE = "dolly"          # какой ход камеры у текущей сцены (ставит вариант @ход)
+
+
+def camera(move, t, dur, z1=130.0, x0=-16.0, x1=14.0):
+    """Ход камеры для предметной сцены. Все взяты из лаборатории и переложены
+    на планы по глубине; «dolly» — прежний медленный наезд."""
+    k = A2.ease(t / max(.1, dur))
+    if move == "push":                      # удар под слово, назад не отходит
+        return dict(camz=A2.beats(t, ((0.5, 120.0), (max(2.8, dur * .55), 110.0))))
+    if move == "pan":                       # камера стоит и поворачивается
+        return dict(camz=40, pan=-130 + 260 * k, over=1.22)
+    if move == "crane":                     # подъём: раскрывает стол
+        return dict(camz=30 + 80 * k, tilt=90 - 170 * k, over=1.26)
+    if move == "down":                      # снижение к одному блюду
+        return dict(camz=20 + 140 * k, tilt=-130 + 180 * k, over=1.26)
+    if move == "tilt":                      # взгляд идёт снизу вверх
+        return dict(camz=30, tilt=-120 + 250 * k, over=1.3)
+    if move == "dutch":                     # кадр валится набок, потолок 9°
+        return dict(camz=30 + 70 * k, roll=8.0 * k, over=1.26)
+    if move == "arc":                       # обход по дуге ±16°
+        import math
+        a = math.radians(-16 + 32 * k)
+        return dict(camx=150 * math.sin(a), camz=60 - 20 * k)
+    if move == "vertigo":                   # герой того же размера, мир наваливается
+        camz = -700 * k
+        return dict(camz=camz, over=(Z_HERO - camz) / Z_HERO)
+    cx, cz, _ = A2.dolly(t, dur, z0=0, z1=z1, x0=x0, x1=x1)
+    return dict(camx=cx, camz=cz)
+
+
 def stage(t, dur, hero, *, bg="roomc", wins="п", tins=30, table=452, cloth=None,
           cand=((160, 0, 56, 1.0),), near=None, nearc=((120, 440, 76, 1.05),),
           z1=130, x0=-16, x1=14, light=(300, 360, 300, .32), dark=None, shadow=None,
-          sign=None, tree=None, vig=".66"):
+          sign=None, tree=None, vig=".66", flare=None, move=None):
     """Один предметный кадр: стена с окном, стол, герой, передний план, свет.
-    Камера одна и та же — медленный наезд планами по глубине."""
-    cx, cz, _ = dolly(t, dur, z0=0, z1=z1, x0=x0, x1=x1)
-    s = f'<rect width="{W}" height="{H}" fill="url(#{bg})"/>'
+    Ход камеры берётся из варианта сцены (`имя@ход`) или задаётся прямо."""
+    mv = move or _MOVE
+    cam = camera(mv, t, dur, z1, x0, x1)
     wall = "".join(art.window(*WIN[k], t) for k in wins) + art.tinsel(tins)
-    s += plane(wall, Z_WALL, cx, cz)
+    planes = [(Z_WALL, wall)]
     if tree:
-        s += plane(A2.tree_new(t, tree[0], tree[1], tree[2]), Z_TREE, cx, cz)
-    body = ""
-    if shadow:
-        body += ground_shadow(*shadow)
-    body += hero
-    s += plane(body, Z_HERO, cx, cz)
+        planes.append((Z_TREE, A2.tree_new(t, tree[0], tree[1], tree[2])))
+    planes.append((Z_HERO, (ground_shadow(*shadow) if shadow else "") + hero))
     if sign:
-        s += plane(no_sign(*sign), Z_HERO - 120, cx, cz)
-    tb = ""
+        planes.append((Z_HERO - 120, no_sign(*sign)))
     if table is not None:
         tb = art.table(table, cloth) if cloth else art.table(table)
         tb += candles([(c[0], table + c[1], c[2], c[3]) for c in cand], t)
-    if tb:
-        s += plane(tb, Z_TABLE, cx, cz)
+        planes.append((Z_TABLE, tb))
     nr = near or ""
     if nearc:
         nr += candles(nearc, t)
     if nr:
-        s += plane(nr, Z_NEAR, cx, cz)
+        planes.append((Z_NEAR, nr))
+    s = f'<rect width="{W}" height="{H}" fill="url(#{bg})"/>'
+    s += A2.rig(planes, **cam)
     s += warm_light(*light) + air()
     if dark:
         s += side_dark(*dark)
     s += f'<rect width="{W}" height="{H}" fill="url(#vign)" opacity="{vig}"/>'
+    if flare:
+        s += A2.lens_flare(flare)
     return s
 
 
@@ -458,7 +486,8 @@ def sc_shampanskoe(t, dur=8.0):
               + "".join(f'<circle cx="{-12+j*9}" cy="{-20-((t*32+j*17)%34):.0f}" r="2.6" fill="#fff" opacity=".7"/>'
                         for j in range(4)) + '</g>')
     return stage(t, dur, g(b, 470, 306, 1.0), bg="roomc", table=416, cloth="#b8463f",
-                 shadow=(470, 388, 200, 24, .34), light=(480, 340, 330, .32), z1=110)
+                 shadow=(470, 388, 200, 24, .34), light=(480, 340, 330, .32), z1=110,
+                 flare=[(150, 346, .5, 17), (820, 348, .45, 16)])
 
 
 # ------------------------- китайский блок -------------------------
@@ -580,7 +609,8 @@ def sc_fonari(t, dur=8.0):
               + '</g>')
     return stage(t, dur, g(b, 470, 240, 1.0), bg="roomr", table=440, cloth="#b8463f",
                  cand=((150, 0, 54, 1.0), (790, 0, 48, .9)), nearc=(),
-                 light=(470, 220, 360, .36), z1=100, vig=".6")
+                 light=(470, 220, 360, .36), z1=100, vig=".6",
+                 flare=[(240, 200, .55, 20), (560, 176, .5, 19), (790, 352, .4, 15)])
 
 
 def sc_kalendar(t, dur=8.0):
@@ -759,4 +789,24 @@ def sc_tri_zveri(t, dur=8.0):
 
 
 SCENES = {n[3:]: f for n, f in list(globals().items()) if n.startswith("sc_")}
+MOVES = ("push", "pan", "crane", "down", "tilt", "dutch", "arc", "vertigo")
+
+
+def _variant(fn, mv):
+    """Та же сцена, снятая другим ходом камеры: имя@ход."""
+    def f(t, dur=8.0, _fn=fn, _mv=mv):
+        global _MOVE
+        _MOVE = _mv
+        try:
+            return _fn(t, dur)
+        finally:
+            _MOVE = "dolly"
+    return f
+
+
+for _n, _f in list(SCENES.items()):
+    if _n == "sravnenie":
+        continue
+    for _m in MOVES:
+        SCENES[f"{_n}@{_m}"] = _variant(_f, _m)
 NO_GLARE = {"sravnenie"}
