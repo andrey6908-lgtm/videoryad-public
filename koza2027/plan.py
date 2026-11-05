@@ -764,6 +764,11 @@ for _i, (_n, _t1, _s1, _s2) in enumerate(_MOVES):
                       _a + 0.5, _a + 9.4))
 
 # ============================ выбор части ============================
+# ============ ПРОБНИК РЕЦЕПТА: «САЛАТ ОЛИВЬЕ», 30 с, немой ============
+import recept as _RC
+SHOTSR, OVERLAYSR, TOTALR = _RC.SHOTS, _RC.OVERLAYS, _RC.TOTAL
+
+
 _PARTS = {
     "1-3": ("chasti1-3", SHOTS13, OVERLAYS13, TOTAL13, STOCK13),
     "4":   ("chast4",    SHOTS4,  OVERLAYS4,  TOTAL4,  []),
@@ -772,6 +777,7 @@ _PARTS = {
     "proba": ("proba",   SHOTSP,  OVERLAYSP,  TOTALP,  []),
     "proba2": ("proba2", SHOTSE,  OVERLAYSE,  TOTALE,  []),
     "proba3": ("proba3", SHOTSM,  OVERLAYSM,  TOTALM,  []),
+    "recept": ("recept", SHOTSR,  OVERLAYSR,  TOTALR,  []),
     "n1": _cut(0), "n2": _cut(1), "n3": _cut(2), "n4": _cut(3),
 }
 if PART not in _PARTS:

@@ -4012,3 +4012,11 @@ try:
     NO_GLARE |= _a3.NO_GLARE
 except Exception as _e:
     print("art3 не подключён:", _e)
+
+# ---- пробник рецепта: приготовление оливье (art4.py) ----
+try:
+    import art4 as _a4
+    SCENES.update(_a4.SCENES)
+    NO_GLARE |= _a4.NO_GLARE
+except Exception as _e:
+    print("art4 не подключён:", _e)
