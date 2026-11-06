@@ -1,0 +1,98 @@
+name: elka-render
+# Ролик «Ёлка 2027»: 23 178 кадров, 16 машин рисуют, семнадцатая склеивает и
+# кладёт живые вставки. Звука здесь нет — озвучка подмешивается на машине.
+on:
+  workflow_dispatch:
+  push:
+    paths: ["elka2027/**"]
+concurrency:
+  group: elka-render-${{ github.sha }}
+  cancel-in-progress: false
+jobs:
+  frames:
+    runs-on: ubuntu-latest
+    timeout-minutes: 70
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        shard: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+    steps:
+      - uses: actions/checkout@v4
+      - name: системные пакеты
+        timeout-minutes: 10
+        run: |
+          command -v ffmpeg >/dev/null || for i in 1 2; do
+            timeout 90 sudo apt-get update -qq || true
+            timeout 150 sudo apt-get install -y -qq --no-install-recommends ffmpeg || true
+            command -v ffmpeg >/dev/null && break
+          done
+          if ! command -v ffmpeg >/dev/null; then
+            curl -fsSL --retry 3 -o /tmp/ff.tar.xz https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
+              && tar -xJf /tmp/ff.tar.xz -C /tmp \
+              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/ || true
+          fi
+          python3 -c "import ctypes;ctypes.CDLL('libcairo.so.2')" 2>/dev/null \
+            || timeout 150 sudo apt-get install -y -qq --no-install-recommends libcairo2 || true
+          fc-list | grep -qi dejavu \
+            || timeout 150 sudo apt-get install -y -qq --no-install-recommends fonts-dejavu-core || true
+          command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install --quiet cairosvg pillow
+      - name: кадры
+        working-directory: elka2027
+        run: python3 render.py "$GITHUB_WORKSPACE/parts" --shard ${{ matrix.shard }}/16
+      - name: страж
+        run: |
+          f=parts/seg$(printf %02d ${{ matrix.shard }}).mp4
+          [ -s "$f" ] || { echo "::error::часть не отрисована"; exit 1; }
+          echo "часть: $(( $(stat -c%s "$f") / 1024 )) КБ"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: elka-seg-${{ matrix.shard }}
+          path: parts/seg*.mp4
+          retention-days: 1
+
+  finish:
+    needs: frames
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: системные пакеты
+        timeout-minutes: 10
+        run: |
+          command -v ffmpeg >/dev/null || for i in 1 2; do
+            timeout 90 sudo apt-get update -qq || true
+            timeout 150 sudo apt-get install -y -qq --no-install-recommends ffmpeg || true
+            command -v ffmpeg >/dev/null && break
+          done
+          if ! command -v ffmpeg >/dev/null; then
+            curl -fsSL --retry 3 -o /tmp/ff.tar.xz https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
+              && tar -xJf /tmp/ff.tar.xz -C /tmp \
+              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/ || true
+          fi
+          command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'elka-seg-*', path: parts, merge-multiple: true }
+      - name: склейка и живые вставки
+        working-directory: elka2027
+        run: python3 finish.py "$GITHUB_WORKSPACE/parts" "$GITHUB_WORKSPACE/elka_out"
+      - name: страж
+        run: |
+          f=$(ls elka_out/*.mp4 | head -1)
+          sz=$(stat -c%s "$f"); echo "файл: $f, $((sz/1024)) КБ"
+          [ "$sz" -gt 20000000 ] || { echo "::error::файл подозрительно мал"; exit 1; }
+          d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")
+          echo "длительность: $d"
+          python3 -c "import sys;d=float('$d');sys.exit(0 if 920<d<935 else 1)" \
+            || { echo "::error::длительность не 15:27"; exit 1; }
+          cat elka_out/report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: elka2027-nemoe
+          path: elka_out
+          retention-days: 3
