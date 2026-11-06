@@ -1,0 +1,253 @@
+[
+ {
+  "scene": 10,
+  "view": "split",
+  "dur": 11.39,
+  "anim": 2.0,
+  "tail_zoom": 0.06,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards_src/zel_portret.jpg",
+   "text": "Илон Маск не имеет права влиять на то, кто должен быть у власти на Украине",
+   "author": "Владимир Зеленский",
+   "role": "президент Украины",
+   "accent": "Илон Маск не имеет права влиять",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 18,
+  "view": "pull",
+  "dur": 13.36,
+  "anim": 2.6,
+  "tail_zoom": 0.05,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Даже неправильный выбор лучше, чем когда тебе кого-то навязывают",
+   "author": "Владимир Зеленский",
+   "role": "президент Украины",
+   "source": "интервью ZDF, 5 ноября 2026",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 27,
+  "view": "photo",
+  "dur": 11.09,
+  "anim": 11.09,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "watermark": "ПЛАНЕТА",
+   "photo": "cards_src/zel_slaboe.jpg",
+   "title": "Онлайн-голосование: сказано и отложено",
+   "lines": [
+    "вариант есть — парламент готовит решения",
+    "военные на фронте голосовать не могут",
+    "без них выборы несправедливы"
+   ]
+  }
+ },
+ {
+  "scene": 33,
+  "view": "cinematic.evidence_wall",
+  "dur": 12.64,
+  "anim": 12.64,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "shots": [
+    [
+     "cards_src/kapitoliy.jpg",
+     240,
+     250,
+     -4,
+     "решения Конгресса"
+    ],
+    [
+     "cards_src/sampt.jpg",
+     800,
+     250,
+     3,
+     "поставки оружия"
+    ],
+    [
+     "cards_src/berlaymont.jpg",
+     1360,
+     250,
+     -2,
+     "деньги Европы"
+    ],
+    [
+     "cards_src/ep_zal.jpg",
+     240,
+     580,
+     4,
+     "голоса парламентов"
+    ]
+   ],
+   "title": "Чем влияют на самом деле",
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 39,
+  "view": "poster.poster",
+  "dur": 12.96,
+  "anim": 12.96,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "kick": "версия аналитика Сергея Павлюченко",
+   "title": "Что, по этой версии, требует Москва",
+   "bottom": "территория здесь — лишь один пункт из списка",
+   "facts": [
+    {
+     "label": "Донбасс",
+     "value": "часть под Киевом остаётся"
+    },
+    {
+     "label": "Армия Украины",
+     "value": "резкое сокращение"
+    },
+    {
+     "label": "Тяжёлые вооружения",
+     "value": "сокращение"
+    },
+    {
+     "label": "Русский язык и церковь",
+     "value": "законодательные гарантии"
+    }
+   ],
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 45,
+  "view": "film.film_strip",
+  "dur": 11.68,
+  "anim": 11.68,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "shots": [
+    "cards_src/ucheniya.jpg",
+    "cards_src/eurofighter.jpg",
+    "cards_src/berlaymont.jpg"
+   ],
+   "title": "Список не кончается на территории",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 52,
+  "view": "film.film_single",
+  "dur": 11.6,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards_src/ep_zal.jpg",
+   "title": "Механизм помощи работает с 2022 года",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 60,
+  "view": "bars",
+  "dur": 11.72,
+  "anim": 11.72,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_bars.py",
+  "cfg": {
+   "title": "Кто сколько даёт Киеву, млн евро",
+   "caption": "деньги разного назначения, в одну кучу не складываются",
+   "seconds": 11.72,
+   "bars": [
+    {
+     "label": "ИСПАНИЯ, НОВЫЙ ПАКЕТ",
+     "value": 0.1,
+     "color": "B92526"
+    },
+    {
+     "label": "ОБЩАЯ ЕВРОПЕЙСКАЯ ПОМОЩЬ",
+     "value": 1.0,
+     "color": "EABD23"
+    },
+    {
+     "label": "ГЕРМАНИЯ, ЭНЕРГЕТИКА",
+     "value": 0.05,
+     "color": "8C8C92"
+    }
+   ]
+  }
+ },
+ {
+  "scene": 68,
+  "view": "slider",
+  "dur": 11.6,
+  "anim": 11.6,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_slider.py",
+  "cfg": {
+   "title": "Доступ Киева к Starshield",
+   "min": 2026.0,
+   "max": 2028.0,
+   "low": 2026.0,
+   "high": 2028.0,
+   "marker_value": 2027.0,
+   "marker_display": "2027",
+   "seconds": 11.6,
+   "range_label": "от сегодняшнего дня до конца контракта",
+   "caption": "договариваться о продлении Киев хочет заранее",
+   "source": ""
+  }
+ },
+ {
+  "scene": 74,
+  "view": "cinematic.depth_of_field",
+  "dur": 11.28,
+  "anim": 11.28,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards_src/pentagon.jpg",
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 80,
+  "view": "marker_serif",
+  "dur": 12.72,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Достаточно изменить условия доступа — и вся красивая теория о невмешательстве сталкивается с реальностью",
+   "accent": "изменить условия доступа",
+   "author": "о механизме влияния",
+   "source": "6 ноября 2026",
+   "watermark": "ПЛАНЕТА"
+  }
+ }
+]
