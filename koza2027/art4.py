@@ -59,7 +59,7 @@ def knife(x, y, ang, L=150, in_hand=True):
          f'<rect x="-74" y="-9" width="80" height="26" rx="8" fill="{HAND}"{ST(6)}/>'
          f'<rect x="-66" y="-3" width="62" height="6" rx="3" fill="#8a5527" opacity=".8"/>')
     if in_hand:
-        b += hand(-34, 2, 4, grip=1.0, s=0.92)
+        b += hand(-30, -10, 6, grip=1.0, s=0.95)
     return f'<g transform="translate({x},{y}) rotate({ang:.2f})">{b}</g>'
 
 
@@ -278,22 +278,37 @@ def pot_potato(t, w=104, h=90):
 
 
 def hand(x, y, ang=0.0, flip=False, grip=0.0, s=1.0):
-    """РУКА В КАДРЕ. Кулак-варежка с большим пальцем и рукав — в том же
-    плоском стиле, что люди в ролике: пальцы по одному здесь не читаются и
-    только рвут контур. `grip` 0..1 — кулак сжат вокруг ручки (нож) или
-    раскрыт ладонью вниз (придерживает овощ).
+    """РУКА В КАДРЕ. Ладонь с пальцами, большой палец и короткий рукав.
+
+    Первый вариант 06.11 был забракован на готовом кадре: рукав оказался
+    крупнее кисти, пальцев не было вовсе — рука читалась серо-синей коробкой.
+    Поэтому теперь главное в рисунке — ЛАДОНЬ, рукав только намечен сзади, а
+    пальцы нарисованы по одному: в плоском стиле их видно, если они
+    сцеплены в общий контур, а не торчат спичками.
+
+    `grip` 0..1 — кулак сжат (держит ручку ножа, банку) или раскрыт
+    (придерживает овощ).
     """
     f = -1 if flip else 1
-    pal = 1.0 - 0.18*grip
-    b = (f'<path d="M-52 -16 L-6 -22 L-6 22 L-52 18 Z" fill="{SLEEVE}"{ST(6)}/>'
-         f'<path d="M-54 -18 L-46 -20 L-46 20 L-54 18 Z" fill="#3f4d60"{ST(5)}/>'
-         f'<ellipse cx="14" cy="0" rx="{30*pal:.0f}" ry="{25*pal:.0f}" fill="{SKIN}"{ST(6)}/>'
-         f'<ellipse cx="{4 + 10*grip:.0f}" cy="{-18 + 6*grip:.0f}" rx="12" ry="9"'
-         f' fill="{SKIN}"{ST(5)}/>')                     # большой палец
-    if grip < 0.5:                                          # раскрытая ладонь: костяшки
-        for i in range(3):
-            b += (f'<path d="M{24 + i*2} {-13 + i*12} q10 1 12 5" fill="none"'
-                  f' stroke="{OUT}" stroke-width="3.4" opacity=".55"/>')
+    sp = 1.0 - 0.30*grip                       # сжатый кулак короче
+    b = (f'<rect x="-64" y="-20" width="44" height="40" rx="12"'
+         f' fill="{SLEEVE}"{ST(6)}/>'
+         f'<rect x="-30" y="-22" width="12" height="44" rx="6" fill="#3f4d60"{ST(5)}/>')
+    # ладонь
+    b += f'<rect x="-26" y="-26" width="{52*sp:.0f}" height="52" rx="18" fill="{SKIN}"{ST(6)}/>'
+    # пальцы: три подушечки по хватающему краю
+    for i in range(3):
+        fy = -17 + i*17
+        fx = -26 + 52*sp
+        b += (f'<rect x="{fx-6:.0f}" y="{fy:.0f}" width="{22 - 9*grip:.0f}" height="15"'
+              f' rx="7" fill="{SKIN}"{ST(5)}/>')
+    # большой палец сверху
+    b += (f'<rect x="{-14 + 10*grip:.0f}" y="-40" width="30" height="16" rx="8"'
+          f' fill="{SKIN}"{ST(5)}/>')
+    if grip < 0.5:                             # раскрытая ладонь: складки
+        for i in range(2):
+            b += (f'<path d="M{-6 + i*10} -10 q6 10 0 20" fill="none"'
+                  f' stroke="{OUT}" stroke-width="3" opacity=".45"/>')
     return (f'<g transform="translate({x},{y}) rotate({ang:.1f}) scale({f*s},{s})">'
             f'{b}</g>')
 
@@ -470,7 +485,7 @@ def sc_r_goroshek(t, dur=8.0):
         b += pea_stream(-96, -104, 18, -40, t, 7)
     b += peas(42, -44, 11, 46, 0.6)
     b += pea_can(-124, -92, 56, 70, True, k)
-    b += hand(-196, -74, 16, grip=0.9, s=1.0)
+    b += hand(-150, -108, 24, grip=1.0, s=1.15)
     return A3.stage(t, dur, g(b, 470, 350, 1.08), bg="roomc", table=396, cloth="#b8463f",
                     shadow=(470, 404, 206, 30, .42), light=(600, 330, 300, .32),
                     dark=("left", .20), z1=112)
@@ -483,7 +498,7 @@ def sc_r_mayonez(t, dur=8.0):
     if k > 0.4:
         b += mayo_stream(-6, -96, -54, (t - 1.6)*0.9, 14)
     b += mayo(-104, -104, 58, 112, k)
-    b += hand(-178, -92, 14, grip=0.9, s=1.0)
+    b += hand(-132, -126, 20, grip=1.0, s=1.15)
     return A3.stage(t, dur, g(b, 470, 350, 1.08), bg="roomr", table=396, cloth="#b8463f",
                     shadow=(470, 404, 206, 30, .42), light=(640, 320, 300, .34),
                     dark=("left", .20), z1=112)
