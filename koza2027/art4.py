@@ -27,6 +27,15 @@ POTIN = "#f2e3b8"
 ONION = "#f2ead6"
 ONSKN = "#d8b45e"
 YOLK  = "#f0c43c"
+PICK  = "#5f7f3a"          # солёный огурец: тусклая зелень, не салатовая
+PICKI = "#cfe0a6"          # мякоть на срезе
+PEA   = "#7fa83e"
+PEAL  = "#a8c960"
+MAYO  = "#fbf6e8"
+MAYOC = "#2f6fb0"          # крышка и этикетка майонеза
+TIN   = "#b9c2c8"          # жесть банки
+SKIN  = "#eec194"          # кожа рук — та же, что у людей в ролике
+SLEEVE = "#53647a"
 
 
 # --------------------------------------------------------------- предметы
@@ -38,12 +47,19 @@ def board(rx=228, ry=36):
             f'<ellipse cx="{rx*0.74:.0f}" cy="{-ry*0.1:.0f}" rx="13" ry="9" fill="#5c3a1c"{ST(4)}/>')
 
 
-def knife(x, y, ang, L=150):
-    """Нож: лезвие и ручка. Вращается вокруг конца ручки — как в руке."""
+def knife(x, y, ang, L=150, in_hand=True):
+    """Нож: лезвие и ручка. Вращается вокруг конца ручки — как в руке.
+
+    `in_hand` (06.11): РУКА ДЕРЖИТ НОЖ. До этого дня нож качался сам по себе —
+    его замечание «рук в кадре нет вообще». Рука едет вместе с ножом, потому
+    что лежит внутри того же поворота.
+    """
     b = (f'<path d="M0 -4 L{L} -13 L{L} 11 L0 16 Z" fill="{BLADE}"{ST(6)}/>'
          f'<path d="M8 -1 L{L-10} -9" stroke="#eef3f7" stroke-width="4" opacity=".8"/>'
          f'<rect x="-74" y="-9" width="80" height="26" rx="8" fill="{HAND}"{ST(6)}/>'
          f'<rect x="-66" y="-3" width="62" height="6" rx="3" fill="#8a5527" opacity=".8"/>')
+    if in_hand:
+        b += hand(-34, 2, 4, grip=1.0, s=0.92)
     return f'<g transform="translate({x},{y}) rotate({ang:.2f})">{b}</g>'
 
 
@@ -137,6 +153,143 @@ def pot(t, w=96, h=84):
               ' stroke-linecap="round"/>')
     b += A.smoke(0, -h - 6, t, 3, 150, 1.0, .30)
     return b
+
+
+def pickle(x, y, L=104, r=19, ang=-10):
+    """Солёный огурец: пупырчатый, тусклый зелёный — он не свежий."""
+    b = (f'<ellipse cx="0" cy="0" rx="{L/2:.0f}" ry="{r}" fill="{PICK}"{ST(6)}/>'
+         f'<ellipse cx="{-L*0.12:.0f}" cy="{-r*0.35:.0f}" rx="{L*0.26:.0f}" ry="{r*0.3:.0f}"'
+         f' fill="#86a357" opacity=".55"/>')
+    for i in range(5):                      # пупырышки
+        b += (f'<circle cx="{-L*0.36 + i*L*0.18:.0f}" cy="{-r*0.1 + (i % 2)*r*0.45:.0f}"'
+              f' r="3" fill="#3f5c24"/>')
+    return f'<g transform="translate({x},{y}) rotate({ang})">{b}</g>'
+
+
+def pickle_round(x, y, r=14):
+    """Кружок огурца: светлая мякоть, тёмная кожура, семечки."""
+    b = (f'<circle cx="0" cy="0" r="{r}" fill="{PICK}"{ST(5)}/>'
+         f'<circle cx="0" cy="0" r="{r-4}" fill="{PICKI}"/>')
+    for i in range(4):
+        a = i*1.57
+        b += (f'<ellipse cx="{math.cos(a)*r*0.4:.1f}" cy="{math.sin(a)*r*0.4:.1f}"'
+              f' rx="2.4" ry="3.4" fill="#9ab96a"/>')
+    return f'<g transform="translate({x},{y})">{b}</g>'
+
+
+def peas(x, y, n=9, spread=42, seed=0.0):
+    """Горсть горошка: шарики с бликом, разложены без решётки."""
+    b = ""
+    for i in range(n):
+        a = seed + i*2.39996                      # золотой угол — кучка без рядов
+        rr = spread*math.sqrt((i + 0.5)/n)
+        px, py = math.cos(a)*rr, math.sin(a)*rr*0.42
+        b += (f'<circle cx="{px:.0f}" cy="{py:.0f}" r="{8 if i % 3 else 9}"'
+              f' fill="{PEA}"{ST(4)}/>'
+              f'<circle cx="{px-2.6:.0f}" cy="{py-2.6:.0f}" r="2.6" fill="{PEAL}"/>')
+    return f'<g transform="translate({x},{y})">{b}</g>'
+
+
+def pea_can(x, y, w=54, h=68, open_=True, pour=0.0):
+    """Банка горошка. `pour` 0..1 — наклон и струя из банки в миску."""
+    ang = -118*pour
+    b = (f'<rect x="{-w/2:.0f}" y="{-h}" width="{w}" height="{h}" rx="6" fill="{TIN}"{ST(6)}/>'
+         f'<rect x="{-w/2+4:.0f}" y="{-h*0.74:.0f}" width="{w-8}" height="{h*0.42:.0f}"'
+         f' rx="3" fill="{PEA}" opacity=".9"{ST(4)}/>'
+         f'<ellipse cx="0" cy="{-h}" rx="{w/2:.0f}" ry="{w*0.17:.0f}"'
+         f' fill="{"#8e989f" if open_ else TIN}"{ST(5)}/>')
+    if open_:
+        b += (f'<path d="M{-w/2+5} {-h-2} C{-w*0.1:.0f} {-h-20} {w*0.2:.0f} {-h-16}'
+              f' {w/2-4:.0f} {-h-6}" fill="none" stroke="{TIN}" stroke-width="6"'
+              f' stroke-linecap="round"/>')          # отогнутая крышка
+    return f'<g transform="translate({x},{y}) rotate({ang:.1f})">{b}</g>'
+
+
+def pea_stream(x0, y0, x1, y1, t, n=7):
+    """Струя горошка из банки в миску: шарики летят по дуге, своя фаза у каждого."""
+    b = ""
+    for i in range(n):
+        p = ((t*1.25) + i/n) % 1.0
+        px = x0 + (x1 - x0)*p
+        py = y0 + (y1 - y0)*p + 46*math.sin(math.pi*p)*-1
+        b += (f'<circle cx="{px:.0f}" cy="{py:.0f}" r="7" fill="{PEA}"{ST(4)}/>'
+              f'<circle cx="{px-2:.0f}" cy="{py-2:.0f}" r="2.2" fill="{PEAL}"/>')
+    return b
+
+
+def mayo(x, y, w=58, h=112, squeeze=0.0):
+    """Банка майонеза с крышкой и этикеткой. `squeeze` 0..1 — наклон над миской."""
+    ang = -62*squeeze
+    b = (f'<path d="M{-w/2} {-h*0.78:.0f} C{-w/2} {-h} {w/2} {-h} {w/2} {-h*0.78:.0f}'
+         f' L{w/2} -6 C{w/2} 6 {-w/2} 6 {-w/2} -6 Z" fill="{MAYO}"{ST(6)}/>'
+         f'<rect x="{-w/2+3:.0f}" y="{-h*0.56:.0f}" width="{w-6}" height="{h*0.3:.0f}"'
+         f' rx="4" fill="{MAYOC}" opacity=".92"{ST(4)}/>'
+         f'<rect x="{-w/2+9:.0f}" y="{-h*0.47:.0f}" width="{w-18}" height="7" rx="3"'
+         f' fill="{MAYO}" opacity=".9"/>'
+         f'<rect x="{-w*0.34:.0f}" y="{-h-12}" width="{w*0.68:.0f}" height="16" rx="4"'
+         f' fill="{MAYOC}"{ST(5)}/>')
+    return f'<g transform="translate({x},{y}) rotate({ang:.1f})">{b}</g>'
+
+
+def mayo_stream(x, y0, y1, t, w=13):
+    """Струя майонеза: лента, которая удлиняется и чуть качается."""
+    k = min(1.0, max(0.0, t))
+    yb = y0 + (y1 - y0)*A2.ease(k)
+    sw = 5*math.sin(t*4.2)
+    return (f'<path d="M{x} {y0} C{x+sw:.1f} {(y0+yb)/2:.0f} {x-sw:.1f} {(y0+yb)/2:.0f}'
+            f' {x} {yb:.0f}" fill="none" stroke="{MAYO}" stroke-width="{w}"'
+            f' stroke-linecap="round"{ST(4)}/>')
+
+
+def pot_potato(t, w=104, h=90):
+    """Кастрюля для картошки: та же вода и пар, но внутри картошка, а не яйца.
+    Её не хватало буквально: шаг «отварить» показывать было нечем."""
+    b = (f'<path d="M{-w} {-h} L{-w*0.86:.0f} 12 C{-w*0.86:.0f} 30 {w*0.86:.0f} 30 {w*0.86:.0f} 12'
+         f' L{w} {-h} Z" fill="{POT}"{ST(7)}/>'
+         f'<path d="M{-w*0.5:.0f} {-h+8} L{-w*0.42:.0f} 8" stroke="#b7bfc6" stroke-width="7" opacity=".55"/>'
+         f'<ellipse cx="0" cy="{-h}" rx="{w}" ry="{w*0.26:.0f}" fill="{POTD}"{ST(7)}/>'
+         f'<ellipse cx="0" cy="{-h+5}" rx="{w*0.86:.0f}" ry="{w*0.2:.0f}" fill="{WATER}"{ST(5)}/>')
+    for i, (ex, ez, rr) in enumerate(((-52, 0.0, 30), (-8, -4.0, 27), (40, 1.0, 29),
+                                      (14, 3.0, 24))):
+        bob = 3.0*math.sin(t*1.7 + i*1.3)         # картошка покачивается в кипятке
+        b += potato(ex, -h + 4 + ez + bob, rr, raw=False)
+    for i in range(7):
+        p = ((t*0.9) + i*0.137) % 1.0
+        rr = 3.0 + 5.0*p
+        op = max(0.0, 1.0 - p)*0.85
+        bx = -w*0.6 + i*w*0.2 + 6*A.w(t, 1.9, i*0.21)
+        b += (f'<circle cx="{bx:.0f}" cy="{-h+6-p*7:.0f}" r="{rr:.1f}" fill="#dff0fa"'
+              f' opacity="{op:.2f}" stroke="{OUT}" stroke-width="1.6"/>')
+    for sx in (-1, 1):
+        b += (f'<path d="M{sx*(w+4)} {-h+26} C{sx*(w+30)} {-h+26} {sx*(w+30)} {-h-4}'
+              f' {sx*(w+4)} {-h-2}" fill="none" stroke="{OUT}" stroke-width="15"'
+              ' stroke-linecap="round"/>'
+              f'<path d="M{sx*(w+4)} {-h+26} C{sx*(w+30)} {-h+26} {sx*(w+30)} {-h-4}'
+              f' {sx*(w+4)} {-h-2}" fill="none" stroke="{POTD}" stroke-width="9"'
+              ' stroke-linecap="round"/>')
+    b += A.smoke(0, -h - 6, t, 3, 150, 1.0, .30)
+    return b
+
+
+def hand(x, y, ang=0.0, flip=False, grip=0.0, s=1.0):
+    """РУКА В КАДРЕ. Кулак-варежка с большим пальцем и рукав — в том же
+    плоском стиле, что люди в ролике: пальцы по одному здесь не читаются и
+    только рвут контур. `grip` 0..1 — кулак сжат вокруг ручки (нож) или
+    раскрыт ладонью вниз (придерживает овощ).
+    """
+    f = -1 if flip else 1
+    pal = 1.0 - 0.18*grip
+    b = (f'<path d="M-52 -16 L-6 -22 L-6 22 L-52 18 Z" fill="{SLEEVE}"{ST(6)}/>'
+         f'<path d="M-54 -18 L-46 -20 L-46 20 L-54 18 Z" fill="#3f4d60"{ST(5)}/>'
+         f'<ellipse cx="14" cy="0" rx="{30*pal:.0f}" ry="{25*pal:.0f}" fill="{SKIN}"{ST(6)}/>'
+         f'<ellipse cx="{4 + 10*grip:.0f}" cy="{-18 + 6*grip:.0f}" rx="12" ry="9"'
+         f' fill="{SKIN}"{ST(5)}/>')                     # большой палец
+    if grip < 0.5:                                          # раскрытая ладонь: костяшки
+        for i in range(3):
+            b += (f'<path d="M{24 + i*2} {-13 + i*12} q10 1 12 5" fill="none"'
+                  f' stroke="{OUT}" stroke-width="3.4" opacity=".55"/>')
+    return (f'<g transform="translate({x},{y}) rotate({ang:.1f}) scale({f*s},{s})">'
+            f'{b}</g>')
 
 
 def chop(t, period, x0, step, nmax):
@@ -274,10 +427,70 @@ def sc_r_stol(t, dur=8.0):
     b += onion_half(-16, -8, 38)
     b += carrot(72, -18, 100, 23, -12)
     b += egg(170, -24, 21) + egg(206, -14, 20)
+    b += pickle(-196, 30, 96, 17, -7) + pickle(-134, 38, 88, 16, 6)
+    b += pea_can(246, 24, 50, 62, False)
+    b += mayo(300, 30, 52, 100)
     b += knife(-250, -30, -8, 140)
     return A3.stage(t, dur, g(b, 470, 352, 1.06), bg="roomc", table=392, cloth="#b8463f",
                     shadow=(470, 400, 236, 34, .40), light=(470, 330, 320, .32),
                     dark=("left", .20), z1=118)
+
+
+def sc_r_ogurcy(t, dur=8.0):
+    """Шаг: солёные огурцы кружком. Нож рубит, левая рука придерживает огурец."""
+    X0, STEP, NMAX, PER = -70.0, 20.0, 7, 0.58
+    ang, kx, n, p = chop(t, PER, X0, STEP, NMAX)
+    b = board(236, 36)
+    b += _clip("co", X0 + STEP*n)
+    b += f'<g clip-path="url(#co)">' + pickle(62, -14, 210, 22, 0) + '</g>'
+    if n:
+        b += _cut_face(X0 + STEP*n, -14, 20, PICKI)
+    for i in range(n):
+        tc = (i + 1 - 0.68)*PER
+        b += pickle_round(-190 + i*26, -6 + _drop(t, tc), 13)
+    # левая рука придерживает остаток огурца и отодвигается вместе с ножом
+    b += hand(min(176.0, X0 + STEP*n + 112), -16, -6, flip=True, grip=0.25, s=0.95)
+    b += knife(kx, -6, ang, 150)
+    return A3.stage(t, dur, g(b, 470, 356, 1.12), bg="roomb", table=396, cloth="#a8512c",
+                    shadow=(470, 404, 230, 32, .42), light=(360, 330, 300, .32),
+                    dark=("right", .20), z1=112, x0=10, x1=-8)
+
+
+def sc_r_goroshek(t, dur=8.0):
+    """Шаг: зелёный горошек. Рука наклоняет банку, горошек сыплется в миску."""
+    k = A2.ease(min(1.0, max(0.0, (t - 0.8)/1.1)))          # банка наклоняется
+    b = art._bowl(40, -10, 150, 60, "#efe7d2", heap=0.7, berry=PEA)
+    if k > 0.35:
+        b += pea_stream(-96, -104, 18, -40, t, 7)
+    b += peas(42, -44, 11, 46, 0.6)
+    b += pea_can(-124, -92, 56, 70, True, k)
+    b += hand(-196, -74, 16, grip=0.9, s=1.0)
+    return A3.stage(t, dur, g(b, 470, 350, 1.08), bg="roomc", table=396, cloth="#b8463f",
+                    shadow=(470, 404, 206, 30, .42), light=(600, 330, 300, .32),
+                    dark=("left", .20), z1=112)
+
+
+def sc_r_mayonez(t, dur=8.0):
+    """Шаг: заправить майонезом. Рука наклоняет банку, лента ложится на салат."""
+    k = A2.ease(min(1.0, max(0.0, (t - 0.9)/1.0)))
+    b = art._bowl(40, -10, 150, 60, "#efe7d2", heap=0.72, berry=PEA)
+    if k > 0.4:
+        b += mayo_stream(-6, -96, -54, (t - 1.6)*0.9, 14)
+    b += mayo(-104, -104, 58, 112, k)
+    b += hand(-178, -92, 14, grip=0.9, s=1.0)
+    return A3.stage(t, dur, g(b, 470, 350, 1.08), bg="roomr", table=396, cloth="#b8463f",
+                    shadow=(470, 404, 206, 30, .42), light=(640, 320, 300, .34),
+                    dark=("left", .20), z1=112)
+
+
+def sc_r_kastryulya(t, dur=8.0):
+    """Шаг: картошку отварить. Кастрюля кипит, картошка покачивается, идёт пар."""
+    b = f'<ellipse cx="0" cy="26" rx="158" ry="32" fill="#000000" opacity=".28"/>'
+    b += pot_potato(t, 108, 92)
+    b += (f'<g transform="translate(228,6)">' + board(88, 19) +
+          potato(-30, -14, 24, raw=True) + potato(14, -10, 21, raw=True) + '</g>')
+    return A3.stage(t, dur, g(b, 440, 340, 1.04), bg="roomb", table=392, cloth="#a8512c",
+                    light=(420, 300, 320, .34), dark=("right", .20), z1=116)
 
 
 SCENES = {n[3:]: f for n, f in list(globals().items()) if n.startswith("sc_")}
