@@ -1,0 +1,105 @@
+name: polnolunie-render
+# Пробник формата ПОЛНОЛУНИЕ: 30 секунд, 750 кадров, шесть машин.
+# Каждый кадр рисуется вектором заново — поэтому зум плавный, персонажи живые,
+# а восемь эффектов текста АНИМИРОВАНЫ (они нарисованы внутри кадра, а не
+# положены сверху готовой картинкой). Звука здесь нет.
+on:
+  workflow_dispatch:
+  push:
+    paths: ["polnolunie/**"]
+concurrency:
+  group: polnolunie-render-${{ github.sha }}
+  cancel-in-progress: false
+jobs:
+  frames:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        shard: [1,2,3,4,5,6]
+    steps:
+      - uses: actions/checkout@v4
+      - name: системные пакеты
+        timeout-minutes: 10
+        run: |
+          # зеркала apt на раннерах то отваливаются, то висят: два коротких
+          # захода, в крайнем случае статическая сборка одним файлом
+          command -v ffmpeg >/dev/null || for i in 1 2; do
+            timeout 90 sudo apt-get update -qq || true
+            timeout 150 sudo apt-get install -y -qq --no-install-recommends ffmpeg || true
+            command -v ffmpeg >/dev/null && break
+          done
+          if ! command -v ffmpeg >/dev/null; then
+            curl -fsSL --retry 3 -o /tmp/ff.tar.xz https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
+              && tar -xJf /tmp/ff.tar.xz -C /tmp \
+              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/ || true
+          fi
+          python3 -c "import ctypes;ctypes.CDLL('libcairo.so.2')" 2>/dev/null \
+            || timeout 150 sudo apt-get install -y -qq --no-install-recommends libcairo2 || true
+          fc-list | grep -qi dejavu \
+            || timeout 150 sudo apt-get install -y -qq --no-install-recommends fonts-dejavu-core || true
+          command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
+          ls /usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf \
+            || { echo "::error::нет шрифта DejaVu — ширины плашек поедут"; exit 1; }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - run: pip install --quiet cairosvg pillow
+      - name: кадры
+        working-directory: polnolunie
+        run: python3 render.py "$GITHUB_WORKSPACE/parts" --shard ${{ matrix.shard }}/6
+      - name: страж — часть должна быть не пустой
+        run: |
+          f=parts/seg$(printf %02d ${{ matrix.shard }}).mp4
+          [ -s "$f" ] || { echo "::error::часть не отрисована"; exit 1; }
+          echo "часть: $(( $(stat -c%s "$f") / 1024 )) КБ"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pl-seg-${{ matrix.shard }}
+          path: parts/seg*.mp4
+          retention-days: 1
+
+  finish:
+    needs: frames
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: системные пакеты
+        timeout-minutes: 10
+        run: |
+          command -v ffmpeg >/dev/null || for i in 1 2; do
+            timeout 90 sudo apt-get update -qq || true
+            timeout 150 sudo apt-get install -y -qq --no-install-recommends ffmpeg || true
+            command -v ffmpeg >/dev/null && break
+          done
+          if ! command -v ffmpeg >/dev/null; then
+            curl -fsSL --retry 3 -o /tmp/ff.tar.xz https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
+              && tar -xJf /tmp/ff.tar.xz -C /tmp \
+              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/ || true
+          fi
+          command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'pl-seg-*', path: parts, merge-multiple: true }
+      - name: склейка
+        working-directory: polnolunie
+        run: python3 finish.py "$GITHUB_WORKSPACE/parts" "$GITHUB_WORKSPACE/pl_out"
+      - name: страж
+        run: |
+          f=$(ls pl_out/*.mp4 2>/dev/null | head -1)
+          [ -n "$f" ] && [ -s "$f" ] || { echo "::error::видео не собрано"; exit 1; }
+          sz=$(stat -c%s "$f"); echo "файл: $f, $((sz/1024)) КБ"
+          [ "$sz" -gt 1000000 ] || { echo "::error::файл подозрительно мал"; exit 1; }
+          d=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$f")
+          echo "длительность: $d с"
+          python3 -c "import sys;d=float('$d');sys.exit(0 if 29<d<31 else 1)" \
+            || { echo "::error::длительность не 30 с"; exit 1; }
+          cat pl_out/report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: polnolunie-probnik
+          path: pl_out
+          retention-days: 3
