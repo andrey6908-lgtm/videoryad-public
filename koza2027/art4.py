@@ -236,9 +236,15 @@ def mayo_stream(x, y0, y1, t, w=13):
     k = min(1.0, max(0.0, t))
     yb = y0 + (y1 - y0)*A2.ease(k)
     sw = 5*math.sin(t*4.2)
-    return (f'<path d="M{x} {y0} C{x+sw:.1f} {(y0+yb)/2:.0f} {x-sw:.1f} {(y0+yb)/2:.0f}'
-            f' {x} {yb:.0f}" fill="none" stroke="{MAYO}" stroke-width="{w}"'
-            f' stroke-linecap="round"{ST(4)}/>')
+    d = (f'M{x} {y0} C{x+sw:.1f} {(y0+yb)/2:.0f} {x-sw:.1f} {(y0+yb)/2:.0f}'
+         f' {x} {yb:.0f}')
+    # контур ленты — ОТДЕЛЬНЫМ путём под ней. ST() сам кладёт stroke и
+    # stroke-width, и вместе со своим stroke это давало `duplicate attribute`:
+    # cairosvg валил ВЕСЬ прогон, а не одну сцену (поймано живьём 06.11).
+    return (f'<path d="{d}" fill="none" stroke="{OUT}" stroke-width="{w+7}"'
+            f' stroke-linecap="round"/>'
+            f'<path d="{d}" fill="none" stroke="{MAYO}" stroke-width="{w}"'
+            f' stroke-linecap="round"/>')
 
 
 def pot_potato(t, w=104, h=90):
