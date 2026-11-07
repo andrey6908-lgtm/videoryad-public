@@ -90,22 +90,20 @@ def komnata(t, pal):
         col = [SVET, KRAS, "#9ee07f", "#7fd0ff"][i % 4]
         op = .45 + .55 * abs(A.w(t, 1.6 + (i % 5) * .3, i * .2))
         s += f'<circle cx="{x:.0f}" cy="{y:.0f}" r="9" fill="{col}" opacity="{op:.2f}" {o(3)}/>'
-    s += (f'<rect x="1380" y="150" width="320" height="330" rx="10" fill="#14203a" {o(9)}/>'
-          f'<path d="M1540,150 v330 M1380,315 h320" stroke="{KREM}" stroke-width="10"/>')
-    s += f'<rect x="60" y="520" width="430" height="330" rx="10" fill="#5c3d33" {o(7)}/>'
-    s += f'<rect x="34" y="484" width="482" height="38" rx="8" fill="{TERRA}" {o(7)}/>'
-    s += f'<rect x="116" y="586" width="318" height="264" rx="12" fill="#1a0f0c" {o(7)}/>'
-    s += ogon(275, 806, t, .9)
-    s += f'<ellipse cx="1020" cy="1010" rx="520" ry="56" fill="#6b4634" opacity=".5"/>'
-    s += (f'<path d="M620,1010 q400,-46 800,0 q-400,52 -800,0 Z" fill="{GRAN}" opacity=".55"/>')
+
+    s += f'<rect x="20" y="540" width="330" height="300" rx="10" fill="#5c3d33" {o(7)}/>'
+    s += f'<rect x="-6" y="506" width="382" height="34" rx="8" fill="{TERRA}" {o(7)}/>'
+    s += f'<rect x="64" y="600" width="242" height="240" rx="12" fill="#1a0f0c" {o(7)}/>'
+    s += ogon(185, 800, t, .8)
+    s += f'<ellipse cx="430" cy="1016" rx="420" ry="50" fill="#6b4634" opacity=".5"/>'
+    s += (f'<path d="M80,1016 q350,-42 700,0 q-350,48 -700,0 Z" fill="{GRAN}" opacity=".5"/>')
     # кресло у камина
-    s += ten(330, 980, 160, 24, .45)
-    s += (f'<rect x="196" y="770" width="270" height="200" rx="26" fill="{GRAN}" {o(8)}/>'
-          f'<rect x="178" y="700" width="306" height="130" rx="30" fill="#8e2a3c" {o(8)}/>'
-          f'<rect x="206" y="830" width="250" height="40" rx="14" fill="#b05464" opacity=".6"/>')
-    s += elka(900, 940, 600, t, pal)
-    for x, y, w_, h_, c1, c2 in ((700, 950, 150, 104, VIN, ZOL), (860, 968, 160, 88, ZEL2, SVET),
-                                 (1030, 958, 140, 98, KRAS, ZOL)):
+    s += ten(700, 1000, 120, 20, .4)
+    s += (f'<rect x="620" y="840" width="170" height="150" rx="20" fill="{GRAN}" {o(8)}/>'
+          f'<rect x="608" y="792" width="194" height="96" rx="24" fill="#8e2a3c" {o(8)}/>')
+    s += elka(430, 950, 560, t, pal)
+    for x, y, w_, h_, c1, c2 in ((230, 960, 140, 96, VIN, ZOL), (390, 976, 150, 84, ZEL2, SVET),
+                                 (560, 966, 130, 92, KRAS, ZOL)):
         s += gift(x, y, w_, h_, c1, c2)
     return s + sneg_sloy(t, 18, 6, .35)
 

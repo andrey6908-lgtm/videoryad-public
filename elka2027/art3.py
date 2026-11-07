@@ -182,8 +182,14 @@ def frame(sc, t, gt):
             b += f'<g opacity="{q:.2f}">' + O.okno_ramka(ox, oy, ow, oh) + '</g>'
 
 
+    if sc.get("koza"):
+        # хозяйка года держится весь смысловой отрезок, без мигания (правки 27-28)
+        gx = 330 + 50 * A.w(gt, 16.0)
+        gy = 790 - 14 * A.w(gt, 3.0)
+        b += koza_ognennaya(gx, gy, gt, .78)
     for e in sc.get("events", []):
-        t0 = e["t"] - sc["a"]
+        # отрезок: появление играется один раз, на стыке планов не повторяется
+        t0 = e["a"] - sc["a"]
         k = e["kind"]
         if k == "zagolovok":
             b += O.nalив(120, 300, "КАК УКРАСИТЬ", t, t0, 86)
@@ -206,12 +212,7 @@ def frame(sc, t, gt):
             side = -1 if ex > ox + ow * .5 else 1
             b += O.obvodka(ex, ey, max(14, rx0 * ow / 1920), max(14, ry0 * oh / 1080),
                            e["pod"], t, t0, SVET, side, 20, size=24)
-        elif k == "goat":
-            q = A.out(A.seg(t, t0, .6))
-            if q > 0:
-                gx = 760 + 90 * A.ease(A.seg(t, t0, 4.0))
-                gy = 720 - 22 * A.w(t, 3.0)
-                b += koza_ognennaya(gx, gy, gt, 1.15 * q)
+
         elif k == "glaz":
             b += glaz(t, t0, gt)
         elif k == "cards5":

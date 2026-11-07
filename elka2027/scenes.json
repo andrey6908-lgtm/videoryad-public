@@ -1,530 +1,450 @@
 [
  {
   "n": 1,
-  "a": 0.0,
-  "b": 5.5,
+  "a": 0,
+  "b": 6.0,
   "lok": "komnata",
   "tema": "none",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 0.6,
+    "a": 0.6,
+    "b": 14,
     "kind": "zagolovok"
    }
-  ]
+  ],
+  "stock": "igrushki"
  },
  {
   "n": 2,
-  "a": 5.5,
-  "b": 11.0,
-  "lok": "kamin",
+  "a": 6.0,
+  "b": 12.0,
+  "lok": "komnata",
   "tema": "none",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
+  "koza": false,
+  "events": [
+   {
+    "a": 0.6,
+    "b": 14,
+    "kind": "zagolovok"
+   }
   ],
-  "events": []
+  "stock": "igrushki"
  },
  {
   "n": 3,
-  "a": 11.0,
-  "b": 16.39,
-  "lok": "vetka",
+  "a": 12.0,
+  "b": 18.0,
+  "lok": "komnata",
   "tema": "none",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
+  "koza": false,
+  "events": [
+   {
+    "a": 0.6,
+    "b": 14,
+    "kind": "zagolovok"
+   }
   ],
-  "events": []
+  "stock": "igrushki"
  },
  {
   "n": 4,
-  "a": 16.39,
-  "b": 21.89,
-  "lok": "dvor",
+  "a": 18.0,
+  "b": 26.0,
+  "lok": "komnata",
   "tema": "none",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": [
-   {
-    "t": 16.39,
-    "kind": "goat"
-   }
-  ],
-  "stock": "stol"
+  "koza": false,
+  "events": [],
+  "stock": "igrushki"
  },
  {
   "n": 5,
-  "a": 21.89,
-  "b": 27.39,
-  "lok": "nebo",
+  "a": 26,
+  "b": 32.0,
+  "lok": "vetka",
   "tema": "none",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": []
+  "koza": false,
+  "events": [],
+  "stock": "elka"
  },
  {
   "n": 6,
-  "a": 27.39,
-  "b": 32.89,
-  "lok": "stol",
+  "a": 32.0,
+  "b": 36.51,
+  "lok": "vetka",
   "tema": "none",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": []
+  "koza": false,
+  "events": [],
+  "stock": "elka"
  },
  {
   "n": 7,
-  "a": 32.89,
-  "b": 37.51,
-  "lok": "nebo",
+  "a": 36.51,
+  "b": 45.01,
+  "lok": "komnata",
   "tema": "none",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": [],
-  "stock": "svecha"
+  "koza": false,
+  "events": [
+   {
+    "a": 37.11,
+    "b": 51.51,
+    "kind": "cards5"
+   }
+  ]
  },
  {
   "n": 8,
-  "a": 37.51,
-  "b": 45.01,
-  "lok": "nebo",
+  "a": 45.01,
+  "b": 53.51,
+  "lok": "komnata",
   "tema": "none",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 37.51,
+    "a": 37.11,
+    "b": 51.51,
     "kind": "cards5"
-   },
-   {
-    "t": 39.06,
-    "kind": "goat"
    }
   ]
  },
  {
   "n": 9,
-  "a": 45.01,
-  "b": 52.51,
-  "lok": "prihozhaya",
+  "a": 53.51,
+  "b": 57.0,
+  "lok": "komnata",
   "tema": "none",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
+  "koza": false,
   "events": []
  },
  {
   "n": 10,
-  "a": 52.51,
-  "b": 57.47,
-  "lok": "prihozhaya",
+  "a": 57,
+  "b": 65.5,
+  "lok": "komnata",
   "tema": "none",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": [],
-  "stock": "stol"
+  "koza": true,
+  "events": []
  },
  {
   "n": 11,
-  "a": 57.47,
-  "b": 61.47,
-  "lok": "les",
+  "a": 65.5,
+  "b": 69.97,
+  "lok": "komnata",
   "tema": "none",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": [
-   {
-    "t": 57.47,
-    "kind": "goat"
-   },
-   {
-    "t": 60.6,
-    "kind": "goat"
-   }
-  ]
+  "koza": true,
+  "events": []
  },
  {
   "n": 12,
-  "a": 61.47,
-  "b": 68.97,
+  "a": 69.97,
+  "b": 78.47,
   "lok": "les",
   "tema": "none",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": []
+  "koza": true,
+  "events": [],
+  "stock": "koza_zagon"
  },
  {
   "n": 13,
-  "a": 68.97,
-  "b": 75.75,
-  "lok": "komnata",
+  "a": 78.47,
+  "b": 82.12,
+  "lok": "les",
   "tema": "none",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
+  "koza": true,
   "events": [],
-  "stock": "svecha"
+  "stock": "koza_zagon"
  },
  {
   "n": 14,
-  "a": 75.75,
-  "b": 82.12,
-  "lok": "komnata",
+  "a": 82.12,
+  "b": 86.92,
+  "lok": "nebo",
   "tema": "none",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": [
-   {
-    "t": 75.75,
-    "kind": "goat"
-   },
-   {
-    "t": 76.55,
-    "kind": "skaly"
-   }
-  ],
-  "stock": "koza"
+  "koza": false,
+  "events": [],
+  "stock": "koza_skaly"
  },
  {
   "n": 15,
-  "a": 82.12,
+  "a": 86.92,
   "b": 90.44,
-  "lok": "stol",
+  "lok": "nebo",
   "tema": "none",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": [
-   {
-    "t": 82.12,
-    "kind": "skaly"
-   }
-  ],
-  "stock": "koza"
+  "koza": false,
+  "events": [],
+  "stock": "koza_ustup"
  },
  {
   "n": 16,
   "a": 90.44,
-  "b": 99.44,
-  "lok": "stol",
+  "b": 98.94,
+  "lok": "dvor",
   "tema": "none",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": [
-   {
-    "t": 90.44,
-    "kind": "derevo"
-   }
-  ],
-  "foto": "foto/kozy_derevo1.jpg",
-  "foto2": "foto/kozy_derevo2.jpg"
+  "koza": false,
+  "events": [],
+  "foto": "foto/kozy_derevo1_br.jpg",
+  "foto2": "foto/kozy_derevo2_br.jpg"
  },
  {
   "n": 17,
-  "a": 99.44,
+  "a": 98.94,
   "b": 109.43,
   "lok": "dvor",
   "tema": "none",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": []
+  "koza": false,
+  "events": [],
+  "foto": "foto/kozy_derevo1_br.jpg",
+  "foto2": "foto/kozy_derevo2_br.jpg"
  },
  {
   "n": 18,
   "a": 109.43,
-  "b": 118.43,
-  "lok": "dvor",
+  "b": 117.93,
+  "lok": "komnata",
   "tema": "none",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 109.43,
+    "a": 109.43,
+    "b": 129.43,
     "kind": "glaz"
    }
   ]
  },
  {
   "n": 19,
-  "a": 118.43,
-  "b": 127.43,
-  "lok": "nebo",
+  "a": 117.93,
+  "b": 126.43,
+  "lok": "komnata",
   "tema": "none",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": [],
-  "stock": "svecha"
+  "koza": false,
+  "events": [
+   {
+    "a": 109.43,
+    "b": 129.43,
+    "kind": "glaz"
+   }
+  ]
  },
  {
   "n": 20,
-  "a": 127.43,
-  "b": 136.43,
-  "lok": "nebo",
+  "a": 126.43,
+  "b": 131.43,
+  "lok": "komnata",
   "tema": "none",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": []
+  "koza": false,
+  "events": [
+   {
+    "a": 109.43,
+    "b": 129.43,
+    "kind": "glaz"
+   }
+  ]
  },
  {
   "n": 21,
-  "a": 136.43,
-  "b": 145.43,
+  "a": 131.43,
+  "b": 137.07,
   "lok": "prihozhaya",
   "tema": "none",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": []
+  "koza": true,
+  "events": [],
+  "stock": "svecha"
  },
  {
   "n": 22,
-  "a": 145.43,
-  "b": 154.43,
-  "lok": "prihozhaya",
+  "a": 137.07,
+  "b": 146.64,
+  "lok": "stol",
   "tema": "none",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
+  "koza": true,
   "events": [],
   "stock": "stol"
  },
  {
   "n": 23,
-  "a": 154.43,
-  "b": 163.43,
-  "lok": "les",
+  "a": 146.64,
+  "b": 155.14,
+  "lok": "komnata",
   "tema": "none",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": []
+  "koza": true,
+  "events": [],
+  "stock": "girlyanda"
  },
  {
   "n": 24,
-  "a": 163.43,
-  "b": 172.43,
-  "lok": "les",
+  "a": 155.14,
+  "b": 163.64,
+  "lok": "komnata",
   "tema": "none",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": []
+  "koza": true,
+  "events": [],
+  "stock": "girlyanda"
  },
  {
   "n": 25,
-  "a": 172.43,
-  "b": 176.43,
+  "a": 163.64,
+  "b": 172.14,
   "lok": "komnata",
   "tema": "none",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": [
-   {
-    "t": 175.93,
-    "kind": "plate",
-    "tema": "vin"
-   }
-  ],
-  "stock": "svecha"
+  "koza": true,
+  "events": [],
+  "stock": "girlyanda"
  },
  {
   "n": 26,
-  "a": 176.43,
-  "b": 185.43,
+  "a": 172.14,
+  "b": 175.93,
   "lok": "komnata",
-  "tema": "vin",
+  "tema": "none",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
-  "events": [
-   {
-    "t": 178.31,
-    "kind": "palitra",
-    "tema": "vin"
-   }
-  ],
-  "foto": "foto/винная.jpg"
+  "koza": true,
+  "events": [],
+  "stock": "girlyanda"
  },
  {
   "n": 27,
-  "a": 185.43,
-  "b": 193.08,
-  "lok": "vetka",
+  "a": 175.93,
+  "b": 184.43,
+  "lok": "komnata",
   "tema": "vin",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
+  "koza": false,
+  "events": [
+   {
+    "a": 175.93,
+    "b": 184.93,
+    "kind": "plate",
+    "tema": "vin"
+   },
+   {
+    "a": 178.31,
+    "b": 190.31,
+    "kind": "palitra",
+    "tema": "vin"
+   }
   ],
-  "events": [],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 28,
-  "a": 193.08,
-  "b": 202.81,
-  "lok": "vetka",
+  "a": 184.43,
+  "b": 192.93,
+  "lok": "komnata",
   "tema": "vin",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 193.08,
+    "a": 175.93,
+    "b": 184.93,
+    "kind": "plate",
+    "tema": "vin"
+   },
+   {
+    "a": 178.31,
+    "b": 190.31,
+    "kind": "palitra",
+    "tema": "vin"
+   }
+  ],
+  "foto": "foto/винная_br.jpg"
+ },
+ {
+  "n": 29,
+  "a": 192.93,
+  "b": 201.43,
+  "lok": "komnata",
+  "tema": "vin",
+  "cam": "wide",
+  "z0": 1.14,
+  "z1": 1.0,
+  "koza": false,
+  "events": [
+   {
+    "a": 193.08,
+    "b": 201.08,
     "kind": "obvodka",
     "tema": "vin",
     "pod": "крупный шар",
@@ -536,25 +456,22 @@
     ]
    }
   ],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
-  "n": 29,
-  "a": 202.81,
-  "b": 214.22,
-  "lok": "stol",
+  "n": 30,
+  "a": 201.43,
+  "b": 209.93,
+  "lok": "komnata",
   "tema": "vin",
-  "cam": "wide",
-  "z0": 1.14,
-  "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "cam": "tilt",
+  "z0": 1.12,
+  "z1": 1.02,
+  "koza": false,
   "events": [
    {
-    "t": 202.81,
+    "a": 202.81,
+    "b": 210.81,
     "kind": "obvodka",
     "tema": "vin",
     "pod": "гирлянда — первой",
@@ -566,25 +483,35 @@
     ]
    }
   ],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
-  "n": 30,
-  "a": 214.22,
-  "b": 223.22,
-  "lok": "stol",
+  "n": 31,
+  "a": 209.93,
+  "b": 218.43,
+  "lok": "komnata",
   "tema": "vin",
-  "cam": "tilt",
-  "z0": 1.12,
-  "z1": 1.02,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "cam": "push",
+  "z0": 1.0,
+  "z1": 1.16,
+  "koza": false,
   "events": [
    {
-    "t": 214.22,
+    "a": 202.81,
+    "b": 210.81,
+    "kind": "obvodka",
+    "tema": "vin",
+    "pod": "гирлянда — первой",
+    "box": [
+     1117,
+     750,
+     190,
+     90
+    ]
+   },
+   {
+    "a": 214.22,
+    "b": 222.22,
     "kind": "obvodka",
     "tema": "vin",
     "pod": "бархатный бант",
@@ -596,231 +523,185 @@
     ]
    }
   ],
-  "foto": "foto/винная.jpg"
- },
- {
-  "n": 31,
-  "a": 223.22,
-  "b": 228.78,
-  "lok": "kamin",
-  "tema": "vin",
-  "cam": "push",
-  "z0": 1.0,
-  "z1": 1.16,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
-  "events": [],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 32,
-  "a": 228.78,
-  "b": 237.78,
-  "lok": "kamin",
+  "a": 218.43,
+  "b": 226.93,
+  "lok": "komnata",
   "tema": "vin",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 228.78,
+    "a": 214.22,
+    "b": 222.22,
     "kind": "obvodka",
     "tema": "vin",
-    "pod": "сушёный апельсин",
+    "pod": "бархатный бант",
     "box": [
-     1210,
-     700,
-     66,
-     66
+     1143,
+     262,
+     96,
+     74
     ]
    }
   ],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 33,
-  "a": 237.78,
-  "b": 246.78,
+  "a": 226.93,
+  "b": 235.43,
   "lok": "komnata",
   "tema": "vin",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 34,
-  "a": 246.78,
-  "b": 255.78,
+  "a": 235.43,
+  "b": 243.93,
   "lok": "komnata",
   "tema": "vin",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 35,
-  "a": 255.78,
-  "b": 264.78,
-  "lok": "vetka",
+  "a": 243.93,
+  "b": 252.43,
+  "lok": "komnata",
   "tema": "vin",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 36,
-  "a": 264.78,
-  "b": 273.78,
-  "lok": "vetka",
+  "a": 252.43,
+  "b": 260.93,
+  "lok": "komnata",
   "tema": "vin",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 37,
-  "a": 273.78,
-  "b": 282.78,
-  "lok": "stol",
+  "a": 260.93,
+  "b": 269.43,
+  "lok": "komnata",
   "tema": "vin",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 38,
-  "a": 282.78,
-  "b": 291.78,
-  "lok": "stol",
+  "a": 269.43,
+  "b": 277.93,
+  "lok": "komnata",
   "tema": "vin",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 39,
-  "a": 291.78,
-  "b": 300.78,
-  "lok": "kamin",
+  "a": 277.93,
+  "b": 286.43,
+  "lok": "komnata",
   "tema": "vin",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 40,
-  "a": 300.78,
-  "b": 307.02,
-  "lok": "kamin",
+  "a": 286.43,
+  "b": 294.93,
+  "lok": "komnata",
   "tema": "vin",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#7d1f2e",
-   "#9c2740",
-   "#c9922f"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/винная.jpg"
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 41,
-  "a": 307.02,
-  "b": 313.25,
-  "lok": "les",
-  "tema": "eko",
+  "a": 294.93,
+  "b": 303.43,
+  "lok": "komnata",
+  "tema": "vin",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
-  "events": [
-   {
-    "t": 307.02,
-    "kind": "plate",
-    "tema": "eko"
-   }
-  ],
-  "foto": "foto/эко.jpg"
+  "koza": false,
+  "events": [],
+  "foto": "foto/винная_br.jpg"
  },
  {
   "n": 42,
-  "a": 313.25,
-  "b": 317.25,
-  "lok": "les",
-  "tema": "eko",
+  "a": 303.43,
+  "b": 307.02,
+  "lok": "komnata",
+  "tema": "vin",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
+  "koza": false,
+  "events": [],
+  "foto": "foto/винная_br.jpg"
+ },
+ {
+  "n": 43,
+  "a": 307.02,
+  "b": 315.52,
+  "lok": "les",
+  "tema": "eko",
+  "cam": "push",
+  "z0": 1.0,
+  "z1": 1.16,
+  "koza": false,
   "events": [
    {
-    "t": 313.25,
+    "a": 307.02,
+    "b": 316.02,
+    "kind": "plate",
+    "tema": "eko"
+   },
+   {
+    "a": 313.25,
+    "b": 321.25,
     "kind": "obvodka",
     "tema": "eko",
     "pod": "шишка",
@@ -830,56 +711,76 @@
      84,
      84
     ]
-   },
-   {
-    "t": 317.04,
-    "kind": "obvodka",
-    "tema": "eko",
-    "pod": "сушёный апельсин",
-    "box": [
-     1210,
-     700,
-     66,
-     66
-    ]
    }
   ],
-  "foto": "foto/эко.jpg"
- },
- {
-  "n": 43,
-  "a": 317.25,
-  "b": 322.38,
-  "lok": "vetka",
-  "tema": "eko",
-  "cam": "push",
-  "z0": 1.0,
-  "z1": 1.16,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
-  "events": [],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 44,
-  "a": 322.38,
-  "b": 329.24,
-  "lok": "vetka",
+  "a": 315.52,
+  "b": 324.02,
+  "lok": "les",
   "tema": "eko",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 322.38,
+    "a": 307.02,
+    "b": 316.02,
+    "kind": "plate",
+    "tema": "eko"
+   },
+   {
+    "a": 322.38,
+    "b": 330.38,
+    "kind": "obvodka",
+    "tema": "eko",
+    "pod": "бархатный бант",
+    "box": [
+     1143,
+     262,
+     96,
+     74
+    ]
+   },
+   {
+    "a": 313.25,
+    "b": 321.25,
+    "kind": "obvodka",
+    "tema": "eko",
+    "pod": "шишка",
+    "box": [
+     1090,
+     470,
+     84,
+     84
+    ]
+   }
+  ],
+  "foto": "foto/эко_br.jpg"
+ },
+ {
+  "n": 45,
+  "a": 324.02,
+  "b": 332.52,
+  "lok": "les",
+  "tema": "eko",
+  "cam": "crane",
+  "z0": 1.18,
+  "z1": 1.0,
+  "koza": false,
+  "events": [
+   {
+    "a": 329.24,
+    "b": 341.24,
+    "kind": "palitra",
+    "tema": "eko"
+   },
+   {
+    "a": 322.38,
+    "b": 330.38,
     "kind": "obvodka",
     "tema": "eko",
     "pod": "бархатный бант",
@@ -891,116 +792,88 @@
     ]
    }
   ],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
-  "n": 45,
-  "a": 329.24,
-  "b": 338.24,
-  "lok": "dvor",
+  "n": 46,
+  "a": 332.52,
+  "b": 341.02,
+  "lok": "les",
   "tema": "eko",
-  "cam": "crane",
-  "z0": 1.18,
-  "z1": 1.0,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
+  "cam": "arc",
+  "z0": 1.06,
+  "z1": 1.14,
+  "koza": false,
   "events": [
    {
-    "t": 329.24,
+    "a": 329.24,
+    "b": 341.24,
     "kind": "palitra",
     "tema": "eko"
    }
   ],
-  "foto": "foto/эко.jpg"
- },
- {
-  "n": 46,
-  "a": 338.24,
-  "b": 347.24,
-  "lok": "dvor",
-  "tema": "eko",
-  "cam": "arc",
-  "z0": 1.06,
-  "z1": 1.14,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
-  "events": [],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 47,
-  "a": 347.24,
-  "b": 356.24,
-  "lok": "masterskaya",
+  "a": 341.02,
+  "b": 349.52,
+  "lok": "les",
   "tema": "eko",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
+  "koza": false,
+  "events": [
+   {
+    "a": 329.24,
+    "b": 341.24,
+    "kind": "palitra",
+    "tema": "eko"
+   }
   ],
-  "events": [],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 48,
-  "a": 356.24,
-  "b": 365.24,
-  "lok": "masterskaya",
+  "a": 349.52,
+  "b": 358.02,
+  "lok": "les",
   "tema": "eko",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 49,
-  "a": 365.24,
-  "b": 369.33,
+  "a": 358.02,
+  "b": 366.52,
   "lok": "les",
   "tema": "eko",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 50,
-  "a": 369.33,
-  "b": 378.33,
+  "a": 366.52,
+  "b": 375.02,
   "lok": "les",
   "tema": "eko",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 369.33,
+    "a": 369.33,
+    "b": 377.33,
     "kind": "obvodka",
     "tema": "eko",
     "pod": "крупный шар",
@@ -1012,42 +885,49 @@
     ]
    }
   ],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 51,
-  "a": 378.33,
-  "b": 387.19,
-  "lok": "vetka",
+  "a": 375.02,
+  "b": 383.52,
+  "lok": "les",
   "tema": "eko",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
+  "koza": false,
+  "events": [
+   {
+    "a": 369.33,
+    "b": 377.33,
+    "kind": "obvodka",
+    "tema": "eko",
+    "pod": "крупный шар",
+    "box": [
+     1082,
+     436,
+     84,
+     84
+    ]
+   }
   ],
-  "events": [],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 52,
-  "a": 387.19,
-  "b": 396.19,
-  "lok": "vetka",
+  "a": 383.52,
+  "b": 392.02,
+  "lok": "les",
   "tema": "eko",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 387.19,
+    "a": 387.19,
+    "b": 395.19,
     "kind": "obvodka",
     "tema": "eko",
     "pod": "гирлянда — первой",
@@ -1059,138 +939,126 @@
     ]
    }
   ],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 53,
-  "a": 396.19,
-  "b": 405.19,
-  "lok": "dvor",
+  "a": 392.02,
+  "b": 400.52,
+  "lok": "les",
   "tema": "eko",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
+  "koza": false,
+  "events": [
+   {
+    "a": 387.19,
+    "b": 395.19,
+    "kind": "obvodka",
+    "tema": "eko",
+    "pod": "гирлянда — первой",
+    "box": [
+     1117,
+     750,
+     190,
+     90
+    ]
+   }
   ],
-  "events": [],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 54,
-  "a": 405.19,
-  "b": 414.19,
-  "lok": "dvor",
+  "a": 400.52,
+  "b": 409.02,
+  "lok": "les",
   "tema": "eko",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 55,
-  "a": 414.19,
-  "b": 423.19,
-  "lok": "masterskaya",
+  "a": 409.02,
+  "b": 417.52,
+  "lok": "les",
   "tema": "eko",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 56,
-  "a": 423.19,
-  "b": 432.19,
-  "lok": "masterskaya",
+  "a": 417.52,
+  "b": 426.02,
+  "lok": "les",
   "tema": "eko",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 57,
-  "a": 432.19,
-  "b": 437.89,
+  "a": 426.02,
+  "b": 434.52,
   "lok": "les",
   "tema": "eko",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#8a6b45",
-   "#c9b58a",
-   "#6d8a4a"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/эко.jpg"
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 58,
-  "a": 437.89,
-  "b": 441.89,
-  "lok": "komnata",
-  "tema": "met",
+  "a": 434.52,
+  "b": 437.89,
+  "lok": "les",
+  "tema": "eko",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [
-   {
-    "t": 437.89,
-    "kind": "plate",
-    "tema": "met"
-   },
-   {
-    "t": 440.73,
-    "kind": "palitra",
-    "tema": "met"
-   }
-  ],
-  "foto": "foto/металик.jpg"
+  "koza": false,
+  "events": [],
+  "foto": "foto/эко_br.jpg"
  },
  {
   "n": 59,
-  "a": 441.89,
-  "b": 445.89,
-  "lok": "vetka",
+  "a": 437.89,
+  "b": 446.39,
+  "lok": "kamin",
   "tema": "met",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 444.94,
+    "a": 437.89,
+    "b": 446.89,
+    "kind": "plate",
+    "tema": "met"
+   },
+   {
+    "a": 440.73,
+    "b": 452.73,
+    "kind": "palitra",
+    "tema": "met"
+   },
+   {
+    "a": 444.94,
+    "b": 452.94,
     "kind": "obvodka",
     "tema": "met",
     "pod": "бархатный бант",
@@ -1202,42 +1070,61 @@
     ]
    }
   ],
-  "foto": "foto/металик.jpg"
+  "foto": "foto/металик_br.jpg"
  },
  {
   "n": 60,
-  "a": 445.89,
+  "a": 446.39,
   "b": 454.89,
-  "lok": "vetka",
+  "lok": "kamin",
   "tema": "met",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
+  "koza": false,
+  "events": [
+   {
+    "a": 437.89,
+    "b": 446.89,
+    "kind": "plate",
+    "tema": "met"
+   },
+   {
+    "a": 440.73,
+    "b": 452.73,
+    "kind": "palitra",
+    "tema": "met"
+   },
+   {
+    "a": 444.94,
+    "b": 452.94,
+    "kind": "obvodka",
+    "tema": "met",
+    "pod": "бархатный бант",
+    "box": [
+     1143,
+     262,
+     96,
+     74
+    ]
+   }
   ],
-  "events": [],
-  "foto": "foto/металик.jpg"
+  "foto": "foto/металик_br.jpg"
  },
  {
   "n": 61,
   "a": 454.89,
-  "b": 458.89,
+  "b": 463.39,
   "lok": "kamin",
   "tema": "met",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 458.69,
+    "a": 458.69,
+    "b": 466.69,
     "kind": "obvodka",
     "tema": "met",
     "pod": "крупный шар",
@@ -1249,59 +1136,49 @@
     ]
    }
   ],
-  "foto": "foto/металик.jpg"
+  "foto": "foto/металик_br.jpg"
  },
  {
   "n": 62,
-  "a": 458.89,
-  "b": 467.89,
+  "a": 463.39,
+  "b": 471.89,
   "lok": "kamin",
   "tema": "met",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
+  "koza": false,
+  "events": [
+   {
+    "a": 458.69,
+    "b": 466.69,
+    "kind": "obvodka",
+    "tema": "met",
+    "pod": "крупный шар",
+    "box": [
+     1082,
+     436,
+     84,
+     84
+    ]
+   }
   ],
-  "events": [],
-  "foto": "foto/металик.jpg"
+  "foto": "foto/металик_br.jpg"
  },
  {
   "n": 63,
-  "a": 467.89,
-  "b": 474.86,
-  "lok": "masterskaya",
+  "a": 471.89,
+  "b": 480.39,
+  "lok": "kamin",
   "tema": "met",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 64,
-  "a": 474.86,
-  "b": 483.86,
-  "lok": "masterskaya",
-  "tema": "met",
-  "cam": "arc",
-  "z0": 1.06,
-  "z1": 1.14,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 474.86,
+    "a": 474.86,
+    "b": 482.86,
     "kind": "obvodka",
     "tema": "met",
     "pod": "гирлянда — первой",
@@ -1313,322 +1190,24 @@
     ]
    }
   ],
-  "foto": "foto/металик.jpg"
+  "foto": "foto/металик_br.jpg"
  },
  {
-  "n": 65,
-  "a": 483.86,
-  "b": 492.86,
-  "lok": "komnata",
-  "tema": "met",
-  "cam": "wide",
-  "z0": 1.14,
-  "z1": 1.0,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 66,
-  "a": 492.86,
-  "b": 501.86,
-  "lok": "komnata",
-  "tema": "met",
-  "cam": "tilt",
-  "z0": 1.12,
-  "z1": 1.02,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 67,
-  "a": 501.86,
-  "b": 510.86,
-  "lok": "vetka",
-  "tema": "met",
-  "cam": "push",
-  "z0": 1.0,
-  "z1": 1.16,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 68,
-  "a": 510.86,
-  "b": 519.86,
-  "lok": "vetka",
-  "tema": "met",
-  "cam": "pan",
-  "z0": 1.1,
-  "z1": 1.1,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 69,
-  "a": 519.86,
-  "b": 528.86,
-  "lok": "kamin",
-  "tema": "met",
-  "cam": "crane",
-  "z0": 1.18,
-  "z1": 1.0,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 70,
-  "a": 528.86,
-  "b": 537.86,
+  "n": 64,
+  "a": 480.39,
+  "b": 488.89,
   "lok": "kamin",
   "tema": "met",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 71,
-  "a": 537.86,
-  "b": 546.86,
-  "lok": "masterskaya",
-  "tema": "met",
-  "cam": "wide",
-  "z0": 1.14,
-  "z1": 1.0,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 72,
-  "a": 546.86,
-  "b": 555.86,
-  "lok": "masterskaya",
-  "tema": "met",
-  "cam": "tilt",
-  "z0": 1.12,
-  "z1": 1.02,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 73,
-  "a": 555.86,
-  "b": 564.86,
-  "lok": "komnata",
-  "tema": "met",
-  "cam": "push",
-  "z0": 1.0,
-  "z1": 1.16,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 74,
-  "a": 564.86,
-  "b": 573.86,
-  "lok": "komnata",
-  "tema": "met",
-  "cam": "pan",
-  "z0": 1.1,
-  "z1": 1.1,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 75,
-  "a": 573.86,
-  "b": 582.86,
-  "lok": "vetka",
-  "tema": "met",
-  "cam": "crane",
-  "z0": 1.18,
-  "z1": 1.0,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 76,
-  "a": 582.86,
-  "b": 593.57,
-  "lok": "vetka",
-  "tema": "met",
-  "cam": "arc",
-  "z0": 1.06,
-  "z1": 1.14,
-  "pal": [
-   "#c9922f",
-   "#d9cdb0",
-   "#ffd36e"
-  ],
-  "events": [],
-  "foto": "foto/металик.jpg"
- },
- {
-  "n": 77,
-  "a": 593.57,
-  "b": 602.57,
-  "lok": "komnata",
-  "tema": "vnt",
-  "cam": "wide",
-  "z0": 1.14,
-  "z1": 1.0,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 593.57,
-    "kind": "plate",
-    "tema": "vnt"
-   }
-  ],
-  "foto": "foto/Винтажная_ёлка.jpg"
- },
- {
-  "n": 78,
-  "a": 602.57,
-  "b": 611.57,
-  "lok": "komnata",
-  "tema": "vnt",
-  "cam": "tilt",
-  "z0": 1.12,
-  "z1": 1.02,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
-  "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
- },
- {
-  "n": 79,
-  "a": 611.57,
-  "b": 620.57,
-  "lok": "vetka",
-  "tema": "vnt",
-  "cam": "push",
-  "z0": 1.0,
-  "z1": 1.16,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
-  "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
- },
- {
-  "n": 80,
-  "a": 620.57,
-  "b": 629.57,
-  "lok": "vetka",
-  "tema": "vnt",
-  "cam": "pan",
-  "z0": 1.1,
-  "z1": 1.1,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
-  "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
- },
- {
-  "n": 81,
-  "a": 629.57,
-  "b": 639.36,
-  "lok": "masterskaya",
-  "tema": "vnt",
-  "cam": "crane",
-  "z0": 1.18,
-  "z1": 1.0,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
-  "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
- },
- {
-  "n": 82,
-  "a": 639.36,
-  "b": 643.36,
-  "lok": "masterskaya",
-  "tema": "vnt",
-  "cam": "arc",
-  "z0": 1.06,
-  "z1": 1.14,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
-  "events": [
-   {
-    "t": 639.36,
+    "a": 474.86,
+    "b": 482.86,
     "kind": "obvodka",
-    "tema": "vnt",
+    "tema": "met",
     "pod": "гирлянда — первой",
     "box": [
      1117,
@@ -1636,14 +1215,291 @@
      190,
      90
     ]
-   },
+   }
+  ],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 65,
+  "a": 488.89,
+  "b": 497.39,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "wide",
+  "z0": 1.14,
+  "z1": 1.0,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 66,
+  "a": 497.39,
+  "b": 505.89,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "tilt",
+  "z0": 1.12,
+  "z1": 1.02,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 67,
+  "a": 505.89,
+  "b": 514.39,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "push",
+  "z0": 1.0,
+  "z1": 1.16,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 68,
+  "a": 514.39,
+  "b": 522.89,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "pan",
+  "z0": 1.1,
+  "z1": 1.1,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 69,
+  "a": 522.89,
+  "b": 531.39,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "crane",
+  "z0": 1.18,
+  "z1": 1.0,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 70,
+  "a": 531.39,
+  "b": 539.89,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "arc",
+  "z0": 1.06,
+  "z1": 1.14,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 71,
+  "a": 539.89,
+  "b": 548.39,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "wide",
+  "z0": 1.14,
+  "z1": 1.0,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 72,
+  "a": 548.39,
+  "b": 556.89,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "tilt",
+  "z0": 1.12,
+  "z1": 1.02,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 73,
+  "a": 556.89,
+  "b": 565.39,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "push",
+  "z0": 1.0,
+  "z1": 1.16,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 74,
+  "a": 565.39,
+  "b": 573.89,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "pan",
+  "z0": 1.1,
+  "z1": 1.1,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 75,
+  "a": 573.89,
+  "b": 582.39,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "crane",
+  "z0": 1.18,
+  "z1": 1.0,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 76,
+  "a": 582.39,
+  "b": 590.89,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "arc",
+  "z0": 1.06,
+  "z1": 1.14,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 77,
+  "a": 590.89,
+  "b": 593.57,
+  "lok": "kamin",
+  "tema": "met",
+  "cam": "wide",
+  "z0": 1.14,
+  "z1": 1.0,
+  "koza": false,
+  "events": [],
+  "foto": "foto/металик_br.jpg"
+ },
+ {
+  "n": 78,
+  "a": 593.57,
+  "b": 602.07,
+  "lok": "masterskaya",
+  "tema": "vnt",
+  "cam": "tilt",
+  "z0": 1.12,
+  "z1": 1.02,
+  "koza": false,
+  "events": [
    {
-    "t": 641.51,
+    "a": 593.57,
+    "b": 602.57,
+    "kind": "plate",
+    "tema": "vnt"
+   }
+  ],
+  "foto": "foto/Винтажная_ёлка_br.jpg"
+ },
+ {
+  "n": 79,
+  "a": 602.07,
+  "b": 610.57,
+  "lok": "masterskaya",
+  "tema": "vnt",
+  "cam": "push",
+  "z0": 1.0,
+  "z1": 1.16,
+  "koza": false,
+  "events": [
+   {
+    "a": 593.57,
+    "b": 602.57,
+    "kind": "plate",
+    "tema": "vnt"
+   }
+  ],
+  "foto": "foto/Винтажная_ёлка_br.jpg"
+ },
+ {
+  "n": 80,
+  "a": 610.57,
+  "b": 619.07,
+  "lok": "masterskaya",
+  "tema": "vnt",
+  "cam": "pan",
+  "z0": 1.1,
+  "z1": 1.1,
+  "koza": false,
+  "events": [],
+  "foto": "foto/Винтажная_ёлка_br.jpg"
+ },
+ {
+  "n": 81,
+  "a": 619.07,
+  "b": 627.57,
+  "lok": "masterskaya",
+  "tema": "vnt",
+  "cam": "crane",
+  "z0": 1.18,
+  "z1": 1.0,
+  "koza": false,
+  "events": [],
+  "foto": "foto/Винтажная_ёлка_br.jpg"
+ },
+ {
+  "n": 82,
+  "a": 627.57,
+  "b": 636.07,
+  "lok": "masterskaya",
+  "tema": "vnt",
+  "cam": "arc",
+  "z0": 1.06,
+  "z1": 1.14,
+  "koza": false,
+  "events": [],
+  "foto": "foto/Винтажная_ёлка_br.jpg"
+ },
+ {
+  "n": 83,
+  "a": 636.07,
+  "b": 644.57,
+  "lok": "masterskaya",
+  "tema": "vnt",
+  "cam": "wide",
+  "z0": 1.14,
+  "z1": 1.0,
+  "koza": false,
+  "events": [
+   {
+    "a": 641.51,
+    "b": 653.51,
     "kind": "palitra",
     "tema": "vnt"
    },
    {
-    "t": 641.99,
+    "a": 639.36,
+    "b": 647.36,
+    "kind": "obvodka",
+    "tema": "vnt",
+    "pod": "гирлянда — первой",
+    "box": [
+     1117,
+     750,
+     190,
+     90
+    ]
+   },
+   {
+    "a": 641.99,
+    "b": 649.99,
     "kind": "obvodka",
     "tema": "vnt",
     "pod": "крупный шар",
@@ -1655,235 +1511,240 @@
     ]
    }
   ],
-  "foto": "foto/Винтажная_ёлка.jpg"
- },
- {
-  "n": 83,
-  "a": 643.36,
-  "b": 652.36,
-  "lok": "prihozhaya",
-  "tema": "vnt",
-  "cam": "wide",
-  "z0": 1.14,
-  "z1": 1.0,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
-  "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
+  "foto": "foto/Винтажная_ёлка_br.jpg"
  },
  {
   "n": 84,
-  "a": 652.36,
-  "b": 661.36,
-  "lok": "prihozhaya",
+  "a": 644.57,
+  "b": 653.07,
+  "lok": "masterskaya",
   "tema": "vnt",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
+  "koza": false,
+  "events": [
+   {
+    "a": 641.51,
+    "b": 653.51,
+    "kind": "palitra",
+    "tema": "vnt"
+   },
+   {
+    "a": 639.36,
+    "b": 647.36,
+    "kind": "obvodka",
+    "tema": "vnt",
+    "pod": "гирлянда — первой",
+    "box": [
+     1117,
+     750,
+     190,
+     90
+    ]
+   },
+   {
+    "a": 641.99,
+    "b": 649.99,
+    "kind": "obvodka",
+    "tema": "vnt",
+    "pod": "крупный шар",
+    "box": [
+     1082,
+     436,
+     84,
+     84
+    ]
+   }
   ],
-  "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
+  "foto": "foto/Винтажная_ёлка_br.jpg"
  },
  {
   "n": 85,
-  "a": 661.36,
-  "b": 670.36,
-  "lok": "komnata",
+  "a": 653.07,
+  "b": 661.57,
+  "lok": "masterskaya",
   "tema": "vnt",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
+  "koza": false,
+  "events": [
+   {
+    "a": 641.51,
+    "b": 653.51,
+    "kind": "palitra",
+    "tema": "vnt"
+   }
   ],
-  "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
+  "foto": "foto/Винтажная_ёлка_br.jpg"
  },
  {
   "n": 86,
-  "a": 670.36,
-  "b": 679.36,
-  "lok": "komnata",
+  "a": 661.57,
+  "b": 670.07,
+  "lok": "masterskaya",
   "tema": "vnt",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
+  "foto": "foto/Винтажная_ёлка_br.jpg"
  },
  {
   "n": 87,
-  "a": 679.36,
-  "b": 688.36,
-  "lok": "vetka",
+  "a": 670.07,
+  "b": 678.57,
+  "lok": "masterskaya",
   "tema": "vnt",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
+  "foto": "foto/Винтажная_ёлка_br.jpg"
  },
  {
   "n": 88,
-  "a": 688.36,
-  "b": 697.36,
-  "lok": "vetka",
+  "a": 678.57,
+  "b": 687.07,
+  "lok": "masterskaya",
   "tema": "vnt",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
+  "foto": "foto/Винтажная_ёлка_br.jpg"
  },
  {
   "n": 89,
-  "a": 697.36,
-  "b": 706.36,
+  "a": 687.07,
+  "b": 695.57,
   "lok": "masterskaya",
   "tema": "vnt",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
+  "foto": "foto/Винтажная_ёлка_br.jpg"
  },
  {
   "n": 90,
-  "a": 706.36,
-  "b": 710.67,
+  "a": 695.57,
+  "b": 704.07,
   "lok": "masterskaya",
   "tema": "vnt",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#9c2740",
-   "#b9743f",
-   "#e4d4b6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/Винтажная_ёлка.jpg"
+  "foto": "foto/Винтажная_ёлка_br.jpg"
  },
  {
   "n": 91,
-  "a": 710.67,
-  "b": 719.67,
-  "lok": "vetka",
-  "tema": "err",
+  "a": 704.07,
+  "b": 710.67,
+  "lok": "masterskaya",
+  "tema": "vnt",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
+  "events": [],
+  "foto": "foto/Винтажная_ёлка_br.jpg"
+ },
+ {
+  "n": 92,
+  "a": 710.67,
+  "b": 719.17,
+  "lok": "komnata",
+  "tema": "err",
+  "cam": "pan",
+  "z0": 1.1,
+  "z1": 1.1,
+  "koza": false,
   "events": [
    {
-    "t": 710.67,
+    "a": 710.67,
+    "b": 719.67,
     "kind": "plate",
     "tema": "err"
    },
    {
-    "t": 713.15,
+    "a": 713.15,
+    "b": 725.15,
     "kind": "errors"
    }
   ]
  },
  {
-  "n": 92,
-  "a": 719.67,
-  "b": 728.5,
-  "lok": "vetka",
-  "tema": "err",
-  "cam": "pan",
-  "z0": 1.1,
-  "z1": 1.1,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
-  "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
- },
- {
   "n": 93,
-  "a": 728.5,
-  "b": 739.66,
-  "lok": "kamin",
+  "a": 719.17,
+  "b": 727.67,
+  "lok": "komnata",
   "tema": "err",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 728.5,
-    "kind": "palitra",
+    "a": 710.67,
+    "b": 719.67,
+    "kind": "plate",
     "tema": "err"
+   },
+   {
+    "a": 713.15,
+    "b": 725.15,
+    "kind": "errors"
    }
-  ],
-  "foto": "foto/ёлка_ошибка.jpg"
+  ]
  },
  {
   "n": 94,
-  "a": 739.66,
-  "b": 748.66,
-  "lok": "kamin",
+  "a": 727.67,
+  "b": 736.17,
+  "lok": "komnata",
   "tema": "err",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 739.66,
+    "a": 728.5,
+    "b": 740.5,
+    "kind": "palitra",
+    "tema": "err"
+   }
+  ],
+  "foto": "foto/ёлка_ошибка_br.jpg"
+ },
+ {
+  "n": 95,
+  "a": 736.17,
+  "b": 744.67,
+  "lok": "komnata",
+  "tema": "err",
+  "cam": "wide",
+  "z0": 1.14,
+  "z1": 1.0,
+  "koza": false,
+  "events": [
+   {
+    "a": 728.5,
+    "b": 740.5,
+    "kind": "palitra",
+    "tema": "err"
+   },
+   {
+    "a": 739.66,
+    "b": 747.66,
     "kind": "obvodka",
     "tema": "err",
     "pod": "крупный шар",
@@ -1895,7 +1756,8 @@
     ]
    },
    {
-    "t": 740.39,
+    "a": 740.39,
+    "b": 748.39,
     "kind": "obvodka",
     "tema": "err",
     "pod": "бархатный бант",
@@ -1907,84 +1769,88 @@
     ]
    }
   ],
-  "foto": "foto/ёлка_ошибка.jpg"
- },
- {
-  "n": 95,
-  "a": 748.66,
-  "b": 757.66,
-  "lok": "nebo",
-  "tema": "err",
-  "cam": "wide",
-  "z0": 1.14,
-  "z1": 1.0,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
-  "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 96,
-  "a": 757.66,
-  "b": 766.66,
-  "lok": "nebo",
+  "a": 744.67,
+  "b": 753.17,
+  "lok": "komnata",
   "tema": "err",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
+  "koza": false,
+  "events": [
+   {
+    "a": 739.66,
+    "b": 747.66,
+    "kind": "obvodka",
+    "tema": "err",
+    "pod": "крупный шар",
+    "box": [
+     1082,
+     436,
+     84,
+     84
+    ]
+   },
+   {
+    "a": 740.39,
+    "b": 748.39,
+    "kind": "obvodka",
+    "tema": "err",
+    "pod": "бархатный бант",
+    "box": [
+     1143,
+     262,
+     96,
+     74
+    ]
+   }
   ],
-  "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 97,
-  "a": 766.66,
-  "b": 770.99,
+  "a": 753.17,
+  "b": 761.67,
   "lok": "komnata",
   "tema": "err",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 98,
-  "a": 770.99,
-  "b": 779.99,
+  "a": 761.67,
+  "b": 770.17,
   "lok": "komnata",
   "tema": "err",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
+  "events": [],
+  "foto": "foto/ёлка_ошибка_br.jpg"
+ },
+ {
+  "n": 99,
+  "a": 770.17,
+  "b": 778.67,
+  "lok": "komnata",
+  "tema": "err",
+  "cam": "crane",
+  "z0": 1.18,
+  "z1": 1.0,
+  "koza": false,
   "events": [
    {
-    "t": 770.99,
+    "a": 770.99,
+    "b": 778.99,
     "kind": "obvodka",
     "tema": "err",
     "pod": "мишура кольцами",
@@ -1996,87 +1862,70 @@
     ]
    },
    {
-    "t": 770.99,
+    "a": 770.99,
+    "b": 780.99,
     "kind": "reveal"
    }
   ]
  },
  {
-  "n": 99,
-  "a": 779.99,
-  "b": 788.99,
-  "lok": "vetka",
-  "tema": "err",
-  "cam": "crane",
-  "z0": 1.18,
-  "z1": 1.0,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
-  "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
- },
- {
   "n": 100,
-  "a": 788.99,
-  "b": 797.99,
-  "lok": "vetka",
+  "a": 778.67,
+  "b": 787.17,
+  "lok": "komnata",
   "tema": "err",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
-  "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "koza": false,
+  "events": [
+   {
+    "a": 770.99,
+    "b": 778.99,
+    "kind": "obvodka",
+    "tema": "err",
+    "pod": "мишура кольцами",
+    "box": [
+     1180,
+     790,
+     230,
+     110
+    ]
+   },
+   {
+    "a": 770.99,
+    "b": 780.99,
+    "kind": "reveal"
+   }
+  ]
  },
  {
   "n": 101,
-  "a": 797.99,
-  "b": 802.14,
-  "lok": "kamin",
+  "a": 787.17,
+  "b": 795.67,
+  "lok": "komnata",
   "tema": "err",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 102,
-  "a": 802.14,
-  "b": 811.14,
-  "lok": "kamin",
+  "a": 795.67,
+  "b": 804.17,
+  "lok": "komnata",
   "tema": "err",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 802.14,
+    "a": 802.14,
+    "b": 810.14,
     "kind": "obvodka",
     "tema": "err",
     "pod": "шишка",
@@ -2088,122 +1937,101 @@
     ]
    }
   ],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 103,
-  "a": 811.14,
-  "b": 820.14,
-  "lok": "nebo",
+  "a": 804.17,
+  "b": 812.67,
+  "lok": "komnata",
   "tema": "err",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
+  "koza": false,
+  "events": [
+   {
+    "a": 802.14,
+    "b": 810.14,
+    "kind": "obvodka",
+    "tema": "err",
+    "pod": "шишка",
+    "box": [
+     1090,
+     470,
+     84,
+     84
+    ]
+   }
   ],
-  "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 104,
-  "a": 820.14,
-  "b": 829.14,
-  "lok": "nebo",
+  "a": 812.67,
+  "b": 821.17,
+  "lok": "komnata",
   "tema": "err",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 105,
-  "a": 829.14,
-  "b": 838.14,
+  "a": 821.17,
+  "b": 829.67,
   "lok": "komnata",
   "tema": "err",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 106,
-  "a": 838.14,
-  "b": 847.14,
+  "a": 829.67,
+  "b": 838.17,
   "lok": "komnata",
   "tema": "err",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 107,
-  "a": 847.14,
-  "b": 853.47,
-  "lok": "vetka",
+  "a": 838.17,
+  "b": 846.67,
+  "lok": "komnata",
   "tema": "err",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 108,
-  "a": 853.47,
-  "b": 862.47,
-  "lok": "vetka",
+  "a": 846.67,
+  "b": 855.17,
+  "lok": "komnata",
   "tema": "err",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
   "events": [
    {
-    "t": 853.47,
+    "a": 853.47,
+    "b": 861.47,
     "kind": "obvodka",
     "tema": "err",
     "pod": "гирлянда — первой",
@@ -2215,147 +2043,148 @@
     ]
    }
   ],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 109,
-  "a": 862.47,
-  "b": 871.47,
-  "lok": "kamin",
+  "a": 855.17,
+  "b": 863.67,
+  "lok": "komnata",
   "tema": "err",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
+  "koza": false,
+  "events": [
+   {
+    "a": 853.47,
+    "b": 861.47,
+    "kind": "obvodka",
+    "tema": "err",
+    "pod": "гирлянда — первой",
+    "box": [
+     1117,
+     750,
+     190,
+     90
+    ]
+   }
   ],
-  "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 110,
-  "a": 871.47,
-  "b": 880.47,
-  "lok": "kamin",
+  "a": 863.67,
+  "b": 872.92,
+  "lok": "komnata",
   "tema": "err",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#d6202f",
-   "#7fd0ff",
-   "#9ee07f",
-   "#c9922f",
-   "#b06ad6"
-  ],
+  "koza": false,
   "events": [],
-  "foto": "foto/ёлка_ошибка.jpg"
+  "foto": "foto/ёлка_ошибка_br.jpg"
  },
  {
   "n": 111,
-  "a": 880.47,
-  "b": 889.47,
-  "lok": "stol",
+  "a": 872.92,
+  "b": 881.42,
+  "lok": "komnata",
   "tema": "none",
   "cam": "crane",
   "z0": 1.18,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
+  "koza": true,
   "events": []
  },
  {
   "n": 112,
-  "a": 889.47,
-  "b": 898.47,
-  "lok": "stol",
+  "a": 881.42,
+  "b": 889.92,
+  "lok": "komnata",
   "tema": "none",
   "cam": "arc",
   "z0": 1.06,
   "z1": 1.14,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": [],
-  "stock": "stol"
+  "koza": true,
+  "events": []
  },
  {
   "n": 113,
-  "a": 898.47,
-  "b": 904.26,
-  "lok": "dvor",
+  "a": 889.92,
+  "b": 898.42,
+  "lok": "komnata",
   "tema": "none",
   "cam": "wide",
   "z0": 1.14,
   "z1": 1.0,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
+  "koza": true,
   "events": []
  },
  {
   "n": 114,
-  "a": 904.26,
-  "b": 913.26,
-  "lok": "dvor",
+  "a": 898.42,
+  "b": 906.92,
+  "lok": "komnata",
   "tema": "none",
   "cam": "tilt",
   "z0": 1.12,
   "z1": 1.02,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
+  "koza": true,
   "events": [
    {
-    "t": 904.26,
+    "a": 904.26,
+    "b": 918.26,
     "kind": "cards4"
    }
   ]
  },
  {
   "n": 115,
-  "a": 913.26,
-  "b": 922.26,
-  "lok": "nebo",
+  "a": 906.92,
+  "b": 915.42,
+  "lok": "komnata",
   "tema": "none",
   "cam": "push",
   "z0": 1.0,
   "z1": 1.16,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
-  "events": [],
-  "stock": "svecha"
+  "koza": true,
+  "events": [
+   {
+    "a": 904.26,
+    "b": 918.26,
+    "kind": "cards4"
+   }
+  ]
  },
  {
   "n": 116,
-  "a": 922.26,
-  "b": 927.1,
-  "lok": "nebo",
+  "a": 915.42,
+  "b": 923.92,
+  "lok": "komnata",
   "tema": "none",
   "cam": "pan",
   "z0": 1.1,
   "z1": 1.1,
-  "pal": [
-   "#7d1f2e",
-   "#c9922f",
-   "#3f8a4a"
-  ],
+  "koza": true,
+  "events": [
+   {
+    "a": 904.26,
+    "b": 918.26,
+    "kind": "cards4"
+   }
+  ]
+ },
+ {
+  "n": 117,
+  "a": 923.92,
+  "b": 927.1,
+  "lok": "komnata",
+  "tema": "none",
+  "cam": "crane",
+  "z0": 1.18,
+  "z1": 1.0,
+  "koza": true,
   "events": []
  }
 ]
