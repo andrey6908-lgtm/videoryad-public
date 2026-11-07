@@ -136,12 +136,18 @@ def vetka_krupno(t, pal):
         yy = 240 + k * 300
         s += (f'<path d="M-40,{yy} q480,{70+k*20} 1000,{10-k*30} q520,{-60} 1000,{30}"'
               f' fill="none" stroke="{HVOYA}" stroke-width="{34-k*4}" stroke-linecap="round"/>')
-        for i in range(18):
-            u = i / 17
+        for i in range(52):
+            u = i / 51
             x = -40 + u * 1960
             y = yy + (70 + k * 20) * math.sin(math.pi * u) * .5
-            s += (f'<path d="M{x:.0f},{y:.0f} l{-18-10*(i%3)},{-26-8*(i%2)}"'
-                  f' stroke="{ZEL2}" stroke-width="7" stroke-linecap="round"/>')
+            for sgn in (-1, 1):
+                ln = 34 + 16 * ((i + k) % 3)
+                s += (f'<path d="M{x:.0f},{y:.0f} l{sgn*(10+6*(i%2)):.0f},{-ln:.0f}"'
+                      f' stroke="{ZEL2 if i % 2 else HVOYA}" stroke-width="6"'
+                      f' stroke-linecap="round"/>')
+            if i % 6 == 0:
+                s += (f'<path d="M{x-26:.0f},{y-10:.0f} q26,-16 52,0 q-26,12 -52,0 Z"'
+                      f' fill="#e8eef9" opacity=".8"/>')
         for i in range(4):
             u = (i + .5) / 4
             x = -40 + u * 1960
@@ -270,33 +276,58 @@ def prihozhaya(t, pal):
 
 
 def nebo(t, pal):
-    """Ночное небо над крышами + салют."""
-    s = f'<rect width="{W}" height="{H}" fill="#101a33"/>'
+    """Ночной город: крыши со снегом, тёплые окна, ёлка на площади, салют."""
+    s = f'<rect width="{W}" height="{H}" fill="#0d1630"/>'
     import random as _r
     r = _r.Random(7)
-    for i in range(90):
-        s += (f'<circle cx="{r.uniform(0,W):.0f}" cy="{r.uniform(0,700):.0f}" r="{r.uniform(1,2.6):.1f}"'
+    for i in range(110):
+        s += (f'<circle cx="{r.uniform(0,W):.0f}" cy="{r.uniform(0,760):.0f}" r="{r.uniform(1,2.8):.1f}"'
               f' fill="#ffffff" opacity="{.25+.6*abs(A.w(t,2.8,i*.07)):.2f}"/>')
+    s += f'<circle cx="1660" cy="180" r="76" fill="#f3ead5" opacity=".95"/>'
+    s += f'<circle cx="1660" cy="180" r="130" fill="url(#teplo)" opacity=".5"/>'
+    # салют: вспышка, лучи, хвосты
     for k in range(3):
-        ph = k * .33
-        p = ((t * .35) + ph) % 1.0
-        cx = 420 + k * 520
-        cy = 300 + 60 * k
-        R = 40 + p * 260
-        for i in range(16):
-            a = i * 22.5 * math.pi / 180
-            s += (f'<circle cx="{cx+R*math.cos(a):.0f}" cy="{cy+R*math.sin(a)*.8:.0f}" r="{6*(1-p)+2:.1f}"'
-                  f' fill="{[SVET, KRAS, "#9ee07f"][k%3]}" opacity="{max(0,.9-p):.2f}"/>')
-    s += f'<path d="M0,760 L220,640 L420,760 L640,620 L880,760 L1120,640 L1360,760 L1620,620 L1920,760 L1920,1080 L0,1080 Z" fill="#141d33"/>'
-    for i, x in enumerate((180, 520, 980, 1480)):
-        op = .5 + .5 * abs(A.w(t, 3.4, i * .25))
-        s += f'<rect x="{x}" y="820" width="90" height="80" rx="8" fill="{SVET}" opacity="{op:.2f}"/>'
-    s += f'<rect x="700" y="600" width="70" height="120" rx="6" fill="#2a2a33"/>'
-    for i in range(3):
-        p = ((t * .25) + i * .33) % 1.0
-        s += (f'<circle cx="{735 + 30*A.w(t,2.4,i*.3):.0f}" cy="{590-p*200:.0f}" r="{18*(1-p)+6:.0f}"'
-              f' fill="#cfd8ea" opacity="{(1-p)*.35:.2f}"/>')
-    return s + sneg_sloy(t, 34, 4, .7)
+        ph = k * .34
+        p = ((t * .32) + ph) % 1.0
+        cx = 380 + k * 540
+        cy = 260 + 70 * k
+        R = 30 + p * 300
+        col = [SVET, KRAS, "#9ee07f"][k % 3]
+        if p < .12:
+            s += f'<circle cx="{cx}" cy="{cy}" r="{40*(1-p/.12):.0f}" fill="#ffffff" opacity=".9"/>'
+        for i in range(22):
+            a_ = i * 16.4 * math.pi / 180
+            x2 = cx + R * math.cos(a_)
+            y2 = cy + R * math.sin(a_) * .85 + p * p * 90
+            x1 = cx + R * .55 * math.cos(a_)
+            y1 = cy + R * .55 * math.sin(a_) * .85
+            s += (f'<path d="M{x1:.0f},{y1:.0f} L{x2:.0f},{y2:.0f}" stroke="{col}"'
+                  f' stroke-width="{5*(1-p)+1.5:.1f}" stroke-linecap="round"'
+                  f' opacity="{max(0,.95-p*1.1):.2f}"/>')
+    # дома: стены заметнее фона, иначе крыши висят в пустоте
+    for x0, x1, top in ((0, 470, 660), (470, 960, 640), (960, 1430, 660), (1430, 1920, 650)):
+        s += f'<rect x="{x0}" y="{top+10}" width="{x1-x0}" height="{1080-top}" fill="#1b2746"/>'
+        s += f'<rect x="{x0}" y="{top+10}" width="{x1-x0}" height="{1080-top}" fill="none" stroke="#0d1630" stroke-width="6"/>'
+    s += (f'<path d="M0,820 L240,660 L470,820 L700,640 L960,820 L1200,660 L1430,820'
+          f' L1700,650 L1920,820 L1920,1080 L0,1080 Z" fill="#16203a"/>')
+    s += (f'<path d="M0,820 L240,660 L470,820 M700,640 L960,820 M1200,660 L1430,820'
+          f' M1700,650 L1920,820" fill="none" stroke="#e8eef9" stroke-width="14"'
+          f' stroke-linejoin="round" opacity=".9"/>')
+    for i, (x, y) in enumerate(((150, 880), (390, 880), (610, 900), (880, 880),
+                                (1120, 900), (1360, 880), (1620, 900))):
+        op = .45 + .55 * abs(A.w(t, 3.4, i * .25))
+        s += (f'<rect x="{x}" y="{y}" width="96" height="86" rx="8" fill="{SVET}"'
+              f' opacity="{op:.2f}" {o(5)}/>')
+    # труба с дымом
+    s += f'<rect x="690" y="560" width="76" height="130" rx="6" fill="#2a2a33" {o(6)}/>'
+    s += f'<rect x="676" y="540" width="104" height="30" rx="8" fill="{TERRA}" {o(6)}/>'
+    for i in range(4):
+        p = ((t * .22) + i * .25) % 1.0
+        s += (f'<circle cx="{728 + 40*A.w(t,2.4,i*.3):.0f}" cy="{520-p*230:.0f}"'
+              f' r="{22*(1-p)+8:.0f}" fill="#cfd8ea" opacity="{(1-p)*.3:.2f}"/>')
+    # ёлка на площади
+    s += elka(1180, 1010, 330, t, pal)
+    return s + sneg_sloy(t, 40, 4, .8)
 
 
 def les(t, pal):
