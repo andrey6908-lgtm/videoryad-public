@@ -87,48 +87,71 @@ def cover(im, w, h, p=0.0):
 
 
 def koza_ognennaya(cx, cy, t, s=1.0):
-    """Хозяйка года: крупная, с ОГНЕННОЙ гривой по хребту и шее, свечение.
-    2027 — год Красной Огненной Козы, поэтому пламя, а не бежевые палки."""
+    """Хозяйка года, версия 2 (прежняя отклонена: «вся красная, бестолковая»).
+
+    Теперь: светлая кремово-золотая шерсть, ОГОНЬ только как грива, хвост и
+    кончики копыт, тёплое свечение вокруг, добрый взгляд с моргающим глазом,
+    изогнутые рога. Красный ушёл в акценты — попона и бубенец.
+    """
+    SHERST, TEN_SH = "#f0e2c6", "#d9c49c"
     g = f'<g transform="translate({cx:.0f},{cy:.0f}) scale({s:.3f})">'
-    g += f'<ellipse cx="10" cy="-30" rx="300" ry="230" fill="url(#teplo)" opacity=".8"/>'
-    # пламя по хребту: языки вверх, разной высоты, живые
-    for i in range(10):
-        bx = -140 + i * 34
-        hh = (120 + 60 * abs(math.sin(i * 1.1))) * (1 + .22 * A.w(t, .9, i * .13))
-        dx = 18 * A.w(t, 1.5, i * .2)
-        col = [ORA, SVET, KRAS][i % 3]
-        g += (f'<path d="M{bx},-60 C{bx-24},{-60-hh*.4:.0f} {bx-8+dx:.0f},{-60-hh*.7:.0f}'
-              f' {bx+dx:.0f},{-60-hh:.0f} C{bx+20+dx:.0f},{-60-hh*.65:.0f}'
-              f' {bx+26},{-60-hh*.35:.0f} {bx},-60 Z" fill="{col}"'
-              f' opacity="{.65+.3*abs(A.w(t,1.1,i*.17)):.2f}"/>')
+    g += f'<ellipse cx="0" cy="170" rx="250" ry="42" fill="url(#ten)" opacity=".55"/>'
+    g += f'<ellipse cx="10" cy="-20" rx="330" ry="260" fill="url(#teplo)" opacity=".55"/>'
+    # хвост-огонёк
+    for i in range(3):
+        hh = 90 + 30 * abs(A.w(t, 1.1, i * .2))
+        g += (f'<path d="M-180,-20 C{-210-10*i},{-40-hh*.4:.0f} {-200+14*A.w(t,1.3,i*.2):.0f},'
+              f'{-50-hh*.7:.0f} {-186:.0f},{-30-hh:.0f} C{-170:.0f},{-50-hh*.6:.0f}'
+              f' {-166-6*i},{-40-hh*.3:.0f} -180,-20 Z" fill="{[ORA, SVET, KRAS][i]}"'
+              f' opacity="{.6+.3*abs(A.w(t,.9,i*.2)):.2f}"/>')
+    # грива: пламя по хребту и шее
+    for i in range(12):
+        bx = -130 + i * 26
+        hh = (90 + 70 * abs(math.sin(i * .9))) * (1 + .25 * A.w(t, .85, i * .11))
+        dx = 16 * A.w(t, 1.4, i * .18)
+        col = [ORA, SVET, KRAS, "#ffb347"][i % 4]
+        g += (f'<path d="M{bx},-70 C{bx-22},{-70-hh*.4:.0f} {bx-6+dx:.0f},{-70-hh*.72:.0f}'
+              f' {bx+dx:.0f},{-70-hh:.0f} C{bx+18+dx:.0f},{-70-hh*.66:.0f}'
+              f' {bx+24},{-70-hh*.34:.0f} {bx},-70 Z" fill="{col}"'
+              f' opacity="{.55+.35*abs(A.w(t,1.0,i*.15)):.2f}"/>')
     # тело
-    g += f'<ellipse cx="-20" cy="40" rx="160" ry="108" fill="{KRAS}" {o(8)}/>'
-    for dy in (0, 38, 76):
-        g += f'<path d="M-118,{dy} q98,32 196,0" fill="none" stroke="{ZOL}" stroke-width="9" opacity=".9"/>'
-    for x0, x1 in ((-104, -112), (-40, -46), (36, 42), (98, 106)):
-        g += f'<path d="M{x0},132 L{x1},244" {o(24, TERRA)}/>'
-        g += f'<path d="M{x1-12},244 h24" {o(14, K)}/>'
-    # хвост
-    g += f'<path d="M-176,-10 q-40,-16 -46,-54" fill="none" {o(18, KRAS)}/>'
+    g += f'<ellipse cx="-20" cy="30" rx="168" ry="112" fill="{SHERST}" {o(8)}/>'
+    g += f'<ellipse cx="-20" cy="62" rx="150" ry="74" fill="{TEN_SH}" opacity=".55"/>'
+    # попона с узором — единственное красное пятно
+    g += (f'<path d="M-96,-40 q82,-26 162,6 l-14,76 q-72,-26 -140,-4 Z" fill="{GRAN}" {o(6)}/>')
+    for dy in (-18, 6):
+        g += f'<path d="M-84,{dy} q76,22 142,-2" fill="none" stroke="{ZOL}" stroke-width="7"/>'
+    # ноги с копытами
+    for x0, x1 in ((-112, -120), (-46, -52), (40, 46), (104, 112)):
+        g += f'<path d="M{x0},112 L{x1},216" {o(34, SHERST)}/>'
+        g += f'<path d="M{x0},112 L{x1},216" {o(10, TEN_SH)}/>'
+        g += f'<path d="M{x1-16},218 h32" {o(18, "#6b4634")}/>'
     # шея и голова
-    g += f'<path d="M96,-10 L150,-96" {o(58, KRAS)}/>'
-    g += f'<ellipse cx="168" cy="-120" rx="86" ry="70" fill="{KRAS}" {o(8)} transform="rotate(-14 168 -120)"/>'
-    # морда и борода
-    g += f'<path d="M226,-128 q56,8 60,40 q-44,20 -76,2 Z" fill="{KREM}" {o(6)}/>'
-    g += f'<circle cx="276" cy="-96" r="10" fill="{K}"/>'
-    g += f'<path d="M222,-68 q18,56 -20,76 q-18,-48 -6,-76 Z" fill="{KREM}" {o(6)}/>'
-    g += f'<circle cx="186" cy="-142" r="13" fill="{K}"/>'
-    g += f'<circle cx="190" cy="-146" r="4.5" fill="#ffffff"/>'
-    # ухо и рога назад
-    g += f'<ellipse cx="132" cy="-168" rx="42" ry="22" fill="{GRAN}" {o(6)} transform="rotate(-32 132 -168)"/>'
-    g += f'<path d="M150,-182 q-20,-70 -96,-104" fill="none" {o(16, KREM)}/>'
-    g += f'<path d="M172,-186 q-8,-74 -74,-116" fill="none" {o(16, KREM)}/>'
-    # пламя у головы
-    for i in range(4):
-        bx = 120 + i * 26
-        hh = 70 * (1 + .3 * A.w(t, 1.0, i * .2))
-        g += (f'<path d="M{bx},-186 q-10,{-hh*.6:.0f} 6,{-hh:.0f} q18,{hh*.5:.0f} -6,{hh:.0f} Z"'
-              f' fill="{[SVET, ORA][i%2]}" opacity="{.55+.35*abs(A.w(t,.8,i*.2)):.2f}"/>')
+    g += f'<path d="M104,-14 L162,-104" {o(74, SHERST)}/>'
+    g += f'<path d="M110,-6 L150,-70" {o(26, TEN_SH)}/>'
+    g += f'<ellipse cx="180" cy="-128" rx="92" ry="74" fill="{SHERST}" {o(8)} transform="rotate(-14 180 -128)"/>'
+    g += f'<ellipse cx="172" cy="-106" rx="76" ry="48" fill="{TEN_SH}" opacity=".4" transform="rotate(-14 172 -106)"/>'
+    # морда, нос, борода
+    g += f'<path d="M246,-140 q54,12 56,44 q-44,20 -78,0 Z" fill="#fff6e6" {o(6)}/>'
+    g += f'<ellipse cx="292" cy="-104" rx="13" ry="9" fill="#8a6a52"/>'
+    g += f'<path d="M268,-86 q14,10 26,2" fill="none" {o(4, "#9a7a62")}/>'
+    g += f'<path d="M232,-70 q26,46 2,76 q-30,-28 -26,-74 Z" fill="#efe0c2" {o(5)}/>'
+    # глаз: горизонтальный зрачок, блик, моргание
+    shut = A.blink(t, 4.3, .15, .14)
+    if shut:
+        g += f'<path d="M184,-152 q18,14 36,0" fill="none" {o(6)}/>'
+    else:
+        g += (f'<ellipse cx="202" cy="-154" rx="20" ry="16" fill="#fff6e6" {o(5)}/>'
+              f'<ellipse cx="202" cy="-154" rx="13" ry="7" fill="{K}"/>'
+              f'<circle cx="196" cy="-160" r="4.5" fill="#ffffff"/>')
+    # ухо и рога
+    g += f'<ellipse cx="146" cy="-176" rx="44" ry="22" fill="{TEN_SH}" {o(6)} transform="rotate(-34 146 -176)"/>'
+    g += f'<path d="M168,-186 C140,-230 96,-240 56,-214" fill="none" {o(19, "#e8d8b6")}/>'
+    g += f'<path d="M196,-188 C176,-236 130,-250 92,-230" fill="none" {o(17, "#e0cfa8")}/>'
+    # бубенец на шее
+    g += (f'<path d="M118,-56 q58,20 110,2" fill="none" stroke="{KRAS}" stroke-width="14"/>'
+          f'<circle cx="170" cy="-34" r="20" fill="url(#plg)" {o(5)}/>'
+          f'<path d="M160,-30 h20" {o(4)}/>')
     return g + "</g>"
 
 
@@ -143,13 +166,21 @@ def frame(sc, t, gt):
     if sc.get("foto"):
         q = A.out(A.seg(t, .25, .5))
         if q > 0:
+            path = sc["foto"]
+            if sc.get("foto2") and t > dur * .55:
+                path = sc["foto2"]
             iw, ih = int(ow * q), int(oh * q)
             if iw > 10 and ih > 10:
-                bg.paste(cover(foto(sc["foto"]), iw, ih, p),
+                bg.paste(cover(foto(path), iw, ih, p),
                          (int(ox + (ow - iw) / 2), int(oy + (oh - ih) / 2)))
-            b += O.okno_ramka(ox, oy, ow, oh)
+            b += f'<g opacity="{q:.2f}">' + O.okno_ramka(ox, oy, ow, oh) + '</g>' 
     elif sc.get("stock"):
-        b += O.okno_ramka(ox, oy, ow, oh)
+        # рамка проявляется ровно тогда, когда ffmpeg вводит клип: старт +0.8 с,
+        # fade 0.3 с. Раньше рамка висела пустой (его правка 19).
+        q = A.seg(t, .8, .3)
+        if q > 0:
+            b += f'<g opacity="{q:.2f}">' + O.okno_ramka(ox, oy, ow, oh) + '</g>'
+
 
     for e in sc.get("events", []):
         t0 = e["t"] - sc["a"]
@@ -181,6 +212,8 @@ def frame(sc, t, gt):
                 gx = 760 + 90 * A.ease(A.seg(t, t0, 4.0))
                 gy = 720 - 22 * A.w(t, 3.0)
                 b += koza_ognennaya(gx, gy, gt, 1.15 * q)
+        elif k == "glaz":
+            b += glaz(t, t0, gt)
         elif k == "cards5":
             b += cards5(t, t0)
         elif k == "ritual":
@@ -252,4 +285,58 @@ def cards4(t, t0):
         s += (f'<circle cx="{x+200}" cy="370" r="44" fill="{ZOL}" {o(6)}/>'
               f'<text x="{x+200}" y="388" text-anchor="middle" font-family="{O.SERIF}"'
               f' font-size="50" font-weight="bold" fill="#17130f">{i+1}</text></g>')
+    return s
+
+
+def glaz(t, t0, gt):
+    """Крупный план глаза: горизонтальный зрачок, отражение комнаты, сектор
+    обзора почти на весь круг. Его правка 23 — «нужен Голливуд»."""
+    p = A.out(A.seg(t, t0, .8))
+    if p <= 0:
+        return ""
+    cx, cy = 820, 540
+    rx, ry = 430 * p, 300 * p
+    s = f'<rect width="{W}" height="{H}" fill="#120c0a" opacity="{.82*p:.2f}"/>'
+    # сектор обзора
+    q = A.out(A.seg(t, t0 + 1.2, 1.4))
+    if q > 0:
+        import math as _m
+        a0, a1 = -_m.pi * .96 * q, _m.pi * .96 * q
+        x0, y0 = cx + 900 * _m.cos(a0), cy + 760 * _m.sin(a0)
+        x1, y1 = cx + 900 * _m.cos(a1), cy + 760 * _m.sin(a1)
+        s += (f'<path d="M{cx},{cy} L{x0:.0f},{y0:.0f} A900,760 0 {1 if q>.5 else 0} 1'
+              f' {x1:.0f},{y1:.0f} Z" fill="{SVET}" opacity="{.12*q:.2f}"/>')
+    # веко и глазное яблоко
+    s += (f'<ellipse cx="{cx}" cy="{cy}" rx="{rx:.0f}" ry="{ry:.0f}" fill="#fff6e6" {o(12)}/>')
+    # радужка
+    s += (f'<ellipse cx="{cx}" cy="{cy}" rx="{rx*.52:.0f}" ry="{ry*.72:.0f}"'
+          f' fill="#b07a3a" {o(8)}/>')
+    for i in range(26):
+        import math as _m
+        a = i * (2 * _m.pi / 26)
+        s += (f'<path d="M{cx + rx*.14*_m.cos(a):.0f},{cy + ry*.2*_m.sin(a):.0f}'
+              f' L{cx + rx*.5*_m.cos(a):.0f},{cy + ry*.7*_m.sin(a):.0f}"'
+              f' stroke="#d9a35c" stroke-width="5" opacity=".6"/>')
+    # горизонтальный зрачок
+    s += f'<ellipse cx="{cx}" cy="{cy}" rx="{rx*.40:.0f}" ry="{ry*.17:.0f}" fill="#120c0a"/>'
+    # ОТРАЖЕНИЕ комнаты в зрачке: ёлка, огоньки, окно
+    s += (f'<g opacity=".55"><rect x="{cx-rx*.34:.0f}" y="{cy-ry*.1:.0f}"'
+          f' width="{rx*.68:.0f}" height="{ry*.2:.0f}" fill="#2a1a18"/>')
+    s += tree(cx - rx * .12, cy + ry * .09, ry * .17, [VIN, ZOL, KRAS], bows_on=False, star=False)
+    for i in range(5):
+        gx = cx - rx * .3 + i * rx * .15
+        op = .4 + .6 * abs(A.w(gt, 1.4, i * .2))
+        s += f'<circle cx="{gx:.0f}" cy="{cy - ry*.02:.0f}" r="4" fill="{SVET}" opacity="{op:.2f}"/>'
+    s += '</g>'
+    # блик
+    s += (f'<ellipse cx="{cx-rx*.3:.0f}" cy="{cy-ry*.42:.0f}" rx="{rx*.14:.0f}"'
+          f' ry="{ry*.16:.0f}" fill="#ffffff" opacity=".85"/>')
+    # веки моргают
+    if A.blink(gt, 3.6, .1, .18):
+        s += (f'<ellipse cx="{cx}" cy="{cy}" rx="{rx+10:.0f}" ry="{ry+10:.0f}" fill="#e8c9a0"/>'
+              f'<path d="M{cx-rx:.0f},{cy} q{rx:.0f},40 {rx*2:.0f},0" fill="none" {o(10)}/>')
+    if q > .8:
+        s += O.txt(1480, 520, "почти", 56, SVET, "middle")
+        s += O.txt(1480, 620, "340°", 120, "#ffffff", "middle")
+        s += O.pechat(1300, 720, "видит вокруг себя", t, t0 + 2.6, 38)
     return s

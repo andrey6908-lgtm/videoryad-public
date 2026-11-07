@@ -16,13 +16,63 @@ def o(w=7, col=None):
 
 
 def defs():
-    return ('<linearGradient id="plg" x1="0" y1="0" x2="1" y2="0">'
-            f'<stop offset="0" stop-color="{ZOL}"/><stop offset="1" stop-color="{ORA}"/></linearGradient>'
-            '<linearGradient id="stena" x1="0" y1="0" x2="0" y2="1">'
-            f'<stop offset="0" stop-color="{STENA2}"/><stop offset="1" stop-color="{STENA}"/></linearGradient>'
-            '<radialGradient id="teplo" cx=".5" cy=".5" r=".5">'
-            f'<stop offset="0" stop-color="{SVET}" stop-opacity=".55"/>'
-            f'<stop offset="1" stop-color="{SVET}" stop-opacity="0"/></radialGradient>')
+    """Градиенты и тени: без них картинка плоская (его правка 20 и 22)."""
+    g = ('<linearGradient id="plg" x1="0" y1="0" x2="1" y2="0">'
+         f'<stop offset="0" stop-color="{ZOL}"/><stop offset="1" stop-color="{ORA}"/></linearGradient>'
+         '<linearGradient id="stena" x1="0" y1="0" x2="0" y2="1">'
+         f'<stop offset="0" stop-color="{STENA2}"/><stop offset="1" stop-color="{STENA}"/></linearGradient>'
+         '<radialGradient id="teplo" cx=".5" cy=".5" r=".5">'
+         f'<stop offset="0" stop-color="{SVET}" stop-opacity=".55"/>'
+         f'<stop offset="1" stop-color="{SVET}" stop-opacity="0"/></radialGradient>'
+         # мягкая падающая тень
+         '<radialGradient id="ten" cx=".5" cy=".5" r=".5">'
+         '<stop offset="0" stop-color="#000000" stop-opacity=".55"/>'
+         '<stop offset="1" stop-color="#000000" stop-opacity="0"/></radialGradient>'
+         # снег с объёмом
+         '<linearGradient id="snegg" x1="0" y1="0" x2="0" y2="1">'
+         '<stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#c3d2e6"/></linearGradient>'
+         # стекло бокала
+         '<linearGradient id="steklo" x1="0" y1="0" x2="1" y2="0">'
+         '<stop offset="0" stop-color="#ffffff" stop-opacity=".55"/>'
+         '<stop offset=".35" stop-color="#ffffff" stop-opacity=".12"/>'
+         '<stop offset="1" stop-color="#ffffff" stop-opacity=".4"/></linearGradient>'
+         # вино
+         '<linearGradient id="vino" x1="0" y1="0" x2="0" y2="1">'
+         '<stop offset="0" stop-color="#a32a3f"/><stop offset="1" stop-color="#4e0f1c"/></linearGradient>'
+         # воск свечи
+         '<linearGradient id="vosk" x1="0" y1="0" x2="1" y2="0">'
+         '<stop offset="0" stop-color="#fff6e0"/><stop offset=".45" stop-color="#e9dcc0"/>'
+         '<stop offset="1" stop-color="#c8b08a"/></linearGradient>'
+         # дерево
+         '<linearGradient id="derevo" x1="0" y1="0" x2="0" y2="1">'
+         f'<stop offset="0" stop-color="#9a6540"/><stop offset="1" stop-color="{TERRA}"/></linearGradient>'
+         # хвоя с объёмом
+         '<linearGradient id="hvoya" x1="0" y1="0" x2="1" y2="1">'
+         f'<stop offset="0" stop-color="#4f9a56"/><stop offset=".5" stop-color="{ZEL2}"/>'
+         f'<stop offset="1" stop-color="{HVOYA}"/></linearGradient>')
+    # шары: у каждого цвета свой радиальный градиент с бликом
+    for i, c in enumerate(SHAR_COLS):
+        g += (f'<radialGradient id="sh{i}" cx=".34" cy=".3" r=".78">'
+              f'<stop offset="0" stop-color="#ffffff" stop-opacity=".85"/>'
+              f'<stop offset=".22" stop-color="{c}" stop-opacity=".95"/>'
+              f'<stop offset="1" stop-color="{c}"/></radialGradient>')
+    return g
+
+
+SHAR_COLS = []
+
+
+def shar_grad(col):
+    """Возвращает id градиента для цвета шара, заводя его при первой встрече."""
+    if col not in SHAR_COLS:
+        SHAR_COLS.append(col)
+    return "sh%d" % SHAR_COLS.index(col)
+
+
+def ten(cx, cy, rx, ry, op=1.0):
+    """Мягкая падающая тень под предметом."""
+    return (f'<ellipse cx="{cx:.0f}" cy="{cy:.0f}" rx="{rx:.0f}" ry="{ry:.0f}"'
+            f' fill="url(#ten)" opacity="{op:.2f}"/>')
 
 
 def room(w, h, pol=.78):
@@ -36,11 +86,18 @@ def room(w, h, pol=.78):
 
 
 def ball(x, y, r, col=KRAS, shine=True):
+    """Шар с объёмом: радиальный градиент, блик, отражённый свет снизу."""
     r = max(5.0, float(r))
-    s = (f'<path d="M{x-6},{y-r-14} h12 v12 h-12 Z" fill="{ZOL}" {o(4)}/>'
-         f'<circle cx="{x}" cy="{y}" r="{r}" fill="{col}" {o(5)}/>')
+    gid = shar_grad(col)
+    s = (f'<rect x="{x-7:.0f}" y="{y-r-16:.0f}" width="14" height="14" rx="3"'
+         f' fill="url(#plg)" {o(3)}/>'
+         f'<circle cx="{x}" cy="{y}" r="{r}" fill="url(#{gid})" {o(max(3, r*.1))}/>')
     if shine:
-        s += f'<ellipse cx="{x-r*.32:.0f}" cy="{y-r*.34:.0f}" rx="{r*.22:.0f}" ry="{r*.15:.0f}" fill="#ffffff" opacity=".5"/>'
+        s += (f'<ellipse cx="{x-r*.34:.0f}" cy="{y-r*.36:.0f}" rx="{r*.24:.0f}"'
+              f' ry="{r*.16:.0f}" fill="#ffffff" opacity=".75"'
+              f' transform="rotate(-28 {x-r*.34:.0f} {y-r*.36:.0f})"/>')
+        s += (f'<path d="M{x-r*.7:.0f},{y+r*.45:.0f} a{r*.7:.0f},{r*.7:.0f} 0 0 0 {r*1.4:.0f},0"'
+              f' fill="none" stroke="#ffffff" stroke-width="{max(1.5, r*.09):.1f}" opacity=".22"/>')
     return s
 
 

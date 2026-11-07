@@ -83,13 +83,19 @@ for nm, foto, a, b in TEMY:
                           ("шишк", "шишка", [1090, 470, 84, 84]),
                           ("мишур", "мишура кольцами", [1180, 790, 230, 110])):
         ev(when(key, after=a, before=b), "obvodka", tema=nm, pod=pod, box=box)
+# его правки 17, 21, 23: материал ставим ровно под слова
+for t_ in every("скал", "отвесн", "альпинист")[:2]:
+    ev(t_, "skaly")
+t_ = when("марокко", "деревь", "дерева")
+ev(t_, "derevo")
+ev(when("глаз", "видит", "зрачок"), "glaz")
 ev(when("ритуал", "обряд"), "ritual")
 ev(when("мишура", after=760), "reveal")
 ev(when("ошибк", after=700), "errors")
 ev(when("комментар"), "cards4")
 ev(when("подпис", "подписаться", after=TOTAL - 90), "final")
 EV.sort(key=lambda e: e["t"])
-BLOK = {"cards5", "cards4", "errors", "ritual", "reveal", "zagolovok"}
+BLOK = {"cards5", "cards4", "errors", "ritual", "reveal", "zagolovok", "glaz"}
 
 CAMS = [("push", 1.0, 1.16), ("pan", 1.1, 1.1), ("crane", 1.18, 1.0), ("arc", 1.06, 1.14),
         ("wide", 1.14, 1.0), ("tilt", 1.12, 1.02)]
@@ -109,7 +115,13 @@ while t < TOTAL - 1:
     sc = {"n": i + 1, "a": round(t, 2), "b": round(b, 2), "lok": lokl, "tema": tema,
           "cam": cam[0], "z0": cam[1], "z1": cam[2], "pal": PAL[tema], "events": evs}
     # окно показываем, когда есть что показать и экран не занят нашим блоком
-    if not blok:
+    kinds = [e["kind"] for e in evs]
+    if "skaly" in kinds:
+        sc["stock"] = "koza"            # живое видео: козы на отвесных скалах
+    elif "derevo" in kinds:
+        sc["foto"] = "foto/kozy_derevo1.jpg"   # козы на аргановом дереве, Марокко
+        sc["foto2"] = "foto/kozy_derevo2.jpg"
+    elif not blok:
         if foto and tema != "none":
             sc["foto"] = foto
         elif i % 3 == 0:
