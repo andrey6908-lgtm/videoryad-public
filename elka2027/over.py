@@ -109,9 +109,14 @@ def obvodka(cx, cy, rx, ry, pod, t, t0, col=SVET, side=1, dx=160, dur=.6, size=3
         s += (f'<path d="M{cx + rx*side},{cy} L{cx + (rx + dx*q)*side:.0f},{cy-40*q:.0f}"'
               f' stroke="{col}" stroke-width="5"/>')
         if q > .8:
+            # подложка под подпись: на светлом фото светлый текст не читался
+            wpx = len(pod) * size * .56 + 26
+            bx = (lx + 10 * side) - (wpx if side < 0 else 0)
+            s += (f'<rect x="{bx:.0f}" y="{cy-46-size*0.82:.0f}" width="{wpx:.0f}"'
+                  f' height="{size*1.18:.0f}" rx="8" fill="#17130f" opacity=".72"/>')
             s += (f'<text x="{lx + 10*side}" y="{cy-46}" text-anchor="{anc}"'
-                  f' font-family="{SANS}" font-size="{size}" font-weight="600" fill="{col}"'
-                  f' stroke="{K}" stroke-width="6" paint-order="stroke">{pod}</text>')
+                  f' font-family="{SANS}" font-size="{size}" font-weight="600" fill="{col}">'
+                  f'{pod}</text>')
     return s + "</g>"
 
 

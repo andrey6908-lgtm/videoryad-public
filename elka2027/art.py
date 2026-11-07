@@ -49,20 +49,25 @@ def room_bg(t, pol=.78):
 
 # ─────────────────── рисованные сцены ───────────────────
 def sc_five(sc, t, dur, gt):
-    """Пять ёлок подряд: каждая по 2,6 с, на пятой стоп и знак вопроса."""
+    """Пять ёлок сменяются В ОКНЕ внутри нашей сцены, на пятой — стоп и вопрос."""
     fs = sc["foto"]
     step = 2.6
     i = min(int(t / step), len(fs) - 1)
     local = t - i * step
+    pal = [[VIN, GRAN, ZOL], ["#8a6b45", "#c9b58a", "#6d8a4a"], [ZOL, "#d9cdb0", SVET],
+           [GRAN, "#b9743f", KREM], [KRAS, ZOL, "#7fd0ff", "#9ee07f", VIN]][i]
+    bg = svg2img(room_bg(t) + tree(380, 950, 620, pal, bows_on=i != 4)
+                 + gift(180, 960, 150, 104, VIN) + gift(340, 980, 160, 88, ZEL2, SVET)).convert("RGB")
+    wx, wy, ww, wh = WIN
     im = kb(foto(fs[i]), 1.06, 1.0, .5, .5, min(1.0, local / step))
-    b = ""
-    if i == len(fs) - 1 and local > .6:
-        b += O.zatemn(min(.55, (local - .6) * .5))
-        b += O.vopros(W // 2, 700, t, i * step + 1.4, 320)
-    if t < 1.0:
-        b += O.zatemn(max(0.0, 1 - t))
+    bg.paste(im.resize((ww, wh), Image.BILINEAR), (wx, wy))
+    b = O.okno_ramka(wx, wy, ww, wh)
+    if i == len(fs) - 1 and local > .8:
+        b += (f'<rect x="{wx}" y="{wy}" width="{ww}" height="{wh}" rx="14" fill="#0b0705"'
+              f' opacity="{min(.55, (local-.8)*.6):.2f}"/>')
+        b += O.vopros(wx + ww / 2, wy + wh / 2 + 70, t, i * step + 1.4, 220)
     b += O.vign()
-    return im, b
+    return bg, b
 
 
 def sc_title(sc, t, dur, gt):
@@ -284,14 +289,19 @@ def sc_grid4(sc, t, dur, gt):
 
 
 def sc_mishura(sc, t, dur, gt):
+    bg = svg2img(room_bg(t) + tree(380, 950, 620, [KRAS, ZOL, "#7fd0ff", "#9ee07f", VIN],
+                                   bows_on=False)).convert("RGB")
+    wx, wy, ww, wh = WIN
     im = kb(foto("foto/ёлка_ошибка.jpg"), 1.3, 1.42, .58, .62, A.seg(t, 0, dur))
-    b = O.zatemn(min(.78, .3 + t * .3))
+    bg.paste(im.resize((ww, wh), Image.BILINEAR), (wx, wy))
+    b = O.okno_ramka(wx, wy, ww, wh)
+    b += O.zatemn(min(.72, .25 + t * .28))
     b += O.nalив(430, 500, "МИШУРА", t, .4, 200)
     if t > 2.6:
         b += O.txt(960, 650, "ВОТ ОНА", 92, "#ff6b6b", "middle")
     if t > 4.0:
         b += O.pechat(560, 790, "та самая вещь, которую вешают последней", t, 4.0, 42)
-    return im, b
+    return bg, b
 
 
 def sc_check(sc, t, dur, gt):
@@ -348,98 +358,131 @@ def sc_final(sc, t, dur, gt):
     return bg, b
 
 
-# ─────────────────── фотосцена с наложениями ───────────────────
-def sc_photo(sc, t, dur, gt):
-    p = A.seg(t, 0, dur)
-    im, win = kb(foto(sc["foto"]), sc.get("z0", 1.0), sc.get("z1", 1.08),
-                 sc.get("ax", .5), sc.get("ay", .5), p, box=True)
-    wx, wy, cw, ch = win
-    kx, ky = W / cw, H / ch
+# ─────────────────── СЦЕНА: наш мультяшный кадр, фото — в окне ───────────────────
+# Его правило 07.11: генерация НИКОГДА не идёт на весь экран. Она появляется
+# только вставкой в скруглённом окне внутри рисованной сцены и только там,
+# где речь о конкретной ёлке.
+PAL = {"foto/винная.jpg": [VIN, GRAN, ZOL],
+       "foto/эко.jpg": ["#8a6b45", "#c9b58a", "#6d8a4a"],
+       "foto/металик.jpg": [ZOL, "#d9cdb0", SVET],
+       "foto/Винтажная_ёлка.jpg": [GRAN, "#b9743f", KREM],
+       "foto/ёлка_ошибка.jpg": [KRAS, ZOL, "#7fd0ff", "#9ee07f", VIN]}
+WIN = (820, 250, 980, 551)          # окно вставки: 16:9, правая половина кадра
 
-    def ekran(px, py):
-        return (px - wx) * kx, (py - wy) * ky
+
+def sc_scene(sc, t, dur, gt):
+    """Рисованная комната + окно с его генерацией + наши наложения."""
+    pal = PAL.get(sc.get("foto"), [VIN, ZOL, KRAS])
+    bare = sc.get("bare_tree")
+    bg = svg2img(room_bg(t) + tree(380, 950, 620, pal, bows_on=not bare)
+                 + gift(180, 960, 150, 104, VIN) + gift(340, 980, 160, 88, ZEL2, SVET)
+                 + gift(520, 970, 140, 98, KRAS)).convert("RGB")
+    wx, wy, ww, wh = sc.get("win", WIN)
+    p = A.seg(t, 0, dur)
+    poyav = A.out(A.seg(t, sc.get("win_t", .4), .6))      # окно выезжает
     b = ""
+    if poyav > 0 and sc.get("foto"):
+        # кадр внутри окна живёт: лёгкий наезд по фото
+        im, box = kb(foto(sc["foto"]), sc.get("z0", 1.0), sc.get("z1", 1.08),
+                     sc.get("ax", .5), sc.get("ay", .5), p, box=True)
+        sw = int(ww * poyav); sh = int(wh * poyav)
+        if sw > 8 and sh > 8:
+            ins = im.resize((sw, sh), Image.BILINEAR)
+            mx = int(wx + (ww - sw) / 2); my = int(wy + (wh - sh) / 2)
+            bg.paste(ins, (mx, my))
+        b += O.okno_ramka(wx, wy, ww, wh)
+        bx, by, bw, bh = box                      # окно камеры внутри фото
+
+        def ekran(px, py):
+            return (wx + (px - bx) * ww / bw, wy + (py - by) * wh / bh)
+        kx, ky = ww / bw, wh / bh
+    else:
+        def ekran(px, py):
+            return px, py
+        kx = ky = 1.0
     if sc.get("dark"):
         b += O.zatemn(sc["dark"])
     if sc.get("dark_end"):
         b += O.zatemn(.55 * A.ease(A.seg(t, dur * .45, dur * .5)))
     if sc.get("q"):
-        b += O.vopros(330, 640, t, 1.0, 240)
+        b += O.vopros(300, 560, t, 1.0, 230)
     if sc.get("live_win"):
-        wb = sc.get("win_box", [1180, 150, 640, 360])
-        b += O.okno_ramka(*wb)
+        b += O.okno_ramka(*sc.get("win_box", [820, 250, 980, 551]))
     if sc.get("plate"):
-        b += O.plate(110, 110, sc["plate"][0], sc["plate"][1], t, .5, 700)
+        b += O.plate(90, 90, sc["plate"][0], sc["plate"][1], t, .5, 700)
     if sc.get("pal"):
         cols, pod = sc["pal"]
-        b += O.palitra(200, sc.get("pal_y", 330), cols, pod, t, 1.6)
+        b += O.palitra(170, sc.get("pal_y", 300), cols, pod, t, 1.6, .25, 40, 132)
     for ob in sc.get("obv", []):
         cx, cy, rx, ry, pod, side, dx, t0 = ob
         sx, sy = ekran(cx, cy)
-        b += O.obvodka(sx, sy, rx * kx, ry * ky, pod, t, t0,
-                       "#ff6b6b" if sc.get("red") else SVET, side, dx)
+        if not (wx - 40 < sx < wx + ww + 40):
+            continue
+        # подпись всегда уходит ВНУТРЬ окна, иначе уезжает за край кадра
+        side2 = -1 if sx > wx + ww * .5 else 1
+        dx2 = 26
+        b += O.obvodka(sx, sy, max(18, rx * kx), max(18, ry * ky), pod, t, t0,
+                       "#ff6b6b" if sc.get("red") else SVET, side2, dx2, size=28)
     if sc.get("card3"):
-        b += O.card(1180, 300, 640, 540, t, 1.0, "#1b2416", .9, "#6d8a4a")
-        b += O.txt(1230, 400, "ТРИ ШАГА", 46, "#b7f0b7")
-        b += O.spisok(1230, 500, sc["card3"], t, 2.0, 1.6, 38, 90, num=True)
+        b += O.card(90, 470, 640, 480, t, 1.0, "#1b2416", .92, "#6d8a4a")
+        b += O.txt(140, 560, "ТРИ ШАГА", 44, "#b7f0b7")
+        b += O.spisok(140, 650, sc["card3"], t, 2.0, 1.6, 34, 86, num=True)
     if sc.get("card2"):
-        b += O.card(120, 820, 760, 180, t, 1.4, "#1d1310", .92, "#7ed07e")
-        b += O.txt(170, 900, sc["card2"][0], 40, "#b7f0b7", font=O.SANS, ls=1, weight="600")
-        b += O.txt(170, 960, sc["card2"][1], 36, "#ff9d9d", font=O.SANS, ls=1, weight="600")
+        b += O.card(90, 790, 700, 170, t, 1.4, "#1d1310", .93, "#7ed07e")
+        b += O.txt(130, 866, sc["card2"][0], 38, "#b7f0b7", font=O.SANS, ls=1, weight="600")
+        b += O.txt(130, 922, sc["card2"][1], 34, "#ff9d9d", font=O.SANS, ls=1, weight="600")
     if sc.get("dots"):
         for i, (c, nm, ok) in enumerate(sc["dots"]):
-            y = 300 + i * 150
+            y = 560 + i * 140
             q = A.over(A.seg(t, 2.0 + i * .8, .4), 1.5)
             if q <= 0:
                 continue
-            b += f'<circle cx="220" cy="{y}" r="{54*q:.0f}" fill="{c}" {o(6)}/>'
-            b += O.galka(330, y, t, 2.4 + i * .8, 34, ok)
-            b += O.txt(410, y + 14, nm, 38, KREM, font=O.SANS, ls=1, weight="600")
+            b += f'<circle cx="150" cy="{y}" r="{48*q:.0f}" fill="{c}" {o(6)}/>'
+            b += O.galka(250, y, t, 2.4 + i * .8, 30, ok)
+            b += O.txt(320, y + 12, nm, 34, KREM, font=O.SANS, ls=1, weight="600")
     if sc.get("formula"):
-        b += O.card(1120, 280, 700, 560, t, .6)
-        b += O.txt(1170, 380, "ФОРМУЛА", 46, SVET)
-        for i, (cx, r, col) in enumerate(((1240, 78, ZOL), (1430, 52, "#3f8a4a"),
-                                          (1580, 26, KREM), (1650, 26, KREM), (1720, 26, KREM))):
+        b += O.card(90, 500, 660, 440, t, .6)
+        b += O.txt(140, 590, "ФОРМУЛА", 44, SVET)
+        for i, (cx, r, col) in enumerate(((220, 68, ZOL), (390, 46, "#3f8a4a"),
+                                          (520, 24, KREM), (580, 24, KREM), (640, 24, KREM))):
             q = A.over(A.seg(t, 1.6 + i * .4, .4), 1.6)
             if q > 0:
-                b += f'<circle cx="{cx}" cy="520" r="{r*q:.0f}" fill="{col}" {o(6)}/>'
-        b += O.pechat(1170, 700, "один большой, один средний, три мелких", t, 4.0, 32)
+                b += f'<circle cx="{cx}" cy="730" r="{r*q:.0f}" fill="{col}" {o(6)}/>'
+        b += O.pechat(140, 880, "один большой, один средний, три мелких", t, 4.0, 30)
     if sc.get("goat"):
         p2 = A.ease(A.seg(t, .8, dur * .7))
         gy = 980 - p2 * 520
-        b += koza(1420, gy, .9 + .1 * p2)
+        b += koza(640, gy, .85 + .1 * p2)
         if sc.get("sector"):
-            b += (f'<path d="M1420,{gy-60:.0f} L700,300 L700,900 Z" fill="{SVET}" opacity=".16"/>')
+            b += f'<path d="M700,{gy-50:.0f} L{wx},{wy+60} L{wx},{wy+wh-60} Z" fill="{SVET}" opacity=".16"/>'
     if sc.get("goat_top"):
-        b += koza(1180, 300, .9)
-        b += O.iskry(t, 1180, 300, 10, 5, 220)
+        b += koza(420, 300, .8)
+        b += O.iskry(t, 420, 300, 10, 5, 200)
     if sc.get("goat_leave"):
         p2 = A.ease(A.seg(t, 1.2, dur * .6))
-        b += koza(1380 - p2 * 1500, 880 + 40 * math.sin(p2 * 6), 1.0)
+        b += koza(700 - p2 * 900, 880 + 30 * math.sin(p2 * 6), .95)
     if sc.get("glow_mishura"):
-        for i in range(5):
-            y = 420 + i * 120
-            op = .35 + .35 * abs(A.w(t, 2.4, i * .2))
-            b += (f'<path d="M820,{y} q320,70 620,-30" fill="none" stroke="{SVET}"'
-                  f' stroke-width="16" opacity="{op:.2f}"/>')
+        for i in range(4):
+            y = wy + 120 + i * 110
+            op = .3 + .35 * abs(A.w(t, 2.4, i * .2))
+            b += (f'<path d="M{wx+60},{y} q{ww*.4:.0f},70 {ww-120:.0f},-26" fill="none"'
+                  f' stroke="{SVET}" stroke-width="14" opacity="{op:.2f}"/>')
     if sc.get("strip"):
         q = A.ease(A.seg(t, .8, dur * .7))
-        for i in range(6):
-            y = 900 - i * 120
-            if q > i / 6:
-                b += (f'<path d="M800,{y} q340,80 660,-30" fill="none" stroke="#1d3a1d"'
-                      f' stroke-width="26" opacity=".85"/>')
-        b += O.pechat(140, 980, "мишура снимается кольцо за кольцом", t, 1.2, 40)
+        for i in range(5):
+            y = wy + wh - 60 - i * 95
+            if q > i / 5:
+                b += (f'<path d="M{wx+50},{y} q{ww*.4:.0f},70 {ww-100:.0f},-24" fill="none"'
+                      f' stroke="#1d3a1d" stroke-width="22" opacity=".9"/>')
+        b += O.pechat(90, 1000, "мишура снимается кольцо за кольцом", t, 1.2, 36)
     if sc.get("flare"):
-        b += O.iskry(t, 1360, 300, 16, 1, 320)
+        b += O.iskry(t, wx + ww / 2, wy + wh / 2, 16, 1, 300)
     b += O.vign()
-    if not sc.get("dark"):
-        b += O.sneg(gt, 22, 6)
-    return im, b
+    return bg, b
 
 
-KINDS = {"five": sc_five, "title": sc_title, "goat_card": sc_goat_card, "live": sc_live,
-         "eye": sc_eye, "room_walk": sc_room_walk, "photo": sc_photo, "split": sc_split,
+KINDS = {"five": sc_five, "scene": sc_scene, "title": sc_title, "goat_card": sc_goat_card, "live": sc_live,
+         "eye": sc_eye, "room_walk": sc_room_walk, "split": sc_split,
          "box": sc_box, "shishki": sc_shishki, "shkaf": sc_shkaf, "sloi": sc_sloi,
          "perebor": sc_perebor, "grid4": sc_grid4, "mishura": sc_mishura,
          "check": sc_check, "cards4": sc_cards4, "final": sc_final}
