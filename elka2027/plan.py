@@ -14,12 +14,12 @@ NFRAMES = int(round(TOTAL * FPS))
 
 # живые вставки: качает раннер по прямой ссылке, ключей в облаке нет
 _ST = json.load(open(os.path.join(HERE, "stock.json"), encoding="utf-8"))
-import art3 as _A
+from okna import OKNO as _O, OKNO_LOK as _OL
 STOCK = []
 for sc in SCENES:
     # нейтральный новогодний сток — только там, где окно есть и экран не занят
     if sc.get("stock"):
-        x, y, w, h = _A.OKNO_LOK.get(sc.get("lok", "komnata"), _A.OKNO)
+        x, y, w, h = _OL.get(sc.get("lok", "komnata"), _O)
         STOCK.append((sc["a"] + .8, sc["b"] - .2, _ST[sc["stock"]], (x, y, w, h)))
 
 
