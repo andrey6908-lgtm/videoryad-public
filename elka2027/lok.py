@@ -96,6 +96,13 @@ def komnata(t, pal):
     s += f'<rect x="34" y="484" width="482" height="38" rx="8" fill="{TERRA}" {o(7)}/>'
     s += f'<rect x="116" y="586" width="318" height="264" rx="12" fill="#1a0f0c" {o(7)}/>'
     s += ogon(275, 806, t, .9)
+    s += f'<ellipse cx="1020" cy="1010" rx="520" ry="56" fill="#6b4634" opacity=".5"/>'
+    s += (f'<path d="M620,1010 q400,-46 800,0 q-400,52 -800,0 Z" fill="{GRAN}" opacity=".55"/>')
+    # кресло у камина
+    s += ten(330, 980, 160, 24, .45)
+    s += (f'<rect x="196" y="770" width="270" height="200" rx="26" fill="{GRAN}" {o(8)}/>'
+          f'<rect x="178" y="700" width="306" height="130" rx="30" fill="#8e2a3c" {o(8)}/>'
+          f'<rect x="206" y="830" width="250" height="40" rx="14" fill="#b05464" opacity=".6"/>')
     s += elka(900, 940, 600, t, pal)
     for x, y, w_, h_, c1, c2 in ((700, 950, 150, 104, VIN, ZOL), (860, 968, 160, 88, ZEL2, SVET),
                                  (1030, 958, 140, 98, KRAS, ZOL)):
@@ -373,11 +380,31 @@ def nebo(t, pal):
     s += (f'<path d="M0,820 L240,660 L470,820 M700,640 L960,820 M1200,660 L1430,820'
           f' M1700,650 L1920,820" fill="none" stroke="#e8eef9" stroke-width="14"'
           f' stroke-linejoin="round" opacity=".9"/>')
-    for i, (x, y) in enumerate(((150, 880), (390, 880), (610, 900), (880, 880),
-                                (1120, 900), (1360, 880), (1620, 900))):
-        op = .45 + .55 * abs(A.w(t, 3.4, i * .25))
-        s += (f'<rect x="{x}" y="{y}" width="96" height="86" rx="8" fill="{SVET}"'
-              f' opacity="{op:.2f}" {o(5)}/>')
+    # окна рядами, двери, гирлянды по карнизам — дом должен читаться домом
+    for d, (x0, wdt, top) in enumerate(((20, 430, 700), (500, 430, 680), (980, 420, 700),
+                                        (1450, 440, 690))):
+        for row in range(2):
+            for col in range(3):
+                x = x0 + 40 + col * (wdt - 120) / 2
+                y = top + 90 + row * 110
+                i = d * 6 + row * 3 + col
+                phase = A.w(t / (2.6 + i * .7), 1.0, i * .19)
+                op = .18 if (i % 3 == 0 and phase < -.2) else .55 + .45 * abs(A.w(t, 3.0 + i * .4, i * .2))
+                s += (f'<rect x="{x:.0f}" y="{y:.0f}" width="74" height="64" rx="7"'
+                      f' fill="{SVET}" opacity="{op:.2f}" {o(4)}/>')
+                s += (f'<path d="M{x+37:.0f},{y} v64 M{x:.0f},{y+32} h74" stroke="#2a2a33"'
+                      f' stroke-width="4" opacity="{op*.8:.2f}"/>')
+        # дверь с венком
+        dx = x0 + wdt / 2 - 34
+        s += f'<rect x="{dx:.0f}" y="960" width="68" height="120" rx="6" fill="#4a3129" {o(5)}/>'
+        s += f'<circle cx="{dx+34:.0f}" cy="986" r="14" fill="none" stroke="{ZEL2}" stroke-width="8"/>'
+        # гирлянда по карнизу
+        for g_ in range(7):
+            gx = x0 + 20 + g_ * (wdt - 40) / 6
+            gy = top + 34 + 16 * math.sin(g_ / 6 * math.pi)
+            col = [SVET, KRAS, "#9ee07f", "#7fd0ff"][g_ % 4]
+            op = .5 + .5 * abs(A.w(t, 1.8 + g_ * .2, g_ * .3))
+            s += f'<circle cx="{gx:.0f}" cy="{gy:.0f}" r="7" fill="{col}" opacity="{op:.2f}"/>' 
     # труба с дымом
     s += f'<rect x="690" y="560" width="76" height="130" rx="6" fill="#2a2a33" {o(6)}/>'
     s += f'<rect x="676" y="540" width="104" height="30" rx="8" fill="{TERRA}" {o(6)}/>'
