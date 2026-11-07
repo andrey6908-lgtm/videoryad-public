@@ -3,7 +3,7 @@
 движением камеры или рисованная сцена, поверх — наложения. Звука здесь нет."""
 import os, sys, subprocess, argparse, time
 from PIL import Image
-import art2 as art, plan
+import art3 as art, plan
 
 ap = argparse.ArgumentParser()
 ap.add_argument("out"); ap.add_argument("--shard", default="1/1")
