@@ -89,14 +89,18 @@ def palitra(x, y, cols, pod, t, t0, step=.25, r=44, dx=148):
     return s
 
 
-def obvodka(cx, cy, rx, ry, pod, t, t0, col=SVET, side=1, dx=160, dur=.6, size=34):
+def obvodka(cx, cy, rx, ry, pod, t, t0, col=SVET, side=1, dx=160, dur=.6, size=34,
+            life=8.5):
     """Обводка рисуется по кругу, затем выноска и подпись."""
     p = A.out(A.seg(t, t0, dur))
     if p <= 0:
         return ""
+    fade = 1.0 - A.ease(A.seg(t, t0 + life, .6))
+    if fade <= 0.01:
+        return ""
     per = 2 * 3.1416 * ((rx + ry) / 2)
-    s = (f'<ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="none" stroke="{col}"'
-         f' stroke-width="7" stroke-dasharray="{per*p:.0f} {per:.0f}"'
+    s = (f'<g opacity="{fade:.2f}"><ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="none"'
+         f' stroke="{col}" stroke-width="7" stroke-dasharray="{per*p:.0f} {per:.0f}"'
          f' transform="rotate(-90 {cx} {cy})"/>')
     q = A.out(A.seg(t, t0 + dur, .4))
     if q > 0:
@@ -108,7 +112,7 @@ def obvodka(cx, cy, rx, ry, pod, t, t0, col=SVET, side=1, dx=160, dur=.6, size=3
             s += (f'<text x="{lx + 10*side}" y="{cy-46}" text-anchor="{anc}"'
                   f' font-family="{SANS}" font-size="{size}" font-weight="600" fill="{col}"'
                   f' stroke="{K}" stroke-width="6" paint-order="stroke">{pod}</text>')
-    return s
+    return s + "</g>"
 
 
 def card(x, y, w, h, t, t0, fill="#1d1310", op=.9, stroke=ZOL, dur=.4):

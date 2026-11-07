@@ -22,13 +22,16 @@ def foto(path):
     return _foto[path]
 
 
-def kb(im, z0, z1, ax, ay, p):
-    """Движение камеры по фото: окно едет и наезжает — покадрово, без ступенек."""
+def kb(im, z0, z1, ax, ay, p, box=False):
+    """Движение камеры по фото: окно едет и наезжает — покадрово, без ступенек.
+    box=True отдаёт ещё и окно: по нему координаты обводок переводятся в экранные,
+    иначе указатель уезжает с деталью (поймано на первом прогоне)."""
     z = z0 + (z1 - z0) * A.ease(p)
     cw, ch = W / z, H / z
     x = min(max(0.0, ax * W - cw / 2), W - cw)
     y = min(max(0.0, ay * H - ch / 2), H - ch)
-    return im.resize((W, H), Image.BILINEAR, box=(x, y, x + cw, y + ch))
+    out = im.resize((W, H), Image.BILINEAR, box=(x, y, x + cw, y + ch))
+    return (out, (x, y, cw, ch)) if box else out
 
 
 def svg2img(body, defs=True):
@@ -106,7 +109,7 @@ def sc_goat_card(sc, t, dur, gt):
 def sc_live(sc, t, dur, gt):
     bg = svg2img(f'<rect width="{W}" height="{H}" fill="{TEMN}"/>' + O.sneg(t, 40, 2)).convert("RGB")
     b = O.okno_ramka(260, 180, 1400, 790)
-    b += O.plate(260, 1000, sc["pod"][0], sc["pod"][1], t, .6, 760)
+    b += O.plate(260, 960, sc["pod"][0], sc["pod"][1], t, .6, 760)
     return bg, b
 
 
@@ -348,8 +351,13 @@ def sc_final(sc, t, dur, gt):
 # ─────────────────── фотосцена с наложениями ───────────────────
 def sc_photo(sc, t, dur, gt):
     p = A.seg(t, 0, dur)
-    im = kb(foto(sc["foto"]), sc.get("z0", 1.0), sc.get("z1", 1.08),
-            sc.get("ax", .5), sc.get("ay", .5), p)
+    im, win = kb(foto(sc["foto"]), sc.get("z0", 1.0), sc.get("z1", 1.08),
+                 sc.get("ax", .5), sc.get("ay", .5), p, box=True)
+    wx, wy, cw, ch = win
+    kx, ky = W / cw, H / ch
+
+    def ekran(px, py):
+        return (px - wx) * kx, (py - wy) * ky
     b = ""
     if sc.get("dark"):
         b += O.zatemn(sc["dark"])
@@ -367,8 +375,9 @@ def sc_photo(sc, t, dur, gt):
         b += O.palitra(200, sc.get("pal_y", 330), cols, pod, t, 1.6)
     for ob in sc.get("obv", []):
         cx, cy, rx, ry, pod, side, dx, t0 = ob
-        b += O.obvodka(cx, cy, rx, ry, pod, t, t0, "#ff6b6b" if sc.get("red") else SVET,
-                       side, dx)
+        sx, sy = ekran(cx, cy)
+        b += O.obvodka(sx, sy, rx * kx, ry * ky, pod, t, t0,
+                       "#ff6b6b" if sc.get("red") else SVET, side, dx)
     if sc.get("card3"):
         b += O.card(1180, 300, 640, 540, t, 1.0, "#1b2416", .9, "#6d8a4a")
         b += O.txt(1230, 400, "ТРИ ШАГА", 46, "#b7f0b7")
