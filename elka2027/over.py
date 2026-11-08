@@ -75,7 +75,15 @@ def plate(x, y, head, sub, t, t0, w=660, dur=.7):
 
 
 def palitra(x, y, cols, pod, t, t0, step=.25, r=44, dx=148):
+    # подложка: без неё подписи тонут в декорации (его правка 08.11 по камину)
+    k0 = A.over(A.seg(t, t0, .45), 1.6)
     s = ""
+    if k0 > 0:
+        bx, by = x - r - 26, y - r - 20
+        bw = (len(cols) - 1) * dx + 2 * r + 52
+        bh = 2 * r + 86
+        s += (f'<rect x="{bx:.0f}" y="{by:.0f}" width="{bw:.0f}" height="{bh:.0f}" rx="22" '
+              f'fill="#120d0b" opacity="{.62 * min(1.0, k0):.2f}"/>')
     for i, (c, p) in enumerate(zip(cols, pod)):
         k = A.over(A.seg(t, t0 + i * step, .45), 1.6)
         if k <= 0:

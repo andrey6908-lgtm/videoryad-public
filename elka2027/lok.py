@@ -109,19 +109,58 @@ def komnata(t, pal):
 
 
 def kamin_krupno(t, pal):
+    """Камин крупно. Его правка 08.11: топка больше не чёрная дыра на пол-кадра —
+    камин целиком живёт В ЛЕВОЙ ПОЛОСЕ (окно вставки занимает правую половину),
+    внутри горят дрова, по стене идёт тёплый отсвет."""
     s = f'<rect width="{W}" height="{H}" fill="#3a2420"/>'
+    # кирпичная кладка стены
+    for r in range(9):
+        y = 120 + r * 92
+        off = 0 if r % 2 == 0 else 96
+        for c in range(11):
+            x = -96 + off + c * 192
+            s += (f'<rect x="{x}" y="{y}" width="184" height="84" rx="8" fill="#5c3d33" '
+                  f'opacity=".55" stroke="#46291f" stroke-width="3"/>')
     s += f'<rect y="900" width="{W}" height="180" fill="{POL}"/>'
-    s += f'<rect x="240" y="180" width="1440" height="760" rx="14" fill="#5c3d33" {o(9)}/>'
-    s += f'<rect x="190" y="120" width="1540" height="60" rx="10" fill="{TERRA}" {o(8)}/>'
-    s += f'<rect x="420" y="330" width="1080" height="610" rx="16" fill="#1a0f0c" {o(8)}/>'
-    s += ogon(960, 880, t, 2.4)
-    for i, x in enumerate((520, 760, 1160, 1400)):
+    s += f'<rect y="890" width="{W}" height="16" fill="{TERRA}"/>'
+    # тёплый отсвет от огня на стену и пол
+    s += f'<ellipse cx="405" cy="820" rx="620" ry="430" fill="url(#teplo)" opacity=".8"/>'
+    # портал камина
+    s += f'<rect x="78" y="380" width="660" height="560" rx="16" fill="{STENA2}" {o(9)}/>'
+    s += f'<rect x="120" y="416" width="576" height="484" rx="12" fill="#6b4634" {o(7)}/>'
+    # топка: не плоская заливка, а глубина с тёплым нутром
+    s += f'<rect x="168" y="462" width="480" height="438" rx="10" fill="#1a0f0c" {o(7)}/>'
+    s += f'<ellipse cx="408" cy="840" rx="250" ry="200" fill="{ORA}" opacity=".28"/>'
+    # дрова
+    for bx, by, bw, rot in ((268, 826, 300, -6), (236, 790, 250, 7), (330, 762, 190, -3)):
+        s += (f'<g transform="rotate({rot} {bx+bw/2:.0f} {by})">'
+              f'<rect x="{bx}" y="{by}" width="{bw}" height="38" rx="18" fill="#6b4634" {o(6)}/>'
+              f'<ellipse cx="{bx+6}" cy="{by+19}" rx="13" ry="19" fill="#a8744a" {o(4)}/></g>')
+    s += ogon(408, 840, t, 2.1)
+    s += ogon(330, 846, t, 1.2, .7)
+    s += ogon(486, 846, t, 1.1, 1.4)
+    # искры поднимаются
+    for i in range(10):
+        ph = (t * .45 + i * .1) % 1.0
+        sx = 300 + (i * 47 % 220) + 24 * A.w(t, 1.3, i * .5)
+        sy = 840 - ph * 400
+        s += (f'<circle cx="{sx:.0f}" cy="{sy:.0f}" r="{3.5 - ph * 2:.1f}" fill="{SVET}" '
+              f'opacity="{(1 - ph) * .85:.2f}"/>')
+    # каминная полка
+    s += f'<rect x="40" y="336" width="736" height="52" rx="10" fill="{TERRA}" {o(8)}/>'
+    for i, x in enumerate((210, 380, 560)):
         sw = 5 * A.w(t, 3.6, i * .3)
-        s += (f'<g transform="rotate({sw:.1f} {x} 180)">'
-              f'<path d="M{x-40},186 v120 q0,44 44,44 h44 v-164 Z" fill="{[KRAS, ZEL2, GRAN, KRAS][i]}" {o(7)}/>'
-              f'<rect x="{x-46}" y="166" width="100" height="32" rx="10" fill="{KREM}" {o(6)}/></g>')
-    for i, x in enumerate((300, 1620)):
-        s += svecha_bol(x, 60, t, i * .4)
+        s += (f'<g transform="rotate({sw:.1f} {x} 388)">'
+              f'<path d="M{x-40},394 v76 q0,36 40,36 h40 v-112 Z" fill="{[KRAS, ZEL2, GRAN][i]}" {o(7)}/>'
+              f'<rect x="{x-46}" y="374" width="100" height="28" rx="9" fill="{KREM}" {o(6)}/></g>')
+    # еловая гирлянда по полке
+    s += (f'<path d="M40,346 q180,52 368,0 q188,-52 368,0" fill="none" stroke="{ZEL2}" '
+          f'stroke-width="18" stroke-linecap="round" opacity=".9"/>')
+    for i in range(9):
+        u = i / 8.0; x = 40 + u * 736
+        y = 346 + 46 * math.sin(math.pi * u * 2) * (1 if u < .5 else -1) * .5
+        op = .5 + .5 * abs(A.w(t, 1.7 + (i % 4) * .3, i * .25))
+        s += f'<circle cx="{x:.0f}" cy="{y:.0f}" r="8" fill="{[SVET, KRAS, ZOL][i % 3]}" opacity="{op:.2f}" {o(3)}/>'
     return s
 
 
@@ -271,25 +310,25 @@ def stol(t, pal):
     for i in range(12):
         s += f'<path d="M{120+i*150},640 v300" stroke="#d8cbb0" stroke-width="4" opacity=".6"/>'
     # самовар
-    s += ten(430, 648, 120, 22, .5)
-    s += (f'<ellipse cx="420" cy="520" rx="110" ry="130" fill="url(#plg)" {o(8)}/>'
-          f'<ellipse cx="384" cy="470" rx="34" ry="56" fill="#ffe9b8" opacity=".45"/>'
-          f'<rect x="380" y="330" width="80" height="70" rx="10" fill="{ZOL}" {o(7)}/>'
-          f'<circle cx="420" cy="320" r="26" fill="{ORA}" {o(6)}/>'
-          f'<path d="M530,500 q50,-10 44,-60" fill="none" stroke="{ZOL}" stroke-width="16"/>')
+    s += ten(370, 648, 120, 22, .5)
+    s += (f'<ellipse cx="360" cy="520" rx="100" ry="124" fill="url(#plg)" {o(8)}/>'
+          f'<ellipse cx="326" cy="470" rx="31" ry="54" fill="#ffe9b8" opacity=".45"/>'
+          f'<rect x="322" y="336" width="76" height="66" rx="10" fill="{ZOL}" {o(7)}/>'
+          f'<circle cx="360" cy="326" r="25" fill="{ORA}" {o(6)}/>'
+          f'<path d="M460,500 q50,-10 44,-60" fill="none" stroke="{ZOL}" stroke-width="16"/>')
     for i in range(3):
         p = ((t * .3) + i * .33) % 1.0
-        s += (f'<path d="M420,{300-p*180:.0f} q{18*A.w(t,2.2,i*.3):.0f},-40 0,-70" fill="none"'
+        s += (f'<path d="M360,{306-p*180:.0f} q{18*A.w(t,2.2,i*.3):.0f},-40 0,-70" fill="none"'
               f' stroke="#cfd8ea" stroke-width="9" opacity="{(1-p)*.5:.2f}" stroke-linecap="round"/>')
     # мандарины
-    for i, (x, y) in enumerate(((760, 560), (830, 590), (700, 600), (790, 630))):
+    for i, (x, y) in enumerate(((560, 600), (634, 628), (498, 630), (586, 662))):
         s += ten(x + 6, y + 44, 48, 12, .5)
         s += (f'<circle cx="{x}" cy="{y}" r="44" fill="{ORA}" {o(6)}/>'
               f'<ellipse cx="{x-14}" cy="{y-16}" rx="15" ry="11" fill="#ffd9a0" opacity=".55"/>'
               f'<path d="M{x-26},{y+22} a26,26 0 0 0 52,0" fill="none" stroke="#a85a12" stroke-width="5" opacity=".4"/>'
               f'<path d="M{x},{y-44} q10,-18 26,-20" fill="none" stroke="{ZEL2}" stroke-width="8"/>')
     # бокалы
-    for i, x in enumerate((1180, 1320, 1460)):
+    for i, x in enumerate((470, 586, 702)):
         # бокал: чаша полукругом, ножка, основание — иначе читается конусом
         s += (f'<path d="M{x-52},430 a52,86 0 0 0 104,0 Z" fill="url(#vino)"/>'
               f'<path d="M{x-52},430 a52,86 0 0 0 104,0" fill="none" {o(5, "#dfe8f5")}/>'
@@ -298,31 +337,41 @@ def stol(t, pal):
               f'<ellipse cx="{x}" cy="606" rx="46" ry="12" fill="#dfe8f5" {o(4)}/>'
               f'<path d="M{x-52},430 a52,86 0 0 0 104,0 Z" fill="url(#steklo)"/>'
               f'<path d="M{x-34},446 q-10,40 6,62" fill="none" stroke="#ffffff" stroke-width="7" opacity=".5"/>')
-    s += ten(980, 676, 150, 18, .45)
-    s += f'<ellipse cx="980" cy="660" rx="140" ry="34" fill="#f3ead5" {o(6)}/>'
+    s += ten(690, 726, 140, 18, .45)
+    s += f'<ellipse cx="690" cy="712" rx="130" ry="34" fill="#f3ead5" {o(6)}/>'
     for i, (dx, dy) in enumerate(((-70, -14), (-10, -24), (52, -12), (16, 4))):
-        s += (f'<path d="M{980+dx-26},{660+dy} q26,-30 52,0 q-26,26 -52,0 Z" fill="#c98a4b" {o(5)}/>'
-              f'<path d="M{980+dx-14},{660+dy-4} q14,-8 28,0" fill="none" stroke="#fff3e0" stroke-width="4"/>')
-    s += (f'<path d="M300,650 q120,-40 240,-6" fill="none" stroke="{HVOYA}" stroke-width="16" stroke-linecap="round"/>')
+        s += (f'<path d="M{690+dx-26},{712+dy} q26,-30 52,0 q-26,26 -52,0 Z" fill="#c98a4b" {o(5)}/>'
+              f'<path d="M{690+dx-14},{712+dy-4} q14,-8 28,0" fill="none" stroke="#fff3e0" stroke-width="4"/>')
+    s += (f'<path d="M120,790 q120,-40 240,-6" fill="none" stroke="{HVOYA}" stroke-width="16" stroke-linecap="round"/>')
     for i in range(10):
-        xx = 300 + i * 26
-        yy = 650 - 30 * math.sin(i / 9 * math.pi)
+        xx = 120 + i * 26
+        yy = 790 - 30 * math.sin(i / 9 * math.pi)
         s += f'<path d="M{xx},{yy:.0f} l-14,-22 M{xx},{yy:.0f} l14,-20" stroke="{ZEL2}" stroke-width="6" stroke-linecap="round"/>'
-    s += ball(430, 624, 26, KRAS)
-    for i, x in enumerate((1640, 1760)):
+    s += ball(250, 764, 26, KRAS)
+    for i, x in enumerate((60, 760)):
         s += svecha_bol(x, 420, t, i * .5)
     return s
 
 
 def prihozhaya(t, pal):
+    """Прихожая. Правка 08.11: вся обстановка перенесена в ЛЕВУЮ полосу —
+    окно вставки занимает правую половину кадра, раньше дверь уходила под него."""
     s = f'<rect width="{W}" height="{H}" fill="#4a3129"/>'
+    # обои полосами
+    for i in range(14):
+        s += f'<rect x="{i*140}" y="0" width="70" height="900" fill="#523429" opacity=".45"/>'
     s += f'<rect y="880" width="{W}" height="200" fill="{POL}"/>'
-    s += f'<rect x="620" y="140" width="680" height="760" rx="12" fill="#6b4634" {o(9)}/>'
+    s += f'<rect y="872" width="{W}" height="14" fill="{TERRA}"/>'
+    # коврик у двери
+    s += f'<rect x="120" y="952" width="420" height="64" rx="12" fill="{GRAN}" opacity=".8" {o(6)}/>'
+    # дверь слева
+    s += f'<rect x="96" y="150" width="620" height="740" rx="12" fill="#6b4634" {o(9)}/>'
+    s += f'<rect x="130" y="186" width="552" height="668" rx="8" fill="#7a5340" {o(6)}/>'
     for i in range(2):
-        s += f'<rect x="{680+i*300}" y="220" width="240" height="300" rx="8" fill="#5c3d33" {o(6)}/>'
-    s += f'<circle cx="1240" cy="560" r="22" fill="{ZOL}" {o(6)}/>'
+        s += f'<rect x="{176+i*268}" y="236" width="222" height="272" rx="8" fill="#5c3d33" {o(6)}/>'
+    s += f'<circle cx="660" cy="530" r="20" fill="{ZOL}" {o(6)}/>'
     # венок на двери
-    cx, cy, r = 960, 420, 150
+    cx, cy, r = 406, 420, 148
     s += f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="{ZEL2}" stroke-width="56"/>'
     for i in range(14):
         a = i * 26 * math.pi / 180
@@ -330,14 +379,15 @@ def prihozhaya(t, pal):
         s += (f'<circle cx="{cx+r*math.cos(a):.0f}" cy="{cy+r*math.sin(a):.0f}" r="14"'
               f' fill="{[KRAS, ZOL][i%2]}" opacity="{op:.2f}"/>')
     s += bow(cx, cy + r - 10, .8, VIN)
-    # коробки с игрушками
-    s += (f'<rect x="180" y="700" width="380" height="200" rx="12" fill="#8a5a3c" {o(8)}/>'
-          f'<rect x="160" y="664" width="420" height="56" rx="10" fill="{TERRA}" {o(7)}/>')
-    for i, c in enumerate((KRAS, ZOL, GRAN, KREM)):
-        s += shar_zhivoy(250 + i * 88, 760, 38, c, t, i)
-    s += (f'<rect x="1420" y="740" width="320" height="160" rx="10" fill="{VIN}" {o(8)}/>'
-          f'<rect x="1560" y="740" width="40" height="160" fill="{ZOL}"/>' + bow(1580, 744, .5, ZOL))
-    return s
+    # тёплый свет из-под двери
+    s += f'<ellipse cx="406" cy="900" rx="300" ry="54" fill="url(#teplo)" opacity=".7"/>'
+    # коробка с игрушками у стены
+    s += ten(640, 1000, 170, 20, .4)
+    s += (f'<rect x="486" y="716" width="300" height="174" rx="12" fill="#8a5a3c" {o(8)}/>'
+          f'<rect x="470" y="682" width="332" height="48" rx="10" fill="{TERRA}" {o(7)}/>')
+    for i, c in enumerate((KRAS, ZOL, GRAN)):
+        s += shar_zhivoy(540 + i * 92, 782, 34, c, t, i)
+    return s + sneg_sloy(t, 10, 9, .18)
 
 
 def nebo(t, pal):

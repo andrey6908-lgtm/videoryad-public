@@ -192,11 +192,11 @@ def frame(sc, t, gt):
         t0 = e["a"] - sc["a"]
         k = e["kind"]
         if k == "zagolovok":
-            b += O.nalив(120, 300, "КАК УКРАСИТЬ", t, t0, 86)
-            b += O.nalив(120, 410, "ЁЛКУ 2027", t, t0 + .5, 112)
+            b += O.nalив(120, 300, "КАК УКРАСИТЬ", t, t0, 64)
+            b += O.nalив(120, 404, "ЁЛКУ 2027", t, t0 + .5, 92)
             q = A.out(A.seg(t, t0 + 1.4, .5))
             if q > 0:
-                b += f'<rect x="116" y="450" width="{560*q:.0f}" height="11" rx="5" fill="{KRAS}"/>'
+                b += f'<rect x="116" y="440" width="{610*q:.0f}" height="11" rx="5" fill="{KRAS}"/>'
             b += O.pechat(120, 520, "чтобы год был счастливым", t, t0 + 2.0, 40)
         elif k == "plate":
             head, sub = TITLE.get(e.get("tema"), ("", ""))
@@ -204,7 +204,7 @@ def frame(sc, t, gt):
                 b += O.plate(90, 900, head, sub, t, t0, 700)
         elif k == "palitra":
             cols, pod = PALS.get(e.get("tema"), PALS["vin"])
-            b += O.palitra(140, 260, cols, pod, t, t0, .22, 38, 126)
+            b += O.palitra(140, 206, cols, pod, t, t0, .22, 38, 126)
         elif k == "obvodka" and sc.get("foto"):
             cx0, cy0, rx0, ry0 = e["box"]
             ex = ox + (cx0 / 1920) * ow
