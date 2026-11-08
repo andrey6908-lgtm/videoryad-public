@@ -182,8 +182,10 @@ def frame(sc, t, gt):
             b += f'<g opacity="{q:.2f}">' + O.okno_ramka(ox, oy, ow, oh) + '</g>'
 
 
-    if sc.get("koza"):
-        # хозяйка года держится весь смысловой отрезок, без мигания (правки 27-28)
+    BIG = {"cards4", "cards5", "errors", "reveal", "glaz"}
+    if sc.get("koza") and not any(e["kind"] in BIG for e in sc.get("events", [])):
+        # хозяйка года держится весь смысловой отрезок, без мигания (правки 27-28);
+        # но на крупный блок (карточки, ошибки, разгадка, глаз) она не лезет — правка 08.11
         gx = 330 + 50 * A.w(gt, 16.0)
         gy = 790 - 14 * A.w(gt, 3.0)
         b += koza_ognennaya(gx, gy, gt, .78)
