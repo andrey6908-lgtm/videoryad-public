@@ -81,21 +81,21 @@
   "kwargs": {
    "shots": [
     [
-     "kadry/d029.jpg",
+     "cards/photo/d029.jpg",
      240,
      380,
      -4,
      "избиратель"
     ],
     [
-     "kadry/d069.jpg",
+     "cards/photo/d069.jpg",
      800,
      380,
      3,
      "партийные штабы"
     ],
     [
-     "kadry/d085.jpg",
+     "cards/photo/d085.jpg",
      1360,
      380,
      -2,
@@ -271,9 +271,9 @@
   "channel": "ДИПЛОМАТИЯ СИЛЫ",
   "kwargs": {
    "shots": [
-    "kadry/d042.jpg",
-    "kadry/d045.jpg",
-    "kadry/d049.jpg"
+    "cards/photo/d042.jpg",
+    "cards/photo/d045.jpg",
+    "cards/photo/d049.jpg"
    ],
    "title": "Миллиарды находятся, экономия ищется в пенсиях",
    "watermark": "ДИПЛОМАТИЯ СИЛЫ"
