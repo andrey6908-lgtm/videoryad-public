@@ -1,0 +1,333 @@
+[
+ {
+  "scene": 3,
+  "view": "duel",
+  "dur": 9.77,
+  "anim": 3.2,
+  "tail_zoom": 0.035,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "top": {
+    "who": "Депутат",
+    "text": "А что с теплом в домах зимой",
+    "accent": null,
+    "source": ""
+   },
+   "bottom": {
+    "who": "Министр",
+    "text": "Вы слишком увлеклись внешней политикой",
+    "accent": null,
+    "source": ""
+   },
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  }
+ },
+ {
+  "scene": 7,
+  "view": "poster.poster",
+  "dur": 9.47,
+  "anim": 9.47,
+  "tail_zoom": 0.0,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "title": "Холод в квартире не спрашивает о внешнем курсе",
+   "hero_photo": "cards/photo/d070.jpg",
+   "facts": [
+    {
+     "label": "Отопление",
+     "value": "дороже"
+    },
+    {
+     "label": "Пенсии",
+     "value": "заморожены"
+    },
+    {
+     "label": "Помощь",
+     "value": "за границу"
+    }
+   ],
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 13,
+  "view": "charts.cartogram",
+  "dur": 9.67,
+  "anim": 9.67,
+  "tail_zoom": 0.045,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "data": [
+    "Германия",
+    "Чехия",
+    "Румыния"
+   ],
+   "title": "Где урезают выплаты",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  }
+ },
+ {
+  "scene": 19,
+  "view": "cinematic.evidence_wall",
+  "dur": 9.37,
+  "anim": 9.37,
+  "tail_zoom": 0.0,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "shots": [
+    [
+     "cards/photo/d029.jpg",
+     240,
+     380,
+     -4,
+     "избиратель"
+    ],
+    [
+     "cards/photo/d069.jpg",
+     800,
+     380,
+     3,
+     "партийные штабы"
+    ],
+    [
+     "cards/photo/d026.jpg",
+     1360,
+     380,
+     -2,
+     "кабина для голосования"
+    ]
+   ],
+   "kick": "закрытая дверь",
+   "title": "Партию пускают в опросы, но не во власть",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 23,
+  "view": "quote",
+  "dur": 9.97,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "text": "Где заканчивается полномочие избирателя — у урны или на странице с итогами",
+   "author": "вопрос без ответа",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  }
+ },
+ {
+  "scene": 28,
+  "view": "vyrezka.figura",
+  "dur": 12.97,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "photo": "cards/photo/portret28.jpg",
+   "author": "АдГ",
+   "role": "двадцать девять процентов",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  }
+ },
+ {
+  "scene": 34,
+  "view": "film.film_single",
+  "dur": 11.97,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "photo": "cards/photo/card_034.jpg",
+   "title": "Управление получает другой директор",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  }
+ },
+ {
+  "scene": 38,
+  "view": "photo",
+  "dur": 11.77,
+  "anim": 11.77,
+  "tail_zoom": 0.0,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+   "photo": "cards/photo/card_038.jpg",
+   "title": "Западный бизнес в Москве",
+   "lines": [
+    "Активы уходят под временное управление"
+   ]
+  }
+ },
+ {
+  "scene": 42,
+  "view": "split",
+  "dur": 11.67,
+  "anim": 2.0,
+  "tail_zoom": 0.06,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "photo": "cards/photo/card_042.jpg",
+   "text": "Сам ли он ведёт страну этим курсом",
+   "author": "Никол Пашинян",
+   "role": "премьер-министр Армении",
+   "accent": "Сам ли он ведёт страну этим",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  }
+ },
+ {
+  "scene": 47,
+  "view": "vyrezka.gazeta",
+  "dur": 12.47,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "photo": "cards/photo/card_047.jpg",
+   "author": "Анкара — Брюссель",
+   "role": "заявка с тысяча девятьсот восемьдесят седьмого",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  }
+ },
+ {
+  "scene": 53,
+  "view": "bars",
+  "dur": 12.57,
+  "anim": 12.57,
+  "tail_zoom": 0.0,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_bars.py",
+  "cfg": {
+   "title": "Цена выхода Армении из ЕАЭС",
+   "caption": "",
+   "seconds": 12.57,
+   "bars": [
+    {
+     "label": "ПОДОРОЖАНИЕ ГАЗА",
+     "value": 0.69,
+     "color": "48BB78"
+    },
+    {
+     "label": "ПОТЕРЯ ВВП",
+     "value": 0.156,
+     "color": "EABD23"
+    }
+   ]
+  }
+ },
+ {
+  "scene": 58,
+  "view": "cinematic.depth_of_field",
+  "dur": 11.77,
+  "anim": 11.77,
+  "tail_zoom": 0.0,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "photo": "cards/photo/card_058.jpg",
+   "title": "Бюджет становится простым, когда цель внешняя",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 63,
+  "view": "charts.cartogram",
+  "dur": 12.57,
+  "anim": 12.57,
+  "tail_zoom": 0.045,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "data": [
+    "Германия=200"
+   ],
+   "title": "Пакет помощи Украине, млн евро",
+   "mode": "bubble",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  }
+ },
+ {
+  "scene": 69,
+  "view": "film.film_strip",
+  "dur": 11.37,
+  "anim": 11.37,
+  "tail_zoom": 0.045,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "shots": [
+    "cards/photo/d042.jpg",
+    "cards/photo/d045.jpg",
+    "cards/photo/d049.jpg"
+   ],
+   "title": "Миллиарды находятся, экономия ищется в пенсиях",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  }
+ },
+ {
+  "scene": 75,
+  "view": "slider",
+  "dur": 12.17,
+  "anim": 12.17,
+  "tail_zoom": 0.0,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_slider.py",
+  "cfg": {
+   "title": "",
+   "min": 0.0,
+   "max": 100.0,
+   "low": 0.0,
+   "high": 100.0,
+   "marker_value": 50.0,
+   "marker_display": "50",
+   "seconds": 12.17,
+   "range_label": "РАЗБРОС ОЦЕНОК",
+   "caption": "",
+   "source": ""
+  }
+ },
+ {
+  "scene": 80,
+  "view": "pull",
+  "dur": 11.87,
+  "anim": 2.6,
+  "tail_zoom": 0.05,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "text": "Деньги можно заработать снова. Потерянную веру в возможность влиять не возвращают ни бюджетом, ни назначением.",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  }
+ },
+ {
+  "scene": 85,
+  "view": "marker_serif",
+  "dur": 12.0,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ДИПЛОМАТИЯ СИЛЫ",
+  "channel": "ДИПЛОМАТИЯ СИЛЫ",
+  "kwargs": {
+   "text": "Власть ещё говорит от имени народа, а народ уже не узнаёт в этом голосе себя.",
+   "watermark": "ДИПЛОМАТИЯ СИЛЫ"
+  }
+ }
+]
