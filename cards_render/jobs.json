@@ -1,0 +1,332 @@
+[
+ {
+  "scene": 5,
+  "view": "quote",
+  "dur": 9.5,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Европа всё острее сталкивается со старым выбором между маслом и пушками",
+   "source": "Le Monde",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 11,
+  "view": "vyrezka.gazeta",
+  "dur": 12.0,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_011.jpg",
+   "author": "Йонас Гар Стёре",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 16,
+  "view": "split",
+  "dur": 9.7,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Отказ Европы от прямого разговора с Москвой дал обратный результат: изолировать Россию не удалось",
+   "author": "Йонас Гар Стёре",
+   "photo": "cards/photo/card_016.jpg",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 20,
+  "view": "tape",
+  "dur": 9.8,
+  "anim": 2.4,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Прямой военный телефон Лондон — Москва срочным каналом связи не считался",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 23,
+  "view": "vyrezka.figura",
+  "dur": 12.0,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_023.jpg",
+   "author": "Давид Арахамия",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 26,
+  "view": "film.film_single",
+  "dur": 11.2,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_026.jpg",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 30,
+  "view": "marker_serif",
+  "dur": 11.5,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Границы допустимого двигали годами, и теперь они подошли к месту, где ошибку уже не спишешь на риторику",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 35,
+  "view": "poster.poster",
+  "dur": 11.9,
+  "anim": 11.9,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "title": "План «Чёрное небо»",
+   "subtitle": "Британия считает, сколько продержится без света",
+   "hero_photo": "cards/photo/card_035.jpg",
+   "bottom": "Три дня автономии — официальная норма",
+   "facts": [
+    {
+     "label": "Вода, еда, лекарства",
+     "value": "на три дня"
+    },
+    {
+     "label": "Радио обязано работать",
+     "value": "трое суток"
+    },
+    {
+     "label": "Летающие вышки связи",
+     "value": "70 млн фунтов"
+    }
+   ],
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 41,
+  "view": "film.film_strip",
+  "dur": 12.6,
+  "anim": 12.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "shots": [
+    "cards/photo/card_041.jpg",
+    "cards/photo/card_041_2.jpg",
+    "cards/photo/card_041_3.jpg"
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 49,
+  "view": "bars",
+  "dur": 12.0,
+  "anim": 12.0,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_bars.py",
+  "cfg": {
+   "title": "Просмотры за несколько дней",
+   "caption": "Пророссийских почти в двадцать раз меньше",
+   "seconds": 12.0,
+   "bars": [
+    {
+     "label": "АККАУНТЫ МАГА",
+     "value": 1.0,
+     "color": "4A90E2"
+    },
+    {
+     "label": "ИЗРАИЛЬСКИЕ",
+     "value": 0.71,
+     "color": "48BB78"
+    },
+    {
+     "label": "ПРОРОССИЙСКИЕ",
+     "value": 0.06,
+     "color": "84848A"
+    }
+   ]
+  }
+ },
+ {
+  "scene": 52,
+  "view": "charts.cartogram",
+  "dur": 11.8,
+  "anim": 11.8,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Литва",
+    "Эстония",
+    "Финляндия",
+    "Польша"
+   ],
+   "mode": "bubble",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 57,
+  "view": "cinematic.evidence_wall",
+  "dur": 12.4,
+  "anim": 12.4,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "shots": [
+    [
+     "cards/photo/card_057.jpg",
+     240,
+     250,
+     -4,
+     "подстанция под охраной"
+    ],
+    [
+     "cards/photo/card_057_2.jpg",
+     800,
+     250,
+     3,
+     "граница на замке"
+    ],
+    [
+     "cards/photo/card_057_3.jpg",
+     1360,
+     250,
+     -2,
+     "бетон вместо слов"
+    ],
+    [
+     "cards/photo/card_057_4.jpg",
+     240,
+     580,
+     4,
+     "флот в готовности"
+    ]
+   ],
+   "kick": "Европа · ноябрь 2026",
+   "title": "Одна линия поведения",
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 61,
+  "view": "slider",
+  "dur": 12.6,
+  "anim": 12.6,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_slider.py",
+  "cfg": {
+   "title": "Стоимость барьера на финской границе",
+   "min": 0.0,
+   "max": 500.0,
+   "low": 0.0,
+   "high": 500.0,
+   "marker_value": 360.0,
+   "marker_display": "360 млн евро",
+   "seconds": 12.6,
+   "range_label": "РАЗБРОС ОЦЕНОК",
+   "caption": "Построено меньше трети",
+   "source": ""
+  }
+ },
+ {
+  "scene": 66,
+  "view": "photo",
+  "dur": 11.2,
+  "anim": 11.2,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "watermark": "ПЛАНЕТА",
+   "photo": "cards/photo/card_066.jpg",
+   "title": "«Принс оф Уэйлс»",
+   "lines": [
+    "2022 — поломка на выходе из Портсмута",
+    "2026 — флагман противолодочного соглашения"
+   ]
+  }
+ },
+ {
+  "scene": 69,
+  "view": "charts.cartogram",
+  "dur": 12.0,
+  "anim": 12.0,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Швеция",
+    "Великобритания",
+    "Германия",
+    "Франция"
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 73,
+  "view": "cinematic.depth_of_field",
+  "dur": 12.3,
+  "anim": 12.3,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_073.jpg",
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 76,
+  "view": "pull",
+  "dur": 12.5,
+  "anim": 2.6,
+  "tail_zoom": 0.05,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Срочную линию проводят тогда, когда уже допускают звонок, после которого обычного посольского номера будет недостаточно",
+   "watermark": "ПЛАНЕТА"
+  }
+ }
+]
