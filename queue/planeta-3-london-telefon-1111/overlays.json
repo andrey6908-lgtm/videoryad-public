@@ -1,0 +1,79 @@
+{
+ "1": {
+  "text": {
+   "words": "ПУШКИ ПРОТИВ МАСЛА",
+   "sub": "Европа считает деньги",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5,
+   "sound": "pop"
+  },
+  "sound": "whoosh"
+ },
+ "12": {
+  "text": {
+   "words": "ИЗОЛЯЦИЯ НЕ УДАЛАСЬ",
+   "sub": "признание из Осло",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5,
+   "sound": "pop"
+  },
+  "sound": "whoosh"
+ },
+ "19": {
+  "text": {
+   "words": "ЛОНДОН ПРОСИТ НОМЕР",
+   "sub": "срочная линия с военными России",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5,
+   "sound": "pop"
+  },
+  "sound": "whoosh"
+ },
+ "34": {
+  "text": {
+   "words": "ЧЁРНОЕ НЕБО",
+   "sub": "план на случай большого отключения",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5,
+   "sound": "pop"
+  },
+  "sound": "whoosh"
+ },
+ "42": {
+  "text": {
+   "words": "ЗЕРНО И ХОЛОДИЛЬНИКИ",
+   "sub": "Литва и Эстония поднимают ставки",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5,
+   "sound": "pop"
+  },
+  "sound": "whoosh"
+ },
+ "60": {
+  "text": {
+   "words": "БАРЬЕР НА ВОСТОКЕ",
+   "sub": "Финляндия строит и считает",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5,
+   "sound": "pop"
+  },
+  "sound": "whoosh"
+ },
+ "63": {
+  "text": {
+   "words": "ОХОТА В БАЛТИКЕ",
+   "sub": "соглашение против подлодок",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5,
+   "sound": "pop"
+  },
+  "sound": "whoosh"
+ }
+}
