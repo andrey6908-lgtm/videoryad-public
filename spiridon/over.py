@@ -173,15 +173,18 @@ def okno_ramka(x, y, w_, h_):
             f' fill="none" stroke="{ZOL}" stroke-width="5"/>')
 
 
-def okno_foto(x, y, w_, h_, path, t, dur=6.0, faza=0):
+def okno_foto(x, y, w_, h_, path, t, dur=6.0, faza=0, zhivoj=False):
     """Настоящий кадр ВНУТРИ окна (K30). Окно неподвижно (R-0014), кадр
     заполняет его целиком с обрезом по краям (R-0012), внутри идёт медленный
     Ken Burns — фотография не висит мёртвой (R-0006)."""
     k = min(1.0, max(0.0, t / max(.001, dur)))
-    z0, z1 = ((1.00, 1.12), (1.12, 1.00), (1.05, 1.15), (1.15, 1.05))[faza % 4]
+    if zhivoj:
+        z0 = z1 = 1.0       # клип движется сам
+    else:
+        z0, z1 = ((1.00, 1.12), (1.12, 1.00), (1.05, 1.15), (1.15, 1.05))[faza % 4]
     z = z0 + (z1 - z0) * A.ease(k)
-    dx = (-1 if faza % 2 else 1) * 26 * A.ease(k)
-    dy = (1 if faza % 3 else -1) * 18 * A.ease(k)
+    dx = 0.0 if zhivoj else (-1 if faza % 2 else 1) * 26 * A.ease(k)
+    dy = 0.0 if zhivoj else (1 if faza % 3 else -1) * 18 * A.ease(k)
     cid = "ok%d" % (abs(hash((x, y, path))) % 99999)
     w2, h2 = w_ * z, h_ * z
     s = f'<clipPath id="{cid}"><rect x="{x}" y="{y}" width="{w_}" height="{h_}" rx="12"/></clipPath>'

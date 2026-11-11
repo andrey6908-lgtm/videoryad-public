@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """Покадровый рендер. Каждый кадр — рисованная сцена со слоями по глубине под
 ход камеры, поверх надписи. Звука здесь нет, он подмешивается на его машине."""
-import os, sys, io, subprocess, argparse, time
+import os, sys, io, json, subprocess, argparse, time
 import cairosvg
 from PIL import Image
-import kadr, baza, plan
+import kadr, baza, plan, klipy
 
 ap = argparse.ArgumentParser()
 ap.add_argument("out"); ap.add_argument("--shard", default="1/1")
@@ -30,6 +30,22 @@ def risuy(j, t, p):
 N = plan.NFRAMES
 lo, hi = (N * (si - 1)) // sn, (N * si) // sn
 print("часть %d/%d: кадры %d..%d из %d" % (si, sn, lo, hi - 1, N), flush=True)
+
+# клипы в окна: качаем и разворачиваем ТОЛЬКО те планы, что попали в эту часть
+SV = {}
+_f = os.path.join(os.path.dirname(os.path.abspath(__file__)), "stock_video.json")
+if os.path.exists(_f):
+    SV = json.load(open(_f, encoding="utf-8"))
+if SV:
+    nado = set()
+    for i in range(lo, hi):
+        (k, _, _), nxt, _ = plan.frame_info(i)
+        nado.add(plan.PLANY[k]["n"])
+        if nxt:
+            nado.add(plan.PLANY[nxt[0]]["n"])
+    t0k = time.time()
+    kadr.KLIPY = klipy.razvernut(SV, nado, os.path.join(a.out, "klipy%02d" % si), plan.FPS)
+    print("клипов развёрнуто: %d за %.0f с" % (len(kadr.KLIPY), time.time() - t0k), flush=True)
 t0 = time.time()
 for i in range(lo, hi):
     cur, nxt, mix = plan.frame_info(i)

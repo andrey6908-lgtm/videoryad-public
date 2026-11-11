@@ -5,26 +5,30 @@
 """
 import json, os, re, math
 import anim as A
-import baza, lok, over, kamera
+import baza, lok, over, kamera, klipy
 from baza import W, H
 from karta import DEK
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OKNO = (860, 300, 980, 551)
 FOTO = os.path.join(HERE, "foto")
+KLIPY = {}          # {номер плана: папка с кадрами клипа} — ставит render.py
 _ST = {}
 if os.path.exists(os.path.join(HERE, "stock.json")):
     _ST = json.load(open(os.path.join(HERE, "stock.json"), encoding="utf-8"))
 
 
-def kadr_okna(pl):
-    """Путь к настоящему кадру этого плана. Один кадр — один план, повторов
-    в ролике нет вообще (его слово 11.11)."""
+def kadr_okna(pl, t=0.0):
+    """Что стоит в окне в этот миг: кадр СТОКОВОГО КЛИПА, если он есть,
+    иначе фотография. Один материал — один план, повторов в ролике нет."""
+    k = klipy.kadr_klipa(KLIPY, pl["n"], t)
+    if k:
+        return k, True
     r = _ST.get(str(pl["n"]))
     if not r:
-        return None
+        return None, False
     p = os.path.join(FOTO, r["file"] if isinstance(r, dict) else r)
-    return p if os.path.exists(p) else None
+    return (p, False) if os.path.exists(p) else (None, False)
 
 
 def plany(path=None):
@@ -145,9 +149,11 @@ def body(pl, t, p=.5, zaglushki=True):
         out += over.kartochka_daty(x, y + 90, w_, h_ - 180, dk, t)
     if nado_okno(pl):
         x, y, w_, h_ = OKNO
-        f = kadr_okna(pl)
+        f, zhivoj = kadr_okna(pl, t)
         if f:
-            out += over.okno_foto(x, y, w_, h_, f, t, pl["sek"], pl["n"])
+            # у клипа движение своё — Ken Burns ему не нужен
+            out += over.okno_foto(x, y, w_, h_, f, 0 if zhivoj else t,
+                                  pl["sek"], pl["n"], zhivoj)
         elif zaglushki:
             out += over.okno_zaglushka(x, y, w_, h_, pl["okno"], pl.get("najti", ""))
         # кадра нет — окна в кадре нет вообще: пустая рамка хуже, чем её

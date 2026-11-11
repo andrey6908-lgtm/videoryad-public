@@ -33,26 +33,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: системные пакеты
-        timeout-minutes: 8
+        timeout-minutes: 5
         run: |
-          # 11.11: apt-зеркала висли и роняли части по таймауту (5, 9, 16).
-          # Поэтому ffmpeg ставим СТАТИЧЕСКИМ бинарём — это секунды и не зависит
-          # от зеркал; apt остаётся только запасным путём.
+          # 11.11: apt на раннере виснет и роняет части по таймауту (5, 9, 16).
+          # На ubuntu-latest уже есть libcairo и шрифты DejaVu, не хватает только
+          # ffmpeg — ставим его статическим бинарём, apt не трогаем вообще.
           if ! command -v ffmpeg >/dev/null; then
-            curl -fsSL --retry 3 --retry-delay 3 --max-time 180 -o /tmp/ff.tar.xz \
+            curl -fsSL --retry 2 --retry-delay 3 --max-time 120 -o /tmp/ff.tar.xz \
               https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
               && tar -xJf /tmp/ff.tar.xz -C /tmp \
-              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/ || true
+              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/
           fi
-          if ! command -v ffmpeg >/dev/null; then
-            timeout 60 sudo apt-get update -qq || true
-            timeout 120 sudo apt-get install -y -qq --no-install-recommends ffmpeg || true
-          fi
-          python3 -c "import ctypes;ctypes.CDLL('libcairo.so.2')" 2>/dev/null \
-            || timeout 120 sudo apt-get install -y -qq --no-install-recommends libcairo2 || true
-          fc-list | grep -qi dejavu \
-            || timeout 120 sudo apt-get install -y -qq --no-install-recommends fonts-dejavu-core || true
           command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
+          python3 -c "import ctypes;ctypes.CDLL('libcairo.so.2')" \
+            || { echo "::error::нет libcairo"; exit 1; }
+          fc-list | grep -qi dejavu || { echo "::error::нет шрифтов DejaVu"; exit 1; }
+          echo "ffmpeg: $(ffmpeg -version | head -1)"
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
       - run: pip install --quiet cairosvg pillow
@@ -86,22 +82,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: системные пакеты
-        timeout-minutes: 8
+        timeout-minutes: 5
         run: |
-          # 11.11: часть 5 легла именно здесь — ставим с тремя попытками и
-          # двумя источниками, падаем только если не вышло ни разу
-          for i in 1 2 3; do
-            command -v ffmpeg >/dev/null && break
-            timeout 90 sudo apt-get update -qq || true
-            timeout 180 sudo apt-get install -y -qq --no-install-recommends ffmpeg || true
-            command -v ffmpeg >/dev/null && break
-            curl -fsSL --retry 3 --retry-delay 5 -o /tmp/ff.tar.xz \
+          # 11.11: apt на раннере виснет и роняет части по таймауту (5, 9, 16).
+          # На ubuntu-latest уже есть libcairo и шрифты DejaVu, не хватает только
+          # ffmpeg — ставим его статическим бинарём, apt не трогаем вообще.
+          if ! command -v ffmpeg >/dev/null; then
+            curl -fsSL --retry 2 --retry-delay 3 --max-time 120 -o /tmp/ff.tar.xz \
               https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
               && tar -xJf /tmp/ff.tar.xz -C /tmp \
-              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/ || true
-            sleep 5
-          done
+              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/
+          fi
           command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
+          python3 -c "import ctypes;ctypes.CDLL('libcairo.so.2')" \
+            || { echo "::error::нет libcairo"; exit 1; }
+          fc-list | grep -qi dejavu || { echo "::error::нет шрифтов DejaVu"; exit 1; }
+          echo "ffmpeg: $(ffmpeg -version | head -1)"
       - uses: actions/setup-python@v5
         with: { python-version: '3.11' }
       - uses: actions/download-artifact@v4
