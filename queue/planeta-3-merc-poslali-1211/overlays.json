@@ -1,0 +1,183 @@
+{
+ "13": {
+  "photo": "overlays/scene_013.jpg",
+  "sound": "pop",
+  "at": 2.2,
+  "shape": "circle",
+  "style": "top-left",
+  "anchor": "top",
+  "scale": 1.2
+ },
+ "17": {
+  "photo": "overlays/scene_017.jpg",
+  "sound": "whoosh",
+  "at": 2.4,
+  "shape": "rect",
+  "style": "middle-right",
+  "anchor": "middle",
+  "scale": 1.0
+ },
+ "21": {
+  "photo": "overlays/scene_021.jpg",
+  "sound": "ding",
+  "at": 2.6,
+  "shape": "rect",
+  "style": "bottom-left",
+  "anchor": "bottom",
+  "scale": 1.2
+ },
+ "23": {
+  "photo": "overlays/scene_023.jpg",
+  "sound": "zatvor",
+  "at": 2.8,
+  "shape": "circle",
+  "style": "top-right",
+  "anchor": "top",
+  "scale": 1.0
+ },
+ "28": {
+  "photo": "overlays/scene_028.jpg",
+  "sound": "pop",
+  "at": 3.0,
+  "shape": "rect",
+  "style": "middle-left",
+  "anchor": "middle",
+  "scale": 1.2
+ },
+ "30": {
+  "photo": "overlays/scene_030.jpg",
+  "sound": "whoosh",
+  "at": 2.2,
+  "shape": "rect",
+  "style": "bottom-right",
+  "anchor": "bottom",
+  "scale": 1.0
+ },
+ "37": {
+  "photo": "overlays/scene_037.jpg",
+  "sound": "ding",
+  "at": 2.4,
+  "shape": "circle",
+  "style": "top-left",
+  "anchor": "top",
+  "scale": 1.2
+ },
+ "50": {
+  "photo": "overlays/scene_050.jpg",
+  "sound": "zatvor",
+  "at": 2.6,
+  "shape": "rect",
+  "style": "middle-right",
+  "anchor": "middle",
+  "scale": 1.0
+ },
+ "53": {
+  "photo": "overlays/scene_053.jpg",
+  "sound": "pop",
+  "at": 2.8,
+  "shape": "rect",
+  "style": "bottom-left",
+  "anchor": "bottom",
+  "scale": 1.2,
+  "text": {
+   "words": "АРКТИЧЕСКИЙ МАРШРУТ",
+   "color": "green",
+   "pos": "ml",
+   "font": "default",
+   "sound": "zatvor",
+   "at": 0.5,
+   "scale": 1.0,
+   "style": "mask_plate",
+   "sub": "Пусан — Роттердам",
+   "approved": true
+  }
+ },
+ "56": {
+  "photo": "overlays/scene_056.jpg",
+  "sound": "whoosh",
+  "at": 3.0,
+  "shape": "circle",
+  "style": "top-right",
+  "anchor": "top",
+  "scale": 1.0
+ },
+ "11": {
+  "text": {
+   "words": "СЛОВАКИЯ ГОВОРИТ НЕТ",
+   "color": "yellow",
+   "pos": "ml",
+   "font": "default",
+   "sound": "mashinka",
+   "at": 0.5,
+   "scale": 1.0,
+   "style": "mask_plate",
+   "sub": "бюджет ЕС требует единогласия",
+   "approved": true
+  }
+ },
+ "20": {
+  "text": {
+   "words": "СПОР О ДЕНЬГАХ",
+   "color": "white",
+   "pos": "ml",
+   "font": "default",
+   "sound": "pop",
+   "at": 0.5,
+   "scale": 1.0,
+   "style": "mask_plate",
+   "sub": "Россия ещё не вошла в комнату",
+   "approved": true
+  }
+ },
+ "27": {
+  "text": {
+   "words": "КАЛИНИНГРАД",
+   "color": "red",
+   "pos": "ml",
+   "font": "default",
+   "sound": "pshik",
+   "at": 0.5,
+   "scale": 1.0,
+   "style": "mask_plate",
+   "sub": "между Польшей и Литвой",
+   "approved": true
+  }
+ },
+ "36": {
+  "text": {
+   "words": "РАКЕТЫ СЕМЕЙСТВА ЭРАМ",
+   "color": "yellow",
+   "pos": "tc",
+   "font": "default",
+   "sound": "mashinka",
+   "at": 0.5,
+   "scale": 1.0,
+   "style": "mask_plate",
+   "sub": "первый перехват",
+   "approved": true
+  }
+ },
+ "46": {
+  "text": {
+   "words": "СЕУЛ СЧИТАЕТ",
+   "color": "yellow",
+   "pos": "ml",
+   "font": "default",
+   "sound": "mashinka",
+   "at": 0.5,
+   "scale": 1.0,
+   "style": "mask_plate",
+   "sub": "союз с США и соседство с КНДР",
+   "approved": true
+  }
+ },
+ "4": {
+  "photo": "overlays/scene_004.jpg",
+  "sound": "whoosh",
+  "at": 2.2,
+  "shape": "rect",
+  "style": "middle-right",
+  "anchor": "middle",
+  "scale": 1.0
+ }
+}
