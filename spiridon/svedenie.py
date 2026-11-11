@@ -18,7 +18,8 @@ def risuy(out_dir, shir=960, tolko=None):
         svg = kadr.body(pl, t, .62)
         cairosvg.svg2png(bytestring=svg.encode(),
                          write_to=os.path.join(out_dir, "kadry", f"{pl['n']:03d}.png"),
-                         output_width=shir, output_height=int(shir * baza.H / baza.W))
+                         output_width=shir, output_height=int(shir * baza.H / baza.W),
+                         unsafe=True)
     return P
 
 
@@ -65,6 +66,7 @@ dl{{margin:0;padding:0 14px 14px;font-size:13px;color:var(--sero)}}
 dt{{color:#c3b79c;font-weight:600;margin-top:7px;font-size:12px;letter-spacing:.4px;
  text-transform:uppercase}}
 dd{{margin:2px 0 0}}
+.sred{{color:#9fc48f;font-size:12px}}
 .okno{{color:#8fd0e8}} .titr{{color:#f0c96a}} .prav{{color:#7fa87f;font-size:12px}}
 @media(max-width:560px){{.setka{{grid-template-columns:1fr;padding:0 12px}}
  header{{padding:10px 12px}} h2{{margin:24px 12px 8px}}}}
@@ -94,6 +96,7 @@ dd{{margin:2px 0 0}}
 <dt>в кадре</dt><dd>{e(pl['kadr'])}</dd>
 <dt>живое</dt><dd>{e(pl['zhiv'])}</dd>
 <dt>камера</dt><dd>{e(pl['kam'])}</dd>
+<dt>средства библиотеки</dt><dd class="sred">{e(" · ".join(kadr.sredstva(pl)))}</dd>
 {okno}{titr}
 <dt>звук</dt><dd>{e(pl['zvuk'])}</dd>
 <dd class="prav">{e(pl['prav'])}</dd></dl></div>"""

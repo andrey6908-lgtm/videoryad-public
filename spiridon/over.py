@@ -173,6 +173,24 @@ def okno_ramka(x, y, w_, h_):
             f' fill="none" stroke="{ZOL}" stroke-width="5"/>')
 
 
+def okno_foto(x, y, w_, h_, path, t, dur=6.0, faza=0):
+    """Настоящий кадр ВНУТРИ окна (K30). Окно неподвижно (R-0014), кадр
+    заполняет его целиком с обрезом по краям (R-0012), внутри идёт медленный
+    Ken Burns — фотография не висит мёртвой (R-0006)."""
+    k = min(1.0, max(0.0, t / max(.001, dur)))
+    z0, z1 = ((1.00, 1.12), (1.12, 1.00), (1.05, 1.15), (1.15, 1.05))[faza % 4]
+    z = z0 + (z1 - z0) * A.ease(k)
+    dx = (-1 if faza % 2 else 1) * 26 * A.ease(k)
+    dy = (1 if faza % 3 else -1) * 18 * A.ease(k)
+    cid = "ok%d" % (abs(hash((x, y, path))) % 99999)
+    w2, h2 = w_ * z, h_ * z
+    s = f'<clipPath id="{cid}"><rect x="{x}" y="{y}" width="{w_}" height="{h_}" rx="12"/></clipPath>'
+    s += (f'<g clip-path="url(#{cid})"><image href="{path}" x="{x-(w2-w_)/2+dx:.1f}"'
+          f' y="{y-(h2-h_)/2+dy:.1f}" width="{w2:.1f}" height="{h2:.1f}"'
+          f' preserveAspectRatio="xMidYMid slice"/></g>')
+    return s + okno_ramka(x, y, w_, h_)
+
+
 def okno_zaglushka(x, y, w_, h_, podpis, zapros=""):
     """Пустое окно с подписью — только для СВЕДЁННОЙ РАСКАДРОВКИ,
     чтобы видеть, что и когда встанет внутрь. В ролик не идёт."""

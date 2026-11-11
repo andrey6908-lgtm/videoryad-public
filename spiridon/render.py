@@ -20,8 +20,10 @@ H = int(a.shir * baza.H / baza.W)
 def risuy(j, t, p):
     svg = kadr.body(plan.PLANY[j], t, p, zaglushki=False)
     buf = io.BytesIO()
+    # unsafe=True нужен, чтобы в окно встал настоящий кадр: без него
+    # cairosvg молча рисует пустое окно (поймано на сведении 11.11)
     cairosvg.svg2png(bytestring=svg.encode(), write_to=buf,
-                     output_width=a.shir, output_height=H)
+                     output_width=a.shir, output_height=H, unsafe=True)
     return Image.open(buf).convert("RGB")
 
 

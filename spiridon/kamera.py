@@ -15,7 +15,7 @@ from baza import W, H
 F = 1400.0                       # фокусное: чем меньше, тем сильнее расхождение планов
 
 # глубины слоёв (размечены прямо в baza.py)
-Z = {"nebo": 1500, "dal": 520, "sred": 240, "deystvie": 0, "pered": -230, "letit": -120}
+Z = {"nebo": 1500, "dal": 520, "sred": 420, "deystvie": 0, "pered": -230, "letit": -120}
 
 
 def smoother(x):

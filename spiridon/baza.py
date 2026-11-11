@@ -88,7 +88,7 @@ def SL(z, svg):
     return f'<g data-z="{z}">{svg}</g><!--/z-->'
 
 
-Z_NEBO, Z_DAL, Z_SRED, Z_PERED, Z_LETIT, Z_FIX = 1500, 520, 240, -230, -120, "fix"
+Z_NEBO, Z_DAL, Z_SRED, Z_PERED, Z_LETIT, Z_FIX = 1500, 520, 420, -230, -120, "fix"
 
 
 def ten(cx, cy, rx, ry, op=1.0):
@@ -731,10 +731,11 @@ def utvar_pekarni(x, y, w_, t, seed=5):
     for i in range(3):
         s += karavay(x + 290 + i * 110, y - 336, .5, False)
     for i in range(2):
-        mx = x + 250 + i * 150
-        s += (f'{ten(mx, y+8, 74, 14, .4)}'
-              f'<path d="M{mx-72:.0f},{y:.0f} q-16,-180 72,-196 q88,16 72,196 Z" fill="url(#rush)" {o(6)}/>'
-              f'<path d="M{mx-34:.0f},{y-190:.0f} q34,-22 68,0" fill="none" stroke="{TKAN}" stroke-width="9"/>')
+        mx = x + 330 + i * 120
+        s += (f'{ten(mx, y+6, 54, 11, .4)}'
+              f'<path d="M{mx-52:.0f},{y:.0f} q-12,-128 52,-140 q64,12 52,140 Z" fill="#d8c8a4" {o(5)}/>'
+              f'<path d="M{mx-24:.0f},{y-136:.0f} q24,-16 48,0" fill="none" stroke="{TKAN}" stroke-width="8"/>'
+              f'<path d="M{mx-40:.0f},{y-70:.0f} q40,12 80,0" fill="none" stroke="#b8a883" stroke-width="5"/>')
     bx = x + w_ - 120
     s += (f'{ten(bx, y+8, 80, 14, .4)}'
           f'<path d="M{bx-78:.0f},{y:.0f} l10,-210 q68,-22 136,0 l10,210 Z" fill="url(#derev)" {o(6)}/>')

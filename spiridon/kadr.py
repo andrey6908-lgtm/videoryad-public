@@ -11,6 +11,20 @@ from karta import DEK
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OKNO = (860, 300, 980, 551)
+FOTO = os.path.join(HERE, "foto")
+_ST = {}
+if os.path.exists(os.path.join(HERE, "stock.json")):
+    _ST = json.load(open(os.path.join(HERE, "stock.json"), encoding="utf-8"))
+
+
+def kadr_okna(pl):
+    """Путь к настоящему кадру этого плана. Один кадр — один план, повторов
+    в ролике нет вообще (его слово 11.11)."""
+    r = _ST.get(str(pl["n"]))
+    if not r:
+        return None
+    p = os.path.join(FOTO, r["file"] if isinstance(r, dict) else r)
+    return p if os.path.exists(p) else None
 
 
 def plany(path=None):
@@ -55,6 +69,39 @@ def nadpisi(pl):
     return out
 
 
+SREDSTVA_IMENA = {
+    "наезд": "C9 наезд", "наезд_быстро": "C9 push-наезд", "отъезд": "C2 отъезд",
+    "панорама_лп": "C6 панорама", "панорама_пл": "C6 панорама", "кран": "C7 кран",
+    "наклон_вверх": "C11 наклон вверх", "наклон_вниз": "C11 наклон вниз",
+    "снижение": "C13 снижение", "проводка": "C10 проводка", "дуга": "C12 дуга 32°",
+    "долли_зум": "C15 долли-зум", "наклон_горизонта": "C14 наклон горизонта",
+    "push": "C9 три удара", "дыхание": "C9 дыхание кадра",
+}
+
+
+def sredstva(pl):
+    """Что применено к плану — из общей библиотеки эффектов."""
+    imya = DEK[pl["lok"]]
+    h = hod_plana(pl)
+    out = [SREDSTVA_IMENA.get(x, x) for x in (h if isinstance(h, tuple) else (h,))]
+    sl = {z for z, _ in kamera.sloi(getattr(lok, imya)(2.0))}
+    if len([z for z in sl if z != "fix"]) > 1:
+        out.append("C1/K9 планы по глубине")
+    if any(isinstance(z, int) and z >= 500 for z in sl):
+        out.append("C17 воздушная перспектива")
+    if imya in BLIK:
+        out += ["C16/K17 блик в объектив", "K5 бегущий блик"]
+    out += ["K15 тёплое пятно и тёмный бок", "K16 виньетка", "K18 градиенты", "C4 тени"]
+    if nado_okno(pl):
+        out.append("K30 окно с живой вставкой")
+    if data_kartochka(pl):
+        out.append("K29 карточка даты")
+    if nadpisi(pl):
+        out.append("K19/K20 титры и плашки")
+    out.append("K31 кроссфейд на стыке")
+    return out
+
+
 def hod_plana(pl):
     """Ход камеры этого плана — из колонки «Камера» раскадровки."""
     return kamera.razobrat(pl.get("kam", ""))
@@ -76,7 +123,12 @@ def body(pl, t, p=.5, zaglushki=True):
     imya = DEK[pl["lok"]]
     fn = getattr(lok, imya)
     # слои декорации разъезжаются по глубине под ход камеры (C1/K9)
-    scena = kamera.kadr(fn(t), hod_plana(pl), p)
+    syr = fn(t)
+    if '<g data-z="-' not in syr:
+        # интерьеру без переднего плана добавляем край кадра: без ближнего
+        # слоя параллакса не видно, сцена остаётся плоской
+        syr += baza.ramka_pp("levo", "#14110c", .30)
+    scena = kamera.kadr(syr, hod_plana(pl), p)
     out = (f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}">'
            f'<defs>{baza.defs()}</defs>{scena}')
     # свет поверх сцены: блик в объектив и бегущий блик (C16/K17, K5)
@@ -93,10 +145,13 @@ def body(pl, t, p=.5, zaglushki=True):
         out += over.kartochka_daty(x, y + 90, w_, h_ - 180, dk, t)
     if nado_okno(pl):
         x, y, w_, h_ = OKNO
-        if zaglushki:
+        f = kadr_okna(pl)
+        if f:
+            out += over.okno_foto(x, y, w_, h_, f, t, pl["sek"], pl["n"])
+        elif zaglushki:
             out += over.okno_zaglushka(x, y, w_, h_, pl["okno"], pl.get("najti", ""))
-        else:
-            out += over.okno_ramka(x, y, w_, h_)
+        # кадра нет — окна в кадре нет вообще: пустая рамка хуже, чем её
+        # отсутствие, рисованная сцена работает на весь экран сама
     out += nalozheniya(pl, t)
     return out + "</svg>"
 
