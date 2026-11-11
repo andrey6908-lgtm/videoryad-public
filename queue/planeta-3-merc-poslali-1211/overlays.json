@@ -1,0 +1,126 @@
+{
+ "8": {
+  "photo": "overlays/scene_008.jpg",
+  "sound": "whoosh",
+  "at": 2.4,
+  "shape": "rect",
+  "scale": 1.0
+ },
+ "13": {
+  "photo": "overlays/scene_013.jpg",
+  "sound": "ding",
+  "at": 2.6,
+  "shape": "rect",
+  "scale": 1.0
+ },
+ "17": {
+  "photo": "overlays/scene_017.jpg",
+  "sound": "pop",
+  "at": 2.8,
+  "shape": "rect",
+  "scale": 1.0
+ },
+ "21": {
+  "photo": "overlays/scene_021.jpg",
+  "sound": "whoosh",
+  "at": 3.0,
+  "shape": "rect",
+  "scale": 1.0
+ },
+ "28": {
+  "photo": "overlays/scene_028.jpg",
+  "sound": "ding",
+  "at": 2.2,
+  "shape": "rect",
+  "scale": 1.0
+ },
+ "34": {
+  "photo": "overlays/scene_034.jpg",
+  "sound": "pop",
+  "at": 2.4,
+  "shape": "rect",
+  "scale": 1.0
+ },
+ "39": {
+  "photo": "overlays/scene_039.jpg",
+  "sound": "whoosh",
+  "at": 2.6,
+  "shape": "rect",
+  "scale": 1.0
+ },
+ "44": {
+  "photo": "overlays/scene_044.jpg",
+  "sound": "ding",
+  "at": 2.8,
+  "shape": "rect",
+  "scale": 1.0
+ },
+ "50": {
+  "photo": "overlays/scene_050.jpg",
+  "sound": "pop",
+  "at": 3.0,
+  "shape": "rect",
+  "scale": 1.0
+ },
+ "11": {
+  "text": {
+   "words": "СЛОВАКИЯ ГОВОРИТ НЕТ",
+   "sub": "бюджет ЕС требует единогласия",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "20": {
+  "text": {
+   "words": "СПОР О ДЕНЬГАХ",
+   "sub": "Россия ещё не вошла в комнату",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "27": {
+  "text": {
+   "words": "КАЛИНИНГРАД",
+   "sub": "между Польшей и Литвой",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "36": {
+  "text": {
+   "words": "РАКЕТЫ СЕМЕЙСТВА ЭРАМ",
+   "sub": "первый перехват",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "46": {
+  "text": {
+   "words": "СЕУЛ СЧИТАЕТ",
+   "sub": "союз с США и соседство с КНДР",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "53": {
+  "text": {
+   "words": "АРКТИЧЕСКИЙ МАРШРУТ",
+   "sub": "Пусан — Роттердам",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "4": {
+  "photo": "overlays/scene_004.jpg",
+  "sound": "pop",
+  "at": 2.2,
+  "shape": "rect",
+  "scale": 1.0
+ }
+}
