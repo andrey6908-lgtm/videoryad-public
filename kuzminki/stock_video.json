@@ -1,0 +1,572 @@
+{
+ "2": {
+  "url": "https://videos.pexels.com/video-files/36036681/15283155_1280_720_60fps.mp4",
+  "id": "px36036681",
+  "w": 1280,
+  "h": 720,
+  "dur": 16,
+  "sek": 1.95,
+  "start": 1.0,
+  "tags": "hand-holding-coins-outdoors-with-natural-background-36036681"
+ },
+ "4": {
+  "url": "https://videos.pexels.com/video-files/33059462/14091172_1280_720_60fps.mp4",
+  "id": "px33059462",
+  "w": 1280,
+  "h": 720,
+  "dur": 34,
+  "sek": 4.24,
+  "start": 1.0,
+  "tags": "scenic-aerial-view-of-country-road-at-dusk-33059462"
+ },
+ "5": {
+  "url": "https://videos.pexels.com/video-files/11094574/11094574-hd_1280_720_30fps.mp4",
+  "id": "px11094574",
+  "w": 1280,
+  "h": 720,
+  "dur": 40,
+  "sek": 2.72,
+  "start": 1.0,
+  "tags": "a-person-putting-assorted-dried-herbs-on-a-cutting-board-110"
+ },
+ "8": {
+  "url": "https://videos.pexels.com/video-files/4186969/4186969-hd_1280_720_25fps.mp4",
+  "id": "px4186969",
+  "w": 1280,
+  "h": 720,
+  "dur": 8,
+  "sek": 5.1,
+  "start": 1.0,
+  "tags": "a-person-hammering-a-heated-metal-4186969"
+ },
+ "9": {
+  "url": "https://videos.pexels.com/video-files/39885999/17010797_1280_720_30fps.mp4",
+  "id": "px39885999",
+  "w": 1280,
+  "h": 720,
+  "dur": 15,
+  "sek": 5.94,
+  "start": 1.0,
+  "tags": "hand-spinning-wool-in-traditional-style-39885999"
+ },
+ "11": {
+  "url": "https://videos.pexels.com/video-files/4398466/4398466-hd_1280_720_50fps.mp4",
+  "id": "px4398466",
+  "w": 1280,
+  "h": 720,
+  "dur": 10,
+  "sek": 3.75,
+  "start": 1.0,
+  "tags": "a-person-tearing-the-bread-4398466"
+ },
+ "13": {
+  "url": "https://cdn.pixabay.com/video/2022/12/18/143419-782363231_medium.mp4",
+  "id": "143419",
+  "w": 2560,
+  "h": 1440,
+  "dur": 30,
+  "sek": 3.64,
+  "start": 1.0,
+  "tags": "candle, light, flame, burn, match, candlelight, christmas, a"
+ },
+ "15": {
+  "url": "https://videos.pexels.com/video-files/5846397/5846397-hd_1280_720_25fps.mp4",
+  "id": "px5846397",
+  "w": 1280,
+  "h": 720,
+  "dur": 10,
+  "sek": 2.21,
+  "start": 1.0,
+  "tags": "hammer-rack-in-smithy-workshop-5846397"
+ },
+ "18": {
+  "url": "https://cdn.pixabay.com/video/2025/01/04/250772_medium.mp4",
+  "id": "250772",
+  "w": 1280,
+  "h": 720,
+  "dur": 15,
+  "sek": 3.47,
+  "start": 1.0,
+  "tags": "scroll, paper, parchment, ancient, history, old, bible, chur"
+ },
+ "20": {
+  "url": "https://cdn.pixabay.com/video/2018/07/08/17176-278954641_medium.mp4",
+  "id": "17176",
+  "w": 1280,
+  "h": 720,
+  "dur": 14,
+  "sek": 2.44,
+  "start": 1.0,
+  "tags": "fire, fireplace, oven, hot, campfire"
+ },
+ "21": {
+  "url": "https://videos.pexels.com/video-files/11530072/11530072-hd_1280_720_25fps.mp4",
+  "id": "px11530072",
+  "w": 1280,
+  "h": 720,
+  "dur": 12,
+  "sek": 2.48,
+  "start": 1.0,
+  "tags": "hands-opening-old-book-11530072"
+ },
+ "22": {
+  "url": "https://videos.pexels.com/video-files/14289729/14289729-hd_1366_578_60fps.mp4",
+  "id": "px14289729",
+  "w": 1366,
+  "h": 578,
+  "dur": 11,
+  "sek": 3.61,
+  "start": 1.0,
+  "tags": "a-dirt-road-between-houses-and-trees-14289729"
+ },
+ "23": {
+  "url": "https://videos.pexels.com/video-files/36036680/15283230_1280_720_60fps.mp4",
+  "id": "px36036680",
+  "w": 1280,
+  "h": 720,
+  "dur": 9,
+  "sek": 5.23,
+  "start": 1.0,
+  "tags": "close-up-of-coins-in-hand-outdoors-36036680"
+ },
+ "26": {
+  "url": "https://cdn.pixabay.com/video/2020/10/08/51749-466305544_medium.mp4",
+  "id": "51749",
+  "w": 2560,
+  "h": 1440,
+  "dur": 20,
+  "sek": 3.41,
+  "start": 1.0,
+  "tags": "candle, flame, light, dark, fire, heat, black, spirituality,"
+ },
+ "28": {
+  "url": "https://videos.pexels.com/video-files/40103205/17121171_1280_720_25fps.mp4",
+  "id": "px40103205",
+  "w": 1280,
+  "h": 720,
+  "dur": 16,
+  "sek": 1.74,
+  "start": 1.0,
+  "tags": "curtains-opening-to-bright-morning-light-40103205"
+ },
+ "35": {
+  "url": "https://cdn.pixabay.com/video/2021/12/14/100591-657153179_medium.mp4",
+  "id": "100591",
+  "w": 2560,
+  "h": 1440,
+  "dur": 21,
+  "sek": 4.71,
+  "start": 1.0,
+  "tags": "camel, desert animal, animal, hump, wildlife, mammal, pair o"
+ },
+ "40": {
+  "url": "https://videos.pexels.com/video-files/8798153/8798153-hd_1366_720_25fps.mp4",
+  "id": "px8798153",
+  "w": 1366,
+  "h": 720,
+  "dur": 11,
+  "sek": 3.96,
+  "start": 1.0,
+  "tags": "a-person-handing-an-apricot-to-another-hand-8798153"
+ },
+ "44": {
+  "url": "https://videos.pexels.com/video-files/9218140/9218140-hd_1280_720_60fps.mp4",
+  "id": "px9218140",
+  "w": 1280,
+  "h": 720,
+  "dur": 17,
+  "sek": 6.33,
+  "start": 1.0,
+  "tags": "a-woman-picking-up-paper-bags-outside-her-apartment-9218140"
+ },
+ "45": {
+  "url": "https://cdn.pixabay.com/video/2022/12/18/143416-782363227_medium.mp4",
+  "id": "143416",
+  "w": 2560,
+  "h": 1440,
+  "dur": 12,
+  "sek": 8.33,
+  "start": 1.0,
+  "tags": "tree, snow, hand, waving, winter, fog, person, man, nature, "
+ },
+ "47": {
+  "url": "https://cdn.pixabay.com/video/2016/06/27/3595-172488292_medium.mp4",
+  "id": "3595",
+  "w": 1280,
+  "h": 720,
+  "dur": 44,
+  "sek": 2.55,
+  "start": 1.0,
+  "tags": "cup of coffee, hot, beverage, morning, aroma, steam, coffee,"
+ },
+ "51": {
+  "url": "https://videos.pexels.com/video-files/39457267/16805439_1280_720_25fps.mp4",
+  "id": "px39457267",
+  "w": 1280,
+  "h": 720,
+  "dur": 12,
+  "sek": 9.86,
+  "start": 1.0,
+  "tags": "pouring-coffee-into-colorful-mugs-indoors-39457267"
+ },
+ "52": {
+  "url": "https://videos.pexels.com/video-files/38103750/16178038_1440_1080_60fps.mp4",
+  "id": "px38103750",
+  "w": 1440,
+  "h": 1080,
+  "dur": 17,
+  "sek": 2.53,
+  "start": 1.0,
+  "tags": "medieval-blacksmith-at-work-with-forge-38103750"
+ },
+ "53": {
+  "url": "https://cdn.pixabay.com/video/2019/02/19/21531-318988171_medium.mp4",
+  "id": "21531",
+  "w": 1280,
+  "h": 720,
+  "dur": 28,
+  "sek": 7.91,
+  "start": 1.0,
+  "tags": "fire, burn, flame, hot, heat, glow, burning, fireplace, ligh"
+ },
+ "56": {
+  "url": "https://videos.pexels.com/video-files/2618443/2618443-hd_1280_720_24fps.mp4",
+  "id": "px2618443",
+  "w": 1280,
+  "h": 720,
+  "dur": 11,
+  "sek": 4.67,
+  "start": 1.0,
+  "tags": "a-weather-worn-barn-door-and-lock-2618443"
+ },
+ "57": {
+  "url": "https://cdn.pixabay.com/video/2023/09/15/180728-864967837_medium.mp4",
+  "id": "180728",
+  "w": 1280,
+  "h": 720,
+  "dur": 60,
+  "sek": 6.24,
+  "start": 1.0,
+  "tags": "drip, water, waste, tap, drop, liquid, old, faucet"
+ },
+ "58": {
+  "url": "https://videos.pexels.com/video-files/34616420/14671028_1280_720_60fps.mp4",
+  "id": "px34616420",
+  "w": 1280,
+  "h": 720,
+  "dur": 15,
+  "sek": 4.17,
+  "start": 1.0,
+  "tags": "chickens-roosting-in-a-countryside-coop-34616420"
+ },
+ "59": {
+  "url": "https://videos.pexels.com/video-files/9737854/9737854-hd_1280_720_24fps.mp4",
+  "id": "px9737854",
+  "w": 1280,
+  "h": 720,
+  "dur": 16,
+  "sek": 5.17,
+  "start": 1.0,
+  "tags": "hands-of-people-planting-seedlings-9737854"
+ },
+ "61": {
+  "url": "https://videos.pexels.com/video-files/5391450/5391450-hd_1280_720_25fps.mp4",
+  "id": "px5391450",
+  "w": 1280,
+  "h": 720,
+  "dur": 8,
+  "sek": 5.18,
+  "start": 1.0,
+  "tags": "plants-on-a-seedling-tray-5391450"
+ },
+ "63": {
+  "url": "https://cdn.pixabay.com/video/2024/03/25/205561-927347789_medium.mp4",
+  "id": "205561",
+  "w": 2560,
+  "h": 1440,
+  "dur": 6,
+  "sek": 4.36,
+  "start": 0.82,
+  "tags": "moon, clouds, cloudy, dark, night, night sky, full moon, moo"
+ },
+ "65": {
+  "url": "https://videos.pexels.com/video-files/4727535/4727535-hd_1280_720_50fps.mp4",
+  "id": "px4727535",
+  "w": 1280,
+  "h": 720,
+  "dur": 9,
+  "sek": 2.73,
+  "start": 1.0,
+  "tags": "a-person-in-a-trench-coat-is-reaching-out-to-the-window-4727"
+ },
+ "68": {
+  "url": "https://cdn.pixabay.com/video/2022/12/26/144317-784384601_medium.mp4",
+  "id": "144317",
+  "w": 1280,
+  "h": 720,
+  "dur": 32,
+  "sek": 10.18,
+  "start": 1.0,
+  "tags": "blacksmith, work, anposs, lucky charm, christmas"
+ },
+ "69": {
+  "url": "https://cdn.pixabay.com/video/2024/12/14/246616_medium.mp4",
+  "id": "246616",
+  "w": 2560,
+  "h": 1440,
+  "dur": 13,
+  "sek": 5.12,
+  "start": 1.0,
+  "tags": "field, agriculture, farming, farm, rural, wheat, summer, cou"
+ },
+ "72": {
+  "url": "https://cdn.pixabay.com/video/2025/11/10/315063_medium.mp4",
+  "id": "315063",
+  "w": 2560,
+  "h": 1440,
+  "dur": 16,
+  "sek": 9.9,
+  "start": 1.0,
+  "tags": "field, farmland, drone footage, freshly plowed field, crop r"
+ },
+ "74": {
+  "url": "https://cdn.pixabay.com/video/2015/08/07/21-135711412_medium.mp4",
+  "id": "21",
+  "w": 1280,
+  "h": 720,
+  "dur": 45,
+  "sek": 2.72,
+  "start": 1.0,
+  "tags": "ice, cold, winter, frozen, river, water, shore, lake, icy, i"
+ },
+ "76": {
+  "url": "https://videos.pexels.com/video-files/5742268/5742268-hd_1366_576_30fps.mp4",
+  "id": "px5742268",
+  "w": 1366,
+  "h": 576,
+  "dur": 26,
+  "sek": 8.62,
+  "start": 1.0,
+  "tags": "a-person-knitting-5742268"
+ },
+ "78": {
+  "url": "https://videos.pexels.com/video-files/5742414/5742414-hd_1366_576_30fps.mp4",
+  "id": "px5742414",
+  "w": 1366,
+  "h": 576,
+  "dur": 14,
+  "sek": 11.95,
+  "start": 1.0,
+  "tags": "knitting-threads-in-a-basket-5742414"
+ },
+ "79": {
+  "url": "https://videos.pexels.com/video-files/39332626/16738011_1280_720_24fps.mp4",
+  "id": "px39332626",
+  "w": 1280,
+  "h": 720,
+  "dur": 19,
+  "sek": 7.02,
+  "start": 1.0,
+  "tags": "traditional-clay-pots-cooking-on-outdoor-stoves-39332626"
+ },
+ "81": {
+  "url": "https://videos.pexels.com/video-files/8519984/8519984-hd_1280_720_25fps.mp4",
+  "id": "px8519984",
+  "w": 1280,
+  "h": 720,
+  "dur": 15,
+  "sek": 7.79,
+  "start": 1.0,
+  "tags": "a-person-playing-the-accordion-8519984"
+ },
+ "83": {
+  "url": "https://videos.pexels.com/video-files/34474403/14607953_1280_720_24fps.mp4",
+  "id": "px34474403",
+  "w": 1280,
+  "h": 720,
+  "dur": 14,
+  "sek": 6.37,
+  "start": 1.0,
+  "tags": "chickens-pecking-corn-on-a-rural-farm-34474403"
+ },
+ "84": {
+  "url": "https://videos.pexels.com/video-files/4873808/4873808-hd_1366_720_25fps.mp4",
+  "id": "px4873808",
+  "w": 1366,
+  "h": 720,
+  "dur": 38,
+  "sek": 6.44,
+  "start": 1.0,
+  "tags": "a-person-is-putting-food-on-a-table-4873808"
+ },
+ "85": {
+  "url": "https://cdn.pixabay.com/video/2021/04/15/71124-537986746_medium.mp4",
+  "id": "71124",
+  "w": 2732,
+  "h": 1440,
+  "dur": 8,
+  "sek": 3.69,
+  "start": 1.0,
+  "tags": "pickle, cucumber, prepare, pack up, package, pepper, pain, b"
+ },
+ "87": {
+  "url": "https://videos.pexels.com/video-files/38647468/16414936_1280_720_60fps.mp4",
+  "id": "px38647468",
+  "w": 1280,
+  "h": 720,
+  "dur": 10,
+  "sek": 3.82,
+  "start": 1.0,
+  "tags": "elegant-wedding-rings-in-red-velvet-box-38647468"
+ },
+ "92": {
+  "url": "https://videos.pexels.com/video-files/6557313/6557313-hd_1280_720_30fps.mp4",
+  "id": "px6557313",
+  "w": 1280,
+  "h": 720,
+  "dur": 60,
+  "sek": 8.31,
+  "start": 1.0,
+  "tags": "water-in-the-river-flowing-6557313"
+ },
+ "93": {
+  "url": "https://cdn.pixabay.com/video/2024/12/16/246894_medium.mp4",
+  "id": "246894",
+  "w": 1280,
+  "h": 720,
+  "dur": 60,
+  "sek": 3.15,
+  "start": 1.0,
+  "tags": "winter, frost, window, background, snowing, beautiful wallpa"
+ },
+ "94": {
+  "url": "https://cdn.pixabay.com/video/2022/12/18/143404-782186620_medium.mp4",
+  "id": "143404",
+  "w": 2730,
+  "h": 1440,
+  "dur": 27,
+  "sek": 2.11,
+  "start": 1.0,
+  "tags": "snowfall, snow, rain, rainfall, heavy, raining, winter, wint"
+ },
+ "95": {
+  "url": "https://cdn.pixabay.com/video/2021/10/22/92847-637937502_medium.mp4",
+  "id": "92847",
+  "w": 1280,
+  "h": 720,
+  "dur": 21,
+  "sek": 3.25,
+  "start": 1.0,
+  "tags": "goose, domestic goose, white, plumage, water, pond, bird, wa"
+ },
+ "96": {
+  "url": "https://videos.pexels.com/video-files/36353111/15419003_1280_720_30fps.mp4",
+  "id": "px36353111",
+  "w": 1280,
+  "h": 720,
+  "dur": 15,
+  "sek": 5.27,
+  "start": 1.0,
+  "tags": "black-birds-resting-on-bare-tree-branches-36353111"
+ },
+ "97": {
+  "url": "https://videos.pexels.com/video-files/30732541/13147309_1280_720_30fps.mp4",
+  "id": "px30732541",
+  "w": 1280,
+  "h": 720,
+  "dur": 29,
+  "sek": 4.01,
+  "start": 1.0,
+  "tags": "close-up-of-lonely-autumn-leaf-on-bare-branch-30732541"
+ },
+ "100": {
+  "url": "https://videos.pexels.com/video-files/4075563/4075563-hd_1366_576_30fps.mp4",
+  "id": "px4075563",
+  "w": 1366,
+  "h": 576,
+  "dur": 16,
+  "sek": 4.34,
+  "start": 1.0,
+  "tags": "a-man-going-inside-the-empty-barn-house-4075563"
+ },
+ "102": {
+  "url": "https://cdn.pixabay.com/video/2025/03/03/262189_medium.mp4",
+  "id": "262189",
+  "w": 2730,
+  "h": 1439,
+  "dur": 29,
+  "sek": 4.27,
+  "start": 1.0,
+  "tags": "laboratory, glassware, microbiology, pipette, biology, speci"
+ },
+ "104": {
+  "url": "https://cdn.pixabay.com/video/2021/10/01/90447-626004877_medium.mp4",
+  "id": "90447",
+  "w": 1280,
+  "h": 720,
+  "dur": 30,
+  "sek": 6.25,
+  "start": 1.0,
+  "tags": "window, curtain, wind, light, night, room, tree"
+ },
+ "106": {
+  "url": "https://videos.pexels.com/video-files/8869637/8869637-hd_1366_720_25fps.mp4",
+  "id": "px8869637",
+  "w": 1366,
+  "h": 720,
+  "dur": 23,
+  "sek": 9.83,
+  "start": 1.0,
+  "tags": "money-and-coins-on-the-table-8869637"
+ },
+ "109": {
+  "url": "https://videos.pexels.com/video-files/38504591/16352107_1280_720_60fps.mp4",
+  "id": "px38504591",
+  "w": 1280,
+  "h": 720,
+  "dur": 25,
+  "sek": 4.86,
+  "start": 1.0,
+  "tags": "scenic-aerial-view-of-swedish-countryside-homes-38504591"
+ },
+ "111": {
+  "url": "https://cdn.pixabay.com/video/2015/08/08/138-135737086_medium.mp4",
+  "id": "138",
+  "w": 1280,
+  "h": 720,
+  "dur": 13,
+  "sek": 4.65,
+  "start": 1.0,
+  "tags": "book, pages, slideshow, browse, scroll, read, look, pictures"
+ },
+ "113": {
+  "url": "https://cdn.pixabay.com/video/2022/12/20/143683-784129669_medium.mp4",
+  "id": "143683",
+  "w": 2560,
+  "h": 1440,
+  "dur": 16,
+  "sek": 3.8,
+  "start": 1.0,
+  "tags": "novel, flip, page, flipping, chapter, education, book, turni"
+ },
+ "114": {
+  "url": "https://cdn.pixabay.com/video/2017/08/09/11254-229053639_medium.mp4",
+  "id": "11254",
+  "w": 1280,
+  "h": 720,
+  "dur": 8,
+  "sek": 1.67,
+  "start": 1.0,
+  "tags": "bookshelf, book, library, education, knowledge, literature, "
+ },
+ "124": {
+  "url": "https://videos.pexels.com/video-files/5791736/5791736-hd_1366_720_25fps.mp4",
+  "id": "px5791736",
+  "w": 1366,
+  "h": 720,
+  "dur": 36,
+  "sek": 7.27,
+  "start": 1.0,
+  "tags": "video-of-food-on-the-table-5791736"
+ }
+}
