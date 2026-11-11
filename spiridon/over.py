@@ -173,6 +173,22 @@ def okno_ramka(x, y, w_, h_):
             f' fill="none" stroke="{ZOL}" stroke-width="5"/>')
 
 
+import base64, functools
+
+
+@functools.lru_cache(maxsize=96)
+def _vstroit(path):
+    """Картинка ВСТРАИВАЕТСЯ в SVG, а не читается по ссылке: битый или
+    недокачанный файл иначе валит рендер (ExpatError на раннере 11.11)."""
+    try:
+        d = open(path, "rb").read()
+        if len(d) < 1200 or d[:2] != b"\xff\xd8":      # не JPEG — не рисуем
+            return None
+        return "data:image/jpeg;base64," + base64.b64encode(d).decode()
+    except Exception:
+        return None
+
+
 def okno_foto(x, y, w_, h_, path, t, dur=6.0, faza=0, zhivoj=False):
     """Настоящий кадр ВНУТРИ окна (K30). Окно неподвижно (R-0014), кадр
     заполняет его целиком с обрезом по краям (R-0012), внутри идёт медленный
@@ -185,10 +201,13 @@ def okno_foto(x, y, w_, h_, path, t, dur=6.0, faza=0, zhivoj=False):
     z = z0 + (z1 - z0) * A.ease(k)
     dx = 0.0 if zhivoj else (-1 if faza % 2 else 1) * 26 * A.ease(k)
     dy = 0.0 if zhivoj else (1 if faza % 3 else -1) * 18 * A.ease(k)
+    src = _vstroit(path)
+    if not src:
+        return okno_ramka(x, y, w_, h_)
     cid = "ok%d" % (abs(hash((x, y, path))) % 99999)
     w2, h2 = w_ * z, h_ * z
     s = f'<clipPath id="{cid}"><rect x="{x}" y="{y}" width="{w_}" height="{h_}" rx="12"/></clipPath>'
-    s += (f'<g clip-path="url(#{cid})"><image href="{path}" x="{x-(w2-w_)/2+dx:.1f}"'
+    s += (f'<g clip-path="url(#{cid})"><image href="{src}" x="{x-(w2-w_)/2+dx:.1f}"'
           f' y="{y-(h2-h_)/2+dy:.1f}" width="{w2:.1f}" height="{h2:.1f}"'
           f' preserveAspectRatio="xMidYMid slice"/></g>')
     return s + okno_ramka(x, y, w_, h_)

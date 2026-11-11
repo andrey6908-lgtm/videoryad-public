@@ -50,7 +50,7 @@ def razvernut(st, nado, out_dir, fps=25, log=print):
         vf = (f"scale={OKNO_W}:{OKNO_H}:force_original_aspect_ratio=increase,"
               f"crop={OKNO_W}:{OKNO_H},fps={fps}")
         cmd = ["ffmpeg", "-v", "error", "-y", "-ss", f"{nach:.2f}", "-t", f"{dl:.2f}",
-               "-i", mp4, "-vf", vf, "-q:v", "4", os.path.join(d, "%06d.jpg")]
+               "-i", mp4, "-vf", vf, "-q:v", "6", os.path.join(d, "%06d.jpg")]
         p = subprocess.run(cmd, capture_output=True, text=True)
         if p.returncode or not os.listdir(d):
             log("клип %d не развернулся: %s" % (n, p.stderr[-300:]))
@@ -67,7 +67,7 @@ def kadr_klipa(dirs, n, t, fps=25):
         return None
     i = int(t * fps) + 1
     p = os.path.join(d, "%06d.jpg" % i)
-    if os.path.exists(p):
+    if os.path.exists(p) and os.path.getsize(p) > 1200:
         return p
     # клип короче плана — держим последний кадр, чёрной дыры в окне не будет
     try:
