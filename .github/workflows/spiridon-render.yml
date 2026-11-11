@@ -38,11 +38,18 @@ jobs:
           # 11.11: apt на раннере виснет и роняет части по таймауту (5, 9, 16).
           # На ubuntu-latest уже есть libcairo и шрифты DejaVu, не хватает только
           # ffmpeg — ставим его статическим бинарём, apt не трогаем вообще.
+          # 11.11: johnvansickle.com с раннеров недоступен (curl 28, две части
+          # легли). Берём сборку с github.com — туда доступ у раннера всегда.
           if ! command -v ffmpeg >/dev/null; then
-            curl -fsSL --retry 2 --retry-delay 3 --max-time 120 -o /tmp/ff.tar.xz \
-              https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
+            curl -fsSL --retry 2 --retry-delay 2 --max-time 90 -o /tmp/ff.tar.xz \
+              https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz \
               && tar -xJf /tmp/ff.tar.xz -C /tmp \
-              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/
+              && sudo cp /tmp/ffmpeg-master-latest-linux64-gpl/bin/ffmpeg \
+                        /tmp/ffmpeg-master-latest-linux64-gpl/bin/ffprobe /usr/local/bin/ || true
+          fi
+          if ! command -v ffmpeg >/dev/null; then
+            timeout 60 sudo apt-get update -qq || true
+            timeout 120 sudo apt-get install -y -qq --no-install-recommends ffmpeg || true
           fi
           command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
           python3 -c "import ctypes;ctypes.CDLL('libcairo.so.2')" \
@@ -87,11 +94,18 @@ jobs:
           # 11.11: apt на раннере виснет и роняет части по таймауту (5, 9, 16).
           # На ubuntu-latest уже есть libcairo и шрифты DejaVu, не хватает только
           # ffmpeg — ставим его статическим бинарём, apt не трогаем вообще.
+          # 11.11: johnvansickle.com с раннеров недоступен (curl 28, две части
+          # легли). Берём сборку с github.com — туда доступ у раннера всегда.
           if ! command -v ffmpeg >/dev/null; then
-            curl -fsSL --retry 2 --retry-delay 3 --max-time 120 -o /tmp/ff.tar.xz \
-              https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz \
+            curl -fsSL --retry 2 --retry-delay 2 --max-time 90 -o /tmp/ff.tar.xz \
+              https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz \
               && tar -xJf /tmp/ff.tar.xz -C /tmp \
-              && sudo cp /tmp/ffmpeg-*-static/ffmpeg /tmp/ffmpeg-*-static/ffprobe /usr/local/bin/
+              && sudo cp /tmp/ffmpeg-master-latest-linux64-gpl/bin/ffmpeg \
+                        /tmp/ffmpeg-master-latest-linux64-gpl/bin/ffprobe /usr/local/bin/ || true
+          fi
+          if ! command -v ffmpeg >/dev/null; then
+            timeout 60 sudo apt-get update -qq || true
+            timeout 120 sudo apt-get install -y -qq --no-install-recommends ffmpeg || true
           fi
           command -v ffmpeg >/dev/null || { echo "::error::нет ffmpeg"; exit 1; }
           python3 -c "import ctypes;ctypes.CDLL('libcairo.so.2')" \
