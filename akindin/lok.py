@@ -61,10 +61,10 @@ def figura(x, y, h_, t, col="#1b1822", kant="#ffd08a", platok=False, ph=.0,
     if platok:                     # платок приглушён: ярко-красный бьёт в глаза
         hh = h_ * .145
         cy = y - h_ * .84
-        s += (f'<path d="M{x-hh*1.12:.0f},{cy-hh*.06:.0f} a{hh*1.12:.0f},{hh*1.12:.0f} 0 0 1 {hh*2.24:.0f},0'
-              f' q{-hh*.2:.0f},{hh*2.1:.0f} {-hh*1.12:.0f},{hh*2.3:.0f}'
-              f' q{-hh*.9:.0f},{-hh*.2:.0f} {-hh*1.12:.0f},{-hh*2.3:.0f} Z"'
-              f' fill="#8f3a38" opacity="{platok_op:.2f}"/>')
+        s += (f'<path d="M{x-hh*1.02:.0f},{cy-hh*.02:.0f} a{hh*1.02:.0f},{hh*1.02:.0f} 0 0 1 {hh*2.04:.0f},0'
+              f' q{-hh*.18:.0f},{hh*1.5:.0f} {-hh*1.02:.0f},{hh*1.66:.0f}'
+              f' q{-hh*.84:.0f},{-hh*.16:.0f} {-hh*1.02:.0f},{-hh*1.66:.0f} Z"'
+              f' fill="#8f3a38" opacity="{platok_op*.8:.2f}"/>')
     if profil:                     # нос, подбородок и бровь — профиль читается
         hh = h_ * .145
         cy = y - h_ * .84
@@ -1070,21 +1070,22 @@ def dve_devochki_s_bantami(t):
     s += figura(1120, 1030, 520, t, "#33303c", "#ffe2b0", False, .4, True)
     # банты подпрыгивают
     for cx, ph in ((700, .0), (1120, .4)):
-        by = 1030 - 520 * .965 + 7 * A.w(t, 1.6, ph)
+        by = 1030 - 520 * .975 + 7 * A.w(t, 1.6, ph)
         for sgn in (-1, 1):
-            bx = cx + sgn * 62
-            s += (f'<path d="M{bx:.0f},{by:.0f} q{sgn*34:.0f},-30 {sgn*54:.0f},0'
-                  f' q{-sgn*20:.0f},24 {-sgn*54:.0f},0 Z" fill="#b8323a" {o(5)}/>')
+            bx = cx + sgn * 44
+            s += (f'<path d="M{bx:.0f},{by:.0f} q{sgn*24:.0f},-26 {sgn*40:.0f},-4'
+                  f' q{-sgn*16:.0f},22 {-sgn*40:.0f},4 Z" fill="#b8323a" {o(4)}/>')
+        s += f'<circle cx="{cx}" cy="{by+4:.0f}" r="11" fill="#8f2c32" {o(3)}/>' 
     # ладонь у уха: шепчет
     s += (f'<path d="M832,{1030-520*.78:.0f} q56,-30 92,8 q-50,32 -92,-8 Z" fill="#33303c"/>'
           f'<path d="M832,{1030-520*.78:.0f} q56,-30 92,8" stroke="#ffe2b0" stroke-width="5"'
           f' fill="none" opacity=".8"/>')
     # округлённые глаза второй
     gl = .5 + .5 * A.ease(A.seg(t, 1.6, .8))
-    for dx in (34, 56):          # глаза в профиль: обе с правого края лица
-        s += (f'<ellipse cx="{1120+dx}" cy="{1030-520*.855:.0f}" rx="{8+5*gl:.0f}" ry="{9+6*gl:.0f}"'
+    for dx in (18, 46):          # глаза смотрят на подругу: обе к левому краю лица
+        s += (f'<ellipse cx="{1120-dx}" cy="{1030-520*.855:.0f}" rx="{9+4*gl:.0f}" ry="{10+5*gl:.0f}"'
               f' fill="#f5efe2" opacity=".95"/>'
-              f'<circle cx="{1120+dx+3}" cy="{1030-520*.855:.0f}" r="{4+2*gl:.0f}" fill="#20202a"/>')
+              f'<circle cx="{1120-dx-2}" cy="{1030-520*.855:.0f}" r="{4+2*gl:.0f}" fill="#20202a"/>')
     # листья летят, портфель падает
     for i in range(9):
         rnd = random.Random(80 + i)
@@ -3297,8 +3298,11 @@ def staryy_topol_s_voronem(t):
     s += SL(Z_SRED, f'<path d="M-20,960 q520,-40 1000,-14 q500,22 960,-20 V{H} H-20 Z"'
                     f' fill="#e8f0f8" {o(4)}/>')
     # тополь
-    s += SL(Z_SRED, f'<path d="M380,980 q-30,-420 20,-640 q40,-60 70,0 q50,230 20,640 Z"'
+    s += SL(Z_SRED, f'<path d="M352,990 q-16,-430 46,-690 q26,-44 44,0 q58,250 42,690 Z"'
                     f' fill="url(#derev)" {o(8)}/>')
+    for i in range(7):
+        s += SL(Z_SRED, f'<path d="M{372+i*12},970 q-10,-340 {14+i*3},-600" fill="none"'
+                        f' stroke="#6d4a2a" stroke-width="5" opacity=".45"/>')
     rnd = random.Random(99)
     vetki = []
     for i in range(9):
@@ -3313,10 +3317,12 @@ def staryy_topol_s_voronem(t):
     # вороньё, клювы в одну сторону
     for i, (vx, vy) in enumerate(vetki):
         rot = abs(A.w(t, 1.6, i * .3))
-        s += SL(Z_SRED, f'<ellipse cx="{vx:.0f}" cy="{vy-16:.0f}" rx="34" ry="22" fill="#1d1f26" {o(4)}/>'
-                        f'<circle cx="{vx+26:.0f}" cy="{vy-36:.0f}" r="16" fill="#1d1f26"/>'
-                        f'<path d="M{vx+40:.0f},{vy-38:.0f} l{34+10*rot:.0f},{6+8*rot:.0f}'
-                        f' l{-34:.0f},{6:.0f} Z" fill="#3a3f48"/>')
+        s += SL(Z_SRED, f'<ellipse cx="{vx:.0f}" cy="{vy-16:.0f}" rx="32" ry="20" fill="#1d1f26" {o(4)}/>'
+                        f'<path d="M{vx-28:.0f},{vy-14:.0f} l-40,16 l38,2 Z" fill="#1d1f26" {o(3)}/>'
+                        f'<circle cx="{vx+24:.0f}" cy="{vy-34:.0f}" r="15" fill="#1d1f26" {o(3)}/>'
+                        f'<path d="M{vx+36:.0f},{vy-36:.0f} l{26+8*rot:.0f},{4+6*rot:.0f}'
+                        f' l{-26:.0f},{5:.0f} Z" fill="#4a505c"/>'
+                        f'<circle cx="{vx+28:.0f}" cy="{vy-38:.0f}" r="3" fill="#cfd6de"/>')
     # человек слушает
     s += SL(Z_SRED, figura(1180, 1020, 520, t, "#33303a", "#e8eef4", True, .2, True))
     s += (f'<path d="M1124,{1020-520*.84:.0f} q-50,-26 -80,10" fill="none" stroke="#33303a"'
@@ -3339,7 +3345,8 @@ def dve_koshki(t):
     s += SL(Z_SRED, f'<rect y="940" width="950" height="{H-940}" fill="#e8f0f8" {o(0)}/>')
     s += SL(Z_SRED, pleten(60, 820, 820, 130, 9))
     s += SL(Z_SRED, dym(420, 640, t, 4, .2, 260, .3, wide=1.1))
-    s += SL(Z_SRED, kot(520, 820, t, 1.7, "#4a4038"))
+    s += SL(Z_SRED, f'<ellipse cx="520" cy="780" rx="320" ry="220" fill="url(#teplo)" opacity=".35"/>')
+    s += SL(Z_SRED, kot(500, 820, t, 2.3, "#5c5046"))
     # правая половина: город
     s += SL(Z_DAL, f'<rect x="970" width="950" height="{H}" fill="#1a2238"/>')
     for i in range(40):
@@ -3348,13 +3355,14 @@ def dve_koshki(t):
                        f' height="16" rx="4" fill="#f0d28a"'
                        f' opacity="{.4+.5*abs(A.w(t,.9,rnd.random())):.2f}"/>')
     s += SL(Z_SRED, f'<rect x="970" y="760" width="950" height="40" rx="8" fill="#6b7076" {o(6)}/>')
-    s += SL(Z_SRED, kot(1420, 760, t, 1.7, "#6b5c46"))
+    s += SL(Z_SRED, f'<ellipse cx="1420" cy="720" rx="320" ry="200" fill="url(#teplo)" opacity=".25"/>')
+    s += SL(Z_SRED, kot(1420, 760, t, 2.3, "#7d6b55"))
     # обе зевают
     for cx in (520, 1420):
         zev = A.seg(t, 1.2, 2.8)
         if .3 < zev < .6:
-            s += (f'<ellipse cx="{cx+36}" cy="{(820 if cx<900 else 760)-66}" rx="18" ry="22"'
-                  f' fill="#3a2a2a"/>')
+            s += (f'<ellipse cx="{(500 if cx<900 else 1420)+44}" cy="{(820 if cx<900 else 760)-88}"'
+                  f' rx="22" ry="28" fill="#3a2a2a"/>')
     # стык половин
     s += SL(Z_PERED, f'<rect x="946" width="28" height="{H}" fill="#0e1118" opacity=".9"/>')
     s += vinetka(.46)
@@ -3595,10 +3603,11 @@ def estrada_shestidesyatyh(t):
     s += SL(Z_SRED, f'<path d="M160,780 q40,{-60+vz:.0f} 80,{-20+vz:.0f}" fill="none"'
                     f' stroke="#120f16" stroke-width="14" stroke-linecap="round"/>')
     # певица в платье колоколом у микрофона
-    s += SL(Z_SRED, f'<rect x="1193" y="520" width="14" height="440" fill="{ZHELEZ}" {o(4)}/>'
-                    f'<ellipse cx="1200" cy="500" rx="34" ry="44" fill="#3a3f48" {o(5)}/>')
-    s += SL(Z_SRED, f'<path d="M1080,960 q120,-320 240,0 Z" fill="#2a2430" {o(8)}/>')
-    s += SL(Z_SRED, figura(1200, 760, 300, t, "#2a2430", "#ffd9a0", False, .2, True))
+    s += SL(Z_SRED, f'<rect x="1188" y="430" width="22" height="520" fill="{ZHELEZ}" {o(5)}/>'
+                    f'<ellipse cx="1199" cy="400" rx="50" ry="64" fill="#3a3f48" {o(6)}/>'
+                    f'<ellipse cx="1199" cy="386" rx="32" ry="40" fill="#6b7076" opacity=".8"/>')
+    s += SL(Z_SRED, f'<path d="M980,960 q220,-470 440,0 Z" fill="#2a2430" {o(9)}/>')
+    s += SL(Z_SRED, figura(1200, 700, 560, t, "#2a2430", "#ffd9a0", False, .2, True))
     s += vinetka(.5)
     return s
 
@@ -3728,8 +3737,10 @@ def babushkiny_ladoni_i_lampa(t):
           f' fill="{SVET}" opacity=".9"'
           f' transform="rotate({12*(1-rov)*A.w(t,2.4):.1f} 760 630)"/>')
     # заслон от сквозняка — платок на ширме, не рука
-    s += SL(Z_SRED, f'<path d="M430,760 q60,-300 150,-330 q40,180 30,330 Z" fill="#8f3a38"'
-                    f' opacity=".85" {o(7)}/>')
+    s += SL(Z_SRED, f'<path d="M380,762 q40,-230 190,-262 q50,150 44,262 Z" fill="#8f3a38"'
+                    f' opacity=".7" {o(7)}/>')
+    s += SL(Z_SRED, f'<path d="M380,762 q40,-230 190,-262" fill="none" stroke="#c06a62"'
+                    f' stroke-width="7" opacity=".6"/>')
     # шкатулка из плана 2 — закрытая
     s += ten(1340, 790, 220, 20, .45)
     s += SL(Z_SRED, f'<rect x="1160" y="640" width="400" height="150" rx="12" fill="url(#derev)" {o(8)}/>'
