@@ -15,12 +15,22 @@ NFRAMES = int(round(TOTAL * FPS))
 # живые вставки: качает раннер по прямой ссылке, ключей в облаке нет
 _ST = json.load(open(os.path.join(HERE, "stock.json"), encoding="utf-8"))
 from okna import OKNO as _O, OKNO_LOK as _OL
+# Вставка идёт НЕПРЕРЫВНЫМ отрезком: соседние планы с тем же клипом склеиваются
+# в один показ. Раньше каждый план открывал окно заново — оно мигало каждые
+# 6-8 секунд (его правка 12.11: «появилась она один раз, и держим её, пока не
+# сменится другая»).
 STOCK = []
 for sc in SCENES:
-    # нейтральный новогодний сток — только там, где окно есть и экран не занят
-    if sc.get("stock"):
-        x, y, w, h = _OL.get(sc.get("lok", "komnata"), _O)
-        STOCK.append((sc["a"] + .8, sc["b"] - .2, _ST[sc["stock"]], (x, y, w, h)))
+    if not sc.get("stock"):
+        continue
+    x, y, w, h = _OL.get(sc.get("lok", "komnata"), _O)
+    url = _ST[sc["stock"]]
+    if (STOCK and sc.get("okno_cont") and STOCK[-1][2] == url
+            and abs(STOCK[-1][1] - (sc["a"] - .2)) < .5):
+        a0, _, u0, box = STOCK[-1]
+        STOCK[-1] = (a0, sc["b"] - .2, u0, box)
+    else:
+        STOCK.append((sc["a"] + .8, sc["b"] - .2, url, (x, y, w, h)))
 
 # ГЕЙТ (правило режиссёра R-0021, ужесточено 12.11.2026): один стоковый клип —
 # РОВНО ОДИН раз на весь ролик. Взят однажды — второй раз ставить запрещено,

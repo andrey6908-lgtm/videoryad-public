@@ -159,36 +159,59 @@ def frame(sc, t, gt):
     dur = sc["b"] - sc["a"]
     p = A.seg(t, 0, dur)
     pal = sc.get("pal", ["#7d1f2e", "#c9922f", "#3f8a4a"])
+    # декорация должна знать, занята ли правая половина окном вставки:
+    # крупные объекты уходят влево, а без окна кадр расставляется широко
+    L.OKNO_EST = bool(sc.get("foto") or sc.get("stock"))
     bg = svg2img(L.LOK[sc.get("lok", "komnata")](gt, pal), kamera(sc, p)).convert("RGB")
 
     ox, oy, ow, oh = OKNO_LOK.get(sc.get("lok", "komnata"), OKNO)
     b = ""
+    cont = bool(sc.get("okno_cont"))            # план не первый в отрезке окна
     if sc.get("foto"):
-        q = A.out(A.seg(t, .25, .5))
+        q = 1.0 if cont else A.out(A.seg(t, .25, .5))
         if q > 0:
             path = sc["foto"]
             if sc.get("foto2") and t > dur * .55:
                 path = sc["foto2"]
             iw, ih = int(ow * q), int(oh * q)
             if iw > 10 and ih > 10:
-                bg.paste(cover(foto(path), iw, ih, p),
+                oa, ob = sc.get("okno_a", sc["a"]), sc.get("okno_b", sc["b"])
+                pz = (gt - oa) / max(.1, ob - oa) if ob > oa else p
+                bg.paste(cover(foto(path), iw, ih, min(1.0, max(0.0, pz))),
                          (int(ox + (ow - iw) / 2), int(oy + (oh - ih) / 2)))
             b += f'<g opacity="{q:.2f}">' + O.okno_ramka(ox, oy, ow, oh) + '</g>' 
     elif sc.get("stock"):
         # рамка проявляется ровно тогда, когда ffmpeg вводит клип: старт +0.8 с,
         # fade 0.3 с. Раньше рамка висела пустой (его правка 19).
-        q = A.seg(t, .8, .3)
+        q = 1.0 if cont else A.seg(t, .8, .3)
         if q > 0:
             b += f'<g opacity="{q:.2f}">' + O.okno_ramka(ox, oy, ow, oh) + '</g>'
 
 
     BIG = {"cards4", "cards5", "errors", "reveal", "glaz"}
-    if sc.get("koza") and not any(e["kind"] in BIG for e in sc.get("events", [])):
+    _big_now = any(e["kind"] in BIG for e in sc.get("events", []))
+    # правая половина не остаётся пустой: нет окна и нет крупного блока —
+    # туда встаёт Дед Мороз или снеговик («заполни вот это пространство»)
+    if sc.get("sprava") and not sc.get("foto") and not sc.get("stock") and not _big_now:
+        if sc["sprava"] == "moroz":
+            b += L.ded_moroz(1430, 1010, gt, .80)
+            b += L.snegovik(1770, 1026, gt, .60)
+        else:
+            b += L.snegovik(1500, 1010, gt, .80)
+            b += L.ded_moroz(1800, 1016, gt, .44)
+
+    if sc.get("koza") and not _big_now:
         # хозяйка года держится весь смысловой отрезок, без мигания (правки 27-28);
         # но на крупный блок (карточки, ошибки, разгадка, глаз) она не лезет — правка 08.11
-        gx = 330 + 50 * A.w(gt, 16.0)
-        gy = 790 - 14 * A.w(gt, 3.0)
-        b += koza_ognennaya(gx, gy, gt, .78)
+        if sc.get("koza_hod"):
+            # проход передним планом мимо окна: идёт справа налево, крупнее
+            gx = 1620 - 760 * A.ease(p)
+            gy = 940 - 16 * A.w(gt, 3.0)
+            b += koza_ognennaya(gx, gy, gt, .92)
+        else:
+            gx = 330 + 50 * A.w(gt, 16.0)
+            gy = 790 - 14 * A.w(gt, 3.0)
+            b += koza_ognennaya(gx, gy, gt, .78)
     for e in sc.get("events", []):
         # отрезок: появление играется один раз, на стыке планов не повторяется
         t0 = e["a"] - sc["a"]
@@ -206,15 +229,27 @@ def frame(sc, t, gt):
                 b += O.plate(90, 900, head, sub, t, t0, 700)
         elif k == "palitra":
             cols, pod = PALS.get(e.get("tema"), PALS["vin"])
-            b += O.palitra(140, 206, cols, pod, t, t0, .22, 38, 126)
+            b += O.palitra(140, 196, cols, pod, t, t0, .22, 36, 152)
         elif k == "obvodka" and sc.get("foto"):
             cx0, cy0, rx0, ry0 = e["box"]
             ex = ox + (cx0 / 1920) * ow
             ey = oy + (cy0 / 1080) * oh
             side = -1 if ex > ox + ow * .5 else 1
             b += O.obvodka(ex, ey, max(14, rx0 * ow / 1920), max(14, ry0 * oh / 1080),
-                           e["pod"], t, t0, SVET, side, 20, size=24)
+                           e["pod"], t, t0, SVET, side, 20, size=24,
+                           lim=(ox, ox + ow))
 
+        elif k == "slovo":
+            b += O.slovo(e.get("x", 430), e.get("y", 300), e["text"], t, t0,
+                         e.get("size", 70), e.get("col"), e.get("icon"))
+        elif k == "shagi":
+            n = len(e["items"])
+            hh = 170 + n * 96
+            b += O.card(1000, 230, 830, hh, t, t0, "#1d1310", .93, SVET)
+            b += O.txt(1056, 330, e.get("head", "ЧТО ДЕЛАТЬ"), 48, SVET)
+            b += O.spisok(1056, 440, e["items"], t, t0 + .4, 1.0, 36, 96, num=True)
+        elif k == "vintage":
+            b += vintage3(t, t0, gt)
         elif k == "glaz":
             b += glaz(t, t0, gt)
         elif k == "cards5":
@@ -243,11 +278,57 @@ def frame(sc, t, gt):
                       f'<rect x="700" y="848" width="520" height="104" rx="52" fill="{KRAS}" {o(8)}/>'
                       + O.txt(960, 920, "ПОДПИСАТЬСЯ", 46, "#ffffff", "middle", O.SANS, 3, "bold")
                       + '</g>')
-    b += O.vign()
+    b += O.vign((ox, oy, ow, oh) if (sc.get("foto") or sc.get("stock")) else None)
     ov = svg2img(b)
     bg = bg.convert("RGBA")
     bg.alpha_composite(ov)
     return bg.convert("RGB")
+
+
+def vintage3(t, t0, gt):
+    """Три винтажные игрушки крупно: космонавт, птица на прищепке, часы.
+    Его правка 12.11: «космонавт говорит, птица, часы — вот такое, чтобы
+    иллюстрировано было»."""
+    s = ""
+    NAMES = ["КОСМОНАВТ", "ПТИЦА", "ЧАСЫ"]
+    for i in range(3):
+        q = A.over(A.seg(t, t0 + i * .55, .45), 1.6)
+        if q <= 0:
+            continue
+        cx, cy = 230 + i * 250, 540 + 18 * A.w(gt, 1.5 + i * .4, i * .3)
+        s += (f'<g transform="translate({cx},{cy:.0f}) scale({q:.3f}) rotate({-3 + i * 3})">')
+        s += f'<path d="M0,-150 L0,-250" fill="none" {o(5, ZOL)}/>'      # нитка
+        if i == 0:
+            s += (f'<ellipse cx="0" cy="0" rx="78" ry="104" fill="#d9dde6" {o(8)}/>'
+                  f'<circle cx="0" cy="-34" r="54" fill="#e8ecf4" {o(7)}/>'
+                  f'<path d="M-46,-40 a46,42 0 0 1 92,0 Z" fill="#2a3550" {o(5)}/>'
+                  f'<circle cx="-16" cy="-56" r="12" fill="#9fd4ff" opacity=".85"/>'
+                  f'<rect x="-62" y="10" width="124" height="22" rx="11" fill="{KRAS}" {o(5)}/>'
+                  f'<path d="M-78,20 L-116,74 M78,20 L116,74" {o(20, "#d9dde6")}/>')
+        elif i == 1:
+            s += (f'<path d="M-80,10 q44,-96 112,-44 q40,30 64,-4 q-14,74 -74,92'
+                  f' q-66,18 -102,-44 Z" fill="{SVET}" {o(8)}/>'
+                  f'<path d="M-10,-14 q44,-20 72,10 q-36,30 -72,-10 Z" fill="{ZOL}" {o(5)}/>'
+                  f'<circle cx="52" cy="-32" r="9" fill="{K}"/>'
+                  f'<path d="M86,-26 l34,-10 -30,22 Z" fill="{ORA}" {o(4)}/>'
+                  f'<path d="M-80,10 q-44,36 -74,36 q40,24 86,2" fill="{KREM}" {o(6)}/>')
+        else:
+            s += (f'<circle cx="0" cy="0" r="92" fill="{KREM}" {o(9)}/>'
+                  f'<circle cx="0" cy="0" r="72" fill="#fff6e6" {o(5)}/>')
+            for k2 in range(12):
+                import math as _m
+                a = k2 * _m.pi / 6
+                s += (f'<path d="M{62*_m.sin(a):.0f},{-62*_m.cos(a):.0f}'
+                      f' L{72*_m.sin(a):.0f},{-72*_m.cos(a):.0f}" {o(5, "#6b4634")}/>')
+            s += (f'<path d="M0,0 V-48 M0,0 L36,18" {o(7, K)}/>'
+                  f'<circle cx="0" cy="0" r="8" fill="{VIN}"/>')
+        _b = (f'x="0" y="178" text-anchor="middle" font-family="{O.SANS}"'
+              f' font-size="34" font-weight="600" letter-spacing="2"')
+        s += (f'<text {_b} fill="none" stroke="{K}" stroke-width="7"'
+              f' stroke-linejoin="round" opacity=".9">{NAMES[i]}</text>'
+              f'<text {_b} fill="#ffffff">{NAMES[i]}</text>')
+        s += "</g>"
+    return s
 
 
 def cards5(t, t0):
@@ -273,7 +354,10 @@ def cards5(t, t0):
 
 
 def cards4(t, t0):
-    s = O.txt(960, 150, "КАКАЯ ВАША?", 64, "#ffffff", "middle")
+    q0 = A.over(A.seg(t, t0, .4), 1.5)
+    if q0 <= 0:
+        return ""
+    s = O.txt(960, 150, "КАКАЯ ВАША?", 64, "#ffffff", "middle", op=min(1.0, q0))
     pal = [["#7d1f2e", "#9c2740", "#c9922f"], ["#8a6b45", "#c9b58a", "#6d8a4a"],
            ["#c9922f", "#d9cdb0", "#ffd36e"], ["#9c2740", "#b9743f", "#e4d4b6"]]
     for i in range(4):

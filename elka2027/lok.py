@@ -12,6 +12,12 @@ W, H = 1920, 1080
 NOCH = "#16203a"
 
 
+# ОКНО_ЕСТЬ: в сцене стоит окно вставки (правая половина кадра занята).
+# Тогда крупные объекты декорации уходят в левую полосу и не прячутся под окном.
+# Окна нет — декорация расставляется широко, кадр не пустует.
+OKNO_EST = True
+
+
 def sneg_sloy(t, n=40, seed=5, op=.75):
     r = random.Random(seed)
     s = f'<g fill="#ffffff" opacity="{op}">'
@@ -219,10 +225,12 @@ def dvor(t, pal):
               f' fill="#cfe0ff" opacity="{.3+.5*abs(A.w(t,2.4,i*.11)):.2f}"/>')
     s += f'<path d="M0,760 q300,-70 620,-30 q420,50 760,-40 q320,-80 540,10 L{W},{H} L0,{H} Z" fill="url(#snegg)"/>'
     s += f'<path d="M0,880 q420,-60 900,10 q480,70 1020,-30 L{W},{H} L0,{H} Z" fill="#ffffff"/>'
-    # дом справа
-    s += f'<rect x="1280" y="420" width="520" height="360" fill="#3a2a30" {o(8)}/>'
-    s += f'<path d="M1240,420 L1540,250 L1840,420 Z" fill="{TERRA}" {o(8)}/>'
-    for i, (x, y) in enumerate(((1360, 500), (1560, 500), (1360, 650), (1560, 650))):
+    # дом: справа, а при окне вставки — в левой полосе (его правка 12.11)
+    _dx = -1200 if OKNO_EST else 0
+    s += f'<rect x="{1280+_dx}" y="420" width="520" height="360" fill="#3a2a30" {o(8)}/>'
+    s += f'<path d="M{1240+_dx},420 L{1540+_dx},250 L{1840+_dx},420 Z" fill="{TERRA}" {o(8)}/>'
+    for i, (x, y) in enumerate(((1360+_dx, 500), (1560+_dx, 500),
+                                (1360+_dx, 650), (1560+_dx, 650))):
         # окна живут: одни горят ровно, другие гаснут и зажигаются
         phase = A.w(t / (3.0 + i * 1.7), 1.0, i * .27)
         op = .22 if (i % 2 and phase < -.3) else .5 + .5 * abs(A.w(t, 3.2 + i * .6, i * .3))
@@ -231,13 +239,14 @@ def dvor(t, pal):
         s += (f'<ellipse cx="{x+55}" cy="{y+50}" rx="150" ry="120" fill="url(#teplo)"'
               f' opacity="{op*.5:.2f}"/>')
     # фонарь
-    s += f'<rect x="950" y="300" width="22" height="470" fill="#2a2a33" {o(6)}/>'
-    s += (f'<path d="M905,300 h112 l-18,-52 h-76 Z" fill="#2a2a33" {o(6)}/>'
-          f'<rect x="920" y="196" width="82" height="60" rx="8" fill="{SVET}" opacity=".9" {o(6)}/>')
-    s += f'<ellipse cx="961" cy="240" rx="200" ry="170" fill="url(#teplo)"/>'
+    _fx = -240 if OKNO_EST else 0
+    s += f'<rect x="{950+_fx}" y="300" width="22" height="470" fill="#2a2a33" {o(6)}/>'
+    s += (f'<path d="M{905+_fx},300 h112 l-18,-52 h-76 Z" fill="#2a2a33" {o(6)}/>'
+          f'<rect x="{920+_fx}" y="196" width="82" height="60" rx="8" fill="{SVET}" opacity=".9" {o(6)}/>')
+    s += f'<ellipse cx="{961+_fx}" cy="240" rx="200" ry="170" fill="url(#teplo)"/>'
     # снеговик
-    s += snegovik(420, 860, t, 1.0)
-    s += elka(1120, 800, 300, t, pal, zv=False)
+    s += snegovik(180 if OKNO_EST else 420, 860, t, 1.0)
+    s += elka(560 if OKNO_EST else 1120, 800, 300, t, pal, zv=False)
     return s + sneg_sloy(t, 46, 2, .9)
 
 
@@ -298,6 +307,57 @@ def snegovik(cx, base, t, s=1.0, sharf=KRAS):
               f' M{ex+sgn*6*s:.0f},{ey+4*s:.0f} l{sgn*28*s:.0f},{4*s:.0f}" {o(8, "#8a5a3c")}/>')
         g += (f'<ellipse cx="{ex:.0f}" cy="{ey:.0f}" rx="{22*s:.0f}" ry="{18*s:.0f}"'
               f' fill="{sharf}" {o(5)}/>')
+    return g + "</g>"
+
+
+def ded_moroz(cx, base, t, s=1.0):
+    """Дед Мороз: шуба до пола, борода, посох с огоньком, мешок с подарками.
+    Ставится в пустую половину кадра (его правка 12.11 — «поставь туда какого-то
+    Деда Мороза, Снеговика, заполни вот это пространство»)."""
+    sw = 1.6 * A.w(t, 3.6)
+    SHUBA, MEH = "#b3202f", "#f4f1ea"
+    g = ten(cx, base + 8 * s, 150 * s, 30 * s, .5)
+    # base — уровень ПОЛА: фигура поднимается над ним целиком
+    g += (f'<g transform="translate({cx},{base - 258 * s:.0f}) scale({s:.3f})'
+          f' rotate({sw:.2f})">')
+    # мешок
+    g += (f'<path d="M150,-10 q96,-34 128,36 q22,70 -42,88 q-80,16 -104,-44 Z"'
+          f' fill="#8a5a3c" {o(7)}/>'
+          f'<path d="M160,-6 q60,-26 100,10" fill="none" stroke="{ZOL}" stroke-width="8"/>')
+    # шуба
+    g += (f'<path d="M-96,0 q96,-52 192,0 l34,228 q-130,42 -260,0 Z" fill="{SHUBA}" {o(8)}/>')
+    g += (f'<path d="M-130,228 q130,44 260,0 l8,30 q-138,46 -276,0 Z" fill="{MEH}" {o(6)}/>')
+    g += (f'<path d="M0,-30 L0,220" fill="none" stroke="#8e1b2e" stroke-width="7" opacity=".7"/>')
+    # пояс
+    g += (f'<rect x="-104" y="96" width="208" height="38" rx="10" fill="#2a1a18" {o(6)}/>'
+          f'<rect x="-26" y="92" width="52" height="46" rx="8" fill="{ZOL}" {o(5)}/>')
+    # рукава и варежки
+    g += (f'<path d="M-92,16 L-168,{104 + 8 * A.w(t, 2.2):.0f}" {o(42, SHUBA)}/>'
+          f'<circle cx="-176" cy="{118 + 8 * A.w(t, 2.2):.0f}" r="28" fill="{MEH}" {o(5)}/>')
+    g += (f'<path d="M92,16 L156,88" {o(42, SHUBA)}/>'
+          f'<circle cx="164" cy="98" r="28" fill="{MEH}" {o(5)}/>')
+    # посох с огоньком
+    g += (f'<path d="M-196,-180 L-176,210" {o(14, "#e4d4b6")}/>')
+    g += (f'<circle cx="-198" cy="-196" r="{22 + 3 * abs(A.w(t, 1.6)):.1f}" fill="{SVET}"'
+          f' opacity="{.75 + .2 * abs(A.w(t, 1.9)):.2f}" {o(4)}/>'
+          f'<ellipse cx="-198" cy="-196" rx="70" ry="70" fill="url(#teplo)" opacity=".5"/>')
+    # голова, борода, шапка
+    g += f'<circle cx="0" cy="-74" r="62" fill="#f6ddc4" {o(7)}/>'
+    g += (f'<path d="M-66,-86 q22,118 66,122 q46,-6 66,-122 q-30,36 -66,34 q-38,2 -66,-34 Z"'
+          f' fill="{MEH}" {o(6)}/>')
+    g += (f'<path d="M-30,-96 q30,16 60,0" fill="none" {o(5)}/>')          # улыбка под усами
+    g += (f'<path d="M-62,-120 q62,-20 124,0 l-10,22 q-52,-18 -104,0 Z" fill="{MEH}" {o(5)}/>')
+    g += (f'<circle cx="0" cy="-104" r="11" fill="#e2866f" {o(4)}/>')      # нос
+    for dx in (-26, 26):
+        if A.blink(t, 4.0, .12, .13):
+            g += f'<path d="M{dx-11},-130 q11,8 22,0" fill="none" {o(5)}/>'
+        else:
+            g += (f'<circle cx="{dx}" cy="-132" r="8" fill="#ffffff" {o(3)}/>'
+                  f'<circle cx="{dx}" cy="-132" r="4.5" fill="{K}"/>')
+    g += (f'<path d="M-70,-128 q70,-96 140,0 Z" fill="{SHUBA}" {o(7)}/>'
+          f'<rect x="-74" y="-140" width="148" height="26" rx="12" fill="{MEH}" {o(5)}/>'
+          f'<circle cx="74" cy="-196" r="24" fill="{MEH}" {o(5)}/>'
+          f'<path d="M0,-200 q52,-24 74,-2" fill="none" {o(24, SHUBA)}/>')
     return g + "</g>"
 
 
@@ -398,8 +458,9 @@ def nebo(t, pal):
     for i in range(110):
         s += (f'<circle cx="{r.uniform(0,W):.0f}" cy="{r.uniform(0,760):.0f}" r="{r.uniform(1,2.8):.1f}"'
               f' fill="#ffffff" opacity="{.25+.6*abs(A.w(t,2.8,i*.07)):.2f}"/>')
-    s += f'<circle cx="1660" cy="180" r="76" fill="#f3ead5" opacity=".95"/>'
-    s += f'<circle cx="1660" cy="180" r="130" fill="url(#teplo)" opacity=".5"/>'
+    _mx = 300 if OKNO_EST else 1660
+    s += f'<circle cx="{_mx}" cy="180" r="76" fill="#f3ead5" opacity=".95"/>'
+    s += f'<circle cx="{_mx}" cy="180" r="130" fill="url(#teplo)" opacity=".5"/>'
     # салют: вспышка, лучи, хвосты
     for k in range(3):
         ph = k * .34
@@ -461,7 +522,7 @@ def nebo(t, pal):
         s += (f'<circle cx="{728 + 40*A.w(t,2.4,i*.3):.0f}" cy="{520-p*230:.0f}"'
               f' r="{22*(1-p)+8:.0f}" fill="#cfd8ea" opacity="{(1-p)*.3:.2f}"/>')
     # ёлка на площади
-    s += elka(1180, 1010, 330, t, pal)
+    s += elka(430 if OKNO_EST else 1180, 1010, 330, t, pal)
     return s + sneg_sloy(t, 40, 4, .8)
 
 
@@ -477,7 +538,7 @@ def les(t, pal):
                   f'<path d="M{x},{y-hh*1.3:.0f} L{x-ww*.7:.0f},{y-hh*.45:.0f} L{x+ww*.7:.0f},{y-hh*.45:.0f} Z"'
                   f' fill="{col}"/>')
     s += f'<path d="M0,900 q480,-50 960,0 q480,50 960,-10 L{W},{H} L0,{H} Z" fill="#dfe8f5"/>'
-    s += elka(960, 900, 460, t, pal)
+    s += elka(430 if OKNO_EST else 900, 900, 460, t, pal)
     return s
 
 
@@ -490,14 +551,18 @@ def masterskaya(t, pal):
           f'<rect x="96" y="250" width="668" height="64" rx="12" fill="{TERRA}" {o(8)}/>')
     for i, c in enumerate((KRAS, ZOL, GRAN, KREM, VIN)):
         s += shar_zhivoy(210 + i * 120, 420, 52, c, t, i)
-    s += (f'<circle cx="1180" cy="520" r="120" fill="none" stroke="{VIN}" stroke-width="56"/>'
-          f'<circle cx="1180" cy="520" r="34" fill="{TERRA}" {o(6)}/>'
-          f'<path d="M1300,520 q120,30 220,-40" fill="none" stroke="{VIN}" stroke-width="30"/>')
-    for i, (x, y) in enumerate(((1560, 640), (1680, 680), (1460, 700))):
+    _vx = -880 if OKNO_EST else 0
+    s += (f'<circle cx="{1180+_vx}" cy="{760 if OKNO_EST else 520}" r="{86 if OKNO_EST else 120}"'
+          f' fill="none" stroke="{VIN}" stroke-width="{40 if OKNO_EST else 56}"/>'
+          f'<circle cx="{1180+_vx}" cy="{760 if OKNO_EST else 520}" r="28" fill="{TERRA}" {o(6)}/>')
+    if not OKNO_EST:
+        s += f'<path d="M1300,520 q120,30 220,-40" fill="none" stroke="{VIN}" stroke-width="30"/>'
+    for i, (x, y) in enumerate((((520, 780), (640, 820), (420, 840)) if OKNO_EST
+                                else ((1560, 640), (1680, 680), (1460, 700)))):
         s += (f'<ellipse cx="{x}" cy="{y}" rx="40" ry="56" fill="#8a5a3c" {o(6)}/>'
               f'<path d="M{x-28},{y-26} q28,16 56,0 M{x-30},{y+2} q30,16 60,0 M{x-24},{y+30} q24,12 48,0"'
               f' fill="none" stroke="#5e3a22" stroke-width="6"/>')
-    s += svecha_bol(900, 360, t)
+    s += svecha_bol(660 if OKNO_EST else 900, 360, t)
     return s
 
 
