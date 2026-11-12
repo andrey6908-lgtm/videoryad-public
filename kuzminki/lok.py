@@ -2367,32 +2367,52 @@ def parizh_yarmarka(t):
     return s
 
 
-def vypuklye_bukvy(t):
-    """Кованые выпуклые литеры на тёмном: по рельефу идёт свет из горна."""
+def _bukvy(t, stroki):
+    """Кованые выпуклые литеры. Слова стоят ПО ЦЕНТРУ кадра и не уезжают за
+    край при панораме — его правка 12.11: «она уезжает за кадр влево, она не
+    должна уезжать. Поставь её в центр». Камера ходит ±150 и зумит до 1,26,
+    поэтому безопасная ширина — около 1150 px, кегль под неё и подбирается."""
     s = f'<rect width="{W}" height="{H}" fill="#14100c"/>'
     s += kladka(-20, -20, W + 40, H + 40, 92, "#2a241d")
     s += f'<rect width="{W}" height="{H}" fill="#120e0a" opacity=".55"/>'
-    s += teplo(300, 900, 620, 320, .6)
-    s += ugli(120, 1010, 560, t, 10, 12)
-    s += iskra_let(t, 400, 990, 12, 13, 520, .5)
-    # две строки литер: рельеф даёт тень и верхний блик
+    s += teplo(960, 900, 700, 320, .55)
+    s += ugli(620, 1010, 660, t, 11, 12)
+    s += iskra_let(t, 960, 990, 14, 13, 540, .5)
     bl = (t * .22) % 1.0
-    for row, (y, txt, sz) in enumerate(((430, "КУЗЬМА", 150), (610, "ДЕМЬЯН", 150))):
-        s += (f'<text x="60" y="{y}" font-family="Georgia,serif" font-size="{sz}"'
-              f' font-weight="bold" fill="none" stroke="#070505" stroke-width="20"'
-              f' stroke-linejoin="round">{txt}</text>')
-        s += (f'<text x="54" y="{y-8}" font-family="Georgia,serif" font-size="{sz}"'
-              f' font-weight="bold" fill="url(#zol)">{txt}</text>')
-        s += (f'<text x="54" y="{y-8}" font-family="Georgia,serif" font-size="{sz}"'
-              f' font-weight="bold" fill="none" stroke="#ffe9b0" stroke-width="3"'
-              f' opacity=".55">{txt}</text>')
-    s += (f'<rect x="{-500+bl*2400:.0f}" y="300" width="300" height="460" fill="{SVET}"'
+    n = len(stroki)
+    for i, (txt, kegl) in enumerate(stroki):
+        # ширина буквы Georgia bold ≈ .70 кегля: держим строку в 1150 px
+        k = min(kegl, int(1150 / max(1, len(txt)) / .70))
+        y = 560 + (i - (n - 1) / 2) * (k * 1.22)
+        s += (f'<text x="960" y="{y:.0f}" text-anchor="middle" font-family="Georgia,serif"'
+              f' font-size="{k}" font-weight="bold" fill="none" stroke="#070505"'
+              f' stroke-width="20" stroke-linejoin="round">{txt}</text>')
+        s += (f'<text x="954" y="{y-8:.0f}" text-anchor="middle" font-family="Georgia,serif"'
+              f' font-size="{k}" font-weight="bold" fill="url(#zol)">{txt}</text>')
+        s += (f'<text x="954" y="{y-8:.0f}" text-anchor="middle" font-family="Georgia,serif"'
+              f' font-size="{k}" font-weight="bold" fill="none" stroke="#ffe9b0"'
+              f' stroke-width="3" opacity=".55">{txt}</text>')
+    s += (f'<rect x="{-500+bl*2800:.0f}" y="240" width="300" height="620" fill="{SVET}"'
           f' opacity=".14" transform="skewX(-18)"/>')
-    s += f'<g opacity=".4">{dym(360, 960, t, 5, .2, 360, .3)}</g>'
+    s += f'<g opacity=".4">{dym(900, 960, t, 5, .2, 380, .3)}</g>'
     s += ramka_pp("oba", "#070504", .5)
     s += vinetka(.5)
     return s
 
+
+def vypuklye_bukvy(t):
+    """«КУЗЬМА ДЕМЬЯН» — прозвище братьев выпуклыми литерами."""
+    return _bukvy(t, (("КУЗЬМА", 150), ("ДЕМЬЯН", 150)))
+
+
+def bukvy_kuznya(t):
+    """«КУЗЬМА — КУЗНЯ»: созвучие, из которого народ сделал кузнецов."""
+    return _bukvy(t, (("КУЗЬМА", 146), ("КУЗНЯ", 146)))
+
+
+def bukvy_peppi(t):
+    """«ПЕППИ ДЛИННЫЙЧУЛОК» — имя, которое выдумала девочка."""
+    return _bukvy(t, (("ПЕППИ", 160), ("ДЛИННЫЙЧУЛОК", 104)))
 
 def shkolnyj_klass(t):
     """Класс: доска с рисунком, парта, тетрадь, мел — утренний свет."""
@@ -3522,11 +3542,11 @@ def kreslo_vyazanie(t):
     s = brevna(-20, -20, W + 40, H + 40, 108)
     s += f'<rect width="{W}" height="{H}" fill="#241e2c" opacity=".28"/>'
     s += polovicy(890)
-    vid = (f'<rect x="560" y="150" width="300" height="420" fill="#9fc0dc"/>'
-           f'<rect x="560" y="400" width="300" height="170" fill="#e4eef7"/>'
+    vid = (f'<rect x="520" y="150" width="280" height="420" fill="#9fc0dc"/>'
+           f'<rect x="520" y="400" width="280" height="170" fill="#e4eef7"/>'
            + f'<g opacity=".7">{sneg_letit(t, 16, 31, .6, .7)}</g>')
-    s += okno_izby(560, 150, 300, 420, t, vid, moroz=.5, svet=False)
-    s += luch(580, 170, 420, 740, t, .18)
+    s += okno_izby(520, 150, 280, 420, t, vid, moroz=.5, svet=False)
+    s += luch(540, 170, 400, 740, t, .18)
     s += teplo(360, 560, 480, 420, .6)
     # кресло с подушкой
     s += ten(330, 920, 250, 24, .5)
