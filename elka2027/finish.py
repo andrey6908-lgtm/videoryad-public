@@ -52,8 +52,11 @@ if plan.STOCK:
         d = bb - aa
         inputs += ["-itsoffset", "%.3f" % aa, "-stream_loop", "-1", "-t", "%.3f" % d,
                    "-i", files[url]]
+        # правка 29: кадр в окне должен быть сочным, а не вялым — поднимаем
+        # контраст, насыщенность и лёгкую резкость КАЖДОЙ вставке
         fc.append("[%d:v]scale=%d:%d:force_original_aspect_ratio=increase,crop=%d:%d,"
-                  "setsar=1,fps=%d,format=rgba,fade=in:st=%.3f:d=0.3:alpha=1,"
+                  "setsar=1,fps=%d,eq=contrast=1.12:brightness=0.02:saturation=1.28,"
+                  "unsharp=5:5:0.7,format=rgba,fade=in:st=%.3f:d=0.3:alpha=1,"
                   "fade=out:st=%.3f:d=0.4:alpha=1[sv%d]"
                   % (n, w, h, w, h, plan.FPS, aa, max(aa, bb - .4), i))
         fc.append("[%s][sv%d]overlay=%d:%d:eof_action=pass:enable='between(t,%.3f,%.3f)'[v%d]"

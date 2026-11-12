@@ -35,7 +35,7 @@
     "kind": "zagolovok"
    }
   ],
-  "stock": "igrushki"
+  "stock": "naryazhaet"
  },
  {
   "n": 3,
@@ -54,7 +54,7 @@
     "kind": "zagolovok"
    }
   ],
-  "stock": "igrushki"
+  "stock": "shar_sneg"
  },
  {
   "n": 4,
@@ -67,7 +67,7 @@
   "z1": 1.14,
   "koza": false,
   "events": [],
-  "stock": "igrushki"
+  "stock": "dom_ogni"
  },
  {
   "n": 5,
@@ -93,7 +93,7 @@
   "z1": 1.02,
   "koza": false,
   "events": [],
-  "stock": "elka"
+  "stock": "ogni_elka"
  },
  {
   "n": 7,
@@ -191,7 +191,7 @@
   "z1": 1.16,
   "koza": true,
   "events": [],
-  "stock": "koza_zagon"
+  "stock": "koza_sklon"
  },
  {
   "n": 14,
@@ -351,7 +351,7 @@
   "z1": 1.02,
   "koza": true,
   "events": [],
-  "stock": "girlyanda"
+  "stock": "elka_shary"
  },
  {
   "n": 25,
@@ -364,7 +364,7 @@
   "z1": 1.16,
   "koza": true,
   "events": [],
-  "stock": "girlyanda"
+  "stock": "vetka_girlyanda"
  },
  {
   "n": 26,
@@ -377,7 +377,7 @@
   "z1": 1.1,
   "koza": true,
   "events": [],
-  "stock": "girlyanda"
+  "stock": "naryad_ruka"
  },
  {
   "n": 27,

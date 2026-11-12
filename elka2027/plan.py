@@ -22,6 +22,20 @@ for sc in SCENES:
         x, y, w, h = _OL.get(sc.get("lok", "komnata"), _O)
         STOCK.append((sc["a"] + .8, sc["b"] - .2, _ST[sc["stock"]], (x, y, w, h)))
 
+# ГЕЙТ (правило режиссёра R-0021, ужесточено 12.11.2026): один стоковый клип —
+# РОВНО ОДИН раз на весь ролик. Взят однажды — второй раз ставить запрещено,
+# ни подряд, ни после паузы. Сборка не идёт, пока повтор не убран.
+_vzyato = {}
+for _a, _b, _url, _box in STOCK:
+    _vzyato.setdefault(_url, []).append(_a)
+_povtor = {u: t for u, t in _vzyato.items() if len(t) > 1}
+if _povtor:
+    _s = "\n".join("   %s — %d раза, в секундах %s"
+                    % (u.rsplit("/", 2)[1], len(t), ", ".join("%.1f" % x for x in t))
+                    for u, t in _povtor.items())
+    raise SystemExit("ПОВТОР СТОКА, сборка остановлена (R-0021):\n" + _s +
+                     "\nКаждой сцене — СВОЙ клип. Правь scenes.json/stock.json.")
+
 
 def frame_info(i):
     """Кадр → (сцена, локальное время), сцена перехода и доля смеси."""
