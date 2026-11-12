@@ -38,7 +38,13 @@ NFRAMES = int(round(TOTAL * FPS))
 
 
 def frame_info(i):
-    """Кадр → (план, локальное время, доля плана), следующий план и смесь."""
+    """Кадр → (план, локальное время, доля плана), партнёр по смеси и вес.
+
+    R-0027: граница планов стоит В ЦЕНТРЕ паузы, поэтому и переход кладём
+    СИММЕТРИЧНО вокруг границы — половина до неё, половина после. Иначе вся
+    смена картинки успевает пройти до того, как пауза началась, и пауза
+    остаётся «внутри плана», на что он и показал 11.11.
+    """
     gt = i / FPS
     k = len(PLANY) - 1
     for j, p in enumerate(PLANY):
@@ -48,11 +54,17 @@ def frame_info(i):
     p = PLANY[k]
     lt = gt - p["tab"]
     cur = (k, lt, min(1.0, lt / max(.001, p["sek"])))
-    nxt, mix = None, 0.0
     kon = p["tab"] + p["sek"]
-    if k + 1 < len(PLANY) and gt > kon - TRANS:
-        mix = (gt - (kon - TRANS)) / TRANS
+    pol = TRANS / 2.0
+    nxt, mix = None, 0.0
+    if k + 1 < len(PLANY) and gt > kon - pol:          # уходим в следующий
+        mix = (gt - (kon - pol)) / TRANS
         p2 = PLANY[k + 1]
-        lt2 = gt - (p2["tab"] - TRANS)
-        nxt = (k + 1, lt2, min(1.0, max(0.0, lt2 / max(.001, p2["sek"]))))
-    return cur, nxt, mix
+        lt2 = max(0.0, gt - p2["tab"])
+        nxt = (k + 1, lt2, min(1.0, lt2 / max(.001, p2["sek"])))
+    elif k > 0 and lt < pol:                           # досматриваем предыдущий
+        p0 = PLANY[k - 1]
+        lt0 = gt - p0["tab"]
+        nxt = (k - 1, lt0, min(1.0, lt0 / max(.001, p0["sek"])))
+        mix = .5 - lt / TRANS                          # 0.5 на стыке → 0 через TRANS/2
+    return cur, nxt, max(0.0, min(1.0, mix))
