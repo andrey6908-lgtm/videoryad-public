@@ -1926,11 +1926,20 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
                                    + (int(96 * появ * пульс),))
                     la += шаг_lat
                 lo += шаг_lon
+            # КАЙМА ЗАМЫКАЕТСЯ ТОЧНО В УГЛАХ (13.11, осмотр кадра: нижняя и
+            # правая грани шли ступеньками). `np.arange` не включает конец
+            # отрезка, и если ширина сектора не кратна шагу, сторона не
+            # доходила до угла — отсюда разрывы. `linspace` кладёт ровно N
+            # точек ОТ и ДО, углы совпадают по построению.
+            _ш = max(2, int(abs(lon_b - lon_a) / 2.0) + 1)
+            _в = max(2, int(abs(lat_b - lat_a) / 2.0) + 1)
+            _lons = np.linspace(lon_a, lon_b, _ш)
+            _lats = np.linspace(lat_a, lat_b, _в)
             for сторона in (
-                    [(lo2, lat_a) for lo2 in np.arange(lon_a, lon_b + 1e-6, 2.0)],
-                    [(lo2, lat_b) for lo2 in np.arange(lon_a, lon_b + 1e-6, 2.0)],
-                    [(lon_a, la2) for la2 in np.arange(lat_a, lat_b + 1e-6, 2.0)],
-                    [(lon_b, la2) for la2 in np.arange(lat_a, lat_b + 1e-6, 2.0)]):
+                    [(lo2, lat_a) for lo2 in _lons],
+                    [(lo2, lat_b) for lo2 in _lons],
+                    [(lon_a, la2) for la2 in _lats],
+                    [(lon_b, la2) for la2 in _lats]):
                 пред = None
                 for lo2, la2 in сторона:
                     p = _точка_шара(float(lo2), float(la2), lon0, R, cx,
