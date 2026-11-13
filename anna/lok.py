@@ -643,7 +643,7 @@ def klyuchi_u_novyh_vorot(t):
     g += '<line x1="1300" y1="540" x2="1300" y2="600" stroke="url(#zhel)" stroke-width="8"/>'
     for i in range(3):
         ry = 600 + i * 42
-        g += f'<ellipse cx="1300" cy="{ry}" rx="28" ry="22" fill="none" stroke="url(#zhel)" stroke-width="10" {o(3)}/>'
+        g += f'<ellipse cx="1300" cy="{ry}" rx="28" ry="22" fill="none" stroke="url(#zhel)" stroke-width="10"/>'
     g += '</g>'
     s += SL(Z_PERED, g)
     for i in range(14):
@@ -938,7 +938,7 @@ def sviter_s_odnim_rukavom(t):
     s += ten(760, 920, 260, 40, .5)
     s += f'<path d="M560,920 q-30,-320 200,-360 q230,-30 260,200 q20,170 -60,240 q-220,80 -400,-80 Z" fill="url(#tkan)" {o(7)}/>'
     sway = 6 * A.w(t, 2.6)
-    s += f'<g transform="rotate({sway:.1f} 980 700)"><path d="M980,560 q90,10 60,220" fill="none" stroke="{TKAN}" stroke-width="40" {o(5)}/></g>'
+    s += f'<g transform="rotate({sway:.1f} 980 700)"><path d="M980,560 q90,10 60,220" fill="none" stroke="{TKAN}" stroke-width="40"/></g>'
     for i in range(6):
         s += f'<line x1="{1000+i*8}" y1="620" x2="{1006+i*8}" y2="760" stroke="url(#zhel)" stroke-width="5" opacity="{.6+.3*abs(A.w(t,1.4,i*.2)):.2f}"/>'
     roll = A.seg(t, .6, 6.0)
