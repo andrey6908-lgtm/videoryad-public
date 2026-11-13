@@ -1601,6 +1601,16 @@ def _lum_(c):
     "россия": (30, 180, 44, 72), "тихий океан": (140, 220, -20, 40),
 }
 ГЛОБ_СКОРОСТЬ = 4.2              # градусов в секунду
+# СОКРАЩЕНИЯ И ИНСТИТУТЫ — ТЕ ЖЕ, ЧТО У КАРТ (`charts._ALIAS`, `_INST`):
+# в закадровке говорят «ЕС» и «Штаты», а в контурах лежат «Бельгия» и
+# «Соединённые Штаты Америки».
+ГЛОБ_АЛИАС = {
+    "ЕС": "БЕЛЬГИЯ", "ЕВРОСОЮЗ": "БЕЛЬГИЯ", "БРЮССЕЛЬ": "БЕЛЬГИЯ",
+    "НАТО": "БЕЛЬГИЯ", "ШТАТЫ": "СОЕДИНЕННЫЕ ШТАТЫ",
+    "США": "СОЕДИНЕННЫЕ ШТАТЫ", "АНГЛИЯ": "ВЕЛИКОБРИТАНИЯ",
+    "МОСКВА": "РОССИЯ", "КИЕВ": "УКРАИНА", "ПЕКИН": "КИТАЙ",
+    "ОАЭ": "ОБЪЕДИНЕННЫЕ АРАБСКИЕ ЭМИРАТЫ", "ГОЛЛАНДИЯ": "НИДЕРЛАНДЫ",
+}
 
 
 def _шар(R, acc, ink):
@@ -1628,6 +1638,84 @@ def _шар(R, acc, ink):
                 блик[i] * кромка * 0.95
         return Image.fromarray(np.clip(цвет, 0, 255).astype(np.uint8), "RGBA")
     return _кэш(("шар", int(R), tuple(acc), tuple(ink)), сделать)
+
+
+def _гео_путь():
+    """`geo/countries.geojson` — рядом с модулем (на раннере он приезжает
+    папкой `geo`, её везёт `cards_cloud.py` под виды со словом «map» в
+    имени; поэтому задание этого вида и называется `sceny.globus_map`)."""
+    for p in (os.path.join(HERE, "geo", "countries.geojson"),
+              os.path.join(os.path.dirname(HERE), "fullcycle", "geo",
+                           "countries.geojson")):
+        if os.path.exists(p):
+            return p
+    return None
+
+
+def _суша():
+    """Контуры стран, упрощённые ОДИН РАЗ: [(имя по-русски, кольцо), …].
+
+    Полные контуры — 3 МБ и десятки тысяч точек; рисовать их 540 раз подряд
+    нельзя. Прореживаем до ~90 точек на кольцо и выбрасываем мелкие острова:
+    на шаре радиусом 400 px они всё равно меньше пикселя, а времени стоят
+    столько же, сколько материк.
+    """
+    def сделать():
+        путь = _гео_путь()
+        if not путь:
+            print("  глобус: нет geo/countries.geojson — рисую без суши",
+                  file=sys.stderr)
+            return []
+        import json as _j
+        данные = _j.load(open(путь, encoding="utf-8"))
+        out = []
+        for f in данные.get("features", []):
+            св = f.get("properties") or {}
+            имя = (св.get("NAME_RU") or св.get("NAME") or "").strip()
+            г = f.get("geometry") or {}
+            тип = г.get("type")
+            куски = ([г.get("coordinates")] if тип == "Polygon"
+                     else (г.get("coordinates") or []))
+            for кусок in куски:
+                if not кусок:
+                    continue
+                кольцо = кусок[0]
+                if len(кольцо) < 8:
+                    continue
+                арр = np.array(кольцо, np.float32)
+                ш = арр[:, 0].max() - арр[:, 0].min()
+                в = арр[:, 1].max() - арр[:, 1].min()
+                if max(ш, в) < 1.6:            # мелкий остров — пропускаем
+                    continue
+                шаг = max(1, len(арр) // 90)
+                out.append((имя, arr_rad(арр[::шаг])))
+        return out
+    return _кэш(("суша",), сделать)
+
+
+def arr_rad(a):
+    """Градусы → радианы один раз, на этапе подготовки."""
+    return np.radians(a.astype(np.float32))
+
+
+def _на_шар(кольцо, lon0, R, cx, cy):
+    """Кольцо (радианы) → экранные точки и признак «перед нами».
+
+    Точки за лимбом не выбрасываем, а ПРИЖИМАЕМ К ЛИМБУ: иначе страна,
+    наполовину ушедшая за край шара, теряла половину контура и получала
+    рваный край прямо посреди материка.
+    """
+    la = кольцо[:, 0] - math.radians(lon0)
+    fi = кольцо[:, 1]
+    cf = np.cos(fi)
+    x = cf * np.sin(la)
+    y = np.sin(fi)
+    z = cf * np.cos(la)
+    видно = z > 0.0
+    r = np.sqrt(x * x + y * y)
+    r = np.where(r < 1e-6, 1e-6, r)
+    k = np.where(видно, 1.0, 1.0 / r)          # за лимбом — на сам лимб
+    return cx + R * x * k, cy - R * y * k, видно
 
 
 def _точка_шара(lon, lat, lon0, R, cx, cy):
@@ -1659,68 +1747,138 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
     img.alpha_composite(шар, (int(cx - R), int(cy - R)))
     d = ImageDraw.Draw(img, "RGBA")
 
-    # сектор: ищем по слову, не найдено — Евразия целиком
-    ключ = str(region or "").strip().lower()
-    сек = None
-    for k, v in СЕКТОРЫ.items():
-        if k and k in ключ:
-            сек = v
-            break
-    if сек is None:
-        сек = (10, 120, 25, 65)
-    lon_a, lon_b, lat_a, lat_b = сек
-    # СЕКТОР ЩЕДРЕЕ ТАБЛИЦЫ НА ЧЕТВЕРТЬ (13.11, по кадру: «Ближний Восток»
-    # в своих 28°×26° читался крошечной заплаткой). Вид говорит «регион
-    # целиком», а не очерчивает границы, поэтому запас здесь уместен —
-    # точности он не обещает.
-    _dl = (lon_b - lon_a) * 0.14
-    _db = (lat_b - lat_a) * 0.14
-    lon_a, lon_b = lon_a - _dl, lon_b + _dl
-    lat_a, lat_b = max(-82.0, lat_a - _db), min(82.0, lat_b + _db)
-    # поворот подобран так, чтобы сектор смотрел на нас В СЕРЕДИНЕ сцены
+    # ЧТО ПОДСВЕЧИВАЕМ. Сначала ищем НАЗВАННЫЕ СТРАНЫ в контурах — его
+    # правка 13.11: «нельзя ли сделать там, чтобы карта была какая-то, чтобы
+    # там подсвечивался тот регион, о котором будет говориться». Не нашли
+    # страну (сказано «Ближний Восток», «весь регион») — подсвечиваем
+    # СЕКТОР по грубой таблице, как раньше. Координат вид по-прежнему не
+    # требует: вход — слово.
+    хочу = []
+    for кусок in str(region or "").replace(",", " ").split():
+        к = кусок.strip(" .«»\"").upper().replace("Ё", "Е")
+        if len(к) > 2:
+            хочу.append(ГЛОБ_АЛИАС.get(к, к))
+    цел_ые = str(region or "").strip().upper().replace("Ё", "Е")
+    if цел_ые:
+        хочу.insert(0, ГЛОБ_АЛИАС.get(цел_ые, цел_ые))
+    суша = _суша()
+    свои = []
+    for _i, (имя, кольцо) in enumerate(суша):
+        н = имя.upper().replace("Ё", "Е")
+        if not н:
+            continue
+        for w in хочу:
+            if н == w or н.startswith(w) or w.startswith(н):
+                свои.append((_i, кольцо))
+                break
+    # ЗАМОРСКИЕ ВЛАДЕНИЯ ОТСЕКАЕМ (13.11, по кадру: вместе с Францией
+    # подсветилась Гвиана в Южной Америке — формально верно, а на экране
+    # читается как ошибка). Оставляем кольца вокруг САМОГО КРУПНОГО из
+    # найденных: всё, что дальше 38° от него, к сцене отношения не имеет.
+    if len(свои) > 1:
+        # ГЛАВНОЕ КОЛЬЦО — ПО ПЛОЩАДИ, А НЕ ПО ЧИСЛУ ТОЧЕК (13.11, по кадру:
+        # глобус развернулся на Южную Америку). Прореживание режет ВСЕ
+        # кольца до ~90 точек, поэтому «самое длинное» после него ничего не
+        # значит — Гвиана оказалась не меньше материковой Франции и увела
+        # поворот за океан. Площадь рамки такого вырождения не имеет.
+        def _площадь(к):
+            return float((к[:, 0].max() - к[:, 0].min())
+                         * (к[:, 1].max() - к[:, 1].min()))
+        главное = max(свои, key=lambda п: _площадь(п[1]))
+        ц = главное[1].mean(axis=0)
+        свои = [(и, к) for и, к in свои
+                if abs(math.degrees(float(к.mean(axis=0)[0] - ц[0]))) < 38.0
+                and abs(math.degrees(float(к.mean(axis=0)[1] - ц[1]))) < 38.0]
+
+    # поворот: названное должно смотреть на нас В СЕРЕДИНЕ сцены
     середина = max(6.0, float(dur or 18.0)) / 2.0
-    lon0 = (lon_a + lon_b) / 2.0 - ГЛОБ_СКОРОСТЬ * (середина - tt)
+    if свои:
+        все = np.concatenate([к for _, к in свои])
+        центр_lon = float(np.degrees(np.arctan2(
+            np.mean(np.sin(все[:, 0])), np.mean(np.cos(все[:, 0])))))
+        сек = None
+    else:
+        ключ = str(region or "").strip().lower()
+        сек = None
+        for k, v in СЕКТОРЫ.items():
+            if k and k in ключ:
+                сек = v
+                break
+        if сек is None:
+            сек = (10, 120, 25, 65)
+        центр_lon = (сек[0] + сек[1]) / 2.0
+    lon0 = центр_lon - ГЛОБ_СКОРОСТЬ * (середина - tt)
 
     появ = плавно(дол(tt, 0.5, 1.6))
     пульс = 0.80 + 0.20 * math.sin(tt * 1.25)
-    шаг_lon = max(4.0, (lon_b - lon_a) / 10.0)
-    шаг_lat = max(3.0, (lat_b - lat_a) / 7.0)
-    if появ > 0:
-        ячейки = []
-        lo = lon_a
-        while lo < lon_b - 1e-6:
-            la = lat_a
-            while la < lat_b - 1e-6:
-                углы = [_точка_шара(lo, la, lon0, R, cx, cy),
-                        _точка_шара(min(lo + шаг_lon, lon_b), la, lon0, R, cx, cy),
-                        _точка_шара(min(lo + шаг_lon, lon_b),
-                                    min(la + шаг_lat, lat_b), lon0, R, cx, cy),
-                        _точка_шара(lo, min(la + шаг_lat, lat_b), lon0, R, cx, cy)]
-                if all(p[2] > 0.02 for p in углы):
-                    ячейки.append(углы)
-                la += шаг_lat
-            lo += шаг_lon
-        for углы in ячейки:
-            d.polygon([(p[0], p[1]) for p in углы],
-                      fill=tuple(_светлее(acc, 0.15))
-                      + (int(165 * появ * пульс),))
-        # КАЙМА СЕКТОРА: без неё заливка на шаре читается пятном, а не
-        # выделенной областью. Идёт по четырём сторонам, видимую часть
-        # рисуем кусками — за лимбом точек нет.
-        for сторона in (
-                [(lo, lat_a) for lo in np.arange(lon_a, lon_b + 1e-6, 2.0)],
-                [(lo, lat_b) for lo in np.arange(lon_a, lon_b + 1e-6, 2.0)],
-                [(lon_a, la) for la in np.arange(lat_a, lat_b + 1e-6, 2.0)],
-                [(lon_b, la) for la in np.arange(lat_a, lat_b + 1e-6, 2.0)]):
-            пред = None
-            for lo, la in сторона:
-                p = _точка_шара(float(lo), float(la), lon0, R, cx, cy)
-                if пред is not None and p[2] > 0.02 and пред[2] > 0.02:
-                    d.line([(пред[0], пред[1]), (p[0], p[1])],
-                           fill=tuple(_светлее(acc, 0.65))
-                           + (int(240 * появ),), width=4)
-                пред = p
+    # СУША. Рисуется всегда — это и есть «какая-то карта» вместо голого шара.
+    тон_суши = _светлее(ink, 0.30)
+    # ОТБОР ПО НОМЕРУ КОЛЬЦА, А НЕ ПО ИМЕНИ (13.11, по кадру: Гвиану
+    # отсеяли из `свои`, но в отрисовке сверка шла по ИМЕНИ «Франция» — и
+    # она подсвечивалась снова. У страны колец много, и отсев обязан
+    # действовать на то же, что рисуется.)
+    свои_номера = {и for и, _ in свои}
+    for _i, (имя, кольцо) in enumerate(суша):
+        xs, ys, видно = _на_шар(кольцо, lon0, R, cx, cy)
+        if not видно.any():
+            continue
+        точки = list(zip(xs.tolist(), ys.tolist()))
+        if len(точки) < 3:
+            continue
+        свой = _i in свои_номера
+        if свой:
+            c = tuple(_светлее(acc, 0.10)) + (int(236 * появ * пульс),)
+            d.polygon(точки, fill=c,
+                      outline=tuple(_светлее(acc, 0.70)) + (int(250 * появ),))
+        else:
+            d.polygon(точки, fill=тон_суши + (236,),
+                      outline=_светлее(ink, 0.46) + (190,))
+    if свои:
         _ev(sfx, 0.5, "accent")
+
+    if сек is not None:
+        lon_a, lon_b, lat_a, lat_b = сек
+        # СЕКТОР ЩЕДРЕЕ ТАБЛИЦЫ НА ЧЕТВЕРТЬ: вид говорит «регион целиком», а
+        # не очерчивает границы, поэтому запас здесь уместен.
+        _dl = (lon_b - lon_a) * 0.14
+        _db = (lat_b - lat_a) * 0.14
+        lon_a, lon_b = lon_a - _dl, lon_b + _dl
+        lat_a, lat_b = max(-82.0, lat_a - _db), min(82.0, lat_b + _db)
+        шаг_lon = max(4.0, (lon_b - lon_a) / 10.0)
+        шаг_lat = max(3.0, (lat_b - lat_a) / 7.0)
+        if появ > 0:
+            lo = lon_a
+            while lo < lon_b - 1e-6:
+                la = lat_a
+                while la < lat_b - 1e-6:
+                    углы = [_точка_шара(lo, la, lon0, R, cx, cy),
+                            _точка_шара(min(lo + шаг_lon, lon_b), la, lon0,
+                                        R, cx, cy),
+                            _точка_шара(min(lo + шаг_lon, lon_b),
+                                        min(la + шаг_lat, lat_b), lon0,
+                                        R, cx, cy),
+                            _точка_шара(lo, min(la + шаг_lat, lat_b), lon0,
+                                        R, cx, cy)]
+                    if all(p[2] > 0.02 for p in углы):
+                        d.polygon([(p[0], p[1]) for p in углы],
+                                  fill=tuple(_светлее(acc, 0.15))
+                                  + (int(92 * появ * пульс),))
+                    la += шаг_lat
+                lo += шаг_lon
+            for сторона in (
+                    [(lo2, lat_a) for lo2 in np.arange(lon_a, lon_b + 1e-6, 2.0)],
+                    [(lo2, lat_b) for lo2 in np.arange(lon_a, lon_b + 1e-6, 2.0)],
+                    [(lon_a, la2) for la2 in np.arange(lat_a, lat_b + 1e-6, 2.0)],
+                    [(lon_b, la2) for la2 in np.arange(lat_a, lat_b + 1e-6, 2.0)]):
+                пред = None
+                for lo2, la2 in сторона:
+                    p = _точка_шара(float(lo2), float(la2), lon0, R, cx, cy)
+                    if пред is not None and p[2] > 0.02 and пред[2] > 0.02:
+                        d.line([(пред[0], пред[1]), (p[0], p[1])],
+                               fill=tuple(_светлее(acc, 0.65))
+                               + (int(240 * появ),), width=4)
+                    пред = p
+            _ev(sfx, 0.5, "accent")
 
     # сетка: меридианы и параллели — поверх сектора, тонкие
     for lon in range(-180, 180, 20):
@@ -1729,7 +1887,7 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
             p = _точка_шара(lon, lat, lon0, R, cx, cy)
             if пред is not None and p[2] > 0.02 and пред[2] > 0.02:
                 d.line([(пред[0], пред[1]), (p[0], p[1])],
-                       fill=tuple(_светлее(ink, 0.30)) + (120,), width=1)
+                       fill=tuple(_светлее(ink, 0.42)) + (95,), width=1)
             пред = p
     for lat in range(-60, 61, 20):
         пред = None
@@ -1737,7 +1895,7 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
             p = _точка_шара(lon, lat, lon0, R, cx, cy)
             if пред is not None and p[2] > 0.02 and пред[2] > 0.02:
                 d.line([(пред[0], пред[1]), (p[0], p[1])],
-                       fill=tuple(_светлее(ink, 0.30)) + (120,), width=1)
+                       fill=tuple(_светлее(ink, 0.42)) + (95,), width=1)
             пред = p
 
     стр = строки(text, строк=2, знаков=15)
@@ -1751,7 +1909,9 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
         сл.putalpha(сл.split()[3].point(lambda v: int(v * a)))
         img.alpha_composite(сл, (int(SAFE * W), int(0.26 * H)))
     if region:
-        pl = плашка_тех(region, "регион целиком", acc=acc, кегль=38,
+        pl = плашка_тех(region,
+                        "названы в сцене" if свои else "регион целиком",
+                        acc=acc, кегль=38,
                         кегль_под=26, ширина=520)
         a = плавно(дол(tt, 1.2, 2.0))
         if a > 0:
