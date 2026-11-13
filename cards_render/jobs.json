@@ -1,27 +1,44 @@
 [
  {
-  "scene": 910,
-  "view": "sceny.lenta",
+  "scene": 901,
+  "view": "sceny.tribuna",
   "mode": "cli",
   "script": "sceny_cli.py",
   "dur": 18.0,
   "channel": "ПЛАНЕТА",
   "cfg": {
-   "view": "lenta",
+   "view": "tribuna",
    "seconds": 18.0,
    "fps": 30,
    "kwargs": {
-    "text": "Сообщают агентства",
-    "soobshcheniya": [
-     "переговоры прерваны",
-     "делегация улетела",
-     "стороны молчат",
-     "заявление готовится",
-     "подробностей нет"
-    ],
-    "source": "сообщения агентств",
+    "text": "Решение приняли без него",
+    "role": "глава ведомства на момент заявления",
+    "place": "брифинг, 12 ноября",
+    "source": "заявление ведомства",
     "channel": "ПЛАНЕТА",
     "watermark": "ПЛАНЕТА",
+    "dur": 18.0
+   }
+  }
+ },
+ {
+  "scene": 908,
+  "view": "sceny.tribuna",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 18.0,
+  "channel": "5 МИНУТ",
+  "cfg": {
+   "view": "tribuna",
+   "seconds": 18.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Решение приняли без него",
+    "role": "глава ведомства на момент заявления",
+    "place": "брифинг, 12 ноября",
+    "source": "заявление ведомства",
+    "channel": "5 МИНУТ",
+    "watermark": "5 МИНУТ",
     "dur": 18.0
    }
   }
