@@ -1,732 +1,190 @@
 [
  {
-  "scene": 2,
-  "view": "zal",
-  "dur": 8.3,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Европа ищет, кого посадить за стол",
-   "words": [
-    "СТОЛ",
-    "ЕВРОПА"
-   ],
-   "sheets": [
-    "Абу-Даби",
-    "Отказ Москвы",
-    "Кто сядет",
-    "НАТО в стороне",
-    "Киев о прогрессе",
-    "Три лагеря"
-   ],
-   "channel": "5 МИНУТ",
-   "dur": 8.3,
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 5,
-  "view": "paper_hand",
-  "dur": 11.1,
-  "anim": 2.8,
-  "tail_zoom": 0.04,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Кого вы представляете, кроме самих себя? Европа и сама пока не решила, чего именно она хочет за этим столом",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 8,
-  "view": "zal_efir",
-  "dur": 12.8,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 12.8,
-   "sheets": [],
-   "text": "Финляндия ждёт переговоров",
-   "say": "Переговоры с участием России, США и Европы — в ближайшие недели",
-   "author": "АЛЕКСАНДР СТУББ",
-   "role": "президент Финляндии",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 9,
-  "view": "charts.cartogram",
-  "dur": 9.5,
-  "anim": 9.5,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "data": [
-    "Москва",
-    "Вашингтон",
-    "Киев",
-    "Брюссель"
-   ],
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 12,
-  "view": "bars",
-  "dur": 24.4,
-  "anim": 24.4,
-  "tail_zoom": 0.0,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {},
+  "scene": 901,
+  "view": "sceny.tribuna",
   "mode": "cli",
-  "script": "build_chart_bars.py",
+  "script": "sceny_cli.py",
+  "dur": 18.0,
+  "channel": "ПЛАНЕТА",
   "cfg": {
-   "title": "ДОВЕРИЕ ДОМА",
-   "caption": "Недоверие в обоих опросах выше восьмидесяти процентов",
-   "seconds": 24.4,
-   "bars": [
-    {
-     "label": "ДОВЕРИЕ",
-     "value": 0.13,
-     "color": "EABD23"
-    },
-    {
-     "label": "ПО VERIAN",
-     "value": 0.14,
-     "color": "B92526"
-    },
-    {
-     "label": "НЕДОВЕРИЕ",
-     "value": 0.8,
-     "color": "84848A"
-    }
-   ]
+   "view": "tribuna",
+   "seconds": 18.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Решение приняли без него",
+    "role": "глава ведомства на момент заявления",
+    "place": "брифинг, 12 ноября",
+    "source": "заявление ведомства",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 18.0
+   }
   }
  },
  {
-  "scene": 15,
-  "view": "marker_serif",
-  "dur": 8.5,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Политические неудачники внутри собственных государств собираются объяснять Москве, чего она не понимает",
-   "accent": "неудачники",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 17,
-  "view": "zal_pol",
-  "dur": 10.2,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 10.2,
-   "sheets": [],
-   "text": "Три лагеря вокруг одного кресла",
-   "na_polu": "ТРИ ЛАГЕРЯ",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 19,
-  "view": "charts.cartogram",
-  "dur": 11.2,
-  "anim": 11.2,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "data": [
-    "Германия",
-    "Франция",
-    "Италия",
-    "Польша",
-    "Венгрия"
-   ],
-   "mode": "bubble",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 21,
-  "view": "charts.network",
-  "dur": 10.8,
-  "anim": 10.8,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "nodes": [
-    {
-     "id": "Москва",
-     "label": "Москва",
-     "weight": 3.0
-    },
-    {
-     "id": "США",
-     "label": "США",
-     "weight": 5.0
-    },
-    {
-     "id": "Европа",
-     "label": "Европа",
-     "weight": 2.0
-    },
-    {
-     "id": "НАТО",
-     "label": "НАТО",
-     "weight": 0.0
-    },
-    {
-     "id": "Киев",
-     "label": "Киев",
-     "weight": 4.0
-    }
-   ],
-   "links": [
-    {
-     "from": "Москва",
-     "to": "США",
-     "weight": 3.0
-    },
-    {
-     "from": "Москва",
-     "to": "Европа",
-     "weight": 0.0
-    },
-    {
-     "from": "Москва",
-     "to": "НАТО",
-     "weight": 0.0
-    },
-    {
-     "from": "США",
-     "to": "Киев",
-     "weight": 2.0
-    },
-    {
-     "from": "Европа",
-     "to": "Киев",
-     "weight": 2.0
-    }
-   ],
-   "title": "КТО С КЕМ ГОВОРИТ",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 22,
-  "view": "cinematic.evidence_wall",
-  "dur": 13.0,
-  "anim": 13.0,
-  "tail_zoom": 0.0,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "shots": [
-    [
-     "cards/photo/card_022.jpg",
-     240,
-     250,
-     -4,
-     "Абу-Даби"
+  "scene": 902,
+  "view": "sceny.prohod",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 32.0,
+  "channel": "ПЛАНЕТА",
+  "cfg": {
+   "view": "prohod",
+   "seconds": 32.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Что стоит за решением",
+    "tezisy": [
+     "сроки сдвинули",
+     "деньги не пришли",
+     "подрядчика сменили",
+     "гарантии переписали"
     ],
-    [
-     "cards/photo/card_022_2.jpg",
-     800,
-     250,
-     3,
-     "Брюссель"
+    "source": "по материалам заявлений сторон",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 32.0
+   }
+  }
+ },
+ {
+  "scene": 903,
+  "view": "sceny.relsy",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 30.0,
+  "channel": "ПЛАНЕТА",
+  "cfg": {
+   "view": "relsy",
+   "seconds": 30.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Как это шло к развязке",
+    "sobytiya": [
+     "сначала отложили",
+     "потом переписали",
+     "затем отозвали",
+     "в итоге закрыли"
     ],
-    [
-     "cards/photo/card_022_3.jpg",
-     1360,
-     250,
-     -2,
-     "Страсбург"
+    "source": "хроника события",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 30.0
+   }
+  }
+ },
+ {
+  "scene": 904,
+  "view": "sceny.kreslo",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 16.0,
+  "channel": "ПЛАНЕТА",
+  "cfg": {
+   "view": "kreslo",
+   "seconds": 16.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Решили без него",
+    "role": "кресло главы делегации",
+    "place": "заседание, 12 ноября",
+    "source": "состав делегации",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 16.0
+   }
+  }
+ },
+ {
+  "scene": 905,
+  "view": "sceny.mehanizm",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 20.0,
+  "channel": "ПЛАНЕТА",
+  "cfg": {
+   "view": "mehanizm",
+   "seconds": 20.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Кто на кого давит",
+    "pary": [
+     "БРЮССЕЛЬ>БАНКИ",
+     "БАНКИ>ПОДРЯДЧИК"
     ],
-    [
-     "cards/photo/card_022_4.jpg",
-     240,
-     580,
-     4,
-     "Таллин"
-    ]
-   ],
-   "kick": "Четыре столицы — четыре позиции",
-   "title": "В КАКОМ КАЧЕСТВЕ ВЫ ПРИЕХАЛИ",
-   "watermark": "5 МИНУТ"
-  },
-  "mode": "frame"
- },
- {
-  "scene": 23,
-  "view": "split",
-  "dur": 10.9,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Сначала прекращение огня — потом разговор по существу",
-   "author": "КАЯ КАЛЛАС",
-   "role": "глава дипломатии ЕС",
-   "photo": "cards/photo/card_023.jpg",
-   "watermark": "5 МИНУТ"
+    "source": "по заявлениям сторон",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 20.0
+   }
   }
  },
  {
-  "scene": 27,
-  "view": "strike",
-  "dur": 11.8,
-  "anim": 3.0,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Условия ставит тот, кого позвали. Москва отвечает, что предварительных условий за этим столом не будет",
-   "struck": "Условия ставит тот, кого позвали",
-   "watermark": "5 МИНУТ"
+  "scene": 906,
+  "view": "sceny.prolog",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 5.0,
+  "channel": "ПЛАНЕТА",
+  "cfg": {
+   "view": "prolog",
+   "seconds": 5.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Лондон меняет правила",
+    "kick": "тема выпуска",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 5.0
+   }
   }
  },
  {
-  "scene": 29,
-  "view": "doc",
-  "dur": 9.7,
-  "anim": 3.4,
-  "tail_zoom": 0.04,
-  "watermark": "5 МИНУТ",
+  "scene": 907,
+  "view": "sceny.prohod",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 32.0,
   "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "удары, договориться о перемирии, решить конкретные украинские вопросы. Для другого это разговор о том, как после окончан",
-   "mark": "УДАРЫ",
-   "watermark": "5 МИНУТ"
+  "cfg": {
+   "view": "prohod",
+   "seconds": 32.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Что стоит за решением",
+    "tezisy": [
+     "сроки сдвинули",
+     "деньги не пришли",
+     "подрядчика сменили",
+     "гарантии переписали"
+    ],
+    "source": "по материалам заявлений сторон",
+    "channel": "5 МИНУТ",
+    "watermark": "5 МИНУТ",
+    "dur": 32.0
+   }
   }
  },
  {
-  "scene": 30,
-  "view": "zal_ekran",
-  "dur": 12.7,
-  "anim": 4.0,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
+  "scene": 908,
+  "view": "sceny.tribuna",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 18.0,
   "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 12.7,
-   "sheets": [],
-   "text": "Два разных размера стола",
-   "say": "Россия не хочет обсуждать ограничения ударов",
-   "author": "ЗЕЛЕНСКИЙ",
-   "watermark": "5 МИНУТ"
+  "cfg": {
+   "view": "tribuna",
+   "seconds": 18.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Решение приняли без него",
+    "role": "глава ведомства на момент заявления",
+    "place": "брифинг, 12 ноября",
+    "source": "заявление ведомства",
+    "channel": "5 МИНУТ",
+    "watermark": "5 МИНУТ",
+    "dur": 18.0
+   }
   }
- },
- {
-  "scene": 31,
-  "view": "photo",
-  "dur": 11.4,
-  "anim": 11.4,
-  "tail_zoom": 0.0,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "kick": "Брюссель · штаб НАТО",
-   "watermark": "5 МИНУТ",
-   "photo": "cards/photo/card_031.jpg",
-   "lines": [
-    "Вопросы НАТО снова на столе",
-    "Европейская безопасность — отдельный разговор",
-    "Москва считает это своей темой"
-   ]
-  }
- },
- {
-  "scene": 34,
-  "view": "duel",
-  "dur": 11.8,
-  "anim": 3.2,
-  "tail_zoom": 0.035,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "title": "В ЧЁМ ПРОГРЕСС",
-   "top": {
-    "who": "",
-    "text": "Участники наконец разговаривают",
-    "accent": null,
-    "source": ""
-   },
-   "bottom": {
-    "who": "",
-    "text": "По главным вопросам договорённости пока не видно",
-    "accent": null,
-    "source": ""
-   },
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 36,
-  "view": "film.film_strip",
-  "dur": 9.3,
-  "anim": 9.3,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "shots": [
-    "cards/photo/card_036.jpg",
-    "cards/photo/card_036_2.jpg",
-    "cards/photo/card_036_3.jpg",
-    "cards/photo/card_036_4.jpg"
-   ],
-   "title": "ЛОГИСТИКА ПОМОЩИ",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 42,
-  "view": "devices.device_scene",
-  "dur": 9.6,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "content_path": "cards/photo/card_042.jpg",
-   "items": [
-    "Скандал начинается с голосования",
-    "Заканчивается общей фотографией"
-   ],
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 44,
-  "view": "vyrezka.gazeta",
-  "dur": 11.2,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "photo": "cards/photo/card_044.jpg",
-   "author": "ЕЛИСЕЙСКИЙ ДВОРЕЦ",
-   "role": "резиденция президента Франции",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 45,
-  "view": "torn_split.torn_split",
-  "dur": 13.2,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "a_path": "cards/photo/card_045.jpg",
-   "b_path": "cards/photo/card_045_2.jpg",
-   "title": "ЕДИНСТВО ПОСЛЕ САММИТА",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 46,
-  "view": "cinematic.depth_of_field",
-  "dur": 10.5,
-  "anim": 10.5,
-  "tail_zoom": 0.0,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "photo": "cards/photo/card_046.jpg",
-   "watermark": "5 МИНУТ"
-  },
-  "mode": "frame"
- },
- {
-  "scene": 48,
-  "view": "charts.cartogram",
-  "dur": 11.8,
-  "anim": 11.8,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "data": [
-    "Киевская область",
-    "Харьковская область",
-    "Одесская область",
-    "Днепропетровская область",
-    "Львовская область"
-   ],
-   "level": "region",
-   "admin": "Украина",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 49,
-  "view": "zal_makety",
-  "dur": 8.8,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 8.8,
-   "sheets": [],
-   "text": "Готовьтесь к перебоям",
-   "makety": [
-    "лэп=ЭНЕРГОСЕТИ",
-    "больница=БОЛЬНИЦЫ",
-    "банк=БАНКИ"
-   ],
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 51,
-  "view": "paper_typed",
-  "dur": 11.1,
-  "anim": 2.8,
-  "tail_zoom": 0.04,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Стратегия простая: не складывать все яйца в одну корзину. Только населению от этой мудрой формулы пока не теплее и не светлее",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 52,
-  "view": "zal_shkala",
-  "dur": 9.7,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 9.7,
-   "sheets": [],
-   "text": "Полтора месяца на условия",
-   "value": "1,5 МЕСЯЦА",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 54,
-  "view": "film.film_single",
-  "dur": 14.1,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "photo": "cards/photo/card_054.jpg",
-   "title": "ЗАЛ ЗАСЕДАНИЙ НАТО",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 56,
-  "view": "zal_kub",
-  "dur": 12.5,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 12.5,
-   "sheets": [],
-   "text": "Ещё один пакет санкций",
-   "kick": "НЕ ВОЛШЕБНАЯ КНОПКА",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 58,
-  "view": "pull",
-  "dur": 13.4,
-  "anim": 2.6,
-  "tail_zoom": 0.05,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Если противнику нужнее мир, значит можно не спешить, можно ждать и требовать больше",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 60,
-  "view": "vyrezka.figura",
-  "dur": 11.3,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "photo": "cards/photo/card_060.jpg",
-   "author": "БУНДЕСТАГ",
-   "role": "парламент Германии",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 63,
-  "view": "zal_slova",
-  "dur": 7.5,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 7.5,
-   "sheets": [],
-   "text": "Дело дошло до конкретного человека",
-   "na_polu": "САМОЛЁТ ОБРАТНО",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 64,
-  "view": "cinematic.dossier",
-  "dur": 11.7,
-  "anim": 11.7,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "case": "ЕВРОПАРЛАМЕНТ",
-   "rows": [
-    "Законы",
-    "Права",
-    "Внутренняя политика",
-    "Интересы государств"
-   ],
-   "title": "ДОСЬЕ",
-   "photo": "cards/photo/card_064.jpg",
-   "stamp": "ПЕРВОИСТОЧНИК",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 65,
-  "view": "zal_schetchik",
-  "dur": 11.1,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 11.1,
-   "sheets": [],
-   "text": "Двадцать семь — один голос",
-   "value": "27",
-   "value_sub": "ГОСУДАРСТВ",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 66,
-  "view": "quote",
-  "dur": 11.5,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Если основную поддержку Украине даёт Европа, то и главный спрос по деньгам и обязательствам идёт к Европе",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 67,
-  "view": "charts.map_dist",
-  "dur": 10.3,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "points": [
-    {
-     "label": "МОСКВА",
-     "lat": 55.75,
-     "lon": 37.62,
-     "accent": false
-    },
-    {
-     "label": "АБУ-ДАБИ",
-     "lat": 24.45,
-     "lon": 54.38,
-     "accent": false
-    }
-   ],
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 68,
-  "view": "tape",
-  "dur": 14.5,
-  "anim": 2.4,
-  "tail_zoom": 0.04,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Россия продолжает формулировать требования",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 72,
-  "view": "poster.poster",
-  "dur": 12.74,
-  "anim": 12.74,
-  "tail_zoom": 0.0,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "title": "ВСЕ НАЧАЛИ ДВИГАТЬСЯ",
-   "hero_photo": "cards/photo/card_072.jpg",
-   "bottom": "Осталось выяснить, кто и о чём будет разговаривать",
-   "facts": [
-    {
-     "label": "Переговоры",
-     "value": "идут"
-    },
-    {
-     "label": "Состав стола",
-     "value": "не определён"
-    },
-    {
-     "label": "Предмет",
-     "value": "не согласован"
-    }
-   ],
-   "watermark": "5 МИНУТ"
-  },
-  "mode": "frame"
  }
 ]
