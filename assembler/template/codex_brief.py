@@ -838,8 +838,19 @@ def main():
         # ПАПКА ПРОЕКТА — ТАМ, ГДЕ ЛЕЖИТ `tg.json` (11.11): на этом шаге
         # сцен ещё нет, первым аргументом идёт путь-заглушка, поэтому
         # смотрим по очереди его папку, текущую папку и `--dest`.
-        _proj = _dossier_dir(os.path.dirname(os.path.abspath(a.scenes or ".")),
-                             os.getcwd(), a.dest) or "."
+        # ПАПКА ПРОЕКТА, А НЕ ТЕКУЩАЯ (13.11, улов `usuario-65` и
+        # `usuario-37`). Раскадровка заказывается ДО появления scenes.json,
+        # поэтому `dirname(a.scenes or ".")` давал cwd, и из любой другой
+        # папки задание печатало «ВЛОЖЕНИЙ ДОСЬЕ НЕТ, агент закажет всё
+        # поиском»: заход к агенту сожжён, а ролик потом встаёт на
+        # `dossier_use`. Теперь сначала смотрим туда, где лежат озвучка и
+        # srt, затем папку выдачи, и только потом cwd.
+        _proj = _dossier_dir(os.path.dirname(os.path.abspath(a.srt))
+                             if a.srt else "",
+                             a.dest,
+                             os.path.dirname(os.path.abspath(a.scenes))
+                             if a.scenes else "",
+                             os.getcwd()) or "."
         path, want, total = write_scenes_task(
             a.dest, a.srt, a.channel,
             _dest_file or "ЗАДАНИЕ-РАСКАДРОВКА.txt", project=_proj)
