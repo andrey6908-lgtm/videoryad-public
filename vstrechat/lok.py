@@ -2591,10 +2591,10 @@ def b3_gory(x, y, w_, h_, seed=3, noch=False):
         ph_ = h_ * hh * .78
         s += (f'<path d="M{px-w_*.30:.0f},{y+h_:.0f} L{px:.0f},{y+h_-ph_:.0f}'
               f' L{px+w_*.30:.0f},{y+h_:.0f} Z" fill="{col}" {o(5)}/>')
-        s += (f'<path d="M{px-w_*.085:.0f},{y+h_-ph_*.70:.0f} L{px:.0f},{y+h_-ph_:.0f}'
-              f' L{px+w_*.085:.0f},{y+h_-ph_*.70:.0f} q{-w_*.04:.0f},{h_*.05:.0f}'
+        s += (f'<path d="M{px-w_*.055:.0f},{y+h_-ph_*.78:.0f} L{px:.0f},{y+h_-ph_:.0f}'
+              f' L{px+w_*.055:.0f},{y+h_-ph_*.78:.0f} q{-w_*.04:.0f},{h_*.05:.0f}'
               f' {-w_*.085:.0f},0 q{-w_*.04:.0f},{-h_*.05:.0f} {-w_*.085:.0f},0 Z"'
-              f' fill="#e9eef4" opacity=".9"/>')
+              f' fill="{KREM}" opacity=".85"/>')
     return s
 
 
@@ -2607,17 +2607,20 @@ def b3_afisha(x, y, w_, h_, naz, t=0.0, kegl=54, otgib=0.0, seed=3, lampy=False,
           f' rx="8" fill="url(#derev)" {o(7)}/>')
     s += (f'<rect x="{x:.0f}" y="{y:.0f}" width="{w_:.0f}" height="{h_:.0f}"'
           f' fill="url(#list)" {o(5)}/>')
-    s += b3_gory(x + 10, y + h_ * .42, w_ - 20, h_ * .52, seed, noch)
     stroki = [naz]
     if len(naz) > 13:
         m = naz.rfind(" ", 0, len(naz) // 2 + 4)
         if m > 0:
             stroki = [naz[:m], naz[m + 1:]]
-    kg = min(kegl, (w_ - 40) * 1.72 / max(1, max(len(u) for u in stroki)))
-    kg = max(30, kg)
+    nl = len(stroki)
+    kg = max(30, min(kegl, (w_ - 44) * 1.70 / max(1, max(len(u) for u in stroki)),
+                     h_ * .30 / nl))
+    tband = min(.66, .10 + kg * 1.20 * nl / h_)
+    s += b3_gory(x + 10, y + h_ * tband, w_ - 20, h_ * (1 - tband) - 12, seed, noch)
     for i, u in enumerate(stroki):
-        s += b3_stroka(x + w_ / 2, y + h_ * .20 + i * kg * 1.12, w_, u.upper(), kg)
-    s += (f'<path d="M{x+w_*.12:.0f},{y+h_*.355:.0f} h{w_*.76:.0f}" {o(4, "#a4381f")}/>')
+        s += b3_stroka(x + w_ / 2, y + h_ * .06 + kg * .82 + i * kg * 1.18, w_, u.upper(), kg)
+    pw = min(w_ * .70, kg * .60 * max(len(u) for u in stroki))
+    s += (f'<path d="M{x+w_/2-pw/2:.0f},{y+h_*tband-10:.0f} h{pw:.0f}" {o(4, "#a4381f")}/>')
     if otgib > .01:
         a = 26 * otgib
         s += (f'<g transform="rotate({a:.1f} {x+w_:.0f} {y+h_:.0f})">'
@@ -2634,11 +2637,13 @@ def b3_golova(x, y, r_, t, col="#1d2029", kant="#f0c070", ph=0.0, tryas=0.0, ple
     """Затылок и плечи зрителя. Тряска от смеха — живой элемент зала."""
     dy = tryas * (2.6 * A.w(t, .33, ph) + 1.6 * A.w(t, .19, ph * 1.7))
     return (f'<g transform="translate({x:.0f},{y+dy:.1f})">'
-            f'<path d="M{-r_*2.1*plechi:.0f},{r_*2.4:.0f} q{r_*2.1*plechi:.0f},{-r_*1.9:.0f}'
-            f' {r_*4.2*plechi:.0f},0 Z" fill="{col}"/>'
+            f'<path d="M{-r_*2.6*plechi:.0f},{r_*3.0:.0f} q{r_*2.6*plechi:.0f},{-r_*2.3:.0f}'
+            f' {r_*5.2*plechi:.0f},0 Z" fill="{col}"/>'
             f'<circle cx="0" cy="0" r="{r_:.0f}" fill="{col}"/>'
-            f'<path d="M{-r_*.92:.0f},{-r_*.34:.0f} a{r_:.0f},{r_:.0f} 0 0 1 {r_*1.84:.0f},0"'
-            f' fill="none" stroke="{kant}" stroke-width="{max(2,r_*.13):.1f}" opacity=".55"/></g>')
+            f'<circle cx="0" cy="0" r="{r_:.0f}" fill="none" stroke="#0d1119"'
+            f' stroke-width="{max(2,r_*.10):.1f}" opacity=".8"/>'
+            f'<path d="M{-r_*.52:.0f},{-r_*.78:.0f} a{r_:.0f},{r_:.0f} 0 0 1 {r_*1.04:.0f},0"'
+            f' fill="none" stroke="{kant}" stroke-width="{max(2,r_*.17):.1f}" opacity=".65"/></g>')
 
 
 def b3_katushka(x, y, r_, t, sp=1.0, col="#6a6f76", lenta=True):
@@ -2680,7 +2685,10 @@ def b3_kreslo(x, y, w_, h_, col=BORDO, col2=BORDO2):
 def b3_svechka(x, y, h_, t, gorit=1.0, ph=0.0, w_=12):
     """Свечка на пироге: воск, фитиль, огонёк, который загорается в свой срок."""
     s = (f'<rect x="{x-w_/2:.1f}" y="{y-h_:.1f}" width="{w_:.0f}" height="{h_:.0f}"'
-         f' rx="4" fill="url(#vosk)" {o(3)}/>')
+         f' rx="4" fill="{ob.ALYJ}" {o(3)}/>')
+    for i in range(2):
+        s += (f'<rect x="{x-w_/2:.1f}" y="{y-h_*(.72-i*.34):.1f}" width="{w_:.0f}"'
+              f' height="{h_*.17:.1f}" fill="#f6ecd8"/>')
     s += f'<path d="M{x:.1f},{y-h_:.1f} v-8" fill="none" {o(3)}/>'
     if gorit > .02:
         hh = (17 + 5 * A.w(t, .72, ph)) * gorit
@@ -2693,23 +2701,24 @@ def b3_svechka(x, y, h_, t, gorit=1.0, ph=0.0, w_=12):
 
 
 def b3_tochki_60(cx, cy, r_):
-    """Точки по контуру цифр «60» — на них встают свечки пирога. По высоте
-    цифры сжаты: пирог видно сверху-сбоку, иначе число не читается."""
+    """Точки по контуру цифр «60» — на них встают свечки пирога. У шестёрки
+    кольцо МЕЛЬЧЕ, а хвост длинный и явный: с кольцом в полную высоту она
+    читается как второй ноль (поймано на осмотре)."""
     p = []
-    szh = .62
+    szh = .44
 
     def tochka(u, v):
         p.append((cx + u * r_, cy + v * r_ * szh))
 
-    for i in range(11):                       # кольцо шестёрки
-        a_ = 2 * math.pi * i / 11
-        tochka(-.70 + .40 * math.cos(a_), .50 + .50 * math.sin(a_))
-    for i in range(5):                        # хвост шестёрки вверх-вправо
-        u = i / 4.0
-        tochka(-1.10 + .56 * u * u, -.02 - .98 * u)
-    for i in range(13):                       # кольцо нуля
-        a_ = 2 * math.pi * i / 13
-        tochka(.72 + .44 * math.cos(a_), .04 + 1.00 * math.sin(a_))
+    for i in range(8):                        # кольцо шестёрки — низкое
+        a_ = 2 * math.pi * i / 8
+        tochka(-.86 + .36 * math.cos(a_), .56 + .40 * math.sin(a_))
+    for i in range(6):                        # длинный хвост вверх-вправо
+        u = (i + 1) / 6.0
+        tochka(-1.22 + .66 * u * u, .14 - 1.10 * u)
+    for i in range(12):                       # кольцо нуля — во всю высоту
+        a_ = 2 * math.pi * i / 12
+        tochka(.84 + .42 * math.cos(a_), .02 + .96 * math.sin(a_))
     return p
 
 
@@ -2717,7 +2726,7 @@ def b3_dom67(x, base, w_, t, seed=1, svet=True):
     """Частный дом летнего вечера: обшивка, шиферная крыша с трубой, окно со
     ставнями, палисадник. Снега на крыше нет — это июнь, а не ноябрь."""
     r = random.Random(seed)
-    h_ = w_ * .60
+    h_ = w_ * .74
     s = ten(x + w_ / 2, base + 14, w_ * .52, 20, .5)
     s += baza.doski(x, base - h_, w_, h_, max(34, int(w_ * .13)), True,
                     r.choice(("dosk", "derev")))
@@ -2730,12 +2739,14 @@ def b3_dom67(x, base, w_, t, seed=1, svet=True):
               f' stroke="#5e656f" stroke-width="4" opacity=".45"/>')
     s += (f'<path d="M{x-w_*.10:.0f},{base-h_:.0f} L{x+w_/2:.0f},{base-h_-kh_:.0f}"'
           f' fill="none" stroke="#7d848e" stroke-width="7" opacity=".75"/>')
-    tx = x + w_ * r.choice((.22, .74))
-    s += (f'<rect x="{tx:.0f}" y="{base-h_-kh_*.86:.0f}" width="{w_*.09:.0f}"'
-          f' height="{kh_*.72:.0f}" fill="url(#kamen)" {o(5)}/>')
+    tx = x + w_ * r.choice((.30, .66))
+    s += (f'<rect x="{tx:.0f}" y="{base-h_-kh_*.92:.0f}" width="{w_*.10:.0f}"'
+          f' height="{kh_*.62:.0f}" fill="url(#kamen)" {o(5)}/>'
+          f'<rect x="{tx-w_*.015:.0f}" y="{base-h_-kh_*.96:.0f}" width="{w_*.13:.0f}"'
+          f' height="{kh_*.10:.0f}" rx="4" fill="{KAMEN2}" {o(4)}/>')
     s += (f'<rect x="{x-w_*.12:.0f}" y="{base-h_-10:.0f}" width="{w_*1.24:.0f}" height="20"'
           f' rx="7" fill="{DOSKA2}" {o(5)}/>')
-    ox, oy = x + w_ * .30, base - h_ * .74
+    ox, oy = x + w_ * .30, base - h_ * .80
     ow, oh = w_ * .28, w_ * .22
     s += baza.okno_izby(ox, oy, ow, oh, t, None, 0.0, svet, True)
     for sgn, sx in ((-1, ox - 16), (1, ox + ow + 16)):
@@ -2743,12 +2754,12 @@ def b3_dom67(x, base, w_, t, seed=1, svet=True):
               f' width="{ow*.22:.0f}" height="{oh+28:.0f}" rx="5" fill="#2c4a52" {o(5)}/>')
         s += (f'<path d="M{sx-(ow*.16 if sgn<0 else -ow*.06):.0f},{oy+oh*.3:.0f}'
               f' h{ow*.12:.0f}" stroke="#4f727a" stroke-width="5"/>')
-    s += (f'<rect x="{x+w_*.70:.0f}" y="{base-h_*.46:.0f}" width="{w_*.17:.0f}"'
-          f' height="{h_*.46:.0f}" rx="6" fill="url(#derev)" {o(6)}/>')
+    s += (f'<rect x="{x+w_*.70:.0f}" y="{base-h_*.40:.0f}" width="{w_*.17:.0f}"'
+          f' height="{h_*.40:.0f}" rx="6" fill="{DOSKA2}" {o(6)}/>')
     for i in range(3):
         bx = x + w_ * (.10 + i * .36)
-        s += (f'<ellipse cx="{bx:.0f}" cy="{base-26:.0f}" rx="{w_*.11:.0f}"'
-              f' ry="{w_*.09:.0f}" fill="{TRAV68}" opacity=".9" {o(4)}/>')
+        s += (f'<ellipse cx="{bx:.0f}" cy="{base-18:.0f}" rx="{w_*.12:.0f}"'
+              f' ry="{w_*.10:.0f}" fill="{TRAV68}" opacity=".92" {o(4)}/>')
     return s
 
 
@@ -2860,7 +2871,7 @@ def dvor_shestdesyat_sedmogo(t):
     bu = abs(math.sin(math.pi * t / .64))
     by = 1012 - 250 * (bu ** .78)
     sq = 1.0 + .20 * (1 - bu) ** 2
-    m += ten(1334, 1016, 40 * (1 + .4 * (1 - bu)), 11, .5 * (1 - bu * .5))
+    m += ten(1334, 1018, 46 * (1 + .35 * (1 - bu)), 13, .75 - .25 * bu)
     m += (f'<g transform="translate(1334,{by:.0f}) scale({sq:.2f},{2-sq:.2f})">'
           f'<circle r="38" fill="#e8e2d4" {o(6)}/>'
           f'<path d="M-38,-4 q38,22 76,0" fill="none" stroke="{ob.ALYJ}" stroke-width="11"/>'
@@ -2877,8 +2888,10 @@ def dvor_shestdesyat_sedmogo(t):
     p += baza.okno_izby(ox, oy, ow, oh, t, None, 0.0, False, False)
     p += f'<rect x="{ox:.0f}" y="{oy:.0f}" width="{ow:.0f}" height="{oh:.0f}" fill="#26303c" opacity=".88"/>'
     p += teplo(ox + ow * .62, oy + oh * .72, 150, 120, .75)
-    p += baza.zanaveska(ox + 10, oy + 4, oh - 12, 104, "#efe6d2", t, 1)
-    p += baza.zanaveska(ox + ow - 10, oy + 4, oh - 12, 104, "#efe6d2", t, -1)
+    p += (f'<rect x="{ox-6:.0f}" y="{oy-4:.0f}" width="{ow+12:.0f}" height="14" rx="6"'
+          f' fill="{DOSKA2}" {o(4)}/>')
+    p += baza.zanaveska(ox + 8, oy + 8, oh - 16, 68, "#ddd0b4", t, 1)
+    p += baza.zanaveska(ox + ow - 8, oy + 8, oh - 16, 68, "#ddd0b4", t, -1)
     rx, ry = ox + ow * .50, oy + oh * .92
     p += (f'{ten(rx+8, ry+10, 100, 14, .45)}'
           f'<rect x="{rx-104:.0f}" y="{ry-104:.0f}" width="208" height="112" rx="12"'
@@ -2933,12 +2946,12 @@ def kinoteatr_s_afishey(t):
           f'<path d="M-60,120 L400,34 L860,120 Z" fill="#8f8160" opacity=".22"/>')
     m += (f'<rect x="-50" y="118" width="900" height="34" rx="8" fill="{SHTUK2}" {o(6)}/>')
     # афиша над входом
-    m += b3_afisha(84, 158, 640, 196, "Кавказская пленница", t, 54, 0.0, 5, True)
+    m += b3_afisha(84, 146, 640, 228, "Кавказская пленница", t, 54, 0.0, 5, True)
     # карниз с голубями
     m += (f'<rect x="-40" y="420" width="880" height="32" rx="8" fill="{SHTUK2}" {o(6)}/>'
           f'<rect x="-40" y="420" width="880" height="10" fill="#ffffff" opacity=".18"/>')
     for i, (gx, ph) in enumerate(((150, .0), (438, .4), (712, .75))):
-        m += baza.ptica(gx, 416, t, .54, "#8d99a6", ph, "#5f6b78")
+        m += baza.ptica(gx, 416, t, .58, "#c3ccd6", ph, "#7d8894")
     # колонны
     for i, cx in enumerate((22, 196, 592, 766)):
         m += ten(cx + 38, 902, 56, 14, .45)
@@ -3036,30 +3049,30 @@ def polnyy_zritelnyy_zal(t):
     s += SL(Z_SRED, f_)
     # ── луч проектора над головами
     b = ""
-    b += (f'<path d="M2010,1150 L352,232 L352,560 Z" fill="#cfe4ff" opacity=".17"/>'
-          f'<path d="M2010,1150 L368,300 L368,520 Z" fill="#eaf4ff" opacity=".17"/>'
-          f'<path d="M2010,1150 L382,362 L382,470 Z" fill="#ffffff" opacity=".14"/>')
+    b += (f'<path d="M2010,1150 L600,196 L1420,196 Z" fill="#cfe4ff" opacity=".16"/>'
+          f'<path d="M2010,1150 L760,210 L1300,210 Z" fill="#eaf4ff" opacity=".16"/>'
+          f'<path d="M2010,1150 L900,226 L1160,226 Z" fill="#ffffff" opacity=".13"/>')
     r = random.Random(17)
     for i in range(44):
         u = r.uniform(.04, 1.0)
-        px = 2010 - u * 1640
-        py = 1150 - u * (1150 - r.uniform(250, 556))
+        px = 2010 - u * (2010 - r.uniform(640, 1380))
+        py = 1150 - u * (1150 - 200)
         b += (f'<circle cx="{px+22*A.w(t,6+i*.3,i*.11):.0f}" cy="{py+((t*9+i*17)%40)-20:.0f}"'
               f' r="{r.uniform(1.8,4.2):.1f}" fill="#fff6dd" opacity="{r.uniform(.3,.85):.2f}"/>')
     s += SL(Z_SRED, b)
     # ── ряды голов: дальние мелкие, ближние крупные
     z = ""
-    for row, (yy, rr, n, col) in enumerate(((654, 26, 13, "#1a1f2a"),
-                                            (726, 33, 11, "#171c26"),
-                                            (814, 41, 9, "#141821"))):
+    for row, (yy, rr, n, col) in enumerate(((654, 26, 13, "#39405c"),
+                                            (726, 33, 11, "#2f3550"),
+                                            (814, 41, 9, "#252a42"))):
         rnd = random.Random(30 + row)
         for i in range(n):
             x = 120 + (W - 240) * (i + .5) / n + rnd.uniform(-16, 16)
             z += b3_golova(x, yy, rr, t, col, "#8fb4d8", i * .23 + row * .4, .9, 1.05)
     s += SL(Z_SRED, z)
     p = ""
-    for row, (yy, rr, n, col) in enumerate(((926, 52, 7, "#10141c"),
-                                            (1068, 68, 6, "#0b0e15"))):
+    for row, (yy, rr, n, col) in enumerate(((926, 52, 7, "#2b3250"),
+                                            (1068, 68, 6, "#222841"))):
         rnd = random.Random(60 + row)
         for i in range(n):
             x = 90 + (W - 180) * (i + .5) / n + rnd.uniform(-22, 22)
@@ -3145,6 +3158,21 @@ def ryad_kresel_smeh_i_strah(t):
         d += (f'<rect x="{-40+i*230:.0f}" y="0" width="140" height="560" rx="12"'
               f' fill="{BORDO2}" opacity=".5"/>')
     d += teplo(960, 240, 1100, 420, .26 * mig)
+    for i, bx in enumerate((250, 700, 1200, 1660)):
+        gor = .55 + .45 * abs(A.w(t, 5.4 + i, i * .2))
+        d += (f'<path d="M{bx-44:.0f},300 q44,-54 88,0 q-44,34 -88,0 Z" fill="url(#zol)" {o(5)}/>'
+              f'<rect x="{bx-9:.0f}" y="300" width="18" height="46" rx="6" fill="{MED}" {o(4)}/>')
+        d += teplo(bx, 290, 150, 130, .5 * gor)
+    for i, dx in enumerate((160, 560, 960, 1360, 1760)):
+        gor = .5 + .5 * abs(A.w(t, 6.2 + i, i * .17))
+        d += (f'<path d="M{dx:.0f},0 v54" stroke="{CHUGUN}" stroke-width="7"/>'
+              f'<ellipse cx="{dx:.0f}" cy="76" rx="56" ry="26" fill="{KREM}"'
+              f' opacity="{.45+.35*gor:.2f}" {o(5)}/>')
+        d += teplo(dx, 86, 140, 110, .34 * gor)
+    d += (f'<rect x="1700" y="150" width="190" height="400" rx="10" fill="#101620" {o(6)}/>'
+          f'<rect x="1716" y="166" width="158" height="368" rx="8" fill="{BORDO2}" {o(4)}/>'
+          f'<rect x="60" y="170" width="170" height="380" rx="10" fill="#101620" {o(6)}/>'
+          f'<rect x="74" y="186" width="142" height="348" rx="8" fill="{BORDO2}" {o(4)}/>')
     d += (f'<rect y="540" width="{W}" height="40" fill="#1d2430" {o(4)}/>')
     s += SL(Z_DAL, d)
     # ── зрители сидят В креслах: сперва фигуры, кресла ложатся поверх
@@ -3153,16 +3181,17 @@ def ryad_kresel_smeh_i_strah(t):
     for i, (fx, hh, kr, pl, ph) in enumerate(((160, 364, False, False, .0),
                                               (398, 348, False, True, .42),
                                               (636, 370, True, False, .8),
-                                              (874, 354, False, False, .25))):
+                                              (874, 354, False, False, .25))):  # noqa
         kach = 7.5 * A.w(t, .66, ph) + 3.2 * A.w(t, .33, ph * 1.4)
-        m += (f'<g transform="rotate({kach:.2f} {fx:.0f} 980)">'
-              + ob.figura(fx, 980, hh, t, "#161b26", "#cfe6ff", pl, ph, False, 1.0, kr)
+        col = "#2c3348" if i % 2 == 0 else "#434a66"
+        m += (f'<g transform="rotate({kach:.2f} {fx:.0f} 906)">'
+              + ob.figura(fx, 906, hh, t, col, "#dceeff", pl, ph, False, 1.0, kr)
               + f'</g>')
     # дети справа: вместо рук работает предмет — программка кинотеатра
     for i, (fx, hh, ph, otk) in enumerate(((1174, 334, .1, .0), (1412, 344, .5, .0),
                                            (1650, 328, .8, 1.0))):
-        m += ob.figura(fx, 980, hh, t, "#1a202c", "#cfe6ff", False, ph)
-        gy = 980 - hh * .80
+        m += ob.figura(fx, 906, hh, t, "#39405c", "#dceeff", False, ph)
+        gy = 906 - hh * .80
         if otk < .5:
             kch = 2.4 * A.w(t, 2.4, ph)
             m += (f'<g transform="rotate({kch:.2f} {fx:.0f} {gy+70:.0f})">'
@@ -3174,23 +3203,28 @@ def ryad_kresel_smeh_i_strah(t):
             # щель раздвигается: программка отходит, в зазор бьёт свет экрана
             sch = .18 + .82 * (.5 + .5 * math.sin(2 * math.pi * (t / 1.45)))
             a = -34 * sch
-            m += (f'<rect x="{fx-30:.0f}" y="{gy+10:.0f}" width="{60:.0f}" height="96"'
-                  f' fill="{SVET}" opacity="{(.3+.6*sch)*mig:.2f}"/>')
-            m += (f'<circle cx="{fx+8:.0f}" cy="{gy+26:.0f}" r="{5+4*sch:.1f}" fill="#fff6dd"'
-                  f' opacity="{.4+.6*sch:.2f}"/>')
             m += (f'<g transform="rotate({a:.1f} {fx-60:.0f} {gy+72:.0f})">'
                   f'<rect x="{fx-62:.0f}" y="{gy+16:.0f}" width="124" height="120" rx="8"'
                   f' fill="{BUMAGA}" {o(5)}/>'
                   f'<path d="M{fx-44:.0f},{gy+46:.0f} h88 M{fx-44:.0f},{gy+74:.0f} h70"'
                   f' stroke="{SEPIA2}" stroke-width="6" opacity=".7"/></g>')
+            # свет экрана бьёт В ЩЕЛЬ поверх программки — иначе приём не виден
+            shch = 5 + 15 * sch
+            for k in range(3):
+                m += (f'<path d="M{fx-50:.0f},{gy+18-k*5:.0f} l{100:.0f},{-shch*.7:.0f}'
+                      f' l0,{shch*(1-k*.3):.1f} l{-100:.0f},{shch*.7:.0f} Z"'
+                      f' fill="#fff8e2" opacity="{(.75-k*.22)*(.3+.7*sch)*mig:.2f}"/>')
+            m += teplo(fx, gy + 14, 70 + 40 * sch, 44, .5 * sch * mig)
+            m += (f'<circle cx="{fx+16:.0f}" cy="{gy+12:.0f}" r="{4+3*sch:.1f}"'
+                  f' fill="#fff6dd" opacity="{.5+.5*sch:.2f}"/>')
     # кресла ложатся поверх: из-за спинок видны головы и плечи — ряд сидит
     for i in range(8):
-        m += b3_kreslo(42 + i * 238, 820, 196, 300)
+        m += b3_kreslo(42 + i * 238, 746, 196, 310)
     s += SL(Z_SRED, m)
     # ── спинки переднего ряда и мигающий свет экрана
-    p = (f'<rect y="996" width="{W}" height="{H-996}" fill="#0a0d13"/>')
+    p = (f'<rect y="940" width="{W}" height="{H-940}" fill="#0a0d13"/>')
     for i in range(7):
-        p += (f'<path d="M{-80+i*300:.0f},1080 q130,-150 260,0 Z" fill="#101520" {o(5)}/>')
+        p += (f'<path d="M{-80+i*300:.0f},1080 q130,-180 260,0 Z" fill="#101520" {o(5)}/>')
     p += (f'<rect width="{W}" height="{H}" fill="#cfe4ff" opacity="{.09+.14*mig:.2f}"/>')
     p += teplo(960, 1080, 1200, 560, .3 * mig)
     p += baza.ramka_pp("oba", "#07090e", .5)
@@ -3209,8 +3243,12 @@ def budka_kinomehanika(t):
     d += baza.kladka(-40, 60, 2000, 700, 86, "#3a4150")
     d += (f'<rect y="0" width="{W}" height="60" fill="#232936" {o(5)}/>')
     okx, oky, okw, okh = 980, 300, 230, 196
-    d += (f'<rect x="{okx-22:.0f}" y="{oky-22:.0f}" width="{okw+44:.0f}" height="{okh+44:.0f}"'
-          f' rx="10" fill="url(#zhel)" {o(7)}/>')
+    d += (f'<rect x="{okx-34:.0f}" y="{oky-34:.0f}" width="{okw+68:.0f}" height="{okh+68:.0f}"'
+          f' rx="10" fill="{CHUGUN}" {o(8)}/>')
+    d += (f'<rect x="{okx-20:.0f}" y="{oky-20:.0f}" width="{okw+40:.0f}" height="{okh+40:.0f}"'
+          f' rx="8" fill="url(#zhel)" {o(5)}/>')
+    d += (f'<rect x="{okx-44:.0f}" y="{oky+okh+34:.0f}" width="{okw+88:.0f}" height="22"'
+          f' rx="8" fill="url(#zhel)" {o(5)}/>')
     d += (f'<rect x="{okx:.0f}" y="{oky:.0f}" width="{okw:.0f}" height="{okh:.0f}"'
           f' fill="#8a6a2e" {o(5)}/>')
     puls = .72 + .28 * (.5 + .5 * math.sin(2 * math.pi * (t * 1.05)))
@@ -3234,7 +3272,20 @@ def budka_kinomehanika(t):
     for i in range(4):
         d += (f'<path d="M{kx-96:.0f},{ky+272+i*16:.0f} h{192:.0f}" stroke="{SEPIA2}"'
               f' stroke-width="4" opacity=".45"/>')
+    d += (f'<path d="M{kx:.0f},{ky-10:.0f} v-26" stroke="{ZHELEZ}" stroke-width="7"/>')
     d += f'<circle cx="{kx:.0f}" cy="{ky-10:.0f}" r="9" fill="url(#zhel)" {o(4)}/></g>'
+    d += (f'<rect x="96" y="500" width="400" height="24" rx="8" fill="url(#derev)" {o(6)}/>'
+          f'<path d="M140,524 l26,40 M444,524 l-26,40" {o(5)} fill="none"/>')
+    for i in range(4):
+        jx = 150 + i * 94
+        d += (f'<ellipse cx="{jx:.0f}" cy="{470:.0f}" rx="42" ry="34" fill="url(#zhel)" {o(5)}/>'
+              f'<ellipse cx="{jx:.0f}" cy="{462:.0f}" rx="24" ry="19" fill="{ZHELEZ}" opacity=".7"/>')
+    d += (f'<rect x="120" y="640" width="340" height="22" rx="8" fill="url(#derev)" {o(5)}/>')
+    for i in range(3):
+        jx = 180 + i * 104
+        d += (f'<rect x="{jx-40:.0f}" y="{564:.0f}" width="80" height="76" rx="7"'
+              f' fill="{CHUGUN}" {o(5)}/>'
+              f'<path d="M{jx-30:.0f},{600:.0f} h60" stroke="{ZHELEZ}" stroke-width="6"/>')
     s += SL(Z_DAL, d)
     # ── луч от проектора в окошко
     b = (f'<path d="M806,700 L{okx:.0f},{oky+10:.0f} L{okx:.0f},{oky+okh-10:.0f} Z"'
@@ -3270,9 +3321,10 @@ def budka_kinomehanika(t):
     m += (f'<path d="M420,636 q60,-20 134,30" fill="none" stroke="{PLENKA}" stroke-width="11"/>')
     s += SL(Z_SRED, m)
     # ── ближний край стола с бобинами
-    p = (f'<rect y="1022" width="{W}" height="{H-1022}" fill="#201f1e" {o(6)}/>')
-    p += b3_katushka(1498, 984, 120, t, .55, "#5a5f66")
-    p += b3_katushka(1744, 1006, 94, t, -.8, "#5a5f66")
+    p = (f'<rect y="996" width="{W}" height="{H-996}" fill="#201f1e" {o(6)}/>')
+    p += f'<rect y="988" width="{W}" height="18" fill="#35312c" {o(4)}/>'
+    p += b3_katushka(1498, 1066, 112, t, .55, "#5a5f66")
+    p += b3_katushka(1742, 1086, 88, t, -.8, "#5a5f66")
     p += baza.ramka_pp("levo", "#0c0b0a", .4)
     s += SL(Z_PERED, p)
     s += baza.vinetka(.48)
@@ -3346,8 +3398,9 @@ def kassa_i_lishniy_biletik(t):
                                               (568, 306, True, False, .66),
                                               (668, 316, False, False, .18))):
         per = 7 * A.w(t, 1.35, ph)
+        col = "#2b2636" if i % 2 == 0 else "#47405c"
         m += (f'<g transform="translate({per:.1f},{-abs(per)*.35:.1f})">'
-              + ob.figura(fx, 1014, hh, t, "#2b2636", "#f6d6a0", pl, ph, False, 1.0, kr)
+              + ob.figura(fx, 1014, hh, t, col, "#ffe4b4", pl, ph, False, 1.0, kr)
               + '</g>')
     # парень у входа: лишний билетик над головой трепещет
     m += ob.figura(788, 1020, 344, t, "#242c36", "#f6d6a0", False, .5)
@@ -3390,11 +3443,18 @@ def ulica_idet_v_kino(t):
               f' fill="#33261a"/>')
     s += SL(Z_DAL, d)
     # ── дома и штакетник с калитками
-    m = ""
-    for i, (hx, hw, seed, dy) in enumerate(((-130, 470, 2, 0), (310, 420, 5, 26),
-                                            (720, 450, 8, -14), (1150, 410, 11, 20),
-                                            (1560, 480, 14, -8))):
-        m += b3_dom67(hx, 712 + dy, hw * .80, t, seed, i % 2 == 0)
+    # глухая зелень за штакетником: без неё в просветы между усадьбами
+    # светит небо и дома читаются навесами на пустом каркасе
+    m = f'<rect y="560" width="{W}" height="260" fill="#2c3f2d"/>'
+    r0 = random.Random(31)
+    for i in range(22):
+        m += (f'<ellipse cx="{-40+i*92:.0f}" cy="{r0.uniform(596,700):.0f}"'
+              f' rx="{r0.uniform(62,96):.0f}" ry="{r0.uniform(48,74):.0f}"'
+              f' fill="{"#36502f" if i % 2 else "#2a4228"}" opacity=".95"/>')
+    for i, (hx, hw, seed, dy) in enumerate(((-150, 490, 2, 0), (330, 440, 5, 22),
+                                            (750, 460, 8, -12), (1160, 440, 11, 18),
+                                            (1560, 500, 14, -6))):
+        m += b3_dom67(hx, 792 + dy, hw * .80, t, seed, i % 2 == 0)
     m += (f'<rect x="-30" y="748" width="1990" height="22" rx="8" fill="url(#derev)" {o(5)}/>')
     for i in range(44):
         sx = -30 + i * 46
@@ -3426,7 +3486,8 @@ def ulica_idet_v_kino(t):
                                               (742, 326, True, False, .75),
                                               (938, 340, False, False, .4))):
         x = fx + hod * .5
-        p += ob.figura(x, 1024, hh, t, "#2a2334", "#f8d8a2", pl, ph, False, 1.0, kr)
+        p += ob.figura(x, 1024, hh, t, "#2a2334" if i % 2 == 0 else "#473c58",
+                       "#ffe0ab", pl, ph, False, 1.0, kr)
         pod = 8 * A.w(t, .7, ph)                 # подол колышется на ходу
         hip = 1024 - hh * .40
         p += (f'<path d="M{x-hh*.145:.0f},{hip:.0f} q{hh*.145:.0f},{12+pod:.0f}'
@@ -3470,7 +3531,11 @@ def tetradka_pesennik(t):
         d += (f'<ellipse cx="{px:.0f}" cy="538" rx="{r_:.0f}" ry="{r_*.34:.0f}"'
               f' fill="#f2ead8" {o(4)}/>'
               f'<ellipse cx="{px:.0f}" cy="534" rx="{r_*.62:.0f}" ry="{r_*.2:.0f}"'
-              f' fill="{MED}" opacity=".55"/>')
+              f' fill="{MED}" opacity=".55"/>'
+              f'<ellipse cx="{px-r_*.20:.0f}" cy="530" rx="{r_*.26:.0f}"'
+              f' ry="{r_*.13:.0f}" fill="{ob.ALYJ2}" opacity=".85"/>'
+              f'<ellipse cx="{px+r_*.22:.0f}" cy="532" rx="{r_*.22:.0f}"'
+              f' ry="{r_*.11:.0f}" fill="{ZEL2}" opacity=".85"/>')
     d += baza.svecha(1790, 430, t, .2, 1.0, 92)
     d += ob.bokal(1716, 544, t, .66, .3)
     s += SL(Z_DAL, d)
@@ -3485,8 +3550,12 @@ def tetradka_pesennik(t):
          f'<path d="M-56,-24 h112 M-56,0 h96 M-56,22 h112" stroke="#8d9bb0" stroke-width="5"/>'
          f'</g>')
     s += SL(Z_SRED, m)
-    # ── тетрадка крупно
-    p = ten(470, 1006, 420, 34, .55)
+    # ── тетрадка крупно, на столе
+    p = (f'<path d="M-40,1080 q60,-150 300,-168 q420,-28 740,8 L1000,1080 Z"'
+         f' fill="url(#derev)" {o(7)}/>')
+    p += (f'<path d="M-40,938 q320,-40 700,-16" fill="none" stroke="#b78a52"'
+          f' stroke-width="9" opacity=".5"/>')
+    p += ten(470, 1006, 420, 34, .55)
     p += (f'<g transform="rotate(-3 470 700)">'
           f'<rect x="60" y="300" width="840" height="680" rx="18" fill="{SINKA}" {o(8)}/>'
           f'<rect x="60" y="300" width="840" height="680" rx="18" fill="#101a2a" opacity=".25"/>'
@@ -3560,7 +3629,12 @@ def malchik_s_samokatom_i_devushka_s_k(t):
     s = baza.nebo("den", t, False)
     s += baza.oblaka(t, 140, 4, 61, .4, "#eef4f9", 6.0)
     # ── дальний план: афишная тумба и тополя
-    d = (f'<rect x="1480" y="300" width="440" height="520" fill="#60697a" opacity=".7" {o(4)}/>')
+    d = (f'<rect x="1430" y="300" width="500" height="630" fill="#60697a" opacity=".75" {o(4)}/>')
+    for e in range(3):
+        for c in range(3):
+            d += (f'<rect x="{1466+c*150:.0f}" y="{340+e*150:.0f}" width="92" height="94" rx="5"'
+                  f' fill="{SVET}" opacity="{.18+.26*abs(A.w(t,8+e,c*.3)):.2f}" {o(3)}/>')
+    d += (f'<rect x="1410" y="276" width="540" height="34" rx="8" fill="#4e5666" {o(4)}/>')
     d += ten(1300, 834, 110, 20, .45)
     d += (f'<rect x="1222" y="470" width="156" height="364" rx="10" fill="url(#derev)" {o(6)}/>'
           f'<ellipse cx="1300" cy="470" rx="92" ry="26" fill="{DOSKA2}" {o(5)}/>'
@@ -3579,9 +3653,11 @@ def malchik_s_samokatom_i_devushka_s_k(t):
         m += (f'<rect x="{40+i*300:.0f}" y="240" width="190" height="300" rx="8"'
               f' fill="#2d3a46" opacity=".5" {o(5)}/>'
               f'<path d="M{48+i*300:.0f},252 l60,120" stroke="#ffffff" stroke-width="12" opacity=".16"/>')
-    m += (f'<rect x="-40" y="860" width="1300" height="46" rx="8" fill="{SHTUK2}" {o(5)}/>')
-    m += f'<rect y="900" width="{W}" height="{H-900}" fill="#73695d"/>'
-    m += (f'<path d="M-20,922 q960,-30 1940,0 L1920,1080 L0,1080 Z" fill="#80766a" opacity=".8"/>')
+    m += (f'<rect x="-40" y="866" width="1300" height="58" rx="8" fill="{SHTUK2}" {o(6)}/>')
+    m += f'<rect y="918" width="{W}" height="{H-918}" fill="#73695d"/>'
+    m += (f'<path d="M-20,940 q960,-30 1940,0 L1920,1080 L0,1080 Z" fill="#80766a" opacity=".8"/>')
+    m += (f'<path d="M-20,962 q480,-14 960,-6 q480,8 980,10" fill="none" stroke="#5f574c"'
+          f' stroke-width="5" opacity=".45"/>')
     s += SL(Z_SRED, m)
     # ── мальчик с самодельным самокатом: катается туда-сюда
     p = ""
@@ -3617,12 +3693,16 @@ def malchik_s_samokatom_i_devushka_s_k(t):
               f' opacity=".92"/>')
     p += (f'<path d="M{gx-gh*.14:.0f},{hip+18:.0f} q{gh*.14:.0f},{16-pod:.0f} {gh*.28:.0f},0"'
           f' fill="none" stroke="#ffe0ae" stroke-width="5" opacity=".5"/>')
-    p += (f'<path d="M{gx-gh*.10:.0f},{gb-gh*.84:.0f} q{-gh*.09:.0f},{gh*.18:.0f}'
-          f' {-gh*.05:.0f},{gh*.38:.0f}" fill="none" stroke="#6a4a2c" stroke-width="18"'
-          f' stroke-linecap="round"/>')
-    p += (f'<path d="M{gx-gh*.15:.0f},{gb-gh*.46:.0f} q{gh*.05:.0f},{gh*.06:.0f}'
-          f' {-gh*.01:.0f},{gh*.09:.0f}" fill="none" stroke="{ob.ALYJ}" stroke-width="11"'
-          f' stroke-linecap="round"/>')
+    # коса: от ВИСКА вниз по плечу, к концу тоньше, на конце бант
+    for k, (wd, t0, t1) in enumerate(((22, .00, .34), (17, .30, .60), (12, .56, .82))):
+        p += (f'<path d="M{gx-gh*(.12+.015*k):.0f},{gb-gh*(.80-.22*t0):.0f}'
+              f' q{-gh*.05:.0f},{gh*.12:.0f} {gh*.012:.0f},{gh*(.22*(t1-t0)+.04):.0f}"'
+              f' fill="none" stroke="{"#7a5733" if k % 2 == 0 else "#64462a"}"'
+              f' stroke-width="{wd}" stroke-linecap="round"/>')
+    bx_ = gx - gh * .13
+    by_ = gb - gh * .80 + gh * .26
+    p += (f'<path d="M{bx_-16:.0f},{by_:.0f} q16,-16 32,0 q-16,16 -32,0 Z" fill="{ob.ALYJ}" {o(4)}/>'
+          f'<circle cx="{bx_:.0f}" cy="{by_:.0f}" r="6" fill="{ob.ALYJ2}"/>')
     # ── золотые кружки под цифры возраста всплывают над обоими
     for i, (cx, t0) in enumerate(((mx + 20, .4), (gx, 1.0))):
         vs = A.out(A.seg(t, t0, .8))
@@ -3630,6 +3710,8 @@ def malchik_s_samokatom_i_devushka_s_k(t):
             continue
         cy = 640 - 110 * vs - 16 * A.w(t, 2.6, i * .4)
         p += (f'<g opacity="{vs:.2f}">{teplo(cx, cy, 160, 160, .5)}'
+              f'<path d="M{cx:.0f},{cy+66:.0f} v{(1 if i else 1)*96:.0f}" stroke="url(#zol)"'
+              f' stroke-width="5" stroke-dasharray="10 9" opacity=".8"/>'
               f'<circle cx="{cx:.0f}" cy="{cy:.0f}" r="{70*vs:.0f}" fill="url(#zol)" {o(6)}/>'
               f'<circle cx="{cx-22:.0f}" cy="{cy-24:.0f}" r="{17*vs:.0f}" fill="#fff6cf"'
               f' opacity=".6"/></g>')
@@ -3657,6 +3739,19 @@ def kolyaska_i_yubileynyy_pirog(t):
               f' opacity="{(.4+.35*abs(A.w(t,8+i,i*.2))) if on else .3:.2f}" {o(4)}/>')
     d += (f'<rect x="700" y="420" width="470" height="420" rx="10" fill="#1d2430" {o(7)}/>'
           f'<rect x="676" y="376" width="518" height="56" rx="10" fill="{BETON2}" {o(6)}/>')
+    for bx in (300, 1420):                   # балконы по сторонам подъезда
+        for i in range(3):
+            d += (f'<rect x="{bx:.0f}" y="{250+i*192:.0f}" width="230" height="26" rx="7"'
+                  f' fill="{BETON2}" {o(5)}/>'
+                  f'<path d="M{bx+10:.0f},{250+i*192:.0f} v-62 M{bx+114:.0f},{250+i*192:.0f} v-62'
+                  f' M{bx+220:.0f},{250+i*192:.0f} v-62" stroke="{BETON2}" stroke-width="7"/>')
+    d += (f'{ten(1620, 824, 120, 16, .5)}'
+          f'<rect x="1546" y="744" width="20" height="78" fill="{DOSKA2}" {o(4)}/>'
+          f'<rect x="1672" y="744" width="20" height="78" fill="{DOSKA2}" {o(4)}/>'
+          f'<rect x="1530" y="722" width="180" height="24" rx="8" fill="url(#derev)" {o(5)}/>')
+    for i in range(3):
+        d += (f'<ellipse cx="{520+i*180:.0f}" cy="{824:.0f}" rx="74" ry="56"'
+              f' fill="{TRAV68}" opacity=".9" {o(5)}/>')
     d += teplo(935, 640, 260, 230, .45)
     d += (f'<rect x="724" y="452" width="200" height="388" rx="8" fill="url(#derev)" {o(5)}/>'
           f'<rect x="944" y="452" width="200" height="388" rx="8" fill="url(#derev)" {o(5)}/>')
@@ -3692,12 +3787,16 @@ def kolyaska_i_yubileynyy_pirog(t):
         m += '</g>'
     if per > .01:
         m += (f'<g opacity="{per:.2f}" transform="translate({cx:.0f},{cy:.0f}) scale({.86+.14*per:.3f})">')
+        for lx in (-310, 250):
+            m += (f'<rect x="{lx:.0f}" y="-26" width="46" height="150" rx="8"'
+                  f' fill="url(#derev)" {o(6)}/>')
+        m += (f'<rect x="-300" y="86" width="606" height="22" rx="8" fill="{DOSKA2}" {o(5)}/>')
         m += ob.stol_prazdnik(-390, -30, 780, t)
         m += '</g>'
         # пирог со свечками
-        px, py = cx, cy - 46
+        px, py = cx, cy - 98
         m += (f'<g opacity="{per:.2f}">')
-        m += ten(px + 14, py + 46, 230, 24, .5)
+        m += ten(px + 16, py + 82, 250, 22, .55)
         m += (f'<path d="M{px-270:.0f},{py:.0f} q0,84 270,84 q270,0 270,-84 l0,-104'
               f' q0,-84 -270,-84 q-270,0 -270,84 Z" fill="url(#med)" {o(7)}/>')
         m += (f'<ellipse cx="{px:.0f}" cy="{py-104:.0f}" rx="270" ry="84" fill="url(#krem)" {o(6)}/>')
@@ -3706,10 +3805,11 @@ def kolyaska_i_yubileynyy_pirog(t):
             a = 2 * math.pi * i / 14
             m += (f'<circle cx="{px+248*math.cos(a):.0f}" cy="{py-6+76*math.sin(a):.0f}" r="12"'
                   f' fill="{ob.ALYJ}" opacity=".9"/>')
-        tochki = sorted(b3_tochki_60(px, py - 128, 176), key=lambda q: q[1])
+        # точки лежат НА верхней плоскости пирога (эллипс rx 270, ry 84)
+        tochki = sorted(b3_tochki_60(px, py - 112, 158), key=lambda q: q[1])
         for i, (sx, sy) in enumerate(tochki):
-            gor = A.out(A.seg(t, 2.4 + i * .04, .35))
-            m += b3_svechka(sx, sy, 30, t, gor * per, i * .13, 10)
+            gor = A.out(A.seg(t, 2.1 + i * .045, .3))
+            m += b3_svechka(sx, sy, 26, t, gor * per, i * .13, 10)
         m += teplo(px, py - 200, 480, 340, .55 * per)
         m += '</g>'
     s += SL(Z_SRED, m)
@@ -3729,7 +3829,14 @@ def barhatnyy_albom_s_ugolkami(t):
     s = SL(Z_NEBO, f'<rect width="{W}" height="{H}" fill="#191520"/>')
     # ── комната за альбомом: тёплое окно и ёлка пятном
     d = f'<rect width="{W}" height="{H}" fill="#241d2c" opacity=".9"/>'
-    d += baza.okno_izby(1420, 150, 380, 320, t, None, .35, True, True)
+    d += baza.okno_izby(1420, 150, 380, 320, t, None, 0.0, True, True)
+    d += (f'<rect x="1386" y="128" width="448" height="18" rx="8" fill="url(#derev)" {o(5)}/>'
+          f'<circle cx="1392" cy="137" r="14" fill="{MED}" {o(4)}/>'
+          f'<circle cx="1828" cy="137" r="14" fill="{MED}" {o(4)}/>')
+    d += baza.zanaveska(1434, 146, 300, 84, "#e2d4b6", t, 1)
+    d += baza.zanaveska(1786, 146, 300, 84, "#e2d4b6", t, -1)
+    d += (f'<rect x="1396" y="470" width="428" height="26" rx="8" fill="url(#derev)" {o(5)}/>')
+    d += baza.krynka(1470, 468, .7)
     d += teplo(1610, 310, 520, 440, .5)
     d += ob.elka(300, 620, 480, t, True, True, 9)
     d += (f'<rect y="620" width="{W}" height="24" fill="#2e2535" opacity=".9"/>')
@@ -6766,7 +6873,14 @@ def tri_kartochki_drugih_video(t):
                 f' stroke="{ob.ZOLOTO}" stroke-width="5" opacity="{(1-u)*.2:.2f}"/>')
     dal += ob.konfetti(t, 18, 9, .35, .6)
     s += SL(Z_DAL, dal)
-    s += SL(Z_SRED, b5_kartochka_video(350, 300, 540, 700, t, vst, .0, 0))
+    # кремовое паспарту под карточкой: красное на красном не читалось
+    s += SL(Z_SRED,
+            f'<g opacity="{vst:.2f}">'
+            + teplo(620, 650, 460, 540, .55)
+            + f'<rect x="324" y="274" width="592" height="752" rx="18"'
+              f' fill="#f1e4c6" opacity=".92" {o(7)}/>'
+            + '</g>'
+            + b5_kartochka_video(350, 300, 540, 700, t, vst, .0, 0))
     # ХОЗЯЙКА ГОДА справа, развёрнута к карточке
     XC = 1420
     per = (f'<g transform="matrix(-1,0,0,1,{2*XC:.0f},0)">'
@@ -6939,9 +7053,32 @@ def b6_varezhka(x, y, s_, t, szhat=0.0, ph=0.0, zerk=False, dr=1.6):
     # большой палец сбоку
     g += (f'<path d="M-84,-18 q-62,-24 -70,-84 q8,-36 44,-24 q36,14 42,68 z"'
           f' fill="url(#rush)" {o(6)}/>')
+    # РЕЗИНКА МАНЖЕТЫ: вертикальные рубчики у запястья
+    g += (f'<path d="M-90,36 q90,30 180,0 l-4,66 q-86,28 -172,-2 z"'
+          f' fill="#e3d2a8" {o(6)}/>')
+    for i in range(11):
+        g += (f'<path d="M{-78+i*16},44 v62" fill="none" stroke="#b9a87e"'
+              f' stroke-width="7" opacity=".55"/>')
+    # ВЯЗКА: ёлочка по всему полю, не просто линии
     for i in range(5):
-        g += (f'<path d="M-72,{-128 + i*50} q74,22 148,0" fill="none" stroke="#cdb98d"'
-              f' stroke-width="7" opacity=".5"/>')
+        yy = -128 + i * 50
+        g += (f'<path d="M-72,{yy} q74,22 148,0" fill="none" stroke="#c2ae82"'
+              f' stroke-width="7" opacity=".6"/>')
+        for k in range(6):
+            xx = -66 + k * 28
+            g += (f'<path d="M{xx},{yy+20} l13,-17 l13,17" fill="none" stroke="#cdb98d"'
+                  f' stroke-width="5" opacity=".5"/>')
+    # ЖАККАРДОВАЯ ПОЛОСА — красный акцент, по ней варежка и опознаётся
+    g += (f'<path d="M-82,-54 q82,26 164,0 l-3,46 q-80,26 -158,-2 z"'
+          f' fill="{ob.ALYJ}" opacity=".8" {o(4)}/>')
+    # ромбики, а не зигзаг: острая «ёлочка» на красной полосе читалась зубами
+    for k in range(7):
+        cx_ = -62 + k * 24
+        g += (f'<path d="M{cx_},-46 l11,13 l-11,13 l-11,-13 z" fill="#f6e2c2"'
+              f' opacity=".85"/>')
+    # ШОВ большого пальца
+    g += (f'<path d="M-84,-18 q-40,-26 -50,-78" fill="none" stroke="#b9a87e"'
+          f' stroke-width="7" opacity=".7"/>')
     g += f'<ellipse cx="-24" cy="-110" rx="40" ry="26" fill="#ffffff" opacity=".22"/>'
     # верх ладони загибается вниз — «кулак»
     if szhat > .01:
@@ -7292,7 +7429,8 @@ def moneta_pod_tarelkoy(t):
     for i in range(3):
         k = A.out(A.seg(t, 1.05 + i * .32, .5))
         if k > .01:
-            per += b6_moneta(500 + i * 104, 836 - 210 * (1 - k), 38, 23, t, i * .3, min(1.0, k * 1.6))
+            per += b6_moneta(500 + i * 128, 836 - 210 * (1 - k), 56, 34, t, i * .3, min(1.0, k * 1.6))
+            per += baza.teplo(500 + i * 128, 836 - 210 * (1 - k), 120, 100, .30)
     per += b6_tarelka(1080, 724, 340, t, pod)
     per += baza.ramka_pp("levo", "#0c0a10", .5)
     s += SL(Z_PERED, per)
@@ -7325,15 +7463,25 @@ def moneta_katitsya_cherez_god(t):
         y = 862 - i * 4
         w_ = 132 - i * 1.6
         gor = 1.0 if cur > i + .35 else (.24 + .5 * A.seg(t, .3 + i * .45, .3))
+        nak = (-4.5, 3.0, -2.0, 5.0, -3.5, 1.5)[i % 6]
         sred += ten(x + 6, y + 34, w_ * .55, 16, .45)
+        sred += f'<g transform="rotate({nak} {x} {y})">'
         sred += (f'<rect x="{x - w_/2:.0f}" y="{y - 26:.0f}" width="{w_:.0f}" height="52"'
                  f' rx="10" fill="url(#plit)" {o(5)}/>')
+        # щербины и шов: камень, а не чёрточка схемы
+        sred += (f'<path d="M{x - w_/2 + 6:.0f},{y + 20:.0f} h{w_ - 12:.0f}" fill="none"'
+                 f' stroke="#43392c" stroke-width="6" opacity=".55"/>')
+        sred += (f'<circle cx="{x - w_*.28:.0f}" cy="{y + 6:.0f}" r="5" fill="#43392c"'
+                 f' opacity=".4"/>'
+                 f'<circle cx="{x + w_*.22:.0f}" cy="{y - 4:.0f}" r="4" fill="#43392c"'
+                 f' opacity=".35"/>')
         sred += (f'<rect x="{x - w_/2 + 8:.0f}" y="{y - 19:.0f}" width="{w_ - 16:.0f}"'
                  f' height="38" rx="7" fill="{ob.ZOLOTO}" opacity="{.18 + .55*gor:.2f}"/>')
         sred += (f'<path d="M{x - w_/2 + 11:.0f},{y - 14:.0f} h{w_*.5:.0f}" fill="none"'
                  f' stroke="#ffffff" stroke-width="5" opacity="{.22 + .4*gor:.2f}"/>')
         if gor > .9:
             sred += baza.teplo(x, y, w_ * .9, 70, .3)
+        sred += '</g>'
         if cur > i + .6:
             pop = A.out(min(1.0, (cur - i - .6) * 3.2))
             sred += b6_moneta(x, y - 36, 22 * pop, 14 * pop, t, i * .17, 1.0, False)
@@ -7411,6 +7559,7 @@ def rebenok_zaglyadyvaet_pod_tarelku(t):
              f' stroke="{ob.ALYJ}" stroke-width="7" opacity=".35"/>')
     sred += b6_moneta(760, 640, 52, 30, t, .1)
     sred += baza.teplo(760, 636, 210, 150, .34 + .3 * bl)
+    sred += ten(1090, 660, 300, 34, .55)      # контакт со столом
     sred += b6_tarelka(1090, 616, 310, t, pod)
     s += SL(Z_SRED, sred)
 
@@ -7421,8 +7570,10 @@ def rebenok_zaglyadyvaet_pod_tarelku(t):
     per += (f'<path d="M{rx-250:.0f},{H + 20} q10,-230 70,-300 q120,-96 300,-30'
             f' q90,54 96,330 z" fill="#1a1410" stroke="#f2c47c" stroke-width="5"'
             f' stroke-opacity=".55"/>')
-    per += (f'<circle cx="{rx + 6:.0f}" cy="{ry - 250:.0f}" r="118" fill="#1a1410"'
-            f' stroke="#f2c47c" stroke-width="5" stroke-opacity=".55"/>')
+    per += (f'<circle cx="{rx + 6:.0f}" cy="{ry - 368:.0f}" r="118" fill="#1a1410"'
+            f' stroke="#f2c47c" stroke-width="6" stroke-opacity=".8"/>')
+    per += (f'<path d="M{rx-104:.0f},{ry-274:.0f} q110,-54 220,0" fill="none"'
+            f' stroke="#f2c47c" stroke-width="6" stroke-opacity=".7"/>')
     per += baza.ramka_pp("pravo", "#120d09", .5)
     s += SL(Z_PERED, per)
     s += SL(Z_FIX, baza.teplo(900, 560, 900, 700, .3) + baza.vinetka(.52))
@@ -7547,9 +7698,13 @@ def blagopoluchie_uhodit_za_kupyuroy(t):
     for i, (sx, sy) in enumerate(((430, 650), (620, 500), (756, 660))):
         per += (f'<path d="M{sx},{sy} Q{(sx + kx)/2:.0f},{sy - 160 - i*50:.0f} {kx:.0f},{ky:.0f}"'
                 f' fill="none" stroke="{ob.ZOLOTO}" stroke-width="{7 - i}"'
-                f' stroke-linecap="round" stroke-dasharray="26 16"'
-                f' stroke-dashoffset="{-t * 120:.0f}" opacity="{.35 + .5*uh:.2f}"/>')
-    per += b6_kupyura(kx, ky, 300, 138, -11 + 16 * uh, max(0.0, 1.0 - A.seg(t, 1.5, .8)))
+                f' stroke-linecap="round" opacity="{.45 + .45*uh:.2f}"/>')
+        # блик, бегущий по нити: живое без пунктира
+        per += (f'<path d="M{sx},{sy} Q{(sx + kx)/2:.0f},{sy - 160 - i*50:.0f} {kx:.0f},{ky:.0f}"'
+                f' fill="none" stroke="#fff3c8" stroke-width="{4 - i*.6:.1f}"'
+                f' stroke-linecap="round" stroke-dasharray="40 320"'
+                f' stroke-dashoffset="{-t * 150:.0f}" opacity=".8"/>')
+    per += b6_kupyura(kx, ky, 300, 138, -11 + 16 * uh, max(0.0, 1.0 - A.seg(t, 2.9, .7)))
     per += baza.ramka_pp("levo", "#0b0a12", .5)
     s += SL(Z_PERED, per)
     s += SL(Z_FIX, baza.vinetka(.46))
@@ -8214,15 +8369,22 @@ def b7_vesh(x, y, w_, h_, col, t, ph=0.0, cvetochek=False, amp=6.0):
           f' stroke="#9aa3ab" stroke-width="7"/>')
     g += (f'<path d="M{x-w_*.46:.0f},{y+34:.0f} L{x:.0f},{y+4:.0f} L{x+w_*.46:.0f},{y+34:.0f}"'
           f' fill="none" stroke="#6f5436" stroke-width="12" stroke-linecap="round"/>')
-    sl_, sr_ = x - w_ * .26, x + w_ * .26
+    sl_, sr_ = x - w_ * .30, x + w_ * .30
     sy_ = y + 42
     wl_, wr_ = x - w_ * .21, x + w_ * .21
     wy_ = y + 42 + h_ * .34
     hl_, hr_ = x - w_ * .56 - kach * .3, x + w_ * .56 + kach * .3
     hy_ = y + 42 + h_
     for sgn in (-1, 1):
-        g += (f'<ellipse cx="{x + sgn*w_*.27:.0f}" cy="{sy_+22:.0f}" rx="{w_*.09:.0f}"'
-              f' ry="{h_*.07:.0f}" fill="{col}" {o(5)}/>')
+        # РУКАВ: выходит за линию плеча и свисает — иначе платье без плеч
+        g += (f'<path d="M{x + sgn*w_*.22:.0f},{sy_+4:.0f}'
+              f' q{sgn*w_*.26:.0f},{-h_*.02:.0f} {sgn*w_*.34:.0f},{h_*.10:.0f}'
+              f' q{sgn*w_*.03:.0f},{h_*.16:.0f} {-sgn*w_*.07:.0f},{h_*.19:.0f}'
+              f' q{-sgn*w_*.13:.0f},{-h_*.08:.0f} {-sgn*w_*.27:.0f},{-h_*.19:.0f} z"'
+              f' fill="{col}" {o(6)}/>')
+        g += (f'<path d="M{x + sgn*w_*.27:.0f},{sy_+h_*.27:.0f}'
+              f' q{sgn*w_*.05:.0f},{h_*.02:.0f} {sgn*w_*.10:.0f},{-h_*.01:.0f}"'
+              f' fill="none" stroke="#ffffff" stroke-width="6" opacity=".30"/>')
     g += (f'<path d="M{sl_:.0f},{sy_:.0f} Q{x:.0f},{y+16:.0f} {sr_:.0f},{sy_:.0f}'
           f' L{wr_:.0f},{wy_:.0f} Q{x+w_*.40:.0f},{y+42+h_*.72:.0f} {hr_:.1f},{hy_:.0f}'
           f' Q{x:.0f},{hy_+38:.0f} {hl_:.1f},{hy_:.0f}'
@@ -8482,6 +8644,11 @@ def stopka_belya_so_skatertyu(t):
     d += f'<rect x="-440" y="-340" width="{W+880}" height="{H+680}" fill="#17100a" opacity=".42"/>'
     d += baza.teplo(520, 120, 760, 460, .50)
     d += (f'<rect x="-440" y="-340" width="{W+880}" height="420" fill="#0b0705" opacity=".55"/>')
+    # холодный свет из двери справа: иначе весь кадр — коричневое на коричневом
+    for i, (rx_, op_) in enumerate(((760, .10), (560, .10), (380, .10), (230, .12))):
+        d += (f'<ellipse cx="1960" cy="520" rx="{rx_}" ry="{rx_*1.2:.0f}"'
+              f' fill="#5b86b4" opacity="{op_}"/>')
+    d += baza.luch(1650, -180, 320, 1180, t, .13)
     s += SL(Z_DAL, d)
 
     m = ""
@@ -8489,6 +8656,19 @@ def stopka_belya_so_skatertyu(t):
     m += f'<rect x="-40" y="828" width="{W+200}" height="46" rx="10" fill="url(#derev)" {o(8)}/>'
     m += f'<rect x="-40" y="874" width="{W+200}" height="26" fill="#3f2713" opacity=".8"/>'
     m += ten(760, 836, 620, 30, .55)
+    # РУШНИКИ стопкой на правом краю полки — красно-золотой акцент и опора
+    m += ten(1560, 834, 210, 24, .5)
+    for i in range(3):
+        yy = 824 - i * 44
+        col = (ob.ALYJ, RUSH, ob.ALYJ)[i]
+        m += (f'<rect x="{1398+i*8}" y="{yy-42:.0f}" width="340" height="44" rx="12"'
+              f' fill="{col}" {o(6)}/>')
+        m += (f'<path d="M{1412+i*8},{yy-28:.0f} h312" stroke="{ob.ZOLOTO}"'
+              f' stroke-width="7" opacity=".8"/>')
+    # свешенный конец рушника — полка читается как полка, а не как линия
+    m += (f'<path d="M1420,824 q-12,78 10,150 q34,16 56,-6 q-16,-72 -4,-144 z"'
+          f' fill="{ob.ALYJ}" {o(6)}/>'
+          f'<path d="M1428,948 h54" stroke="{ob.ZOLOTO}" stroke-width="9" opacity=".85"/>')
     # СТОПКА БЕЛЬЯ с синей каймой
     r = random.Random(4)
     for i in range(7):
@@ -8514,6 +8694,7 @@ def stopka_belya_so_skatertyu(t):
     for i in range(9):
         cx = 330 + i * 112
         m += (f'<path d="M{cx},500 q16,-22 32,0 q-16,22 -32,0 z" fill="{TKAN2}" opacity=".55"/>')
+    m += ten(1180, 586, 150, 22, .45)      # тень под встающим уголком: он не висит
     m += (f'<g transform="rotate({-ug:.1f} 1246 586)">'
           f'<path d="M1246,586 l-176,-30 q-10,-66 6,-126 l170,0 z" fill="url(#krem)" {o(6)}/>'
           f'<path d="M1246,470 l-160,8" stroke="#ffffff" stroke-width="9" opacity=".4"/></g>')
@@ -8612,6 +8793,7 @@ def tihaya_vannaya(t):
     d = b7_plitka(-440, -120, W + 880, POL + 140, 128, "b7e_pl")
     d += f'<rect x="-440" y="-340" width="{W+880}" height="{H+680}" fill="#16222e" opacity=".34"/>'
     d += baza.teplo(980, 60, 820, 420, .34)
+    d += baza.teplo(1790, 330, 460, 420, .52)   # свет лампы у двери
     d += f'<rect x="700" y="150" width="520" height="22" rx="8" fill="#c7d6e2" {o(5)}/>'
     for i in range(4):
         d += (f'<rect x="{740+i*110}" y="74" width="54" height="76" rx="10"'
@@ -8660,6 +8842,18 @@ def tihaya_vannaya(t):
             m += (f'<line x1="{sx-46}" y1="{yy}" x2="{sx+190}" y2="{yy}"'
                   f' stroke="#cdd8e0" stroke-width="11" stroke-linecap="round"/>')
         m += '</g>'
+    # ПОЛОТЕНЦЕ на сушилке — единственное тёплое пятно кадра (правило гаммы)
+    pk = 7 * A.w(t, 4.2, .2)
+    m += (f'<g transform="rotate({pk:.2f} {sx+68} {sy-334})">'
+          f'<path d="M{sx-34},{sy-346} h204 q10,8 0,18 h-204 q-10,-10 0,-18 z"'
+          f' fill="{ob.ZOLOTO2}" {o(5)}/>'
+          f'<path d="M{sx-28},{sy-330} h192 q14,122 -4,214 q-92,24 -184,0'
+          f' q-18,-92 -4,-214 z" fill="{ob.ALYJ}" {o(6)}/>'
+          f'<path d="M{sx-20},{sy-250} h176 M{sx-20},{sy-206} h176"'
+          f' stroke="{ob.ZOLOTO}" stroke-width="9" opacity=".85"/>'
+          f'<path d="M{sx-14},{sy-316} q88,22 172,0" fill="none" stroke="#f4b9a6"'
+          f' stroke-width="7" opacity=".5"/></g>')
+    m += baza.teplo(sx + 68, sy - 230, 330, 300, .40)
     # ВЕДРО с тряпкой
     vx, vy = 1480, POL
     m += ten(vx, vy + 8, 120, 22, .5)
@@ -8674,7 +8868,8 @@ def tihaya_vannaya(t):
           f'<path d="M{vx-20},{vy-240} q80,30 150,8" fill="none" stroke="#9fb6c6" stroke-width="8"/></g>')
     s += SL(Z_SRED, m)
 
-    f = baza._ramka_pp("oba", "#0b1118", .55)
+    f = baza.lampa(1778, 300, t, .66, True)
+    f += baza._ramka_pp("levo", "#0b1118", .55)
     s += SL(Z_PERED, f)
     s += SL(Z_FIX, baza._vinetka(.40))
     return s
@@ -8739,12 +8934,14 @@ def kuhnya_v_razgar_gotovki(t):
           f'<circle cx="{sx+428}" cy="{sy-43}" r="18" fill="url(#derev)" {o(4)}/>')
     # ХОЗЯЙКА со спины + ЛОЖКА идёт ко рту
     hx, hb = 1480, POL + 150
-    f += ob.figura(hx, hb, 640, t, "#2a2231", "#f2c477", True, ph=.3)
+    # тёплая подложка за спиной: без неё тёмная фигура сливалась с плитой
+    f += baza.teplo(hx, hb - 420, 330, 450, .40)
+    f += ob.figura(hx, hb, 640, t, "#241d2b", "#ffd089", True, ph=.3)
     f += (f'<path d="M{hx-116},{hb-470} q110,-34 220,6 l-6,170 q-110,30 -212,-4 z"'
           f' fill="url(#krem)" opacity=".85" {o(5)}/>')
     lo = A.ease(A.seg(t, .5, 1.6))
-    lx = hx - 240 + 190 * lo
-    ly = hb - 300 - 180 * lo
+    lx = hx - 430 + 150 * lo
+    ly = hb - 300 - 150 * lo
     f += (f'<g transform="translate({lx:.0f},{ly:.0f}) rotate({-28+22*lo:.1f})">'
           f'<rect x="-13" y="0" width="26" height="230" rx="13" fill="url(#zhel)" {o(6)}/>'
           f'<ellipse cx="0" cy="-22" rx="62" ry="44" fill="url(#zhel)" {o(7)}/>'
@@ -8765,8 +8962,21 @@ def nozhnicy_nad_pryadyu(t):
 
     d = b7_oboi(-40, 1100, "#44506b", 132, .16)
     d += baza.teplo(1600, 240, 560, 480, .46)
-    d += (f'<rect x="1500" y="180" width="300" height="420" rx="18" fill="url(#stekl)"'
-          f' opacity=".45" {o(7)}/>')
+    # ЗЕРКАЛО в раме, а не голый прямоугольник
+    d += (f'<rect x="1472" y="152" width="356" height="476" rx="24" fill="url(#med)" {o(8)}/>'
+          f'<rect x="1500" y="180" width="300" height="420" rx="14" fill="url(#stekl)"'
+          f' opacity=".55" {o(6)}/>'
+          f'<path d="M1530,560 l210,-330" stroke="#ffffff" stroke-width="30" opacity=".16"/>'
+          f'<path d="M1588,578 l180,-300" stroke="#ffffff" stroke-width="14" opacity=".12"/>')
+    d += (f'<rect x="1452" y="628" width="396" height="24" rx="8" fill="url(#derev)" {o(6)}/>'
+          f'<path d="M1500,652 l18,30 M1800,652 l-18,30" {o(5)} fill="none"/>')
+    # на полочке под зеркалом — гребень и две заколки, ножницы «из дома»
+    d += (f'<path d="M1520,628 h150 v-26 h-150 z" fill="url(#zhel)" {o(5)}/>')
+    for i in range(9):
+        d += (f'<line x1="{1528+i*17}" y1="628" x2="{1528+i*17}" y2="650"'
+              f' stroke="#4b5159" stroke-width="6" stroke-linecap="round"/>')
+    for i in range(2):
+        d += (f'<ellipse cx="{1720+i*54}" cy="618" rx="24" ry="9" fill="{ob.ZOLOTO}" {o(4)}/>')
     d += f'<rect x="120" y="190" width="320" height="24" rx="8" fill="url(#derev)" {o(5)}/>'
     for i in range(4):
         d += baza.krynka(180 + i * 86, 186, .4, "url(#krem)")
@@ -8814,8 +9024,8 @@ def nozhnicy_nad_pryadyu(t):
     vis = A.ease(A.seg(t, .4, 1.5))
     niz = A.out(A.seg(t, 2.6, 2.0))
     ny = 230 + 130 * vis + 210 * niz + 14 * A.w(t, 2.4)
-    f = baza.teplo(1180, ny + 120, 260, 220, .35)
-    f += b7_nozhnicy(1180, ny, t, 1.34, 10 + 5 * A.w(t, 3.2) - 12 * niz, 1.0 - .15 * niz)
+    f = baza.teplo(1046, ny + 120, 300, 260, .40)
+    f += b7_nozhnicy(1046, ny, t, 1.34, 10 + 5 * A.w(t, 3.2) - 12 * niz, 1.0 - .15 * niz)
     f += baza._ramka_pp("levo", "#080c13", .6)
     s += SL(Z_PERED, f)
     s += SL(Z_FIX, baza._vinetka(.46))
@@ -8884,7 +9094,9 @@ def mama_v_bigudi(t):
     # МАМА со спины: бигуди и косынка
     f = baza.teplo(1420, 540, 420, 520, .40)
     hx, hb = 1420, POL + 130
-    f += ob.figura(hx, hb, 690, t, "#4b3f5f", "#ffd79a", False, ph=.15)
+    f += (f'<ellipse cx="{hx}" cy="{hb-300}" rx="330" ry="470" fill="#1c1828"'
+          f' opacity=".52"/>')          # тёмная подложка разводит фигуру и обои
+    f += ob.figura(hx, hb, 690, t, "#2a2338", "#ffd79a", False, ph=.15)
     gy = hb - 690 * .80
     for i in range(8):
         p = A.out(A.seg(t, .3 + i * .22, .6))
@@ -8929,14 +9141,14 @@ def parikmaherskaya_pered_prazdnikom(t):
     # зеркальная стена
     for i in range(3):
         zx = 40 + i * 268
-        d += (f'<rect x="{zx}" y="150" width="226" height="330" rx="12" fill="url(#med)" {o(6)}/>'
-              f'<rect x="{zx+16}" y="166" width="194" height="298" rx="8" fill="#5a6c88"'
+        d += (f'<rect x="{zx}" y="110" width="226" height="286" rx="12" fill="url(#med)" {o(6)}/>'
+              f'<rect x="{zx+16}" y="126" width="194" height="254" rx="8" fill="#5a6c88"'
               f' opacity=".9" {o(4)}/>'
-              f'<path d="M{zx+36},{430} l120,-230" stroke="#ffffff" stroke-width="20" opacity=".17"/>')
+              f'<path d="M{zx+36},{352} l120,-196" stroke="#ffffff" stroke-width="20" opacity=".17"/>')
     # мишура по верху зеркал
     for i in range(16):
         gx = 50 + i * 50
-        gy = 136 + 18 * math.sin(i * .9)
+        gy = 98 + 16 * math.sin(i * .9)
         bl = .35 + .65 * abs(A.w(t, 1.4 + (i % 4) * .3, i * .13))
         d += (f'<circle cx="{gx}" cy="{gy:.0f}" r="17" fill="{[ob.ZOLOTO, ob.ALYJ][i%2]}"'
               f' opacity="{bl:.2f}"/>')
@@ -8965,13 +9177,13 @@ def parikmaherskaya_pered_prazdnikom(t):
         # колпак-сушуар накрывает голову
         gor = .45 + .55 * abs(A.w(t, 1.7 + i * .4, i * .2))
         m += baza.teplo(0, -570, 210, 160, gor * .8)
-        m += (f'<path d="M-128,-666 q128,-236 256,0 q-28,42 -128,42 q-100,0 -128,-42 z"'
+        m += (f'<path d="M-98,-648 q98,-182 196,0 q-22,36 -98,36 q-76,0 -98,-36 z"'
               f' fill="#cfd8e2" {o(7)}/>')
-        m += (f'<path d="M-104,-674 q104,-188 208,0 q-24,30 -104,30 q-80,0 -104,-30 z"'
+        m += (f'<path d="M-80,-656 q80,-146 160,0 q-18,26 -80,26 q-62,0 -80,-26 z"'
               f' fill="{SVET}" opacity="{gor*.6:.2f}"/>')
-        m += (f'<path d="M-90,-704 q90,-132 180,0" fill="none" stroke="#ffffff"'
+        m += (f'<path d="M-70,-682 q70,-104 140,0" fill="none" stroke="#ffffff"'
               f' stroke-width="10" opacity="{gor*.5:.2f}"/>')
-        m += f'<rect x="-18" y="-900" width="36" height="240" rx="10" fill="#8f98a3" {o(5)}/>'
+        m += f'<rect x="-15" y="-900" width="30" height="258" rx="10" fill="#8f98a3" {o(5)}/>'
         # журнал в руках не рисуем — журнал сам лежит на коленях и листается
         lst = ((t * .8 + i * .33) % 1.0)
         m += (f'<g transform="translate(60,-300)">'
@@ -9019,10 +9231,23 @@ def vnuk_s_dlinnoy_chelkoy(t):
     s = SL(Z_NEBO, b7_fon("b7j_f", "#3a4259", "#1f2531"))
 
     d = b7_oboi(10, POL - 10, "#4a556f", 122, .16)
-    d += (f'<rect x="1100" y="150" width="620" height="420" rx="12" fill="{TKAN}" opacity=".8" {o(6)}/>')
+    # КОВЁР НА СТЕНЕ: кайма, медальон и бахрома — было голое красное поле
+    d += (f'<rect x="1100" y="150" width="620" height="420" rx="8" fill="{TKAN}" {o(7)}/>')
+    d += (f'<rect x="1132" y="182" width="556" height="356" rx="4" fill="none"'
+          f' stroke="{ob.ZOLOTO}" stroke-width="9" opacity=".8"/>')
+    d += (f'<rect x="1160" y="210" width="500" height="300" rx="4" fill="#8d1b1c"'
+          f' opacity=".55"/>')
+    d += (f'<ellipse cx="1410" cy="360" rx="150" ry="112" fill="none"'
+          f' stroke="{ob.ZOLOTO}" stroke-width="11" opacity=".85"/>')
+    d += (f'<ellipse cx="1410" cy="360" rx="86" ry="62" fill="{ob.ZOLOTO2}" opacity=".5"/>')
     for i in range(4):
-        d += (f'<path d="M1130,{200+i*98} q290,52 580,0" fill="none" stroke="{ob.ZOLOTO}"'
-              f' stroke-width="8" opacity=".6"/>')
+        a_ = i * math.pi / 2 + math.pi / 4
+        d += (f'<path d="M{1410+math.cos(a_)*150:.0f},{360+math.sin(a_)*112:.0f}'
+              f' l{math.cos(a_)*52:.0f},{math.sin(a_)*40:.0f}" stroke="{ob.ZOLOTO}"'
+              f' stroke-width="8" opacity=".7" stroke-linecap="round"/>')
+    for i in range(22):
+        d += (f'<path d="M{1106+i*28},570 v26" stroke="{RUSH}" stroke-width="6"'
+              f' opacity=".8" stroke-linecap="round"/>')
     d += baza.okno_izby(170, 170, 330, 290, t, None, .4, True, True)
     d += b7_plintus(POL)
     s += SL(Z_DAL, d)
@@ -9047,10 +9272,10 @@ def vnuk_s_dlinnoy_chelkoy(t):
     # ЧЁЛКА: мальчик её сдувает
     sdv = max(0.0, A.w(t, 1.5)) ** 3
     for i in range(6):
-        cx0 = sx - 14 + i * 24
+        cx0 = sx + 22 + i * 17       # чёлка только надо лбом, череп не закрыт
         m += (f'<path d="M{cx0},{hy-84} q{30+66*sdv:.0f},{104-56*sdv:.0f}'
               f' {16+96*sdv:.0f},{192-92*sdv:.0f}" fill="none" stroke="#453750"'
-              f' stroke-width="26" stroke-linecap="round"/>')
+              f' stroke-width="19" stroke-linecap="round"/>')
         m += (f'<path d="M{cx0+8},{hy-78} q{28+62*sdv:.0f},{96-52*sdv:.0f}'
               f' {14+90*sdv:.0f},{178-86*sdv:.0f}" fill="none" stroke="#7a6684"'
               f' stroke-width="7" stroke-linecap="round" opacity=".55"/>')
@@ -9075,6 +9300,8 @@ def vnuk_s_dlinnoy_chelkoy(t):
           f' fill="url(#krem)" opacity=".9" {o(6)}/>')
     f += (f'<rect x="{bx-74}" y="{bb-370}" width="152" height="112" rx="12"'
           f' fill="#ded0b2" {o(6)}/>')
+    f += (f'<path d="M{bx-66},{bb-342} h136" stroke="#b8a681" stroke-width="5"'
+          f' opacity=".9" stroke-dasharray="12 9"/>')
     kar = A.ease(A.seg(t, 1.0, 1.5))
     nx = bx - 240 + 244 * kar
     ny = bb - 560 + 142 * kar
@@ -9140,7 +9367,14 @@ def sleza_nad_prazdnichnoy_tarelkoy(t):
               f'<path d="M{-sgn*10},-96 q-80,10 -96,76" fill="none" stroke="#f0cf90"'
               f' stroke-width="12" opacity=".6"/>'
               f'<path d="M{-sgn*2},-98 q{sgn*16},92 0,178" fill="none" stroke="{KREM}"'
-              f' stroke-width="16"/></g>')
+              f' stroke-width="16"/>'
+              # мякиш на изломе: половинки читались двумя бурыми пятнами
+              f'<path d="M{-sgn*12},-86 q{sgn*26},88 {-sgn*2},164'
+              f' q{-sgn*30},-80 {sgn*14},-164 z" fill="#f3e6c6" {o(4)}/>'
+              f'<circle cx="{-sgn*6}" cy="-20" r="9" fill="#e2cfa4" opacity=".9"/>'
+              f'<circle cx="{-sgn*2}" cy="46" r="7" fill="#e2cfa4" opacity=".9"/>'
+              f'<path d="M{-sgn*64},-74 q-18,74 6,142" fill="none" stroke="#8d6230"'
+              f' stroke-width="7" opacity=".6"/></g>')
     s += SL(Z_SRED, m)
 
     # СЛЕЗА падает на край тарелки
@@ -9148,7 +9382,7 @@ def sleza_nad_prazdnichnoy_tarelkoy(t):
     f = ""
     if k < .62:
         u = k / .62
-        ty = 230 + (py - 150 - 230) * (u * u)
+        ty = -110 + (py - 150 + 110) * (u * u)   # падает из-за верхнего края
         f += (f'<g transform="translate(400,{ty:.0f})">'
               f'{baza.teplo(0, 50, 110, 110, .3)}'
               f'<path d="M0,-78 q56,66 56,116 q0,56 -56,56 q-56,0 -56,-56 q0,-50 56,-116 z"'
@@ -9176,16 +9410,32 @@ def ssora_tyanetsya_cherez_god(t):
 
     # ДВЕНАДЦАТЬ ПЛИТОК-МЕСЯЦЕВ
     d = ""
+    rk = random.Random(19)
     for i in range(12):
         px = 44 + i * 153
-        d += ten(px + 66, 842, 72, 16, .4)
-        d += (f'<rect x="{px}" y="650" width="134" height="190" rx="14"'
+        nak = rk.uniform(-3.4, 3.4)
+        d += ten(px + 66, 848, 78, 17, .45)
+        d += f'<g transform="rotate({nak:.1f} {px+66} 760)">'
+        # ЛИСТОК ОТРЫВНОГО КАЛЕНДАРЯ: шапка месяца, дырки под скрепку, отгиб
+        d += (f'<rect x="{px}" y="650" width="134" height="190" rx="10"'
               f' fill="url(#krem)" {o(6)}/>')
-        d += (f'<rect x="{px+10}" y="660" width="114" height="34" rx="8"'
-              f' fill="{ob.ALYJ if i in (0, 11) else "#c3b595"}" opacity=".8"/>')
-        for r_ in range(3):
-            d += (f'<path d="M{px+18},{714+r_*34} h98" stroke="#c6b794"'
-                  f' stroke-width="6" opacity=".7"/>')
+        d += (f'<rect x="{px}" y="650" width="134" height="46" rx="10"'
+              f' fill="{ob.ALYJ if i in (0, 11) else MED}" {o(5)}/>')
+        d += (f'<path d="M{px},692 h134" stroke="{K}" stroke-width="4" opacity=".55"/>')
+        for hx_ in (px + 34, px + 100):
+            d += (f'<circle cx="{hx_}" cy="672" r="8" fill="#6b5a3c" opacity=".85"/>')
+        # крупная цифра месяца — блок, а не пустое поле
+        d += (f'<rect x="{px+30}" y="712" width="74" height="60" rx="8"'
+              f' fill="{"#d8c7a0" if i not in (0, 11) else "#eac9b4"}" {o(4)}/>')
+        for r_ in range(2):
+            d += (f'<path d="M{px+24},{794+r_*24} h86" stroke="#c6b794"'
+                  f' stroke-width="7" opacity=".8" stroke-linecap="round"/>')
+        # отогнутый уголок — лист, а не плитка
+        d += (f'<path d="M{px+134},840 l-34,0 l34,-34 z" fill="#cbb995" {o(4)}/>')
+        d += '</g>'
+    # тусклая гирлянда под потолком: верх кадра был пустым полем
+    d += ob.girlyanda(-60, 170, 1180, 130, t, 11, 110)
+    d += f'<rect x="-440" y="0" width="{W+880}" height="420" fill="#1b2230" opacity=".45"/>'
     d += baza.teplo(140, 330, 420, 360, .34)
     s += SL(Z_DAL, d)
 
@@ -9202,9 +9452,19 @@ def ssora_tyanetsya_cherez_god(t):
     m += (f'<path d="M300,492 q320,70 640,22 q360,-52 700,40 q180,54 300,10"'
           f' fill="none" stroke="#7c8694" stroke-width="56" stroke-linecap="round"'
           f' opacity=".75"/>')
-    m += (f'<path d="M300,492 q320,70 640,22 q360,-52 700,40 q180,54 300,10"'
-          f' fill="none" stroke="#9aa5b2" stroke-width="16" stroke-dasharray="46 26"'
-          f' stroke-dashoffset="{-hod:.0f}" stroke-linecap="round" opacity=".9"/>')
+    # кайма дорожки и витая нить: пунктир читался технической схемой
+    for sgn in (-1, 1):
+        m += (f'<path d="M300,{492+sgn*22} q320,70 640,22 q360,-52 700,40 q180,54 300,10"'
+              f' fill="none" stroke="{MED}" stroke-width="8" stroke-linecap="round"'
+              f' opacity=".55"/>')
+    for j in range(2):
+        m += (f'<path d="M300,{486+j*12} q320,70 640,22 q360,-52 700,40 q180,54 300,10"'
+              f' fill="none" stroke="#b3bcc8" stroke-width="5" stroke-linecap="round"'
+              f' opacity=".55" transform="translate(0,{-hod*.06+j*3:.1f})"/>')
+    for i in range(14):
+        vx_ = 320 + i * 128 - hod * .4
+        m += (f'<path d="M{vx_:.0f},468 q22,24 0,48" fill="none" stroke="#6b7480"'
+              f' stroke-width="6" opacity=".45" stroke-linecap="round"/>')
     # ГРАДУСНИК и ГРЕЛКА ковыляют по дорожке
     sh = (t * 78) % 1560
     gx = 600 + sh
@@ -9293,7 +9553,7 @@ def obida_saditsya_za_stol(t):
           f'<rect x="{sx+74}" y="{sb-268}" width="24" height="268" fill="url(#derev)" {o(5)}/>')
     vz = A.out(A.seg(t, .25, 1.7))
     tx = sx - 150 + 150 * vz
-    ty = sb - 110 - 430 * vz - 90 * math.sin(math.pi * vz)
+    ty = sb - 110 - 286 * vz - 70 * math.sin(math.pi * vz)   # садится НА сиденье
     f += b7_tuchka(tx, ty, 1.02, t, .1)
     # ТАРЕЛКА придвигается к тучке
     pr = A.ease(A.seg(t, 1.9, 1.2))
@@ -9502,19 +9762,24 @@ def prigorevshiy_pirog(t):
     # ДЫМОК, БЛЮДЦЕ и ХОЗЯЙКА
     f = baza.dym(prx, pry - 60, t, 6, .32, 420, .42, "#b8bfc8", 1.1)
     for sgn in (-1, 1):
-        bx = 1180 + sgn * 140
+        bx = 1130 + sgn * 150
         kach = 8 * A.w(t, 2.2, .25 if sgn > 0 else .0)
-        f += ten(bx, POL + 64, 130, 18, .45)
-        f += (f'<g transform="rotate({kach*sgn:.2f} {bx} {POL+46})">'
-              f'<path d="M{bx-sgn*140},{POL+50} q{sgn*78},-98 {sgn*140},-6'
-              f' q{-sgn*64},50 {-sgn*140},6 z" fill="url(#krem)" {o(7)}/>'
-              f'<path d="M{bx-sgn*108},{POL+34} q{sgn*64},-50 {sgn*104},-10" fill="none"'
-              f' stroke="{TKAN2}" stroke-width="9" opacity=".75"/></g>')
+        f += ten(bx, POL + 18, 136, 19, .45)
+        f += (f'<g transform="rotate({kach*sgn:.2f} {bx} {POL})">'
+              f'<path d="M{bx-sgn*146},{POL+4} q{sgn*82},-102 {sgn*146},-6'
+              f' q{-sgn*66},52 {-sgn*146},6 z" fill="url(#krem)" {o(7)}/>'
+              f'<path d="M{bx-sgn*132},{POL-2} q{sgn*76},-88 {sgn*130},-6" fill="none"'
+              f' stroke="#cdbb96" stroke-width="12" opacity=".9"/>'
+              f'<path d="M{bx-sgn*108},{POL-12} q{sgn*64},-50 {sgn*104},-10" fill="none"'
+              f' stroke="{TKAN2}" stroke-width="9" opacity=".75"/>'
+              f'<path d="M{bx-sgn*18},{POL+2} l{sgn*16},-22 l{sgn*14},22 z"'
+              f' fill="#b9a67f" opacity=".8"/></g>')
     tr = 5 * A.w(t, .33) + 7 * A.w(t, 7.4)
-    hx, hb = 1560, POL + 170
+    hx, hb = 1520, POL + 36
+    f += baza.teplo(hx, hb - 400, 320, 430, .38)
     f += (f'<g transform="rotate({tr*.3:.2f} {hx} {hb})" >'
-          + ob.figura(hx, hb + 4 * abs(A.w(t, 7.4)), 700, t, "#2b2334", "#f2c477", True, ph=.5)
-          + f'<path d="M{hx-132},{hb-500} q132,-40 262,6 l-12,268 q-126,34 -244,-6 z"'
+          + ob.figura(hx, hb + 4 * abs(A.w(t, 7.4)), 630, t, "#2b2334", "#f2c477", True, ph=.5)
+          + f'<path d="M{hx-118},{hb-452} q118,-36 236,6 l-10,240 q-114,30 -220,-6 z"'
             f' fill="url(#krem)" opacity=".88" {o(6)}/></g>')
     f += baza._ramka_pp("levo", "#090c13", .5)
     s += SL(Z_PERED, f)
@@ -9565,7 +9830,7 @@ def svetlye_platya_vyhodyat_iz_shkafa(t):
               + '</g>')
     s += SL(Z_SRED, m)
 
-    f = b7_vesh(1560, 240, 400, 560, ob.ALYJ, t, .5, False, 22.0)
+    f = b7_vesh(1700, 300, 330, 470, ob.ALYJ, t, .5, False, 22.0)
     f += baza._ramka_pp("levo", "#0a0d14", .45)
     s += SL(Z_PERED, f)
     s += SL(Z_FIX, baza._vinetka(.34))
@@ -9737,6 +10002,16 @@ def b8_kalendar(x, y, t, w_=1420, zapiski=3, goryat=(), n=7, h_=300):
               f' height="{h_*.10:.0f}" rx="7" fill="#000000" opacity=".22"/>')
         s += (f'<path d="M{cx-pw/2+10:.0f},{y+h_*.48:.0f} h{pw-20:.0f}" fill="none"'
               f' stroke="#ffffff" stroke-width="5" opacity=".32"/>')
+        # ПРОШИВКА по краю кармана и ярлык дня — иначе это просто прямоугольник
+        s += (f'<rect x="{cx-pw/2+9:.0f}" y="{y+h_*.34+9:.0f}" width="{pw-18:.0f}"'
+              f' height="{h_*.52-18:.0f}" rx="9" fill="none" stroke="{"#f6e6c0" if posl else "#9c8a63"}"'
+              f' stroke-width="4" stroke-dasharray="11 8" opacity=".85"/>')
+        s += (f'<rect x="{cx-pw*.30:.0f}" y="{y+h_*.38:.0f}" width="{pw*.60:.0f}"'
+              f' height="{h_*.11:.0f}" rx="6" fill="{"#f3dcc6" if posl else "#cdb98d"}"'
+              f' opacity=".9" {o(3)}/>')
+        s += (f'<path d="M{cx-pw*.22:.0f},{y+h_*.62:.0f} h{pw*.44:.0f}" fill="none"'
+              f' stroke="{"#8d1b1c" if posl else "#b2a075"}" stroke-width="6"'
+              f' opacity=".8" stroke-linecap="round"/>')
         if i in goryat:
             s += (f'<rect x="{cx-pw/2:.0f}" y="{y+h_*.34:.0f}" width="{pw:.0f}"'
                   f' height="{h_*.52:.0f}" rx="12" fill="{SVET}" opacity="{.62*puls:.2f}"/>')
@@ -9828,17 +10103,27 @@ def b8_kover(cid, nl, nr, ny, fl, fr, fy, t, c1="#9c4036", c2="#5a2220",
     s += f'<path d="{d}" fill="url(#{cid}g)" {o(7)}/>'
     s += f'<g clip-path="url(#{cid})" opacity="{uop:.2f}">'
     if iznanka:
-        for i in range(30):
-            v = i / 29.0
+        for i in range(34):
+            v = i / 33.0
             yy = fy + (ny - fy) * v
             s += (f'<line x1="{fl+(nl-fl)*v-30:.0f}" y1="{yy:.0f}"'
-                  f' x2="{fr+(nr-fr)*v+30:.0f}" y2="{yy:.0f}" stroke="#ffffff"'
-                  f' stroke-width="3" opacity=".13"/>')
-        for i in range(14):
-            u = i / 13.0
+                  f' x2="{fr+(nr-fr)*v+30:.0f}" y2="{yy:.0f}" stroke="#f3e8d2"'
+                  f' stroke-width="{3+3*v:.1f}" opacity=".30"/>')
+        for i in range(22):
+            u = i / 21.0
             s += (f'<line x1="{fl+(fr-fl)*u:.0f}" y1="{fy:.0f}"'
-                  f' x2="{nl+(nr-nl)*u:.0f}" y2="{ny:.0f}" stroke="#2a211a"'
-                  f' stroke-width="3" opacity=".12"/>')
+                  f' x2="{nl+(nr-nl)*u:.0f}" y2="{ny:.0f}" stroke="#4a3a2a"'
+                  f' stroke-width="4" opacity=".26"/>')
+        # прошитая кайма изнанки и заплата — ковёр, а не плоскость
+        cx_ = (nl + nr + fl + fr) / 4.0; cy_ = (ny + fy) / 2.0
+        for k_, wd, col_ in ((.955, 16, "#6d5a42"), (.90, 7, "#efe0c4")):
+            pts = " ".join("%.0f,%.0f" % (cx_ + (px - cx_) * k_, cy_ + (py - cy_) * k_)
+                           for px, py in ((nl, ny), (nr, ny), (fr, fy), (fl, fy)))
+            s += (f'<polygon points="{pts}" fill="none" stroke="{col_}"'
+                  f' stroke-width="{wd}" opacity=".75"/>')
+        s += (f'<rect x="{cx_-150:.0f}" y="{cy_-46:.0f}" width="230" height="130" rx="10"'
+              f' fill="#8d7757" opacity=".55" stroke="#5c4a34" stroke-width="6"'
+              f' stroke-dasharray="16 12"/>')
     else:
         cx_ = (nl + nr + fl + fr) / 4.0; cy_ = (ny + fy) / 2.0
         for k, wd in ((.92, 11), (.82, 6)):
@@ -9973,6 +10258,11 @@ def b8_gazety(x, y, s_, t, ph=0.0):
             s += (f'<path d="M{x+104*s_+dx:.0f},{yy-22*s_:.0f} q{26*s_:.0f},{-6*s_+ug:.0f}'
                   f' {34*s_:.0f},{14*s_+ug:.0f} l{-34*s_:.0f},{8*s_:.0f} z"'
                   f' fill="#efe3bd" {o(4)}/>')
+    for k in range(4):
+        yy = y - (146 - k * 13) * s_
+        wd = (150 if k else 96) * s_
+        s += (f'<path d="M{x-86*s_:.0f},{yy:.0f} h{wd:.0f}" fill="none"'
+              f' stroke="#9a8c62" stroke-width="{4*s_:.1f}" opacity=".7"/>')
     s += (f'<path d="M{x-30*s_:.0f},{y+6*s_:.0f} v{-150*s_:.0f}" fill="none"'
           f' stroke="#b59a63" stroke-width="{9*s_:.0f}"/>')
     s += (f'<path d="M{x-104*s_:.0f},{y-74*s_:.0f} h{208*s_:.0f}" fill="none"'
@@ -10110,7 +10400,18 @@ def b8_proyom(x, y, w_, h_, t, sila=1.0):
           f' rx="12" fill="url(#derev)" {o(8)}/>')
     s += f'<rect x="{x:.0f}" y="{y:.0f}" width="{w_:.0f}" height="{h_:.0f}" fill="url(#b8pro)"/>'
     s += (f'<rect x="{x:.0f}" y="{y:.0f}" width="{w_:.0f}" height="{h_:.0f}" fill="{SVET}"'
-          f' opacity="{.30+.18*abs(A.w(t,2.6)):.2f}"/>')
+          f' opacity="{.14+.10*abs(A.w(t,2.6)):.2f}"/>')
+    # глубина проёма: притолока в тени, косяки темнее, светлее к полу
+    s += (f'<rect x="{x:.0f}" y="{y:.0f}" width="{w_:.0f}" height="{h_*.30:.0f}"'
+          f' fill="#8a5a1e" opacity=".34"/>')
+    for sgn, xx in ((1, x), (-1, x + w_)):
+        s += (f'<rect x="{xx if sgn>0 else xx-54:.0f}" y="{y:.0f}" width="54"'
+              f' height="{h_:.0f}" fill="#a87324" opacity=".26"/>')
+    s += (f'<ellipse cx="{x+w_/2:.0f}" cy="{y+h_*.86:.0f}" rx="{w_*.44:.0f}"'
+          f' ry="{h_*.20:.0f}" fill="#ffffff" opacity=".30"/>')
+    # ПОРОГ: проём стоит на полу, а не висит прямоугольником
+    s += (f'<rect x="{x-26:.0f}" y="{y+h_-10:.0f}" width="{w_+52:.0f}" height="30"'
+          f' rx="9" fill="url(#med)" {o(7)}/>')
     s += (f'<path d="M{x:.0f},{y+h_:.0f} L{x-300:.0f},{H+40} L{x+w_+340:.0f},{H+40}'
           f' L{x+w_:.0f},{y+h_:.0f} Z" fill="{SVET}" opacity="{.22*sila:.2f}"/>')
     s += f'<rect x="{x:.0f}" y="{y:.0f}" width="{w_:.0f}" height="{h_:.0f}" fill="none" {o(8)}/>'
@@ -10132,6 +10433,20 @@ def b8_meshok(x, y, s_, t, ph=0.0, szhat=0.0):
           f' fill="#c9ad72" {o(7)}/>')
     s += (f'<path d="M-100,-336 q104,-40 198,4" fill="none" stroke="#8a6d33"'
           f' stroke-width="12" stroke-dasharray="14 12"/>')
+    # ВЕРЁВКА с узлом на горловине
+    s += (f'<path d="M-118,-290 q112,52 224,-8" fill="none" stroke="#7d5f28"'
+          f' stroke-width="19" stroke-linecap="round"/>')
+    s += (f'<path d="M-118,-282 q112,52 224,-8" fill="none" stroke="#c0a055"'
+          f' stroke-width="8" stroke-linecap="round" opacity=".8"/>')
+    s += (f'<path d="M96,-298 q34,-14 42,16 q-26,22 -48,8 z" fill="#7d5f28" {o(5)}/>'
+          f'<path d="M126,-278 q24,44 6,86" fill="none" stroke="#7d5f28"'
+          f' stroke-width="11" stroke-linecap="round"/>')
+    # углы содержимого распирают бок — мешок, а не гладкий купол
+    for lx_, ly_, rr_ in ((-132, -176, 52), (108, -222, 44), (-52, -96, 58), (74, -84, 40)):
+        s += (f'<ellipse cx="{lx_}" cy="{ly_}" rx="{rr_}" ry="{rr_*.78:.0f}"'
+              f' fill="#b99a5e" opacity=".32"/>')
+        s += (f'<path d="M{lx_-rr_},{ly_+rr_*.3:.0f} q{rr_},{-rr_*.9:.0f} {rr_*2},0"'
+              f' fill="none" stroke="#8a6d33" stroke-width="7" opacity=".45"/>')
     s += f'<path d="M-160,-250 q50,-70 70,-110" fill="none" stroke="#ffffff" stroke-width="16" opacity=".16"/>'
     s += '</g>'
     s += b8_zont(x + 66 * s_, y - 316 * s_, s_ * .86, t, True, ph)
@@ -10273,7 +10588,7 @@ def tri_nevypolnennyh_obeschaniya(t):
 
     # тумбы под тремя вещами
     tum = ""
-    for cx in (330, 960, 1590):
+    for cx in (330, 1590):
         tum += ten(cx, 952, 250, 24, .45)
         tum += (f'<rect x="{cx-240:.0f}" y="770" width="480" height="180" rx="12"'
                 f' fill="url(#derev)" {o(7)}/>')
@@ -10313,8 +10628,11 @@ def tri_nevypolnennyh_obeschaniya(t):
 
     # ── чужая дверь с ковриком
     svs = .35 + .35 * abs(A.w(t, 2.9))
-    dv = (f'<rect x="760" y="300" width="400" height="470" rx="8" fill="#1d2129"/>'
-          + baza.dver(770, 310, 380, 450, 0.0, "url(#derev)", True, False))
+    dv = (f'<rect x="724" y="258" width="472" height="520" rx="6" fill="#4a3728" {o(7)}/>'
+          + f'<rect x="748" y="282" width="424" height="496" rx="4" fill="#2a1f16" {o(5)}/>'
+          + f'<rect x="760" y="296" width="400" height="482" rx="4" fill="#1d2129"/>'
+          + baza.dver(770, 310, 380, 456, 0.0, "url(#derev)", True, False)
+          + f'<rect x="716" y="770" width="488" height="22" rx="8" fill="{MED}" {o(6)}/>')
     dv += (f'<rect x="770" y="752" width="380" height="16" fill="{SVET}"'
            f' opacity="{svs:.2f}"/>')
     dv += teplo(960, 770, 320, 110, svs * .85)
@@ -10370,6 +10688,15 @@ def vedro_tryapka_i_dva_dnya(t):
            + b8_kalendar(170, 130, t, 1120, zapiski=0, goryat=(4, 5), n=7, h_=280))
 
     s += baza.mebel_hlam(1390, 1020, 520, t, 9)
+    # тёплая лампа и полотенце на гвозде: кадр был пустой бурой стеной
+    s += SL(Z_DAL,
+            baza.lampa(1660, 420, t, .78, True)
+            + f'<rect x="300" y="520" width="28" height="18" rx="6" fill="{ZHELEZ}" {o(4)}/>'
+            + f'<path d="M258,534 q58,-26 114,0 q18,150 -12,250 q-54,20 -94,-4'
+              f' q-28,-98 -8,-246 z" fill="{ob.ALYJ}" {o(6)}/>'
+            + f'<path d="M266,660 h100 M266,706 h100" stroke="{ob.ZOLOTO}"'
+              f' stroke-width="8" opacity=".85"/>'
+            + baza.teplo(1660, 470, 420, 380, .46))
 
     s += SL(Z_SRED,
             teplo(840, 890, 780, 420, .40)
@@ -10836,10 +11163,14 @@ def tarelka_i_karman_s_sekretom(t):
     fart += (f'<path d="M-160,60 q90,-30 160,-14" fill="none" stroke="#ffffff"'
              f' stroke-width="14" opacity=".16"/>')
     fart += teplo(0, 300, 360, 320, .40 * kar)
-    fart += (f'<rect x="-150" y="228" width="300" height="236" rx="14"'
+    fart += (f'<path d="M-150,228 h300 v150 q0,90 -150,86 q-150,4 -150,-86 z"'
              f' fill="{ob.ALYJ2}" {o(8)}/>')
-    fart += (f'<rect x="-150" y="228" width="300" height="236" rx="14" fill="{SVET}"'
-             f' opacity="{.26*kar:.2f}"/>')
+    fart += (f'<path d="M-150,228 h300 v150 q0,90 -150,86 q-150,4 -150,-86 z"'
+             f' fill="{SVET}" opacity="{.26*kar:.2f}"/>')
+    fart += (f'<path d="M-132,250 h264 v132 q0,74 -132,70 q-132,4 -132,-70 z"'
+             f' fill="none" stroke="{ob.ZOLOTO}" stroke-width="5"'
+             f' stroke-dasharray="15 11" opacity=".8"/>')
+    fart += (f'<path d="M-158,214 h316 v34 q-158,18 -316,0 z" fill="{ob.ALYJ}" {o(6)}/>')
     # сноп света наружу из кармана
     fart += (f'<path d="M-110,234 L{-190-60*kar:.0f},{70-80*kar:.0f}'
              f' L{160+70*kar:.0f},{50-90*kar:.0f} L110,234 Z" fill="{SVET}"'
@@ -11043,10 +11374,18 @@ def tri_sdelannyh_dela(t):
     if kot_u > .02:
         n3 += baza.kot(1672, 722 - 106 - 34 * kot_u, t, .54 * kot_u, "#3b3430", False)
 
+    # Три равных круга в ряд читались схемой. Подвесы на гвоздях, разные
+    # размеры и высоты — это ВИСЯЩИЕ медальоны, а не выложенные кружки.
+    podves = ""
+    for mx_, my_, mr_ in ((330, 572, 244), (960, 548, 258), (1590, 580, 238)):
+        podves += (f'<circle cx="{mx_}" cy="{my_-mr_-96}" r="11" fill="{ZHELEZ}" {o(4)}/>')
+        podves += (f'<path d="M{mx_},{my_-mr_-92} l{-26},{86} m{26},{-86} l{26},{86}"'
+                   f' fill="none" stroke="{MED}" stroke-width="9" opacity=".9"/>')
     s += SL(Z_SRED,
-            b8_medalon(330, 560, 250, t, gor[0], n1)
-            + b8_medalon(960, 560, 250, t, gor[1], n2)
-            + b8_medalon(1590, 560, 250, t, gor[2], n3))
+            podves
+            + b8_medalon(330, 572, 244, t, gor[0], n1)
+            + b8_medalon(960, 548, 258, t, gor[1], n2)
+            + b8_medalon(1590, 580, 238, t, gor[2], n3))
 
     s += SL(Z_PERED,
             baza.polka(150, 906, 1340)

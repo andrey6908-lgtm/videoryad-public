@@ -1673,7 +1673,14 @@ def tri_kartochki_drugih_video(t):
                 f' stroke="{ob.ZOLOTO}" stroke-width="5" opacity="{(1-u)*.2:.2f}"/>')
     dal += ob.konfetti(t, 18, 9, .35, .6)
     s += SL(Z_DAL, dal)
-    s += SL(Z_SRED, _kartochka_video(350, 300, 540, 700, t, vst, .0, 0))
+    # кремовое паспарту под карточкой: красное на красном не читалось
+    s += SL(Z_SRED,
+            f'<g opacity="{vst:.2f}">'
+            + teplo(620, 650, 460, 540, .55)
+            + f'<rect x="324" y="274" width="592" height="752" rx="18"'
+              f' fill="#f1e4c6" opacity=".92" {o(7)}/>'
+            + '</g>'
+            + _kartochka_video(350, 300, 540, 700, t, vst, .0, 0))
     # ХОЗЯЙКА ГОДА справа, развёрнута к карточке
     XC = 1420
     per = (f'<g transform="matrix(-1,0,0,1,{2*XC:.0f},0)">'

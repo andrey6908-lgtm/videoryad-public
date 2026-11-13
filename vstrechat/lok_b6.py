@@ -108,9 +108,32 @@ def _varezhka(x, y, s_, t, szhat=0.0, ph=0.0, zerk=False, dr=1.6):
     # большой палец сбоку
     g += (f'<path d="M-84,-18 q-62,-24 -70,-84 q8,-36 44,-24 q36,14 42,68 z"'
           f' fill="url(#rush)" {o(6)}/>')
+    # РЕЗИНКА МАНЖЕТЫ: вертикальные рубчики у запястья
+    g += (f'<path d="M-90,36 q90,30 180,0 l-4,66 q-86,28 -172,-2 z"'
+          f' fill="#e3d2a8" {o(6)}/>')
+    for i in range(11):
+        g += (f'<path d="M{-78+i*16},44 v62" fill="none" stroke="#b9a87e"'
+              f' stroke-width="7" opacity=".55"/>')
+    # ВЯЗКА: ёлочка по всему полю, не просто линии
     for i in range(5):
-        g += (f'<path d="M-72,{-128 + i*50} q74,22 148,0" fill="none" stroke="#cdb98d"'
-              f' stroke-width="7" opacity=".5"/>')
+        yy = -128 + i * 50
+        g += (f'<path d="M-72,{yy} q74,22 148,0" fill="none" stroke="#c2ae82"'
+              f' stroke-width="7" opacity=".6"/>')
+        for k in range(6):
+            xx = -66 + k * 28
+            g += (f'<path d="M{xx},{yy+20} l13,-17 l13,17" fill="none" stroke="#cdb98d"'
+                  f' stroke-width="5" opacity=".5"/>')
+    # ЖАККАРДОВАЯ ПОЛОСА — красный акцент, по ней варежка и опознаётся
+    g += (f'<path d="M-82,-54 q82,26 164,0 l-3,46 q-80,26 -158,-2 z"'
+          f' fill="{ob.ALYJ}" opacity=".8" {o(4)}/>')
+    # ромбики, а не зигзаг: острая «ёлочка» на красной полосе читалась зубами
+    for k in range(7):
+        cx_ = -62 + k * 24
+        g += (f'<path d="M{cx_},-46 l11,13 l-11,13 l-11,-13 z" fill="#f6e2c2"'
+              f' opacity=".85"/>')
+    # ШОВ большого пальца
+    g += (f'<path d="M-84,-18 q-40,-26 -50,-78" fill="none" stroke="#b9a87e"'
+          f' stroke-width="7" opacity=".7"/>')
     g += f'<ellipse cx="-24" cy="-110" rx="40" ry="26" fill="#ffffff" opacity=".22"/>'
     # верх ладони загибается вниз — «кулак»
     if szhat > .01:
@@ -464,7 +487,8 @@ def moneta_pod_tarelkoy(t):
     for i in range(3):
         k = A.out(A.seg(t, 1.05 + i * .32, .5))
         if k > .01:
-            per += _moneta(500 + i * 104, 836 - 210 * (1 - k), 38, 23, t, i * .3, min(1.0, k * 1.6))
+            per += _moneta(500 + i * 128, 836 - 210 * (1 - k), 56, 34, t, i * .3, min(1.0, k * 1.6))
+            per += baza.teplo(500 + i * 128, 836 - 210 * (1 - k), 120, 100, .30)
     per += _tarelka(1080, 724, 340, t, pod)
     per += baza.ramka_pp("levo", "#0c0a10", .5)
     s += SL(Z_PERED, per)
@@ -498,15 +522,25 @@ def moneta_katitsya_cherez_god(t):
         y = 862 - i * 4
         w_ = 132 - i * 1.6
         gor = 1.0 if cur > i + .35 else (.24 + .5 * A.seg(t, .3 + i * .45, .3))
+        nak = (-4.5, 3.0, -2.0, 5.0, -3.5, 1.5)[i % 6]
         sred += ten(x + 6, y + 34, w_ * .55, 16, .45)
+        sred += f'<g transform="rotate({nak} {x} {y})">'
         sred += (f'<rect x="{x - w_/2:.0f}" y="{y - 26:.0f}" width="{w_:.0f}" height="52"'
                  f' rx="10" fill="url(#plit)" {o(5)}/>')
+        # щербины и шов: камень, а не чёрточка схемы
+        sred += (f'<path d="M{x - w_/2 + 6:.0f},{y + 20:.0f} h{w_ - 12:.0f}" fill="none"'
+                 f' stroke="#43392c" stroke-width="6" opacity=".55"/>')
+        sred += (f'<circle cx="{x - w_*.28:.0f}" cy="{y + 6:.0f}" r="5" fill="#43392c"'
+                 f' opacity=".4"/>'
+                 f'<circle cx="{x + w_*.22:.0f}" cy="{y - 4:.0f}" r="4" fill="#43392c"'
+                 f' opacity=".35"/>')
         sred += (f'<rect x="{x - w_/2 + 8:.0f}" y="{y - 19:.0f}" width="{w_ - 16:.0f}"'
                  f' height="38" rx="7" fill="{ob.ZOLOTO}" opacity="{.18 + .55*gor:.2f}"/>')
         sred += (f'<path d="M{x - w_/2 + 11:.0f},{y - 14:.0f} h{w_*.5:.0f}" fill="none"'
                  f' stroke="#ffffff" stroke-width="5" opacity="{.22 + .4*gor:.2f}"/>')
         if gor > .9:
             sred += baza.teplo(x, y, w_ * .9, 70, .3)
+        sred += '</g>'
         if cur > i + .6:
             pop = A.out(min(1.0, (cur - i - .6) * 3.2))
             sred += _moneta(x, y - 36, 22 * pop, 14 * pop, t, i * .17, 1.0, False)
@@ -586,6 +620,7 @@ def rebenok_zaglyadyvaet_pod_tarelku(t):
              f' stroke="{ob.ALYJ}" stroke-width="7" opacity=".35"/>')
     sred += _moneta(760, 640, 52, 30, t, .1)
     sred += baza.teplo(760, 636, 210, 150, .34 + .3 * bl)
+    sred += ten(1090, 660, 300, 34, .55)      # контакт со столом
     sred += _tarelka(1090, 616, 310, t, pod)
     s += SL(Z_SRED, sred)
 
@@ -596,8 +631,10 @@ def rebenok_zaglyadyvaet_pod_tarelku(t):
     per += (f'<path d="M{rx-250:.0f},{H + 20} q10,-230 70,-300 q120,-96 300,-30'
             f' q90,54 96,330 z" fill="#1a1410" stroke="#f2c47c" stroke-width="5"'
             f' stroke-opacity=".55"/>')
-    per += (f'<circle cx="{rx + 6:.0f}" cy="{ry - 250:.0f}" r="118" fill="#1a1410"'
-            f' stroke="#f2c47c" stroke-width="5" stroke-opacity=".55"/>')
+    per += (f'<circle cx="{rx + 6:.0f}" cy="{ry - 368:.0f}" r="118" fill="#1a1410"'
+            f' stroke="#f2c47c" stroke-width="6" stroke-opacity=".8"/>')
+    per += (f'<path d="M{rx-104:.0f},{ry-274:.0f} q110,-54 220,0" fill="none"'
+            f' stroke="#f2c47c" stroke-width="6" stroke-opacity=".7"/>')
     per += baza.ramka_pp("pravo", "#120d09", .5)
     s += SL(Z_PERED, per)
     s += SL(Z_FIX, baza.teplo(900, 560, 900, 700, .3) + baza.vinetka(.52))
@@ -725,9 +762,13 @@ def blagopoluchie_uhodit_za_kupyuroy(t):
     for i, (sx, sy) in enumerate(((430, 650), (620, 500), (756, 660))):
         per += (f'<path d="M{sx},{sy} Q{(sx + kx)/2:.0f},{sy - 160 - i*50:.0f} {kx:.0f},{ky:.0f}"'
                 f' fill="none" stroke="{ob.ZOLOTO}" stroke-width="{7 - i}"'
-                f' stroke-linecap="round" stroke-dasharray="26 16"'
-                f' stroke-dashoffset="{-t * 120:.0f}" opacity="{.35 + .5*uh:.2f}"/>')
-    per += _kupyura(kx, ky, 300, 138, -11 + 16 * uh, max(0.0, 1.0 - A.seg(t, 1.5, .8)))
+                f' stroke-linecap="round" opacity="{.45 + .45*uh:.2f}"/>')
+        # блик, бегущий по нити: живое без пунктира
+        per += (f'<path d="M{sx},{sy} Q{(sx + kx)/2:.0f},{sy - 160 - i*50:.0f} {kx:.0f},{ky:.0f}"'
+                f' fill="none" stroke="#fff3c8" stroke-width="{4 - i*.6:.1f}"'
+                f' stroke-linecap="round" stroke-dasharray="40 320"'
+                f' stroke-dashoffset="{-t * 150:.0f}" opacity=".8"/>')
+    per += _kupyura(kx, ky, 300, 138, -11 + 16 * uh, max(0.0, 1.0 - A.seg(t, 2.9, .7)))
     per += baza.ramka_pp("levo", "#0b0a12", .5)
     s += SL(Z_PERED, per)
     s += SL(Z_FIX, baza.vinetka(.46))
