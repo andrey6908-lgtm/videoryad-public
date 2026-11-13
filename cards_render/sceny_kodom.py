@@ -1900,6 +1900,14 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
         шаг_lon = max(4.0, (lon_b - lon_a) / 10.0)
         шаг_lat = max(3.0, (lat_b - lat_a) / 7.0)
         if появ > 0:
+            # ЗАЛИВКА СЕКТОРА — ОТДЕЛЬНЫМ СЛОЕМ (13.11, мина PIL из шапки
+            # файла, она же мина 1 движка зала): `ImageDraw.Draw(img,
+            # "RGBA")` по RGBA-холсту НЕ СМЕШИВАЕТ по альфе — сколько ни
+            # понижай прозрачность, заливка остаётся сплошной. Осмотр кадра
+            # это и показал: суша под сектором не проступала ни при 92, ни
+            # при 58. Рисуем в свой слой и кладём `alpha_composite`.
+            сл_сек = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+            dс = ImageDraw.Draw(сл_сек, "RGBA")
             lo = lon_a
             while lo < lon_b - 1e-6:
                 la = lat_a
@@ -1913,9 +1921,9 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
                             _точка_шара(lo, min(la + шаг_lat, lat_b), lon0,
                                         R, cx, cy, lat0)]
                     if all(p[2] > 0.02 for p in углы):
-                        d.polygon([(p[0], p[1]) for p in углы],
-                                  fill=tuple(_светлее(acc, 0.15))
-                                  + (int(58 * появ * пульс),))
+                        dс.polygon([(p[0], p[1]) for p in углы],
+                                   fill=tuple(_светлее(acc, 0.15))
+                                   + (int(96 * появ * пульс),))
                     la += шаг_lat
                 lo += шаг_lon
             for сторона in (
@@ -1928,10 +1936,11 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
                     p = _точка_шара(float(lo2), float(la2), lon0, R, cx,
                                     cy, lat0)
                     if пред is not None and p[2] > 0.02 and пред[2] > 0.02:
-                        d.line([(пред[0], пред[1]), (p[0], p[1])],
-                               fill=tuple(_светлее(acc, 0.65))
-                               + (int(240 * появ),), width=4)
+                        dс.line([(пред[0], пред[1]), (p[0], p[1])],
+                                fill=tuple(_светлее(acc, 0.72))
+                                + (int(252 * появ),), width=4)
                     пред = p
+            img.alpha_composite(сл_сек)
             _ev(sfx, 0.5, "accent")
 
     # сетка: меридианы и параллели — поверх сектора, тонкие

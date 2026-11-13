@@ -1,31 +1,5 @@
 [
  {
-  "scene": 902,
-  "view": "sceny.prohod",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 32.0,
-  "channel": "ПЛАНЕТА",
-  "cfg": {
-   "view": "prohod",
-   "seconds": 32.0,
-   "fps": 30,
-   "kwargs": {
-    "text": "Что стоит за решением",
-    "tezisy": [
-     "сроки сдвинули",
-     "деньги не пришли",
-     "подрядчика сменили",
-     "гарантии переписали"
-    ],
-    "source": "по материалам заявлений сторон",
-    "channel": "ПЛАНЕТА",
-    "watermark": "ПЛАНЕТА",
-    "dur": 32.0
-   }
-  }
- },
- {
   "scene": 911,
   "view": "sceny.globus_map",
   "mode": "cli",
@@ -64,32 +38,6 @@
     "channel": "5 МИНУТ",
     "watermark": "5 МИНУТ",
     "dur": 18.0
-   }
-  }
- },
- {
-  "scene": 907,
-  "view": "sceny.prohod",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 32.0,
-  "channel": "5 МИНУТ",
-  "cfg": {
-   "view": "prohod",
-   "seconds": 32.0,
-   "fps": 30,
-   "kwargs": {
-    "text": "Что стоит за решением",
-    "tezisy": [
-     "сроки сдвинули",
-     "деньги не пришли",
-     "подрядчика сменили",
-     "гарантии переписали"
-    ],
-    "source": "по материалам заявлений сторон",
-    "channel": "5 МИНУТ",
-    "watermark": "5 МИНУТ",
-    "dur": 32.0
    }
   }
  }
