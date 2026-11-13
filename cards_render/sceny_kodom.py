@@ -208,8 +208,12 @@ def зал(cam, acc, ink, mid, шаг=3.0, стены=True, потолок=True,
             continue
         k = max(0.0, 1.0 - (zz - cam.z) / даль)
         if сетка:
-            a = cam.proj((-WALL, 0.0, zz))
-            b = cam.proj((WALL, 0.0, zz))
+            # ШВЫ ТЯНЕМ ШИРЕ СТЕН (13.11, осмотр кадра: нижняя четверть
+            # кадра была плоской серой полосой без геометрии). Вблизи
+            # камеры отрезок от стены до стены уже уходит за края кадра, и
+            # пол перестаёт читаться полом ровно там, где он крупнее всего.
+            a = cam.proj((-WALL * 2.6, 0.0, zz))
+            b = cam.proj((WALL * 2.6, 0.0, zz))
             d.line([(a[0], a[1]), (b[0], b[1])],
                    fill=_светлее(пол, 0.10 + 0.22 * k) + (255,), width=2)
         if стены:
@@ -244,6 +248,27 @@ def свечение(img, слой, радиус=38, сила=1.0):
     rgb = np.clip(a[..., :3] * (a[..., 3:4] / 255.0) * сила, 0, 255).astype(np.uint8)
     g = Image.fromarray(rgb, "RGB").resize((W, H), Image.BILINEAR)
     return ImageChops.add(img.convert("RGB"), g).convert("RGBA")
+
+
+def подол(img, ink, доля=0.22, сила=0.72):
+    """Тень у нижнего края кадра.
+
+    Зачем (13.11, осмотр кадра): у светлого зала нижняя четверть кадра
+    становится плоской светлой полосой, и в ней тонут подпись источника и
+    знак канала. Тень и возвращает глубину, и поднимает читаемость подписи.
+    Считается один раз на канал и накладывается готовой.
+    """
+    def сделать():
+        h = int(H * доля)
+        g = np.zeros((h, 1), np.float32)
+        g[:, 0] = np.linspace(0.0, 1.0, h) ** 1.6
+        a = (g * 255 * сила).astype(np.uint8)
+        сл = Image.fromarray(np.repeat(a, W, axis=1), "L")
+        слой = Image.new("RGBA", (W, h), tuple(_темнее(ink, 0.55)) + (0,))
+        слой.putalpha(сл)
+        return слой
+    img.alpha_composite(_кэш(("подол", tuple(ink), доля, сила), сделать),
+                        (0, H - int(H * доля)))
 
 
 def знак(img, watermark):
@@ -721,6 +746,7 @@ def prohod(out=None, t=None, text="", tezisy=(), source="", channel="",
                 yaw=math.radians(-sx * 26.0))
         _ev(sfx, max(0.0, (z_k - PROH_ВИДНО) / PROH_V), "label")
 
+    подол(img, ink)
     источник(img, source)
     знак(img, watermark)
     im = img.convert("RGB")
@@ -1889,7 +1915,7 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
                     if all(p[2] > 0.02 for p in углы):
                         d.polygon([(p[0], p[1]) for p in углы],
                                   fill=tuple(_светлее(acc, 0.15))
-                                  + (int(92 * появ * пульс),))
+                                  + (int(58 * появ * пульс),))
                     la += шаг_lat
                 lo += шаг_lon
             for сторона in (
