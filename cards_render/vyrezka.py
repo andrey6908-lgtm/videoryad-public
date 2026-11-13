@@ -240,7 +240,7 @@ def _проверить_маску(a, photo):
             % (имя, bw, bh, bw / float(bh)))
 
 
-def _silhouette(photo, height, pad=0.06, bust=True):
+def _silhouette(photo, height, pad=0.06, bust=True, max_w=0):
     im = Image.open(photo).convert("RGB")
     im.thumbnail((1400, 1400), Image.LANCZOS)
     side = photo + ".alpha.png"
@@ -251,27 +251,53 @@ def _silhouette(photo, height, pad=0.06, bust=True):
     _проверить_маску(a, photo)
     if bust:
         yb = _bust_line(a)
-        if yb < im.size[1] - 4:
+        # ОБРЕЗКА ПО ПЛЕЧАМ НЕ ДОЛЖНА РЕЗАТЬ ЛИЦО (13.11, его прямое слово по
+        # сцене 58: «человек должен быть узнаваемый, а не обрезан по брови»).
+        # `_bust_line` написана под ПОЯСНОЙ портрет. На крупном плане головы
+        # она честно находит «плечи» там, где на самом деле подбородок, и
+        # срезает пол-лица: в кадр уехал лоб с бровью, узнать человека
+        # нельзя. Поэтому режем, только если отрезается не больше трети
+        # маски и остаток ещё похож на фигуру (выше, чем шире).
+        _bb = a.point(lambda v: 255 if v > 24 else 0).getbbox()
+        _hm = (_bb[3] - _bb[1]) if _bb else im.size[1]
+        _wm = (_bb[2] - _bb[0]) if _bb else im.size[0]
+        _srez = max(0, im.size[1] - yb)
+        if yb < im.size[1] - 4 and _hm and _srez <= _hm * 0.34 \
+                and yb >= _wm * 1.05:
             im = im.crop((0, 0, im.size[0], yb))
             a = a.crop((0, 0, a.size[0], yb))
+        elif yb < im.size[1] - 4:
+            print("  вырезка: обрезку по плечам НЕ применяю — срезало бы "
+                  "%d%% фигуры, лицо ушло бы из кадра"
+                  % int(100.0 * _srez / max(1, _hm)))
     box = a.point(lambda v: 255 if v > 24 else 0).getbbox() or (0, 0, *im.size)
     x0, y0, x1, y1 = box
     dx, dy = int((x1 - x0) * pad), int((y1 - y0) * pad)
     x0, y0 = max(0, x0 - dx), max(0, y0 - dy)
     x1, y1 = min(im.size[0], x1 + dx), min(im.size[1], y1 + dy)
     im, a = im.crop((x0, y0, x1, y1)), a.crop((x0, y0, x1, y1))
+    # ЧЕЛОВЕК ОБЯЗАН БЫТЬ УЗНАВАЕМ (13.11, его прямое слово по сцене 58:
+    # «должен быть узнаваемый силуэт или портрет человека, а не обрезан по
+    # брови»). Масштаб считался ТОЛЬКО по высоте, ширина не ограничивалась
+    # ничем: когда маска выделила крупный план головы, фигура разъехалась
+    # шире кадра, и в сцену попал кусок лба с бровью — узнать человека
+    # нельзя. Теперь фигура ВПИСЫВАЕТСЯ в рамку: по высоте и по ширине, что
+    # меньше. Лицо помещается целиком, поля честные.
     k = height / im.size[1]
-    size = (max(1, int(im.size[0] * k)), height)
+    if max_w:
+        k = min(k, float(max_w) / max(1, im.size[0]))
+    size = (max(1, int(im.size[0] * k)), max(1, int(im.size[1] * k)))
     return im.resize(size, Image.LANCZOS), a.resize(size, Image.LANCZOS)
 
 
 # ───────────────────────────────── вырезки ──────────────────────────────────
-def cut_figure(photo, height=820, rim=15, amp=8.0, tilt=-4, gray=False, seed=3):
+def cut_figure(photo, height=820, rim=15, amp=8.0, tilt=-4, gray=False, seed=3,
+               max_w=0):
     """Вырезка ПО КОНТУРУ: фигура + рваный бумажный ободок вдоль силуэта."""
-    key = ("fig", photo, height, rim, amp, tilt, gray, seed)
+    key = ("fig", photo, height, rim, amp, tilt, gray, seed, max_w)
     if key in _CACHE:
         return _CACHE[key]
-    im, a = _silhouette(photo, height)
+    im, a = _silhouette(photo, height, max_w=max_w)
     marg = rim + int(amp * 2) + 14
     canv = (im.size[0] + marg * 2, im.size[1] + marg * 2)
     base = Image.new("L", canv, 0); base.paste(a, (marg, marg))
@@ -413,7 +439,8 @@ def _scene(photo, *, figure, author, role, kick, title, sub, watermark,
         im = _paste(im, col, x - dx, y, a * 0.92)
     sc._ev(sfx, 0.12, "label")
 
-    cut = cut_figure(photo, height=int(H * 0.80), tilt=tilt, gray=gray, seed=seed) \
+    cut = cut_figure(photo, height=int(H * 0.80), tilt=tilt, gray=gray, seed=seed,
+                     max_w=int(W * 0.52)) \
         if figure else cut_rect(photo, tilt=tilt, gray=gray, seed=seed)
     cw, ch = cut.size
     cx, cy = int(W * 0.60) - cw // 2, int(H * 0.50) - ch // 2 - 10
