@@ -1545,3 +1545,344 @@ def lenta(out=None, t=None, text="", soobshcheniya=(), source="", channel="",
 
 def _lum_(c):
     return 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]
+
+
+# ===========================================================================
+# 9 · ГЛОБУС-СЕКТОР  (`card:globus`)
+# ---------------------------------------------------------------------------
+# «Весь регион», «половина мира» — там, где карта областей не ставится.
+# Шар поворачивается, подсвечивается СЕКТОР целиком: ни границ областей, ни
+# чисел, ни подписей стран. Регион приходит СЛОВОМ, а не координатами —
+# точности вид не требует и не изображает.
+# ===========================================================================
+СЕКТОРЫ = {                      # слово → (долгота от, до, широта от, до)
+    "европа": (-10, 40, 36, 60), "ес": (-10, 40, 36, 60),
+    "евросоюз": (-10, 40, 36, 60), "балтика": (10, 30, 53, 62),
+    "ближний восток": (32, 60, 12, 38), "восток": (32, 60, 12, 38),
+    "азия": (60, 140, 10, 50), "китай": (75, 135, 20, 50),
+    "индия": (68, 90, 8, 35), "африка": (-18, 50, -34, 36),
+    "америка": (-125, -60, 25, 50), "сша": (-125, -68, 25, 49),
+    "латинская америка": (-80, -35, -40, 12),
+    "арктика": (-180, 180, 66, 85), "север": (-180, 180, 60, 82),
+    "россия": (30, 180, 44, 72), "тихий океан": (140, 220, -20, 40),
+}
+ГЛОБ_СКОРОСТЬ = 4.2              # градусов в секунду
+
+
+def _шар(R, acc, ink):
+    """Шар: затенение по Ламберту и ободок света. Считается один раз."""
+    def сделать():
+        n = int(R * 2)
+        yy, xx = np.mgrid[0:n, 0:n]
+        u = (xx - n / 2.0) / (n / 2.0)
+        v = (yy - n / 2.0) / (n / 2.0)
+        r2 = u * u + v * v
+        внутри = r2 <= 1.0
+        w = np.sqrt(np.clip(1.0 - r2, 0, 1))
+        lx, ly, lz = -0.48, -0.40, 0.78
+        яркость = np.clip(u * lx + (-v) * ly + w * lz, 0, 1) ** 1.25
+        цвет = np.zeros((n, n, 4), np.float32)
+        тон = np.array(_светлее(ink, 0.18), np.float32)
+        блик = np.array(_светлее(acc, 0.30), np.float32)
+        for i in range(3):
+            цвет[..., i] = тон[i] + (блик[i] - тон[i]) * яркость * 0.55
+        цвет[..., 3] = внутри * 255
+        # ободок: тонкая светящаяся кромка по лимбу
+        кромка = np.clip((r2 - 0.86) / 0.14, 0, 1) * внутри
+        for i in range(3):
+            цвет[..., i] = цвет[..., i] * (1 - кромка * 0.75) + \
+                блик[i] * кромка * 0.95
+        return Image.fromarray(np.clip(цвет, 0, 255).astype(np.uint8), "RGBA")
+    return _кэш(("шар", int(R), tuple(acc), tuple(ink)), сделать)
+
+
+def _точка_шара(lon, lat, lon0, R, cx, cy):
+    """(долгота, широта) → экранная точка и видимость (перед нами ли)."""
+    a = math.radians(lon - lon0)
+    b = math.radians(lat)
+    x = math.cos(b) * math.sin(a)
+    y = math.sin(b)
+    z = math.cos(b) * math.cos(a)
+    return (cx + R * x, cy - R * y, z)
+
+
+def globus(out=None, t=None, text="", region="", source="", channel="",
+           watermark="", dur=0.0, sfx=None, **_):
+    """Шар с подсвеченным сектором. `region` — слово, не координаты."""
+    tt = 4.0 if t is None else float(t)
+    acc, ink, mid = пал(channel)
+    img = _фон(ink, mid)
+    R = 398.0 * (1.0 + 0.055 * плавно(дол(tt, 0.0, max(6.0, float(dur or 18.0)))))
+    cx, cy = W * 0.615, H * 0.545
+    слой = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    ds = ImageDraw.Draw(слой, "RGBA")
+    ds.ellipse([cx - R * 1.22, cy - R * 1.22, cx + R * 1.22, cy + R * 1.22],
+               fill=tuple(_светлее(acc, 0.35)) + (46,))
+    _пыль(слой, zc.Cam(x=0.0, y=1.5, z=0.0), tt, acc, n=22, seed=41)
+    img = свечение(img, слой, радиус=56, сила=0.85)
+
+    шар = _шар(R, acc, ink)
+    img.alpha_composite(шар, (int(cx - R), int(cy - R)))
+    d = ImageDraw.Draw(img, "RGBA")
+
+    # сектор: ищем по слову, не найдено — Евразия целиком
+    ключ = str(region or "").strip().lower()
+    сек = None
+    for k, v in СЕКТОРЫ.items():
+        if k and k in ключ:
+            сек = v
+            break
+    if сек is None:
+        сек = (10, 120, 25, 65)
+    lon_a, lon_b, lat_a, lat_b = сек
+    # СЕКТОР ЩЕДРЕЕ ТАБЛИЦЫ НА ЧЕТВЕРТЬ (13.11, по кадру: «Ближний Восток»
+    # в своих 28°×26° читался крошечной заплаткой). Вид говорит «регион
+    # целиком», а не очерчивает границы, поэтому запас здесь уместен —
+    # точности он не обещает.
+    _dl = (lon_b - lon_a) * 0.14
+    _db = (lat_b - lat_a) * 0.14
+    lon_a, lon_b = lon_a - _dl, lon_b + _dl
+    lat_a, lat_b = max(-82.0, lat_a - _db), min(82.0, lat_b + _db)
+    # поворот подобран так, чтобы сектор смотрел на нас В СЕРЕДИНЕ сцены
+    середина = max(6.0, float(dur or 18.0)) / 2.0
+    lon0 = (lon_a + lon_b) / 2.0 - ГЛОБ_СКОРОСТЬ * (середина - tt)
+
+    появ = плавно(дол(tt, 0.5, 1.6))
+    пульс = 0.80 + 0.20 * math.sin(tt * 1.25)
+    шаг_lon = max(4.0, (lon_b - lon_a) / 10.0)
+    шаг_lat = max(3.0, (lat_b - lat_a) / 7.0)
+    if появ > 0:
+        ячейки = []
+        lo = lon_a
+        while lo < lon_b - 1e-6:
+            la = lat_a
+            while la < lat_b - 1e-6:
+                углы = [_точка_шара(lo, la, lon0, R, cx, cy),
+                        _точка_шара(min(lo + шаг_lon, lon_b), la, lon0, R, cx, cy),
+                        _точка_шара(min(lo + шаг_lon, lon_b),
+                                    min(la + шаг_lat, lat_b), lon0, R, cx, cy),
+                        _точка_шара(lo, min(la + шаг_lat, lat_b), lon0, R, cx, cy)]
+                if all(p[2] > 0.02 for p in углы):
+                    ячейки.append(углы)
+                la += шаг_lat
+            lo += шаг_lon
+        for углы in ячейки:
+            d.polygon([(p[0], p[1]) for p in углы],
+                      fill=tuple(_светлее(acc, 0.15))
+                      + (int(165 * появ * пульс),))
+        # КАЙМА СЕКТОРА: без неё заливка на шаре читается пятном, а не
+        # выделенной областью. Идёт по четырём сторонам, видимую часть
+        # рисуем кусками — за лимбом точек нет.
+        for сторона in (
+                [(lo, lat_a) for lo in np.arange(lon_a, lon_b + 1e-6, 2.0)],
+                [(lo, lat_b) for lo in np.arange(lon_a, lon_b + 1e-6, 2.0)],
+                [(lon_a, la) for la in np.arange(lat_a, lat_b + 1e-6, 2.0)],
+                [(lon_b, la) for la in np.arange(lat_a, lat_b + 1e-6, 2.0)]):
+            пред = None
+            for lo, la in сторона:
+                p = _точка_шара(float(lo), float(la), lon0, R, cx, cy)
+                if пред is not None and p[2] > 0.02 and пред[2] > 0.02:
+                    d.line([(пред[0], пред[1]), (p[0], p[1])],
+                           fill=tuple(_светлее(acc, 0.65))
+                           + (int(240 * появ),), width=4)
+                пред = p
+        _ev(sfx, 0.5, "accent")
+
+    # сетка: меридианы и параллели — поверх сектора, тонкие
+    for lon in range(-180, 180, 20):
+        пред = None
+        for lat in range(-80, 81, 5):
+            p = _точка_шара(lon, lat, lon0, R, cx, cy)
+            if пред is not None and p[2] > 0.02 and пред[2] > 0.02:
+                d.line([(пред[0], пред[1]), (p[0], p[1])],
+                       fill=tuple(_светлее(ink, 0.30)) + (120,), width=1)
+            пред = p
+    for lat in range(-60, 61, 20):
+        пред = None
+        for lon in range(-180, 181, 5):
+            p = _точка_шара(lon, lat, lon0, R, cx, cy)
+            if пред is not None and p[2] > 0.02 and пред[2] > 0.02:
+                d.line([(пред[0], пред[1]), (p[0], p[1])],
+                       fill=tuple(_светлее(ink, 0.30)) + (120,), width=1)
+            пред = p
+
+    стр = строки(text, строк=2, знаков=15)
+    if стр:
+        tex = текст_тех(стр, fsize=104, color=(238, 239, 242), acc=acc)
+        k = min(0.38 * W / tex.size[0], 0.30 * H / tex.size[1])
+        м = tex.resize((max(4, int(tex.size[0] * k)),
+                        max(4, int(tex.size[1] * k))), Image.LANCZOS)
+        a = плавно(дол(tt, 0.1, 0.9))
+        сл = м.copy()
+        сл.putalpha(сл.split()[3].point(lambda v: int(v * a)))
+        img.alpha_composite(сл, (int(SAFE * W), int(0.26 * H)))
+    if region:
+        pl = плашка_тех(region, "регион целиком", acc=acc, кегль=38,
+                        кегль_под=26, ширина=520)
+        a = плавно(дол(tt, 1.2, 2.0))
+        if a > 0:
+            сл = pl.copy()
+            сл.putalpha(сл.split()[3].point(lambda v: int(v * a)))
+            img.alpha_composite(сл, (int(SAFE * W), int(H * 0.60)))
+        _ev(sfx, 1.2, "label")
+    источник(img, source)
+    знак(img, watermark)
+    im = img.convert("RGB")
+    if out:
+        im.save(out, quality=92)
+        return out
+    return im
+
+
+# ===========================================================================
+# 10 · ПЕЧАТЬ И ПОДПИСЬ КРУПНО  (`card:pechat`)
+# ---------------------------------------------------------------------------
+# «Подписали», «утвердили», «отказались подписывать». Не лоскут бумаги с
+# цитатой: МАКРО — бланк во весь кадр, перо ведёт подпись, сверху ложится
+# оттиск печати. Текста документа вид не сочиняет: строки бланка — серые
+# полосы, читается только слово в оттиске.
+# ===========================================================================
+def _бланк_тех(acc, w=1500, h=1020):
+    """Бланк: шапка, серые строки вместо текста, место под подпись."""
+    def сделать():
+        img = Image.new("RGBA", (w, h), (232, 231, 227, 255))
+        d = ImageDraw.Draw(img)
+        d.rectangle([0, 0, w, 14], fill=tuple(_темнее(acc, 0.25)) + (255,))
+        d.rectangle([86, 92, 86 + int(w * 0.42), 126], fill=(74, 75, 78, 255))
+        d.rectangle([86, 150, 86 + int(w * 0.24), 172], fill=(150, 151, 154, 255))
+        y = 240
+        rng = np.random.default_rng(3)
+        while y < h - 300:
+            шир = int((w - 190) * float(rng.uniform(0.55, 1.0)))
+            d.rectangle([86, y, 86 + шир, y + 15], fill=(166, 167, 170, 255))
+            y += 46
+        d.rectangle([86, h - 212, 86 + 420, h - 208], fill=(120, 121, 124, 255))
+        d.rectangle([w - 560, h - 212, w - 140, h - 208], fill=(120, 121, 124, 255))
+        return img
+    return _кэш(("бланк", tuple(acc), w, h), сделать)
+
+
+def _печать_тех(слово, acc, px=520):
+    """Оттиск печати: два кольца, слово внутри, НЕРОВНАЯ краска."""
+    def сделать():
+        S = 2
+        n = px * S
+        img = Image.new("RGBA", (n, n), (0, 0, 0, 0))
+        d = ImageDraw.Draw(img)
+        чернила = tuple(_темнее(acc, 0.05)) + (255,)
+        d.ellipse([10, 10, n - 10, n - 10], outline=чернила, width=int(13 * S))
+        d.ellipse([int(0.11 * n), int(0.11 * n), int(0.89 * n), int(0.89 * n)],
+                  outline=чернила, width=int(5 * S))
+        сл = str(слово).upper()
+        кегль = int(74 * S)
+        d0 = ImageDraw.Draw(Image.new("RGBA", (8, 8)))
+        while кегль > int(20 * S):
+            f = zc.font("ArialBlack.ttf", кегль)
+            if d0.textlength(сл, font=f) <= n * 0.62:
+                break
+            кегль = int(кегль * 0.92)
+        f = zc.font("ArialBlack.ttf", кегль)
+        b = d0.textbbox((0, 0), сл, font=f)
+        d.text(((n - (b[2] - b[0])) / 2 - b[0], (n - (b[3] - b[1])) / 2 - b[1]),
+               сл, font=f, fill=чернила)
+        d.line([int(0.22 * n), int(0.33 * n), int(0.78 * n), int(0.33 * n)],
+               fill=чернила, width=int(4 * S))
+        d.line([int(0.22 * n), int(0.67 * n), int(0.78 * n), int(0.67 * n)],
+               fill=чернила, width=int(4 * S))
+        # НЕРОВНАЯ КРАСКА: без неё оттиск выглядит наклейкой, а не печатью
+        rng = np.random.default_rng(17)
+        шум = rng.random((n // 8, n // 8)).astype(np.float32)
+        шум = np.asarray(Image.fromarray((шум * 255).astype(np.uint8))
+                         .resize((n, n), Image.BILINEAR), np.float32) / 255.0
+        a = np.asarray(img.split()[3], np.float32) / 255.0
+        a = a * np.clip(0.55 + шум * 0.75, 0, 1)
+        img.putalpha(Image.fromarray((a * 255).astype(np.uint8)))
+        return img.resize((px, px), Image.LANCZOS)
+    return _кэш(("печать", str(слово), tuple(acc), px), сделать)
+
+
+def _подпись(d, x0, y0, ширина, высота, доля, цвет, толщина=9):
+    """Подпись пишется НА ГЛАЗАХ: кривая, которая дорисовывается по доле."""
+    точки = []
+    N = 220
+    for i in range(N + 1):
+        u = i / float(N)
+        x = x0 + ширина * u
+        y = (y0 + высота * (0.5
+                            + 0.42 * math.sin(u * 7.6)
+                            + 0.18 * math.sin(u * 17.0 + 1.2)
+                            - 0.30 * u))
+        точки.append((x, y))
+    сколько = max(2, int(len(точки) * zc.clamp01(доля)))
+    d.line(точки[:сколько], fill=цвет, width=толщина, joint="curve")
+
+
+def pechat(out=None, t=None, text="", stamp="утверждено", role="", source="",
+           channel="", watermark="", dur=0.0, sfx=None, **_):
+    """Макро бланка: подпись ведётся пером, сверху ложится оттиск печати."""
+    tt = 3.2 if t is None else float(t)
+    acc, ink, mid = пал(channel)
+    img = _фон(ink, mid)
+    бланк = _бланк_тех(acc).copy()
+    d0 = ImageDraw.Draw(бланк, "RGBA")
+    # подпись
+    доля = плавно(дол(tt, 0.9, 2.3))
+    if доля > 0:
+        _подпись(d0, 880, бланк.size[1] - 360, 430, 150, доля,
+                 (26, 32, 54, 255))
+        _ev(sfx, 0.9, "accent")
+    # печать: прилетает сверху, садится с осадкой, краска неровная
+    пр = дол(tt, 2.2, 2.62)
+    if пр > 0:
+        п = _печать_тех(stamp, acc)
+        к = 1.0 + 0.42 * (1.0 - zc.out_expo(пр))
+        р = int(п.size[0] * к)
+        ш = п.resize((р, р), Image.BICUBIC).rotate(-9, expand=True,
+                                                   resample=Image.BICUBIC)
+        a = min(1.0, пр * 2.2)
+        сл = ш.copy()
+        сл.putalpha(сл.split()[3].point(lambda v: int(v * a)))
+        бланк.alpha_composite(сл, (int(бланк.size[0] * 0.33 - р / 2),
+                                   int(бланк.size[1] * 0.56 - р / 2)))
+        _ev(sfx, 2.2, "hit")
+
+    # бланк ложится в кадр четырёхугольником с небольшим поворотом, камера
+    # медленно наезжает — без тряски, одним ходом
+    наезд = 1.0 + 0.055 * плавно(дол(tt, 0.0, max(6.0, float(dur or 14.0))))
+    # БЛАНК НАЧИНАЕТСЯ НИЖЕ ЗАГОЛОВКА (13.11, по кадру: правый верхний угол
+    # листа заезжал под фразу сцены).
+    pts = [(W * 0.105, H * 0.285), (W * 1.03, H * 0.215),
+           (W * 1.06, H * 1.12), (W * 0.075, H * 1.05)]
+    cx = sum(p[0] for p in pts) / 4.0
+    cy = sum(p[1] for p in pts) / 4.0
+    pts = [(cx + (p[0] - cx) * наезд, cy + (p[1] - cy) * наезд) for p in pts]
+    zc.paste_quad(img, бланк, pts, opacity=плавно(дол(tt, 0.0, 0.6)))
+
+    стр = строки(text, строк=1, знаков=22)
+    if стр:
+        tex = текст_тех(стр, fsize=96, color=(240, 241, 244), acc=acc)
+        надпись_сверху(img, tex, плавно(дол(tt, 0.2, 1.0)), доля_w=0.52,
+                       доля_h=0.10)
+    if role:
+        pl = плашка_тех(role, "", acc=acc, кегль=36, кегль_под=0, ширина=520,
+                        темп=(12, 12, 15))
+        a = плавно(дол(tt, 2.6, 3.2))
+        if a > 0:
+            сл = pl.copy()
+            сл.putalpha(сл.split()[3].point(lambda v: int(v * a)))
+            img.alpha_composite(сл, (int(SAFE * W), int(H * 0.835)))
+    источник(img, source)
+    знак(img, watermark)
+    im = img.convert("RGB")
+    if out:
+        im.save(out, quality=92)
+        return out
+    return im
+
+
+ВИДЫ.update({
+    "repliki":  (repliki, ("text", "repliki_"), (2, 3), 20.0),
+    "lenta":    (lenta, ("text", "soobshcheniya"), (2, 4), 18.0),
+    "globus":   (globus, ("text", "region"), (2, 3), 18.0),
+    "pechat":   (pechat, ("text", "stamp"), (2, 3), 14.0),
+})

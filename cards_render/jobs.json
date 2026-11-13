@@ -1,118 +1,24 @@
 [
  {
-  "scene": 901,
-  "view": "sceny.tribuna",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 18.0,
-  "channel": "ПЛАНЕТА",
-  "cfg": {
-   "view": "tribuna",
-   "seconds": 18.0,
-   "fps": 30,
-   "kwargs": {
-    "text": "Решение приняли без него",
-    "role": "глава ведомства на момент заявления",
-    "place": "брифинг, 12 ноября",
-    "source": "заявление ведомства",
-    "channel": "ПЛАНЕТА",
-    "watermark": "ПЛАНЕТА",
-    "dur": 18.0
-   }
-  }
- },
- {
-  "scene": 902,
-  "view": "sceny.prohod",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 32.0,
-  "channel": "ПЛАНЕТА",
-  "cfg": {
-   "view": "prohod",
-   "seconds": 32.0,
-   "fps": 30,
-   "kwargs": {
-    "text": "Что стоит за решением",
-    "tezisy": [
-     "сроки сдвинули",
-     "деньги не пришли",
-     "подрядчика сменили",
-     "гарантии переписали"
-    ],
-    "source": "по материалам заявлений сторон",
-    "channel": "ПЛАНЕТА",
-    "watermark": "ПЛАНЕТА",
-    "dur": 32.0
-   }
-  }
- },
- {
-  "scene": 903,
-  "view": "sceny.relsy",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 30.0,
-  "channel": "ПЛАНЕТА",
-  "cfg": {
-   "view": "relsy",
-   "seconds": 30.0,
-   "fps": 30,
-   "kwargs": {
-    "text": "Как это шло к развязке",
-    "sobytiya": [
-     "сначала отложили",
-     "потом переписали",
-     "затем отозвали",
-     "в итоге закрыли"
-    ],
-    "source": "хроника события",
-    "channel": "ПЛАНЕТА",
-    "watermark": "ПЛАНЕТА",
-    "dur": 30.0
-   }
-  }
- },
- {
-  "scene": 904,
-  "view": "sceny.kreslo",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 16.0,
-  "channel": "ПЛАНЕТА",
-  "cfg": {
-   "view": "kreslo",
-   "seconds": 16.0,
-   "fps": 30,
-   "kwargs": {
-    "text": "Решили без него",
-    "role": "кресло главы делегации",
-    "place": "заседание, 12 ноября",
-    "source": "состав делегации",
-    "channel": "ПЛАНЕТА",
-    "watermark": "ПЛАНЕТА",
-    "dur": 16.0
-   }
-  }
- },
- {
-  "scene": 905,
-  "view": "sceny.mehanizm",
+  "scene": 909,
+  "view": "sceny.repliki",
   "mode": "cli",
   "script": "sceny_cli.py",
   "dur": 20.0,
   "channel": "ПЛАНЕТА",
   "cfg": {
-   "view": "mehanizm",
+   "view": "repliki",
    "seconds": 20.0,
    "fps": 30,
    "kwargs": {
-    "text": "Кто на кого давит",
-    "pary": [
-     "БРЮССЕЛЬ>БАНКИ",
-     "БАНКИ>ПОДРЯДЧИК"
+    "text": "Как отреагировали",
+    "repliki_": [
+     "БРЮССЕЛЬ|решение придётся пересмотреть",
+     "БЕРЛИН|мы этого не поддержим",
+     "ПАРИЖ|вопрос не закрыт",
+     "ВАРШАВА|нужны гарантии"
     ],
-    "source": "по заявлениям сторон",
+    "source": "заявления сторон",
     "channel": "ПЛАНЕТА",
     "watermark": "ПЛАНЕТА",
     "dur": 20.0
@@ -120,70 +26,122 @@
   }
  },
  {
-  "scene": 906,
-  "view": "sceny.prolog",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 5.0,
-  "channel": "ПЛАНЕТА",
-  "cfg": {
-   "view": "prolog",
-   "seconds": 5.0,
-   "fps": 30,
-   "kwargs": {
-    "text": "Лондон меняет правила",
-    "kick": "тема выпуска",
-    "channel": "ПЛАНЕТА",
-    "watermark": "ПЛАНЕТА",
-    "dur": 5.0
-   }
-  }
- },
- {
-  "scene": 907,
-  "view": "sceny.prohod",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 32.0,
-  "channel": "5 МИНУТ",
-  "cfg": {
-   "view": "prohod",
-   "seconds": 32.0,
-   "fps": 30,
-   "kwargs": {
-    "text": "Что стоит за решением",
-    "tezisy": [
-     "сроки сдвинули",
-     "деньги не пришли",
-     "подрядчика сменили",
-     "гарантии переписали"
-    ],
-    "source": "по материалам заявлений сторон",
-    "channel": "5 МИНУТ",
-    "watermark": "5 МИНУТ",
-    "dur": 32.0
-   }
-  }
- },
- {
-  "scene": 908,
-  "view": "sceny.tribuna",
+  "scene": 910,
+  "view": "sceny.lenta",
   "mode": "cli",
   "script": "sceny_cli.py",
   "dur": 18.0,
-  "channel": "5 МИНУТ",
+  "channel": "ПЛАНЕТА",
   "cfg": {
-   "view": "tribuna",
+   "view": "lenta",
    "seconds": 18.0,
    "fps": 30,
    "kwargs": {
-    "text": "Решение приняли без него",
-    "role": "глава ведомства на момент заявления",
-    "place": "брифинг, 12 ноября",
-    "source": "заявление ведомства",
+    "text": "Сообщают агентства",
+    "soobshcheniya": [
+     "переговоры прерваны",
+     "делегация улетела",
+     "стороны молчат",
+     "заявление готовится",
+     "подробностей нет"
+    ],
+    "source": "сообщения агентств",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 18.0
+   }
+  }
+ },
+ {
+  "scene": 911,
+  "view": "sceny.globus",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 18.0,
+  "channel": "ПЛАНЕТА",
+  "cfg": {
+   "view": "globus",
+   "seconds": 18.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Под ударом весь регион",
+    "region": "Ближний Восток",
+    "source": "оценка по заявлениям",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 18.0
+   }
+  }
+ },
+ {
+  "scene": 912,
+  "view": "sceny.pechat",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 14.0,
+  "channel": "ПЛАНЕТА",
+  "cfg": {
+   "view": "pechat",
+   "seconds": 14.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Документ подписали",
+    "stamp": "утверждено",
+    "role": "решение вступило в силу",
+    "source": "текст документа",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 14.0
+   }
+  }
+ },
+ {
+  "scene": 913,
+  "view": "sceny.repliki",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 20.0,
+  "channel": "5 МИНУТ",
+  "cfg": {
+   "view": "repliki",
+   "seconds": 20.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Как отреагировали",
+    "repliki_": [
+     "БРЮССЕЛЬ|решение придётся пересмотреть",
+     "БЕРЛИН|мы этого не поддержим",
+     "ПАРИЖ|вопрос не закрыт",
+     "ВАРШАВА|нужны гарантии",
+     "РИМ|подождём решения",
+     "МАДРИД|нас не спросили"
+    ],
+    "source": "заявления сторон",
     "channel": "5 МИНУТ",
     "watermark": "5 МИНУТ",
-    "dur": 18.0
+    "dur": 20.0
+   }
+  }
+ },
+ {
+  "scene": 914,
+  "view": "sceny.pechat",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 14.0,
+  "channel": "5 МИНУТ",
+  "cfg": {
+   "view": "pechat",
+   "seconds": 14.0,
+   "fps": 30,
+   "kwargs": {
+    "text": "Подписать отказались",
+    "stamp": "отказано",
+    "role": "документ вернули",
+    "source": "текст документа",
+    "channel": "5 МИНУТ",
+    "watermark": "5 МИНУТ",
+    "dur": 14.0
    }
   }
  }
