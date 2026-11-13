@@ -482,7 +482,7 @@ def utyug_i_gotovyy_naryad(t):
 
     f = baza.par(ux - 60, uy - 20, t, 6, .52, 340, .42, 1.1)
     # СТУЛ с нарядом
-    sx, sb = 760, POL + 10
+    sx, sb = 700, POL + 10
     f += ten(sx, sb, 140, 24, .5)
     f += (f'<rect x="{sx-96}" y="{sb-320}" width="192" height="30" rx="10" fill="url(#derev)" {o(7)}/>')
     f += (f'<rect x="{sx-86}" y="{sb-700}" width="26" height="382" rx="10" fill="url(#derev)" {o(6)}/>'
@@ -893,7 +893,7 @@ def parikmaherskaya_pered_prazdnikom(t):
 
     # ОЧЕРЕДЬ у двери — передний план
     f = ""
-    for i, (qx, sc) in enumerate(((720, 1.0), (838, .94))):
+    for i, (qx, sc) in enumerate(((640, 1.0), (776, .94))):
         qb = POL + 110 - 20 * i
         f += f'<g transform="translate({qx},{qb}) scale({sc:.2f})">'
         f += ten(0, 8, 96, 18, .45)

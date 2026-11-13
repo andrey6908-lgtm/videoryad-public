@@ -180,8 +180,8 @@ def _banka(x, y, s_, t, ph=0.0):
     g = f'<g transform="translate({x:.1f},{y:.1f}) scale({s_:.3f})">'
     g += ten(4, 12, 66, 14, .45)
     g += (f'<path d="M-58,0 q-10,-120 2,-168 l112,0 q12,48 2,168 z" fill="url(#stekl)"'
-          f' opacity=".78" {o(6)}/>')
-    g += f'<rect x="-44" y="-194" width="88" height="30" rx="8" fill="url(#stekl)" opacity=".9" {o(5)}/>'
+          f' opacity=".95" {o(6)}/>')
+    g += f'<rect x="-44" y="-194" width="88" height="30" rx="8" fill="url(#stekl)" opacity=".98" {o(5)}/>'
     g += f'<ellipse cx="0" cy="-194" rx="44" ry="13" fill="#e8f3fa" opacity=".85" {o(4)}/>'
     g += f'<path d="M-38,-158 q-6,78 -2,132" fill="none" stroke="#ffffff" stroke-width="10" opacity=".5"/>'
     return g + "</g>"
@@ -680,7 +680,7 @@ def protyanutaya_i_zakrytaya_ladon(t):
     s += SL(Z_SRED, sred)
 
     per = _varezhka(400 + dx, 902, 1.35, t, .0, .2, False, 2.4)
-    per += _kupyura(1260, 772, 300, 138, -5)
+    per += _kupyura(1090, 790, 310, 142, -9)
     per += (f'<g transform="rotate({otkaz:.2f} 1260 900)">'
             + _varezhka(1260, 876, 1.35, t, szhat, .55, True, 1.4) + "</g>")
     per += baza.ramka_pp("oba", "#0b0a12", .5)
@@ -836,8 +836,11 @@ def zanyatoe_nesut_sosedke(t):
     for i in range(5):
         dal += (f'<rect x="-40" y="{980 + i*26:.0f}" width="{W+80}" height="26"'
                 f' fill="{BETON2 if i % 2 else BETON}" opacity=".9" stroke="{K}" stroke-width="3"/>')
-    dal += (f'<path d="M80,640 q0,-120 120,-120 h380" fill="none" stroke="{ZHELEZ}"'
-            f' stroke-width="16" stroke-linecap="round"/>')
+    dal += (f'<path d="M60,700 q0,-150 140,-150 h300" fill="none" stroke="{ZHELEZ}"'
+            f' stroke-width="18" stroke-linecap="round"/>')
+    for i in range(5):
+        dal += (f'<path d="M{110 + i*74},700 v-120" fill="none" stroke="{ZHELEZ}"'
+                f' stroke-width="10" stroke-linecap="round"/>')
     dal += (f'<circle cx="1000" cy="130" r="42" fill="{SVET}"'
             f' opacity="{.6 + .35*abs(A.w(t, 5.2)):.2f}"/>')
     dal += baza.teplo(1000, 150, 420, 340, .45)
@@ -853,8 +856,8 @@ def zanyatoe_nesut_sosedke(t):
     bx, by = 580, 880
     per = _kniga(bx, by, 430, 104, t, 1.4 * A.w(t, 3.0))
     per += f'<g transform="rotate({kach:.2f} {bx:.0f} {by - 52:.0f})">'
-    per += _banka(bx + 12, by - 56, 1.55, t)
-    per += _konvert(bx + 18, by - 400, 300, 196, -6 + .6 * kach)
+    per += _banka(bx + 12, by - 56, 1.75, t)
+    per += _konvert(bx + 18, by - 420, 264, 176, -6 + .6 * kach)
     per += "</g>"
     per += baza.ramka_pp("levo", "#14181e", .5)
     s += SL(Z_PERED, per)
@@ -1120,11 +1123,12 @@ def paket_u_dveri_kvartiry(t):
     sed = 1.0 - .12 * math.sin(math.pi * min(1.0, A.seg(t, 3.8, .45)))
 
     s = SL(Z_NEBO, _stena("#39414c", "#1f252e"))
-    dal = f'<rect y="0" width="{W}" height="1000" fill="url(#beton)"/>'
+    dal = f'<rect y="0" width="{W}" height="906" fill="url(#beton)"/>'
     dal += (f'<rect y="520" width="{W}" height="20" fill="{BETON2}" opacity=".75"/>')
     if kalit > .01:
         dal += f'<g opacity="{kalit:.2f}">' + baza.pleten(240, 880, 700, 200, 7) + "</g>"
-    dal += baza.polovicy(1000, "url(#kamen)")
+    dal += baza.polovicy(906, "url(#kamen)")
+    dal += (f'<rect y="878" width="{W}" height="32" fill="{BETON2}" {o(4)}/>')
     s += SL(Z_DAL, dal)
 
     sred = ten(760, 1004, 280, 26, .5)
@@ -1149,14 +1153,14 @@ def paket_u_dveri_kvartiry(t):
     per += (f'<rect x="1384" y="190" width="432" height="340" rx="8" fill="none"'
             f' stroke="{DOSKA2}" stroke-width="10"/>')
     per += f'<circle cx="1800" cy="600" r="18" fill="url(#zhel)" {o(5)}/>'
-    per += ten(1600, 1038, 230, 26, .5)
-    per += (f'<rect x="1400" y="1006" width="420" height="66" rx="10" fill="url(#kovr)" {o(6)}/>')
-    for i in range(6):
-        per += (f'<line x1="{1424 + i*66}" y1="1012" x2="{1424 + i*66}" y2="1066"'
+    per += ten(1560, 1020, 250, 28, .5)
+    per += (f'<rect x="1330" y="986" width="470" height="70" rx="10" fill="url(#kovr)" {o(6)}/>')
+    for i in range(7):
+        per += (f'<line x1="{1360 + i*64}" y1="992" x2="{1360 + i*64}" y2="1050"'
                 f' stroke="#2c1f18" stroke-width="5" opacity=".6"/>')
-    py = 780 + 206 * stav
+    py = 672 + 128 * stav
     per += _g("paket2", "#dde5ee", "#8e9aa7")
-    per += (f'<g transform="translate(1600,{py:.1f}) scale(1,{sed:.3f})">'
+    per += (f'<g transform="translate(1540,{py:.1f}) scale({1.18:.2f},{1.18*sed:.3f})">'
             + ten(6, 196, 128, 26, .5)
             + f'<path d="M-132,-46 h264 l34,232 q-166,46 -332,0 z" fill="url(#paket2)"'
               f' opacity=".94" {o(7)}/>'
@@ -1195,13 +1199,24 @@ def ochistki_i_korobki_na_kuhne(t):
     dal += baza.polovicy(900)
     s += SL(Z_DAL, dal)
 
-    sred = baza.stol(-60, 700, 1260, 48)
+    sred = baza.stol(-60, 690, 1260, 58)
+    sred += (f'<rect x="-60" y="748" width="1260" height="36" rx="8" fill="{DOSKA2}" {o(5)}/>')
     # газета под очистками
-    sred += ten(620, 740, 330, 22, .4)
-    sred += (f'<path d="M280,702 h680 l-36,52 h-608 z" fill="url(#list)" {o(5)}/>')
-    for i in range(5):
-        sred += (f'<line x1="{306 + i*6}" y1="{712 + i*8}" x2="{936 - i*7}" y2="{712 + i*8}"'
+    sred += ten(620, 752, 350, 22, .4)
+    sred += (f'<path d="M250,672 h740 l-54,76 h-632 z" fill="url(#list)" {o(5)}/>')
+    for i in range(6):
+        sred += (f'<line x1="{282 + i*8}" y1="{686 + i*10}" x2="{962 - i*9}" y2="{686 + i*10}"'
                  f' stroke="#a9a08c" stroke-width="3" opacity=".6"/>')
+    # сама гора очистков на газете
+    gora = max(0.0, 1.0 - A.seg(t, 1.6, 4.0))
+    if gora > .02:
+        sred += (f'<path d="M{620 - 210*gora:.0f},720 q{105*gora:.0f},{-130*gora:.0f}'
+                 f' {210*gora:.0f},0 z" fill="#b07c42" opacity="{.9*gora:.2f}" {o(5)}/>')
+        rr = random.Random(41)
+        for i in range(9):
+            sred += _ochistka(620 + rr.uniform(-180, 180) * gora,
+                              706 - rr.uniform(0, 80) * gora,
+                              rr.uniform(-50, 50), 1.1 + .5 * rr.random(), gora)
     # коробки складываются стопкой
     for i in range(4):
         k = A.out(A.seg(t, .9 + i * .45, .7))
@@ -1213,9 +1228,9 @@ def ochistki_i_korobki_na_kuhne(t):
     per = ""
     # гора очистков: то, что ещё не улетело, лежит кучей на газете
     for i in range(18):
-        u = A.ease(A.seg(t, 1.0 + i * .16, .55))
+        u = A.ease(A.seg(t, 1.6 + i * .22, .55))
         ox = 600 + r.uniform(-170, 150)
-        oy = 686 + r.uniform(-46, 14)
+        oy = 686 + r.uniform(-56, 10)
         tx, ty = 1560, 850
         x = ox + (tx - ox) * u
         y = oy + (ty - oy) * u - 200 * math.sin(math.pi * u)
@@ -1252,6 +1267,11 @@ def taz_i_prischepki(t):
                           moroz=.5)
     dal += (f'<rect y="840" width="{W}" height="{H-840}" fill="#6f8290"/>')
     dal += (f'<rect y="832" width="{W}" height="18" fill="#54646f"/>')
+    # единственное тёплое пятно: лампочка под потолком
+    dal += (f'<path d="M300,0 v96" fill="none" stroke="{K}" stroke-width="6"/>')
+    dal += (f'<circle cx="300" cy="130" r="38" fill="{SVET}"'
+            f' opacity="{.72 + .22*abs(A.w(t, 5.4)):.2f}" {o(5)}/>')
+    dal += baza.teplo(300, 160, 480, 420, .5)
     s += SL(Z_DAL, dal)
 
     prov = 56 + 8 * A.w(t, 4.0)

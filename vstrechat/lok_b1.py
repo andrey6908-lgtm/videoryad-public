@@ -230,19 +230,30 @@ def _pidzhak(x, ytop, h_, t, karman_vyv=0.0, ph=0.0):
     for i in range(2):
         g += (f'<circle cx="{14*sh:.0f}" cy="{(210+i*78)*sh:.0f}" r="{14*sh:.0f}"'
               f' fill="url(#zol)" {o(max(2, 3*sh))}/>')
-    # нагрудный карман
+    # карман: клапан, прорезь со строчкой и вывернутая подкладка мешочком
     kx, ky = 72 * sh, 150 * sh
-    g += (f'<path d="M{kx-54*sh:.0f},{ky:.0f} h{108*sh:.0f} v{64*sh:.0f} h{-108*sh:.0f} z"'
-          f' fill="#2d3340" {o(max(3, 4*sh))}/>')
+    kw = 56 * sh
     if karman_vyv > .01:
         k = min(1.0, karman_vyv)
-        bol = 9 * A.w(t, 1.35, ph) * k
-        g += (f'<path d="M{kx-52*sh:.0f},{ky+10*sh:.0f}'
-              f' q{52*sh+bol:.1f},{150*sh*k:.0f} {104*sh:.0f},0'
-              f' q{-20*sh:.0f},{-34*sh*k:.0f} {-104*sh:.0f},0 z"'
-              f' fill="#e9e2d0" {o(max(3, 4*sh))}/>')
-        g += (f'<path d="M{kx-30*sh:.0f},{ky+48*sh*k:.1f} q{30*sh:.0f},{40*sh*k:.0f} {60*sh:.0f},0"'
-              f' fill="none" stroke="#c3b89c" stroke-width="{5*sh:.1f}" opacity=".8"/>')
+        bol = 7 * A.w(t, 1.35, ph) * k
+        gl = 150 * sh * k                      # глубина вывернутого мешочка
+        g += (f'<path d="M{kx-kw:.0f},{ky+16*sh:.0f}'
+              f' q{-14*sh+bol:.1f},{gl*.78:.0f} {kw*.52:.0f},{gl:.0f}'
+              f' q{kw*.92:.0f},{16*sh*k:.0f} {kw*1.48:.0f},{-gl:.0f}'
+              f' q{-12*sh:.0f},{-gl*.78:.0f} {-kw*2:.0f},{-16*sh:.0f} z"'
+              f' fill="#efe7d3" {o(max(3, 4*sh))}/>')
+        g += (f'<ellipse cx="{kx:.0f}" cy="{ky+22*sh:.0f}" rx="{kw*.84:.0f}"'
+              f' ry="{14*sh*k:.1f}" fill="#8e8367" opacity="{.5*k:.2f}"/>')
+        g += (f'<path d="M{kx-kw*.5:.0f},{ky+gl*.66:.0f} q{kw*.5:.0f},{26*sh*k:.0f} {kw:.0f},0"'
+              f' fill="none" stroke="#bfb295" stroke-width="{6*sh:.1f}" opacity=".85"/>')
+    g += (f'<path d="M{kx-kw-4*sh:.0f},{ky:.0f} h{kw*2+8*sh:.0f} v{16*sh:.0f}'
+          f' h{-kw*2-8*sh:.0f} z" fill="#161c26" {o(max(3, 4*sh))}/>')
+    g += (f'<g transform="rotate({-10*min(1.0, karman_vyv):.1f} {kx-kw:.0f} {ky:.0f})">'
+          f'<path d="M{kx-kw-4*sh:.0f},{ky:.0f} h{kw*2+8*sh:.0f} v{46*sh:.0f}'
+          f' q{-kw-4*sh:.0f},{16*sh:.0f} {-kw*2-8*sh:.0f},0 z" fill="#333a49"'
+          f' {o(max(3, 4*sh))}/>'
+          f'<path d="M{kx-kw*.8:.0f},{ky+36*sh:.0f} q{kw*.8:.0f},{18*sh:.0f} {kw*1.6:.0f},0"'
+          f' fill="none" stroke="#6d7a8d" stroke-width="{4*sh:.1f}" opacity=".6"/></g>')
     g += '</g>'
     return s + g
 
@@ -701,11 +712,12 @@ def ognennaya_loshad_na_krylce(t):
             + _krylco(900, 1010, 440, t, 0.0)
             + _sugrob(968, 44))
     bit = max(0.0, math.sin(2 * math.pi * (t / 1.7))) ** 3
-    # УКРУПНЕНО И ОТОДВИНУТО ОТ ИЗБЫ 13.11: прежняя лошадь (.58) сливалась
-    # с навесом крыльца, круп и ноги не читались
-    bx, by = 700, 960
-    s += SL(0, teplo(bx - 40, by - 220, 560, 430, .55)
-            + ob.loshad(bx, by, t, .9, 0.0)
+    # 13.11: лошадь (.58) сливалась с навесом крыльца — УКРУПНЕНА, но
+    # ОСТАВЛЕНА НА КРЫЛЬЦЕ, как требует раскадровка («стоит на нём и бьёт
+    # копытом»): первая правка унесла её на снег и разошлась с заданием
+    bx, by = 1008, 1004
+    s += SL(0, teplo(bx - 40, by - 240, 600, 460, .6)
+            + ob.loshad(bx, by, t, .74, 0.0)
             + "".join(f'<circle cx="{bx+104+i*20-bit*34:.0f}" cy="{by-130-bit*44-i*9:.0f}"'
                       f' r="{(5+i*3.0)*bit:.1f}" fill="#eef5ff" opacity="{.6*bit:.2f}"/>'
                       for i in range(5)))
@@ -829,10 +841,9 @@ def karman_naryad_i_blyudo(t):
           + f'<path d="M240,300 q60,-30 120,0" fill="none" stroke="#c8a96a"'
             f' stroke-width="9" stroke-linecap="round"/>')
     g1 += _pidzhak(300, 330, 600, t, 0.0, .1)
-    g1 += (f'<path d="M352,520 h200 v26 q-100,16 -200,0 z" fill="#141a24" {o(5)}/>')
     if mp < .99:
-        g1 += teplo(452, 180 + 350 * mp, 170, 170, .5 * (1 - mp * .7))
-        g1 += _moneta(452, 180 + 350 * mp, 1.5, t * 7.0)
+        g1 += teplo(404, 180 + 356 * mp, 170, 170, .5 * (1 - mp * .7))
+        g1 += _moneta(404, 180 + 356 * mp, 1.5, t * 7.0)
     # 2. платье и красный бант, который завязывается сам
     g2 = _plate("b1nar", 960, 250, 620, t, "#f8f1df", "#cbbd98",
                 1.6 * A.w(t, 3.4), False, -1, .4)
@@ -871,20 +882,25 @@ def dvenadcat_mesyacev_s_monetoy(t):
         lx = 130 + i * 146
         ly = 250 + 26 * math.sin(i * .9)
         fl = A.seg(t, .15 + i * .19, .5)
+        sez = (("#eef4fb", "#bcd0e4"), ("#eef4fb", "#bcd0e4"),
+               ("#eef7e8", "#bcd3a8"), ("#eef7e8", "#bcd3a8"), ("#eef7e8", "#bcd3a8"),
+               ("#fdf6df", "#dcc88c"), ("#fdf6df", "#dcc88c"), ("#fdf6df", "#dcc88c"),
+               ("#f8ecd2", "#cfa96a"), ("#f8ecd2", "#cfa96a"), ("#f8ecd2", "#cfa96a"),
+               ("#eef4fb", "#bcd0e4"))[i]
         lg += ten(lx + 8, ly + 268, 70, 14, .45)
         lg += (f'<g transform="rotate({-6 + (i % 3) * 5:.0f} {lx:.0f} {ly:.0f})">'
-               + _listok(lx, ly, 132, 244, fl) + '</g>')
+               + _listok(lx, ly, 132, 244, fl, sez[0], sez[1]) + '</g>')
     s += SL(Z_SRED, lg)
     # монета катится, следом бант и блюдо, рядом шагает фигурка
     pr = A.ease(A.seg(t, .15, 2.2))
-    mx = 210 + 1460 * pr
+    mx = 430 + 1270 * pr
     sh = abs(math.sin(2 * math.pi * (t / .62)))
     s += SL(0, teplo(mx, 720, 300, 200, .5)
             + _moneta(mx, 700 - 22 * abs(math.sin(2 * math.pi * pr * 3)), 1.9, mx * .018)
-            + _bant(mx - 300, 706, .78, 1.0)
-            + _blyudo(mx - 580, 724, t, .66)
-            + ob.figura(mx - 830, 760 - 12 * sh, 330, t, "#2c2434", "#f0c070",
-                        True, .1, True, 1.0, False))
+            + _bant(mx - 200, 706, .78, 1.0)
+            + _blyudo(mx - 370, 724, t, .66)
+            + ob.figura(max(150.0, mx - 560), 760 - 12 * sh, 330, t, "#2c2434",
+                        "#f0c070", True, .1, True, 1.0, False))
     s += SL(Z_PERED, f'<path d="M-60,900 q520,-40 1020,-8 q520,30 1020,-16 L1980,1140 L-60,1140 Z"'
             f' fill="#0f1726" {o(6)}/>'
             + f'<path d="M-60,940 q520,-38 1020,-6 q520,28 1020,-14" fill="none"'
@@ -1108,9 +1124,9 @@ def dve_hmurye_tuchki_u_dveri(t):
     тучки, дверь закрывается перед ними. Живое: тучки протискиваются,
     дверь закрывается, коврик у двери сдвигается."""
     zakr = A.ease(A.seg(t, .7, 2.2))
-    schel = 1.0 - zakr
+    stvor = .54 + .46 * zakr                 # створка едет на проём и закрывает его
     dx0, dw = 820, 560
-    kray = dx0 + dw * max(.06, schel)        # где край двери, там и щель
+    kray = dx0 + dw * stvor                  # где край створки, там и щель
     s = SL(Z_NEBO, _stena(t, 958, "#46566e", "#1a2230"))
     s += SL(Z_DAL, f'<rect x="{dx0}" y="150" width="{dw}" height="810" rx="10" fill="#1a2740"/>'
             + "".join(
@@ -1126,17 +1142,17 @@ def dve_hmurye_tuchki_u_dveri(t):
     s += SL(Z_SRED, _tuchka(kray + shir * .42, 430, t, 1.15, .0, szh)
             + _tuchka(kray + shir * .62, 620, t, .9, .4, szh * .9))
     # дверь закрывается
-    s += SL(0, f'<g transform="translate({dx0},0) scale({max(.06, schel):.3f},1)'
+    s += SL(0, f'<g transform="translate({dx0},0) scale({stvor:.3f},1)'
             f' translate({-dx0},0)">'
             + dver(dx0, 150, dw, 810, .0, "url(#derev)", True, True) + '</g>')
     # коврик сдвигается
     k = A.ease(A.seg(t, 1.0, 1.4))
     sdv = 54 * k
     s += SL(0, _g("b1kov", "#8d4a3c", "#4a2119")
-            + f'<g transform="rotate({-4*k:.2f} 1100 990)">'
-              f'<rect x="{860-sdv:.0f}" y="960" width="520" height="90" rx="12"'
+            + f'<g transform="rotate({-2.2*k:.2f} 1100 990)">'
+              f'<rect x="{860-sdv:.0f}" y="952" width="520" height="86" rx="12"'
               f' fill="url(#b1kov)" {o(6)}/>'
-              f'<rect x="{890-sdv:.0f}" y="984" width="460" height="42" rx="8" fill="none"'
+              f'<rect x="{890-sdv:.0f}" y="974" width="460" height="42" rx="8" fill="none"'
               f' stroke="{ob.ZOLOTO}" stroke-width="6" opacity=".6"/></g>')
     # чёрный подол платья на переднем плане
     s += SL(Z_PERED, _g("b1pod2", "#241e2b", "#0e0b12")

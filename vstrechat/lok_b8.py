@@ -369,13 +369,20 @@ def _chashka(x, y, s_, t, ph=0.0, ruchka_ryadom=True):
           f' fill="none" stroke="#8f8572" stroke-width="{6*s_:.0f}"/>')
     s += '</g>'
     if ruchka_ryadom:
-        s += ten(x + 150 * s_, y + 8 * s_, 60 * s_, 12 * s_, .4)
-        s += (f'<path d="M{x+106*s_:.0f},{y-8*s_:.0f} q{72*s_:.0f},{-74*s_:.0f} {96*s_:.0f},{6*s_:.0f}"'
-              f' fill="none" stroke="{K}" stroke-width="{34*s_:.0f}" stroke-linecap="round"/>')
-        s += (f'<path d="M{x+106*s_:.0f},{y-8*s_:.0f} q{72*s_:.0f},{-74*s_:.0f} {96*s_:.0f},{6*s_:.0f}"'
-              f' fill="none" stroke="#e4d6b8" stroke-width="{22*s_:.0f}" stroke-linecap="round"/>')
-        s += (f'<path d="M{x+124*s_:.0f},{y-34*s_:.0f} q{44*s_:.0f},{-34*s_:.0f} {58*s_:.0f},{2*s_:.0f}"'
-              f' fill="none" stroke="#ffffff" stroke-width="{7*s_:.0f}" opacity=".45"/>')
+        hx, hy = x + 162 * s_, y - 12 * s_
+        s += ten(hx, y + 8 * s_, 64 * s_, 12 * s_, .4)
+        # ушко ручки: наружная и внутренняя дуги одним контуром
+        s += (f'<path d="M{hx-56*s_:.0f},{hy+30*s_:.0f}'
+              f' a{62*s_:.0f},{58*s_:.0f} 0 1 1 {112*s_:.0f},0'
+              f' l{-26*s_:.0f},{4*s_:.0f}'
+              f' a{38*s_:.0f},{36*s_:.0f} 0 1 0 {-60*s_:.0f},0 z"'
+              f' fill="#e4d6b8" {o(max(4, 6*s_))}/>')
+        s += (f'<path d="M{hx-44*s_:.0f},{hy+6*s_:.0f}'
+              f' a{50*s_:.0f},{48*s_:.0f} 0 0 1 {34*s_:.0f},{-40*s_:.0f}"'
+              f' fill="none" stroke="#ffffff" stroke-width="{8*s_:.0f}" opacity=".45"/>')
+        s += (f'<path d="M{hx-56*s_:.0f},{hy+30*s_:.0f} l{14*s_:.0f},{10*s_:.0f}'
+              f' M{hx+56*s_:.0f},{hy+30*s_:.0f} l{-14*s_:.0f},{10*s_:.0f}"'
+              f' fill="none" stroke="#b5a582" stroke-width="{6*s_:.0f}"/>')
     return s
 
 
@@ -559,7 +566,7 @@ def listok_s_dolgami(t):
         u = A.over(A.seg(t, 1.0 + i * 1.05, .45))
         if u <= .02:
             continue
-        zx, zy = lx + lw + 190, ly + lh * (.275 + i * .23) - 4
+        zx, zy = lx + lw + 330, ly + lh * (.275 + i * .23) - 4
         zn += f'<g transform="translate({zx:.0f},{zy:.0f}) scale({u*1.75:.3f})">'
         zn += f'<circle r="64" fill="{SVET}" opacity=".12"/>'
         if i == 0:
@@ -746,10 +753,10 @@ def kover_na_chistom_snegu(t):
               f' fill="#ffffff" opacity=".55"/>')
 
     # серый прямоугольник остаётся на снегу
-    sled = (f'<path d="M430,1010 L1490,1010 L1300,742 L620,742 Z" fill="#b4c2d2"'
-            f' opacity="{.18+.72*pod:.2f}" stroke="#93a4b8" stroke-width="5"/>'
-            f'<path d="M470,990 L1450,990 L1290,762 L630,762 Z" fill="#9fb0c4"'
-            f' opacity="{.14+.46*pod:.2f}"/>')
+    sled = (f'<path d="M430,1010 L1490,1010 L1300,742 L620,742 Z" fill="#8fa0b4"'
+            f' opacity="{.22+.78*pod:.2f}" stroke="#6f8096" stroke-width="6"/>'
+            f'<path d="M470,990 L1450,990 L1290,762 L630,762 Z" fill="#7b8da4"'
+            f' opacity="{.16+.58*pod:.2f}"/>')
 
     # ковёр изнанкой вверх, поднимается за углы
     bahroma = ""
@@ -758,8 +765,8 @@ def kover_na_chistom_snegu(t):
         bx = 420 + 1080 * u
         bahroma += (f'<path d="M{bx:.0f},1012 l{-4+8*((i%2)):.0f},26" fill="none"'
                     f' stroke="#8d7f63" stroke-width="5" stroke-linecap="round"/>')
-    kov = (f'<g transform="translate(0,{-290*pod:.0f}) scale(1,{1-.46*pod:.3f})"'
-           f' transform-origin="960 1010">'
+    kov = (f'<g transform="translate(0,{-290*pod:.0f}) scale(1,{1-.46*pod:.3f})'
+           f' rotate({-4.5*pod:.2f})" transform-origin="960 1010">'
            + _kover("b8kv1", 420, 1500, 1012, 614, 1306, 740, t,
                     "#b9a687", "#85715a",
                     "#9c8a66", .9, iznanka=True)
@@ -1196,9 +1203,9 @@ def tarelka_i_karman_s_sekretom(t):
     fart += (f'<rect x="-150" y="228" width="300" height="236" rx="14" fill="{SVET}"'
              f' opacity="{.26*kar:.2f}"/>')
     # сноп света наружу из кармана
-    fart += (f'<path d="M-120,236 L{-250-90*kar:.0f},{-30-150*kar:.0f}'
-             f' L{200+110*kar:.0f},{-60-170*kar:.0f} L120,236 Z" fill="{SVET}"'
-             f' opacity="{.26*kar:.2f}"/>')
+    fart += (f'<path d="M-110,234 L{-190-60*kar:.0f},{70-80*kar:.0f}'
+             f' L{160+70*kar:.0f},{50-90*kar:.0f} L110,234 Z" fill="{SVET}"'
+             f' opacity="{.17*kar:.2f}"/>')
     fart += (f'<ellipse cx="0" cy="234" rx="{168*kar:.0f}" ry="{54*kar:.0f}" fill="#fff6d2"'
              f' opacity="{.80*kar:.2f}"/>')
     fart += (f'<ellipse cx="0" cy="232" rx="{104*kar:.0f}" ry="{30*kar:.0f}" fill="#ffffff"'
@@ -1283,7 +1290,7 @@ def svoi_za_novogodnim_stolom(t):
             f' fill="{ob.ALYJ2}" {o(5)}/></g>')
     # карман вздрагивает — руки не рисуем, работает сам карман
     ksc = 1.0 + .09 * hlop
-    hoz += (f'<g transform="translate(1016,1040) rotate(-5) scale({ksc:.3f})">'
+    hoz += (f'<g transform="translate(978,1046) rotate(-5) scale({ksc:.3f})">'
             f'<rect x="-96" y="-84" width="192" height="168" rx="14" fill="{ob.ALYJ2}" {o(7)}/>'
             f'<path d="M-86,-64 h172" fill="none" stroke="{ob.ZOLOTO}" stroke-width="10" opacity=".85"/>'
             f'<path d="M-70,-40 q70,-24 140,-8" fill="none" stroke="#ffffff"'
@@ -1416,7 +1423,7 @@ def tri_sdelannyh_dela(t):
             + baza.krynka(640, 898, .78)
             + baza.karavay(1060, 900, .72, True)
             + baza.krynka(1380, 898, .7)
-            + ob.elka(1868, 1078, 330, t, True, False, 3, True)
+            + ob.elka(1874, 1128, 290, t, True, False, 3, True)
             + baza._ramka_pp("levo", "#140e08", .45))
     s += baza.vinetka(.42)
     return s

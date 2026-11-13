@@ -455,24 +455,24 @@ def babushka_povyazyvaet_krasnuyu_kosy(t):
     pp += f'<g transform="rotate({kiv:.2f} {cx:.0f} {gy+130:.0f})">'
     pp += (f'<circle cx="{cx+36:.0f}" cy="{gy:.0f}" r="106"'
            f' fill="#43343a" stroke="#f3cf92" stroke-width="8" stroke-opacity=".7"/>')
-    pp += (f'<path d="M{cx-118:.0f},{gy-16:.0f} q118,-150 236,-10'
-           f' q10,140 -118,196 q-128,-56 -118,-186 z" fill="url(#tkan)" {o(8)}/>')
+    pp += (f'<path d="M{cx-112:.0f},{gy-22:.0f} q104,-132 196,-16'
+           f' q16,128 -96,180 q-114,-50 -100,-164 z" fill="url(#tkan)" {o(8)}/>')
     r = random.Random(4)
-    for i in range(18):
+    for i in range(11):
         a = r.uniform(0, 2 * math.pi)
         rad = math.sqrt(r.random())
-        px = cx + 92 * rad * math.cos(a)
-        py = gy + 16 + 96 * rad * math.sin(a)
-        pp += f'<circle cx="{px:.0f}" cy="{py:.0f}" r="13" fill="#f7efe2" opacity=".93"/>'
-    for sg in (-1, 1):
-        dl = 46 + 108 * uzel
-        kol = 12 * A.w(t, 2.2, sg * .3)
-        pp += (f'<path d="M{cx+sg*22:.0f},{gy+160:.0f}'
-               f' q{sg*44+kol:.0f},{dl*.6:.0f} {sg*20+kol:.0f},{dl:.0f}"'
-               f' fill="none" stroke="{TKAN}" stroke-width="34"'
+        px = cx - 18 + 74 * rad * math.cos(a)
+        py = gy + 2 + 78 * rad * math.sin(a)
+        pp += f'<circle cx="{px:.0f}" cy="{py:.0f}" r="8" fill="#f7efe2" opacity=".93"/>'
+    for i, sg in enumerate((1, .45)):
+        dl = 40 + 96 * uzel
+        kol = 12 * A.w(t, 2.2, i * .4)
+        pp += (f'<path d="M{cx-48:.0f},{gy+128:.0f}'
+               f' q{-30*sg+kol:.0f},{dl*.6:.0f} {-52*sg+kol:.0f},{dl:.0f}"'
+               f' fill="none" stroke="{TKAN}" stroke-width="26"'
                f' stroke-linecap="round"/>')
-    pp += (f'<ellipse cx="{cx:.0f}" cy="{gy+166:.0f}" rx="{22+28*uzel:.0f}"'
-           f' ry="{18+20*uzel:.0f}" fill="{UGOL}" {o(5)}/>')
+    pp += (f'<ellipse cx="{cx-44:.0f}" cy="{gy+128:.0f}" rx="{20+22*uzel:.0f}"'
+           f' ry="{16+16*uzel:.0f}" fill="{UGOL}" {o(5)}/>')
     pp += "</g>"
     s += SL(Z_PERED, pp + baza.begushchiy_blik(t, 7.5, .2, .09))
     s += baza.vinetka(.34)
@@ -503,6 +503,8 @@ def krasnaya_devica_na_lugu(t):
             f' fill="#6f8c4a"/>')
     dal += (f'<path d="M-20,820 q520,26 1000,-6 q470,-30 960,10 L{W+20},{H} L-20,{H} Z"'
             f' fill="#5d7b3e"/>')
+    dal += (f'<path d="M-20,900 q520,30 1000,-4 q470,-26 960,14 L{W+20},{H} L-20,{H} Z"'
+            f' fill="url(#solom)" opacity=".22"/>')
     s += SL(Z_DAL, dal)
 
     sr = ""
@@ -525,6 +527,10 @@ def krasnaya_devica_na_lugu(t):
            f' L{gx+206+kol*.5:.0f},996'
            f' q{-104-kol*.3:.0f},36 {-412-kol*.2:.0f},0 z"'
            f' fill="{ob.ALYJ}" {o(7)}/>')
+    pp += (f'<path d="M{gx-74:.0f},{1000-140*gs:.0f} q74,-22 148,0'
+           f' L{gx+206+kol*.5:.0f},996'
+           f' q{-104-kol*.3:.0f},36 {-412-kol*.2:.0f},0 z"'
+           f' fill="url(#tkan)" opacity=".5"/>')
     pp += (f'<path d="M{gx-40:.0f},{1000-128*gs:.0f} L{gx-150:.0f},988"'
            f' fill="none" stroke="#ffffff" stroke-width="13" opacity=".22"'
            f' stroke-linecap="round"/>')
@@ -538,7 +544,7 @@ def krasnaya_devica_na_lugu(t):
         a = i * 2 * math.pi / 9
         pp += (f'<circle cx="{gx+106*math.cos(a):.0f}"'
                f' cy="{vy-70+36*math.sin(a):.0f}" r="17"'
-               f' fill="{[ZOL, "#f3f0e6", ob.ALYJ][i%3]}" {o(4)}/>')
+               f' fill="{["url(#zol)", "#f3f0e6", "url(#tkan)"][i%3]}" {o(4)}/>')
     s += SL(Z_PERED, pp)
     s += SL(Z_LETIT, _babochka(1060, 700, t, 2.1, .0)
             + _babochka(1560, 800, t, 1.7, .4, "#f0f0e2")
@@ -587,7 +593,8 @@ def chetyre_otreza_tkani(t):
     s += SL(Z_SRED, sr)
 
     sp = A.ease(A.seg(t, 1.6, 4.4))
-    d = f'M250,700 q-40,{70+120*sp:.0f} -96,{190+360*sp:.0f}'
+    d = (f'M330,692 q-70,{40+60*sp:.0f} -118,{150+150*sp:.0f}'
+         f' q-26,{70+90*sp:.0f} 34,{130+170*sp:.0f}')
     pp = (f'<path d="{d}" fill="none" stroke="url(#solom)" stroke-width="46"'
           f' stroke-linecap="round"/>')
     pp += (f'<path d="{d}" fill="none" stroke="#5d4a1c" stroke-width="46"'
@@ -607,7 +614,7 @@ def blyudce_s_ukrasheniyami(t):
     Живые: серьги поблёскивают, кольцо катится по блюдцу, пряжка ловит свет.
     Окно вставки справа — всё главное в полосе 0-830."""
     s = SL(Z_NEBO, _komnata(940, "#b6a68d", t, True, .0))
-    dal = _zerkalo(300, 300, 230, 282, t, "", "url(#med)")
+    dal = _zerkalo(290, 290, 208, 254, t, "", "url(#med)")
     dal += baza.polka(620, 240, 210)
     dal += baza.krynka(700, 232, .56)
     dal += teplo(360, 540, 680, 560, .38)
@@ -615,46 +622,46 @@ def blyudce_s_ukrasheniyami(t):
 
     sr = baza.stol(-60, 660, 940, 48, True)
     for kk in range(3):
-        sr += (f'<path d="M{700+kk*4:.0f},648 q-130,{-30+kk*4:.0f}'
-               f' -290,{18+kk*3:.0f}" fill="none" stroke="#6b3f26"'
-               f' stroke-width="{34-kk*9}" stroke-linecap="round"'
-               f' opacity="{.9-kk*.25:.2f}"/>')
+        sr += (f'<path d="M{830+kk*4:.0f},{612+kk*6:.0f} q-170,{-26+kk*4:.0f}'
+               f' -330,{40+kk*3:.0f}" fill="none" stroke="#6b3f26"'
+               f' stroke-width="{48-kk*12}" stroke-linecap="round"'
+               f' opacity="{.92-kk*.22:.2f}"/>')
     bl = .4 + .6 * abs(A.w(t, 1.9))
-    sr += (f'<rect x="660" y="596" width="116" height="96" rx="14"'
-           f' fill="url(#zol)" {o(7)}/>')
-    sr += ('<rect x="686" y="622" width="62" height="44" rx="8" fill="none"'
-           ' stroke="#8a6318" stroke-width="9"/>')
-    sr += (f'<path d="M668,604 l96,78" stroke="#ffffff" stroke-width="16"'
+    sr += (f'<rect x="596" y="560" width="152" height="124" rx="16"'
+           f' fill="url(#zol)" {o(8)}/>')
+    sr += ('<rect x="628" y="592" width="86" height="60" rx="10" fill="none"'
+           ' stroke="#8a6318" stroke-width="12"/>')
+    sr += (f'<path d="M606,570 l128,104" stroke="#ffffff" stroke-width="20"'
            f' opacity="{bl*.6:.2f}"/>')
-    sr += teplo(718, 644, 190, 150, .38 * bl)
+    sr += teplo(672, 622, 230, 190, .40 * bl)
     s += SL(Z_SRED, sr)
 
-    bx, by = 330, 640
+    bx, by = 380, 626
     pp = ten(bx + 10, by + 46, 250, 32, .5)
-    pp += (f'<ellipse cx="{bx:.0f}" cy="{by:.0f}" rx="266" ry="100"'
-           f' fill="url(#krem)" {o(8)}/>')
-    pp += (f'<ellipse cx="{bx:.0f}" cy="{by-14:.0f}" rx="214" ry="78"'
-           f' fill="#f8f2e4" {o(5)}/>')
-    pp += (f'<ellipse cx="{bx:.0f}" cy="{by-14:.0f}" rx="168" ry="58"'
-           f' fill="none" stroke="{TKAN}" stroke-width="6" opacity=".55"/>')
+    pp += (f'<ellipse cx="{bx:.0f}" cy="{by:.0f}" rx="340" ry="126"'
+           f' fill="url(#krem)" {o(9)}/>')
+    pp += (f'<ellipse cx="{bx:.0f}" cy="{by-18:.0f}" rx="276" ry="100"'
+           f' fill="#f8f2e4" {o(6)}/>')
+    pp += (f'<ellipse cx="{bx:.0f}" cy="{by-18:.0f}" rx="214" ry="74"'
+           f' fill="none" stroke="{TKAN}" stroke-width="7" opacity=".55"/>')
     a = 2 * math.pi * ((t / 2.6) % 1.0)
-    kx = bx + 160 * math.cos(a)
-    ky = by - 14 + 50 * math.sin(a)
-    pp += (f'<ellipse cx="{kx:.0f}" cy="{ky:.0f}" rx="38"'
-           f' ry="{14+22*abs(math.cos(a)):.0f}" fill="none"'
-           f' stroke="url(#zol)" stroke-width="13"/>')
-    pp += (f'<circle cx="{kx-10:.0f}" cy="{ky-18:.0f}" r="9" fill="#fff6d2"'
+    kx = bx + 206 * math.cos(a)
+    ky = by - 18 + 66 * math.sin(a)
+    pp += (f'<ellipse cx="{kx:.0f}" cy="{ky:.0f}" rx="48"'
+           f' ry="{18+28*abs(math.cos(a)):.0f}" fill="none"'
+           f' stroke="url(#zol)" stroke-width="16"/>')
+    pp += (f'<circle cx="{kx-12:.0f}" cy="{ky-22:.0f}" r="11" fill="#fff6d2"'
            f' opacity="{.4+.6*abs(A.w(t,1.3)):.2f}"/>')
     pod = A.out(A.seg(t, 1.5, 1.2))
-    for i, (sx, ph) in enumerate(((bx - 112, .0), (bx + 104, .5))):
-        ly = -200 * pod if i == 1 else 0
+    for i, (sx, ph) in enumerate(((bx - 150, .0), (bx + 140, .5))):
+        ly = -240 * pod if i == 1 else 0
         bls = .35 + .65 * abs(A.w(t, 1.6, ph))
         kol = 8 * A.w(t, 2.4, ph) * (1 if i == 1 else .3)
-        pp += f'<g transform="translate({sx+kol:.0f},{by-46+ly:.0f})">'
-        pp += f'<path d="M0,0 q-28,36 0,64 q28,-28 0,-64" fill="url(#zol)" {o(5)}/>'
-        pp += f'<circle cx="0" cy="80" r="28" fill="{TKAN}" {o(5)}/>'
-        pp += f'<circle cx="-9" cy="70" r="10" fill="#ffd9c6" opacity="{bls:.2f}"/>'
-        pp += teplo(0, 56, 130, 130, .45 * bls)
+        pp += f'<g transform="translate({sx+kol:.0f},{by-66+ly:.0f})">'
+        pp += f'<path d="M0,0 q-36,46 0,82 q36,-36 0,-82" fill="url(#zol)" {o(6)}/>'
+        pp += f'<circle cx="0" cy="102" r="36" fill="{TKAN}" {o(6)}/>'
+        pp += f'<circle cx="-12" cy="88" r="13" fill="#ffd9c6" opacity="{bls:.2f}"/>'
+        pp += teplo(0, 72, 170, 170, .45 * bls)
         pp += "</g>"
     pp += baza.begushchiy_blik(t, 6.4, .3, .10)
     s += SL(Z_PERED, pp)
@@ -739,7 +746,7 @@ def vitrina_s_krasnymi_naryadami(t):
            ' opacity=".09"/>')
     sr += ('<path d="M470,170 l400,580" stroke="#ffffff" stroke-width="20"'
            ' opacity=".09"/>')
-    for xx in (186, 950, 1734):
+    for xx in (186, 1734):
         sr += (f'<rect x="{xx-10:.0f}" y="156" width="20" height="690"'
                f' fill="url(#derev)" {o(5)}/>')
     for i in range(24):
@@ -800,14 +807,18 @@ def odna_krasnaya_vesch_na_svetlom_pla(t):
     k = A.out(A.seg(t - faza * per, .0, .45))
     pp = ""
     if faza == 0:
-        pp += (f'<g opacity="{k:.2f}"><path d="M{cx-520:.0f},830'
-               f' q520,-190 1040,0 q-30,200 -150,280 l-740,0'
-               f' q-120,-80 -150,-280 z" fill="url(#tkan)" {o(9)}/>')
-        for i in range(11):
-            pp += (f'<path d="M{cx-420+i*84:.0f},{1096+12*A.w(t,2.4,i*.2):.0f} v44"'
-                   f' stroke="{UGOL}" stroke-width="11" stroke-linecap="round"/>')
-        pp += (f'<path d="M{cx-400:.0f},880 q180,120 380,140" fill="none"'
-               f' stroke="#ff9d86" stroke-width="16" opacity=".30"/>')
+        pp += (f'<g opacity="{k:.2f}"><path d="M{cx-540:.0f},900'
+               f' q230,-190 540,-196 q310,6 540,196'
+               f' q-180,40 -300,120 L{cx:.0f},1100'
+               f' q-120,-140 -300,-180 z" fill="url(#tkan)" {o(9)}/>')
+        pp += (f'<path d="M{cx-540:.0f},900 q230,-190 540,-196 q310,6 540,196"'
+               f' fill="none" stroke="#ff9d86" stroke-width="14" opacity=".35"/>')
+        for i, sg in enumerate((-1, 1)):
+            pp += (f'<path d="M{cx+sg*390:.0f},{992+10*A.w(t,2.4,i*.3):.0f}'
+                   f' l{sg*28:.0f},70" stroke="{UGOL}" stroke-width="13"'
+                   f' stroke-linecap="round"/>')
+        pp += (f'<path d="M{cx-46:.0f},{1062+14*A.w(t,2.4,.4):.0f} v48"'
+               f' stroke="{UGOL}" stroke-width="13" stroke-linecap="round"/>')
         pp += "</g>"
     elif faza == 1:
         kach = 26 * A.w(t, 1.8)
@@ -890,9 +901,9 @@ def ded_i_vnuchka_u_zerkala(t):
            f' fill="#1c2130" {o(3)}/>')
     rsp = A.out(A.seg(t, .5, 1.6))
     for sg in (-1, 0, 1):
-        hh = (14 + 30 * rsp) * (1 - abs(sg) * .3)
-        pp += (f'<path d="M{pkx+sg*18:.0f},{pky+2:.0f}'
-               f' l{sg*8:.0f},{-hh:.0f} l12,{hh*.7:.0f} z"'
+        hh = (20 + 44 * rsp) * (1 - abs(sg) * .3)
+        pp += (f'<path d="M{pkx+sg*22:.0f},{pky+2:.0f}'
+               f' l{sg*10:.0f},{-hh:.0f} l17,{hh*.7:.0f} z"'
                f' fill="{ob.ALYJ}" {o(3)}/>')
     pp += teplo(pkx, pky, 120 * rsp, 100 * rsp, .40 * rsp)
 
@@ -935,7 +946,7 @@ def krasnaya_salfetka_u_tarelki(t):
         dal += (f'<path d="M-20,{300+i*170:.0f} q480,26 960,0 q480,-26 980,14"'
                 f' fill="none" stroke="{TKAN}" stroke-width="7" opacity=".22"/>')
     dal += ob.bokal(1700, 420, t, 1.3, .2, .55, True)
-    dal += ob.mandarin(130, 300, 1.5, .4, t)
+    dal += ob.mandarin(130, 940, 1.5, .4, t)
     s += SL(Z_DAL, dal)
 
     px, py = 760, 650
@@ -1063,9 +1074,9 @@ def shite_platya_po_vecheram(t):
 
     s += SL(Z_SRED, baza.stol(-60, 700, 960, 48, True))
 
-    a1 = 1.0 - A.ease(A.seg(t, 2.1, .6))
-    a2 = A.ease(A.seg(t, 2.4, .6)) - A.ease(A.seg(t, 5.0, .6))
-    a3 = A.ease(A.seg(t, 5.3, .6))
+    a1 = 1.0 - A.ease(A.seg(t, 2.0, .35))
+    a2 = A.ease(A.seg(t, 2.35, .35)) - A.ease(A.seg(t, 5.0, .35))
+    a3 = A.ease(A.seg(t, 5.35, .35))
     pp = ""
     if a1 > .01:
         lx, ly = 400, 630
@@ -1092,8 +1103,12 @@ def shite_platya_po_vecheram(t):
                f' fill="url(#derev)" {o(7)}/>')
         pp += (f'<path d="M{mx-280:.0f},{my+22:.0f} l48,-186 q28,-48 94,-48'
                f' h250 q48,0 48,54 v180 z" fill="url(#chug)" {o(8)}/>')
+        pp += (f'<path d="M{mx-250:.0f},{my-28:.0f} l40,-150 q22,-38 76,-38'
+               f' h200 q32,0 32,40 v148 z" fill="{ZHELEZ}" opacity=".45"/>')
         pp += (f'<path d="M{mx-236:.0f},{my-142:.0f} q106,-40 296,-26"'
                f' fill="none" stroke="url(#zol)" stroke-width="10" opacity=".75"/>')
+        pp += (f'<rect x="{mx-200:.0f}" y="{my-128:.0f}" width="150" height="54"'
+               f' rx="10" fill="url(#zol)" opacity=".35" {o(4)}/>')
         pp += (f'<path d="M{mx-150:.0f},{my-70:.0f} q90,-20 190,-8" fill="none"'
                f' stroke="url(#zol)" stroke-width="6" opacity=".45"/>')
         kx, ky = mx + 214, my - 120
@@ -1163,16 +1178,16 @@ def mamino_plate_stanovitsya_dochkinym(t):
 
     sr = baza.stol(40, 700, 960, 44, True)
     um = A.ease(A.seg(t, .5, 1.7))
-    k = 1.0 - .46 * um
-    ax, ay = 520, 500
+    k = 1.0 - .40 * um
+    ax, ay = 520, 470
     sr += (f'<g transform="translate({ax:.0f},{ay:.0f}) scale({k:.3f})'
            f' translate({-ax:.0f},{-ay:.0f})">')
     sr += _plate_lezhit(ax, ay, t, 1.0, "tkan")
     sr += "</g>"
     u = A.ease(A.seg(t, .4, 1.9))
-    nx = ax - 330 + 660 * u
-    ny = ay + 230 - 44 * math.sin(math.pi * u)
-    sr += (f'<path d="M{ax-330:.0f},{ay+230:.0f} q330,-44 660,0" fill="none"'
+    nx = ax - 300 + 600 * u
+    ny = ay + 196 - 40 * math.sin(math.pi * u)
+    sr += (f'<path d="M{ax-300:.0f},{ay+196:.0f} q300,-40 600,0" fill="none"'
            f' stroke="#f4efe2" stroke-width="8" stroke-dasharray="22 15"'
            f' opacity=".85"/>')
     sr += _nozhnicy(nx, ny, -14 + 10 * math.sin(2 * math.pi * t),
@@ -1183,13 +1198,13 @@ def mamino_plate_stanovitsya_dochkinym(t):
     dbase, dh = 1050, 440
     pp = ob.figura(dx, dbase, dh, t, col="#8d2f2c", kant="#ffd79a", krasnoe=True)
     pod = 24 * A.w(t, 1.1)
-    pp += (f'<path d="M{dx-88:.0f},{dbase-70*dh/300:.0f} q88,22 176,0'
-           f' L{dx+124+pod*.4:.0f},{dbase-6:.0f} q-124,28 -248,0 z"'
-           f' fill="{ob.ALYJ2}" {o(5)}/>')
+    pp += (f'<path d="M{dx-96:.0f},{dbase-124:.0f} q96,20 192,0'
+           f' L{dx+150:.0f},{dbase-4:.0f} q-150,{-34-pod*.5:.0f} -300,0 z"'
+           f' fill="{ob.ALYJ}" stroke="{ob.ALYJ2}" stroke-width="7"/>')
     for sg in (-1, 1):
-        pp += (f'<path d="M{dx+sg*112:.0f},{dbase-28:.0f}'
-               f' l{sg*18:.0f},{-44-pod*.5:.0f}" stroke="{ob.ALYJ2}"'
-               f' stroke-width="16" stroke-linecap="round"/>')
+        pp += (f'<path d="M{dx+sg*146:.0f},{dbase-10:.0f}'
+               f' l{sg*12:.0f},{-54-pod*.6:.0f}" stroke="{ob.ALYJ2}"'
+               f' stroke-width="18" stroke-linecap="round"/>')
     s += SL(Z_PERED, pp + baza.begushchiy_blik(t, 7.6, .1, .09))
     s += baza.vinetka(.34)
     return s
@@ -1237,14 +1252,14 @@ def vorotnichok_i_busy_iz_ryabiny(t):
         if i / 8.0 < u:
             pp += (f'<path d="M{vx-150+i*38:.0f},{vy+48:.0f} l24,-14"'
                    f' stroke="#d8c9a4" stroke-width="7" stroke-linecap="round"/>')
-    nx, ny = 1340, 660
-    pp += (f'<path d="M{nx-340:.0f},{ny:.0f} q340,{110+14*A.w(t,3.0):.0f} 640,-24"'
-           f' fill="none" stroke="#e9dfc6" stroke-width="7"/>')
+    nx, ny = 1280, 690
+    pp += (f'<path d="M{nx-280:.0f},{ny:.0f} q280,{120+14*A.w(t,3.0):.0f} 520,-18"'
+           f' fill="none" stroke="#c9b48a" stroke-width="9"/>')
     nag = int(A.ease(A.seg(t, .3, 4.6)) * 15)
     for i in range(15):
         u2 = (i + .5) / 15
-        bx = nx - 340 + 640 * u2
-        by = ny + 4 * 110 * u2 * (1 - u2) * .92 - 24 * u2 * u2
+        bx = nx - 280 + 520 * u2
+        by = ny + 4 * 120 * u2 * (1 - u2) * .92 - 18 * u2 * u2
         if i < nag:
             pp += _busina(bx, by, 24, KRAS)
         elif i == nag:
@@ -1276,8 +1291,8 @@ def korobka_iz_pod_pechenya_s_pugovica(t):
 
     cx, cy = 420, 670
     rsp = A.ease(A.seg(t, 1.4, 2.4))
-    sr = _lenta(60, 980, 520, t, ob.ALYJ, .0, rsp)
-    sr += _lenta(240, 1046, 540, t, ob.ZOLOTO, .4, rsp * .85)
+    sr = _lenta(90, 950, 560, t, ob.ALYJ, .0, rsp)
+    sr += _lenta(170, 1014, 600, t, ob.ZOLOTO, .4, rsp * .85)
     sr += ten(cx + 24, cy + 250, 330, 54, .55)
     sr += (f'<ellipse cx="{cx:.0f}" cy="{cy:.0f}" rx="360" ry="268"'
            f' fill="url(#med)" {o(9)}/>')
