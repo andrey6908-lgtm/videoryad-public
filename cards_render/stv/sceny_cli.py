@@ -32,7 +32,16 @@ import sceny_kodom as sk                                  # noqa: E402
 W, H = sk.W, sk.H
 
 
-def render(view, kwargs, seconds, out_mp4, fps=30):
+def render(view, kwargs, seconds, out_mp4, fps=30, t0=0.0):
+    """`t0` — С КАКОЙ СЕКУНДЫ НЕПРЕРЫВНОГО ДВИЖЕНИЯ РИСОВАТЬ ЭТОТ КУСОК.
+
+    Так вид и закрывает 2-5 сцен, ничего не меняя в сборщике: сцены 12-15
+    получают ОДИН И ТОТ ЖЕ вид четырьмя обычными заданиями, у каждого свой
+    `t0` и своя длительность. Путь камеры — чистая функция времени, поэтому
+    куски стыкуются кадр в кадр, а раскладка по сценам и субтитры остаются
+    прежними. Бонусом куски рисуются ПАРАЛЛЕЛЬНО на разных машинах матрицы:
+    клип на 32 с считается за время самого длинного куска, а не целиком.
+    """
     fn = sk.ВИДЫ[view][0]
     sfx = []
     try:
@@ -41,7 +50,7 @@ def render(view, kwargs, seconds, out_mp4, fps=30):
         pass
     json.dump(sfx, open(out_mp4.rsplit(".", 1)[0] + ".sfx.json", "w",
                         encoding="utf-8"), ensure_ascii=False, indent=1)
-    fn(out=out_mp4.rsplit(".", 1)[0] + ".jpg", t=None, **kwargs)
+    fn(out=out_mp4.rsplit(".", 1)[0] + ".jpg", t=(t0 or None), **kwargs)
     n = int(round(float(seconds) * fps))
     pr = subprocess.Popen(
         ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24",
@@ -55,7 +64,7 @@ def render(view, kwargs, seconds, out_mp4, fps=30):
     # камера едет ВСЮ сцену: замороженный хвост убил бы ровно то, ради чего
     # вид и заведён. Цена кадра поэтому и доведена до 0,14-0,27 с.
     for i in range(n):
-        кадр = fn(t=i / float(fps), **kwargs)
+        кадр = fn(t=float(t0) + i / float(fps), **kwargs)
         pr.stdin.write(кадр.tobytes())
     pr.stdin.close()
     pr.wait()
@@ -71,7 +80,7 @@ if __name__ == "__main__":
                          % (view, ", ".join(sorted(sk.ВИДЫ))))
     сек = float(cfg.get("seconds") or sk.ВИДЫ[view][3])
     t = render(view, dict(cfg.get("kwargs") or {}), сек, out_mp4,
-               fps=int(cfg.get("fps") or 30))
+               fps=int(cfg.get("fps") or 30), t0=float(cfg.get("t0") or 0.0))
     мб = os.path.getsize(out_mp4) / 1e6 if os.path.exists(out_mp4) else 0
-    print("  %s: %.1f с экрана, %.0f с счёта, %.1f МБ"
-          % (view, сек, t, мб), flush=True)
+    print("  %s: %.1f с экрана (с %.1f с хода), %.0f с счёта, %.1f МБ"
+          % (view, сек, float(cfg.get("t0") or 0.0), t, мб), flush=True)
