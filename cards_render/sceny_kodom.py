@@ -607,8 +607,13 @@ def tribuna(out=None, t=None, text="", role="", place="", source="",
 # потребовалось. Окно чтения тезиса при этом 7,4 м / 1,55 = 4,8 с.
 PROH_V = 1.55               # м/с
 PROH_СВЕТ = 0.42            # насколько зал светлее базового (только проход)
-PROH_ПЕРВЫЙ = 11.0         # где первый тезис
+# ПЕРВЫЙ ТЕЗИС СТОИТ ДАЛЬШЕ ОКНА ВИДИМОСТИ (13.11, вторая правка по
+# раскладке). При 11 м он оказывался в кадре уже готовым на нулевой секунде
+# и уходил через 1,9 с — зритель не успевал прочесть. С 20 м он
+# проявляется, как все остальные, и живёт в кадре 7-9 секунд.
+PROH_ПЕРВЫЙ = 20.0         # где первый тезис
 PROH_УХОД = 8.0            # ближе этого плашка уже вышла бы за край кадра
+PROH_ВИДНО = 23.0          # с какого расстояния плашка начинает проявляться
 
 
 def _колонна(img, cam, x, z, acc, ширина=0.55, глубина=0.75, свет=0.0):
@@ -659,7 +664,14 @@ def prohod(out=None, t=None, text="", tezisy=(), source="", channel="",
     тезисов = max(1, len([x for x in (tezisy or ()) if str(x).strip()]))
     дальний = PROH_V * (max(6.0, float(dur or 24.0)) - 1.2) + PROH_УХОД
     шаг_т = max(6.0, (дальний - PROH_ПЕРВЫЙ) / max(1, тезисов - 1))
-    конец = дальний + 8.0
+    # ШАГ НЕ БОЛЬШЕ ОКНА ВИДИМОСТИ (13.11, второй заход). После ускорения
+    # камеры до 1,55 м/с четыре тезиса встали через 14,9 м, а окно от
+    # появления до ухода было 8,6 м — на 24-й секунде в кадре не оказалось
+    # НИ ОДНОГО тезиса (осмотр кадра). Лечим с двух сторон: окно расширено
+    # (плашка проявляется ещё за 23 м, маленькой вдали — это и выглядит как
+    # приближение), а шаг сверху ограничен этим окном.
+    шаг_т = min(шаг_т, (PROH_ВИДНО - PROH_УХОД) * 0.92)
+    конец = PROH_ПЕРВЫЙ + шаг_т * (тезисов - 1) + 8.0
     p = cam.proj((0.0, 1.6, конец))
     r = max(40.0, 260.0 * zc.F / max(60.0, (конец - cam.z) * zc.F / 9.0))
     ds.ellipse([p[0] - r, p[1] - r * 1.25, p[0] + r, p[1] + r * 1.25],
@@ -691,7 +703,7 @@ def prohod(out=None, t=None, text="", tezisy=(), source="", channel="",
                              if str(x).strip()][:5]):
         z_k = PROH_ПЕРВЫЙ + шаг_т * i
         d_k = z_k - cam.z
-        if d_k < PROH_УХОД or d_k > 16.6:
+        if d_k < PROH_УХОД or d_k > PROH_ВИДНО:
             continue
         sx = -1 if i % 2 == 0 else 1
         pl = плашка_тех(тез, "", acc=acc, кегль=40, кегль_под=0, ширина=620)
@@ -702,12 +714,12 @@ def prohod(out=None, t=None, text="", tezisy=(), source="", channel="",
         # с восьми метров — зритель видел её полсекунды и обрезанной. На
         # |x|=2,8 она читается с шестнадцати метров до пяти, то есть ~9 с
         # при скорости 1,15 м/с: ровно столько, сколько нужно, чтобы прочесть.
-        прих = zc.clamp01((15.4 - d_k) / 2.2)            # проявляется заранее
+        прих = zc.clamp01((PROH_ВИДНО - 0.5 - d_k) / 3.2)  # проявляется заранее
         ухо = zc.clamp01((d_k - PROH_УХОД) / 1.9)        # и гаснет ДО края кадра
         билборд(img, cam, pl, (sx * 2.40, 1.86, z_k), h,
                 opacity=плавно(прих) * плавно(ухо),
                 yaw=math.radians(-sx * 26.0))
-        _ev(sfx, max(0.0, (z_k - 15.0) / PROH_V), "label")
+        _ev(sfx, max(0.0, (z_k - PROH_ВИДНО) / PROH_V), "label")
 
     источник(img, source)
     знак(img, watermark)
@@ -1698,7 +1710,7 @@ def arr_rad(a):
     return np.radians(a.astype(np.float32))
 
 
-def _на_шар(кольцо, lon0, R, cx, cy):
+def _на_шар(кольцо, lon0, R, cx, cy, lat0=0.0):
     """Кольцо (радианы) → экранные точки и признак «перед нами».
 
     Точки за лимбом не выбрасываем, а ПРИЖИМАЕМ К ЛИМБУ: иначе страна,
@@ -1711,6 +1723,13 @@ def _на_шар(кольцо, lon0, R, cx, cy):
     x = cf * np.sin(la)
     y = np.sin(fi)
     z = cf * np.cos(la)
+    # НАКЛОН ПО ШИРОТЕ (13.11, по кадру: Европа оказалась у верхнего края, а
+    # в центре диска — Северная Африка). Без него шар всегда смотрит
+    # экватором, и всё, что севернее 40°, уезжает к полюсу. Поворот вокруг
+    # оси X ставит названную широту ровно в центр диска.
+    if lat0:
+        c0, s0 = math.cos(lat0), math.sin(lat0)
+        y, z = y * c0 - z * s0, y * s0 + z * c0
     видно = z > 0.0
     r = np.sqrt(x * x + y * y)
     r = np.where(r < 1e-6, 1e-6, r)
@@ -1718,13 +1737,16 @@ def _на_шар(кольцо, lon0, R, cx, cy):
     return cx + R * x * k, cy - R * y * k, видно
 
 
-def _точка_шара(lon, lat, lon0, R, cx, cy):
+def _точка_шара(lon, lat, lon0, R, cx, cy, lat0=0.0):
     """(долгота, широта) → экранная точка и видимость (перед нами ли)."""
     a = math.radians(lon - lon0)
     b = math.radians(lat)
     x = math.cos(b) * math.sin(a)
     y = math.sin(b)
     z = math.cos(b) * math.cos(a)
+    if lat0:
+        c0, s0 = math.cos(lat0), math.sin(lat0)
+        y, z = y * c0 - z * s0, y * s0 + z * c0
     return (cx + R * x, cy - R * y, z)
 
 
@@ -1735,7 +1757,7 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
     acc, ink, mid = пал(channel)
     img = _фон(ink, mid)
     R = 398.0 * (1.0 + 0.055 * плавно(дол(tt, 0.0, max(6.0, float(dur or 18.0)))))
-    cx, cy = W * 0.615, H * 0.545
+    cx, cy = W * 0.645, H * 0.545
     слой = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     ds = ImageDraw.Draw(слой, "RGBA")
     ds.ellipse([cx - R * 1.22, cy - R * 1.22, cx + R * 1.22, cy + R * 1.22],
@@ -1796,6 +1818,7 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
         все = np.concatenate([к for _, к in свои])
         центр_lon = float(np.degrees(np.arctan2(
             np.mean(np.sin(все[:, 0])), np.mean(np.cos(все[:, 0])))))
+        центр_lat = float(np.degrees(np.mean(все[:, 1])))
         сек = None
     else:
         ключ = str(region or "").strip().lower()
@@ -1807,7 +1830,11 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
         if сек is None:
             сек = (10, 120, 25, 65)
         центр_lon = (сек[0] + сек[1]) / 2.0
+        центр_lat = (сек[2] + сек[3]) / 2.0
     lon0 = центр_lon - ГЛОБ_СКОРОСТЬ * (середина - tt)
+    # НАКЛОН ограничен ±52°: дальше шар смотрит полюсом и перестаёт
+    # читаться глобусом.
+    lat0 = math.radians(max(-52.0, min(52.0, центр_lat)))
 
     появ = плавно(дол(tt, 0.5, 1.6))
     пульс = 0.80 + 0.20 * math.sin(tt * 1.25)
@@ -1819,7 +1846,7 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
     # действовать на то же, что рисуется.)
     свои_номера = {и for и, _ in свои}
     for _i, (имя, кольцо) in enumerate(суша):
-        xs, ys, видно = _на_шар(кольцо, lon0, R, cx, cy)
+        xs, ys, видно = _на_шар(кольцо, lon0, R, cx, cy, lat0)
         if not видно.any():
             continue
         точки = list(zip(xs.tolist(), ys.tolist()))
@@ -1851,14 +1878,14 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
             while lo < lon_b - 1e-6:
                 la = lat_a
                 while la < lat_b - 1e-6:
-                    углы = [_точка_шара(lo, la, lon0, R, cx, cy),
+                    углы = [_точка_шара(lo, la, lon0, R, cx, cy, lat0),
                             _точка_шара(min(lo + шаг_lon, lon_b), la, lon0,
-                                        R, cx, cy),
+                                        R, cx, cy, lat0),
                             _точка_шара(min(lo + шаг_lon, lon_b),
                                         min(la + шаг_lat, lat_b), lon0,
-                                        R, cx, cy),
+                                        R, cx, cy, lat0),
                             _точка_шара(lo, min(la + шаг_lat, lat_b), lon0,
-                                        R, cx, cy)]
+                                        R, cx, cy, lat0)]
                     if all(p[2] > 0.02 for p in углы):
                         d.polygon([(p[0], p[1]) for p in углы],
                                   fill=tuple(_светлее(acc, 0.15))
@@ -1872,7 +1899,8 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
                     [(lon_b, la2) for la2 in np.arange(lat_a, lat_b + 1e-6, 2.0)]):
                 пред = None
                 for lo2, la2 in сторона:
-                    p = _точка_шара(float(lo2), float(la2), lon0, R, cx, cy)
+                    p = _точка_шара(float(lo2), float(la2), lon0, R, cx,
+                                    cy, lat0)
                     if пред is not None and p[2] > 0.02 and пред[2] > 0.02:
                         d.line([(пред[0], пред[1]), (p[0], p[1])],
                                fill=tuple(_светлее(acc, 0.65))
@@ -1884,7 +1912,7 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
     for lon in range(-180, 180, 20):
         пред = None
         for lat in range(-80, 81, 5):
-            p = _точка_шара(lon, lat, lon0, R, cx, cy)
+            p = _точка_шара(lon, lat, lon0, R, cx, cy, lat0)
             if пред is not None and p[2] > 0.02 and пред[2] > 0.02:
                 d.line([(пред[0], пред[1]), (p[0], p[1])],
                        fill=tuple(_светлее(ink, 0.42)) + (95,), width=1)
@@ -1892,7 +1920,7 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
     for lat in range(-60, 61, 20):
         пред = None
         for lon in range(-180, 181, 5):
-            p = _точка_шара(lon, lat, lon0, R, cx, cy)
+            p = _точка_шара(lon, lat, lon0, R, cx, cy, lat0)
             if пред is not None and p[2] > 0.02 and пред[2] > 0.02:
                 d.line([(пред[0], пред[1]), (p[0], p[1])],
                        fill=tuple(_светлее(ink, 0.42)) + (95,), width=1)
@@ -1901,7 +1929,7 @@ def globus(out=None, t=None, text="", region="", source="", channel="",
     стр = строки(text, строк=2, знаков=15)
     if стр:
         tex = текст_тех(стр, fsize=104, color=(238, 239, 242), acc=acc)
-        k = min(0.38 * W / tex.size[0], 0.30 * H / tex.size[1])
+        k = min(0.345 * W / tex.size[0], 0.28 * H / tex.size[1])
         м = tex.resize((max(4, int(tex.size[0] * k)),
                         max(4, int(tex.size[1] * k))), Image.LANCZOS)
         a = плавно(дол(tt, 0.1, 0.9))
