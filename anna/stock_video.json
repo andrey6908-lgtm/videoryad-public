@@ -1,13 +1,413 @@
 {
+ "2": {
+  "url": "https://videos.pexels.com/video-files/5742654/5742654-hd_1280_720_30fps.mp4",
+  "id": "px5742654",
+  "w": 1280,
+  "h": 720,
+  "dur": 10,
+  "sek": 4.95,
+  "start": 1.0,
+  "tags": "rolls-of-yarns-and-knitting-needles-on-a-basket-5742654"
+ },
+ "3": {
+  "url": "https://cdn.pixabay.com/video/2017/06/16/9999-222013864_medium.mp4",
+  "id": "9999",
+  "w": 1280,
+  "h": 720,
+  "dur": 10,
+  "sek": 5.59,
+  "start": 1.0,
+  "tags": "snow, snowfall, snowflakes, snowflake, winter, winter snow, "
+ },
+ "5": {
+  "url": "https://cdn.pixabay.com/video/2026/01/13/327388_medium.mp4",
+  "id": "327388",
+  "w": 2560,
+  "h": 1440,
+  "dur": 19,
+  "sek": 7.73,
+  "start": 1.0,
+  "tags": "snow scene, mountain village, heavy snowfall area, tradition"
+ },
+ "7": {
+  "url": "https://cdn.pixabay.com/video/2026/01/07/326483_medium.mp4",
+  "id": "326483",
+  "w": 2560,
+  "h": 1440,
+  "dur": 16,
+  "sek": 6.92,
+  "start": 1.0,
+  "tags": "soap bubble, freeze, winter, cold, freezing, ice cream, froz"
+ },
+ "8": {
+  "url": "https://videos.pexels.com/video-files/8928506/8928506-hd_1280_720_50fps.mp4",
+  "id": "px8928506",
+  "w": 1280,
+  "h": 720,
+  "dur": 13,
+  "sek": 2.56,
+  "start": 1.0,
+  "tags": "a-person-making-paper-boat-8928506"
+ },
+ "9": {
+  "url": "https://videos.pexels.com/video-files/6613068/6613068-hd_1280_720_25fps.mp4",
+  "id": "px6613068",
+  "w": 1280,
+  "h": 720,
+  "dur": 28,
+  "sek": 4.07,
+  "start": 1.0,
+  "tags": "man-pulling-a-sleigh-6613068"
+ },
+ "10": {
+  "url": "https://cdn.pixabay.com/video/2023/11/29/191288-889685041_medium.mp4",
+  "id": "191288",
+  "w": 2560,
+  "h": 1440,
+  "dur": 60,
+  "sek": 5.68,
+  "start": 1.0,
+  "tags": "blizzard, snow, snow blizzard, winter forest, cold, nature, "
+ },
+ "11": {
+  "url": "https://cdn.pixabay.com/video/2025/04/01/269124_medium.mp4",
+  "id": "269124",
+  "w": 2560,
+  "h": 1440,
+  "dur": 32,
+  "sek": 3.13,
+  "start": 1.0,
+  "tags": "train, freight train, snow, snowstorm, winter, shipping, jap"
+ },
+ "12": {
+  "url": "https://videos.pexels.com/video-files/19537998/19537998-hd_1366_720_25fps.mp4",
+  "id": "px19537998",
+  "w": 1366,
+  "h": 720,
+  "dur": 9,
+  "sek": 7.54,
+  "start": 0.73,
+  "tags": "crackers-from-a-home-oven-in-a-clay-plate-on-the-table-19537"
+ },
+ "25": {
+  "url": "https://videos.pexels.com/video-files/7655144/7655144-hd_1280_720_25fps.mp4",
+  "id": "px7655144",
+  "w": 1280,
+  "h": 720,
+  "dur": 26,
+  "sek": 2.6,
+  "start": 1.0,
+  "tags": "person-tying-a-string-to-a-newly-planted-tree-7655144"
+ },
+ "26": {
+  "url": "https://videos.pexels.com/video-files/36657226/15540512_1280_720_24fps.mp4",
+  "id": "px36657226",
+  "w": 1280,
+  "h": 720,
+  "dur": 22,
+  "sek": 4.62,
+  "start": 1.0,
+  "tags": "winter-sunlight-through-window-with-snowflakes-36657226"
+ },
+ "27": {
+  "url": "https://videos.pexels.com/video-files/35887174/15220921_1280_720_30fps.mp4",
+  "id": "px35887174",
+  "w": 1280,
+  "h": 720,
+  "dur": 12,
+  "sek": 4.31,
+  "start": 1.0,
+  "tags": "snow-covered-shikara-boats-on-dal-lake-in-winter-35887174"
+ },
+ "29": {
+  "url": "https://videos.pexels.com/video-files/5900098/5900098-hd_1366_720_30fps.mp4",
+  "id": "px5900098",
+  "w": 1366,
+  "h": 720,
+  "dur": 16,
+  "sek": 8.04,
+  "start": 1.0,
+  "tags": "person-doing-knitting-5900098"
+ },
+ "30": {
+  "url": "https://cdn.pixabay.com/video/2015/10/19/1111-142930252_medium.mp4",
+  "id": "1111",
+  "w": 1280,
+  "h": 720,
+  "dur": 8,
+  "sek": 3.26,
+  "start": 1.0,
+  "tags": "sewing machine, sewing, tailor, stitching, needle, cloth, cl"
+ },
+ "31": {
+  "url": "https://videos.pexels.com/video-files/6183254/6183254-hd_1280_720_25fps.mp4",
+  "id": "px6183254",
+  "w": 1280,
+  "h": 720,
+  "dur": 12,
+  "sek": 4.4,
+  "start": 1.0,
+  "tags": "work-space-in-an-attic-6183254"
+ },
+ "32": {
+  "url": "https://videos.pexels.com/video-files/6830271/6830271-hd_1280_720_30fps.mp4",
+  "id": "px6830271",
+  "w": 1280,
+  "h": 720,
+  "dur": 30,
+  "sek": 5.45,
+  "start": 1.0,
+  "tags": "a-woman-opens-then-leans-out-the-window-6830271"
+ },
+ "33": {
+  "url": "https://videos.pexels.com/video-files/6639953/6639953-hd_1366_720_25fps.mp4",
+  "id": "px6639953",
+  "w": 1366,
+  "h": 720,
+  "dur": 11,
+  "sek": 3.09,
+  "start": 1.0,
+  "tags": "a-woman-opening-a-window-6639953"
+ },
+ "34": {
+  "url": "https://videos.pexels.com/video-files/7696971/7696971-hd_1366_720_25fps.mp4",
+  "id": "px7696971",
+  "w": 1366,
+  "h": 720,
+  "dur": 35,
+  "sek": 6.0,
+  "start": 1.0,
+  "tags": "a-yarn-coming-from-a-knitted-clothes-7696971"
+ },
+ "37": {
+  "url": "https://videos.pexels.com/video-files/6473920/6473920-hd_1280_720_25fps.mp4",
+  "id": "px6473920",
+  "w": 1280,
+  "h": 720,
+  "dur": 19,
+  "sek": 5.1,
+  "start": 1.0,
+  "tags": "a-footage-of-a-room-under-renovation-6473920"
+ },
+ "38": {
+  "url": "https://videos.pexels.com/video-files/6474371/6474371-hd_1280_720_25fps.mp4",
+  "id": "px6474371",
+  "w": 1280,
+  "h": 720,
+  "dur": 11,
+  "sek": 4.83,
+  "start": 1.0,
+  "tags": "close-up-of-paint-roller-6474371"
+ },
+ "39": {
+  "url": "https://cdn.pixabay.com/video/2023/02/09/149978-797471118_medium.mp4",
+  "id": "149978",
+  "w": 1280,
+  "h": 720,
+  "dur": 9,
+  "sek": 2.83,
+  "start": 1.0,
+  "tags": "paint, color, brush, canvas, palette, oil paint, acrylic pai"
+ },
+ "40": {
+  "url": "https://videos.pexels.com/video-files/8197682/8197682-hd_1280_720_30fps.mp4",
+  "id": "px8197682",
+  "w": 1280,
+  "h": 720,
+  "dur": 14,
+  "sek": 5.54,
+  "start": 1.0,
+  "tags": "push-in-shot-of-a-packed-suitcase-8197682"
+ },
+ "41": {
+  "url": "https://videos.pexels.com/video-files/7592168/7592168-hd_1280_720_24fps.mp4",
+  "id": "px7592168",
+  "w": 1280,
+  "h": 720,
+  "dur": 35,
+  "sek": 4.41,
+  "start": 1.0,
+  "tags": "a-snow-melts-in-the-window-7592168"
+ },
+ "42": {
+  "url": "https://cdn.pixabay.com/video/2023/11/30/191443-890121806_medium.mp4",
+  "id": "191443",
+  "w": 2560,
+  "h": 1440,
+  "dur": 15,
+  "sek": 6.9,
+  "start": 1.0,
+  "tags": "trees, snow, winter, covered in snow, winter landscape, natu"
+ },
+ "44": {
+  "url": "https://videos.pexels.com/video-files/31688979/13501062_1366_720_25fps.mp4",
+  "id": "px31688979",
+  "w": 1366,
+  "h": 720,
+  "dur": 25,
+  "sek": 6.83,
+  "start": 1.0,
+  "tags": "pouring-hot-tea-from-thermos-into-cup-indoors-31688979"
+ },
+ "45": {
+  "url": "https://videos.pexels.com/video-files/35795702/15176108_1280_720_60fps.mp4",
+  "id": "px35795702",
+  "w": 1280,
+  "h": 720,
+  "dur": 16,
+  "sek": 2.39,
+  "start": 1.0,
+  "tags": "snowy-train-station-in-winter-black-white-35795702"
+ },
+ "47": {
+  "url": "https://cdn.pixabay.com/video/2023/11/12/188778-883818276_medium.mp4",
+  "id": "188778",
+  "w": 2560,
+  "h": 1440,
+  "dur": 23,
+  "sek": 8.63,
+  "start": 1.0,
+  "tags": "winter, snow, people, walk, to stroll, landscape, winter lan"
+ },
+ "52": {
+  "url": "https://videos.pexels.com/video-files/4661348/4661348-hd_1366_720_50fps.mp4",
+  "id": "px4661348",
+  "w": 1366,
+  "h": 720,
+  "dur": 17,
+  "sek": 8.15,
+  "start": 1.0,
+  "tags": "a-woman-s-hand-holding-a-book-with-a-red-nail-4661348"
+ },
+ "55": {
+  "url": "https://cdn.pixabay.com/video/2019/12/03/29773-377520650_medium.mp4",
+  "id": "29773",
+  "w": 1280,
+  "h": 720,
+  "dur": 28,
+  "sek": 3.51,
+  "start": 1.0,
+  "tags": "winter, switzerland, alpine, snow, town, village"
+ },
+ "60": {
+  "url": "https://cdn.pixabay.com/video/2021/10/09/91410-629589238_medium.mp4",
+  "id": "91410",
+  "w": 2560,
+  "h": 1440,
+  "dur": 21,
+  "sek": 4.45,
+  "start": 1.0,
+  "tags": "burdock, plant, wild plant, faded, nature, diesteln, prickly"
+ },
+ "61": {
+  "url": "https://videos.pexels.com/video-files/3723444/3723444-hd_1366_720_24fps.mp4",
+  "id": "px3723444",
+  "w": 1366,
+  "h": 720,
+  "dur": 16,
+  "sek": 5.47,
+  "start": 1.0,
+  "tags": "footage-of-people-inside-the-train-3723444"
+ },
+ "63": {
+  "url": "https://cdn.pixabay.com/video/2021/01/27/63066-505518648_medium.mp4",
+  "id": "63066",
+  "w": 2560,
+  "h": 1440,
+  "dur": 22,
+  "sek": 2.28,
+  "start": 1.0,
+  "tags": "bread, knife, breakfast, healthy, home, bakery, baked, flour"
+ },
+ "64": {
+  "url": "https://videos.pexels.com/video-files/4038357/4038357-hd_1366_720_50fps.mp4",
+  "id": "px4038357",
+  "w": 1366,
+  "h": 720,
+  "dur": 34,
+  "sek": 5.83,
+  "start": 1.0,
+  "tags": "a-man-slicing-a-challah-bread-with-knife-4038357"
+ },
+ "65": {
+  "url": "https://videos.pexels.com/video-files/27665570/12198075_1280_720_24fps.mp4",
+  "id": "px27665570",
+  "w": 1280,
+  "h": 720,
+  "dur": 8,
+  "sek": 3.14,
+  "start": 1.0,
+  "tags": "a-person-is-holding-a-piece-of-bread-with-red-nails-27665570"
+ },
+ "66": {
+  "url": "https://videos.pexels.com/video-files/4974564/4974564-hd_1280_720_25fps.mp4",
+  "id": "px4974564",
+  "w": 1280,
+  "h": 720,
+  "dur": 14,
+  "sek": 3.03,
+  "start": 1.0,
+  "tags": "plain-bread-buns-and-with-nuts-4974564"
+ },
+ "67": {
+  "url": "https://videos.pexels.com/video-files/3943588/3943588-hd_1366_720_50fps.mp4",
+  "id": "px3943588",
+  "w": 1366,
+  "h": 720,
+  "dur": 15,
+  "sek": 3.13,
+  "start": 1.0,
+  "tags": "bread-food-hands-art-3943588"
+ },
+ "68": {
+  "url": "https://videos.pexels.com/video-files/40345316/17238007_1280_720_24fps.mp4",
+  "id": "px40345316",
+  "w": 1280,
+  "h": 720,
+  "dur": 9,
+  "sek": 4.24,
+  "start": 1.0,
+  "tags": "decorative-wooden-spoon-wall-display-40345316"
+ },
+ "70": {
+  "url": "https://cdn.pixabay.com/video/2024/04/25/209418_medium.mp4",
+  "id": "209418",
+  "w": 2560,
+  "h": 1440,
+  "dur": 22,
+  "sek": 6.26,
+  "start": 1.0,
+  "tags": "bread, cut, slice, preparation, starch, food"
+ },
  "71": {
   "url": "https://videos.pexels.com/video-files/5542106/5542106-hd_1280_720_24fps.mp4",
   "id": "px5542106",
   "w": 1280,
   "h": 720,
   "dur": 56,
-  "sek": 4.08,
+  "sek": 3.9,
   "start": 1.0,
   "tags": "cooking-bread-on-a-pan-5542106"
+ },
+ "74": {
+  "url": "https://cdn.pixabay.com/video/2015/08/08/66-135732262_medium.mp4",
+  "id": "66",
+  "w": 1280,
+  "h": 720,
+  "dur": 20,
+  "sek": 4.85,
+  "start": 1.0,
+  "tags": "cookies, oven, baking, melting, molten, bakery, heat, warm, "
+ },
+ "77": {
+  "url": "https://videos.pexels.com/video-files/7482684/7482684-hd_1366_720_25fps.mp4",
+  "id": "px7482684",
+  "w": 1366,
+  "h": 720,
+  "dur": 42,
+  "sek": 5.93,
+  "start": 1.0,
+  "tags": "variety-of-tools-on-display-inside-a-workshop-7482684"
  },
  "78": {
   "url": "https://videos.pexels.com/video-files/10474554/10474554-hd_1280_720_30fps.mp4",
@@ -15,19 +415,109 @@
   "w": 1280,
   "h": 720,
   "dur": 10,
-  "sek": 7.91,
+  "sek": 7.36,
   "start": 1.0,
   "tags": "a-yellow-sweater-and-yarn-bundles-on-a-wooden-stool-10474554"
  },
  "81": {
-  "url": "https://videos.pexels.com/video-files/1094395/1094395-hd_1280_720_25fps.mp4",
-  "id": "px1094395",
+  "url": "https://videos.pexels.com/video-files/37329597/15811284_1280_720_25fps.mp4",
+  "id": "px37329597",
   "w": 1280,
   "h": 720,
-  "dur": 10,
-  "sek": 5.52,
+  "dur": 18,
+  "sek": 5.77,
   "start": 1.0,
-  "tags": "coloful-fabrics-on-display-1094395"
+  "tags": "artisan-stitching-colorful-quilts-in-workshop-37329597"
+ },
+ "82": {
+  "url": "https://videos.pexels.com/video-files/5452973/5452973-hd_1280_720_25fps.mp4",
+  "id": "px5452973",
+  "w": 1280,
+  "h": 720,
+  "dur": 21,
+  "sek": 2.95,
+  "start": 1.0,
+  "tags": "person-sewing-a-fabric-5452973"
+ },
+ "90": {
+  "url": "https://videos.pexels.com/video-files/9130348/9130348-hd_1280_720_30fps.mp4",
+  "id": "px9130348",
+  "w": 1280,
+  "h": 720,
+  "dur": 13,
+  "sek": 3.23,
+  "start": 1.0,
+  "tags": "a-person-opening-a-drawer-9130348"
+ },
+ "93": {
+  "url": "https://cdn.pixabay.com/video/2025/04/27/275052_medium.mp4",
+  "id": "275052",
+  "w": 2560,
+  "h": 1440,
+  "dur": 9,
+  "sek": 4.87,
+  "start": 1.0,
+  "tags": "strawberry, sugar, macro, wooden board, cute, yummy, food, m"
+ },
+ "95": {
+  "url": "https://cdn.pixabay.com/video/2015/08/10/267-135875613_medium.mp4",
+  "id": "267",
+  "w": 1280,
+  "h": 720,
+  "dur": 25,
+  "sek": 8.44,
+  "start": 1.0,
+  "tags": "pot, cooking, steam, steaming, hot, food, kettle, preparatio"
+ },
+ "96": {
+  "url": "https://cdn.pixabay.com/video/2016/06/27/3595-172488292_medium.mp4",
+  "id": "3595",
+  "w": 1280,
+  "h": 720,
+  "dur": 44,
+  "sek": 2.91,
+  "start": 1.0,
+  "tags": "cup of coffee, hot, beverage, morning, aroma, steam, coffee,"
+ },
+ "99": {
+  "url": "https://videos.pexels.com/video-files/6994795/6994795-hd_1280_720_30fps.mp4",
+  "id": "px6994795",
+  "w": 1280,
+  "h": 720,
+  "dur": 13,
+  "sek": 5.48,
+  "start": 1.0,
+  "tags": "person-knocking-on-the-door-for-deliveries-6994795"
+ },
+ "100": {
+  "url": "https://cdn.pixabay.com/video/2021/02/12/64994-511728278_medium.mp4",
+  "id": "64994",
+  "w": 2560,
+  "h": 1440,
+  "dur": 30,
+  "sek": 3.25,
+  "start": 1.0,
+  "tags": "wind, wheat, field, wheat field, agriculture, grain, nature,"
+ },
+ "103": {
+  "url": "https://cdn.pixabay.com/video/2017/10/09/12396-237438805_medium.mp4",
+  "id": "12396",
+  "w": 1280,
+  "h": 720,
+  "dur": 12,
+  "sek": 3.59,
+  "start": 1.0,
+  "tags": "winter, the cabin in the woods, nature, snowflake, under the"
+ },
+ "104": {
+  "url": "https://cdn.pixabay.com/video/2023/12/09/192649-892970391_medium.mp4",
+  "id": "192649",
+  "w": 2560,
+  "h": 1440,
+  "dur": 28,
+  "sek": 4.67,
+  "start": 1.0,
+  "tags": "nature, trees, forest, snow, aerial view, winter, hill, land"
  },
  "105": {
   "url": "https://videos.pexels.com/video-files/14868423/14868423-hd_1280_720_24fps.mp4",
@@ -35,8 +525,128 @@
   "w": 1280,
   "h": 720,
   "dur": 35,
-  "sek": 7.43,
+  "sek": 6.33,
   "start": 1.0,
   "tags": "a-leafless-tree-branch-covered-in-snow-14868423"
+ },
+ "106": {
+  "url": "https://videos.pexels.com/video-files/35309659/14959684_1280_720_30fps.mp4",
+  "id": "px35309659",
+  "w": 1280,
+  "h": 720,
+  "dur": 16,
+  "sek": 6.01,
+  "start": 1.0,
+  "tags": "frosted-window-with-sunrise-backdrop-35309659"
+ },
+ "108": {
+  "url": "https://videos.pexels.com/video-files/4378032/4378032-hd_1280_720_25fps.mp4",
+  "id": "px4378032",
+  "w": 1280,
+  "h": 720,
+  "dur": 9,
+  "sek": 6.79,
+  "start": 1.0,
+  "tags": "calendar-hanged-on-a-wall-4378032"
+ },
+ "109": {
+  "url": "https://cdn.pixabay.com/video/2021/12/29/102851-661022017_medium.mp4",
+  "id": "102851",
+  "w": 2560,
+  "h": 1440,
+  "dur": 7,
+  "sek": 5.43,
+  "start": 0.78,
+  "tags": "skating, ice, skate, on ice, girl, ice skating, 4k, slowmo, "
+ },
+ "112": {
+  "url": "https://videos.pexels.com/video-files/10529475/10529475-hd_1280_720_30fps.mp4",
+  "id": "px10529475",
+  "w": 1280,
+  "h": 720,
+  "dur": 16,
+  "sek": 4.37,
+  "start": 1.0,
+  "tags": "people-skating-on-ice-rink-10529475"
+ },
+ "113": {
+  "url": "https://cdn.pixabay.com/video/2020/02/01/31851-389009390_medium.mp4",
+  "id": "31851",
+  "w": 2560,
+  "h": 1440,
+  "dur": 13,
+  "sek": 4.86,
+  "start": 1.0,
+  "tags": "tv, test, pattern, color, television, screen, media, cameram"
+ },
+ "114": {
+  "url": "https://cdn.pixabay.com/video/2026/10/01/380241_medium.mp4",
+  "id": "380241",
+  "w": 2560,
+  "h": 1440,
+  "dur": 44,
+  "sek": 5.92,
+  "start": 1.0,
+  "tags": "keyboard, synthesizer, midi controller, midi pads, piano key"
+ },
+ "115": {
+  "url": "https://videos.pexels.com/video-files/7149476/7149476-hd_1366_720_25fps.mp4",
+  "id": "px7149476",
+  "w": 1366,
+  "h": 720,
+  "dur": 65,
+  "sek": 7.47,
+  "start": 1.0,
+  "tags": "a-person-sticking-a-poster-on-a-building-wall-7149476"
+ },
+ "116": {
+  "url": "https://cdn.pixabay.com/video/2022/12/07/141924-778907104_medium.mp4",
+  "id": "141924",
+  "w": 1280,
+  "h": 720,
+  "dur": 80,
+  "sek": 3.0,
+  "start": 1.0,
+  "tags": "window, candles, snow, winter, light, trees, night, dark, be"
+ },
+ "117": {
+  "url": "https://videos.pexels.com/video-files/7423657/7423657-hd_1280_720_30fps.mp4",
+  "id": "px7423657",
+  "w": 1280,
+  "h": 720,
+  "dur": 20,
+  "sek": 4.35,
+  "start": 1.0,
+  "tags": "people-dragging-their-luggage-in-the-hallway-7423657"
+ },
+ "120": {
+  "url": "https://videos.pexels.com/video-files/6646758/6646758-hd_1280_720_25fps.mp4",
+  "id": "px6646758",
+  "w": 1280,
+  "h": 720,
+  "dur": 3,
+  "sek": 1.71,
+  "start": 0.64,
+  "tags": "a-cold-woman-wearing-a-knitted-sweater-6646758"
+ },
+ "128": {
+  "url": "https://videos.pexels.com/video-files/7463924/7463924-hd_1280_720_30fps.mp4",
+  "id": "px7463924",
+  "w": 1280,
+  "h": 720,
+  "dur": 13,
+  "sek": 5.93,
+  "start": 1.0,
+  "tags": "man-packing-things-on-the-house-7463924"
+ },
+ "129": {
+  "url": "https://cdn.pixabay.com/video/2022/02/04/106674-673786323_medium.mp4",
+  "id": "106674",
+  "w": 2560,
+  "h": 1440,
+  "dur": 29,
+  "sek": 6.12,
+  "start": 1.0,
+  "tags": "cozy, cabin, snow, interior, homey, fireplace, house, chill,"
  }
 }
