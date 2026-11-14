@@ -1,0 +1,132 @@
+{
+  "1": {
+    "photo": "overlays/scene_001.jpg",
+    "sound": "pop",
+    "at": 2.2,
+    "shape": "rect",
+    "scale": 1.0,
+    "style": "right"
+  },
+  "6": {
+    "photo": "overlays/scene_006.jpg",
+    "sound": "whoosh",
+    "at": 2.4,
+    "shape": "rect",
+    "scale": 1.2,
+    "style": "up-left"
+  },
+  "8": {
+    "photo": "overlays/scene_008.jpg",
+    "sound": "ding",
+    "at": 2.6,
+    "shape": "circle",
+    "scale": 1.0,
+    "style": "right"
+  },
+  "9": {
+    "photo": "overlays/scene_009.jpg",
+    "sound": "pop",
+    "at": 2.8,
+    "shape": "rect",
+    "scale": 1.0,
+    "style": "left"
+  },
+  "11": {
+    "photo": "overlays/scene_011.jpg",
+    "sound": "whoosh",
+    "at": 3.0,
+    "shape": "rect",
+    "scale": 1.0,
+    "style": "up-center"
+  },
+  "12": {
+    "photo": "overlays/scene_012.jpg",
+    "sound": "ding",
+    "at": 3.2,
+    "shape": "circle",
+    "scale": 1.2,
+    "style": "up-right"
+  },
+  "14": {
+    "photo": "overlays/scene_014.jpg",
+    "sound": "pop",
+    "at": 3.4,
+    "shape": "rect",
+    "scale": 1.0,
+    "style": "right"
+  },
+  "16": {
+    "photo": "overlays/scene_016.jpg",
+    "sound": "whoosh",
+    "at": 3.6,
+    "shape": "rect",
+    "scale": 1.0,
+    "style": "left"
+  },
+  "18": {
+    "photo": "overlays/scene_018.jpg",
+    "sound": "ding",
+    "at": 3.8,
+    "shape": "circle",
+    "scale": 1.0,
+    "style": "up-center"
+  },
+  "20": {
+    "photo": "overlays/scene_020.jpg",
+    "sound": "pop",
+    "at": 4.0,
+    "shape": "rect",
+    "scale": 1.2,
+    "style": "up-left"
+  },
+  "22": {
+    "photo": "overlays/scene_022.jpg",
+    "sound": "whoosh",
+    "at": 4.2,
+    "shape": "rect",
+    "scale": 1.0,
+    "style": "right"
+  },
+  "71": {
+    "photo": "overlays/scene_071.jpg",
+    "sound": "ding",
+    "at": 4.4,
+    "shape": "circle",
+    "scale": 1.0,
+    "style": "right"
+  },
+  "72": {
+    "photo": "overlays/scene_072.jpg",
+    "sound": "pop",
+    "at": 4.6,
+    "shape": "rect",
+    "scale": 1.0,
+    "style": "left"
+  },
+  "3": {
+    "text": {
+      "words": "У КАЖДОГО СВОЙ СПИСОК",
+      "color": "white",
+      "pos": "ml",
+      "font": "default",
+      "sound": "pshik",
+      "at": 0.5,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "единой линии в Европе нет"
+    }
+  },
+  "5": {
+    "text": {
+      "words": "ДОГОВОР ПО ОТДЕЛЬНОСТИ",
+      "color": "red",
+      "pos": "ml",
+      "font": "default",
+      "sound": "pop",
+      "at": 0.6,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "что предлагает Москва"
+    }
+  }
+}
