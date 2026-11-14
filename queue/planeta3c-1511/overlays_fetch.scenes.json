@@ -1,0 +1,95 @@
+{
+ "scenes": [
+  {
+   "id": 1,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Антониу Кошта председатель Евросовета на пресс-конференции, Брюссель, 2026"
+  },
+  {
+   "id": 6,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Сергей Рябков заместитель министра иностранных дел России на брифинге, 2026"
+  },
+  {
+   "id": 8,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Фридрих Мерц канцлер Германии выступает в Бундестаге, 2026"
+  },
+  {
+   "id": 9,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Кая Каллас глава дипломатии Евросоюза на пресс-конференции, Брюссель, 2026"
+  },
+  {
+   "id": 11,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Кристен Михал премьер-министр Эстонии, 2026"
+  },
+  {
+   "id": 12,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Урсула фон дер Ляйен председатель Еврокомиссии на подиуме, Брюссель, 2026"
+  },
+  {
+   "id": 14,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Владимир Зеленский на пресс-конференции в Киеве, 2026"
+  },
+  {
+   "id": 16,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "здание Министерства иностранных дел России на Смоленской площади, Москва"
+  },
+  {
+   "id": 18,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "деловой центр Абу-Даби, панорама города, ОАЭ"
+  },
+  {
+   "id": 20,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "реальное фото генерала Алексуса Гринкевича, главнокомандующего силами НАТО в Европе"
+  },
+  {
+   "id": 22,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Антти Хяккянен министр обороны Финляндии, 2026"
+  },
+  {
+   "id": 71,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "здание парламента Финляндии в Хельсинки с флагом"
+  },
+  {
+   "id": 72,
+   "duration_sec": 4.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Марк Рютте генеральный секретарь НАТО на пресс-конференции, 2026"
+  }
+ ]
+}
