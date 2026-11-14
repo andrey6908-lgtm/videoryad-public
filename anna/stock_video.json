@@ -20,14 +20,14 @@
   "tags": "snow, snowfall, snowflakes, snowflake, winter, winter snow, "
  },
  "5": {
-  "url": "https://cdn.pixabay.com/video/2026/01/13/327388_medium.mp4",
-  "id": "327388",
+  "url": "https://cdn.pixabay.com/video/2025/02/23/260384_medium.mp4",
+  "id": "260384",
   "w": 2560,
   "h": 1440,
-  "dur": 19,
+  "dur": 22,
   "sek": 7.73,
   "start": 1.0,
-  "tags": "snow scene, mountain village, heavy snowfall area, tradition"
+  "tags": "mountain village, heavy snowfall area, old wooden house, sno"
  },
  "7": {
   "url": "https://cdn.pixabay.com/video/2026/01/07/326483_medium.mp4",
@@ -110,14 +110,14 @@
   "tags": "winter-sunlight-through-window-with-snowflakes-36657226"
  },
  "27": {
-  "url": "https://videos.pexels.com/video-files/35887174/15220921_1280_720_30fps.mp4",
-  "id": "px35887174",
-  "w": 1280,
-  "h": 720,
-  "dur": 12,
+  "url": "https://cdn.pixabay.com/video/2023/01/03/145151-786113457_medium.mp4",
+  "id": "145151",
+  "w": 2560,
+  "h": 1440,
+  "dur": 30,
   "sek": 4.31,
   "start": 1.0,
-  "tags": "snow-covered-shikara-boats-on-dal-lake-in-winter-35887174"
+  "tags": "winter, snow, sun, trees, covered in snow, sunbeam, light, s"
  },
  "29": {
   "url": "https://videos.pexels.com/video-files/5900098/5900098-hd_1366_720_30fps.mp4",
@@ -279,16 +279,6 @@
   "start": 1.0,
   "tags": "a-woman-s-hand-holding-a-book-with-a-red-nail-4661348"
  },
- "55": {
-  "url": "https://cdn.pixabay.com/video/2019/12/03/29773-377520650_medium.mp4",
-  "id": "29773",
-  "w": 1280,
-  "h": 720,
-  "dur": 28,
-  "sek": 3.51,
-  "start": 1.0,
-  "tags": "winter, switzerland, alpine, snow, town, village"
- },
  "60": {
   "url": "https://cdn.pixabay.com/video/2021/10/09/91410-629589238_medium.mp4",
   "id": "91410",
@@ -298,16 +288,6 @@
   "sek": 4.45,
   "start": 1.0,
   "tags": "burdock, plant, wild plant, faded, nature, diesteln, prickly"
- },
- "61": {
-  "url": "https://videos.pexels.com/video-files/3723444/3723444-hd_1366_720_24fps.mp4",
-  "id": "px3723444",
-  "w": 1366,
-  "h": 720,
-  "dur": 16,
-  "sek": 5.47,
-  "start": 1.0,
-  "tags": "footage-of-people-inside-the-train-3723444"
  },
  "63": {
   "url": "https://cdn.pixabay.com/video/2021/01/27/63066-505518648_medium.mp4",
@@ -438,16 +418,6 @@
   "sek": 4.01,
   "start": 1.0,
   "tags": "woman-organizing-towels-in-a-closet-5892548"
- },
- "81": {
-  "url": "https://videos.pexels.com/video-files/37329597/15811284_1280_720_25fps.mp4",
-  "id": "px37329597",
-  "w": 1280,
-  "h": 720,
-  "dur": 18,
-  "sek": 5.77,
-  "start": 1.0,
-  "tags": "artisan-stitching-colorful-quilts-in-workshop-37329597"
  },
  "82": {
   "url": "https://videos.pexels.com/video-files/5452973/5452973-hd_1280_720_25fps.mp4",
@@ -648,16 +618,6 @@
   "sek": 4.35,
   "start": 1.0,
   "tags": "people-dragging-their-luggage-in-the-hallway-7423657"
- },
- "120": {
-  "url": "https://videos.pexels.com/video-files/6646758/6646758-hd_1280_720_25fps.mp4",
-  "id": "px6646758",
-  "w": 1280,
-  "h": 720,
-  "dur": 3,
-  "sek": 1.71,
-  "start": 0.64,
-  "tags": "a-cold-woman-wearing-a-knitted-sweater-6646758"
  },
  "128": {
   "url": "https://videos.pexels.com/video-files/7463924/7463924-hd_1280_720_30fps.mp4",

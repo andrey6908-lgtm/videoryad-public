@@ -10,6 +10,7 @@
 Тёплое пятно в кадре всегда одно — окно, лампа, печка, кружка.
 """
 import math, random
+import baza
 from baza import *
 from baza import (_nebo, _oblaka, _tuman, _ulica_dal, _panelka, _sneg_lezhit,
                   _sneg_letit, _utvar_izby, _utvar_pekarni, _kvartira_veschi,
@@ -21,6 +22,76 @@ DEN, MESYAC = "16", "НОЯБРЯ"
 
 
 # ═══════════════ СКВОЗНЫЕ ОБРАЗЫ ЭТОГО РОЛИКА ═══════════════
+
+
+# ──────────────────────────────────────────────────────────────────────────
+# ОБЖИВКА ПУСТЫХ МЕСТ (R-0045, R-0006, R-0047 — его слова 14.11:
+# «не делай пустыми сценами», «домики куцые, окошко не светится, дымок не
+# идёт», «всё неузнаваемое»). Место выбирает podbor_okna.py по карте
+# занятости, поэтому обживка никогда не ложится поверх нарисованного.
+# ──────────────────────────────────────────────────────────────────────────
+ULICA = ("двор", "поле", "дорог", "деревн", "улиц", "сад", "каток", "снег",
+         "верёвк", "ворот", "сани", "крыш", "сруб", "холм", "лёд", "льд",
+         "тумб", "позёмк", "стреха", "сосул", "город", "лавк", "магазин",
+         "платформ", "остановк", "半")
+KOMNATA = ("горниц", "комнат", "кухн", "шкаф", "стол", "мастерск", "чердак",
+           "сени", "печк", "кроват", "подоконник", "комод", "полк", "терем",
+           "школьн", "зыбк", "кресл", "морозилк", "балкон", "коридор")
+
+
+def tip_sceny(imya_lok):
+    n = (imya_lok or "").lower()
+    for k in KOMNATA:
+        if k in n:
+            return "komnata"
+    for k in ULICA:
+        if k in n:
+            return "ulica"
+    return "komnata"
+
+
+def obzhit(tip, x, y, w_, h_, t, seed=1):
+    """Обжитый кусок кадра в пустом месте: на улице — изба с тёплым окном и
+    дымом из трубы, плетень и сугроб; в доме — полка с утварью, занавеска,
+    кот. Всё из общих кирпичиков, своего кода тут нет."""
+    r = random.Random(seed * 17 + 3)
+    base = y + h_
+    s = ""
+    if tip == "ulica":
+        iw = w_ * r.uniform(.42, .54)
+        ix = x + (w_ - iw) * r.uniform(.15, .55)
+        s += baza.izba_snaruzhi(ix, base - h_ * .06, iw, t,
+                                svet=True, truba=True, seed=seed)
+        s += baza.pleten(x + w_ * .02, base - h_ * .05, w_ * .96, h_ * .22,
+                         kolya=max(5, int(w_ / 78)))
+        s += baza._sneg_lezhit_polosa(x, base - h_ * .10, w_, h_ * .12)             if hasattr(baza, "_sneg_lezhit_polosa") else ""
+        for i in range(2):
+            ex = x + w_ * (.80 + i * .11)
+            eh = h_ * r.uniform(.26, .36)
+            s += (f'<path d="M{ex:.0f},{base-h_*.06:.0f} l{-eh*.34:.0f},0'
+                  f' l{eh*.34:.0f},{-eh:.0f} l{eh*.34:.0f},{eh:.0f} Z"'
+                  f' fill="#1e2a33" opacity=".92"/>')
+            s += (f'<path d="M{ex:.0f},{base-h_*.06-eh*.42:.0f} l{-eh*.21:.0f},0'
+                  f' l{eh*.21:.0f},{-eh*.3:.0f} l{eh*.21:.0f},{eh*.3:.0f} Z"'
+                  f' fill="url(#sneg)" opacity=".75"/>')
+    else:
+        pw = w_ * .74
+        px = x + (w_ - pw) / 2
+        py = y + h_ * .30
+        s += baza.polka(px, py, pw)
+        s += baza.krynka(px + pw * .16, py, .78)
+        s += baza.karavay(px + pw * .50, py, .62, rushnik=True)
+        s += baza.krynka(px + pw * .80, py, .58)
+        s += baza.polka(px + pw * .06, py + h_ * .34, pw * .88)
+        for i in range(3):
+            bx = px + pw * (.14 + i * .30)
+            s += (f'<rect x="{bx:.0f}" y="{py+h_*.34-h_*.14:.0f}" width="{pw*.12:.0f}"'
+                  f' height="{h_*.14:.0f}" rx="5" fill="url(#derev)" {o(4)}/>')
+        s += baza.zanaveska(x + w_ * .02, y, h_ * .40, w_ * .14, t=t, sgn=1)
+        if r.random() < .5:
+            s += baza.kot(x + w_ * .80, base - h_ * .04, t, .62, spit=True)
+    return s
+
 
 def figura(x, y, h_, t, col="#1b1822", kant="#cfe4f5", platok=False, ph=.0,
            profil=False, op=1.0, telogreyka=False):

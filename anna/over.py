@@ -82,20 +82,21 @@ def plashka(x, y, s, t, t0, size=52, dur=.6, col="url(#zol)", tcol="#1a1208",
     return out
 
 
-def plashka_glavy(s, t, t0, y=470, dur=.9, shir=W):
-    """Отбивка главы. Когда в кадре окно вставки, лента идёт ТОЛЬКО по левой
-    полосе и не залезает на окно (мина 3 «Ёлки»)."""
+def plashka_glavy(s, t, t0, y=470, dur=.9, shir=W, x0=0):
+    """Отбивка главы. Когда в кадре окно вставки, лента идёт ТОЛЬКО по
+    свободной полосе и не залезает на окно (мина 3 «Ёлки»). Полоса может
+    быть и слева, и справа — её считает kadr.polosa_nadpisey (R-0048)."""
     p = A.ease(A.seg(t, t0, dur))
     if p <= 0:
         return ""
     h_ = 150
     kegl = kegl_pod(s, shir - 80, "SERIF", 76, 34, 6)
-    out = (f'<rect x="0" y="{y}" width="{shir*p:.0f}" height="{h_}" fill="#1a1208" opacity=".9"/>'
-           f'<rect x="0" y="{y}" width="{shir*p:.0f}" height="6" fill="{ZOL}"/>'
-           f'<rect x="0" y="{y+h_-6}" width="{shir*p:.0f}" height="6" fill="{ZOL}"/>')
+    out = (f'<rect x="{x0}" y="{y}" width="{shir*p:.0f}" height="{h_}" fill="#1a1208" opacity=".9"/>'
+           f'<rect x="{x0}" y="{y}" width="{shir*p:.0f}" height="6" fill="{ZOL}"/>'
+           f'<rect x="{x0}" y="{y+h_-6}" width="{shir*p:.0f}" height="6" fill="{ZOL}"/>')
     if p > .5:
         q = A.ease((p - .5) / .5)
-        out += txt(shir / 2, y + h_ * .68, s, kegl, SVET, "middle", SERIF, 6, op=q)
+        out += txt(x0 + shir / 2, y + h_ * .68, s, kegl, SVET, "middle", SERIF, 6, op=q)
     return out
 
 

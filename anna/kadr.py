@@ -10,7 +10,37 @@ from baza import W, H
 from karta import DEK
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OKNO = (860, 300, 980, 551)
+OKNO = (860, 300, 980, 551)          # запасное место, если подбора нет
+# Куда окно ложится В ЭТОЙ сцене — подобрано podbor_okna.py по самой
+# картинке и записано файлом: сторона, высота и размер у каждого плана свои
+# (R-0048, его слово 14.11 «почему оно всегда справа и одного размера»).
+_OKNA, _OBZH, _TIP = {}, {}, {}
+if os.path.exists(os.path.join(HERE, "okna.json")):
+    _r = json.load(open(os.path.join(HERE, "okna.json"), encoding="utf-8"))
+    _OKNA = _r.get("okna", _r)
+    _OBZH = _r.get("obzhivka", {})
+    _TIP = _r.get("tip", {})
+
+
+def okno_plana(pl):
+    """Прямоугольник окна этого плана: (x, y, ширина, высота)."""
+    r = _OKNA.get(str(pl["n"]))
+    return tuple(r) if r else OKNO
+
+
+def polosa_nadpisey(pl):
+    """Свободная полоса под надписи — с той стороны, где НЕТ окна."""
+    if not (nado_okno(pl) or data_kartochka(pl)):
+        return 70, W, 1560
+    x, _, w_, _ = okno_plana(pl)
+    sleva = x > W - (x + w_)          # слева места больше
+    if sleva:
+        lx = 70
+        shir = x - 40
+    else:
+        lx = x + w_ + 40
+        shir = W - lx - 70
+    return lx, max(360, shir), max(300, shir - 68)
 FOTO = os.path.join(HERE, "foto")
 KLIPY = {}          # {номер плана: папка с кадрами клипа} — ставит render.py
 _ST = {}
@@ -54,6 +84,30 @@ def data_kartochka(pl):
 
 
 _RE = re.compile(r"«([^»]*)»")
+
+
+_KART = None
+
+
+def pamyatka():
+    """Сквозной список памятки: шапка и карточки по всему ролику.
+
+    Его слово 14.11: «не только по одному, а в ряд, чтобы уже был полный
+    список, чтобы человек видел и держал его в памяти. 1, 2, 3». Поэтому
+    карточки НАКАПЛИВАЮТСЯ: на пятом плане списка на экране все пять.
+    """
+    global _KART
+    if _KART is None:
+        kart, shapka = [], None
+        for p in plany():
+            for tip, s_ in nadpisi(p):
+                tl = tip.lower()
+                if tl.startswith("шапка"):
+                    shapka = (p["n"], s_)
+                elif tl.startswith("карточка"):
+                    kart.append((p["n"], s_))
+        _KART = (shapka, kart)
+    return _KART
 
 
 def nadpisi(pl):
@@ -136,6 +190,12 @@ def body(pl, t, p=.5, zaglushki=True):
     fn = getattr(lok, imya)
     # слои декорации разъезжаются по глубине под ход камеры (C1/K9)
     syr = fn(t)
+    # обжитые куски в пустых местах: изба с тёплым окном и дымом на улице,
+    # полка с утварью в доме. Место посчитано podbor_okna.py, поверх
+    # нарисованного обживка не ложится (R-0045, R-0006)
+    tip = _TIP.get(str(pl["n"])) or lok.tip_sceny(pl["lok"])
+    for i, (zx, zy, zw, zh) in enumerate(_OBZH.get(str(pl["n"]), [])):
+        syr += lok.SL(lok.Z_SRED, lok.obzhit(tip, zx, zy, zw, zh, t, pl["n"] + i * 7))
     if '<g data-z="-' not in syr:
         # интерьеру без переднего плана добавляем край кадра: без ближнего
         # слоя параллакса не видно, сцена остаётся плоской
@@ -153,10 +213,10 @@ def body(pl, t, p=.5, zaglushki=True):
         out += baza.begushchiy_blik(t, 16.0, (pl["n"] * .17) % 1.0, .05)
     dk = data_kartochka(pl)
     if dk:
-        x, y, w_, h_ = OKNO
+        x, y, w_, h_ = okno_plana(pl)
         out += over.kartochka_daty(x, y + 90, w_, h_ - 180, dk, t)
     if nado_okno(pl):
-        x, y, w_, h_ = OKNO
+        x, y, w_, h_ = okno_plana(pl)
         f, zhivoj = kadr_okna(pl, t)
         if f:
             # у клипа движение своё — Ken Burns ему не нужен
@@ -170,13 +230,35 @@ def body(pl, t, p=.5, zaglushki=True):
     return out + "</svg>"
 
 
+def spisok_pamyatki(pl, t):
+    """Весь список памятки на экране: прежние пункты стоят, свежий выезжает."""
+    shapka, kart = pamyatka()
+    moi = [n for n, _ in kart if n == pl["n"]]
+    vidno = [(n, s_) for n, s_ in kart if n <= pl["n"]]
+    if not vidno:
+        return ""
+    out = ""
+    if shapka and shapka[0] <= pl["n"]:
+        out += over.plashka((W - over.wid(shapka[1], 58, "SERIF", 1) - 68) / 2,
+                            70, shapka[1], t, .15, 58, maxw=1500)
+    kol = len(vidno)
+    h_ = 132 if kol > 4 else 150
+    shag = h_ + 26
+    y0 = 240 if kol > 4 else 300
+    for i, (n, s_) in enumerate(vidno):
+        m = re.match(r"\s*(\d+)[.):]?\s*(.+)", s_)
+        nom, txt_ = (m.group(1), m.group(2)) if m else (str(i + 1), s_)
+        svezhiy = n == pl["n"]
+        t0 = .45 if svezhiy else -9.0        # прежние уже стоят
+        out += over.kartochka(330, y0 + i * shag, 1260, h_, nom, txt_, t, t0)
+    return out
+
+
 def nalozheniya(pl, t):
     """Надписи плана. Под окно вставки не лезут (мина 3 и 5 «Ёлки»)."""
     out = ""
     est_okno = nado_okno(pl) or bool(data_kartochka(pl))
-    shir = 830 if est_okno else W      # окно вставки занимает 860-1840
-    maxw = 740 if est_okno else 1560
-    lx = 70
+    lx, shir, maxw = polosa_nadpisey(pl)
     yy = 150
     kart = 0
     tri = [n for n in nadpisi(pl) if n[0].startswith("Титр-обещание")]
@@ -189,12 +271,16 @@ def nalozheniya(pl, t):
                 kus = kus.strip()
                 if kus:
                     stroki.append((kus, 72 if len(kus) < 18 else 52))
-        x0 = 1010 if est_okno else 80
+        x0 = (lx + 10) if est_okno else 80
         return over.titr_obeshchanie(stroki, t, .5, x0, 300)
+    if any(tp.lower().startswith(("карточка", "шапка")) for tp, _ in nadpisi(pl)):
+        out += spisok_pamyatki(pl, t)
     for tip, s in nadpisi(pl):
         tl = tip.lower()
+        if tl.startswith("карточка") or tl.startswith("шапка"):
+            continue                        # уже нарисованы общим списком
         if tl.startswith("плашка главы"):
-            out += over.plashka_glavy(s, t, .3, 780, .9, shir)
+            out += over.plashka_glavy(s, t, .3, 780, .9, shir, lx)
             yy = 640
         elif tl.startswith("плашка запрета"):
             m = re.match(r"ЗАПРЕТ\s*(\d+)\s*[—-]\s*(.+)", s)
@@ -203,15 +289,6 @@ def nalozheniya(pl, t):
             else:
                 out += over.plashka(lx, yy, s, t, 1.1, 52, .6, maxw=maxw)
             yy += 170
-        elif tl.startswith("карточка"):
-            m = re.match(r"(\d+)\.\s*(.+)", s)
-            n_, txt_ = (m.group(1), m.group(2)) if m else ("", s)
-            col = kart % 2
-            out += over.kartochka(170 + col * 880, 300 + (kart // 2) * 190, 680, 150,
-                                  n_, txt_, t, .6 + kart * .4)
-            kart += 1
-        elif tl.startswith("шапка"):
-            out += over.plashka((W - over.wid(s, 58, "SERIF", 1) - 68) / 2, 80, s, t, .2, 58, maxw=1500)
         elif tl.startswith("плашка-вопрос") or tl.startswith("плашка под списком"):
             out += over.vopros_plashka(s, t, .8, 820)
         elif tl.startswith("финальная плашка"):
@@ -219,7 +296,7 @@ def nalozheniya(pl, t):
         elif tl.startswith("в окне"):
             if data_kartochka(pl):
                 continue           # дата уже нарисована карточкой
-            x, y, w_, h_ = OKNO
+            x, y, w_, h_ = okno_plana(pl)
             out += over.nadpis(x + w_ / 2, y + h_ - 34, s, t, .8, 40)
         elif tl.startswith("на экране телефона"):
             out += over.nadpis(430, 1000, s, t, .9, 40)
