@@ -1,0 +1,132 @@
+{
+ "5": {
+  "url": "https://cdn.pixabay.com/video/2016/08/29/4834-180629472_medium.mp4",
+  "id": "4834",
+  "w": 1280,
+  "h": 720,
+  "dur": 41,
+  "sek": 3.75,
+  "start": 1.0,
+  "tags": "fire, wood fire, fireplace, logs, chimney, warm, firewood, f"
+ },
+ "13": {
+  "url": "https://cdn.pixabay.com/video/2026/05/16/353078_medium.mp4",
+  "id": "353078",
+  "w": 1280,
+  "h": 720,
+  "dur": 16,
+  "sek": 6.66,
+  "start": 1.0,
+  "tags": "wave, rock, splash, sunset, sea, shore, seascape, coastline,"
+ },
+ "29": {
+  "url": "https://videos.pexels.com/video-files/14955350/14955350-hd_1280_720_25fps.mp4",
+  "id": "px14955350",
+  "w": 1280,
+  "h": 720,
+  "dur": 15,
+  "sek": 4.25,
+  "start": 1.0,
+  "tags": "bare-trees-during-golden-hour-14955350"
+ },
+ "45": {
+  "url": "https://cdn.pixabay.com/video/2021/10/25/93221-639008490_medium.mp4",
+  "id": "93221",
+  "w": 2560,
+  "h": 1440,
+  "dur": 20,
+  "sek": 8.11,
+  "start": 1.0,
+  "tags": "chimney, fire, flame, heat, burning, blazing, blaze, flames,"
+ },
+ "48": {
+  "url": "https://cdn.pixabay.com/video/2017/08/06/11186-228573647_medium.mp4",
+  "id": "11186",
+  "w": 1280,
+  "h": 720,
+  "dur": 11,
+  "sek": 4.95,
+  "start": 1.0,
+  "tags": "lamp, kerosene, flashlight, fire, old, antiques"
+ },
+ "79": {
+  "url": "https://cdn.pixabay.com/video/2017/10/17/12483-238805555_medium.mp4",
+  "id": "12483",
+  "w": 1280,
+  "h": 720,
+  "dur": 15,
+  "sek": 2.64,
+  "start": 1.0,
+  "tags": "rowan, branch, autumn, red, berries, bright, sky, fruit, row"
+ },
+ "97": {
+  "url": "https://videos.pexels.com/video-files/4317605/4317605-hd_1280_720_30fps.mp4",
+  "id": "px4317605",
+  "w": 1280,
+  "h": 720,
+  "dur": 40,
+  "sek": 6.45,
+  "start": 1.0,
+  "tags": "a-time-lapse-video-of-moving-clouds-4317605"
+ },
+ "100": {
+  "url": "https://videos.pexels.com/video-files/35047129/14846189_1280_720_30fps.mp4",
+  "id": "px35047129",
+  "w": 1280,
+  "h": 720,
+  "dur": 17,
+  "sek": 3.37,
+  "start": 1.0,
+  "tags": "winter-sun-halo-in-snowy-landscape-35047129"
+ },
+ "101": {
+  "url": "https://cdn.pixabay.com/video/2017/05/14/9153-217588676_medium.mp4",
+  "id": "9153",
+  "w": 2732,
+  "h": 1366,
+  "dur": 45,
+  "sek": 2.75,
+  "start": 1.0,
+  "tags": "cloud, sky, grey clouds, cloudy sky, grey sky"
+ },
+ "102": {
+  "url": "https://cdn.pixabay.com/video/2021/11/05/94680-643084362_medium.mp4",
+  "id": "94680",
+  "w": 2560,
+  "h": 1440,
+  "dur": 25,
+  "sek": 4.14,
+  "start": 1.0,
+  "tags": "rain, glass, window glass, water, raindrop, rainy weather, w"
+ },
+ "104": {
+  "url": "https://videos.pexels.com/video-files/6962517/6962517-hd_1366_720_30fps.mp4",
+  "id": "px6962517",
+  "w": 1366,
+  "h": 720,
+  "dur": 60,
+  "sek": 3.32,
+  "start": 1.0,
+  "tags": "swaying-bare-trees-6962517"
+ },
+ "107": {
+  "url": "https://videos.pexels.com/video-files/6677775/6677775-hd_1280_720_60fps.mp4",
+  "id": "px6677775",
+  "w": 1280,
+  "h": 720,
+  "dur": 22,
+  "sek": 6.98,
+  "start": 1.0,
+  "tags": "sun-light-trough-the-branches-6677775"
+ },
+ "119": {
+  "url": "https://cdn.pixabay.com/video/2022/07/05/123193-727221472_medium.mp4",
+  "id": "123193",
+  "w": 2560,
+  "h": 1440,
+  "dur": 19,
+  "sek": 6.79,
+  "start": 1.0,
+  "tags": "burning, fire, hot, firewood, bonfire, flame"
+ }
+}
