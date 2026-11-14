@@ -31,7 +31,7 @@ def okno_plana(pl):
 def polosa_nadpisey(pl):
     """Свободная полоса под надписи — с той стороны, где НЕТ окна."""
     if not (nado_okno(pl) or data_kartochka(pl)):
-        return 70, W, 1560
+        return 70, W - 140, W - 208      # лента главы идёт от 70 и не за край
     x, _, w_, _ = okno_plana(pl)
     sleva = x > W - (x + w_)          # слева места больше
     if sleva:
@@ -290,9 +290,9 @@ def nalozheniya(pl, t):
                 out += over.plashka(lx, yy, s, t, 1.1, 52, .6, maxw=maxw)
             yy += 170
         elif tl.startswith("плашка-вопрос") or tl.startswith("плашка под списком"):
-            out += over.vopros_plashka(s, t, .8, 820)
+            out += over.vopros_plashka(s, t, .8, 820, shir, lx + shir / 2)
         elif tl.startswith("финальная плашка"):
-            out += over.vopros_plashka(s, t, 1.0, 760)
+            out += over.vopros_plashka(s, t, 1.0, 760, shir, lx + shir / 2)
         elif tl.startswith("в окне"):
             if data_kartochka(pl):
                 continue           # дата уже нарисована карточкой

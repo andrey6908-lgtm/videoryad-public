@@ -247,17 +247,36 @@ def okno_zaglushka(x, y, w_, h_, podpis, zapros=""):
     return s
 
 
-def vopros_plashka(s, t, t0, y=820):
+def vopros_plashka(s, t, t0, y=820, maxw=None, cx=None):
+    """Плашка-вопрос. Длинная строка НЕ вылезает за кадр: сначала ужимается
+    кегль, а если и этого мало — текст ломается на две строки (R-0030,
+    поймано глазами 14.11: «...кое дело вы успели закончить перед зимой?»
+    уехало за оба края)."""
     p = A.out(A.seg(t, t0, .6))
     if p <= 0:
         return ""
-    size = 58
-    w_ = wid(s, size, "SERIF", 2) + 90
-    x = (W - w_) / 2
+    cx = W / 2 if cx is None else cx
+    pole = maxw if maxw else (W - 160)
+    size = kegl_pod(s, pole - 90, "SERIF", 58, 30, 2)
+    stroki = [s]
+    if wid(s, size, "SERIF", 2) + 90 > pole:      # всё ещё длинно — две строки
+        sl = s.split()
+        for i in range(len(sl) - 1, 0, -1):
+            a, b = " ".join(sl[:i]), " ".join(sl[i:])
+            if abs(wid(a, size, "SERIF", 2) - wid(b, size, "SERIF", 2)) < size * 3:
+                stroki = [a, b]
+                break
+        else:
+            stroki = [" ".join(sl[:len(sl) // 2]), " ".join(sl[len(sl) // 2:])]
+        size = kegl_pod(max(stroki, key=len), pole - 90, "SERIF", size, 26, 2)
+    w_ = max(wid(x_, size, "SERIF", 2) for x_ in stroki) + 90
+    h_ = size * (1.75 if len(stroki) == 1 else 2.9)
+    x = cx - w_ / 2
     out = f'<g opacity="{p:.2f}">'
-    out += ten(W / 2, y + 120, w_ * .45, 14, .45)
-    out += f'<rect x="{x:.0f}" y="{y}" width="{w_:.0f}" height="{size*1.75:.0f}" rx="14" fill="#1a1208" opacity=".9" {o(6)}/>'
-    out += txt(W / 2, y + size * 1.2, s, size, SVET, "middle", SERIF, 2)
+    out += ten(cx, y + h_ + 16, w_ * .45, 14, .45)
+    out += f'<rect x="{x:.0f}" y="{y}" width="{w_:.0f}" height="{h_:.0f}" rx="14" fill="#1a1208" opacity=".9" {o(6)}/>'
+    for i, st in enumerate(stroki):
+        out += txt(cx, y + size * (1.2 + i * 1.15), st, size, SVET, "middle", SERIF, 2)
     return out + "</g>"
 
 
