@@ -1,0 +1,1300 @@
+[
+ {
+  "scene": 2,
+  "view": "sceny.prolog",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 9.5,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "prolog",
+   "seconds": 9.5,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "С КАЖДОЙ СТОЛИЦЕЙ ОТДЕЛЬНО",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 9.5,
+    "kick": "Москва · 15 ноября"
+   }
+  },
+  "kwargs": {
+   "text": "С КАЖДОЙ СТОЛИЦЕЙ ОТДЕЛЬНО",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 9.5,
+   "kick": "Москва · 15 ноября"
+  }
+ },
+ {
+  "scene": 4,
+  "view": "zal_efir",
+  "dur": 12.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.4,
+   "sheets": [
+    "ЕДИНОГО ГОЛОСА НЕТ",
+    "ВЫБОР ЗАТЯНУЛСЯ"
+   ],
+   "text": "ВЫБИРАЮТ СТАРОСТУ",
+   "say": "они всё ещё выбирают старосту класса",
+   "author": "переговорщика Европа не назвала до сих пор",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 7,
+  "view": "charts.cartogram",
+  "dur": 12.5,
+  "anim": 12.5,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Италия",
+    "Франция"
+   ],
+   "title": "ПО ОТДЕЛЬНОСТИ",
+   "mode": "bubble",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 10,
+  "view": "zal_kub",
+  "dur": 12.6,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.6,
+   "sheets": [
+    "РЕШЕНИЕ ОТЛОЖЕНО",
+    "СРОКОВ НЕТ"
+   ],
+   "text": "Ждать, пока вся эта компания выработает единую позицию",
+   "kick": "МОЖНО ДОЛГО",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 13,
+  "view": "sceny.mehanizm",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 12.8,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "mehanizm",
+   "seconds": 12.8,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "КТО НА КОГО ЖМЁТ",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 12.8,
+    "pary": [
+     "МОСКВА>СТОЛИЦЫ ЕС",
+     "БРЮССЕЛЬ>КИЕВ"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "КТО НА КОГО ЖМЁТ",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 12.8,
+   "pary": [
+    "МОСКВА>СТОЛИЦЫ ЕС",
+    "БРЮССЕЛЬ>КИЕВ"
+   ]
+  }
+ },
+ {
+  "scene": 15,
+  "view": "cinematic.dossier",
+  "dur": 12.3,
+  "anim": 12.3,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "case": "КТО СИДЕЛ ЗА СТОЛОМ",
+   "rows": [
+    "должность — главнокомандующий силами НАТО в Европе",
+    "звание — генерал, четыре звезды",
+    "встреча — Абу-Даби, ноябрь 2026",
+    "тема — гарантии безопасности",
+    "отметил участие — Сергей Рябков"
+   ],
+   "title": "ДОСЬЕ",
+   "photo": "cards/photo/card_015.jpg",
+   "stamp": "ПЕРВОИСТОЧНИК",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 17,
+  "view": "film.film_single",
+  "dur": 12.7,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_017.jpg",
+   "title": "2021: ТЕ ЖЕ ВОПРОСЫ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 19,
+  "view": "cinematic.depth_of_field",
+  "dur": 12.2,
+  "anim": 12.2,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_019.jpg",
+   "title": "ГЛАВНЫЙ ВОЕННЫЙ",
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 21,
+  "view": "zal_slova",
+  "dur": 12.8,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.8,
+   "sheets": [
+    "РЕШАЮТ БЕЗ БРЮССЕЛЯ",
+    "СРОК — НЕ МЕСЯЦ"
+   ],
+   "text": "что вопрос отношений России и НАТО",
+   "na_polu": "ОТСЮДА",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 23,
+  "view": "split",
+  "dur": 12.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Действующая система вполне годится",
+   "author": "Кая Каллас",
+   "photo": "cards/photo/Каллас_023.jpg",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 24,
+  "view": "vyrezka.gazeta",
+  "dur": 12.7,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/фон-дер-Ляйен_024.jpg",
+   "author": "Урсула фон дер Ляйен",
+   "title": "ПОЛНОМОЧИЯ ПРИЗНАЛИ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 25,
+  "view": "torn_split.torn_split",
+  "dur": 11.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "a_path": "cards/photo/card_025.jpg",
+   "b_path": "cards/photo/card_025_2.jpg",
+   "title": "ПЕРЕГОВОРЩИКОМ НЕ СТАЛА",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 26,
+  "view": "charts.cartogram",
+  "dur": 12.1,
+  "anim": 12.1,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Германия",
+    "Франция",
+    "Великобритания",
+    "Италия",
+    "Польша"
+   ],
+   "title": "ШИРОКАЯ ГРУППА",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 27,
+  "view": "sceny.repliki",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.0,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "repliki",
+   "seconds": 11.0,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "ГОЛОСОВ НЕСКОЛЬКО",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 11.0,
+    "repliki_": [
+     "МЕРЦ|допустить Европу к процессу",
+     "КАЛЛАС|сначала прекращение огня",
+     "ФОН ДЕР ЛЯЙЕН|разговор о новой системе",
+     "КОШТА|собрать широкую группу"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "ГОЛОСОВ НЕСКОЛЬКО",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 11.0,
+   "repliki_": [
+    "МЕРЦ|допустить Европу к процессу",
+    "КАЛЛАС|сначала прекращение огня",
+    "ФОН ДЕР ЛЯЙЕН|разговор о новой системе",
+    "КОШТА|собрать широкую группу"
+   ]
+  }
+ },
+ {
+  "scene": 28,
+  "view": "cinematic.evidence_wall",
+  "dur": 12.4,
+  "anim": 12.4,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "shots": [
+    [
+     "cards/photo/card_028.jpg",
+     240,
+     380,
+     -4,
+     "Абу-Даби"
+    ],
+    [
+     "cards/photo/card_028_2.jpg",
+     800,
+     380,
+     3,
+     "штаб НАТО"
+    ],
+    [
+     "cards/photo/card_028_3.jpg",
+     1360,
+     380,
+     -2,
+     "учения"
+    ]
+   ],
+   "title": "ЧТО ОБСУЖДАЛОСЬ",
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 29,
+  "view": "sceny.kreslo",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.6,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "kreslo",
+   "seconds": 11.6,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "МЕСТО ПУСТУЕТ",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 11.6,
+    "role": "единый переговорщик ЕС"
+   }
+  },
+  "kwargs": {
+   "text": "МЕСТО ПУСТУЕТ",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 11.6,
+   "role": "единый переговорщик ЕС"
+  }
+ },
+ {
+  "scene": 30,
+  "view": "duel",
+  "dur": 11.8,
+  "anim": 3.2,
+  "tail_zoom": 0.035,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "top": {
+    "who": "ФРИДРИХ МЕРЦ",
+    "text": "допустить Европу к процессу",
+    "accent": null,
+    "source": ""
+   },
+   "bottom": {
+    "who": "КАЯ КАЛЛАС",
+    "text": "сначала прекращение огня",
+    "accent": null,
+    "source": ""
+   },
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 31,
+  "view": "sceny.tribuna",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 10.9,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "tribuna",
+   "seconds": 10.9,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "ТРЕБОВАНИЕ ЗАКОННО",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 10.9,
+    "role": "посол Франции в Москве"
+   }
+  },
+  "kwargs": {
+   "text": "ТРЕБОВАНИЕ ЗАКОННО",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 10.9,
+   "role": "посол Франции в Москве"
+  }
+ },
+ {
+  "scene": 32,
+  "view": "paper_typed",
+  "dur": 12.2,
+  "anim": 2.8,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Нейтрального посредника из Европы не получится",
+   "accent": "посредника",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 33,
+  "view": "bars",
+  "dur": 11.4,
+  "anim": 11.4,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_bars.py",
+  "cfg": {
+   "title": "МЕНЮ ВМЕСТО ЛИНИИ",
+   "caption": "",
+   "seconds": 11.4,
+   "bars": [
+    {
+     "label": "КИЕВ",
+     "value": 0.9,
+     "color": "4A90E2"
+    },
+    {
+     "label": "КАЛЛАС",
+     "value": 0.7,
+     "color": "48BB78"
+    },
+    {
+     "label": "МЕРЦ",
+     "value": 0.5,
+     "color": "84848A"
+    },
+    {
+     "label": "ФОН ДЕР ЛЯЙЕН",
+     "value": 0.3,
+     "color": "E8E8E8"
+    }
+   ]
+  }
+ },
+ {
+  "scene": 34,
+  "view": "charts.network",
+  "dur": 12.1,
+  "anim": 12.1,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "nodes": [
+    {
+     "id": "Берлин",
+     "label": "Берлин",
+     "weight": 2.0
+    },
+    {
+     "id": "Париж",
+     "label": "Париж",
+     "weight": 2.0
+    },
+    {
+     "id": "Варшава",
+     "label": "Варшава",
+     "weight": 2.0
+    },
+    {
+     "id": "Рим",
+     "label": "Рим",
+     "weight": 2.0
+    }
+   ],
+   "links": [
+    {
+     "from": "Берлин",
+     "to": "Париж",
+     "weight": 1.0
+    },
+    {
+     "from": "Берлин",
+     "to": "Варшава",
+     "weight": 1.0
+    },
+    {
+     "from": "Париж",
+     "to": "Рим",
+     "weight": 1.0
+    },
+    {
+     "from": "Варшава",
+     "to": "Рим",
+     "weight": 1.0
+    }
+   ],
+   "title": "НАБОР СТОЛИЦ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 35,
+  "view": "film.film_strip",
+  "dur": 11.0,
+  "anim": 11.0,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "shots": [
+    "cards/photo/card_035.jpg",
+    "cards/photo/card_035_2.jpg",
+    "cards/photo/card_035_3.jpg"
+   ],
+   "title": "ПОДОБНЫЕ МЕХАНИЗМЫ",
+   "captions": [
+    "Наполеон",
+    "Гитлер",
+    "сегодня"
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 36,
+  "view": "sceny.relsy",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 12.4,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "relsy",
+   "seconds": 12.4,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "ОДИН ПРИКАЗЫВАЕТ",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 12.4,
+    "sobytiya": [
+     "Наполеон",
+     "Гитлер",
+     "сегодня"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "ОДИН ПРИКАЗЫВАЕТ",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 12.4,
+   "sobytiya": [
+    "Наполеон",
+    "Гитлер",
+    "сегодня"
+   ]
+  }
+ },
+ {
+  "scene": 37,
+  "view": "charts.map_dist",
+  "dur": 11.6,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "points": [
+    {
+     "label": "Берлин",
+     "lat": 52.52,
+     "lon": 13.41,
+     "accent": false
+    },
+    {
+     "label": "Варшава",
+     "lat": 52.23,
+     "lon": 21.01,
+     "accent": false
+    }
+   ],
+   "title": "ХОЗЯИНА НЕТ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 38,
+  "view": "sceny.globus_map",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.8,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "globus",
+   "seconds": 11.8,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "ВЫШЛА, НО В ГРУППЕ",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 11.8,
+    "region": "Великобритания"
+   }
+  },
+  "kwargs": {
+   "text": "ВЫШЛА, НО В ГРУППЕ",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 11.8,
+   "region": "Великобритания"
+  }
+ },
+ {
+  "scene": 39,
+  "view": "poster.poster",
+  "dur": 10.9,
+  "anim": 10.9,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "title": "НАБОР ИНТЕРЕСОВ",
+   "hero_photo": "cards/photo/card_039.jpg",
+   "facts": [
+    {
+     "label": "Польша",
+     "value": "свои угрозы"
+    },
+    {
+     "label": "Прибалтика",
+     "value": "свои"
+    },
+    {
+     "label": "Венгрия",
+     "value": "свой взгляд"
+    }
+   ],
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 40,
+  "view": "charts.pie",
+  "dur": 12.2,
+  "anim": 12.2,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "segments": [
+    {
+     "label": "Польша",
+     "value": 33.333333333333336
+    },
+    {
+     "label": "Прибалтика",
+     "value": 33.333333333333336
+    },
+    {
+     "label": "Венгрия",
+     "value": 33.333333333333336
+    }
+   ],
+   "title": "У КАЖДОГО СВОЁ",
+   "sobytiya": true,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 41,
+  "view": "pull",
+  "dur": 11.4,
+  "anim": 2.6,
+  "tail_zoom": 0.05,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Если сохранить право отказа, останется обмен заявлениями",
+   "accent": "право отказа",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 42,
+  "view": "devices.device_scene",
+  "dur": 12.1,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "content_path": "cards/photo/card_042.jpg",
+   "items": [
+    "требование=вывод Финляндии",
+    "ответ=отказ Хельсинки"
+   ],
+   "title": "ПИНГ-ПОНГ ЗАЯВЛЕНИЙ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 43,
+  "view": "strike",
+  "dur": 11.0,
+  "anim": 3.0,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Требование убрать базы из Прибалтики. Хельсинки торжественно отвергает требование. Был ли он вообще.",
+   "struck": "убрать базы из Прибалтики",
+   "fix": "Хельсинки торжественно отвергает требование",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 44,
+  "view": "zal_g48",
+  "dur": 12.4,
+  "anim": 12.4,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.4,
+   "sheets": [],
+   "text": "Другие всё отрицают",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 45,
+  "view": "zal_g18",
+  "dur": 11.6,
+  "anim": 11.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.6,
+   "sheets": [
+    "РАЗГОВОР ШИРЕ УКРАИНЫ"
+   ],
+   "text": "ВОЗВРАТ К РУБЕЖУ",
+   "value": "1997",
+   "value_sub": "год, к которому зовёт Москва",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 47,
+  "view": "charts.slope",
+  "dur": 10.9,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "items": [
+    {
+     "label": "правила Россия — НАТО",
+     "from": 1.0,
+     "to": 1.0,
+     "to_label": "расходы Киева"
+    },
+    {
+     "label": "новая система",
+     "from": 1.0,
+     "to": 1.0,
+     "to_label": "ближайшие задачи"
+    }
+   ],
+   "left_label": "одна повестка",
+   "right_label": "другая повестка",
+   "title": "ДВЕ ПОВЕСТКИ",
+   "source": "заявления сторон",
+   "sobytiya": true,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 48,
+  "view": "charts.line",
+  "dur": 12.2,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "x_labels": [
+    "Москва",
+    "Вашингтон",
+    "Брюссель"
+   ],
+   "series": [
+    {
+     "name": "КТО ЗА СТОЛОМ",
+     "values": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "title": "КТО ЗА СТОЛОМ",
+   "source": "заявления сторон",
+   "sobytiya": true,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 49,
+  "view": "vyrezka.figura",
+  "dur": 11.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/Мерц_049.jpg",
+   "author": "Фридрих Мерц",
+   "title": "ТРЕБУЮТ МЕСТА ЗА СТОЛОМ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 50,
+  "view": "zal_g44",
+  "dur": 12.1,
+  "anim": 12.1,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.1,
+   "sheets": [
+    "ПЯТЬ ПРИОРИТЕТОВ"
+   ],
+   "text": "СПИСОК БРЮССЕЛЯ",
+   "value": "2027",
+   "value_sub": "год, на который считают деньги",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 51,
+  "view": "charts.waterfall",
+  "dur": 11.0,
+  "anim": 11.0,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "start": {
+    "label": "прекращение огня",
+    "value": 1.0
+   },
+   "steps": [
+    {
+     "label": "гарантии Украине",
+     "value": 1.0
+    },
+    {
+     "label": "восстановление",
+     "value": 1.0
+    },
+    {
+     "label": "контракты",
+     "value": 1.0
+    }
+   ],
+   "end": {
+    "label": "ИТОГ"
+   },
+   "title": "СПИСОК БРЮССЕЛЯ",
+   "sobytiya": true,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 52,
+  "view": "zal_makety",
+  "dur": 12.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.4,
+   "sheets": [
+    "ОГРАНИЧЕНИЯ СНЯТЫ"
+   ],
+   "text": "УДАРЫ ПО ОБЪЕКТАМ",
+   "makety": [
+    "лэп=ЭНЕРГОСЕТИ",
+    "банк=ФИНАНСЫ"
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 53,
+  "view": "sceny.lenta",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.6,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "lenta",
+   "seconds": 11.6,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "СНЯТОЕ ТАБУ",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 11.6,
+    "soobshcheniya": [
+     "Киев снял ограничения на удары",
+     "в Кремле сняли прежнее табу",
+     "сигнал дошёл до руководства"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "СНЯТОЕ ТАБУ",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 11.6,
+   "soobshcheniya": [
+    "Киев снял ограничения на удары",
+    "в Кремле сняли прежнее табу",
+    "сигнал дошёл до руководства"
+   ]
+  }
+ },
+ {
+  "scene": 54,
+  "view": "marker_serif",
+  "dur": 11.8,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Слова о гарантиях Украине почти ничего не решают",
+   "accent": "гарантиях Украине",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 55,
+  "view": "sceny.prohod",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 10.9,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "prohod",
+   "seconds": 10.9,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "ОТВЕТОВ ПОКА НЕТ",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 10.9,
+    "tezisy": [
+     "О каких границах речь",
+     "Какой будет численность армии",
+     "Сохранится ли курс на НАТО",
+     "Допустят ли иностранные базы"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "ОТВЕТОВ ПОКА НЕТ",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 10.9,
+   "tezisy": [
+    "О каких границах речь",
+    "Какой будет численность армии",
+    "Сохранится ли курс на НАТО",
+    "Допустят ли иностранные базы"
+   ]
+  }
+ },
+ {
+  "scene": 56,
+  "view": "zal_g01",
+  "dur": 12.2,
+  "anim": 12.2,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.2,
+   "sheets": [],
+   "text": "Кто окажется у власти и какие обязательства",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 57,
+  "view": "sceny.pechat",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.4,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "pechat",
+   "seconds": 11.4,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Рабочий способ, а не жест",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 11.4,
+    "stamp": "утверждено"
+   }
+  },
+  "kwargs": {
+   "text": "Рабочий способ, а не жест",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 11.4,
+   "stamp": "утверждено"
+  }
+ },
+ {
+  "scene": 59,
+  "view": "paper_hand",
+  "dur": 11.0,
+  "anim": 2.8,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Труднее спрятаться за фразой о решении всего блока",
+   "accent": "Труднее спрятаться",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 60,
+  "view": "zal_pol",
+  "dur": 12.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.4,
+   "sheets": [],
+   "text": "У НАТО остаётся единое командование",
+   "na_polu": "ПЛАНЫ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 61,
+  "view": "doc",
+  "dur": 11.6,
+  "anim": 3.4,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "базы и общая инфраструктура. Подпись одной столицы не отправит всё это в отпуск. Поэтому участие Гринкевича в переговорах имеет принципиальное значение.",
+   "mark": "ПОДПИСЬ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 62,
+  "view": "photo",
+  "dur": 11.8,
+  "anim": 11.8,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "watermark": "ПЛАНЕТА",
+   "photo": "cards/photo/card_062.jpg",
+   "title": "КТО ПРИЕХАЛ",
+   "lines": [
+    "прибыл не сотрудник протокола",
+    "высшее военное командование НАТО",
+    "четыре звезды на погонах"
+   ]
+  }
+ },
+ {
+  "scene": 63,
+  "view": "zal_schetchik",
+  "dur": 10.9,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 10.9,
+   "sheets": [
+    "ВЫШЕ — ТОЛЬКО ПОЛИТИКИ"
+   ],
+   "text": "КТО ПРИЕХАЛ",
+   "value": "4",
+   "value_sub": "ЗВЕЗДЫ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 64,
+  "view": "zal_ekran",
+  "dur": 12.2,
+  "anim": 12.2,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.2,
+   "sheets": [
+    "ПОЗИЦИЯ БРЮССЕЛЯ"
+   ],
+   "text": "СИСТЕМУ МЕНЯТЬ НЕ НАДО",
+   "say": "менять существующую систему не требуется",
+   "author": "реплика главы европейской дипломатии",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 65,
+  "view": "quote",
+  "dur": 11.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Не вижу нужды обсуждать это с Москвой",
+   "author": "Фридрих Мерц",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 66,
+  "view": "zal",
+  "dur": 12.1,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "полномочий по главному вопросу, пока Россия",
+   "words": [
+    "РОССИЯ"
+   ],
+   "sheets": [
+    "ДЕЛЕГАЦИЯ БЕЗ МАНДАТА",
+    "ПЕРЕГОВОРЫ ИДУТ МИМО",
+    "ВЫВОД КОЛЮЧИЙ"
+   ],
+   "channel": "ПЛАНЕТА",
+   "dur": 12.1,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 67,
+  "view": "slider",
+  "dur": 11.0,
+  "anim": 11.0,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_slider.py",
+  "cfg": {
+   "title": "ГОРИЗОНТ ДОГОВОРЁННОСТЕЙ",
+   "min": 1997.0,
+   "max": 2027.0,
+   "low": 1997.0,
+   "high": 2027.0,
+   "marker_value": 2026.0,
+   "marker_display": "2026",
+   "seconds": 11.0,
+   "range_label": "РАЗБРОС ОЦЕНОК",
+   "caption": "не месяц, а годы вперёд",
+   "source": ""
+  }
+ },
+ {
+  "scene": 68,
+  "view": "zal_shkala",
+  "dur": 12.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.4,
+   "sheets": [
+    "НЕ НА БЛИЖАЙШИЙ МЕСЯЦ"
+   ],
+   "text": "СРОК СОГЛАШЕНИЙ",
+   "value": "годы вперёд",
+   "value_sub": "не на ближайший месяц",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 69,
+  "view": "tape",
+  "dur": 11.6,
+  "anim": 2.4,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Появится ли у Европы единый ответ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 70,
+  "view": "timeline",
+  "dur": 11.8,
+  "anim": 11.8,
+  "tail_zoom": 0.06,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "watermark": "ПЛАНЕТА",
+   "title": "СИСТЕМА ПО ЧАСТЯМ",
+   "events": [
+    {
+     "date": "1997",
+     "text": "конфигурация НАТО"
+    },
+    {
+     "date": "2026",
+     "text": "новые переговоры"
+    },
+    {
+     "date": "2027",
+     "text": "финансирование Киева"
+    }
+   ]
+  }
+ }
+]
