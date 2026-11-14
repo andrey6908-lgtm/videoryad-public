@@ -789,7 +789,8 @@ def frontline(out=None, *, kick="", title="", date="", places=(), front_now=(),
 
     if legend:
         lx = W - 470
-        ly = H - 56 - 28 * len(legend)
+        # легенда держится выше полосы субтитров (13.11, пункт 0-В)
+        ly = sc.SUB_Y - 36 - 28 * len(legend)
         f = sc._f(sc.MONO, 22)
         d.rectangle((lx - 22, ly - 18, lx + 420, ly + 28 * len(legend) + 10),
                     fill=(12, 12, 14, 214))
@@ -824,12 +825,12 @@ def frontline(out=None, *, kick="", title="", date="", places=(), front_now=(),
 
     if note:
         f = sc._f(sc.MONO, 26)
-        d.rectangle((sc.MARGIN_L - 18, H - 158, sc.MARGIN_L + f.getlength(note) + 18,
-                     H - 116), fill=(12, 12, 14, 200))
-        d.text((sc.MARGIN_L, H - 152), note, font=f, fill=sc.GOLD + (255,))
+        d.rectangle((sc.MARGIN_L - 18, sc.SUB_Y - 118, sc.MARGIN_L + f.getlength(note) + 18,
+                     sc.SUB_Y - 76), fill=(12, 12, 14, 200))
+        d.text((sc.MARGIN_L, sc.SUB_Y - 112), note, font=f, fill=sc.GOLD + (255,))
     if disclaimer:
         f = sc._f(sc.MONO, 20)
-        d.text((sc.MARGIN_L, H - 108), disclaimer, font=f, fill=(142, 142, 148, 255))
+        d.text((sc.MARGIN_L, sc.SUB_Y - 68), disclaimer, font=f, fill=(142, 142, 148, 255))
     sc.footer(d, source, watermark)
 
     if out:

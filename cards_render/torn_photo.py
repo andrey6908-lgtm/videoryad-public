@@ -133,7 +133,8 @@ def _labels(im, size, *, title="", subtitle="", year_old="", year_new="",
         d.text(xy, text, font=font, fill=fill)
 
     if year_old:
-        _t((int(w * 0.040), int(h * 0.040)), year_old, _f(F_ALT, int(h * 0.060)))
+        # левое поле 5% вместо 4% — безопасная рамка (13.11)
+        _t((int(w * 0.050), int(h * 0.060)), year_old, _f(F_ALT, int(h * 0.060)))
     if title:
         _t((int(w * 0.040), int(h * 0.120)), title.upper(), _f(F_HEAD, int(h * 0.042)))
     if subtitle:
@@ -142,11 +143,13 @@ def _labels(im, size, *, title="", subtitle="", year_old="", year_new="",
     if year_new:
         f = _f(F_ALT, int(h * 0.060))
         tw = d.textlength(year_new, font=f)
-        _t((w - int(w * 0.040) - tw, int(h * 0.880)), year_new, f)
+        # ГОД СОВРЕМЕННОГО КАДРА И ЗНАК КАНАЛА — ВЫШЕ ПОЛОСЫ СУБТИТРОВ
+        # (13.11, пункт 0-В): было 0.880 и 0.944, то есть 950 и 1019.
+        _t((w - int(w * 0.040) - tw, int(h * 0.760)), year_new, f)
     if watermark:
         f = _f(F_HEAD, int(h * 0.024))
         tw = d.textlength(watermark.upper(), font=f)
-        d.text(((w - tw) / 2, int(h * 0.944)), watermark.upper(), font=f,
+        d.text(((w - tw) / 2, int(h * 0.790)), watermark.upper(), font=f,
                fill=(226, 226, 228, int(190 * alpha)))
     im.paste(Image.alpha_composite(im.convert("RGBA"), layer).convert("RGB"), (0, 0))
     return im

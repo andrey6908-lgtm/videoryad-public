@@ -173,7 +173,9 @@ def _labels(im, title, subtitle, watermark):
         d.text((96, 142), subtitle, font=tp._f(tp.F_HEAD, 34), fill=(214, 214, 218, 235))
     if watermark:
         f = tp._f(tp.F_HEAD, 26)
-        d.text((W - 60 - d.textlength(watermark, font=f), H - 58), watermark,
+        # знак канала — выше полосы субтитров и внутри поля 5% (13.11,
+        # пункт 0-В): было (W-60, H-58), то есть низ знака на 1048.
+        d.text((W - 96 - d.textlength(watermark, font=f), sc.SUB_Y - 36), watermark,
                font=f, fill=(210, 210, 214, 120))
 
 

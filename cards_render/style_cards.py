@@ -102,8 +102,28 @@ MONO_B = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf"
 # ---------- сетка ----------
 MARGIN_L = 264        # левое поле текста
 MARK_X   = 217        # колонка маркеров — левее текста
-FOOT_Y   = 1006       # подвал-источник
-WM_Y     = 1032       # вотермарка
+
+# БЕЗОПАСНАЯ ЗОНА И ПОЛОСА СУБТИТРОВ (13.11, его прямое слово, повторяется
+# часто): «нужно делать их с учётом того, что они не вылезут за кадр, ни
+# вверх, ни вниз, ни справа, ни слева. Чтобы вся главная информация картинки
+# находилась в центре. И второе — с учётом субтитров, потому что субтитры
+# порой перекрывают надписи на вот этих карточках наших».
+#   ПОЛЕ_X/ПОЛЕ_Y — безопасная рамка 5% (96 и 54 px на 1920x1080);
+#   SUB_Y        — верх полосы субтитров: НИЖЕ ЭТОЙ ЧЕРТЫ текста карточки
+#                  не бывает. Субтитр ролика — Arial 52 с нижним полем 75
+#                  (`captions.ass`), две строки занимают 881..1005, поэтому
+#                  черта стоит на 18% высоты.
+# Замер на сданном ролике `planeta-3-evropa-peregovory-1411` (41 карточка,
+# OCR каждой): вотермарка сидела на 1037-1052 — то есть В ПОЛОСЕ, на КАЖДОЙ
+# карточке ролика; имя и должность досье на 898-993. Проверка —
+# `template/safe_area.py`.
+ПОЛЕ_X, ПОЛЕ_Y = 96, 54
+SUB_Y    = 886        # ниже — полоса субтитров, текста карточки там нет
+# Подвал стал ОДНОЙ строкой: источник слева, вотермарка справа. Так он
+# занимает 848..873 вместо 1006..1057 — на 180 px выше полосы субтитров, и
+# при этом освобождает телу карточки 28 px, которых не хватало диаграммам.
+FOOT_Y   = 848        # подвал-источник (было 1006 — под субтитром)
+WM_Y     = 848        # вотермарка      (было 1032 — под субтитром)
 
 
 _FONT_CACHE = {}
@@ -358,7 +378,16 @@ def footer(d, source, watermark="ДО ПРИГОВОРА"):
     элемента — именно это и читается как профессиональная подача."""
     f = _f(MONO, 21)
     if source:
-        d.text((MARGIN_L, FOOT_Y), source, font=f, fill=GREY_DIM)
+        # ИСТОЧНИК И ВОТЕРМАРКА ТЕПЕРЬ НА ОДНОЙ СТРОКЕ — длинный источник
+        # обрезаем, чтобы он не наехал на знак канала справа.
+        край = W - 150 - (track_w(watermark.upper(), _f(F_HEAD, 21), 3)
+                          if watermark else 0) - 40
+        текст = source
+        while текст and MARGIN_L + f.getlength(текст) > край:
+            текст = текст[:-2]
+        if текст != source:
+            текст = текст.rstrip(" ,.;·-") + "…"
+        d.text((MARGIN_L, FOOT_Y), текст, font=f, fill=GREY_DIM)
     if watermark:
         fw = _f(F_HEAD, 21)
         wtext = watermark.upper()
@@ -595,7 +624,9 @@ def lower_third(out=None, base_photo="", speaker="", words="", speaker_idx=0,
         rows = [words[:cut], words[cut + 1:]]
     else:
         rows = [words]
-    y = H - 196
+    # РЕПЛИКА ДЕРЖИТСЯ ВЫШЕ ПОЛОСЫ СУБТИТРОВ (13.11): было H-196,
+    # то есть вторая строка садилась на 938 — ровно под субтитр.
+    y = SUB_Y - 180
     for i, r in enumerate(rows):
         at = 0.3 + i * 0.18
         av, dxv = _rv(t, at)
@@ -614,7 +645,7 @@ def lower_third(out=None, base_photo="", speaker="", words="", speaker_idx=0,
     if watermark:
         fw = _f(F_HEAD, 21); wt = watermark.upper()
         w = track_w(wt, fw, 3)
-        track(d, ((W - w) / 2, H - 46), wt, fw, (150, 150, 150), 3)
+        track(d, ((W - w) / 2, SUB_Y - 34), wt, fw, (150, 150, 150), 3)
     if out:
         im.save(out); return out
     return im
@@ -847,7 +878,7 @@ def kicker_overlay(out=None, text="", sub=None, watermark="ДО ПРИГОВОР
     if watermark:
         fw = _f(F_HEAD, 21); wt = watermark.upper()
         w = track_w(wt, fw, 3)
-        track(d, ((W - w) / 2, H - 46), wt, fw, (150, 150, 150, 230), 3)
+        track(d, ((W - w) / 2, SUB_Y - 34), wt, fw, (150, 150, 150, 230), 3)
     if out:
         im.save(out)
         return out
@@ -893,7 +924,9 @@ def reply_overlay(out, speaker, words, speaker_idx=0):
         rows = [words[:cut], words[cut + 1:]]
     else:
         rows = [words]
-    y = H - 196
+    # РЕПЛИКА ДЕРЖИТСЯ ВЫШЕ ПОЛОСЫ СУБТИТРОВ (13.11): было H-196,
+    # то есть вторая строка садилась на 938 — ровно под субтитр.
+    y = SUB_Y - 180
     for i, r in enumerate(rows):
         wtot = (f.getlength(sp) if i == 0 else 0) + f.getlength(r)
         x = (W - wtot) / 2

@@ -38,6 +38,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import style_cards as sc
 
 W, H = sc.W, sc.H
+ПОЛЕ_X, ПОЛЕ_Y, SUB_Y = sc.ПОЛЕ_X, sc.ПОЛЕ_Y, sc.SUB_Y
 GEO = os.path.join(os.path.dirname(os.path.abspath(__file__)), "geo")
 SS = 2                                  # суперсэмплинг слоя следов
 TRACK_COL = (206, 216, 228)             # холодный свет траекторий
@@ -102,6 +103,27 @@ def _projector(region):
         return ((lon - lon0) / (lon1 - lon0) * W,
                 (lat1 - lat) / (lat1 - lat0) * H)
     return proj
+
+
+def _в_зоне(x, y, wd, h=32):
+    """ПОДПИСЬ НА КАРТЕ — В БЕЗОПАСНОЙ ЗОНЕ (13.11, пункт 0-В).
+
+    Его слово: «не вылезут за кадр, ни вверх, ни вниз, ни справа, ни слева…
+    и с учётом субтитров». Карта остаётся во весь кадр, а вот НАЗВАНИЕ
+    страны не имеет права сесть ни в поля 5%, ни в нижнюю полосу субтитров:
+    замер 13.11 по сданному ролику — ИСПАНИЯ 934, ГРЕЦИЯ 957, ТУРЦИЯ 963,
+    все три под титром. Подпись уводится вверх, а к своему месту тянется
+    тонкая выноска — так и видно, и читается.
+    """
+    нx = min(max(x, ПОЛЕ_X + wd / 2 + 6), W - ПОЛЕ_X - wd / 2 - 6)
+    нy = min(max(y, ПОЛЕ_Y + h), SUB_Y - 16)
+    return нx, нy
+
+
+def _vynoska(d, x0, y0, x1, y1, цвет=(124, 130, 140, 170)):
+    """Тонкая линия от уведённой подписи к её настоящему месту."""
+    if abs(x1 - x0) + abs(y1 - y0) > 26:
+        d.line((x0, y0, x1, y1), fill=цвет, width=2)
 
 
 def _bez(p0, p1, p2, t):
@@ -219,11 +241,13 @@ def basemap(region, labels=True, city_labels=(), relief=False, skip=()):
                 continue
             t = nm.upper()
             wd = sc.track_w(t, f, 2)
-            bx = (x - wd / 2 - 10, y - 20, x + wd / 2 + 10, y + 12)
+            nx, ny = _в_зоне(x, y, wd)
+            bx = (nx - wd / 2 - 10, ny - 20, nx + wd / 2 + 10, ny + 12)
             if not free(bx):
                 continue
             taken.append(bx)
-            sc.track(d, (x - wd / 2, y - 11), t, f, (124, 130, 140), 2)
+            _vynoska(d, nx, ny, x, y)
+            sc.track(d, (nx - wd / 2, ny - 11), t, f, (124, 130, 140), 2)
         # города — только названные в вызове, прочие на такой карте лишние
         want = {c.lower() for c in city_labels}
         if want:

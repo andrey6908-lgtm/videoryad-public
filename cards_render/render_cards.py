@@ -222,8 +222,16 @@ def _registry():
     try:
         reg["zal_scenes2"] = __import__("zal_scenes2")
     except Exception as exc:
-        print(f"  сцены зала недоступны: {type(exc).__name__}: {exc}",
-              file=sys.stderr, flush=True)
+        print(f"  приёмы зала недоступны: {type(exc).__name__}: {exc}",
+              flush=True)
+    # ЧЕТЫРЕ ПРИЁМА, УТВЕРЖДЁННЫЕ 13.11 (пункты 70-73): отдельный файл
+    # `template/zal_fable3.py`, он ЯВНО вписан в копирование `cards_cloud.py`.
+    # Импорт мягкий по той же причине: падает один модуль, а не весь шард.
+    try:
+        reg["zal_fable3"] = __import__("zal_fable3")
+    except Exception as exc:
+        print(f"  приёмы зала G01/G48/G44/G18 недоступны: "
+              f"{type(exc).__name__}: {exc}", file=sys.stderr, flush=True)
     # ГРАФИКА И КАРТЫ — В РЕЕСТР (2026-10-26, улов `usuario-e8`).
     # До этого дня порядок выбора средств «видео → карты и графика → движение
     # → остаток текст» был НЕВЫПОЛНИМ на двух ступенях из четырёх: рисовальщик
@@ -272,7 +280,20 @@ ALIAS = {
     # `template/zal_scenes2.py`, поэтому в облако едут уже существующей
     # строкой `cards_cloud.py` — отдельного файла слать не надо.
     "zal_schetchik": "zal_scenes2.zal_schetchik",
-    "zal_ekran": "zal_scenes2.zal_ekran",
+    # G25 ЗАМЕНЁН НОВОЙ РЕАЛИЗАЦИЕЙ 13.11 по его прямому слову: «если это
+    # обновлённая версия, то её менять. Старую удалять, а новую ставить».
+    # Имя вида в бою прежнее (`card:zal_ekran`), дублей не заводим; старая
+    # реализация осталась в `zal_scenes2.py` под именем `zal_ekran_opus_1111`
+    # и никуда не подключена.
+    "zal_ekran": "zal_fable3.zal_ekran",
+    # ЧЕТЫРЕ ПРИЁМА, УТВЕРЖДЁННЫЕ ИМ 13.11 ВЕЧЕРОМ (разбор FABLE, пункты
+    # 70-73 очереди). Живут в ОТДЕЛЬНОМ `template/zal_fable3.py`, поэтому он
+    # вписан в `cards_cloud.py` явной строкой: без неё вид молча не доедет,
+    # а прогон отчитается успехом (класс 24.10).
+    "zal_g01": "zal_fable3.zal_g01",
+    "zal_g48": "zal_fable3.zal_g48",
+    "zal_g44": "zal_fable3.zal_g44",
+    "zal_g18": "zal_fable3.zal_g18",
 }
 
 
@@ -287,7 +308,7 @@ def resolve(view, reg):
     return getattr(m, fn, None)
 
 
-def render_jobs(jobs_path, outdir, fps=30, shard=None):
+def render_jobs(jobs_path, outdir, fps=30, shard=None, postery=False):
     """shard = (i, n) — рисовать только i-ю часть из n (нумерация с 1).
     Полный комплект арсенала на 62 сцены одним потоком в таймаут не влезает,
     поэтому прогон идёт матрицей: n машин берут по куску заданий."""
@@ -358,7 +379,7 @@ def render_jobs(jobs_path, outdir, fps=30, shard=None):
             # Снаружи это выглядело как успешный прогон: джоб `success`,
             # артефакт 140 байт, «готово: 0 из 5».
             if not _render_one(FN, job, sid, view, kw, job.get("mode") or "frame",
-                               mp4, jpg, jobs_path, fps):
+                               mp4, jpg, jobs_path, fps, postery):
                 continue
         except Exception as e:
             print(f"  сцена {sid} ({view}): УПАЛО — {type(e).__name__}: {e}",
@@ -374,7 +395,16 @@ def render_jobs(jobs_path, outdir, fps=30, shard=None):
     return rep
 
 
-def _render_one(FN, job, sid, view, kw, mode, mp4, jpg, jobs_path, fps):
+def _render_one(FN, job, sid, view, kw, mode, mp4, jpg, jobs_path, fps,
+                postery=False):
+    """postery=True — рисуем ТОЛЬКО постер-кадр, без видео.
+
+    Нужно для правки макетов: проверка безопасной зоны (`template/safe_area.py`)
+    смотрит кадр, а полный клип каждого вида — это 50 с счёта, которого на
+    машине пользователя быть не должно. Кадр рисуется одним PIL-проходом за
+    десятые доли секунды, поэтому весь комплект видов ролика проверяется
+    локально за минуту и БЕЗ облака.
+    """
     if True:
         mode = job.get("mode") or "frame"
         reg = _registry()
@@ -384,6 +414,10 @@ def _render_one(FN, job, sid, view, kw, mode, mp4, jpg, jobs_path, fps):
         fn = FN.get(view) or resolve(ALIAS.get(view, view), reg)
         if fn is None and mode != "cli":   # у cli вида нет, есть свой скрипт
             print(f"  сцена {sid}: вид «{view}» не разрешён — пропуск", file=sys.stderr,
+                  flush=True)
+            return False
+        if mode == "cli" and postery:
+            print(f"  сцена {sid} ({view}): cli-вид, постера нет — пропуск",
                   flush=True)
             return False
         if mode == "cli":
@@ -407,7 +441,8 @@ def _render_one(FN, job, sid, view, kw, mode, mp4, jpg, jobs_path, fps):
                       file=sys.stderr, flush=True)
                 return False
         elif mode == "clip":
-            fn(mp4, seconds=float(job["dur"]), fps=fps, **kw)
+            if not postery:
+                fn(mp4, seconds=float(job["dur"]), fps=fps, **kw)
             # ПОСТЕР ДЛЯ КЛИПОВЫХ ЭЛЕМЕНТОВ (2026-10-23): без него в ячейку
             # дашборда подставлялся исходный кадр сцены, и выглядело это как
             # «элемент пустой». Рисуем кадровой парой того же элемента.
@@ -429,8 +464,12 @@ def _render_one(FN, job, sid, view, kw, mode, mp4, jpg, jobs_path, fps):
                       file=sys.stderr, flush=True)
                 return False
             page = cf(**kw)
-            sc.scroll_clip(page, mp4, seconds=float(job["dur"]),
-                           direction=job.get("direction", "up"), fps=fps)
+            if postery:
+                page.crop((0, 0, sc.W, min(sc.H, page.size[1]))).convert(
+                    "RGB").save(jpg, quality=92)
+            else:
+                sc.scroll_clip(page, mp4, seconds=float(job["dur"]),
+                               direction=job.get("direction", "up"), fps=fps)
         else:
             # ОТКАТ 23.10: накладывать свой кикер поверх утверждённого элемента
             # нельзя — «один в один с арсеналом, никаких самостоятельных
@@ -447,9 +486,11 @@ def _render_one(FN, job, sid, view, kw, mode, mp4, jpg, jobs_path, fps):
                                sfx_out=True)
                 return True
             fn(out=jpg, **kw)
-            sc.render_anim(fn, kw, float(job["dur"]), mp4, fps=fps,
-                           anim_seconds=float(job.get("anim") or 2.6),
-                           tail_zoom=float(job.get("tail_zoom") or 0.045), sfx_out=True)
+            if not postery:
+                sc.render_anim(fn, kw, float(job["dur"]), mp4, fps=fps,
+                               anim_seconds=float(job.get("anim") or 2.6),
+                               tail_zoom=float(job.get("tail_zoom") or 0.045),
+                               sfx_out=True)
         return True
 
 
@@ -462,10 +503,13 @@ if __name__ == "__main__":
             i, n = val.split("/")
             shard = (int(i), int(n))
             argv = [x for x in argv if x != a and x != val]
+    postery = "--postery" in argv
+    argv = [a for a in argv if a != "--postery"]
     out = argv[0] if argv else "cards_out"
-    jobs = os.path.join(os.path.dirname(os.path.abspath(__file__)), "jobs.json")
+    jobs = os.environ.get("VIDEORYAD_JOBS") or os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), "jobs.json")
     if os.path.exists(jobs):                 # есть задания ролика — рисуем их
-        rep = render_jobs(jobs, out, shard=shard)
+        rep = render_jobs(jobs, out, shard=shard, postery=postery)
         print("итого:", round(sum(r["seconds_spent"] for r in rep), 1), "с на",
               len(rep), "карточек")
         raise SystemExit(0)
