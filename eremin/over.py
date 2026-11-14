@@ -246,17 +246,35 @@ def okno_zaglushka(x, y, w_, h_, podpis, zapros=""):
     return s
 
 
-def vopros_plashka(s, t, t0, y=820):
+def vopros_plashka(s_, t, t0, y=820, maxw=1680):
+    """Вопрос зрителю. Кегль подбирается под безопасную ширину, а длинный
+    вопрос переносится на ДВЕ СТРОКИ: фиксированный 58-й вылезал за оба края
+    кадра, а подбор в одну строку ронял его до нечитаемых 26 (осмотр 14.11)."""
     p = A.out(A.seg(t, t0, .6))
     if p <= 0:
         return ""
-    size = 58
-    w_ = wid(s, size, "SERIF", 2) + 90
+    stroki = [s_]
+    size = kegl_pod(s_, maxw - 90, "SERIF", 58, 26, 2)
+    if size < 44:                      # в одну строку мелко — ломаем надвое
+        sl = s_.split()
+        luchshe, raznica = None, 1e9
+        for i in range(1, len(sl)):
+            a_, b_ = " ".join(sl[:i]), " ".join(sl[i:])
+            r = abs(wid(a_, 48, "SERIF", 2) - wid(b_, 48, "SERIF", 2))
+            if r < raznica:
+                luchshe, raznica = (a_, b_), r
+        if luchshe:
+            stroki = list(luchshe)
+            size = min(kegl_pod(x, maxw - 90, "SERIF", 56, 30, 2) for x in stroki)
+    w_ = min(maxw, max(wid(x, size, "SERIF", 2) for x in stroki) + 90)
     x = (W - w_) / 2
+    h_ = size * (1.75 if len(stroki) == 1 else 2.75)
     out = f'<g opacity="{p:.2f}">'
-    out += ten(W / 2, y + 120, w_ * .45, 14, .45)
-    out += f'<rect x="{x:.0f}" y="{y}" width="{w_:.0f}" height="{size*1.75:.0f}" rx="14" fill="#1a1208" opacity=".9" {o(6)}/>'
-    out += txt(W / 2, y + size * 1.2, s, size, SVET, "middle", SERIF, 2)
+    out += ten(W / 2, y + h_ + 14, w_ * .45, 14, .45)
+    out += (f'<rect x="{x:.0f}" y="{y}" width="{w_:.0f}" height="{h_:.0f}" rx="14"'
+            f' fill="#1a1208" opacity=".9" {o(6)}/>')
+    for i, ln in enumerate(stroki):
+        out += txt(W / 2, y + size * (1.2 + i * 1.22), ln, size, SVET, "middle", SERIF, 2)
     return out + "</g>"
 
 

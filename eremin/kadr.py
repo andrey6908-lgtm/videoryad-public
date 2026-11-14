@@ -73,6 +73,40 @@ def nadpisi(pl):
     return out
 
 
+_PLANY_KESH = None
+
+
+def kartochki_pamyatki(pl):
+    """Пункты памятки НАКАПЛИВАЮТСЯ на экране (R-0043): к последнему плану
+    списка видны все пять, а на словах «запомните эти пять запретов» список
+    стоит целиком. Прежде в каждом плане висел ровно один пункт на одном и
+    том же месте, и список не рос (осмотр 14.11).
+
+    Берём все карточки своего блока, у которых номер плана не больше текущего,
+    и рисуем их подряд; своя приходит с появлением, прежние уже стоят.
+    """
+    global _PLANY_KESH
+    if _PLANY_KESH is None:
+        _PLANY_KESH = plany()
+    svoi = [p for p in _PLANY_KESH if p.get("blok") == pl.get("blok")]
+    nomera = [p["n"] for p in svoi
+              if any(tip.lower().startswith("карточка") for tip, _ in nadpisi(p))]
+    if not nomera:
+        return []
+    # список живёт до плашки под ним и дальше не тянется: иначе памятка
+    # закрывала бы и финальные планы блока (поймано на сведении 14.11)
+    if pl["n"] < min(nomera) or pl["n"] > max(nomera) + 1:
+        return []
+    out = []
+    for p in svoi:
+        if p["n"] > pl["n"]:
+            continue
+        for tip, s_ in nadpisi(p):
+            if tip.lower().startswith("карточка"):
+                out.append((p["n"], s_))
+    return out
+
+
 def poyasneniya(pl):
     """Колонка «Надпись-пояснение» → [(совет?, текст)]. Это его правило 14.11:
     красивые поясняющие надписи и советы крупно по центру свободного места."""
@@ -216,6 +250,17 @@ def nalozheniya(pl, t, proem=None):
     yy = 160
     kart = 0
     niz_zanyat = False
+    # Надписи НЕ ложатся на проём с настоящим кадром (его слово 14.11:
+    # «не должны перекрывать наши мультяшные кадры»). Строка плашек
+    # начинается в свободной полосе над проёмом или под ним.
+    if proem:
+        px, py, pw, ph = proem
+        if py >= 300:
+            yy = 120
+        elif py + ph + 150 <= 1040:
+            yy = int(py + ph + 24)
+        else:
+            yy = 120
     tri = [n for n in nadpisi(pl) if n[0].startswith("Титр-обещание")]
     if not tri and pl["n"] == 1 and nadpisi(pl):
         tri = nadpisi(pl)                      # первый план — всегда титр-обещание
@@ -240,12 +285,7 @@ def nalozheniya(pl, t, proem=None):
                 out += over.plashka(lx, yy, s, t, 1.1, 52, .6, maxw=maxw)
             yy += 170
         elif tl.startswith("карточка"):
-            m = re.match(r"(\d+)\.\s*(.+)", s)
-            n_, txt_ = (m.group(1), m.group(2)) if m else ("", s)
-            col = kart % 2
-            out += over.kartochka(170 + col * 880, 300 + (kart // 2) * 190, 680, 150,
-                                  n_, txt_, t, .6 + kart * .4)
-            kart += 1
+            continue                   # памятка рисуется накопленной, ниже
         elif tl.startswith("шапка") or tl.startswith("название"):
             out += over.plashka((W - over.wid(s, 58, "SERIF", 1) - 68) / 2, 80, s, t, .2, 58, maxw=1500)
         elif tl.startswith("плашка-вопрос") or tl.startswith("плашка под списком"):
@@ -254,6 +294,11 @@ def nalozheniya(pl, t, proem=None):
         elif tl.startswith("финальная плашка"):
             out += over.vopros_plashka(s, t, 1.0, _polosa(proem, 120, 760))
             niz_zanyat = True
+        elif tl.startswith("подпись") and proem:
+            # подпись под экраном, витриной, портретом — ПОД проёмом, не на нём
+            px, py, pw, ph = proem
+            yn = py + ph + 56 if py + ph + 70 <= 1050 else max(90, py - 24)
+            out += over.nadpis(px + pw / 2, yn, s, t, .7, 42)
         elif (tl.startswith("подпись") or tl.startswith("на афиш")
               or tl.startswith("надпись на свитк") or tl.startswith("надпис")
               or tl.startswith("на лопат") or tl.startswith("на лист")
@@ -269,6 +314,17 @@ def nalozheniya(pl, t, proem=None):
                 x = (W - over.wid(s, kg, "SERIF", 1) - 68) / 2
                 out += over.plashka(x, yy, s, t, .9, kg, maxw=maxw)
                 yy += 130
+    # ПАМЯТКА: все набранные пункты стоят на экране разом
+    pam = kartochki_pamyatki(pl)
+    if pam:
+        for i, (n_, s_) in enumerate(pam):
+            m = re.match(r"(\d+)[.:]?\s*(.+)", s_)
+            nom, txt_ = (m.group(1), m.group(2)) if m else (str(i + 1), s_)
+            svoya = (n_ == pl["n"])
+            out += over.kartochka(240, 300 + i * 136, 1440, 118, nom, txt_,
+                                  t, .5 if svoya else -9.0)
+        yy = max(yy, 300 + len(pam) * 136 + 40)
+        niz_zanyat = True
     # пояснения и советы — по центру свободного места, ниже титров
     poy = poyasneniya(pl)
     if poy:

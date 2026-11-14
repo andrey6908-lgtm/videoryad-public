@@ -416,7 +416,11 @@ def drova_vedra_i_seno_do_temnoty(t):
 # ── 37 ─────────────────────────────────────────────────────────────────────
 def temnyy_podezd(t):
     """Крыльцо хрущёвки на пол-кадра, блестящее льдом: над дверью разбитый
-    фонарь, жилец в пальто едет ногой и повисает на перилах."""
+    фонарь, жилец в пальто едет ногой и повисает на перилах.
+
+    Человек — `figura()` с наклоном, обе руки тянутся К ПЕРИЛАМ В ОДНУ
+    СТОРОНУ, нога уезжает тапком со следом. Прежние палки крест-накрест
+    читались пауком (осмотр 14.11)."""
     rnd = random.Random(3719)
     s = f'<rect width="{W}" height="{H}" fill="#161d2a"/>'
     s += nebo("noch", t, True, 397)
@@ -435,7 +439,7 @@ def temnyy_podezd(t):
     kz = (f'<path d="M520,420 h960 l-60,-120 h-840 Z" fill="{BETON2}" {o(9)}/>')
     kz += (f'<rect x="520" y="414" width="960" height="34" rx="8" fill="#6b747c" {o(7)}/>')
     s += SL(Z_SRED, kz)
-    dx_, dy_, dw, dh = 760, 440, 420, 560
+    dx_, dy_, dw, dh = 700, 440, 400, 540
     hlop = abs(A.w(t, 2.6, .1))
     s += SL(Z_SRED, f'<rect x="{dx_-40}" y="{dy_-30}" width="{dw+80}" height="{dh+30}"'
                     f' rx="8" fill="#3d4650" {o(9)}/>')
@@ -469,34 +473,54 @@ def temnyy_podezd(t):
             sz += (f'<circle cx="{512+j*130+i*18:.0f}" cy="{yy+8:.0f}" r="6"'
                    f' fill="#ffffff" opacity="{bl*.9:.2f}"/>')
     s += SL(Z_SRED, sz)
-    ned = A.ease(A.seg(t, 1.2, 1.6))
-    zx, zy = 1240, 1010 + ned * 40
-    s += SL(Z_SRED, figura(zx, zy, 540, t, "#2d3340", "#cfe4f5", False, .4,
-                           True, 1.0, False, 3.0 + 7 * ned, False, True))
-    s += SL(Z_SRED, para_izo_rta(zx + 46, zy - 460, t, .2, 1.2, .6))
-    noga = 24 + 50 * ned
-    s += SL(Z_SRED, f'<g transform="rotate({noga:.1f} {zx-30:.0f} {zy-120:.0f})">'
-                    f'<rect x="{zx-56:.0f}" y="{zy-120:.0f}" width="56" height="140"'
-                    f' rx="24" fill="#2d3340" {o(5)}/>'
-                    f'<path d="M{zx-66:.0f},{zy+18:.0f} q42,-28 88,8 q-26,26 -88,-8 Z"'
-                    f' fill="#4a3f36" {o(5)}/></g>')
-    for sgn, px in ((-1, 660), (1, 1340)):   # перила: стойки, поручень, подзор
-        per = (f'<path d="M{px:.0f},900 L{px+sgn*230:.0f},1070" stroke="url(#zhel)"'
-               f' stroke-width="26" stroke-linecap="round"/>')
-        per += (f'<path d="M{px:.0f},960 L{px+sgn*230:.0f},1080" stroke="{ZHELEZ}"'
-                f' stroke-width="14" stroke-linecap="round"/>')
-        for i in range(4):
-            qx = px + sgn * i * 72
-            per += (f'<rect x="{qx-9:.0f}" y="{900+i*44:.0f}" width="18"'
-                    f' height="{130+i*20:.0f}" fill="{ZHELEZ}" {o(4)}/>')
-        per += (f'<circle cx="{px:.0f}" cy="900" r="16" fill="url(#zhel)" {o(4)}/>')
+    # ПЕРИЛА: слева для вида, справа — те, за которые он держится
+    for sgn, px, hv in ((-1, 560, False), (1, 1180, True)):
+        ax, ay = px, 820
+        bx_, by_ = px + sgn * 400, 1050
+        per = (f'<line x1="{ax:.0f}" y1="{ay:.0f}" x2="{bx_:.0f}" y2="{by_:.0f}"'
+               f' stroke="url(#zhel)" stroke-width="28" stroke-linecap="round"/>')
+        per += (f'<line x1="{ax:.0f}" y1="{ay+16:.0f}" x2="{bx_:.0f}" y2="{by_+16:.0f}"'
+                f' stroke="#dfe8f2" stroke-width="6" opacity=".45"/>')
+        per += (f'<line x1="{ax:.0f}" y1="{ay+86:.0f}" x2="{bx_:.0f}" y2="{by_+60:.0f}"'
+                f' stroke="{ZHELEZ}" stroke-width="13" stroke-linecap="round"/>')
+        for i in range(5):
+            q = i / 4.0
+            qx = ax + (bx_ - ax) * q
+            qy = ay + (by_ - ay) * q
+            per += (f'<rect x="{qx-9:.0f}" y="{qy:.0f}" width="18"'
+                    f' height="{150 - 20*q:.0f}" fill="{ZHELEZ}" {o(4)}/>')
+        per += (f'<circle cx="{ax:.0f}" cy="{ay:.0f}" r="18" fill="url(#zhel)" {o(4)}/>')
         s += SL(Z_SRED, per)
-    for i, (ug, ph) in enumerate(((128 + 14 * ned, .1), (56 - 18 * ned, .5))):
-        ruk, (ax, ay) = rukav(zx + (-46 if i == 0 else 56), zy - 392, 150, ug, t,
-                              "#2d3340", "#cfe4f5", ph, 3.0)
+    # ЖИЛЕЦ: наклон вперёд, обе руки на перилах справа, нога уехала
+    ned = A.ease(A.seg(t, 1.2, 1.6))
+    zx, zy, rost = 930, 1000 + ned * 26, 560
+    plech = zy - rost * .66
+    s += SL(Z_SRED, figura(zx, zy, rost, t, "#2d3340", "#cfe4f5", False, .4,
+                           True, 1.0, False, 2.4 + 5 * ned, False, True))
+    s += SL(Z_SRED, para_izo_rta(zx + 46, zy - rost * .80, t, .2, 1.2, .6))
+    for i, (sx_, sy_, tx_, ty_) in enumerate((
+            (zx + 70, plech + 10, 1225, 852 + 20 * ned),
+            (zx + 96, plech + 46, 1330, 912 + 24 * ned))):
+        dl = math.hypot(tx_ - sx_, ty_ - sy_)
+        ug = math.degrees(math.atan2(ty_ - sy_, tx_ - sx_))
+        ruk, (ax2, ay2) = rukav(sx_, sy_, dl, ug, t, "#2d3340", "#cfe4f5",
+                                .1 + i * .4, 2.0)
         s += SL(Z_SRED, ruk)
-        s += SL(Z_SRED, f'<ellipse cx="{ax:.0f}" cy="{ay:.0f}" rx="28" ry="22"'
+        s += SL(Z_SRED, f'<ellipse cx="{ax2:.0f}" cy="{ay2:.0f}" rx="30" ry="23"'
                         f' fill="#1f242c" {o(4)}/>')
+    # нога уезжает: тапок скользит вперёд, за ним след по льду
+    nx_ = zx - 110 - ned * 190
+    ny_ = zy + 14
+    s += SL(Z_SRED, f'<path d="M{nx_-150:.0f},{ny_-6:.0f} h{150+ned*170:.0f}"'
+                    f' stroke="#eaf6ff" stroke-width="12" opacity="{.25+.5*ned:.2f}"'
+                    f' stroke-linecap="round"/>')
+    s += SL(Z_SRED, f'<g transform="rotate({-10-16*ned:.0f} {nx_:.0f} {ny_:.0f})">'
+                    f'<rect x="{zx-170:.0f}" y="{zy-130:.0f}" width="56" height="130"'
+                    f' rx="24" fill="#2d3340" {o(5)}/>'
+                    f'<path d="M{nx_-62:.0f},{ny_-26:.0f} q46,-28 96,6'
+                    f' q-10,30 -52,30 q-44,0 -44,-36 Z" fill="#6b4a3a" {o(5)}/>'
+                    f'<path d="M{nx_-58:.0f},{ny_-22:.0f} q48,-20 90,8" fill="none"'
+                    f' stroke="#a97f5e" stroke-width="7"/></g>')
     s += SL(Z_SRED, kot(520, 1072, t, .7, "#2a2622"))
     bak = (f'<rect x="200" y="760" width="230" height="300" rx="14" fill="#3f4a44" {o(8)}/>')
     bak += (f'<rect x="186" y="730" width="258" height="46" rx="12" fill="#55615a" {o(6)}/>')
@@ -879,7 +903,11 @@ def gorshok_s_uglyami_na_shestke(t):
 # ── 41 ─────────────────────────────────────────────────────────────────────
 def holodnaya_pech_utrom(t):
     """Серое утро: печь с чёрным холодным устьем на пол-кадра, хозяин дует в
-    остывшую золу, семья дрожит под одеялом, а у соседа труба дымит."""
+    остывшую золу, семья дрожит под одеялом, а у соседа труба дымит.
+
+    Печь холодная, но кадр не остаётся без живого огонька: на шестке стоит
+    огарок свечи, а в окне густо валит дым соседской трубы и светится чужое
+    тёплое окно (осмотр 14.11)."""
     rnd = random.Random(4103)
     s = f'<rect width="{W}" height="{H}" fill="#6b6a66"/>'
     s += SL(Z_DAL, brevna(0, 0, W, 1080, 110))
@@ -899,8 +927,13 @@ def holodnaya_pech_utrom(t):
     s += SL(Z_SRED, ust)
     s += SL(Z_SRED, f'<rect x="80" y="752" width="600" height="46" rx="10"'
                     f' fill="#c9bda4" {o(7)}/>')
+    # ОГАРОК СВЕЧИ НА ШЕСТКЕ: единственное живое тепло в холодной избе
+    s += SL(Z_SRED, f'<ellipse cx="520" cy="756" rx="56" ry="16" fill="#b9ab90" {o(4)}/>')
+    s += SL(Z_SRED, svecha(520, 668, t, .2, 1.2, 84))
+    s += SL(Z_SRED, teplo(520, 620, 420, 360, .40 + .14 * abs(A.w(t, 1.5))))
+    s += SL(Z_SRED, iskra_let(t, 520, 600, 4, 4111, 170, .25))
     duy = (t * 1.4) % 1.0
-    hx, hy = 620, 930
+    hx, hy = 680, 930
     s += SL(Z_SRED, figura(hx, hy, 520, t, "#3e4652", "#e8eef6", False, .2,
                            True, 1.0, False, 2.4, True))
     s += SL(Z_SRED, f'<ellipse cx="{hx-86:.0f}" cy="{hy+4:.0f}" rx="56" ry="18"'
@@ -909,7 +942,7 @@ def holodnaya_pech_utrom(t):
                     f' fill="#e3c6a8" {o(5)}/>')
     for i in range(4):                  # струя воздуха в устье
         k = (duy + i * .25) % 1.0
-        s += SL(Z_SRED, f'<ellipse cx="{hx-120-k*190:.0f}" cy="{hy-330+k*24:.0f}"'
+        s += SL(Z_SRED, f'<ellipse cx="{hx-150-k*190:.0f}" cy="{hy-330+k*24:.0f}"'
                         f' rx="{24+k*62:.0f}" ry="{12+k*26:.0f}" fill="#e8eef6"'
                         f' opacity="{.5*(1-k):.2f}"/>')
     for i in range(10):                 # поднятая зола
@@ -918,7 +951,7 @@ def holodnaya_pech_utrom(t):
                         f' cy="{uy+uh-30-k*120:.0f}" r="{3+4*(1-k):.1f}"'
                         f' fill="#b8b2a6" opacity="{.6*(1-k):.2f}"/>')
     s += SL(Z_SRED, par(hx - 100, hy - 350, t, 4, .55, 170, .45, .9))
-    lx, ly, lw = 760, 700, 520
+    lx, ly, lw = 820, 700, 500
     lezh = (f'<rect x="{lx}" y="{ly}" width="{lw}" height="250" rx="14"'
             f' fill="url(#derev)" {o(8)}/>')
     lezh += (f'<rect x="{lx-20}" y="{ly-28}" width="{lw+40}" height="40" rx="12"'
@@ -932,7 +965,7 @@ def holodnaya_pech_utrom(t):
         od += (f'<path d="M{lx-20+i*(lw/4.5):.0f},{ly-110+((i%2)*26):.0f}'
                f' q30,60 0,150" fill="none" stroke="#5e7ea0" stroke-width="9"'
                f' opacity=".7"/>')
-    for i, dx in enumerate((110, 290, 430)):
+    for i, dx in enumerate((110, 280, 420)):
         gy_ = ly - 128 - (i % 2) * 22
         od += (f'<ellipse cx="{lx+dx:.0f}" cy="{gy_:.0f}" rx="46" ry="50"'
                f' fill="#f0cfae" {o(5)}/>')
@@ -946,10 +979,11 @@ def holodnaya_pech_utrom(t):
         od += para_izo_rta(lx + dx + 20, gy_ + 34, t, i * .3, .7, .45)
     od += '</g>'
     s += SL(Z_SRED, od)
-    ox, oy, ow, oh = 1340, 220, 500, 390
+    ox, oy, ow, oh = 1380, 220, 480, 380
     moroz = .14 + .40 * A.ease(A.seg(t, .4, 3.2))
     za = (f'<rect x="{ox}" y="{oy}" width="{ow}" height="{oh}" fill="#b9c6cf"/>')
-    za += izba_snaruzhi(ox + 40, oy + oh - 20, 420, t, True, True, 421)
+    za += izba_snaruzhi(ox + 40, oy + oh - 20, 400, t, True, True, 421)
+    za += teplo(ox + 150, oy + oh - 140, 230, 190, .5)
     s += SL(Z_SRED, f'<clipPath id="ok41"><rect x="{ox}" y="{oy}" width="{ow}"'
                     f' height="{oh}"/></clipPath><g clip-path="url(#ok41)">{za}</g>')
     s += SL(Z_SRED, okno_izby(ox, oy, ow, oh, t, None, moroz, False, True))
@@ -960,10 +994,11 @@ def holodnaya_pech_utrom(t):
                f' l{-rr*.4:.0f},{rr*1.3:.0f} Z" fill="#ffffff"'
                f' opacity="{.3*moroz:.2f}"/>')
         s += SL(Z_SRED, za2)
-    s += SL(Z_SRED, teplo(ox + 240, oy + 240, 300, 220, .22))
-    s += SL(Z_SRED, dym(ox + 300, oy + 60, t, 5, .22, 240, .36, "#dfe6ec", .9))
-    s += SL(Z_SRED, _vedro(1180, 980, 1.2, t, False, "url(#chug)"))
-    s += SL(Z_SRED, kot(1480, 1010, t, .85, "#55504a", True))
+    # СОСЕДСКАЯ ТРУБА ДЫМИТ ГУСТО — над крышей, выше окна
+    s += SL(Z_SRED, dym(ox + 290, oy - 10, t, 7, .24, 300, .5, "#e4ebf2", 1.5))
+    s += SL(Z_SRED, dym(ox + 306, oy - 20, t, 5, .17, 340, .34, "#f2f6fa", 2.0))
+    s += SL(Z_SRED, _vedro(1180, 1000, 1.2, t, False, "url(#chug)"))
+    s += SL(Z_SRED, kot(1520, 1016, t, .85, "#55504a", True))
     s += ramka_pp("pravo", "#2b2e33", .45)
     s += SL(Z_PERED, _korzina(230, 1080, 220, 170, t, 431, True))
     s += vinetka(.42)
@@ -973,7 +1008,11 @@ def holodnaya_pech_utrom(t):
 # ── 42 ─────────────────────────────────────────────────────────────────────
 def ten_i_polennica(t):
     """Лохматая тень с жёлтыми глазами крадётся к двери с пустым горшком, но
-    хозяйка распахивает дверь — и тень сдувается в пустой тулуп на заборе."""
+    хозяйка распахивает дверь — и тень сдувается в пустой тулуп на заборе.
+
+    У крыльца с первой секунды горит фонарь: прежде единственный огонь
+    появлялся только в распахнутой двери на третьей секунде, и до того кадр
+    стоял сине-серым (осмотр 14.11)."""
     rnd = random.Random(4217)
     s = sumerki_fon(t, True)
     s += ulica_dal(1180, 700, 740, t, False, 433)
@@ -982,7 +1021,7 @@ def ten_i_polennica(t):
     izb += (f'<path d="M-40,130 L560,-140 L1160,130 Z" fill="{DOSKA2}" {o(9)}/>')
     izb += (f'<rect x="820" y="-180" width="100" height="220" fill="url(#kamen)" {o(6)}/>')
     s += SL(Z_DAL, izb)
-    s += SL(Z_DAL, dym(870, -170, t, 5, .2, 300, .34, "#c8d0da", 1.0))
+    s += SL(Z_DAL, dym(870, -170, t, 6, .2, 320, .44, "#c8d0da", 1.3))
     raz = A.out(A.seg(t, 3.0, 1.0))
     zat = A.ease(A.seg(t, 6.4, 1.4))
     otk = raz * (1 - zat)
@@ -1000,6 +1039,19 @@ def ten_i_polennica(t):
     s += SL(Z_SRED, podkova(dx_ + dw * .5, dy_ - 70, .95, t))
     s += SL(Z_SRED, f'<path d="M{dx_-60},{dy_+dh} h{dw+120} l-30,70 h{-dw-60} Z"'
                     f' fill="url(#dosk)" {o(8)}/>')
+    # ФОНАРЬ У КРЫЛЬЦА: живой огонь с самого начала плана
+    fx_, fy_ = 360, 470
+    s += SL(Z_SRED, f'<path d="M{fx_:.0f},300 q-8,54 0,88" fill="none"'
+                    f' stroke="{ZHELEZ}" stroke-width="9"/>')
+    s += SL(Z_SRED, f'<path d="M{fx_-66:.0f},{fy_-190:.0f} h132 l-18,-46 h-96 Z"'
+                    f' fill="{ZHELEZ}" {o(6)}/>')
+    s += SL(Z_SRED, f'<path d="M{fx_-56:.0f},{fy_-190:.0f} h112 l-12,180 h-88 Z"'
+                    f' fill="url(#stekl)" opacity=".72" {o(6)}/>')
+    s += SL(Z_SRED, f'<rect x="{fx_-60:.0f}" y="{fy_-16:.0f}" width="120" height="26"'
+                    f' rx="8" fill="{ZHELEZ}" {o(5)}/>')
+    s += SL(Z_SRED, ogon(fx_, fy_ - 40, t, .8, .3, 6))
+    s += SL(Z_SRED, teplo(fx_, fy_ - 80, 460, 400, .5 + .12 * abs(A.w(t, 1.4))))
+    s += SL(Z_SRED, iskra_let(t, fx_, fy_ - 90, 5, 4219, 240, .35))
     pw, ph_ = 560, 460
     px, py = 1200, 980
     pol = ten(px + pw * .5, py + 14, pw * .5, 26, .45)
@@ -1947,7 +1999,12 @@ def hozyain_zaslonyaet_svoe_dobro(t):
 # ── 51 ─────────────────────────────────────────────────────────────────────
 def dostatok_uhodit_verenicey(t):
     """Ворота амбара: сосед уносит отданное решето, а следом на тонких ножках
-    уходят мешок муки, окорок, кадка с капустой и крынка масла."""
+    уходят мешок муки, окорок, кадка с капустой и крынка масла.
+
+    Каждый припас опознаётся силуэтом: у мешка завязанное горло, обсыпка
+    мукой и мерка, у окорока торчит кость и подвязка, у кадки клёпки, обручи
+    и кочан поверх, у крынки узкое горло под тряпицей и брусок масла. Прежде
+    в ряд шли четыре безымянных пятна (осмотр 14.11)."""
     rnd = random.Random(5101)
     s = sumerki_fon(t, True)
     s += ulica_dal(1240, 700, 700, t, False, 577)
@@ -1957,18 +2014,18 @@ def dostatok_uhodit_verenicey(t):
     amb += (f'<rect x="640" y="-120" width="140" height="120" rx="8"'
             f' fill="{DOSKA2}" {o(6)}/>')
     s += SL(Z_DAL, amb)
-    vx, vy, vw, vh = 330, 260, 760, 640
+    vx, vy, vw, vh = 330, 240, 760, 620
     s += SL(Z_SRED, f'<rect x="{vx-40}" y="{vy-40}" width="{vw+80}" height="{vh+40}"'
                     f' rx="12" fill="{DOSKA2}" {o(10)}/>')
     s += SL(Z_SRED, f'<rect x="{vx}" y="{vy}" width="{vw}" height="{vh}"'
                     f' fill="#140e09"/>')
     pust = A.ease(A.seg(t, .6, 2.4))
     for i in range(5):                  # опустевшие полки амбара
-        s += SL(Z_SRED, f'<rect x="{vx+40}" y="{vy+90+i*110:.0f}" width="{vw-80}"'
+        s += SL(Z_SRED, f'<rect x="{vx+40}" y="{vy+90+i*106:.0f}" width="{vw-80}"'
                         f' height="18" rx="6" fill="#3a2a1c" {o(4)}/>')
         if i % 2 == 0:
             s += SL(Z_SRED, f'<g opacity="{1-pust:.2f}">'
-                            + krynka(vx + 150 + i * 90, vy + 86 + i * 110, .8) + '</g>')
+                            + krynka(vx + 150 + i * 90, vy + 86 + i * 106, .8) + '</g>')
     s += SL(Z_SRED, teplo(vx + vw * .5, vy + vh * .7, 380, 320, .24))
     for sgn, px in ((-1, vx), (1, vx + vw)):
         s += SL(Z_SRED, f'<g transform="rotate({sgn*18:.0f} {px:.0f} {vy:.0f})">'
@@ -1976,46 +2033,103 @@ def dostatok_uhodit_verenicey(t):
                         f' height="{vh}" fill="url(#dosk)" {o(8)}/>'
                         f'<path d="M{px-(160 if sgn<0 else -10):.0f},{vy+60}'
                         f' l150,{vh-160:.0f}" stroke="#5a3a22" stroke-width="14"/></g>')
-    gor = ((0, 320, "#d8c8a4"), (1, 300, "#b06a4a"), (2, 300, "#9a7238"), (3, 250, "#c98c55"))
-    for i, (k, hh, col) in enumerate(gor):
+    # ЧЕТЫРЕ ПРИПАСА, каждый со своими приметами
+    for i in range(4):
         hod = A.ease(A.seg(t, .2 + i * .26, 2.8))
-        gx = vx + 120 + i * 250 + hod * 480
-        gy = 1000 - i * 26
+        gx = vx + 110 + i * 250 + hod * 470
+        gy = 1010 - i * 24
         sh = 8 * A.w(t, .8, i * .3)
         g = f'<g transform="translate({sh:.1f},{-abs(sh)*.6:.1f})">'
-        if k == 0:                      # мешок муки
-            g += (f'<path d="M{gx-110:.0f},{gy-60:.0f} q-20,-230 110,-260'
-                  f' q130,30 110,260 q-110,50 -220,0 Z" fill="{col}" {o(8)}/>')
-            g += (f'<path d="M{gx-54:.0f},{gy-330:.0f} q54,-56 108,0'
-                  f' q-54,30 -108,0 Z" fill="#c2b08a" {o(5)}/>')
-            g += (f'<path d="M{gx-60:.0f},{gy-326:.0f} q60,-26 120,0" fill="none"'
-                  f' stroke="{TKAN}" stroke-width="16"/>')
-            mah = 16 * A.w(t, .9, .2)
-            g += (f'<path d="M{gx+100:.0f},{gy-250:.0f} q{60+mah:.0f},-40 90,10'
-                  f' q-60,30 -90,20 Z" fill="{col}" {o(5)}/>')
-            g += _glaza(gx, gy - 220, 17, t, .1, "#2b2118")
-        elif k == 1:                    # окорок
-            g += (f'<path d="M{gx-120:.0f},{gy-120:.0f} q-30,-180 120,-180'
-                  f' q150,0 110,190 q-110,60 -230,-10 Z" fill="{col}" {o(8)}/>')
-            g += (f'<path d="M{gx+90:.0f},{gy-290:.0f} q50,-40 40,-80" fill="none"'
-                  f' stroke="#e8dcc6" stroke-width="20" stroke-linecap="round"/>')
-            g += (f'<path d="M{gx-110:.0f},{gy-180:.0f} q120,40 230,0" fill="none"'
-                  f' stroke="#8a4a32" stroke-width="10" opacity=".8"/>')
-            g += _glaza(gx, gy - 230, 15, t, .5, "#f0e4cc")
-        elif k == 2:                    # кадка с капустой
-            g += (f'<path d="M{gx-110:.0f},{gy-60:.0f} l16,-230 q94,-36 188,0'
-                  f' l16,230 Z" fill="url(#derev)" {o(8)}/>')
+        if i == 0:                      # МЕШОК МУКИ: горло перевязано, мука сыплется
+            g += ten(gx, gy - 46, 120, 20, .4)
+            g += (f'<path d="M{gx-120:.0f},{gy-60:.0f} q-26,-250 118,-282'
+                  f' q144,32 118,282 q-118,54 -236,0 Z" fill="#d8c8a4" {o(8)}/>')
+            for j in range(4):          # складки холста
+                g += (f'<path d="M{gx-80+j*52:.0f},{gy-96:.0f} q10,-110 2,-178"'
+                      f' fill="none" stroke="#b9a87e" stroke-width="7" opacity=".7"/>')
+            g += (f'<path d="M{gx-54:.0f},{gy-348:.0f} q54,-34 108,0 l-14,54'
+                  f' q-40,16 -80,0 Z" fill="#c2b08a" {o(5)}/>')
+            g += (f'<path d="M{gx-58:.0f},{gy-344:.0f} q58,-26 116,0" fill="none"'
+                  f' stroke="{TKAN}" stroke-width="18"/>')
+            g += (f'<path d="M{gx-40:.0f},{gy-396:.0f} q40,-40 80,0 q-40,16 -80,0 Z"'
+                  f' fill="#e8dcc6" {o(4)}/>')
+            mah = 16 * A.w(t, .9, .2)   # уголок мешка машет
+            g += (f'<path d="M{gx+108:.0f},{gy-250:.0f} q{60+mah:.0f},-44 94,8'
+                  f' q-62,34 -94,22 Z" fill="#d8c8a4" {o(5)}/>')
+            for j in range(7):          # мука сыплется из-под завязки
+                q = ((t * .6) + j * .14) % 1.0
+                g += (f'<circle cx="{gx-60+j*18+10*A.w(t,2.0,j*.2):.0f}"'
+                      f' cy="{gy-330+q*120:.0f}" r="{5-2*q:.1f}" fill="#f2ead6"'
+                      f' opacity="{(1-q)*.8:.2f}"/>')
+            g += (f'<ellipse cx="{gx-20:.0f}" cy="{gy-186:.0f}" rx="64" ry="34"'
+                  f' fill="#f2ead6" opacity=".22"/>')
+            g += _glaza(gx, gy - 230, 17, t, .1, "#2b2118")
+            g += _nozhki(gx, gy - 56, 150, t, i * .3, "#4a3a28", 62)
+        elif i == 1:                    # ОКОРОК: кость наружу, подвязка, шкурка
+            g += ten(gx, gy - 56, 110, 18, .4)
+            g += (f'<path d="M{gx-126:.0f},{gy-120:.0f} q-40,-170 120,-194'
+                  f' q160,-10 118,200 q-118,66 -238,-6 Z" fill="#b06a4a" {o(8)}/>')
+            g += (f'<path d="M{gx-126:.0f},{gy-176:.0f} q120,52 238,-16 l-6,56'
+                  f' q-116,62 -226,8 Z" fill="#e8dcc6" opacity=".9" {o(4)}/>')
+            for j in range(4):          # сетка шпагата
+                g += (f'<path d="M{gx-110+j*66:.0f},{gy-300:.0f} q14,110 2,196"'
+                      f' fill="none" stroke="#6b4a2a" stroke-width="6" opacity=".7"/>')
+            g += (f'<path d="M{gx-116:.0f},{gy-246:.0f} q118,44 234,-10" fill="none"'
+                  f' stroke="#6b4a2a" stroke-width="7" opacity=".7"/>')
+            kost = 6 * A.w(t, 1.4, .3)
+            g += (f'<path d="M{gx+70:.0f},{gy-300:.0f} l{58+kost:.0f},-80"'
+                  f' stroke="#efe8d8" stroke-width="26" stroke-linecap="round"/>')
+            g += (f'<circle cx="{gx+134+kost:.0f}" cy="{gy-384:.0f}" r="24"'
+                  f' fill="#f6f1e2" {o(5)}/>')
+            g += (f'<circle cx="{gx+112+kost:.0f}" cy="{gy-364:.0f}" r="18"'
+                  f' fill="#f6f1e2" {o(4)}/>')
+            g += (f'<path d="M{gx+120+kost:.0f},{gy-398:.0f} q34,-30 10,-62"'
+                  f' fill="none" stroke="#8a7a5a" stroke-width="9"/>')
+            g += _glaza(gx - 10, gy - 230, 15, t, .5, "#f0e4cc")
+            g += _nozhki(gx, gy - 110, 140, t, i * .3, "#4a3a28", 62)
+        elif i == 2:                    # КАДКА: клёпки, два обруча, кочан поверх
+            g += ten(gx, gy - 52, 112, 18, .4)
+            g += (f'<path d="M{gx-112:.0f},{gy-60:.0f} l18,-250 q94,-40 188,0'
+                  f' l18,250 Z" fill="url(#derev)" {o(8)}/>')
+            for j in range(5):          # клёпки
+                g += (f'<path d="M{gx-80+j*40:.0f},{gy-300:.0f} l{-4+j*2:.0f},244"'
+                      f' fill="none" stroke="#6b4a26" stroke-width="5" opacity=".8"/>')
             for j in range(2):
-                g += (f'<path d="M{gx-104+j*8:.0f},{gy-120-j*90:.0f} q{104-j*8:.0f},26'
-                      f' {208-j*16:.0f},0" fill="none" stroke="{ZHELEZ}"'
-                      f' stroke-width="12"/>')
-            g += (f'<ellipse cx="{gx:.0f}" cy="{gy-290:.0f}" rx="96" ry="26"'
-                  f' fill="#b9c98a" {o(5)}/>')
+                g += (f'<path d="M{gx-106+j*8:.0f},{gy-110-j*130:.0f}'
+                      f' q{106-j*8:.0f},30 {212-j*16:.0f},0" fill="none"'
+                      f' stroke="{ZHELEZ}" stroke-width="16"/>')
+            g += (f'<ellipse cx="{gx:.0f}" cy="{gy-306:.0f}" rx="100" ry="28"'
+                  f' fill="#8a6a44" {o(5)}/>')
+            g += (f'<ellipse cx="{gx:.0f}" cy="{gy-316:.0f}" rx="86" ry="22"'
+                  f' fill="#b9c98a" {o(4)}/>')
+            for j in range(3):          # кочан капусты поверх кадки
+                g += (f'<ellipse cx="{gx-34+j*34:.0f}" cy="{gy-356+((j%2)*14):.0f}"'
+                      f' rx="{52-j*4:.0f}" ry="{44-j*4:.0f}" fill="#cfe0a0" {o(5)}/>')
+                g += (f'<path d="M{gx-60+j*34:.0f},{gy-366+((j%2)*14):.0f}'
+                      f' q26,{-26:.0f} 52,0" fill="none" stroke="#8aa45a"'
+                      f' stroke-width="6" opacity=".9"/>')
             g += _glaza(gx, gy - 200, 16, t, .8)
-        else:                           # крынка масла
-            g += krynka(gx, gy - 40, 2.0, "url(#krem)")
-            g += _glaza(gx, gy - 160, 14, t, .3, "#2b2118")
-        g += _nozhki(gx, gy - 60, 130, t, i * .3, "#4a3a28", 66)
+            g += _nozhki(gx, gy - 56, 150, t, i * .3, "#4a3a28", 62)
+        else:                           # КРЫНКА МАСЛА: узкое горло, тряпица, брусок
+            g += ten(gx, gy - 46, 92, 16, .4)
+            g += (f'<path d="M{gx-92:.0f},{gy-60:.0f} q-30,-150 10,-196'
+                  f' q18,-40 14,-86 l{136:.0f},0 q-4,46 14,86 q40,46 10,196 Z"'
+                  f' fill="url(#krem)" {o(8)}/>')
+            g += (f'<path d="M{gx-78:.0f},{gy-180:.0f} q78,28 156,0" fill="none"'
+                  f' stroke="#cfbf9c" stroke-width="8" opacity=".8"/>')
+            g += (f'<path d="M{gx-72:.0f},{gy-342:.0f} q72,-40 144,0 l-10,40'
+                  f' q-62,28 -124,0 Z" fill="{TKAN2}" {o(5)}/>')
+            g += (f'<path d="M{gx-74:.0f},{gy-338:.0f} q74,-24 148,0" fill="none"'
+                  f' stroke="{TKAN}" stroke-width="12"/>')
+            g += (f'<ellipse cx="{gx:.0f}" cy="{gy-352:.0f}" rx="56" ry="18"'
+                  f' fill="#f4ecd0" {o(4)}/>')
+            mas = 6 * A.w(t, 1.6, .4)   # брусок масла на донце рядом
+            g += (f'<path d="M{gx+96:.0f},{gy-96+mas*.4:.0f} h92 l-10,56 h-76 Z"'
+                  f' fill="#f2d98a" {o(5)}/>')
+            g += (f'<path d="M{gx+96:.0f},{gy-96+mas*.4:.0f} h92 l-14,-18 h-66 Z"'
+                  f' fill="#fbeec0" {o(4)}/>')
+            g += _glaza(gx, gy - 250, 14, t, .3, "#2b2118")
+            g += _nozhki(gx, gy - 56, 130, t, i * .3, "#4a3a28", 62)
         g += '</g>'
         s += SL(Z_SRED, g)
     sos = A.ease(A.seg(t, .2, 2.4))
@@ -2034,7 +2148,7 @@ def dostatok_uhodit_verenicey(t):
                 f' stroke-width="5" opacity=".75"/>')
     s += SL(Z_SRED, sit)
     s += SL(Z_SRED, para_izo_rta(sx + 46, 640, t, .2, 1.1, .5))
-    fnx, fny = 1300, 380
+    fnx, fny = 1340, 360
     s += SL(Z_SRED, f'<rect x="{fnx-16:.0f}" y="100" width="32" height="700"'
                     f' fill="url(#derev)" {o(7)}/>'
                     f'<path d="M{fnx-64:.0f},{fny:.0f} h128 l-14,-34 h-100 Z"'
@@ -2045,7 +2159,7 @@ def dostatok_uhodit_verenicey(t):
     s += SL(Z_SRED, teplo(fnx, fny + 70, 330, 290, .42 + .12 * abs(A.w(t, 1.5))))
     gor_p = ((t * .35) % 1.0)           # горошина катится по земле
     s += SL(Z_SRED, f'<circle cx="{vx+vw*.5+gor_p*900:.0f}"'
-                    f' cy="{1052-abs(math.sin(gor_p*14))*22:.0f}" r="17"'
+                    f' cy="{1062-abs(math.sin(gor_p*14))*22:.0f}" r="17"'
                     f' fill="{ZEL2}" {o(4)}/>')
     s += SL(Z_PERED, pleten(1300, 1080, 620, 210, 7))
     s += SL(Z_PERED, goloe_derevo(140, 1080, 560, t, 587, 7, "#2a2b33"))
@@ -3023,7 +3137,12 @@ def kosa_do_poyasa(t):
 # ── 62 ─────────────────────────────────────────────────────────────────────
 def strizhenyy_na_holode(t):
     """Парень со свежей стрижкой вышел на крыльцо без шапки, уши на глазах
-    краснеют — и он чихает так, что с пугала слетает шапка."""
+    краснеют — и он чихает так, что с соседского пугала слетает шапка.
+
+    Пугало сделано ПУГАЛОМ НАРОЧНО: крестовина на шесте видна насквозь,
+    голова — горшок с нарисованной рожицей, из рукавов и подола торчит солома,
+    на плече сидит ворона, рядно залатано. Прежде оно читалось вторым
+    человеком (осмотр 14.11)."""
     rnd = random.Random(6203)
     s = sumerki_fon(t, True)
     s += ulica_dal(1180, 700, 740, t, False, 6211)
@@ -3046,7 +3165,7 @@ def strizhenyy_na_holode(t):
     s += SL(Z_SRED, kr)
     chih = A.seg(t, 2.4, .35)
     nak = -26 * math.sin(min(1.0, chih) * 3.14)
-    px_ = 700
+    px_ = 680
     s += SL(Z_SRED, f'<g transform="rotate({nak:.1f} {px_:.0f} 880)">'
                     + figura(px_, 880, 680, t, "#3c4656", "#ffd0a0", False, .2,
                              False, 1.0, False, 1.0) + '</g>')
@@ -3071,40 +3190,67 @@ def strizhenyy_na_holode(t):
     s += SL(Z_SRED, para_izo_rta(px_ + 60, gy_ + 40, t, .1,
                                  1.0 + 1.6 * math.sin(min(1.0, chih) * 3.14), .62))
     s += SL(Z_SRED, _vedro(470, 1040, .9, t, False, "url(#chug)"))
-    kr_x, kr_y = 1080, 940
+    kr_x, kr_y = 1060, 950
     s += SL(Z_SRED, f'<path d="M{kr_x-60:.0f},{kr_y-110:.0f} q60,120 120,0'
                     f' q-60,34 -120,0 Z" fill="url(#krem)" {o(7)}/>'
                     f'<path d="M{kr_x+58:.0f},{kr_y-96:.0f} q46,26 0,58" fill="none"'
                     f' stroke="url(#krem)" stroke-width="12"/>')
     s += SL(Z_SRED, par(kr_x, kr_y - 120, t, 5, .5, 190, .55, .9))
-    pg_x, pg_y = 1500, 960
-    pug = (f'<rect x="{pg_x-14:.0f}" y="{pg_y-480:.0f}" width="28" height="480"'
+    # ПУГАЛО: шест, крестовина, горшок вместо головы, солома, ворона
+    pg_x, pg_y = 1520, 980
+    pug = (f'<rect x="{pg_x-15:.0f}" y="{pg_y-520:.0f}" width="30" height="520"'
            f' fill="url(#derev)" {o(6)}/>')
-    pug += (f'<rect x="{pg_x-170:.0f}" y="{pg_y-390:.0f}" width="340" height="24"'
-            f' rx="10" fill="url(#derev)" {o(5)}/>')
-    pug += (f'<path d="M{pg_x-120:.0f},{pg_y-380:.0f} q120,-60 240,0 l-40,250'
-            f' q-80,40 -160,0 Z" fill="#6b5a3c" {o(7)}/>')
-    for sgn in (-1, 1):                 # соломенные руки на перекладине
-        for j in range(5):
-            pug += (f'<path d="M{pg_x+sgn*160:.0f},{pg_y-378:.0f}'
-                    f' l{sgn*(30+j*12):.0f},{-20+j*16:.0f}" stroke="#d8b96a"'
+    pug += (f'<path d="M{pg_x-70:.0f},{pg_y:.0f} h140 l-16,-40 h-108 Z"'
+            f' fill="#4a4038" opacity=".8"/>')
+    pug += (f'<rect x="{pg_x-210:.0f}" y="{pg_y-420:.0f}" width="420" height="26"'
+            f' rx="12" fill="url(#derev)" {o(6)}/>')     # крестовина НАСКВОЗЬ видна
+    pug += (f'<path d="M{pg_x-26:.0f},{pg_y-430:.0f} q26,-16 52,0 l0,20'
+            f' q-26,-12 -52,0 Z" fill="#5a3a22" {o(3)}/>')
+    kach_p = 3.0 * A.w(t, 2.9, .2)
+    pug += f'<g transform="rotate({kach_p:.1f} {pg_x:.0f} {pg_y-420:.0f})">'
+    pug += (f'<path d="M{pg_x-116:.0f},{pg_y-400:.0f} q116,-44 232,0 l-36,236'
+            f' q-80,36 -160,0 Z" fill="#6b5a3c" {o(7)}/>')
+    for j in range(4):                  # заплаты на рядне
+        pug += (f'<rect x="{pg_x-92+j*54:.0f}" y="{pg_y-330+((j%2)*60):.0f}"'
+                f' width="46" height="42" rx="6"'
+                f' fill="{"#8a6a46" if j % 2 else "#55452e"}" {o(3)}/>')
+    for sgn in (-1, 1):                 # рукава на крестовине, из них солома
+        pug += (f'<path d="M{pg_x+sgn*116:.0f},{pg_y-412:.0f}'
+                f' q{sgn*70:.0f},-6 {sgn*96:.0f},10 l-6,56'
+                f' q{-sgn*46:.0f},12 {-sgn*96:.0f},0 Z" fill="#55452e" {o(5)}/>')
+        for j in range(6):
+            pug += (f'<path d="M{pg_x+sgn*206:.0f},{pg_y-400:.0f}'
+                    f' l{sgn*(26+j*10):.0f},{-26+j*16:.0f}" stroke="#d8b96a"'
                     f' stroke-width="7" stroke-linecap="round"/>')
-        pug += (f'<path d="M{pg_x+sgn*130:.0f},{pg_y-392:.0f}'
-                f' q{sgn*20:.0f},24 {sgn*4:.0f},46" fill="none" stroke="{TKAN}"'
-                f' stroke-width="9"/>')
-    for j in range(7):                  # солома из-под подола
-        pug += (f'<path d="M{pg_x-70+j*24:.0f},{pg_y-130:.0f} l{-6+j*2},54"'
+    for j in range(9):                  # солома из-под подола
+        pug += (f'<path d="M{pg_x-80+j*20:.0f},{pg_y-164:.0f} l{-8+j*2},62"'
                 f' stroke="#d8b96a" stroke-width="7" stroke-linecap="round"/>')
-    pug += (f'<circle cx="{pg_x:.0f}" cy="{pg_y-430:.0f}" r="64" fill="url(#solom)" {o(6)}/>')
+    # голова — глиняный горшок с нарисованной рожицей
+    pug += (f'<path d="M{pg_x-62:.0f},{pg_y-430:.0f} q-16,-80 10,-116'
+            f' q52,-22 104,0 q26,36 10,116 Z" fill="url(#glina)" {o(7)}/>')
+    pug += (f'<ellipse cx="{pg_x:.0f}" cy="{pg_y-546:.0f}" rx="66" ry="18"'
+            f' fill="#a06c3c" {o(5)}/>')
     for i in (-1, 1):
-        pug += (f'<circle cx="{pg_x+i*24:.0f}" cy="{pg_y-440:.0f}" r="9" fill="{K}"/>')
-    for i in range(9):
-        pug += (f'<path d="M{pg_x-60+i*16:.0f},{pg_y-480:.0f} l{-6+i*2},-40"'
+        pug += (f'<path d="M{pg_x+i*26-14:.0f},{pg_y-512:.0f} l28,28 m0,-28 l-28,28"'
+                f' stroke="{K}" stroke-width="7" stroke-linecap="round"/>')
+    pug += (f'<path d="M{pg_x-28:.0f},{pg_y-466:.0f} q28,-22 56,0" fill="none"'
+            f' stroke="{K}" stroke-width="7"/>')
+    for j in range(7):                  # солома из-под горшка
+        pug += (f'<path d="M{pg_x-54+j*18:.0f},{pg_y-436:.0f} l{-8+j*3},34"'
                 f' stroke="#d8b96a" stroke-width="6" stroke-linecap="round"/>')
+    pug += '</g>'
     s += SL(Z_SRED, pug)
+    vor_k = 7 * A.w(t, 1.7, .4)         # ворона на крестовине
+    s += SL(Z_SRED, f'<g transform="translate({pg_x+180:.0f},{pg_y-430+vor_k*.4:.0f})">'
+                    f'<ellipse cx="0" cy="0" rx="46" ry="30" fill="#1f2228" {o(5)}/>'
+                    f'<circle cx="30" cy="-28" r="22" fill="#1f2228" {o(4)}/>'
+                    f'<path d="M48,-30 l34,8 l-34,12 Z" fill="#4a4038" {o(3)}/>'
+                    f'<path d="M-40,-10 q-34,-30 -8,-50" fill="none" stroke="#1f2228"'
+                    f' stroke-width="12"/>'
+                    f'<circle cx="34" cy="-32" r="4" fill="{SVET}"/></g>')
     sle = A.out(A.seg(t, 2.5, 1.2))
     shx = pg_x + sle * 240
-    shy = pg_y - 500 - math.sin(sle * 3.14) * 180 + sle * 40
+    shy = pg_y - 570 - math.sin(sle * 3.14) * 180 + sle * 40
     s += SL(Z_SRED, f'<g transform="rotate({sle*260:.0f} {shx:.0f} {shy:.0f})">'
                     f'<path d="M{shx-70:.0f},{shy:.0f} q70,-96 140,0 q-70,30 -140,0 Z"'
                     f' fill="#53402e" {o(6)}/>'
@@ -3120,7 +3266,11 @@ def strizhenyy_na_holode(t):
 # ── 63 ─────────────────────────────────────────────────────────────────────
 def strizhka_posredi_kuhni(t):
     """Кухня, посреди неё на газетах табурет: мальчик, закутанный в простыню
-    до ушей, вертит головой, пряди падают, чайник на плите пускает пар."""
+    до ушей, вертит головой, пряди падают, чайник на плите пускает пар.
+
+    Герой посажен НИЖЕ 420 px по вертикали: верхнюю треть кадра занимает
+    плашка «Не вертись!», и прежде она ложилась мальчику на голову
+    (осмотр 14.11)."""
     rnd = random.Random(6301)
     s = f'<rect width="{W}" height="{H}" fill="#6b6256"/>'
     s += SL(Z_DAL, f'<rect width="{W}" height="{H}" fill="#8a8072"/>')
@@ -3129,9 +3279,9 @@ def strizhka_posredi_kuhni(t):
             s += SL(Z_DAL, f'<rect x="{c*140+6:.0f}" y="{r*86+6:.0f}" width="128"'
                            f' height="74" rx="6" fill="#9c9282" opacity=".55"/>')
     s += SL(Z_DAL, f'<rect x="0" y="700" width="{W}" height="30" fill="#6b6256" {o(4)}/>')
-    s += SL(Z_SRED, polovicy(900))
-    s += SL(Z_SRED, tusklaya_lampochka(960, 90, t, 1.2, True))
-    pl_x, pl_y = 1560, 880
+    s += SL(Z_SRED, polovicy(930))
+    s += SL(Z_SRED, tusklaya_lampochka(300, 90, t, 1.2, True))
+    pl_x, pl_y = 1580, 940
     plt = (f'<rect x="{pl_x-280:.0f}" y="{pl_y-320:.0f}" width="560" height="320"'
            f' rx="14" fill="#cfd6dc" {o(9)}/>')
     plt += (f'<rect x="{pl_x-260:.0f}" y="{pl_y-360:.0f}" width="520" height="54"'
@@ -3155,38 +3305,41 @@ def strizhka_posredi_kuhni(t):
                     f' fill="none" stroke="{ZHELEZ}" stroke-width="14"/>'
                     f'<rect x="{ch_x-26:.0f}" y="{ch_y-156:.0f}" width="52"'
                     f' height="26" rx="8" fill="{ZHELEZ}" {o(4)}/>')
-    s += SL(Z_SRED, par(ch_x + 150, ch_y - 150, t, 6, .6, 260, .6, 1.1))
+    s += SL(Z_SRED, par(ch_x + 150, ch_y - 150, t, 6, .6, 240, .6, 1.1))
     s += SL(Z_SRED, teplo(pl_x - 150, pl_y - 330, 420, 360, .34 + .1 * abs(A.w(t, 1.4))))
     for i in range(4):                  # газеты на полу
-        s += SL(Z_SRED, _gazeta(760 + (i % 2) * 300, 1000 + (i // 2) * 50, 360, 250,
+        s += SL(Z_SRED, _gazeta(740 + (i % 2) * 300, 1004 + (i // 2) * 48, 360, 250,
                                 -12 + i * 9, 6311 + i))
-    tx_, ty_ = 900, 1000
-    tab = ten(tx_, ty_ + 14, 150, 22, .45)
-    tab += (f'<rect x="{tx_-150:.0f}" y="{ty_-300:.0f}" width="300" height="50"'
+    tx_, ty_ = 880, 1046
+    tab = ten(tx_, ty_ + 14, 160, 22, .45)
+    tab += (f'<rect x="{tx_-160:.0f}" y="{ty_-150:.0f}" width="320" height="50"'
             f' rx="14" fill="url(#derev)" {o(8)}/>')
-    for dx in (-130, 90):
-        tab += (f'<rect x="{tx_+dx:.0f}" y="{ty_-250:.0f}" width="44" height="250"'
+    for dx in (-140, 96):
+        tab += (f'<rect x="{tx_+dx:.0f}" y="{ty_-102:.0f}" width="44" height="106"'
                 f' rx="12" fill="url(#derev)" {o(6)}/>')
-    tab += (f'<rect x="{tx_-130:.0f}" y="{ty_-120:.0f}" width="260" height="22"'
+    tab += (f'<rect x="{tx_-130:.0f}" y="{ty_-54:.0f}" width="260" height="20"'
             f' rx="8" fill="{DOSKA2}" {o(4)}/>')
     s += SL(Z_SRED, tab)
+    sid = ty_ - 150                      # уровень сиденья табурета
+    rost = 480
     vert = 16 * A.w(t, 1.3, .1)
-    s += SL(Z_SRED, f'<g transform="rotate({vert:.1f} {tx_:.0f} {ty_-300:.0f})">'
-                    + figura(tx_, ty_ - 290, 560, t, "#eef2f6", "#b9c2c8", False,
+    s += SL(Z_SRED, f'<g transform="rotate({vert:.1f} {tx_:.0f} {sid:.0f})">'
+                    + figura(tx_, sid, rost, t, "#eef2f6", "#b9c2c8", False,
                              .2, False, 1.0) + '</g>')
-    s += SL(Z_SRED, f'<g transform="rotate({vert:.1f} {tx_:.0f} {ty_-300:.0f})">'
-                    f'<path d="M{tx_-180:.0f},{ty_-300:.0f} q180,-120 360,0'
-                    f' q-40,40 -180,40 q-140,0 -180,-40 Z" fill="#eef2f6" {o(7)}/>'
-                    f'<path d="M{tx_-150:.0f},{ty_-330:.0f} q150,60 300,0"'
+    s += SL(Z_SRED, f'<g transform="rotate({vert:.1f} {tx_:.0f} {sid:.0f})">'
+                    f'<path d="M{tx_-190:.0f},{sid:.0f} q190,-130 380,0'
+                    f' q-42,42 -190,42 q-148,0 -190,-42 Z" fill="#eef2f6" {o(7)}/>'
+                    f'<path d="M{tx_-158:.0f},{sid-32:.0f} q158,64 316,0"'
                     f' fill="none" stroke="#b9c2c8" stroke-width="9"/></g>')
+    gy_ = sid - rost * .845
     for i in range(9):                  # пряди падают на газету
         p = ((t * .55) + i * .11) % 1.0
         s += SL(Z_SRED, f'<path d="M{tx_-120+i*32:.0f},'
-                        f'{ty_-480+p*420:.0f} q14,{30+20*p:.0f} -8,{60+30*p:.0f}"'
+                        f'{gy_+40+p*420:.0f} q14,{30+20*p:.0f} -8,{60+30*p:.0f}"'
                         f' fill="none" stroke="#6b4a2a" stroke-width="7"'
                         f' stroke-linecap="round" opacity="{1-p*.5:.2f}"/>')
     nozh_a = -30 + 24 * abs(A.w(t, .7, .2))
-    nx_, ny_ = tx_ + 210, ty_ - 480
+    nx_, ny_ = tx_ + 220, gy_ + 10
     s += SL(Z_SRED, f'<g transform="rotate({nozh_a:.0f} {nx_:.0f} {ny_:.0f})">'
                     f'<path d="M{nx_:.0f},{ny_:.0f} l-150,-40 l0,18 l150,36 Z"'
                     f' fill="url(#zhel)" {o(5)}/>'
@@ -3198,17 +3351,17 @@ def strizhka_posredi_kuhni(t):
                     f' stroke="{ZHELEZ}" stroke-width="12"/>'
                     f'<path d="M{nx_+30:.0f},{ny_+26:.0f} q60,30 70,-16" fill="none"'
                     f' stroke="{ZHELEZ}" stroke-width="12"/></g>')
-    ruk, _ = rukav(tx_ + 330, ty_ - 420, 160, 190, t, "#5b2f3a", "#ffd98a", .3, 4.0)
+    ruk, _ = rukav(tx_ + 350, gy_ + 70, 170, 190, t, "#5b2f3a", "#ffd98a", .3, 4.0)
     s += SL(Z_SRED, ruk)
-    s += SL(Z_SRED, figura(tx_ + 430, ty_ + 30, 600, t, "#5b2f3a", "#ffd98a", True, .4))
-    for i, mx in enumerate((330, 500)):
+    s += SL(Z_SRED, figura(tx_ + 450, ty_ + 34, 620, t, "#5b2f3a", "#ffd98a", True, .4))
+    for i, mx in enumerate((300, 480)):
         hih = 10 * abs(A.w(t, .9, i * .4))
         s += SL(Z_SRED, f'<g transform="translate(0,{-hih:.1f})">'
-                        + figura(mx, 1040, 380 + i * 40, t,
+                        + figura(mx, 1046, 360 + i * 40, t,
                                  "#4a6a5a" if i else "#6b5a3c", "#ffd98a", False,
                                  i * .5, False, 1.0) + '</g>')
     s += ramka_pp("levo", "#1c1812", .4)
-    s += SL(Z_PERED, _vedro(1800, 1070, 1.1, t, False, "#8a929a"))
+    s += SL(Z_PERED, _vedro(1830, 1070, 1.1, t, False, "#8a929a"))
     s += vinetka(.44)
     return s
 

@@ -100,21 +100,28 @@ def figura(x, y, h_, t, col="#1b1822", kant="#cfe4f5", platok=False, ph=.0,
             s += (f'<path d="M{x:.0f},{gy-hh*.02:.0f} l{-hh*.08:.0f},{hh*.26:.0f}'
                   f' q{hh*.08:.0f},{hh*.06:.0f} {hh*.16:.0f},0" fill="none" stroke="#b08763"'
                   f' stroke-width="{max(2, hh*.08):.1f}" stroke-linecap="round"/>')
-        if not boroda:
-            s += (f'<path d="M{x-hh*.22:.0f},{gy+hh*.46:.0f} q{hh*.22:.0f},{hh*.20:.0f}'
-                  f' {hh*.44:.0f},0" fill="none" stroke="#9c4a3c"'
-                  f' stroke-width="{max(2, hh*.10):.1f}" stroke-linecap="round"/>')
+        s += (f'<path d="M{x-hh*.20:.0f},{gy+hh*.46:.0f} q{hh*.20:.0f},{hh*.20:.0f}'
+              f' {hh*.40:.0f},0" fill="none" stroke="#9c4a3c"'
+              f' stroke-width="{max(2, hh*.10):.1f}" stroke-linecap="round"/>')
         for i in (-1, 1):               # румянец
             s += (f'<ellipse cx="{x+i*hh*.56:.0f}" cy="{gy+hh*.28:.0f}" rx="{hh*.20:.0f}"'
                   f' ry="{hh*.13:.0f}" fill="#e08a74" opacity=".35"/>')
-    if boroda:                          # борода ТОЛЬКО ниже рта, лицо открыто
-        s += (f'<path d="M{x-hh*.86:.0f},{gy+hh*.34:.0f} q{hh*.16:.0f},{hh*1.30:.0f}'
-              f' {hh*.86:.0f},{hh*1.46:.0f} q{hh*.70:.0f},{-hh*.16:.0f} {hh*.86:.0f},{-hh*1.46:.0f}'
-              f' q{-hh*.86:.0f},{hh*.46:.0f} {-hh*1.72:.0f},0 Z" fill="#ded3c4"'
+    if boroda:
+        # Борода начинается НИЖЕ РТА и расчёсана прядями: сплошное светлое
+        # пятно от подбородка читалось как повязка на пол-лица (осмотр 14.11).
+        s += (f'<path d="M{x-hh*.80:.0f},{gy+hh*.62:.0f} q{hh*.14:.0f},{hh*1.10:.0f}'
+              f' {hh*.80:.0f},{hh*1.26:.0f} q{hh*.66:.0f},{-hh*.16:.0f} {hh*.80:.0f},{-hh*1.26:.0f}'
+              f' q{-hh*.80:.0f},{hh*.34:.0f} {-hh*1.60:.0f},0 Z" fill="#ded3c4"'
               f' stroke="{K}" stroke-width="{max(2, h_*.009):.1f}"/>')
-        s += (f'<path d="M{x-hh*.40:.0f},{gy+hh*.30:.0f} q{hh*.40:.0f},{hh*.22:.0f}'
-              f' {hh*.80:.0f},0" fill="none" stroke="#c9bdac"'
-              f' stroke-width="{max(2, hh*.10):.1f}" opacity=".8"/>')
+        for i in (-1, 0, 1):            # пряди
+            s += (f'<path d="M{x+i*hh*.36:.0f},{gy+hh*.76:.0f} q{i*hh*.10:.0f},{hh*.52:.0f}'
+                  f' {i*hh*.06:.0f},{hh*.92:.0f}" fill="none" stroke="#b9ab99"'
+                  f' stroke-width="{max(2, hh*.07):.1f}" opacity=".75"/>')
+        # усы — две дуги по сторонам от рта, рот остаётся виден
+        for i in (-1, 1):
+            s += (f'<path d="M{x:.0f},{gy+hh*.40:.0f} q{i*hh*.30:.0f},{-hh*.04:.0f}'
+                  f' {i*hh*.52:.0f},{hh*.18:.0f}" fill="none" stroke="#ded3c4"'
+                  f' stroke-width="{max(2, hh*.14):.1f}" stroke-linecap="round"/>')
     if not platok and not shapka and not tulup:      # волосы шапкой поверх головы
         s += (f'<path d="M{x-hh*1.02:.0f},{gy-hh*.02:.0f} a{hh*1.02:.0f},{hh*1.08:.0f} 0 0 1'
               f' {hh*2.04:.0f},0 q{-hh*.26:.0f},{-hh*.30:.0f} {-hh*.72:.0f},{-hh*.18:.0f}'
@@ -133,15 +140,17 @@ def figura(x, y, h_, t, col="#1b1822", kant="#cfe4f5", platok=False, ph=.0,
               f' {hh*1.72:.0f},0" fill="none" stroke="#f2e2c8"'
               f' stroke-width="{max(2, hh*.11):.1f}" opacity=".55"/>')
     elif shapka or tulup:               # тулья, околыш и меховые уши поверх головы
-        s += (f'<path d="M{x-hh*1.14:.0f},{gy-hh*.04:.0f} a{hh*1.14:.0f},{hh*1.18:.0f} 0 0 1'
+        s += (f'<path d="M{x-hh*1.14:.0f},{gy-hh*.42:.0f} a{hh*1.14:.0f},{hh*1.20:.0f} 0 0 1'
               f' {hh*2.28:.0f},0 Z" fill="#4a3a2c" stroke="{K}"'
               f' stroke-width="{max(2, h_*.011):.1f}"/>')
         for i in (-1, 1):
-            s += (f'<ellipse cx="{x+i*hh*1.08:.0f}" cy="{gy+hh*.26:.0f}" rx="{hh*.27:.0f}"'
-                  f' ry="{hh*.46:.0f}" fill="#8a6a4a" stroke="{K}"'
+            s += (f'<ellipse cx="{x+i*hh*1.10:.0f}" cy="{gy+hh*.10:.0f}" rx="{hh*.24:.0f}"'
+                  f' ry="{hh*.44:.0f}" fill="#8a6a4a" stroke="{K}"'
                   f' stroke-width="{max(2, h_*.009):.1f}"/>')
-        s += (f'<rect x="{x-hh*1.16:.0f}" y="{gy-hh*.22:.0f}" width="{hh*2.32:.0f}"'
-              f' height="{hh*.36:.0f}" rx="{hh*.16:.0f}" fill="#8a6a4a" stroke="{K}"'
+        # околыш идёт ПО ЛБУ, выше глаз: прежде он садился ровно на линию
+        # глаз и лицо оставалось без мимики (осмотр 14.11, 20 планов)
+        s += (f'<rect x="{x-hh*1.16:.0f}" y="{gy-hh*.62:.0f}" width="{hh*2.32:.0f}"'
+              f' height="{hh*.32:.0f}" rx="{hh*.14:.0f}" fill="#8a6a4a" stroke="{K}"'
               f' stroke-width="{max(2, h_*.009):.1f}"/>')
     # светлый кант по плечам: отделяет фигуру от тёмного фона
     s += (f'<path d="M{x-w_*.33:.0f},{plech:.0f} q{w_*.33:.0f},{-h_*.055:.0f} {w_*.66:.0f},0"'
