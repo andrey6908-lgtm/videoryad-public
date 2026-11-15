@@ -1,0 +1,66 @@
+{
+ "11": {
+  "text": {
+   "words": "ПОЛЬША ОТХОДИТ ОТ КАССЫ",
+   "sub": "программа ПУРЛ без польских денег",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  },
+  "photo": "overlays/scene_011.jpg",
+  "at": 1.2,
+  "anchor": "br",
+  "sound": "whoosh"
+ },
+ "50": {
+  "text": {
+   "words": "ВОЗВРАЩЕНИЕ МЕРКЕЛЬ",
+   "sub": "спор о переговорах две тысячи пятнадцатого",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "1": {
+  "photo": "overlays/scene_001.jpg",
+  "at": 1.2,
+  "anchor": "br",
+  "sound": "pop"
+ },
+ "4": {
+  "photo": "overlays/scene_004.jpg",
+  "at": 1.2,
+  "anchor": "br",
+  "sound": "ding"
+ },
+ "12": {
+  "photo": "overlays/scene_012.jpg",
+  "at": 1.2,
+  "anchor": "br",
+  "sound": "pshik"
+ },
+ "15": {
+  "photo": "overlays/scene_015.jpg",
+  "at": 1.2,
+  "anchor": "bl",
+  "sound": "mashinka"
+ },
+ "18": {
+  "photo": "overlays/scene_018.jpg",
+  "at": 1.2,
+  "anchor": "bl",
+  "sound": "whoosh"
+ },
+ "49": {
+  "photo": "overlays/scene_049.jpg",
+  "at": 1.2,
+  "anchor": "br",
+  "sound": "pop"
+ },
+ "64": {
+  "photo": "overlays/scene_064.jpg",
+  "at": 1.2,
+  "anchor": "bl",
+  "sound": "zatvor"
+ }
+}
