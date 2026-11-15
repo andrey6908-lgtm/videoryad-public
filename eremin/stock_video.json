@@ -19,6 +19,16 @@
   "start": 1.0,
   "tags": "wave, rock, splash, sunset, sea, shore, seascape, coastline,"
  },
+ "16": {
+  "url": "https://videos.pexels.com/video-files/30600695/13102216_1280_720_30fps.mp4",
+  "id": "px30600695",
+  "w": 1280,
+  "h": 720,
+  "dur": 8,
+  "sek": 7.45,
+  "start": 0,
+  "tags": "sunlit-olive-grove-in-zakynthos-greece-30600695"
+ },
  "29": {
   "url": "https://videos.pexels.com/video-files/14955350/14955350-hd_1280_720_25fps.mp4",
   "id": "px14955350",
@@ -49,6 +59,26 @@
   "start": 1.0,
   "tags": "lamp, kerosene, flashlight, fire, old, antiques"
  },
+ "59": {
+  "url": "https://videos.pexels.com/video-files/16291674/16291674-hd_1280_720_60fps.mp4",
+  "id": "px16291674",
+  "w": 1280,
+  "h": 720,
+  "dur": 15,
+  "sek": 3.87,
+  "start": 1.0,
+  "tags": "a-man-holding-a-sack-of-yellow-grains-16291674"
+ },
+ "69": {
+  "url": "https://videos.pexels.com/video-files/7463960/7463960-hd_1280_720_30fps.mp4",
+  "id": "px7463960",
+  "w": 1280,
+  "h": 720,
+  "dur": 21,
+  "sek": 9.87,
+  "start": 1.0,
+  "tags": "men-carrying-a-sofa-7463960"
+ },
  "79": {
   "url": "https://cdn.pixabay.com/video/2017/10/17/12483-238805555_medium.mp4",
   "id": "12483",
@@ -58,6 +88,16 @@
   "sek": 2.64,
   "start": 1.0,
   "tags": "rowan, branch, autumn, red, berries, bright, sky, fruit, row"
+ },
+ "93": {
+  "url": "https://videos.pexels.com/video-files/7233570/7233570-hd_1280_720_30fps.mp4",
+  "id": "px7233570",
+  "w": 1280,
+  "h": 720,
+  "dur": 10,
+  "sek": 10.56,
+  "start": 0,
+  "tags": "close-up-shot-of-a-animal-skin-7233570"
  },
  "97": {
   "url": "https://videos.pexels.com/video-files/4317605/4317605-hd_1280_720_30fps.mp4",

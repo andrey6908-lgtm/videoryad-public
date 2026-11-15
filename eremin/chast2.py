@@ -2014,6 +2014,9 @@ def dostatok_uhodit_verenicey(t):
     amb += (f'<rect x="640" y="-120" width="140" height="120" rx="8"'
             f' fill="{DOSKA2}" {o(6)}/>')
     s += SL(Z_DAL, amb)
+    # R-0053: в воротах амбара — настоящий кадр припасов. Метка до створок,
+    # поэтому дощатые створки и уходящие припасы остаются поверх.
+    s += SL(Z_DAL, mesto_stoka(340, 200, 940, 480, "pryam"))
     vx, vy, vw, vh = 330, 240, 760, 620
     s += SL(Z_SRED, f'<rect x="{vx-40}" y="{vy-40}" width="{vw+80}" height="{vh+40}"'
                     f' rx="12" fill="{DOSKA2}" {o(10)}/>')
@@ -2978,15 +2981,17 @@ def gruzovik_u_podezda(t):
                         f' ry="16" fill="#ffffff" opacity=".45"/></g>')
     fx_, fy_ = 400, 900
     fur = ten(fx_ + 60, fy_ + 16, 460, 26, .5)
-    fur += (f'<rect x="{fx_-360:.0f}" y="{fy_-480:.0f}" width="760" height="420"'
+    fur += (f'<rect x="{fx_-380:.0f}" y="{fy_-500:.0f}" width="880" height="460"'
             f' rx="16" fill="#cfd6dc" {o(10)}/>')
-    fur += (f'<path d="M{fx_+400:.0f},{fy_-60:.0f} l0,-300 l120,-20 l90,140 l0,180 Z"'
+    # R-0053: борт фургона открыт, внутри настоящий кадр погрузки (780x400).
+    fur += mesto_stoka(fx_ - 360, fy_ - 480, 780, 400, "pryam")
+    fur += (f'<path d="M{fx_+500:.0f},{fy_-60:.0f} l0,-300 l120,-20 l90,140 l0,180 Z"'
             f' fill="#b9c2c8" {o(9)}/>')
-    fur += (f'<path d="M{fx_+430:.0f},{fy_-340:.0f} l90,-14 l64,118 h-154 Z"'
+    fur += (f'<path d="M{fx_+530:.0f},{fy_-340:.0f} l90,-14 l64,118 h-154 Z"'
             f' fill="url(#stekl)" opacity=".75" {o(5)}/>')
-    fur += (f'<circle cx="{fx_+586:.0f}" cy="{fy_-120:.0f}" r="26" fill="{SVET}"'
+    fur += (f'<circle cx="{fx_+686:.0f}" cy="{fy_-120:.0f}" r="26" fill="{SVET}"'
             f' opacity="{.5+.4*abs(A.w(t,1.8)):.2f}" {o(4)}/>')
-    fur += teplo(fx_ + 600, fy_ - 120, 260, 200, .34)
+    fur += teplo(fx_ + 700, fy_ - 120, 260, 200, .34)
     zakr = A.ease(A.seg(t, 4.0, 1.6))
     fur += (f'<g transform="rotate({-20+18*zakr:.0f} {fx_-360:.0f} {fy_-60:.0f})">'
             f'<rect x="{fx_-540:.0f}" y="{fy_-470:.0f}" width="190" height="410"'

@@ -1214,6 +1214,9 @@ def uchitel_i_dva_uchenika_pod_kolonna(t):
     s += nebo("den", t, False, 257)
     s += SL(Z_DAL, kladka(0, 0, W, 360, 84, "url(#kamen)"))
     s += SL(Z_DAL, svody(t, "#554c40", 4))
+    # R-0053: настоящий кадр ЗА колоннадой — оливковая роща в проёме арки.
+    # Метка стоит ДО колонн, поэтому колонны и фигуры остаются поверх кадра.
+    s += SL(Z_DAL, mesto_stoka(520, 190, 880, 520, "arka"))
     kol = ""
     for i in range(5):
         kx = 90 + i * 430
@@ -2802,7 +2805,9 @@ def babushka_i_shapka_na_kryuchke(t):
     s += SL(Z_SRED, ush)
     s += SL(Z_SRED, teplo(ux, uy - 60, 330, 280, .32 + .1 * abs(A.w(t, 1.8))))
     tyan = A.ease(A.seg(t, .4, 1.1)) - A.ease(A.seg(t, 2.6, 1.0))
-    ruk, (hx, hy) = rukav(1300, 1000, 420, -118 + 26 * (1 - tyan), t, "#2c4a5e", "#ffd98a", .1, 3.0)
+    # рука тянется к крючку ОТ ПЛЕЧА фигуры (1360,1070,h=560 → плечо 706),
+    # прежде она росла от пояса — это и была третья рука (R-0051)
+    ruk, (hx, hy) = rukav(1266, 706, 185, -155 + 26 * (1 - tyan), t, "#2c4a5e", "#ffd98a", .1, 3.0)
     s += SL(Z_SRED, ruk)
     s += SL(Z_SRED, f'<ellipse cx="{hx:.0f}" cy="{hy:.0f}" rx="34" ry="24" fill="#2c4a5e" {o(5)}/>')
     s += SL(Z_SRED, figura(1360, 1070, 560, t, "#24313d", "#ffd98a", False, .3))

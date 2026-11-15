@@ -207,7 +207,9 @@ def body(pl, t, p=.5, zaglushki=True):
     """SVG кадра. t — локальное время плана, p — доля плана (для камеры)."""
     imya = DEK[pl["lok"]]
     fn = getattr(lok, imya)
-    syr = fn(t)
+    # два прохода: первый собирает, куда крепятся внешние руки, второй рисует
+    # фигуру без рукава на этом плече — иначе три руки (R-0051, 15.11.2026)
+    syr = lok.scena(fn, t)
     syr = _vstavit_stok(syr, pl, t, zaglushki)
     if '<g data-z="-' not in syr:
         # интерьеру без переднего плана добавляем край кадра: без ближнего
@@ -272,6 +274,15 @@ def nalozheniya(pl, t, proem=None):
                 if kus:
                     stroki.append((kus, 86 if len(kus) < 18 else 56))
         return over.titr_obeshchanie(stroki, t, .5, 1120, 300)
+    # СКОЛЬКО В ЭТОМ ПЛАНЕ НАДПИСЕЙ-ЯРЛЫКОВ (на афише, на свитке, вывеска…).
+    # Прежде они клались шагом 800 px от x=560, и ТРЕТЬЯ всегда уезжала за край
+    # кадра (на сданном 17-11 это план 110, нарушение R-0030). Теперь столько,
+    # сколько их есть, раскладываются по ширине кадра ровно.
+    _YARL = ("подпись", "на афиш", "надпись на свитк", "надпис", "на лопат",
+             "на лист", "на обложке", "вывеска")
+    yarlykov = sum(1 for tip_, _ in nadpisi(pl)
+                   if tip_.lower().startswith(_YARL)
+                   and not (tip_.lower().startswith("подпись") and proem))
     for tip, s in nadpisi(pl):
         tl = tip.lower()
         if tl.startswith("плашка главы"):
@@ -299,11 +310,9 @@ def nalozheniya(pl, t, proem=None):
             px, py, pw, ph = proem
             yn = py + ph + 56 if py + ph + 70 <= 1050 else max(90, py - 24)
             out += over.nadpis(px + pw / 2, yn, s, t, .7, 42)
-        elif (tl.startswith("подпись") or tl.startswith("на афиш")
-              or tl.startswith("надпись на свитк") or tl.startswith("надпис")
-              or tl.startswith("на лопат") or tl.startswith("на лист")
-              or tl.startswith("на обложке") or tl.startswith("вывеска")):
-            out += over.nadpis(560 + kart * 800, 250, s, t, .7, 42)
+        elif tl.startswith(_YARL):
+            shag = W / (yarlykov + 1)
+            out += over.nadpis(shag * (kart + 1), 250, s, t, .7, 42)
             kart += 1
         else:                      # обычная плашка, пословица, присказка
             kg = over.kegl_pod(s, maxw - 68, "SERIF", 56, 26)

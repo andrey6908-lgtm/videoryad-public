@@ -11,6 +11,72 @@ from baza import *
 import anim as A
 
 
+# --- АНАТОМИЯ (R-0051, 15.11.2026) ----------------------------------------
+# Его слово 15.11: «какие-то три руки… должны соответствовать механике, физике,
+# откуда у человека что растёт». Третья рука рождалась так: сцена рисовала
+# фигуру (у неё два рукава) и СВЕРХУ свою тянущуюся руку через rukav().
+# Лечение: кадр собирается в два прохода. Первый проход запоминает, куда
+# крепятся внешние руки, второй — фигура не рисует свой рукав на том плече,
+# откуда уже растёт внешняя рука. Гейт: anatomiya.py.
+_RUKI = []        # точки крепления внешних рук, набираются первым проходом
+_SOBRANO = None   # готовый список для второго прохода (None = проход первый)
+_NICH = []        # руки, объявленные ничьими (крупный план кистей)
+_FIGURY = []      # (x, плечо, погашено, ширина, рост) — для гейта
+_PRIKLEENO = []   # какие внешние руки сели на плечо фигуры — для гейта
+
+
+def ruki_sbros():
+    """Начать первый проход: забыть прежние руки."""
+    global _RUKI, _SOBRANO
+    _RUKI, _SOBRANO = [], None
+    del _FIGURY[:], _PRIKLEENO[:], _NICH[:]
+
+
+def ruki_gotovo():
+    """Закрыть первый проход: со следующего вызова figura прячет рукава."""
+    global _SOBRANO
+    _SOBRANO = list(_RUKI)
+    del _FIGURY[:], _PRIKLEENO[:]     # фигуры первого прохода не считаем
+
+
+def ruki_spisok():
+    """Что собрано первым проходом (для гейта anatomiya.py)."""
+    return list(_RUKI)
+
+
+def anatomiya_svodka():
+    """Для гейта: фигуры, внешние руки и руки, не севшие ни на одно плечо.
+
+    Сирота ДЕЛИТСЯ НАДВОЕ, и это важно:
+    · «на фигуре» — рука растёт из туловища мимо плеча. Это и есть третья
+      рука (R-0051), сборка с такой рукой не идёт;
+    · «вне фигур» — крупный план кистей там, где человека в кадре нет
+      (руки держат шапку, тянут ухват). Это норма, только отчёт.
+    """
+    siroty = [r for r in _RUKI if r not in _PRIKLEENO]
+    na_figure = []
+    for hx, hy in siroty:
+        for fx, fpl, _p, w_, h_ in _FIGURY:
+            if abs(hx - fx) <= w_ * .70 and -h_ * .10 <= hy - fpl <= h_ * .62:
+                na_figure.append((hx, hy, fx, fpl))
+                break
+    return {"figur": len(_FIGURY), "ruk": len(_RUKI), "nichih": len(_NICH),
+            "pogasheno": sum(f[2] for f in _FIGURY), "siroty": siroty,
+            "na_figure": na_figure,
+            "bez_svoih": [f for f in _FIGURY if f[2] >= 2]}
+
+
+def scena(fn, t):
+    """Собрать сцену в два прохода — иначе у фигуры вырастает третья рука."""
+    ruki_sbros()
+    fn(t)
+    ruki_gotovo()
+    out = fn(t)
+    global _SOBRANO
+    _SOBRANO = None
+    return out
+
+
 def figura(x, y, h_, t, col="#1b1822", kant="#cfe4f5", platok=False, ph=.0,
            profil=False, op=1.0, tulup=False, naklon=0.0, boroda=False,
            shapka=False, lico=True, koja="#f0cfae"):
@@ -53,10 +119,20 @@ def figura(x, y, h_, t, col="#1b1822", kant="#cfe4f5", platok=False, ph=.0,
               f' ry="{h_*.035:.0f}" fill="{kant}" opacity=".55"/>')
         s += (f'<path d="M{x:.0f},{plech+h_*.03:.0f} L{x+w_*.10:.0f},{pod-h_*.02:.0f}"'
               f' stroke="{K}" stroke-width="{max(2, h_*.009):.1f}" opacity=".6" fill="none"/>')
-    # рукава вдоль тела, живые
+    # рукава вдоль тела, живые. Рукав НЕ рисуется на том плече, откуда сцена
+    # уже вывела свою руку через rukav(): иначе у человека три руки (R-0051).
+    _pog = 0
     for i in (-1, 1):
-        a = i * (12 + 5 * A.w(t, 1.9, ph + (0 if i < 0 else .4)))
         rx = x + i * w_ * .40
+        sel = [(hx, hy) for hx, hy in (_SOBRANO or ())
+               if abs(hx - rx) <= w_ * .80 and abs(hy - (plech + h_ * .02)) <= h_ * .30]
+        if sel:
+            _pog += 1
+            for r in sel:
+                if r not in _PRIKLEENO:
+                    _PRIKLEENO.append(r)
+            continue
+        a = i * (12 + 5 * A.w(t, 1.9, ph + (0 if i < 0 else .4)))
         s += (f'<g transform="rotate({a:.1f} {rx:.0f} {plech+h_*.02:.0f})">'
               f'<rect x="{rx-w_*.11:.0f}" y="{plech+h_*.01:.0f}" width="{w_*.22:.0f}"'
               f' height="{h_*.40:.0f}" rx="{w_*.11:.0f}" fill="{col}" stroke="{K}"'
@@ -156,14 +232,23 @@ def figura(x, y, h_, t, col="#1b1822", kant="#cfe4f5", platok=False, ph=.0,
     s += (f'<path d="M{x-w_*.33:.0f},{plech:.0f} q{w_*.33:.0f},{-h_*.055:.0f} {w_*.66:.0f},0"'
           f' fill="none" stroke="{kant}" stroke-width="{max(2, h_*.014):.1f}" opacity=".75"'
           f' stroke-linecap="round"/>')
+    _FIGURY.append((round(x, 1), round(plech, 1), _pog, round(w_, 1), round(h_, 1)))
     return s + '</g>'
 
 
-def rukav(x, y, dl, ug, t, col="#2a2430", kant="#cfe4f5", ph=.0, amp=7.0):
+def rukav(x, y, dl, ug, t, col="#2a2430", kant="#cfe4f5", ph=.0, amp=7.0,
+          nichya=False):
     """Рукав без кисти: правило проекта — рук в кадре не рисуем, работает
-    сам предмет. Рукав ходит, предмет на его конце двигают отдельно."""
+    сам предмет. Рукав ходит, предмет на его конце двигают отдельно.
+
+    nichya=True — рука НИЧЬЯ: крупный план кистей, человека в кадре нет
+    (руки держат шапку, хлопают в ладоши мимо моли). Такая рука не гасит
+    рукав соседней фигуры и не считается третьей рукой в гейте anatomiya.py.
+    """
     a = math.radians(ug + amp * A.w(t, .9, ph))
     x2, y2 = x + dl * math.cos(a), y + dl * math.sin(a)
+    if _SOBRANO is None:                # первый проход: запомнили плечо
+        (_NICH if nichya else _RUKI).append((x, y))
     return (f'<line x1="{x:.0f}" y1="{y:.0f}" x2="{x2:.0f}" y2="{y2:.0f}"'
             f' stroke="{col}" stroke-width="{max(14, dl*.19):.0f}" stroke-linecap="round"/>'
             f'<line x1="{x:.0f}" y1="{y:.0f}" x2="{x2:.0f}" y2="{y2:.0f}"'

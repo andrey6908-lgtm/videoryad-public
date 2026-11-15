@@ -13,6 +13,65 @@ from baza import *
 import anim as A
 
 # ═══ из lok_obshchee.py ═══
+_RUKI = []        # точки крепления внешних рук, набираются первым проходом
+_SOBRANO = None   # готовый список для второго прохода (None = проход первый)
+_NICH = []        # руки, объявленные ничьими (крупный план кистей)
+_FIGURY = []      # (x, плечо, погашено, ширина, рост) — для гейта
+_PRIKLEENO = []   # какие внешние руки сели на плечо фигуры — для гейта
+
+
+def ruki_sbros():
+    """Начать первый проход: забыть прежние руки."""
+    global _RUKI, _SOBRANO
+    _RUKI, _SOBRANO = [], None
+    del _FIGURY[:], _PRIKLEENO[:], _NICH[:]
+
+
+def ruki_gotovo():
+    """Закрыть первый проход: со следующего вызова figura прячет рукава."""
+    global _SOBRANO
+    _SOBRANO = list(_RUKI)
+    del _FIGURY[:], _PRIKLEENO[:]     # фигуры первого прохода не считаем
+
+
+def ruki_spisok():
+    """Что собрано первым проходом (для гейта anatomiya.py)."""
+    return list(_RUKI)
+
+
+def anatomiya_svodka():
+    """Для гейта: фигуры, внешние руки и руки, не севшие ни на одно плечо.
+
+    Сирота ДЕЛИТСЯ НАДВОЕ, и это важно:
+    · «на фигуре» — рука растёт из туловища мимо плеча. Это и есть третья
+      рука (R-0051), сборка с такой рукой не идёт;
+    · «вне фигур» — крупный план кистей там, где человека в кадре нет
+      (руки держат шапку, тянут ухват). Это норма, только отчёт.
+    """
+    siroty = [r for r in _RUKI if r not in _PRIKLEENO]
+    na_figure = []
+    for hx, hy in siroty:
+        for fx, fpl, _p, w_, h_ in _FIGURY:
+            if abs(hx - fx) <= w_ * .70 and -h_ * .10 <= hy - fpl <= h_ * .62:
+                na_figure.append((hx, hy, fx, fpl))
+                break
+    return {"figur": len(_FIGURY), "ruk": len(_RUKI), "nichih": len(_NICH),
+            "pogasheno": sum(f[2] for f in _FIGURY), "siroty": siroty,
+            "na_figure": na_figure,
+            "bez_svoih": [f for f in _FIGURY if f[2] >= 2]}
+
+
+def scena(fn, t):
+    """Собрать сцену в два прохода — иначе у фигуры вырастает третья рука."""
+    ruki_sbros()
+    fn(t)
+    ruki_gotovo()
+    out = fn(t)
+    global _SOBRANO
+    _SOBRANO = None
+    return out
+
+
 def figura(x, y, h_, t, col="#1b1822", kant="#cfe4f5", platok=False, ph=.0,
            profil=False, op=1.0, tulup=False, naklon=0.0, boroda=False,
            shapka=False, lico=True, koja="#f0cfae"):
@@ -55,10 +114,20 @@ def figura(x, y, h_, t, col="#1b1822", kant="#cfe4f5", platok=False, ph=.0,
               f' ry="{h_*.035:.0f}" fill="{kant}" opacity=".55"/>')
         s += (f'<path d="M{x:.0f},{plech+h_*.03:.0f} L{x+w_*.10:.0f},{pod-h_*.02:.0f}"'
               f' stroke="{K}" stroke-width="{max(2, h_*.009):.1f}" opacity=".6" fill="none"/>')
-    # рукава вдоль тела, живые
+    # рукава вдоль тела, живые. Рукав НЕ рисуется на том плече, откуда сцена
+    # уже вывела свою руку через rukav(): иначе у человека три руки (R-0051).
+    _pog = 0
     for i in (-1, 1):
-        a = i * (12 + 5 * A.w(t, 1.9, ph + (0 if i < 0 else .4)))
         rx = x + i * w_ * .40
+        sel = [(hx, hy) for hx, hy in (_SOBRANO or ())
+               if abs(hx - rx) <= w_ * .80 and abs(hy - (plech + h_ * .02)) <= h_ * .30]
+        if sel:
+            _pog += 1
+            for r in sel:
+                if r not in _PRIKLEENO:
+                    _PRIKLEENO.append(r)
+            continue
+        a = i * (12 + 5 * A.w(t, 1.9, ph + (0 if i < 0 else .4)))
         s += (f'<g transform="rotate({a:.1f} {rx:.0f} {plech+h_*.02:.0f})">'
               f'<rect x="{rx-w_*.11:.0f}" y="{plech+h_*.01:.0f}" width="{w_*.22:.0f}"'
               f' height="{h_*.40:.0f}" rx="{w_*.11:.0f}" fill="{col}" stroke="{K}"'
@@ -158,14 +227,23 @@ def figura(x, y, h_, t, col="#1b1822", kant="#cfe4f5", platok=False, ph=.0,
     s += (f'<path d="M{x-w_*.33:.0f},{plech:.0f} q{w_*.33:.0f},{-h_*.055:.0f} {w_*.66:.0f},0"'
           f' fill="none" stroke="{kant}" stroke-width="{max(2, h_*.014):.1f}" opacity=".75"'
           f' stroke-linecap="round"/>')
+    _FIGURY.append((round(x, 1), round(plech, 1), _pog, round(w_, 1), round(h_, 1)))
     return s + '</g>'
 
 
-def rukav(x, y, dl, ug, t, col="#2a2430", kant="#cfe4f5", ph=.0, amp=7.0):
+def rukav(x, y, dl, ug, t, col="#2a2430", kant="#cfe4f5", ph=.0, amp=7.0,
+          nichya=False):
     """Рукав без кисти: правило проекта — рук в кадре не рисуем, работает
-    сам предмет. Рукав ходит, предмет на его конце двигают отдельно."""
+    сам предмет. Рукав ходит, предмет на его конце двигают отдельно.
+
+    nichya=True — рука НИЧЬЯ: крупный план кистей, человека в кадре нет
+    (руки держат шапку, хлопают в ладоши мимо моли). Такая рука не гасит
+    рукав соседней фигуры и не считается третьей рукой в гейте anatomiya.py.
+    """
     a = math.radians(ug + amp * A.w(t, .9, ph))
     x2, y2 = x + dl * math.cos(a), y + dl * math.sin(a)
+    if _SOBRANO is None:                # первый проход: запомнили плечо
+        (_NICH if nichya else _RUKI).append((x, y))
     return (f'<line x1="{x:.0f}" y1="{y:.0f}" x2="{x2:.0f}" y2="{y2:.0f}"'
             f' stroke="{col}" stroke-width="{max(14, dl*.19):.0f}" stroke-linecap="round"/>'
             f'<line x1="{x:.0f}" y1="{y:.0f}" x2="{x2:.0f}" y2="{y2:.0f}"'
@@ -1533,6 +1611,9 @@ def uchitel_i_dva_uchenika_pod_kolonna(t):
     s += nebo("den", t, False, 257)
     s += SL(Z_DAL, kladka(0, 0, W, 360, 84, "url(#kamen)"))
     s += SL(Z_DAL, svody(t, "#554c40", 4))
+    # R-0053: настоящий кадр ЗА колоннадой — оливковая роща в проёме арки.
+    # Метка стоит ДО колонн, поэтому колонны и фигуры остаются поверх кадра.
+    s += SL(Z_DAL, mesto_stoka(520, 190, 880, 520, "arka"))
     kol = ""
     for i in range(5):
         kx = 90 + i * 430
@@ -3121,7 +3202,9 @@ def babushka_i_shapka_na_kryuchke(t):
     s += SL(Z_SRED, ush)
     s += SL(Z_SRED, teplo(ux, uy - 60, 330, 280, .32 + .1 * abs(A.w(t, 1.8))))
     tyan = A.ease(A.seg(t, .4, 1.1)) - A.ease(A.seg(t, 2.6, 1.0))
-    ruk, (hx, hy) = rukav(1300, 1000, 420, -118 + 26 * (1 - tyan), t, "#2c4a5e", "#ffd98a", .1, 3.0)
+    # рука тянется к крючку ОТ ПЛЕЧА фигуры (1360,1070,h=560 → плечо 706),
+    # прежде она росла от пояса — это и была третья рука (R-0051)
+    ruk, (hx, hy) = rukav(1266, 706, 185, -155 + 26 * (1 - tyan), t, "#2c4a5e", "#ffd98a", .1, 3.0)
     s += SL(Z_SRED, ruk)
     s += SL(Z_SRED, f'<ellipse cx="{hx:.0f}" cy="{hy:.0f}" rx="34" ry="24" fill="#2c4a5e" {o(5)}/>')
     s += SL(Z_SRED, figura(1360, 1070, 560, t, "#24313d", "#ffd98a", False, .3))
@@ -5237,6 +5320,9 @@ def dostatok_uhodit_verenicey(t):
     amb += (f'<rect x="640" y="-120" width="140" height="120" rx="8"'
             f' fill="{DOSKA2}" {o(6)}/>')
     s += SL(Z_DAL, amb)
+    # R-0053: в воротах амбара — настоящий кадр припасов. Метка до створок,
+    # поэтому дощатые створки и уходящие припасы остаются поверх.
+    s += SL(Z_DAL, mesto_stoka(340, 200, 940, 480, "pryam"))
     vx, vy, vw, vh = 330, 240, 760, 620
     s += SL(Z_SRED, f'<rect x="{vx-40}" y="{vy-40}" width="{vw+80}" height="{vh+40}"'
                     f' rx="12" fill="{DOSKA2}" {o(10)}/>')
@@ -6201,15 +6287,17 @@ def gruzovik_u_podezda(t):
                         f' ry="16" fill="#ffffff" opacity=".45"/></g>')
     fx_, fy_ = 400, 900
     fur = ten(fx_ + 60, fy_ + 16, 460, 26, .5)
-    fur += (f'<rect x="{fx_-360:.0f}" y="{fy_-480:.0f}" width="760" height="420"'
+    fur += (f'<rect x="{fx_-380:.0f}" y="{fy_-500:.0f}" width="880" height="460"'
             f' rx="16" fill="#cfd6dc" {o(10)}/>')
-    fur += (f'<path d="M{fx_+400:.0f},{fy_-60:.0f} l0,-300 l120,-20 l90,140 l0,180 Z"'
+    # R-0053: борт фургона открыт, внутри настоящий кадр погрузки (780x400).
+    fur += mesto_stoka(fx_ - 360, fy_ - 480, 780, 400, "pryam")
+    fur += (f'<path d="M{fx_+500:.0f},{fy_-60:.0f} l0,-300 l120,-20 l90,140 l0,180 Z"'
             f' fill="#b9c2c8" {o(9)}/>')
-    fur += (f'<path d="M{fx_+430:.0f},{fy_-340:.0f} l90,-14 l64,118 h-154 Z"'
+    fur += (f'<path d="M{fx_+530:.0f},{fy_-340:.0f} l90,-14 l64,118 h-154 Z"'
             f' fill="url(#stekl)" opacity=".75" {o(5)}/>')
-    fur += (f'<circle cx="{fx_+586:.0f}" cy="{fy_-120:.0f}" r="26" fill="{SVET}"'
+    fur += (f'<circle cx="{fx_+686:.0f}" cy="{fy_-120:.0f}" r="26" fill="{SVET}"'
             f' opacity="{.5+.4*abs(A.w(t,1.8)):.2f}" {o(4)}/>')
-    fur += teplo(fx_ + 600, fy_ - 120, 260, 200, .34)
+    fur += teplo(fx_ + 700, fy_ - 120, 260, 200, .34)
     zakr = A.ease(A.seg(t, 4.0, 1.6))
     fur += (f'<g transform="rotate({-20+18*zakr:.0f} {fx_-360:.0f} {fy_-60:.0f})">'
             f'<rect x="{fx_-540:.0f}" y="{fy_-470:.0f}" width="190" height="410"'
@@ -8945,7 +9033,7 @@ def semya_prosit_svetec(t):
     gx = 420
     s += SL(Z_SRED, figura(gx, 1066, 600, t, "#2f2a36", "#ffd98a", False, .2,
                            True, 1.0, False, 2.0 + 20 * pokl, True))
-    ruk, (kx, ky) = rukav(gx + 120, 720 + pokl * 150, 200,
+    ruk, (kx, ky) = rukav(gx + 120, 676 + pokl * 120, 200,
                           -54 - 20 * A.w(t, .9), t, "#2f2a36", "#ffd98a", .3, 8.0)
     s += SL(Z_SRED, ruk)
     s += SL(Z_SRED, f'<path d="M{kx:.0f},{ky:.0f} l{10:.0f},{-80:.0f}"'
@@ -9506,13 +9594,15 @@ def shapka_na_prosvet(t):
     razd = A.ease(A.seg(t, .4, 1.0))
     shx, shy = lx, ly + 420
     s += SL(Z_SRED, _shapka_meh(shx, shy, 2.1, t, .1, razd))
+    # R-0053: внутри шапки — настоящий мех на просвет (эллипс, порог 360).
+    s += SL(Z_SRED, mesto_stoka(shx - 230, shy - 170, 460, 310, "ellips"))
     s += SL(Z_SRED, f'<ellipse cx="{shx:.0f}" cy="{shy-150:.0f}" rx="{90*razd:.0f}"'
                     f' ry="{150*razd:.0f}" fill="{SVET}" opacity="{.26*razd:.2f}"/>')
     # рукава держат шапку с двух сторон, без кистей
     for i, sg in ((0, -1), (1, 1)):
         ruk, (kx, ky) = rukav(shx + sg * 420, shy + 190, 140,
                               (-160 if sg > 0 else -20) + sg * 10 * A.w(t, 1.1, i * .3),
-                              t, "#43394a", "#ffd98a", .2 + i * .3, 5.0)
+                              t, "#43394a", "#ffd98a", .2 + i * .3, 5.0, nichya=True)
         s += SL(Z_SRED, ruk)
         s += SL(Z_SRED, f'<ellipse cx="{kx:.0f}" cy="{ky:.0f}" rx="34" ry="26"'
                         f' fill="#43394a" {o(5)}/>')

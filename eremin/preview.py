@@ -13,7 +13,7 @@ def svg_doc(body, w=baza.W, h=baza.H):
 
 
 def png(name, t, out, w=640):
-    body = getattr(lok, name)(t)
+    body = lok.scena(getattr(lok, name), t)
     cairosvg.svg2png(bytestring=svg_doc(body).encode(), write_to=out,
                      output_width=w, output_height=int(w * baza.H / baza.W), unsafe=True)
 

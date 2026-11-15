@@ -15,7 +15,7 @@ L = Image.new("RGB", (cols * TW, rows * (TH + 20)), (18, 18, 22))
 d = ImageDraw.Draw(L)
 for i, nm in enumerate(names):
     svg = ('<svg xmlns="http://www.w3.org/2000/svg" width="%d" height="%d"><defs>%s</defs>%s</svg>'
-           % (W, H, defs(), getattr(lok, nm)(2.2)))
+           % (W, H, defs(), lok.scena(getattr(lok, nm), 2.2)))
     buf = io.BytesIO()
     cairosvg.svg2png(bytestring=svg.encode(), write_to=buf, output_width=TW, output_height=TH, unsafe=True)
     im = Image.open(buf).convert("RGB")

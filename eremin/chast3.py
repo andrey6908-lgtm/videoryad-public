@@ -1921,7 +1921,7 @@ def semya_prosit_svetec(t):
     gx = 420
     s += SL(Z_SRED, figura(gx, 1066, 600, t, "#2f2a36", "#ffd98a", False, .2,
                            True, 1.0, False, 2.0 + 20 * pokl, True))
-    ruk, (kx, ky) = rukav(gx + 120, 720 + pokl * 150, 200,
+    ruk, (kx, ky) = rukav(gx + 120, 676 + pokl * 120, 200,
                           -54 - 20 * A.w(t, .9), t, "#2f2a36", "#ffd98a", .3, 8.0)
     s += SL(Z_SRED, ruk)
     s += SL(Z_SRED, f'<path d="M{kx:.0f},{ky:.0f} l{10:.0f},{-80:.0f}"'
@@ -2482,13 +2482,15 @@ def shapka_na_prosvet(t):
     razd = A.ease(A.seg(t, .4, 1.0))
     shx, shy = lx, ly + 420
     s += SL(Z_SRED, _shapka_meh(shx, shy, 2.1, t, .1, razd))
+    # R-0053: внутри шапки — настоящий мех на просвет (эллипс, порог 360).
+    s += SL(Z_SRED, mesto_stoka(shx - 230, shy - 170, 460, 310, "ellips"))
     s += SL(Z_SRED, f'<ellipse cx="{shx:.0f}" cy="{shy-150:.0f}" rx="{90*razd:.0f}"'
                     f' ry="{150*razd:.0f}" fill="{SVET}" opacity="{.26*razd:.2f}"/>')
     # рукава держат шапку с двух сторон, без кистей
     for i, sg in ((0, -1), (1, 1)):
         ruk, (kx, ky) = rukav(shx + sg * 420, shy + 190, 140,
                               (-160 if sg > 0 else -20) + sg * 10 * A.w(t, 1.1, i * .3),
-                              t, "#43394a", "#ffd98a", .2 + i * .3, 5.0)
+                              t, "#43394a", "#ffd98a", .2 + i * .3, 5.0, nichya=True)
         s += SL(Z_SRED, ruk)
         s += SL(Z_SRED, f'<ellipse cx="{kx:.0f}" cy="{ky:.0f}" rx="34" ry="26"'
                         f' fill="#43394a" {o(5)}/>')
