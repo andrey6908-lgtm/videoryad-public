@@ -1,0 +1,102 @@
+{
+  "11": {
+    "text": {
+      "words": "ПОЛЬША ОТХОДИТ ОТ КАССЫ",
+      "color": "yellow",
+      "pos": "ml",
+      "font": "default",
+      "sound": "mashinka",
+      "at": 0.5,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "программа ПУРЛ без польских денег",
+      "approved": true
+    },
+    "photo": "overlays/scene_011.jpg",
+    "at": 1.2,
+    "anchor": "br",
+    "sound": "whoosh",
+    "shape": "rect",
+    "scale": 1.0,
+    "approved": true,
+    "dash_ok": true
+  },
+  "50": {
+    "text": {
+      "words": "ВОЗВРАЩЕНИЕ МЕРКЕЛЬ",
+      "color": "white",
+      "pos": "ml",
+      "font": "default",
+      "sound": "pop",
+      "at": 0.5,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "спор о переговорах две тысячи пятнадцатого",
+      "approved": true
+    }
+  },
+  "1": {
+    "photo": "overlays/scene_001.jpg",
+    "at": 1.2,
+    "anchor": "top",
+    "sound": "pop",
+    "style": "up-center",
+    "approved": true,
+    "dash_ok": true,
+    "shape": "rect",
+    "scale": 1.0
+  },
+  "4": {
+    "photo": "overlays/scene_004.jpg",
+    "at": 1.2,
+    "anchor": "br",
+    "sound": "ding",
+    "approved": true,
+    "dash_ok": true,
+    "shape": "rect",
+    "scale": 1.0
+  },
+  "12": {
+    "photo": "overlays/scene_012.jpg",
+    "at": 1.2,
+    "anchor": "middle",
+    "sound": "pshik",
+    "style": "left",
+    "shape": "rect",
+    "scale": 1.0,
+    "approved": true,
+    "dash_ok": true
+  },
+  "15": {
+    "photo": "overlays/scene_015.jpg",
+    "at": 1.2,
+    "anchor": "bl",
+    "sound": "mashinka",
+    "shape": "rect",
+    "scale": 1.0,
+    "approved": true,
+    "dash_ok": true
+  },
+  "49": {
+    "photo": "overlays/scene_049.jpg",
+    "at": 1.2,
+    "anchor": "middle",
+    "sound": "pop",
+    "approved": true,
+    "dash_ok": true,
+    "shape": "rect",
+    "scale": 1.0,
+    "style": "left"
+  },
+  "64": {
+    "photo": "overlays/scene_064.jpg",
+    "at": 1.2,
+    "anchor": "top",
+    "sound": "zatvor",
+    "style": "left",
+    "shape": "rect",
+    "scale": 1.0,
+    "approved": true,
+    "dash_ok": true
+  }
+}
