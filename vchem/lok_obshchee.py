@@ -550,6 +550,21 @@ def figura(x, y, h_, t, col=TSINIY, kant=HOLOD_KANT, ph=.0, platok=False,
           f' height="{h_*.045:.0f}" fill="{koja}" {o(3)}/>')
     s += (f'<ellipse cx="{x:.0f}" cy="{gy:.0f}" rx="{hh*.80:.0f}" ry="{hh:.0f}"'
           f' fill="{koja}" stroke="{K}" stroke-width="{max(2, h_*.009):.1f}"/>')
+    # УБОР РИСУЕТСЯ ДО ЛИЦА (поправлено 16.11.2026 по осмотру кадров):
+    # платок и причёска шли ПОВЕРХ лица и закрывали его сплошным пятном —
+    # ровно тот брак, на который он указывал («у человека нет лица»,
+    # R-0047). Сначала убор, потом глаза, брови, нос и рот.
+    if platok:
+        s += (f'<path d="M{x-hh*.95:.0f},{gy-hh*.42:.0f} q{hh*.95:.0f},{-hh*.95:.0f}'
+              f' {hh*1.90:.0f},0 q{-hh*.12:.0f},{hh*1.05:.0f} {-hh*.52:.0f},{hh*1.25:.0f}'
+              f' l{-hh*.86:.0f},0 q{-hh*.40:.0f},{-hh*.20:.0f} {-hh*.52:.0f},{-hh*1.25:.0f} Z"'
+              f' fill="{KORALL}" {o(4)}/>')
+    elif prichyoska:
+        s += (f'<path d="M{x-hh*.88:.0f},{gy-hh*.40:.0f} q{hh*.88:.0f},{-hh*1.02:.0f}'
+              f' {hh*1.76:.0f},0 q{-hh*.14:.0f},{hh*.30:.0f} {-hh*.50:.0f},{hh*.16:.0f}'
+              f' q{-hh*.38:.0f},{-hh*.20:.0f} {-hh*.76:.0f},0'
+              f' q{-hh*.36:.0f},{hh*.14:.0f} {-hh*.50:.0f},{-hh*.16:.0f} Z"'
+              f' fill="#53392a" {o(4)}/>')
     if lico and h_ >= 220:
         r = 2.2 if A.blink(t, 3.4) else hh * .11
         for i in (-1, 1):
@@ -569,17 +584,6 @@ def figura(x, y, h_, t, col=TSINIY, kant=HOLOD_KANT, ph=.0, platok=False,
         s += (f'<path d="M{x-hh*.18:.0f},{gy+hh*.45:.0f} q{hh*.18:.0f},{hh*.14:.0f}'
               f' {hh*.36:.0f},0" fill="none" stroke="#a33b3b"'
               f' stroke-width="{max(2, hh*.055):.1f}" stroke-linecap="round"/>')
-    if platok:
-        s += (f'<path d="M{x-hh*.95:.0f},{gy-hh*.12:.0f} q{hh*.95:.0f},{-hh*1.15:.0f}'
-              f' {hh*1.90:.0f},0 q{-hh*.20:.0f},{hh*.85:.0f} {-hh*.60:.0f},{hh*.95:.0f}'
-              f' l{-hh*.70:.0f},0 q{-hh*.40:.0f},{-hh*.10:.0f} {-hh*.60:.0f},{-hh*.95:.0f} Z"'
-              f' fill="{KORALL}" {o(4)}/>')
-    elif prichyoska:
-        s += (f'<path d="M{x-hh*.86:.0f},{gy-hh*.10:.0f} q{hh*.86:.0f},{-hh*1.10:.0f}'
-              f' {hh*1.72:.0f},0 q{-hh*.16:.0f},{hh*.44:.0f} {-hh*.52:.0f},{hh*.30:.0f}'
-              f' q{-hh*.34:.0f},{-hh*.22:.0f} {-hh*.68:.0f},0'
-              f' q{-hh*.36:.0f},{hh*.12:.0f} {-hh*.52:.0f},{-hh*.30:.0f} Z"'
-              f' fill="#53392a" {o(4)}/>')
     s += "</g>"
     return s
 

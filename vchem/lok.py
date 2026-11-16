@@ -540,6 +540,21 @@ def figura(x, y, h_, t, col=TSINIY, kant=HOLOD_KANT, ph=.0, platok=False,
           f' height="{h_*.045:.0f}" fill="{koja}" {o(3)}/>')
     s += (f'<ellipse cx="{x:.0f}" cy="{gy:.0f}" rx="{hh*.80:.0f}" ry="{hh:.0f}"'
           f' fill="{koja}" stroke="{K}" stroke-width="{max(2, h_*.009):.1f}"/>')
+    # УБОР РИСУЕТСЯ ДО ЛИЦА (поправлено 16.11.2026 по осмотру кадров):
+    # платок и причёска шли ПОВЕРХ лица и закрывали его сплошным пятном —
+    # ровно тот брак, на который он указывал («у человека нет лица»,
+    # R-0047). Сначала убор, потом глаза, брови, нос и рот.
+    if platok:
+        s += (f'<path d="M{x-hh*.95:.0f},{gy-hh*.42:.0f} q{hh*.95:.0f},{-hh*.95:.0f}'
+              f' {hh*1.90:.0f},0 q{-hh*.12:.0f},{hh*1.05:.0f} {-hh*.52:.0f},{hh*1.25:.0f}'
+              f' l{-hh*.86:.0f},0 q{-hh*.40:.0f},{-hh*.20:.0f} {-hh*.52:.0f},{-hh*1.25:.0f} Z"'
+              f' fill="{KORALL}" {o(4)}/>')
+    elif prichyoska:
+        s += (f'<path d="M{x-hh*.88:.0f},{gy-hh*.40:.0f} q{hh*.88:.0f},{-hh*1.02:.0f}'
+              f' {hh*1.76:.0f},0 q{-hh*.14:.0f},{hh*.30:.0f} {-hh*.50:.0f},{hh*.16:.0f}'
+              f' q{-hh*.38:.0f},{-hh*.20:.0f} {-hh*.76:.0f},0'
+              f' q{-hh*.36:.0f},{hh*.14:.0f} {-hh*.50:.0f},{-hh*.16:.0f} Z"'
+              f' fill="#53392a" {o(4)}/>')
     if lico and h_ >= 220:
         r = 2.2 if A.blink(t, 3.4) else hh * .11
         for i in (-1, 1):
@@ -559,17 +574,6 @@ def figura(x, y, h_, t, col=TSINIY, kant=HOLOD_KANT, ph=.0, platok=False,
         s += (f'<path d="M{x-hh*.18:.0f},{gy+hh*.45:.0f} q{hh*.18:.0f},{hh*.14:.0f}'
               f' {hh*.36:.0f},0" fill="none" stroke="#a33b3b"'
               f' stroke-width="{max(2, hh*.055):.1f}" stroke-linecap="round"/>')
-    if platok:
-        s += (f'<path d="M{x-hh*.95:.0f},{gy-hh*.12:.0f} q{hh*.95:.0f},{-hh*1.15:.0f}'
-              f' {hh*1.90:.0f},0 q{-hh*.20:.0f},{hh*.85:.0f} {-hh*.60:.0f},{hh*.95:.0f}'
-              f' l{-hh*.70:.0f},0 q{-hh*.40:.0f},{-hh*.10:.0f} {-hh*.60:.0f},{-hh*.95:.0f} Z"'
-              f' fill="{KORALL}" {o(4)}/>')
-    elif prichyoska:
-        s += (f'<path d="M{x-hh*.86:.0f},{gy-hh*.10:.0f} q{hh*.86:.0f},{-hh*1.10:.0f}'
-              f' {hh*1.72:.0f},0 q{-hh*.16:.0f},{hh*.44:.0f} {-hh*.52:.0f},{hh*.30:.0f}'
-              f' q{-hh*.34:.0f},{-hh*.22:.0f} {-hh*.68:.0f},0'
-              f' q{-hh*.36:.0f},{hh*.12:.0f} {-hh*.52:.0f},{-hh*.30:.0f} Z"'
-              f' fill="#53392a" {o(4)}/>')
     s += "</g>"
     return s
 
@@ -2808,22 +2812,28 @@ def sergi_na_barhatnoy_podushechke(t):
     s += SL(Z_DAL, stena("doski", t, 120))
     s += SL(Z_DAL, elka(1840, 1050, 340, t, 1.0, True, 75))
     s += SL(Z_SRED, trumo(260, 1040, 1300, 460, t))
-    s += SL(Z_SRED, zerkalo(620, 170, 620, 520, t, "pryam", ZOLOTO, True))
+    # В ЗЕРКАЛЕ ДОЛЖНО ЧТО-ТО ОТРАЖАТЬСЯ (осмотр 16.11): пустая золотая рама
+    # на пол-кадра читается как дыра. Ставим отражение наряда и флаконов.
     s += SL(Z_SRED, f'<rect x="634" y="184" width="592" height="492" fill="{STEKLO}"'
                     f' opacity=".26"/>')
+    s += SL(Z_SRED, f'<g opacity=".5">'
+                    + naryad_plechiki(930, 230, 380, t, VINO, 1.0, .3, True, None, .0, 85)
+                    + f'<ellipse cx="760" cy="640" rx="90" ry="26" fill="{KREM2}"/>'
+                    + f'<ellipse cx="1120" cy="640" rx="70" ry="22" fill="{LAVANDA}"/></g>')
+    s += SL(Z_SRED, zerkalo(620, 170, 620, 520, t, "pryam", ZOLOTO, True))
     # подушечка с серьгами, крупно
-    s += SL(0, f'<path d="M560,880 q180,-70 360,0 q-40,96 -180,100 q-140,-4 -180,-100 Z"'
-               f' fill="{VINO}" {o(6)}/>')
-    s += SL(0, skladki(580, 850, 320, 110, VINO, 5, 81, t, 2.0))
+    s += SL(0, f'<path d="M480,900 q280,-110 560,0 q-62,150 -280,156 q-218,-6 -280,-156 Z"'
+               f' fill="{VINO}" {o(7)}/>')
+    s += SL(0, skladki(520, 850, 480, 150, VINO, 6, 81, t, 2.0))
     for sgn in (-1, 1):
         kach = 5 * A.w(t, 1.7, .2 if sgn < 0 else .6)
-        sx = 740 + sgn * 90
+        sx = 760 + sgn * 150
         s += SL(0, f'<g transform="rotate({kach:.2f} {sx} 820)">'
-                   f'<path d="M{sx},820 l0,-54" stroke="{ZOLOTO}" stroke-width="7"/>'
-                   f'<circle cx="{sx}" cy="764" r="20" fill="none" stroke="{ZOLOTO}"'
-                   f' stroke-width="7"/>'
-                   f'<path d="M{sx-24},830 l24,78 l24,-78 Z" fill="{ZOLOTO}" {o(3)}/>'
-                   f'<circle cx="{sx}" cy="866" r="11" fill="{KREM2}" {o(2)}/></g>')
+                   f'<path d="M{sx},820 l0,-92" stroke="{ZOLOTO}" stroke-width="11"/>'
+                   f'<circle cx="{sx}" cy="722" r="34" fill="none" stroke="{ZOLOTO}"'
+                   f' stroke-width="11"/>'
+                   f'<path d="M{sx-44},832 l44,130 l44,-130 Z" fill="{ZOLOTO}" {o(4)}/>'
+                   f'<circle cx="{sx}" cy="902" r="20" fill="{KREM2}" {o(3)}/></g>')
     # коробка с бусами, брошами, браслетами; крышка закрывается рукавом
     zak = A.out(A.seg(t, .5, 1.4))
     kx, ky, kw = 1180, 980, 460
@@ -3247,7 +3257,12 @@ def tufli_lodochki_na_parkete(t):
             + zerkalo(150, 150, 620, 720, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, f'<rect x="166" y="166" width="588" height="688" fill="{STEKLO}"'
                     f' opacity=".22"/>')
-    s += SL(Z_SRED, tufli(330, 800, 1.6, GRAFIT, t))
+    # НАСТОЯЩИЙ КАДР ОТСЮДА СНЯТ (туфли сток даёт только на людях), поэтому
+    # зеркало не остаётся пустым: в нём отражаются сами лодочки и край подола.
+    s += SL(Z_SRED, f'<g opacity=".65">'
+                    + f'<path d="M230,180 q150,40 300,0 l0,250 q-150,44 -300,0 Z"'
+                      f' fill="{RUBIN}" {o(4)}/>'
+                    + tufli(300, 800, 1.9, GRAFIT, t) + "</g>")
     # подставка-нога в гладких колготках
     nx = 1120
     s += SL(0, f'<path d="M{nx-56},1040 q-20,-280 56,-330 q76,50 56,330 Z"'
@@ -3814,19 +3829,25 @@ def sergi_sumochka_i_udobnye_tufli(t):
     s += SL(Z_DAL, stena("paneli", t, 107))
     s += SL(Z_DAL, elka(140, 1050, 330, t, 1.0, True, 193))
     s += SL(Z_SRED, polovicy(1050))
-    s += SL(Z_SRED, zerkalo(1300, 160, 520, 620, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, f'<rect x="1314" y="174" width="492" height="592" fill="{STEKLO}"'
                     f' opacity=".24"/>')
+    # В ЗЕРКАЛЕ ОТРАЖАЕТСЯ НАРЯД, А НЕ ПУСТОТА (осмотр 16.11).
+    s += SL(Z_SRED, f'<g opacity=".55">'
+                    + naryad_plechiki(1560, 210, 440, t, VINO, 1.1, .4, True, None, .0, 196)
+                    + "</g>")
+    s += SL(Z_SRED, zerkalo(1300, 160, 520, 620, t, "pryam", ZOLOTO, True))
     # пуфик крупно
     s += SL(0, f'<path d="M620,1000 q-50,-230 160,-238 q210,8 160,238 Z"'
                f' fill="#45384f" {o(7)}/>')
     s += SL(0, f'<ellipse cx="780" cy="770" rx="170" ry="40" fill="#51425c" {o(4)}/>')
     bl = .6 + .4 * abs(A.w(t, 1.7))
-    s += SL(0, f'<path d="M640,760 q90,-50 180,0 l20,120 q-110,30 -220,0 Z"'
-               f' fill="{GRAFIT}" {o(5)}/>')
-    s += SL(0, f'<path d="M640,760 q90,-50 180,0" fill="none" stroke="{SEREBRO}"'
-               f' stroke-width="9" opacity="{bl:.2f}"/>')
-    s += SL(0, tkan_blesk(640, 740, 200, 140, t, "#ffffff", .5, .2))
+    s += SL(0, f'<path d="M560,740 q140,-80 280,0 l30,190 q-170,46 -340,0 Z"'
+               f' fill="{GRAFIT}" {o(6)}/>')
+    s += SL(0, f'<path d="M560,740 q140,-80 280,0" fill="none" stroke="{SEREBRO}"'
+               f' stroke-width="14" opacity="{bl:.2f}"/>')
+    s += SL(0, f'<path d="M620,730 q80,-150 170,-16" fill="none" stroke="{SEREBRO}"'
+               f' stroke-width="10"/>')
+    s += SL(0, tkan_blesk(560, 720, 280, 210, t, "#ffffff", .5, .2))
     s += SL(0, f'<path d="M900,780 q60,-26 110,0 l10,90 h-130 Z" fill="{VINO}" {o(4)}/>')
     for sgn in (-1, 1):
         sx = 955 + sgn * 30
@@ -5468,10 +5489,16 @@ def tualetnyy_stolik_s_melochami(t):
     s += SL(Z_NEBO, nebo("noch", t, True, 431))
     s += SL(Z_DAL, stena("oboi", t, 109))
     s += SL(Z_SRED, trumo(320, 1050, 1200, 460, t))
+    # ТРИ СТВОРКИ ТРЮМО НЕ ДОЛЖНЫ БЫТЬ ПУСТЫМИ (осмотр 16.11): в боковых
+    # отражаются флаконы и край наряда, в средней — тёмное платье целиком.
     for i, (zx, zw, zh) in enumerate(((420, 300, 480), (760, 420, 560), (1220, 300, 480))):
-        s += SL(Z_SRED, zerkalo(zx, 680 - zh, zw, zh, t, "pryam", ZOLOTO, True))
         s += SL(Z_SRED, f'<rect x="{zx+12}" y="{680-zh+12}" width="{zw-24}"'
                         f' height="{zh-24}" fill="{STEKLO}" opacity=".24"/>')
+        s += SL(Z_SRED, f'<g opacity=".5">'
+                        + naryad_plechiki(zx + zw // 2, 700 - zh + 40, zh - 150, t,
+                                          (LAVANDA, TSINIY, PUDRA)[i], .9, i * .3,
+                                          True, None, .0, 460 + i) + "</g>")
+        s += SL(Z_SRED, zerkalo(zx, 680 - zh, zw, zh, t, "pryam", ZOLOTO, True))
     hod = A.seg(t, .3, 4.4)
     akt = min(2, int(hod * 3))
     # коробочка с украшениями
@@ -5846,6 +5873,11 @@ def obuvnaya_polka_k_prazdniku(t):
                     f' fill="{DEREVO2}" {o(4)}/>')
     s += SL(Z_SRED, f'<rect x="300" y="1000" width="420" height="50" rx="10"'
                     f' fill="#5a4038" {o(4)}/>')
+    # В ЗЕРКАЛЕ ОБУВНОЙ ПРИХОЖЕЙ ОТРАЖАЕТСЯ РЯД ОБУВИ, А НЕ ПУСТОТА.
+    s += SL(Z_SRED, f'<rect x="1492" y="452" width="256" height="436" fill="{STEKLO}"'
+                    f' opacity=".22"/>')
+    s += SL(Z_SRED, f'<g opacity=".55">' + tufli(1540, 740, 1.1, GRAFIT, t)
+                    + tufli(1540, 860, 1.1, SEREBRO, t) + "</g>")
     s += SL(Z_SRED, zerkalo(1480, 440, 280, 460, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, girlyanda(160, 240, 1600, t, 11, 465, 44))
     s += SL(0, lampa_stolika(960, 300, t, 1.4))
@@ -6118,10 +6150,14 @@ def chernoe_plate_i_krasnye_tufli(t):
     s += SL(Z_SRED, par_)
     s += SL(Z_SRED, f'<rect x="120" y="140" width="560" height="700" rx="10"'
                     f' fill="#2a2420" {o(6)}/>')
-    s += SL(Z_SRED, zerkalo(120, 140, 560, 700, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, f'<rect x="136" y="156" width="528" height="668" fill="{STEKLO}"'
                     f' opacity=".22"/>')
-    s += SL(Z_SRED, tufli(280, 740, 1.6, ALYY, t))
+    # НАСТОЯЩИЙ КАДР ОТСЮДА СНЯТ: рисуем отражение сами, иначе остаётся дыра.
+    s += SL(Z_SRED, f'<g opacity=".7">'
+                    + f'<path d="M200,170 q180,46 360,0 l0,300 q-180,50 -360,0 Z"'
+                      f' fill="#1b1820" {o(4)}/>'
+                    + tufli(260, 760, 1.9, ALYY, t) + "</g>")
+    s += SL(Z_SRED, zerkalo(120, 140, 560, 700, t, "pryam", ZOLOTO, True))
     # подол платья и ноги манекена
     s += SL(0, f'<path d="M980,140 q180,{40+12*A.w(t,2.0):.0f} 360,0 l40,520'
                f' q-220,{50+14*A.w(t,2.0,.3):.0f} -440,0 Z" fill="#1b1820" {o(6)}/>')

@@ -1155,22 +1155,28 @@ def sergi_na_barhatnoy_podushechke(t):
     s += SL(Z_DAL, stena("doski", t, 120))
     s += SL(Z_DAL, elka(1840, 1050, 340, t, 1.0, True, 75))
     s += SL(Z_SRED, trumo(260, 1040, 1300, 460, t))
-    s += SL(Z_SRED, zerkalo(620, 170, 620, 520, t, "pryam", ZOLOTO, True))
+    # В ЗЕРКАЛЕ ДОЛЖНО ЧТО-ТО ОТРАЖАТЬСЯ (осмотр 16.11): пустая золотая рама
+    # на пол-кадра читается как дыра. Ставим отражение наряда и флаконов.
     s += SL(Z_SRED, f'<rect x="634" y="184" width="592" height="492" fill="{STEKLO}"'
                     f' opacity=".26"/>')
+    s += SL(Z_SRED, f'<g opacity=".5">'
+                    + naryad_plechiki(930, 230, 380, t, VINO, 1.0, .3, True, None, .0, 85)
+                    + f'<ellipse cx="760" cy="640" rx="90" ry="26" fill="{KREM2}"/>'
+                    + f'<ellipse cx="1120" cy="640" rx="70" ry="22" fill="{LAVANDA}"/></g>')
+    s += SL(Z_SRED, zerkalo(620, 170, 620, 520, t, "pryam", ZOLOTO, True))
     # подушечка с серьгами, крупно
-    s += SL(0, f'<path d="M560,880 q180,-70 360,0 q-40,96 -180,100 q-140,-4 -180,-100 Z"'
-               f' fill="{VINO}" {o(6)}/>')
-    s += SL(0, skladki(580, 850, 320, 110, VINO, 5, 81, t, 2.0))
+    s += SL(0, f'<path d="M480,900 q280,-110 560,0 q-62,150 -280,156 q-218,-6 -280,-156 Z"'
+               f' fill="{VINO}" {o(7)}/>')
+    s += SL(0, skladki(520, 850, 480, 150, VINO, 6, 81, t, 2.0))
     for sgn in (-1, 1):
         kach = 5 * A.w(t, 1.7, .2 if sgn < 0 else .6)
-        sx = 740 + sgn * 90
+        sx = 760 + sgn * 150
         s += SL(0, f'<g transform="rotate({kach:.2f} {sx} 820)">'
-                   f'<path d="M{sx},820 l0,-54" stroke="{ZOLOTO}" stroke-width="7"/>'
-                   f'<circle cx="{sx}" cy="764" r="20" fill="none" stroke="{ZOLOTO}"'
-                   f' stroke-width="7"/>'
-                   f'<path d="M{sx-24},830 l24,78 l24,-78 Z" fill="{ZOLOTO}" {o(3)}/>'
-                   f'<circle cx="{sx}" cy="866" r="11" fill="{KREM2}" {o(2)}/></g>')
+                   f'<path d="M{sx},820 l0,-92" stroke="{ZOLOTO}" stroke-width="11"/>'
+                   f'<circle cx="{sx}" cy="722" r="34" fill="none" stroke="{ZOLOTO}"'
+                   f' stroke-width="11"/>'
+                   f'<path d="M{sx-44},832 l44,130 l44,-130 Z" fill="{ZOLOTO}" {o(4)}/>'
+                   f'<circle cx="{sx}" cy="902" r="20" fill="{KREM2}" {o(3)}/></g>')
     # коробка с бусами, брошами, браслетами; крышка закрывается рукавом
     zak = A.out(A.seg(t, .5, 1.4))
     kx, ky, kw = 1180, 980, 460
@@ -1594,7 +1600,12 @@ def tufli_lodochki_na_parkete(t):
             + zerkalo(150, 150, 620, 720, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, f'<rect x="166" y="166" width="588" height="688" fill="{STEKLO}"'
                     f' opacity=".22"/>')
-    s += SL(Z_SRED, tufli(330, 800, 1.6, GRAFIT, t))
+    # НАСТОЯЩИЙ КАДР ОТСЮДА СНЯТ (туфли сток даёт только на людях), поэтому
+    # зеркало не остаётся пустым: в нём отражаются сами лодочки и край подола.
+    s += SL(Z_SRED, f'<g opacity=".65">'
+                    + f'<path d="M230,180 q150,40 300,0 l0,250 q-150,44 -300,0 Z"'
+                      f' fill="{RUBIN}" {o(4)}/>'
+                    + tufli(300, 800, 1.9, GRAFIT, t) + "</g>")
     # подставка-нога в гладких колготках
     nx = 1120
     s += SL(0, f'<path d="M{nx-56},1040 q-20,-280 56,-330 q76,50 56,330 Z"'

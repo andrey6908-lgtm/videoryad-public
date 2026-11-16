@@ -447,10 +447,16 @@ def tualetnyy_stolik_s_melochami(t):
     s += SL(Z_NEBO, nebo("noch", t, True, 431))
     s += SL(Z_DAL, stena("oboi", t, 109))
     s += SL(Z_SRED, trumo(320, 1050, 1200, 460, t))
+    # ТРИ СТВОРКИ ТРЮМО НЕ ДОЛЖНЫ БЫТЬ ПУСТЫМИ (осмотр 16.11): в боковых
+    # отражаются флаконы и край наряда, в средней — тёмное платье целиком.
     for i, (zx, zw, zh) in enumerate(((420, 300, 480), (760, 420, 560), (1220, 300, 480))):
-        s += SL(Z_SRED, zerkalo(zx, 680 - zh, zw, zh, t, "pryam", ZOLOTO, True))
         s += SL(Z_SRED, f'<rect x="{zx+12}" y="{680-zh+12}" width="{zw-24}"'
                         f' height="{zh-24}" fill="{STEKLO}" opacity=".24"/>')
+        s += SL(Z_SRED, f'<g opacity=".5">'
+                        + naryad_plechiki(zx + zw // 2, 700 - zh + 40, zh - 150, t,
+                                          (LAVANDA, TSINIY, PUDRA)[i], .9, i * .3,
+                                          True, None, .0, 460 + i) + "</g>")
+        s += SL(Z_SRED, zerkalo(zx, 680 - zh, zw, zh, t, "pryam", ZOLOTO, True))
     hod = A.seg(t, .3, 4.4)
     akt = min(2, int(hod * 3))
     # коробочка с украшениями
@@ -825,6 +831,11 @@ def obuvnaya_polka_k_prazdniku(t):
                     f' fill="{DEREVO2}" {o(4)}/>')
     s += SL(Z_SRED, f'<rect x="300" y="1000" width="420" height="50" rx="10"'
                     f' fill="#5a4038" {o(4)}/>')
+    # В ЗЕРКАЛЕ ОБУВНОЙ ПРИХОЖЕЙ ОТРАЖАЕТСЯ РЯД ОБУВИ, А НЕ ПУСТОТА.
+    s += SL(Z_SRED, f'<rect x="1492" y="452" width="256" height="436" fill="{STEKLO}"'
+                    f' opacity=".22"/>')
+    s += SL(Z_SRED, f'<g opacity=".55">' + tufli(1540, 740, 1.1, GRAFIT, t)
+                    + tufli(1540, 860, 1.1, SEREBRO, t) + "</g>")
     s += SL(Z_SRED, zerkalo(1480, 440, 280, 460, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, girlyanda(160, 240, 1600, t, 11, 465, 44))
     s += SL(0, lampa_stolika(960, 300, t, 1.4))
@@ -1097,10 +1108,14 @@ def chernoe_plate_i_krasnye_tufli(t):
     s += SL(Z_SRED, par_)
     s += SL(Z_SRED, f'<rect x="120" y="140" width="560" height="700" rx="10"'
                     f' fill="#2a2420" {o(6)}/>')
-    s += SL(Z_SRED, zerkalo(120, 140, 560, 700, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, f'<rect x="136" y="156" width="528" height="668" fill="{STEKLO}"'
                     f' opacity=".22"/>')
-    s += SL(Z_SRED, tufli(280, 740, 1.6, ALYY, t))
+    # НАСТОЯЩИЙ КАДР ОТСЮДА СНЯТ: рисуем отражение сами, иначе остаётся дыра.
+    s += SL(Z_SRED, f'<g opacity=".7">'
+                    + f'<path d="M200,170 q180,46 360,0 l0,300 q-180,50 -360,0 Z"'
+                      f' fill="#1b1820" {o(4)}/>'
+                    + tufli(260, 760, 1.9, ALYY, t) + "</g>")
+    s += SL(Z_SRED, zerkalo(120, 140, 560, 700, t, "pryam", ZOLOTO, True))
     # подол платья и ноги манекена
     s += SL(0, f'<path d="M980,140 q180,{40+12*A.w(t,2.0):.0f} 360,0 l40,520'
                f' q-220,{50+14*A.w(t,2.0,.3):.0f} -440,0 Z" fill="#1b1820" {o(6)}/>')

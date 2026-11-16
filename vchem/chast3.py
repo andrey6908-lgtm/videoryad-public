@@ -299,19 +299,25 @@ def sergi_sumochka_i_udobnye_tufli(t):
     s += SL(Z_DAL, stena("paneli", t, 107))
     s += SL(Z_DAL, elka(140, 1050, 330, t, 1.0, True, 193))
     s += SL(Z_SRED, polovicy(1050))
-    s += SL(Z_SRED, zerkalo(1300, 160, 520, 620, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, f'<rect x="1314" y="174" width="492" height="592" fill="{STEKLO}"'
                     f' opacity=".24"/>')
+    # В ЗЕРКАЛЕ ОТРАЖАЕТСЯ НАРЯД, А НЕ ПУСТОТА (осмотр 16.11).
+    s += SL(Z_SRED, f'<g opacity=".55">'
+                    + naryad_plechiki(1560, 210, 440, t, VINO, 1.1, .4, True, None, .0, 196)
+                    + "</g>")
+    s += SL(Z_SRED, zerkalo(1300, 160, 520, 620, t, "pryam", ZOLOTO, True))
     # пуфик крупно
     s += SL(0, f'<path d="M620,1000 q-50,-230 160,-238 q210,8 160,238 Z"'
                f' fill="#45384f" {o(7)}/>')
     s += SL(0, f'<ellipse cx="780" cy="770" rx="170" ry="40" fill="#51425c" {o(4)}/>')
     bl = .6 + .4 * abs(A.w(t, 1.7))
-    s += SL(0, f'<path d="M640,760 q90,-50 180,0 l20,120 q-110,30 -220,0 Z"'
-               f' fill="{GRAFIT}" {o(5)}/>')
-    s += SL(0, f'<path d="M640,760 q90,-50 180,0" fill="none" stroke="{SEREBRO}"'
-               f' stroke-width="9" opacity="{bl:.2f}"/>')
-    s += SL(0, tkan_blesk(640, 740, 200, 140, t, "#ffffff", .5, .2))
+    s += SL(0, f'<path d="M560,740 q140,-80 280,0 l30,190 q-170,46 -340,0 Z"'
+               f' fill="{GRAFIT}" {o(6)}/>')
+    s += SL(0, f'<path d="M560,740 q140,-80 280,0" fill="none" stroke="{SEREBRO}"'
+               f' stroke-width="14" opacity="{bl:.2f}"/>')
+    s += SL(0, f'<path d="M620,730 q80,-150 170,-16" fill="none" stroke="{SEREBRO}"'
+               f' stroke-width="10"/>')
+    s += SL(0, tkan_blesk(560, 720, 280, 210, t, "#ffffff", .5, .2))
     s += SL(0, f'<path d="M900,780 q60,-26 110,0 l10,90 h-130 Z" fill="{VINO}" {o(4)}/>')
     for sgn in (-1, 1):
         sx = 955 + sgn * 30
