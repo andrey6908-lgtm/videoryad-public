@@ -231,6 +231,16 @@ def pyat_tkaney_na_prilavke(t):
     s += SL(Z_DAL, doski(0, 0, W, 420, 76))
     s += SL(Z_DAL, _polka_melochey(60, 300, 420, t, 39, 6))
     s += SL(Z_DAL, _polka_melochey(1440, 300, 420, t, 41, 6))
+    # витрина за прилавком: сначала рисованный вид, потом метка, потом переплёт
+    px, py, pw, ph = 570, 120, 780, 300
+    put = kontur_proema(px, py, pw, ph, "pryam")
+    s += SL(Z_DAL, f'<path d="{put}" fill="#1d2630"/>'
+            + otrez(px + 24, py + 30, pw - 48, ph - 70, TSINIY, t, 58, .25, .2)
+            + mesto_stoka(px, py, pw, ph, "pryam")
+            + f'<rect x="{px-14}" y="{py-14}" width="{pw+28}" height="{ph+28}"'
+              f' fill="none" stroke="{DEREVO2}" stroke-width="22"/>'
+            + f'<path d="M{px+pw/2:.0f},{py-14} l0,{ph+28}" stroke="{DEREVO2}"'
+              f' stroke-width="12"/>')
     s += SL(Z_SRED, f'<rect x="0" y="560" width="{W}" height="520" fill="{DEREVO}" {o(7)}/>')
     s += SL(Z_SRED, f'<rect x="0" y="560" width="{W}" height="18" fill="#ffffff" opacity=".12"/>')
     TK = ((VINO, "бархат"), (MOLOKO, "шифон"), (KREM2, "кружево"),
@@ -287,11 +297,14 @@ def barhatnaya_portera(t):
     s += SL(Z_DAL, stena("oboi", t, 105))
     s += SL(Z_DAL, sneg_letit(t, 22, 9, .45, .6))
     # место настоящего кадра: рама портьеры у окна слева, 800x420 стоймя
+    # НАСТОЯЩИЙ КАДР ОТСЮДА СНЯТ: клип бархата был почти чёрным и читался бы
+    # пустой рамкой (гейт «в окне нет почти чёрного клипа»). Рисованный бархат
+    # в раме остаётся — сцена от этого не беднеет.
     px, py, pw, ph = 60, 300, 780, 420
     put = kontur_proema(px, py, pw, ph, "pryam")
     s += SL(Z_SRED, f'<path d="{put}" fill="#2a0d14"/>'
                     + otrez(px + 20, py + 16, pw - 40, ph - 40, RUBIN, t, 61, .18, .2)
-                    + mesto_stoka(px, py, pw, ph, "pryam")
+                    + skladki(px + 40, py + 40, pw - 80, ph - 90, RUBIN, 7, 62, t, 4.0)
                     + zerkalo(px, py, pw, ph, t, "pryam", DEREVO2, True))
     # сама портьера справа, на пол-кадра
     for i in range(9):
