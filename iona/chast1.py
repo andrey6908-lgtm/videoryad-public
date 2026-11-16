@@ -1575,7 +1575,8 @@ def vdova_natalya_i_malchik(t):
                  naklon=-5 * ber)
     r3, (lx3, ly3), (p1x, p1y) = _ruka_ekr(mx_, my_ - 150, mh_, 1, mh_ * .46, 154 - 40 * ber, t,
                                            "#7a6a52", "#ffd98a", .2, 4)
-    r4, _, (p2x, p2y) = _ruka_ekr(mx_, my_ - 150, mh_, -1, mh_ * .42, 170, t, "#7a6a52",
+    # 16.11: было 170 (горизонталь, с r3 читалось распятием) — вниз-наружу на 26°
+    r4, _, (p2x, p2y) = _ruka_ekr(mx_, my_ - 150, mh_, -1, mh_ * .42, 154, t, "#7a6a52",
                                   "#ffd98a", .6, 4)
     mal += r3 + r4
     mal += (f'<rect x="{lx3-10:.0f}" y="{ly3-10:.0f}" width="16" height="96" rx="7"'
@@ -3643,7 +3644,8 @@ def larek_s_iriskami(t):
     # продавщица в белом колпаке
     px2, py2, ph2 = 1360, 1046, 470
     pro = figura(px2, py2, ph2, t, col="#e4e0d4", kant="#ffd98a", ph=.6)
-    r3, _, (p1x, p1y) = _ruka_ekr(px2, py2, ph2, 1, ph2 * .40, -12, t, "#e4e0d4", "#ffd98a", .3, 4)
+    # 16.11: было -12 (горизонталь, с r4 читалось распятием) — вниз-наружу на 32°
+    r3, _, (p1x, p1y) = _ruka_ekr(px2, py2, ph2, 1, ph2 * .40, 32, t, "#e4e0d4", "#ffd98a", .3, 4)
     r4, (hx2, hy2), (p2x, p2y) = _ruka_ekr(px2, py2, ph2, -1, ph2 * .54, -168, t, "#e4e0d4",
                                            "#ffd98a", .7, 5)
     pro += r3 + r4

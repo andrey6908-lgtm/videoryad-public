@@ -4738,9 +4738,10 @@ def zhenihi_idut_na_blesk(t):
     dvh = 560
     dev = figura(230, gor + 300, dvh, t, col="#6a4a62", kant="#ffd98a",
                  platok=True, ph=.3, naklon=-5.0)
-    d1, (v1x, v1y), _ = _ruka_mimo(230, gor + 300, dvh, 1, dvh * .24, -8, t,
+    # 16.11: было -8/-6 (обе горизонтально, поза распятия) — вниз-наружу на 28°/34°
+    d1, (v1x, v1y), _ = _ruka_mimo(230, gor + 300, dvh, 1, dvh * .24, 28, t,
                               "#6a4a62", "#ffd98a", .3, 4.0)
-    d2, (v2x, v2y), _ = _ruka_mimo(230, gor + 300, dvh, -1, dvh * .24, -6, t,
+    d2, (v2x, v2y), _ = _ruka_mimo(230, gor + 300, dvh, -1, dvh * .24, 34, t,
                               "#6a4a62", "#ffd98a", .7, 4.0)
     dev += d1 + d2
     s += SL(Z_SRED, dev)
