@@ -119,9 +119,13 @@ def _valenok(x, y, s_=1.0, ug=0.0, col="#6f6256"):
     """Валенок: голенище, толстая подошва, заплата — узнаётся силуэтом."""
     s = (f'<g transform="rotate({ug:.1f} {x:.0f} {y:.0f})">'
          f'<path d="M{x-30*s_:.0f},{y-130*s_:.0f} h{58*s_:.0f} q{14*s_:.0f},{66*s_:.0f}'
-         f' {8*s_:.0f},{104*s_:.0f} l{-74*s_:.0f},0 q{-12*s_:.0f},{-52*s_:.0f}'
+         f' {10*s_:.0f},{96*s_:.0f} q{26*s_:.0f},{6*s_:.0f} {30*s_:.0f},{26*s_:.0f}'
+         f' l{-124*s_:.0f},0 q{-12*s_:.0f},{-52*s_:.0f}'
          f' {8*s_:.0f},{-104*s_:.0f} Z" fill="{col}" stroke="{K}"'
-         f' stroke-width="{3.8*s_:.1f}"/>')
+         f' stroke-width="{3.8*s_:.1f}"/>'
+         f'<path d="M{x-33*s_:.0f},{y-134*s_:.0f} h{64*s_:.0f} q{6*s_:.0f},{16*s_:.0f}'
+         f' {-2*s_:.0f},{26*s_:.0f} h{-60*s_:.0f} q{-6*s_:.0f},{-12*s_:.0f}'
+         f' {-2*s_:.0f},{-26*s_:.0f} Z" fill="#8a8078" opacity=".55"/>')
     s += (f'<path d="M{x-40*s_:.0f},{y-26*s_:.0f} h{84*s_:.0f} q{12*s_:.0f},{10*s_:.0f}'
           f' {2*s_:.0f},{26*s_:.0f} l{-92*s_:.0f},0 Z" fill="#4a4038" stroke="{K}"'
           f' stroke-width="{3.2*s_:.1f}"/>')
@@ -1825,11 +1829,11 @@ def posoh_i_led(t):
                         f' ry="{rnd.uniform(12,30):.0f}" fill="#8a8078" stroke="{K}"'
                         f' stroke-width="4"/>')
     davl = .5 + .5 * A.w(t, 1.4, .0)
-    s += SL(Z_SRED, f'<rect x="428" y="320" width="52" height="620" rx="22"'
+    s += SL(Z_SRED, f'<rect x="418" y="300" width="74" height="640" rx="28"'
                     f' fill="#8a6342" stroke="{K}" stroke-width="7"/>'
                     f'<path d="M420,320 q{36:.0f},{-56:.0f} {72:.0f},{-10:.0f}"'
                     f' fill="none" stroke="#6b4428" stroke-width="24"/>'
-                    f'<path d="M434,460 h40 M434,620 h40 M434,780 h40"'
+                    f'<path d="M426,460 h58 M426,620 h58 M426,780 h58"'
                     f' stroke="#6b4428" stroke-width="7" opacity=".8"/>')
     for i, (lx, ly) in enumerate(((300, 330), (640, 360))):
         s += SL(Z_SRED, f'<ellipse cx="{lx:.0f}" cy="{ly+30*davl:.0f}" rx="170" ry="104"'

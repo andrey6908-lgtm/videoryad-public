@@ -27,8 +27,8 @@ def mokrye_valenki_na_pechi(t):
     # приступок с мокрыми валенками и лужицей
     s += SL(Z_SRED, f'<rect x="300" y="800" width="520" height="40" rx="8"'
                     f' fill="{PECH2}" stroke="{K}" stroke-width="5"/>')
-    s += SL(Z_SRED, _valenok(420, 800, 2.1, -6, "#b9ae9a")
-            + _valenok(640, 806, 2.1, 7, "#c9bfa6"))
+    s += SL(Z_SRED, _valenok(430, 806, 2.7, -7, "#c9bfa6")
+            + _valenok(690, 812, 2.7, 8, "#d8cbb0"))
     for i in range(4):
         s += SL(Z_SRED, par(430 + i * 60, 680, t, 3, .45, 130, .35, .9))
     luzh = 90 + 60 * A.ease(A.seg(t, .4, 3.0))
@@ -497,17 +497,17 @@ def rybak_na_mostkah(t):
     s += SL(Z_SRED, prorub(760, 800, 230, t, .1, True))
     s += SL(Z_SRED, mostki(120, 700, 900, t, True, 320))
     # РЫБАК на складном стульчике
-    rx_, ry_, rh = 560, 760, 460
+    rx_, ry_, rh = 560, 700, 420
     s += SL(Z_SRED, f'<path d="M{rx_-80:.0f},{ry_:.0f} l{70:.0f},{-120:.0f}'
                     f' M{rx_+80:.0f},{ry_:.0f} l{-70:.0f},{-110:.0f}" stroke="{ZHELEZ}"'
                     f' stroke-width="11" fill="none"/>'
                     f'<rect x="{rx_-90:.0f}" y="{ry_-126:.0f}" width="180" height="22"'
                     f' rx="6" fill="#3f4a3a" stroke="{K}" stroke-width="4"/>')
-    s += SL(Z_SRED, figura(rx_, ry_ - 110, rh, t, col="#3f4a3a", kant="#ffd9a8",
+    s += SL(Z_SRED, figura(rx_, ry_ - 92, rh, t, col="#3f4a3a", kant="#ffd9a8",
                            tulup=True, shapka=True, boroda=True, ph=.2))
-    r1, (e1x, e1y), _ = _ruka(rx_, ry_ - 110, rh, 1, rh * .30, 14, t,
+    r1, (e1x, e1y), _ = _ruka(rx_, ry_ - 92, rh, 1, rh * .30, 14, t,
                               "#3f4a3a", "#ffd9a8", .2, 3)
-    r2, (e2x, e2y), _ = _ruka(rx_, ry_ - 110, rh, -1, rh * .24, 24, t,
+    r2, (e2x, e2y), _ = _ruka(rx_, ry_ - 92, rh, -1, rh * .24, 24, t,
                               "#3f4a3a", "#ffd9a8", .6, 3)
     s += SL(Z_SRED, r1 + r2)
     drozh = 6 * A.w(t, 2.6, .1)
@@ -527,7 +527,7 @@ def rybak_na_mostkah(t):
                     f'<path d="M{rx_-74:.0f},{ry_-26:.0f} h{90:.0f} q{18:.0f},{10:.0f}'
                     f' {4:.0f},{28:.0f} h{-100:.0f} Z" fill="#23242a" stroke="{K}"'
                     f' stroke-width="4.5"/>')
-    s += SL(Z_SRED, para_izo_rta(rx_ - 34, ry_ - 110 - rh * .80, t, .3, 1.0, .5))
+    s += SL(Z_SRED, para_izo_rta(rx_ - 34, ry_ - 92 - rh * .80, t, .3, 1.0, .5))
     # ящик, термос с паром, банка с наживкой, сачок, кот
     s += SL(Z_SRED, yaschik_rybaka(300, 700, 1.0, t, .35, .3))
     s += SL(Z_SRED, f'<rect x="420" y="596" width="62" height="110" rx="12"'
@@ -2619,9 +2619,7 @@ def dedov_rybackiy_yaschik(t):
             + polovicy(880, "#6b4428"))
     s += SL(Z_DAL, okno_izby(1560, 160, 300, 260, t, None, .55, False, True))
     # ЯЩИК на пол-кадра
-    s += SL(Z_SRED, f'<g transform="translate(0,0)">'
-            + yaschik_rybaka(760, 1000, 3.0, t, A.ease(A.seg(t, .6, 1.4)), .1) + '</g>')
-    s += SL(Z_SRED, teplo(760, 880, 420, 320, .35))
+
     # коробочка из-под леденцов с ягодами на крышке
     s += SL(Z_SRED, f'<ellipse cx="1020" cy="700" rx="90" ry="28" fill="#c9ccd1"'
                     f' stroke="{K}" stroke-width="5"/>'
@@ -2668,7 +2666,7 @@ def dedov_rybackiy_yaschik(t):
                     f' stroke="{ZHELEZ}" stroke-width="8"/></g>')
     s += SL(Z_SRED, polka_s_bankami(420, 420, 520, t, 59, 5, False))
     s += SL(Z_SRED, polka_s_bankami(900, 300, 420, t, 61, 4, False))
-    for i, (kx2, ky2, ks2) in enumerate(((560, 900, 1.0), (980, 920, .8), (1180, 880, .9))):
+    for i, (kx2, ky2, ks2) in enumerate(((180, 900, 1.0), (1700, 920, .8), (1480, 880, .9))):
         s += SL(Z_SRED, f'<rect x="{kx2-70*ks2:.0f}" y="{ky2-90*ks2:.0f}"'
                         f' width="{140*ks2:.0f}" height="{90*ks2:.0f}" rx="8"'
                         f' fill="#8a6342" stroke="{K}" stroke-width="{4*ks2:.1f}"/>'
@@ -2679,6 +2677,9 @@ def dedov_rybackiy_yaschik(t):
     s += SL(Z_SRED, lampa(760, 150, t, 1.4, False) + teplo(760, 170, 400, 330, .5))
     s += SL(Z_SRED, dvorovye_veschi(1420, 1066, 260, t, 367, ["korzina", "churbak"]))
     s += SL(Z_SRED, ten(dx, dy + 6, 120, 20, .45) + ten(vx, vy + 6, 100, 18, .45))
+    # ЯЩИК — главный предмет: рисуется ПОВЕРХ короба и снастей, иначе теряется
+    s += SL(Z_PERED, teplo(860, 880, 460, 340, .32)
+            + yaschik_rybaka(860, 1010, 3.0, t, A.ease(A.seg(t, .6, 1.4)), .1))
     s += SL(Z_PERED, ramka_pp("oba", "#0e0c0b", .55))
     s += vinetka(.46)
     return s
