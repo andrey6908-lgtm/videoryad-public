@@ -238,20 +238,67 @@ def body(pl, t, p=.5, zaglushki=True):
     return out + "</svg>"
 
 
-def _polosa(proem, vys, hochu):
-    """Где положить ленту высотой `vys`, чтобы не лечь на проём со стоком.
-    Его слово 14.11: настоящий кадр не перекрывается нашими плашками."""
-    if not proem:
-        return hochu
-    px, py, pw, ph = proem
-    if hochu + vys <= py + 8 or hochu >= py + ph - 8:
-        return hochu                      # и так мимо
-    sverhu, snizu = py - vys - 16, py + ph + 16
-    if snizu + vys <= 1064:
-        return snizu
-    if sverhu >= 16:
-        return sverhu
-    return 1064 - vys                     # проём занял кадр — жмёмся к низу
+def lica_plana(pl, t):
+    """Где в кадре ЛИЦА — круги (cx, cy, r) по фигурам сцены.
+
+    Его слово 16.11.2026 по сданному «Павлу Ледоставу»: «иногда лицо чем-то
+    перекрыто… то круг, то какой-то прямоугольник типа планшета». Причина
+    была в том, что плашки, карточки памятки и значки ставились по
+    координатам сцены и про головы не знали. Теперь знают (R-0056).
+    """
+    try:
+        # фигуры считает СОБРАННЫЙ lok.py (у lok_obshchee свои копии списков —
+        # на этом сломалась первая версия карты лиц 16.11)
+        fn = getattr(lok, DEK[pl["lok"]])
+        lok.ruki_sbros(); fn(t); lok.ruki_gotovo(); fn(t)
+        out = []
+        for (fx, plech, pog, w_, h_) in lok._FIGURY:
+            if h_ < 200:                  # мелкие фигуры в толпе лицом не считаем
+                continue
+            y = plech + h_ * .66
+            out.append((fx, y - h_ * .845, h_ * .145))
+        return out
+    except Exception:
+        return []
+
+
+def _meshaet(y, vys, zanyato, lica, x0=90, x1=1830):
+    """Полоса (y..y+vys) занята: налезает на другую надпись или на лицо."""
+    for a, b in zanyato:
+        if y < b + 10 and a < y + vys + 10:
+            return True
+    for cx, cy, r in lica:
+        if cx + r * .9 > x0 and cx - r * .9 < x1 and y - 6 < cy + r and y + vys + 6 > cy - r:
+            return True
+    return False
+
+
+def _polosa(proem, vys, hochu, zanyato=(), lica=()):
+    """Где положить ленту высотой `vys`: мимо проёма со стоком (его слово
+    14.11), мимо уже поставленных надписей и мимо лиц (R-0056, 16.11)."""
+    hochu = float(hochu)
+    varianty = [hochu]
+    if proem:
+        px, py, pw, ph = proem
+        if not (hochu + vys <= py + 8 or hochu >= py + ph - 8):
+            varianty = [py + ph + 16, py - vys - 16]
+    # дальше перебираем полосы вверх и вниз от желаемой
+    for sdvig in range(0, 1000, 40):
+        varianty += [hochu + sdvig, hochu - sdvig]
+    for y in varianty:
+        if y < 16 or y + vys > 1064:
+            continue
+        if proem:
+            px, py, pw, ph = proem
+            if not (y + vys <= py + 8 or y >= py + ph - 8):
+                continue
+        if not _meshaet(y, vys, zanyato, lica):
+            return y
+    # совсем некуда — берём самую нижнюю свободную от надписей полосу
+    for y in (1064 - vys, 16):
+        if not _meshaet(y, vys, zanyato, ()):
+            return y
+    return hochu
 
 
 def nalozheniya(pl, t, proem=None):
@@ -263,6 +310,14 @@ def nalozheniya(pl, t, proem=None):
     yy = 160
     kart = 0
     niz_zanyat = False
+    # КАРТА ЛИЦ И ЗАНЯТЫХ ПОЛОС (R-0056, его слово 16.11): надписи знают друг
+    # о друге и о лицах — иначе плашка ложится на лицо, а вторая на первую.
+    lica = lica_plana(pl, t)
+    zanyato = []
+
+    def zanyat(y, vys):
+        zanyato.append((float(y), float(y) + vys))
+        return y
     # Надписи НЕ ложатся на проём с настоящим кадром (его слово 14.11:
     # «не должны перекрывать наши мультяшные кадры»). Строка плашек
     # начинается в свободной полосе над проёмом или под ним.
@@ -288,30 +343,36 @@ def nalozheniya(pl, t, proem=None):
     for tip, s in nadpisi(pl):
         tl = tip.lower()
         if tl.startswith("плашка главы"):
-            out += over.plashka_glavy(s, t, .3, _polosa(proem, 150, 760), .9, W)
+            out += over.plashka_glavy(s, t, .3, zanyat(_polosa(proem, 150, 760, zanyato, lica), 150), .9, W)
             yy = 620
         elif tl.startswith("плашка запрета"):
             m = re.match(r"ЗАПРЕТ\s*(\d+)\s*[—-]\s*(.+)", s)
+            yy = _polosa(proem, 150, yy, zanyato, lica)
             if m:
                 out += over.plashka_zapreta(m.group(1), m.group(2), t, 1.1, lx, yy)
             else:
                 out += over.plashka(lx, yy, s, t, 1.1, 52, .6, maxw=maxw)
+            zanyat(yy, 150)
             yy += 170
         elif tl.startswith("карточка"):
             continue                   # памятка рисуется накопленной, ниже
         elif tl.startswith("шапка") or tl.startswith("название"):
-            out += over.plashka((W - over.wid(s, 58, "SERIF", 1) - 68) / 2, 80, s, t, .2, 58, maxw=1500)
+            _y = _polosa(proem, 110, 80, zanyato, lica)
+            out += over.plashka((W - over.wid(s, 58, "SERIF", 1) - 68) / 2, _y, s, t, .2, 58, maxw=1500)
+            zanyat(_y, 110)
         elif tl.startswith("плашка-вопрос") or tl.startswith("плашка под списком"):
-            out += over.vopros_plashka(s, t, .8, _polosa(proem, 120, 820))
+            out += over.vopros_plashka(s, t, .8, zanyat(_polosa(proem, 120, 820, zanyato, lica), 120))
             niz_zanyat = True
         elif tl.startswith("финальная плашка"):
-            out += over.vopros_plashka(s, t, 1.0, _polosa(proem, 120, 760))
+            out += over.vopros_plashka(s, t, 1.0, zanyat(_polosa(proem, 120, 760, zanyato, lica), 120))
             niz_zanyat = True
         elif tl.startswith("подпись") and proem:
             # подпись под экраном, витриной, портретом — ПОД проёмом, не на нём
             px, py, pw, ph = proem
             yn = py + ph + 56 if py + ph + 70 <= 1050 else max(90, py - 24)
+            yn = _polosa(proem, 60, yn - 40, zanyato, lica) + 40
             out += over.nadpis(px + pw / 2, yn, s, t, .7, 42)
+            zanyat(yn - 40, 60)
         elif (tl.startswith("подпись") or tl.startswith("на афиш")
               or tl.startswith("надпись на свитк") or tl.startswith("надпис")
               or tl.startswith("на лопат") or tl.startswith("на лист")
@@ -323,27 +384,50 @@ def nalozheniya(pl, t, proem=None):
                                 if tp.lower().startswith(("подпись", "на афиш", "надпис",
                                                           "на лопат", "на лист",
                                                           "на обложке", "вывеска"))]))
-            out += over.nadpis(W * (kart + 1) / (vsego + 1), 250, s, t, .7 + kart * .18, 42)
+            _yn = _polosa(proem, 60, 220, zanyato, lica) + 30
+            out += over.nadpis(W * (kart + 1) / (vsego + 1), _yn, s, t, .7 + kart * .18, 42)
+            if kart == vsego - 1:
+                zanyat(_yn - 30, 60)
             kart += 1
         else:                      # обычная плашка, пословица, присказка
             kg = over.kegl_pod(s, maxw - 68, "SERIF", 56, 26)
             if kg < 40:            # длинную поговорку — лентой внизу, не мелочью в углу
-                out += over.plashka_vniz(s, t, .9, _polosa(proem, 110, 880))
+                out += over.plashka_vniz(s, t, .9, zanyat(_polosa(proem, 110, 880, zanyato, lica), 110))
                 niz_zanyat = True
             else:
                 x = (W - over.wid(s, kg, "SERIF", 1) - 68) / 2
+                yy = _polosa(proem, 120, yy, zanyato, lica)
                 out += over.plashka(x, yy, s, t, .9, kg, maxw=maxw)
+                zanyat(yy, 120)
                 yy += 130
     # ПАМЯТКА: все набранные пункты стоят на экране разом
     pam = kartochki_pamyatki(pl)
     if pam:
+        # КАРТОЧКИ НЕ ЛОЖАТСЯ НА ЛИЦО (R-0056): блок ищет свободную полосу, а
+        # если людей в кадре много — ужимается по шагу и прижимается к краю.
+        # Пробуем, начиная с широкого блока по центру, и если лица в кадре
+        # мешают — ужимаем шаг и уводим список в ту половину, где лиц нет.
+        varianty = [(240, 1440, 136, 118), (240, 1440, 112, 96),
+                    (980, 880, 112, 96), (90, 880, 112, 96),
+                    (1100, 760, 96, 82), (90, 760, 96, 82),
+                    (1180, 660, 88, 76), (90, 660, 88, 76)]
+        kx, kw, shag, vys_k = varianty[0]
+        blok = len(pam) * shag
+        y0 = _polosa(proem, blok, 300, zanyato, lica)
+        for vx, vw, vsh, vvys in varianty:
+            b = len(pam) * vsh
+            y = _polosa(proem, b, 300 if vsh > 110 else 150, zanyato, lica)
+            if not _meshaet(y, b, zanyato, lica, vx, vx + vw):
+                kx, kw, shag, vys_k, blok, y0 = vx, vw, vsh, vvys, b, y
+                break
         for i, (n_, s_) in enumerate(pam):
             m = re.match(r"(\d+)[.:]?\s*(.+)", s_)
             nom, txt_ = (m.group(1), m.group(2)) if m else (str(i + 1), s_)
             svoya = (n_ == pl["n"])
-            out += over.kartochka(240, 300 + i * 136, 1440, 118, nom, txt_,
+            out += over.kartochka(kx, y0 + i * shag, kw, vys_k, nom, txt_,
                                   t, .5 if svoya else -9.0)
-        yy = max(yy, 300 + len(pam) * 136 + 40)
+        zanyat(y0, blok)
+        yy = max(yy, y0 + blok + 40)
         niz_zanyat = True
     # пояснения и советы — по центру свободного места, ниже титров
     poy = poyasneniya(pl)
@@ -360,13 +444,17 @@ def nalozheniya(pl, t, proem=None):
                 y0 = 1040 - vysota
         if len(poy) > 1:
             y0 = min(y0, 660)
+        vys_p = 130 * len(poy[:2])
+        y0 = _polosa(proem, vys_p, y0, zanyato, lica)
         for i, (sovet, s_) in enumerate(poy[:2]):
             out += over.poyasnenie(s_, t, .7 + i * .45, y0 + i * 130, sovet)
+        zanyat(y0, vys_p)
         niz_zanyat = niz_zanyat or y0 > 700
     # СЛОВО-АКЦЕНТ: выскакивает в секунду своего слова и держится до конца
     ak = slovo_akcenta(pl)
     if ak:
         t0 = float(pl.get("akcent_t") or .5)
         ya = 150 if (niz_zanyat or yy > 700) else 900
-        out += over.akcent(ak, t, t0, None, _polosa(proem, 140, ya))
+        ya = _polosa(proem, 140, ya, zanyato, lica)
+        out += over.akcent(ak, t, t0, None, zanyat(ya, 140))
     return out
