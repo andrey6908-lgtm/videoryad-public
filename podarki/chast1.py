@@ -466,30 +466,81 @@ def _veshalka_seni(x, y, w_, t, seed=1, kant=None):
     return s
 
 
-def _koza_hozyayka(x, y, h_, t):
-    """Огненная Коза — хозяйка года: крупная, рога дугой, пламя в гриве и хвосте."""
+def _koza_hozyayka(x, y, h_, t, vlevo=False):
+    """Огненная Коза — хозяйка года: тело на четырёх ногах, шея, морда с
+    ушами, рога дугой назад, пламя отдельно в гриве и хвосте (R-0013).
+    Собрана из простых примитивов (эллипс/прямоугольник), не из рукописных
+    безье — так силуэт не разваливается при любом масштабе.
+    `vlevo` — развернуть мордой влево (по умолчанию смотрит вправо)."""
+    sgn = -1 if vlevo else 1
     w_ = h_ * .62
     dy = 3 * A.w(t, .9)
+    kach = 3 * A.w(t, 1.6)
+    KOL, KOL2, ROG = "#c23c2e", "#8a2e22", "#7a5a34"
     s = f'<g transform="translate(0,{dy:.1f})">'
-    s += ten(x, y + 10, w_ * .55, 16, .5)
-    for i, sgn in enumerate((-1, 1)):
-        lx = x + sgn * w_ * .22
-        s += f'<rect x="{lx-16:.0f}" y="{y-h_*.30:.0f}" width="32" height="{h_*.30:.0f}" rx="12" fill="#b23a2c" {o(6)}/>'
-    s += (f'<path d="M{x-w_*.5:.0f},{y-h_*.30:.0f} q{w_*.1:.0f},{-h_*.5:.0f} {w_*.5:.0f},{-h_*.56:.0f}'
-          f' q{w_*.4:.0f},{h_*.06:.0f} {w_*.5:.0f},{h_*.5:.0f} q0,{h_*.14:.0f} {-w_*.5:.0f},{h_*.16:.0f}'
-          f' q{-w_*.5:.0f},{-h_*.02:.0f} {-w_*.5:.0f},{-h_*.6:.0f} Z" fill="#c23c2e" {o(7)}/>')
-    hx, hy = x + w_ * .46, y - h_ * .78
-    s += f'<circle cx="{hx:.0f}" cy="{hy:.0f}" r="{h_*.17:.0f}" fill="#c23c2e" {o(6)}/>'
-    for sgn in (-1, 1):
-        s += (f'<path d="M{hx+sgn*8:.0f},{hy-h_*.1:.0f} q{sgn*h_*.12:.0f},{-h_*.18:.0f} {sgn*h_*.02:.0f},{-h_*.3:.0f}'
-              f' q{-sgn*h_*.1:.0f},{h_*.04:.0f} {-sgn*h_*.02:.0f},{h_*.3:.0f} Z" fill="#7a2a20" {o(4)}/>')
+    s += ten(x, y + 6, w_ * .62, 16, .5)
+    # тело: один эллипс-барабан — надёжный силуэт на любом масштабе
+    bx, by_, brx, bry = x - sgn * w_ * .04, y - h_ * .40, w_ * .50, h_ * .20
+    # ноги: пара передних (со стороны морды) и пара задних, раздвоенное копыто
+    leg_top = by_ + bry * .55
+    for fx in (bx + sgn * brx * .62, bx + sgn * brx * .22,
+               bx - sgn * brx * .22, bx - sgn * brx * .62):
+        lw = w_ * .085
+        s += f'<rect x="{fx-lw/2:.0f}" y="{leg_top:.0f}" width="{lw:.0f}" height="{y-10-leg_top:.0f}" rx="{lw*.4:.0f}" fill="{KOL2}" {o(5)}/>'
+        s += f'<rect x="{fx-lw*.55:.0f}" y="{y-10:.0f}" width="{lw*.55:.0f}" height="10" fill="#2a1a14" {o(2)}/>'
+        s += f'<rect x="{fx:.0f}" y="{y-10:.0f}" width="{lw*.55:.0f}" height="10" fill="#1a100c" {o(2)}/>'
+    s += f'<ellipse cx="{bx:.0f}" cy="{by_:.0f}" rx="{brx:.0f}" ry="{bry:.0f}" fill="{KOL}" {o(7)}/>'
+    # шея: толстый мазок от груди к голове
+    nx0, ny0 = bx + sgn * brx * .78, by_ - bry * .35
+    hx, hy = x + sgn * w_ * .70, y - h_ * .84
+    s += (f'<path d="M{nx0:.0f},{ny0:.0f} L{hx-sgn*h_*.02:.0f},{hy+h_*.14:.0f}"'
+          f' fill="none" stroke="{KOL}" stroke-width="{h_*.30:.0f}" stroke-linecap="round"/>')
+    # голова: череп (эллипс) + морда (эллипс поменьше, вынесена вперёд-вниз)
+    skr = h_ * .155
+    s += f'<ellipse cx="{hx:.0f}" cy="{hy:.0f}" rx="{skr:.0f}" ry="{skr*.92:.0f}" fill="{KOL}" {o(6)}/>'
+    snx, sny = hx + sgn * h_ * .14, hy + h_ * .07
+    s += f'<ellipse cx="{snx:.0f}" cy="{sny:.0f}" rx="{h_*.095:.0f}" ry="{h_*.07:.0f}" fill="{KOL}" {o(5)}/>'
+    # уши: два лепестка по бокам черепа
+    for sgn2 in (-1, 1):
+        ex, ey = hx - sgn * h_ * .02, hy - h_ * .1
+        s += (f'<g transform="translate({ex:.0f},{ey:.0f}) rotate({sgn2*38:.0f})">'
+              f'<ellipse cx="0" cy="0" rx="{h_*.045:.0f}" ry="{h_*.12:.0f}" fill="{KOL2}" {o(4)}/></g>')
+    # рога: две параллельные дуги назад-вверх (ближняя чуть ниже и короче
+    # дальней) — одна и та же форма со смещением, чтобы не пересекались
+    b1x, b1y = hx - sgn * h_ * .08, hy - h_ * .12
+    for off, scl in ((0.0, 1.0), (h_ * .055, .82)):
+        bx2, by2 = b1x, b1y + off
+        cx2, cy2 = bx2 - sgn * h_ * .16 * scl, by2 - h_ * .22 * scl
+        ex2, ey2 = cx2 - sgn * h_ * .09 * scl, cy2 + h_ * .06 * scl
+        put = f'M{bx2:.0f},{by2:.0f} Q{cx2:.0f},{cy2:.0f} {ex2:.0f},{ey2:.0f}'
+        s += f'<path d="{put}" fill="none" stroke="{ROG}" stroke-width="{h_*.038*scl:.0f}" stroke-linecap="round"/>'
+        for k in (.3, .55, .78):
+            kx = bx2 + (cx2 - bx2) * k
+            ky = by2 + (cy2 - by2) * k
+            s += f'<circle cx="{kx:.0f}" cy="{ky:.0f}" r="{h_*.009:.0f}" fill="#4a3620" opacity=".6"/>'
+    # глаз с бликом
+    ex_, ey_ = hx + sgn * h_ * .03, hy - h_ * .01
     bl = 1 if not A.blink(t, 3.6) else 0
-    s += f'<ellipse cx="{hx+h_*.08:.0f}" cy="{hy:.0f}" rx="{h_*.035:.0f}" ry="{(h_*.045) if bl else 1.4:.1f}" fill="#1a1008"/>'
+    s += f'<ellipse cx="{ex_:.0f}" cy="{ey_:.0f}" rx="{h_*.04:.0f}" ry="{(h_*.045) if bl else 1.6:.1f}" fill="#1a1008"/>'
     if bl:
-        s += f'<circle cx="{hx+h_*.09:.0f}" cy="{hy-h_*.012:.0f}" r="{h_*.014:.0f}" fill="#fff"/>'
-    s += ogon(hx - h_ * .02, hy - h_ * .22, t, h_ / 540, .2, 5, SVET)
-    s += ogon(x - w_ * .32, y - h_ * .3, t, h_ / 560, .5, 5, ORA)
-    s += teplo(x, y - h_ * .4, h_ * .62, h_ * .5, .42 + .1 * abs(A.w(t, 1.3)))
+        s += f'<circle cx="{ex_+sgn*h_*.013:.0f}" cy="{ey_-h_*.013:.0f}" r="{h_*.014:.0f}" fill="#fff"/>'
+    # ноздря и рот на морде
+    s += f'<ellipse cx="{snx+sgn*h_*.06:.0f}" cy="{sny:.0f}" rx="{h_*.018:.0f}" ry="{h_*.012:.0f}" fill="#1a1008"/>'
+    s += (f'<path d="M{snx-sgn*h_*.02:.0f},{sny+h_*.065:.0f} q{sgn*h_*.06:.0f},{h_*.025:.0f} {sgn*h_*.1:.0f},0"'
+          f' fill="none" stroke="#5a1a12" stroke-width="{max(2,h_*.01):.1f}"/>')
+    # грива: три небольших язычка СТРОГО вдоль гребня шеи, не шире неё
+    for k in range(3):
+        p = .15 + .3 * k
+        gx = nx0 + (hx - nx0) * p
+        gy = (ny0 + (hy - ny0) * p) - h_ * .16
+        s += ogon(gx, gy, t, h_ / 2000, p * .4, 3, (SVET, ORA)[k % 2])
+    s += teplo(nx0 - sgn * h_ * .06, ny0 - h_ * .1, h_ * .30, h_ * .26, .28 + .06 * abs(A.w(t, 1.3)))
+    # хвост: короткий толстый мазок от крупа, видимый, с огоньком на конце
+    tx0, ty0 = bx - sgn * brx * .85, by_ - bry * .1
+    tx1, ty1 = tx0 - sgn * w_ * .08, ty0 + h_ * .16 + kach
+    s += (f'<path d="M{tx0:.0f},{ty0:.0f} L{tx1:.0f},{ty1:.0f}"'
+          f' fill="none" stroke="{KOL2}" stroke-width="{h_*.055:.0f}" stroke-linecap="round"/>')
+    s += ogon(tx1, ty1, t, h_ / 1800, .8, 3, ORA)
     return s + '</g>'
 
 
@@ -522,7 +573,7 @@ def ognennaya_koza_u_elki_s_podarkami(t):
             sv += (f'<circle cx="{sx+push-10:.0f}" cy="{sy-50:.0f}" r="10" fill="url(#med)"'
                    f' opacity="{.5+.4*abs(A.w(t,2.1,i*.2)):.2f}" {o(2)}/>')
     s += SL(Z_SRED, sv)
-    s += SL(Z_SRED, _koza_hozyayka(1140, 980, 580, t))
+    s += SL(Z_SRED, _koza_hozyayka(1140, 980, 580, t, vlevo=True))
     s += SL(Z_SRED, f'<path d="M700,1010 q380,40 760,0 l20,70 h-800 Z" fill="#6b4a3c" opacity=".85"/>')
     s += SL(Z_SRED, hodiki(1700, 420, t, 1.0))
     s += SL(Z_SRED, lampa(220, 420, t, .9, True))

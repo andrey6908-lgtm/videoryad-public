@@ -71,18 +71,46 @@ def _pochta_yashchiki(x, y, w_, h_, n=6):
 
 
 def _rusalka(x, y, h_, t):
+    """Русалка сидит на камне: хвост свёрнут у бедра, торс и плечи,
+    обеими руками закрывает лицо, волосы падают по спине. `y` — уровень
+    камня под бёдрами, `h_` — рост от бедра до макушки."""
     plach = A.seg(t % 3.0, 0, 2.0)
-    s = ten(x, y + h_ * .1, h_ * .6, 14, .5)
-    s += f'<path d="M{x-h_*.5:.0f},{y:.0f} q{h_*.5:.0f},{h_*.18:.0f} {h_:.0f},0 q{-h_*.1:.0f},{h_*.1:.0f} {-h_*.5:.0f},{h_*.06:.0f} q{-h_*.4:.0f},0 {-h_*.5:.0f},{-h_*.06:.0f} Z" fill="url(#led)" {o(5)}/>'
-    s += f'<ellipse cx="{x:.0f}" cy="{y-h_*.4:.0f}" rx="{h_*.16:.0f}" ry="{h_*.2:.0f}" fill="#e0b08a" {o(4)}/>'
-    s += f'<path d="M{x:.0f},{y-h_*.55:.0f} q{h_*.18:.0f},0 {h_*.16:.0f},{h_*.3:.0f}" fill="none" stroke="#caa64a" stroke-width="{h_*.1:.0f}"/>'
+    kach = 2 * A.w(t, 1.1)
+    hip = (x, y)
+    s = ten(x - h_ * .1, y + h_ * .04, h_ * .55, 14, .45)
+    # хвост: плавная дуга-«колбаска» от бедра влево, веер-плавник на конце
+    s += (f'<path d="M{x-h_*.04:.0f},{y+h_*.02:.0f}'
+          f' Q{x-h_*.42:.0f},{y+h_*.1:.0f} {x-h_*.68:.0f},{y-h_*.1+kach:.0f}'
+          f' Q{x-h_*.42:.0f},{y-h_*.22:.0f} {x-h_*.08:.0f},{y-h_*.14:.0f} Z"'
+          f' fill="url(#led)" {o(5)}/>')
+    fx, fy = x - h_ * .7, y - h_ * .1 + kach
+    s += (f'<path d="M{fx:.0f},{fy:.0f} l{-h_*.16:.0f},{-h_*.14:.0f} l{h_*.05:.0f},{h_*.13:.0f}'
+          f' l{-h_*.18:.0f},{h_*.01:.0f} l{h_*.18:.0f},{h_*.11:.0f} l{-h_*.05:.0f},{h_*.12:.0f} Z"'
+          f' fill="#9fc4d8" {o(3)}/>')
+    # торс: от бедра вверх к плечам, тот же силуэт одним плавным телом
+    tcx, tcy = x + h_ * .02, y - h_ * .34
+    s += f'<ellipse cx="{tcx:.0f}" cy="{tcy:.0f}" rx="{h_*.17:.0f}" ry="{h_*.24:.0f}" fill="#e0b08a" {o(5)}/>'
+    shx, shy = tcx, y - h_ * .54
+    # волосы: прядь от затылка вдоль спины
+    s += (f'<path d="M{shx+h_*.1:.0f},{shy-h_*.06:.0f} q{h_*.14:.0f},{h_*.2:.0f} {h_*.04:.0f},{h_*.42:.0f}'
+          f' q{-h_*.04:.0f},{h_*.14:.0f} {-h_*.16:.0f},{h_*.14:.0f}'
+          f' q{h_*.1:.0f},{-h_*.18:.0f} {h_*.02:.0f},{-h_*.5:.0f} Z" fill="#caa64a" {o(4)}/>')
+    # голова — вплотную к плечам, без зазора
+    hcx, hcy = shx, shy - h_ * .13
+    s += f'<ellipse cx="{hcx:.0f}" cy="{hcy:.0f}" rx="{h_*.12:.0f}" ry="{h_*.13:.0f}" fill="#e0b08a" {o(5)}/>'
+    s += (f'<path d="M{hcx-h_*.1:.0f},{hcy-h_*.05:.0f} q{-h_*.02:.0f},{-h_*.14:.0f} {h_*.1:.0f},{-h_*.17:.0f}'
+          f' q{h_*.1:.0f},{-h_*.01:.0f} {h_*.1:.0f},{h_*.1:.0f} Z" fill="#caa64a" {o(3)}/>')
+    # руки закрывают лицо: от плеч к подбородку, кисти сходятся перед лицом
     for sgn in (-1, 1):
-        s += f'<ellipse cx="{x+sgn*h_*.1:.0f}" cy="{y-h_*.46:.0f}" rx="{h_*.08:.0f}" ry="{h_*.1:.0f}" fill="#e0b08a" {o(3)}/>'
+        ruka_d = (f'M{shx+sgn*h_*.12:.0f},{shy:.0f}'
+                  f' Q{shx+sgn*h_*.1:.0f},{hcy+h_*.02:.0f} {hcx+sgn*h_*.03:.0f},{hcy+h_*.03:.0f}')
+        s += f'<path d="{ruka_d}" fill="none" stroke="{K}" stroke-width="{h_*.08:.0f}" stroke-linecap="round"/>'
+        s += f'<path d="{ruka_d}" fill="none" stroke="#e0b08a" stroke-width="{h_*.062:.0f}" stroke-linecap="round"/>'
     if plach < .7:
         dy = plach * h_ * .5
-        s += f'<circle cx="{x-h_*.07:.0f}" cy="{y-h_*.46+dy:.0f}" r="5" fill="#cfe8ff" opacity="{1-plach:.2f}"/>'
+        s += f'<circle cx="{hcx:.0f}" cy="{hcy+h_*.1+dy:.0f}" r="{h_*.017:.0f}" fill="#cfe8ff" opacity="{1-plach:.2f}"/>'
     else:
-        s += f'<circle cx="{x-h_*.07:.0f}" cy="{y-h_*.1:.0f}" r="7" fill="{SNEG}" {o(2)}/>'
+        s += f'<circle cx="{hcx:.0f}" cy="{y-h_*.1:.0f}" r="{h_*.024:.0f}" fill="{SNEG}" {o(2)}/>'
     return s
 
 
@@ -818,13 +846,14 @@ def slezy_rusalki(t):
     s += SL(Z_DAL, f'<path d="M1600,900 q0,-200 -60,-260" stroke="#2a2a2a" stroke-width="16" fill="none"/>')
     s += SL(Z_DAL, goloe_derevo(1700, 900, 380, t, 5, 6, inej_=True))
     s += SL(Z_SRED, f'<path d="M1500,820 q60,-30 140,-10 l0,30 q-70,20 -140,0 Z" fill="#6b4428" {o(4)}/>')
-    kx, ky = 760, 740
+    kx, ky = 760, 820
+    rkx, rky = 880, 600
+    s += SL(Z_SRED, f'<ellipse cx="{rkx:.0f}" cy="{rky:.0f}" rx="230" ry="50" fill="{KAMEN}" opacity=".9" {o(4)}/>')
+    s += SL(Z_SRED, _rusalka(rkx, rky - 6, 300, t))
     s += SL(Z_SRED, f'<rect x="{kx-100:.0f}" y="{ky:.0f}" width="200" height="110" rx="16" fill="{TKAN2}" {o(5)}/>')
     s += SL(Z_SRED, f'<rect x="{kx-70:.0f}" y="{ky-10:.0f}" width="140" height="18" fill="#0a1420" {o(2)}/>')
     for i in range(5):
         s += SL(Z_SRED, f'<circle cx="{kx-50+i*24:.0f}" cy="{ky+40:.0f}" r="10" fill="#f4f0e2" {o(2)}/>')
-    s += SL(Z_SRED, _rusalka(760, 600, 300, t))
-    s += SL(Z_SRED, f'<ellipse cx="{kx:.0f}" cy="{ky+10:.0f}" rx="260" ry="40" fill="{KAMEN}" opacity=".9" {o(4)}/>')
     s += SL(Z_SRED, svecha(1180, 780, t, 1.4, .8))
     s += SL(Z_PERED, ramka_pp("oba", "#040608", .5))
     s += vinetka(.52)
