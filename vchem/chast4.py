@@ -669,8 +669,11 @@ def klipsy_i_cheshskoe_steklo(t):
                        f' fill="{c}" opacity="{.25+.25*math.sin(p*math.pi):.2f}"/>')
     # НАСТОЯЩЕЕ стекло/бисер на стене (его слово 17.11) — метка перед рамой
     # (опора 14.11), окно в свободной верхней зоне, проём от нормы R-0024
-    s += SL(Z_DAL, mesto_stoka(594, 154, 760, 392, "pryam"))
-    s += SL(Z_DAL, zerkalo(580, 140, 788, 420, t, "pryam", ZOLOTO, True))
+    # сдвинуто влево (было по центру, x=580) — лампа и рукав руки,
+    # тянущейся к ней (x=1000), рисуются z=0 и легли поверх окна
+    # (поймано глазами 17.11 на осмотре перед сдачей)
+    s += SL(Z_DAL, mesto_stoka(74, 154, 760, 392, "pryam"))
+    s += SL(Z_DAL, zerkalo(60, 140, 788, 420, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, f'<rect x="120" y="640" width="1680" height="420" rx="20"'
                     f' fill="{DEREVO}" {o(7)}/>')
     s += SL(Z_SRED, f'<rect x="150" y="670" width="1620" height="360" rx="14"'
