@@ -170,6 +170,10 @@ def kostyum_s_vodolazkoy_na_manekene(t):
     s += SL(0, f'<g opacity="{let:.2f}" transform="rotate({40*let:.0f} {gx:.0f} {gy:.0f})">'
                f'<path d="M{gx-14:.0f},{gy:.0f} l28,0 l-8,110 l26,110 h-64 l26,-110 Z"'
                f' fill="{TSINIY}" {o(3)}/></g>')
+    # НАСТОЯЩАЯ ткань костюма в отражении (его слово 17.11) — метка перед
+    # рамой (опора 14.11); зеркало расширено до нормы проёма R-0024
+    s += SL(Z_SRED, mesto_stoka(94, 334, 760, 492, "pryam"))
+    s += SL(Z_SRED, zerkalo(80, 320, 788, 520, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, f'<rect x="1420" y="300" width="300" height="18" rx="8"'
                     f' fill="{SEREBRO}" {o(4)}/>')
     s += SL(Z_SRED, naryad_plechiki(1560, 320, 380, t, GRAFIT, 1.0, .4, False, None, .04, 410))
@@ -179,7 +183,6 @@ def kostyum_s_vodolazkoy_na_manekene(t):
                     f' fill="{DEREVO}" {o(5)}/>'
                     f'<rect x="310" y="906" width="18" height="144" fill="{DEREVO}" {o(4)}/>'
                     f'<rect x="442" y="906" width="18" height="144" fill="{DEREVO}" {o(4)}/>')
-    s += SL(Z_SRED, zerkalo(80, 320, 180, 520, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, girlyanda(400, 130, 1200, t, 10, 411, 46))
     s += SL(0, lampa_stolika(1300, 820, t, 1.3))
     s += SL(Z_PERED, ramka_pp("oba"))
@@ -664,6 +667,10 @@ def klipsy_i_cheshskoe_steklo(t):
         c = ("#ff6b6b", "#ffd36b", "#9bf0a8", "#8fd6ff", "#c79bff")[i % 5]
         s += SL(Z_DAL, f'<ellipse cx="{zx:.0f}" cy="{zy:.0f}" rx="40" ry="26"'
                        f' fill="{c}" opacity="{.25+.25*math.sin(p*math.pi):.2f}"/>')
+    # НАСТОЯЩЕЕ стекло/бисер на стене (его слово 17.11) — метка перед рамой
+    # (опора 14.11), окно в свободной верхней зоне, проём от нормы R-0024
+    s += SL(Z_DAL, mesto_stoka(594, 154, 760, 392, "pryam"))
+    s += SL(Z_DAL, zerkalo(580, 140, 788, 420, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, f'<rect x="120" y="640" width="1680" height="420" rx="20"'
                     f' fill="{DEREVO}" {o(7)}/>')
     s += SL(Z_SRED, f'<rect x="150" y="670" width="1620" height="360" rx="14"'
@@ -1275,6 +1282,10 @@ def novaya_meloch_vmesto_platya(t):
     s = f'<rect width="{W}" height="{H}" fill="#241f1c"/>'
     s += SL(Z_NEBO, nebo("noch", t, False, 500))
     s += SL(Z_DAL, doski(0, 0, W, 520, 84))
+    # НАСТОЯЩИЙ шёлковый шарф на стене (его слово 17.11) — метка перед
+    # рамой (опора 14.11), окно в свободной верхней зоне, проём от нормы R-0024
+    s += SL(Z_DAL, mesto_stoka(664, 154, 760, 352, "pryam"))
+    s += SL(Z_DAL, zerkalo(650, 140, 788, 380, t, "pryam", ZOLOTO, True))
     s += SL(Z_DAL, elka(1840, 1050, 300, t, 1.0, True, 501))
     s += SL(Z_SRED, stol(80, 1010, 1760, 48))
     ot = A.out(A.seg(t, .3, 1.4))

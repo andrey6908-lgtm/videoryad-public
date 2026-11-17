@@ -24,6 +24,7 @@ if os.path.exists(os.path.join(HERE, "stock.json")):
     _ST = json.load(open(os.path.join(HERE, "stock.json"), encoding="utf-8"))
 
 _STOK_METKA = re.compile(r'<g data-stok="([^"]*)"></g>')
+_FIGURA_METKA = re.compile(r'<g data-figura="([^"]*)"></g>')
 _RE = re.compile(r"«([^»]*)»")
 
 
@@ -180,6 +181,15 @@ def gabarit_stoka(pl, t=0.0):
     return tuple(float(v) for v in ch[:4])
 
 
+def gabariti_figur(pl, t=0.0):
+    """Все высокие предметы/фигуры сцены, помеченные mesto_figury: список
+    (x, y, w, h). Пояснение-надпись не должно садиться им на макушку
+    (поймано 17.11 на «Коза пробует ткани» — пояснение легло на одежду)."""
+    syr = getattr(lok, DEK[pl["lok"]])(t)
+    return [tuple(float(v) for v in m.group(1).split(",")[:4])
+            for m in _FIGURA_METKA.finditer(syr)]
+
+
 def _vstavit_stok(syr, pl, t, zaglushki):
     """Метку проёма подменяем настоящим кадром. Делается ДО камеры, поэтому
     кадр едет вместе со своим слоем сцены и не отстаёт от неё."""
@@ -223,7 +233,7 @@ def body(pl, t, p=.5, zaglushki=True):
         bx, by = BLIK[imya]
         out += baza.blik(bx, by, t, .9, op=.5)
         out += baza.begushchiy_blik(t, 16.0, (pl["n"] * .17) % 1.0, .05)
-    out += nalozheniya(pl, t, gabarit_stoka(pl, t))
+    out += nalozheniya(pl, t, gabarit_stoka(pl, t), gabariti_figur(pl, t))
     return out + "</svg>"
 
 
@@ -243,7 +253,26 @@ def _polosa(proem, vys, hochu):
     return 1064 - vys                     # проём занял кадр — жмёмся к низу
 
 
-def nalozheniya(pl, t, proem=None):
+def _polosa_figur(figury, vys, hochu):
+    """Куда поставить ленту высотой `vys`, если в кадре стоят высокие
+    помеченные предметы (mesto_figury) — не садимся им на макушку. Отдельно
+    от _polosa(проём): сток и фигуры разводились в разное время, проверенный
+    код для стока не трогаем."""
+    def svobodno(y):
+        return all(y + vys <= fy + 8 or y >= fy + fh - 8 for _, fy, _, fh in figury)
+    if svobodno(hochu):
+        return hochu
+    kandidaty = []
+    for _, fy, _, fh in figury:
+        kandidaty.append(fy + fh + 16)
+        kandidaty.append(fy - vys - 16)
+    for y in sorted(kandidaty, key=lambda y: abs(y - hochu)):
+        if 16 <= y and y + vys <= 1064 and svobodno(y):
+            return y
+    return hochu
+
+
+def nalozheniya(pl, t, proem=None, figury=()):
     """Надписи плана. Весь кадр рисованный, свободного угла нет — титры идут
     по центру и по краям, пояснения крупно по центру (R-0030)."""
     out = ""
@@ -338,15 +367,17 @@ def nalozheniya(pl, t, proem=None):
     poy = poyasneniya(pl)
     if poy:
         y0 = 620 if (yy > 600 or niz_zanyat) else 820
+        vysota = 130 * len(poy[:2])
         if proem:                  # под проём не лезем: сток не перекрываем
             px, py, pw, ph = proem
-            vysota = 130 * len(poy[:2])
             if py + ph + 24 + vysota <= 1040:
                 y0 = py + ph + 24
             elif py - 24 - vysota >= 110:
                 y0 = py - 24 - vysota
             else:                  # проём занял кадр — ставим лентой у самого низа
                 y0 = 1040 - vysota
+        elif figury:                # нет стока, но есть высокие предметы — не на них
+            y0 = _polosa_figur(figury, vysota, y0)
         if len(poy) > 1:
             y0 = min(y0, 660)
         for i, (sovet, s_) in enumerate(poy[:2]):

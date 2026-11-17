@@ -344,6 +344,12 @@ def koza_probuet_tkani(t):
         s += SL(420, naryad_plechiki(sx, FLOOR - 400, 240, t, col, .58, i * .3, i != 0, MOLOKO, .1, 40 + i))
         if i == 2:
             s += SL(420, birka(sx + 60, FLOOR - 470, .9, t, MOLOKO, .5))
+        # вещь на плечиках реально занимает FLOOR-400..FLOOR-100 (подол +
+        # скамья под ней) — пояснению сюда нельзя (поймано 17.11: «Принято
+        # считать» легло на одежду). До пола метку НЕ тянуть — иначе внизу
+        # не остаётся ни одной свободной полосы и пояснение уезжает на
+        # соседнюю плашку-пункт (поймано при проверке той же правки)
+        s += SL(0, mesto_figury(sx - 120, FLOOR - 400, 240, 300))
     s += SL(360, f'<rect x="80" y="{FLOOR-4}" width="200" height="140" rx="16" fill="{TERRAKOT}" opacity=".85"'
                  f' {o(5)}/>')
     otdyor = abs(A.w(t, 1.6, .0))
@@ -578,9 +584,12 @@ def pyat_loskutov_i_pyat_predmetov(t):
     s += SL(440, lampa_stolika(1700, FLOOR - 70, t, 1.1))
     s += SL(420, _instrumenty_stol(300, FLOOR - 60, t, 11))
     s += SL(400, _katushki(480, FLOOR - 100, 6, 12))
-    loskuty = ((ALYY, "мак"), (RUBIN, "перстень"), (VINO, "вишня"), (KORALL, "бусы"), (TERRAKOT, "горшок"))
+    # бордовый добавлен 17.11 (его слово: цвета не хватало в палитре) —
+    # шестым лоскутом, шаг сужен со 220 до 200, чтобы все влезли на стол
+    loskuty = ((ALYY, "мак"), (RUBIN, "перстень"), (VINO, "вишня"), (BORDO, "гранат"),
+               (KORALL, "бусы"), (TERRAKOT, "горшок"))
     for i, (col, predmet) in enumerate(loskuty):
-        lx = 420 + i * 220
+        lx = 400 + i * 210
         pripod = abs(A.w(t, 1.6, i * .4)) * 10
         s += SL(0, f'<rect x="{lx-80:.0f}" y="{FLOOR-60-pripod:.0f}" width="160" height="70" rx="10"'
                    f' fill="{col}" {o(5)}/>')
@@ -595,6 +604,10 @@ def pyat_loskutov_i_pyat_predmetov(t):
         elif predmet == "вишня":
             pr = (f'<circle cx="{lx-10}" cy="{FLOOR-216}" r="18" fill="{VINO}" opacity="{vid_p:.2f}"/>'
                   f'<circle cx="{lx+16}" cy="{FLOOR-226}" r="18" fill="{VINO}" opacity="{vid_p:.2f}"/>')
+        elif predmet == "гранат":
+            pr = (f'<circle cx="{lx}" cy="{FLOOR-212}" r="26" fill="{BORDO}" opacity="{vid_p:.2f}"/>'
+                  f'<path d="M{lx-14},{FLOOR-238} l6,-16 l8,10 l8,-10 l6,16 Z" fill="{BORDO}"'
+                  f' opacity="{vid_p:.2f}"/>')
         elif predmet == "бусы":
             pr = "".join(f'<circle cx="{lx-40+j*16}" cy="{FLOOR-210+abs(j-4)*4}" r="9" fill="{KORALL}"'
                          f' opacity="{vid_p:.2f}"/>' for j in range(9))

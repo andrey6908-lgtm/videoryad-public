@@ -18,6 +18,7 @@ import anim as A
 ALYY      = "#d81f2a"   # алый — чистый красный, как мак
 RUBIN     = "#9e1230"   # рубиновый — тёмный с синевой, как камень в перстне
 VINO      = "#6d1028"   # винный — ещё темнее и глуше, как вишня
+BORDO     = "#722232"   # бордовый — коричневатый подтон, глуше рубинового и теплее винного (добавлен 17.11)
 KORALL    = "#e8674f"   # коралловый — красный с оранжевым, как бусы
 TERRAKOT  = "#b4542e"   # терракотовый — обожжённая глина
 IZUMRUD   = "#0f6b4a"   # изумрудный
@@ -1027,6 +1028,12 @@ def koza_probuet_tkani(t):
         s += SL(420, naryad_plechiki(sx, FLOOR - 400, 240, t, col, .58, i * .3, i != 0, MOLOKO, .1, 40 + i))
         if i == 2:
             s += SL(420, birka(sx + 60, FLOOR - 470, .9, t, MOLOKO, .5))
+        # вещь на плечиках реально занимает FLOOR-400..FLOOR-100 (подол +
+        # скамья под ней) — пояснению сюда нельзя (поймано 17.11: «Принято
+        # считать» легло на одежду). До пола метку НЕ тянуть — иначе внизу
+        # не остаётся ни одной свободной полосы и пояснение уезжает на
+        # соседнюю плашку-пункт (поймано при проверке той же правки)
+        s += SL(0, mesto_figury(sx - 120, FLOOR - 400, 240, 300))
     s += SL(360, f'<rect x="80" y="{FLOOR-4}" width="200" height="140" rx="16" fill="{TERRAKOT}" opacity=".85"'
                  f' {o(5)}/>')
     otdyor = abs(A.w(t, 1.6, .0))
@@ -1261,9 +1268,12 @@ def pyat_loskutov_i_pyat_predmetov(t):
     s += SL(440, lampa_stolika(1700, FLOOR - 70, t, 1.1))
     s += SL(420, _instrumenty_stol(300, FLOOR - 60, t, 11))
     s += SL(400, _katushki(480, FLOOR - 100, 6, 12))
-    loskuty = ((ALYY, "мак"), (RUBIN, "перстень"), (VINO, "вишня"), (KORALL, "бусы"), (TERRAKOT, "горшок"))
+    # бордовый добавлен 17.11 (его слово: цвета не хватало в палитре) —
+    # шестым лоскутом, шаг сужен со 220 до 200, чтобы все влезли на стол
+    loskuty = ((ALYY, "мак"), (RUBIN, "перстень"), (VINO, "вишня"), (BORDO, "гранат"),
+               (KORALL, "бусы"), (TERRAKOT, "горшок"))
     for i, (col, predmet) in enumerate(loskuty):
-        lx = 420 + i * 220
+        lx = 400 + i * 210
         pripod = abs(A.w(t, 1.6, i * .4)) * 10
         s += SL(0, f'<rect x="{lx-80:.0f}" y="{FLOOR-60-pripod:.0f}" width="160" height="70" rx="10"'
                    f' fill="{col}" {o(5)}/>')
@@ -1278,6 +1288,10 @@ def pyat_loskutov_i_pyat_predmetov(t):
         elif predmet == "вишня":
             pr = (f'<circle cx="{lx-10}" cy="{FLOOR-216}" r="18" fill="{VINO}" opacity="{vid_p:.2f}"/>'
                   f'<circle cx="{lx+16}" cy="{FLOOR-226}" r="18" fill="{VINO}" opacity="{vid_p:.2f}"/>')
+        elif predmet == "гранат":
+            pr = (f'<circle cx="{lx}" cy="{FLOOR-212}" r="26" fill="{BORDO}" opacity="{vid_p:.2f}"/>'
+                  f'<path d="M{lx-14},{FLOOR-238} l6,-16 l8,10 l8,-10 l6,16 Z" fill="{BORDO}"'
+                  f' opacity="{vid_p:.2f}"/>')
         elif predmet == "бусы":
             pr = "".join(f'<circle cx="{lx-40+j*16}" cy="{FLOOR-210+abs(j-4)*4}" r="9" fill="{KORALL}"'
                          f' opacity="{vid_p:.2f}"/>' for j in range(9))
@@ -2838,15 +2852,11 @@ def sergi_na_barhatnoy_podushechke(t):
     s += SL(0, f'<path d="M480,900 q280,-110 560,0 q-62,150 -280,156 q-218,-6 -280,-156 Z"'
                f' fill="{VINO}" {o(7)}/>')
     s += SL(0, skladki(520, 850, 480, 150, VINO, 6, 81, t, 2.0))
-    for sgn in (-1, 1):
-        kach = 5 * A.w(t, 1.7, .2 if sgn < 0 else .6)
-        sx = 760 + sgn * 150
-        s += SL(0, f'<g transform="rotate({kach:.2f} {sx} 820)">'
-                   f'<path d="M{sx},820 l0,-92" stroke="{ZOLOTO}" stroke-width="11"/>'
-                   f'<circle cx="{sx}" cy="722" r="34" fill="none" stroke="{ZOLOTO}"'
-                   f' stroke-width="11"/>'
-                   f'<path d="M{sx-44},832 l44,130 l44,-130 Z" fill="{ZOLOTO}" {o(4)}/>'
-                   f'<circle cx="{sx}" cy="902" r="20" fill="{KREM2}" {o(3)}/></g>')
+    # НАСТОЯЩИЕ серьги вместо рисованных (его слово 17.11: наряды и
+    # аксессуары показываем реальным кадром, а не рисунком) — подушечка
+    # под ними остаётся рисованной подставкой. Овал увеличен до нормы
+    # проёма R-0024 (от 760 px по ширине) — маленькое окошко не читается
+    s += SL(0, mesto_stoka(370, 650, 780, 320, "ellips"))
     # коробка с бусами, брошами, браслетами; крышка закрывается рукавом
     zak = A.out(A.seg(t, .5, 1.4))
     kx, ky, kw = 1180, 980, 460
@@ -5225,6 +5235,10 @@ def kostyum_s_vodolazkoy_na_manekene(t):
     s += SL(0, f'<g opacity="{let:.2f}" transform="rotate({40*let:.0f} {gx:.0f} {gy:.0f})">'
                f'<path d="M{gx-14:.0f},{gy:.0f} l28,0 l-8,110 l26,110 h-64 l26,-110 Z"'
                f' fill="{TSINIY}" {o(3)}/></g>')
+    # НАСТОЯЩАЯ ткань костюма в отражении (его слово 17.11) — метка перед
+    # рамой (опора 14.11); зеркало расширено до нормы проёма R-0024
+    s += SL(Z_SRED, mesto_stoka(94, 334, 760, 492, "pryam"))
+    s += SL(Z_SRED, zerkalo(80, 320, 788, 520, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, f'<rect x="1420" y="300" width="300" height="18" rx="8"'
                     f' fill="{SEREBRO}" {o(4)}/>')
     s += SL(Z_SRED, naryad_plechiki(1560, 320, 380, t, GRAFIT, 1.0, .4, False, None, .04, 410))
@@ -5234,7 +5248,6 @@ def kostyum_s_vodolazkoy_na_manekene(t):
                     f' fill="{DEREVO}" {o(5)}/>'
                     f'<rect x="310" y="906" width="18" height="144" fill="{DEREVO}" {o(4)}/>'
                     f'<rect x="442" y="906" width="18" height="144" fill="{DEREVO}" {o(4)}/>')
-    s += SL(Z_SRED, zerkalo(80, 320, 180, 520, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, girlyanda(400, 130, 1200, t, 10, 411, 46))
     s += SL(0, lampa_stolika(1300, 820, t, 1.3))
     s += SL(Z_PERED, ramka_pp("oba"))
@@ -5719,6 +5732,10 @@ def klipsy_i_cheshskoe_steklo(t):
         c = ("#ff6b6b", "#ffd36b", "#9bf0a8", "#8fd6ff", "#c79bff")[i % 5]
         s += SL(Z_DAL, f'<ellipse cx="{zx:.0f}" cy="{zy:.0f}" rx="40" ry="26"'
                        f' fill="{c}" opacity="{.25+.25*math.sin(p*math.pi):.2f}"/>')
+    # НАСТОЯЩЕЕ стекло/бисер на стене (его слово 17.11) — метка перед рамой
+    # (опора 14.11), окно в свободной верхней зоне, проём от нормы R-0024
+    s += SL(Z_DAL, mesto_stoka(594, 154, 760, 392, "pryam"))
+    s += SL(Z_DAL, zerkalo(580, 140, 788, 420, t, "pryam", ZOLOTO, True))
     s += SL(Z_SRED, f'<rect x="120" y="640" width="1680" height="420" rx="20"'
                     f' fill="{DEREVO}" {o(7)}/>')
     s += SL(Z_SRED, f'<rect x="150" y="670" width="1620" height="360" rx="14"'
@@ -6330,6 +6347,10 @@ def novaya_meloch_vmesto_platya(t):
     s = f'<rect width="{W}" height="{H}" fill="#241f1c"/>'
     s += SL(Z_NEBO, nebo("noch", t, False, 500))
     s += SL(Z_DAL, doski(0, 0, W, 520, 84))
+    # НАСТОЯЩИЙ шёлковый шарф на стене (его слово 17.11) — метка перед
+    # рамой (опора 14.11), окно в свободной верхней зоне, проём от нормы R-0024
+    s += SL(Z_DAL, mesto_stoka(664, 154, 760, 352, "pryam"))
+    s += SL(Z_DAL, zerkalo(650, 140, 788, 380, t, "pryam", ZOLOTO, True))
     s += SL(Z_DAL, elka(1840, 1050, 300, t, 1.0, True, 501))
     s += SL(Z_SRED, stol(80, 1010, 1760, 48))
     ot = A.out(A.seg(t, .3, 1.4))

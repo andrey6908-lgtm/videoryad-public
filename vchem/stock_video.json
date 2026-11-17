@@ -178,5 +178,45 @@
   "sek": 7.65,
   "start": 1.0,
   "tags": "moon, clock, time, night, clouds, midnight, quiet, silence, "
+ },
+ "58": {
+  "url": "https://videos.pexels.com/video-files/5815082/5815082-hd_1280_720_25fps.mp4",
+  "id": "px5815082",
+  "w": 1280,
+  "h": 720,
+  "dur": 6,
+  "sek": 5.29,
+  "start": 0.3,
+  "tags": "golden-jewelry-close-up-5815082"
+ },
+ "106": {
+  "url": "https://videos.pexels.com/video-files/6278960/6278960-hd_1366_720_25fps.mp4",
+  "id": "px6278960",
+  "w": 1366,
+  "h": 720,
+  "dur": 10,
+  "sek": 6.93,
+  "start": 1.0,
+  "tags": "dark-blue-fabric-6278960"
+ },
+ "116": {
+  "url": "https://videos.pexels.com/video-files/855854/855854-hd_1280_720_24fps.mp4",
+  "id": "px855854",
+  "w": 1280,
+  "h": 720,
+  "dur": 56,
+  "sek": 2.71,
+  "start": 1.0,
+  "tags": "close-up-shot-of-diamonds-855854"
+ },
+ "130": {
+  "url": "https://videos.pexels.com/video-files/7233564/7233564-hd_1280_720_30fps.mp4",
+  "id": "px7233564",
+  "w": 1280,
+  "h": 720,
+  "dur": 11,
+  "sek": 4.84,
+  "start": 1.0,
+  "tags": "green-satin-7233564"
  }
 }
