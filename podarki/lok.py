@@ -3346,9 +3346,9 @@ def pudrenica_s_zerkalcem(t):
     s += SL(Z_DAL, brevna(0, 40, W, 760, 88))
     s += SL(Z_SRED, polovicy(820))
     s += SL(Z_SRED, stol(360, 700, 1100, 34))
-    kx, ky = 1000, 760
+    kx, ky = 1240, 760
     s += SL(Z_SRED, f'<rect x="{kx-260:.0f}" y="{ky:.0f}" width="520" height="130" rx="18" fill="{TKAN}" {o(5)}/>')
-    px, py, pw, ph_ = kx - 190, ky - 420, 380, 380
+    px, py, pw, ph_ = kx - 190, ky - 330, 380, 330
     put = kontur_proema(px, py, pw, ph_, "ellips")
     s += SL(Z_SRED, f'<path d="{put}" fill="#1a140e"/>')
     s += SL(Z_SRED, mesto_stoka(px, py, pw, ph_, "ellips"))
@@ -3362,11 +3362,12 @@ def pudrenica_s_zerkalcem(t):
     s += SL(Z_SRED, f'<path d="M{kx+380+bant_sh:.0f},{ky-50:.0f} q-30,10 -10,30 q20,-6 10,-30 Z" fill="{KRAS}" {o(2)}/>')
     s += SL(Z_SRED, f'<ellipse cx="{kx+540:.0f}" cy="{ky+40:.0f}" rx="60" ry="22" fill="{POL}" {o(3)}/>')
     s += SL(Z_SRED, par(kx + 540, ky + 20, t, 3, .4, 70))
-    s += SL(Z_SRED, figura(kx - 60, 1060, 480, t, "#5a6a4a", KREM, False, .0))
-    ruk1, (r1x, r1y) = rukav(kx + 20, 780, 130, -80, t, "#5a6a4a", KREM, .0, 3)
+    fx = kx - 300
+    s += SL(Z_SRED, figura(fx, 1060, 480, t, "#5a6a4a", KREM, False, .0))
+    ruk1, (r1x, r1y) = rukav(fx + 80, 753, 160, -28, t, "#5a6a4a", KREM, .0, 3)
     s += SL(Z_SRED, ruk1)
     puh = 10 * A.w(t, 2.0)
-    ruk2, (r2x, r2y) = rukav(kx - 130, 780, 140, -30 + puh * .2, t, "#5a6a4a", KREM, .4, 3)
+    ruk2, (r2x, r2y) = rukav(fx - 70, 780, 140, -30 + puh * .2, t, "#5a6a4a", KREM, .4, 3)
     s += SL(Z_SRED, ruk2)
     s += SL(Z_SRED, f'<circle cx="{r2x:.0f}" cy="{r2y:.0f}" r="22" fill="#fdf8ec" opacity=".85"/>')
     s += SL(Z_PERED, ramka_pp("oba", "#120e0e", .36))
