@@ -1,0 +1,144 @@
+{
+ "4": {
+  "photo": "overlays/scene_004.jpg",
+  "sound": "pop",
+  "at": 2.2,
+  "shape": "rect",
+  "scale": 1.0,
+  "style": "right",
+  "text": {
+   "words": "ЦЕНТР ВНИМАНИЯ",
+   "color": "white",
+   "pos": "tl",
+   "font": "default",
+   "sound": "whoosh",
+   "at": 2.0,
+   "scale": 1.0,
+   "approved": true
+  },
+  "anchor": "middle",
+  "approved": true,
+  "dash_ok": true
+ },
+ "1": {
+  "text": {
+   "words": "СТАВКИ",
+   "color": "yellow",
+   "pos": "tc",
+   "font": "default",
+   "sound": "mashinka",
+   "at": 2.0,
+   "scale": 1.0,
+   "approved": true
+  }
+ },
+ "5": {
+  "text": {
+   "words": "АРСЕНАЛ",
+   "color": "red",
+   "pos": "mr",
+   "font": "default",
+   "sound": "pop",
+   "at": 2.0,
+   "scale": 1.0,
+   "approved": true
+  }
+ },
+ "8": {
+  "text": {
+   "words": "ПОВРЕЖДЕНИЯ",
+   "color": "orange",
+   "pos": "tr",
+   "font": "default",
+   "sound": "zatvor",
+   "at": 2.0,
+   "scale": 1.0,
+   "approved": true
+  }
+ },
+ "9": {
+  "text": {
+   "words": "ВОССТАНОВЛЕНИЕ",
+   "color": "green",
+   "pos": "ml",
+   "font": "default",
+   "sound": "whoosh",
+   "at": 2.0,
+   "scale": 1.0,
+   "approved": true
+  }
+ },
+ "11": {
+  "text": {
+   "words": "ИНТЕРЕСНОЕ",
+   "color": "yellow",
+   "pos": "mr",
+   "font": "default",
+   "sound": "mashinka",
+   "at": 2.0,
+   "scale": 1.0,
+   "approved": true
+  }
+ },
+ "14": {
+  "text": {
+   "words": "ПРЕИМУЩЕСТВО",
+   "color": "red",
+   "pos": "tl",
+   "font": "default",
+   "sound": "whoosh",
+   "at": 2.0,
+   "scale": 1.0,
+   "approved": true
+  }
+ },
+ "19": {
+  "text": {
+   "words": "ИЗМЕРИТЬ УСПЕХ",
+   "color": "green",
+   "pos": "tr",
+   "font": "default",
+   "sound": "whoosh",
+   "at": 2.0,
+   "scale": 1.0,
+   "approved": true
+  }
+ },
+ "28": {
+  "text": {
+   "words": "СПОР",
+   "color": "white",
+   "pos": "tc",
+   "font": "default",
+   "sound": "zatvor",
+   "at": 2.0,
+   "scale": 1.0,
+   "approved": true
+  }
+ },
+ "44": {
+  "text": {
+   "words": "РАСЧЁТ",
+   "color": "orange",
+   "pos": "mc",
+   "font": "default",
+   "sound": "whoosh",
+   "at": 2.0,
+   "scale": 1.0,
+   "approved": true
+  }
+ },
+ "47": {
+  "text": {
+   "words": "ОТВЕТ",
+   "color": "green",
+   "pos": "tr",
+   "font": "default",
+   "sound": "pshik",
+   "at": 2.0,
+   "scale": 1.0,
+   "approved": true
+  }
+ },
+ "anchor": "top"
+}
