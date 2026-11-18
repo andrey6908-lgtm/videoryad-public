@@ -1,308 +1,273 @@
 [
  {
   "scene": 2,
-  "view": "sceny.prolog",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 9.8,
-  "channel": "5 МИНУТ",
-  "watermark": "5 МИНУТ",
-  "cfg": {
-   "view": "prolog",
-   "seconds": 9.8,
-   "fps": 30,
-   "t0": 0.0,
-   "kwargs": {
-    "text": "Европа, НАТО и обещание 1997 года",
-    "channel": "5 МИНУТ",
-    "watermark": "5 МИНУТ",
-    "dur": 9.8
-   }
-  },
-  "kwargs": {
-   "text": "Европа, НАТО и обещание 1997 года",
-   "channel": "5 МИНУТ",
-   "watermark": "5 МИНУТ",
-   "dur": 9.8
-  }
- },
- {
-  "scene": 3,
-  "view": "zal_slova",
-  "dur": 12.5,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
+  "view": "duel",
+  "dur": 9.5,
+  "anim": 3.2,
+  "tail_zoom": 0.035,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 12.5,
-   "sheets": [],
-   "text": "Подписывайтесь на канал.",
-   "na_polu": "Особенно",
+   "top": {
+    "who": "",
+    "text": "Киев: результат есть",
+    "accent": null,
+    "source": ""
+   },
+   "bottom": {
+    "who": "",
+    "text": "Пентагон: восторга нет",
+    "accent": null,
+    "source": ""
+   },
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 5,
-  "view": "sceny.prohod",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 12.5,
-  "channel": "5 МИНУТ",
+  "scene": 3,
+  "view": "zal_g01",
+  "dur": 8.0,
+  "anim": 8.0,
+  "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
-  "cfg": {
-   "view": "prohod",
-   "seconds": 12.5,
-   "fps": 30,
-   "t0": 0.0,
-   "kwargs": {
-    "text": "Нужно продолжать поддержку Киева.",
-    "channel": "5 МИНУТ",
-    "watermark": "5 МИНУТ",
-    "dur": 12.5,
-    "tezisy": [
-     "Нужно",
-     "Нужно",
-     "Москвы"
-    ]
-   }
-  },
+  "channel": "5 МИНУТ",
   "kwargs": {
-   "text": "Нужно продолжать поддержку Киева.",
    "channel": "5 МИНУТ",
-   "watermark": "5 МИНУТ",
-   "dur": 12.5,
-   "tezisy": [
-    "Нужно",
-    "Нужно",
-    "Москвы"
-   ]
+   "dur": 8.0,
+   "sheets": [
+    "Расчёт на эффект",
+    "Непредсказуемая реакция"
+   ],
+   "text": "Один эффект — другая реакция",
+   "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 7,
-  "view": "devices.device_scene",
-  "dur": 12.5,
+  "scene": 6,
+  "view": "zal_makety",
+  "dur": 10.5,
   "anim": 2.6,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "content_path": "cards/photo/card_007.jpg",
-   "items": [
-    "Горячая линия",
-    "Канал связи",
-    "Экстренная связь"
+   "channel": "5 МИНУТ",
+   "dur": 10.5,
+   "sheets": [],
+   "text": "Витрина украинских возможностей",
+   "accent": "Витрина",
+   "makety": [
+    "здание=банк",
+    "опора=лэп"
    ],
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 9,
-  "view": "zal_g01",
-  "dur": 12.5,
-  "anim": 12.5,
+  "scene": 7,
+  "view": "charts.network",
+  "dur": 10.9,
+  "anim": 10.9,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 12.5,
-   "sheets": [],
-   "text": "Теперь появились переговоры.",
+   "nodes": [
+    {
+     "id": "Удар по объекту",
+     "label": "Удар по объекту",
+     "weight": 1.0
+    },
+    {
+     "id": "Ход конфликта",
+     "label": "Ход конфликта",
+     "weight": 1.0
+    }
+   ],
+   "links": [
+    {
+     "from": "Удар по объекту",
+     "to": "Ход конфликта",
+     "weight": 1.0
+    }
+   ],
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 11,
-  "view": "zal_kub",
-  "dur": 12.5,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
+  "scene": 10,
+  "view": "paper_typed",
+  "dur": 11.7,
+  "anim": 2.8,
+  "tail_zoom": 0.04,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 12.5,
-   "sheets": [],
-   "text": "Хотя такими темпами скоро понадобится уже не телефон.",
-   "kick": "Бункер",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 13,
-  "view": "torn_split.torn_split",
-  "dur": 12.5,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "a_path": "cards/photo/card_013.jpg",
-   "b_path": "cards/photo/card_013_2.jpg",
+   "text": "Министр обороны Украины Евгений Хмара выразился ещё короче Мы только начинаем",
+   "accent": "Украины",
    "watermark": "5 МИНУТ"
   }
  },
  {
   "scene": 15,
-  "view": "sceny.relsy",
+  "view": "charts.radar",
+  "dur": 4.3,
+  "anim": 4.3,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "axes": [
+    "Дальность ударов",
+    "Ресурсы на эскалацию",
+    "Политическая цена"
+   ],
+   "series": [
+    {
+     "label": "",
+     "values": [
+      4.0,
+      2.0,
+      3.0
+     ]
+    }
+   ],
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 16,
+  "view": "sceny.mehanizm",
   "mode": "cli",
   "script": "sceny_cli.py",
-  "dur": 12.5,
+  "dur": 10.8,
   "channel": "5 МИНУТ",
   "watermark": "5 МИНУТ",
   "cfg": {
-   "view": "relsy",
-   "seconds": 12.5,
+   "view": "mehanizm",
+   "seconds": 10.8,
    "fps": 30,
    "t0": 0.0,
    "kwargs": {
-    "text": "Потом объясняют, почему оно необходимо.",
+    "text": "Начать раунд легче, чем понять исход",
     "channel": "5 МИНУТ",
     "watermark": "5 МИНУТ",
-    "dur": 12.5,
-    "sobytiya": [
-     "Потом"
+    "dur": 10.8,
+    "pary": [
+     "Украина>Россия",
+     "Россия>Украина"
     ]
    }
   },
   "kwargs": {
-   "text": "Потом объясняют, почему оно необходимо.",
+   "text": "Начать раунд легче, чем понять исход",
    "channel": "5 МИНУТ",
    "watermark": "5 МИНУТ",
-   "dur": 12.5,
-   "sobytiya": [
-    "Потом"
+   "dur": 10.8,
+   "pary": [
+    "Украина>Россия",
+    "Россия>Украина"
    ]
   }
  },
  {
-  "scene": 17,
-  "view": "cinematic.dossier",
-  "dur": 12.5,
-  "anim": 12.5,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "rows": [
-    "Инфраструктура",
-    "Логистика Европы",
-    "Подготовка маршрутов",
-    "Учения и подготовка",
-    "Разведывательная активность",
-    "Активность у границ"
-   ],
-   "title": "ДОСЬЕ",
-   "photo": "cards/photo/card_017.jpg",
-   "stamp": "ПЕРВОИСТОЧНИК",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
   "scene": 18,
-  "view": "zal",
-  "dur": 9.8,
-  "anim": 2.6,
+  "view": "charts.cartogram",
+  "dur": 10.4,
+  "anim": 10.4,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "text": "И тут уже не лозунги.",
-   "words": [
-    "ЧТО",
-    "ГРАНИЦ"
-   ],
-   "sheets": [
-    "что у границ Беларуси европейские стра",
-    "И тут уже не лозунги",
-    "Аэродромы",
-    "Базы хранения"
-   ],
-   "channel": "5 МИНУТ",
-   "dur": 9.8,
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 19,
-  "view": "zal_makety",
-  "dur": 12.5,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 12.5,
-   "sheets": [],
-   "text": "Речь закончилась, микрофон выключили",
-   "makety": [
-    "лэп=МАРШРУТЫ",
-    "банк=ЛОГИСТИКА"
+   "data": [
+    "Украина",
+    "Россия"
    ],
    "watermark": "5 МИНУТ"
   }
  },
  {
   "scene": 20,
-  "view": "zal_slova",
-  "dur": 9.8,
+  "view": "marker_serif",
+  "dur": 3.5,
   "anim": 2.6,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 9.8,
-   "sheets": [
-    "все пошли ужинать",
-    "А аэродром остался"
-   ],
-   "text": "А аэродром остался.",
-   "na_polu": "ПУНКТ",
+   "text": "Борис Писториус назвал американскую критику глупой",
+   "accent": "Писториус",
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 21,
-  "view": "sceny.mehanizm",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 12.5,
-  "channel": "5 МИНУТ",
+  "scene": 22,
+  "view": "bars",
+  "dur": 8.2,
+  "anim": 8.2,
+  "tail_zoom": 0.0,
   "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_bars.py",
   "cfg": {
-   "view": "mehanizm",
-   "seconds": 12.5,
-   "fps": 30,
-   "t0": 0.0,
-   "kwargs": {
-    "text": "Жмут друг на друга",
-    "channel": "5 МИНУТ",
-    "watermark": "5 МИНУТ",
-    "dur": 12.5,
-    "pary": [
-     "Европа=Россия",
-     "Россия=Европа"
-    ]
-   }
-  },
-  "kwargs": {
-   "text": "Жмут друг на друга",
-   "channel": "5 МИНУТ",
-   "watermark": "5 МИНУТ",
-   "dur": 12.5,
-   "pary": [
-    "Европа=Россия",
-    "Россия=Европа"
+   "title": "Аргумент Киева про удары",
+   "caption": "",
+   "seconds": 8.2,
+   "bars": [
+    {
+     "label": "ОСЛАБЛЯЮТ ПОТЕНЦИАЛ",
+     "value": 0.8,
+     "color": "EABD23"
+    },
+    {
+     "label": "ВЫИГРЫВАЮТ ВРЕМЯ",
+     "value": 0.6,
+     "color": "B92526"
+    }
    ]
   }
  },
  {
-  "scene": 23,
+  "scene": 24,
+  "view": "sceny.repliki",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.4,
+  "channel": "5 МИНУТ",
+  "watermark": "5 МИНУТ",
+  "cfg": {
+   "view": "repliki",
+   "seconds": 11.4,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Три голоса, три ответа",
+    "channel": "5 МИНУТ",
+    "watermark": "5 МИНУТ",
+    "dur": 11.4,
+    "repliki_": [
+     "США|Что это дало?",
+     "Германия|Украина имеет право это делать",
+     "Британия|Не надо указывать Киеву, как воевать"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "Три голоса, три ответа",
+   "channel": "5 МИНУТ",
+   "watermark": "5 МИНУТ",
+   "dur": 11.4,
+   "repliki_": [
+    "США|Что это дало?",
+    "Германия|Украина имеет право это делать",
+    "Британия|Не надо указывать Киеву, как воевать"
+   ]
+  }
+ },
+ {
+  "scene": 25,
   "view": "cinematic.evidence_wall",
   "dur": 12.5,
   "anim": 12.5,
@@ -312,398 +277,179 @@
   "kwargs": {
    "shots": [
     [
-     "cards/photo/card_023.jpg",
+     "cards/photo/card_025.jpg",
      240,
      380,
      -4,
-     "Учения НАТО"
+     "Мост после удара"
     ],
     [
-     "cards/photo/card_023_2.jpg",
+     "cards/photo/card_025_2.jpg",
      800,
      380,
      3,
-     "Инфраструктура"
+     "Реакция Киева"
     ],
     [
-     "cards/photo/card_023_3.jpg",
+     "cards/photo/card_025_3.jpg",
      1360,
      380,
      -2,
-     "Производство"
+     "Позиция НАТО"
     ]
    ],
-   "title": "Очень удобная система",
+   "title": "Доказательства эскалации",
    "watermark": "5 МИНУТ"
   },
   "mode": "frame"
  },
  {
-  "scene": 24,
-  "view": "zal_pol",
-  "dur": 9.8,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
+  "scene": 26,
+  "view": "doc",
+  "dur": 8.3,
+  "anim": 3.4,
+  "tail_zoom": 0.04,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 9.8,
-   "sheets": [
-    "этом фоне Британия вспоминает о перего",
-    "Поэтому британское заявление интересно"
-   ],
-   "text": "Интересно, когда оно прозвучало.",
-   "na_polu": "БРИТАНИЯ",
+   "text": "Колби: дальние удары Украины не ускорили завершение конфликта и не остановили продвижение российских войск. Основная ответственность за финансирование поставок по программе PURL должна лежать на Европе, а не на США",
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 25,
-  "view": "timeline",
-  "dur": 12.5,
-  "anim": 12.5,
-  "tail_zoom": 0.06,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "watermark": "5 МИНУТ",
-   "events": [
-    {
-     "date": "2027",
-     "text": "НАТО отменило саммит"
-    },
-    {
-     "date": "график",
-     "text": "График станет гибче"
-    },
-    {
-     "date": "встречи",
-     "text": "Лидеры будут встречаться"
-    }
-   ]
-  }
- },
- {
-  "scene": 29,
-  "view": "zal_g18",
-  "dur": 11.3,
-  "anim": 11.3,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 11.3,
-   "sheets": [],
-   "text": "Семь из тридцати двух",
-   "value": "7 из 32",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 30,
-  "view": "zal_shkala",
-  "dur": 11.7,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 11.7,
-   "sheets": [],
-   "text": "Потому что Зеленский как раз",
-   "value": "0.25%",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 31,
-  "view": "charts.cartogram",
-  "dur": 12.1,
-  "anim": 12.1,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "data": [
-    "Украина",
-    "Франция",
-    "Германия",
-    "Британия",
-    "Польша"
-   ],
-   "mode": "bubble",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 32,
-  "view": "charts.network",
-  "dur": 11.5,
-  "anim": 11.5,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "nodes": [
-    {
-     "id": "Тридцать",
-     "label": "Тридцать",
-     "weight": 1.0
-    },
-    {
-     "id": "Звучит",
-     "label": "Звучит",
-     "weight": 2.0
-    },
-    {
-     "id": "Осталась",
-     "label": "Осталась",
-     "weight": 2.0
-    },
-    {
-     "id": "Этим",
-     "label": "Этим",
-     "weight": 1.0
-    }
-   ],
-   "links": [
-    {
-     "from": "Тридцать",
-     "to": "Звучит",
-     "weight": 1.0
-    },
-    {
-     "from": "Звучит",
-     "to": "Осталась",
-     "weight": 1.0
-    },
-    {
-     "from": "Осталась",
-     "to": "Этим",
-     "weight": 1.0
-    }
-   ],
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 33,
-  "view": "poster.poster",
-  "dur": 12.0,
-  "anim": 12.0,
-  "tail_zoom": 0.0,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "title": "СЕМЬ ИЗ ТРИДЦАТИ ДВУХ",
-   "hero_photo": "cards/photo/card_033.jpg",
-   "watermark": "5 МИНУТ"
-  },
-  "mode": "frame"
- },
- {
-  "scene": 34,
-  "view": "zal_schetchik",
-  "dur": 11.8,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 11.8,
-   "sheets": [],
-   "text": "Договориться за двадцать минут",
-   "value": "20 мин",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 35,
-  "view": "charts.map_dist",
-  "dur": 11.4,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "points": [
-    {
-     "label": "Киев",
-     "lat": 51.5074,
-     "lon": 2.555,
-     "accent": false
-    },
-    {
-     "label": "Вашингтон",
-     "lat": 38.9072,
-     "lon": -77.0369,
-     "accent": false
-    }
-   ],
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 36,
-  "view": "zal",
-  "dur": 12.2,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Скоро понадобится стол размером",
-   "words": [
-    "СТОЛ",
-    "КИЕВ"
-   ],
-   "sheets": [
-    "Киев хочет сидеть",
-    "Европа хочет сидеть",
-    "Столица хочет сидеть",
-    "Стол размером с поле",
-    "Нужен НАТО",
-    "Нужен Альянс"
-   ],
-   "channel": "5 МИНУТ",
-   "dur": 12.2,
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 38,
-  "view": "bars",
-  "dur": 11.9,
-  "anim": 11.9,
-  "tail_zoom": 0.0,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {},
-  "mode": "cli",
-  "script": "build_chart_bars.py",
-  "cfg": {
-   "title": "",
-   "caption": "",
-   "seconds": 11.9,
-   "bars": [
-    {
-     "label": "МАКРОН",
-     "value": 0.8,
-     "color": "EABD23"
-    },
-    {
-     "label": "ФИЦО",
-     "value": 0.3,
-     "color": "B92526"
-    }
-   ]
-  }
- },
- {
-  "scene": 39,
-  "view": "split",
-  "dur": 11.2,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Словакия готова участвовать в переговорах, но военный кредит не поддерживает",
-   "photo": "cards/photo/card_039.jpg",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 40,
-  "view": "charts.radar",
-  "dur": 11.3,
-  "anim": 11.3,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "axes": [
-    "Поддержка",
-    "Отказ",
-    "Мир"
-   ],
-   "series": [
-    {
-     "label": "",
-     "values": [
-      0.8,
-      0.3,
-      0.5
-     ]
-    }
-   ],
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 42,
+  "scene": 27,
   "view": "charts.pie",
-  "dur": 12.1,
-  "anim": 12.1,
+  "dur": 9.5,
+  "anim": 9.5,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
    "segments": [
     {
-     "label": "Оценивают отрицательно",
-     "value": 72.0
+     "label": "То есть американское оружие",
+     "value": 25.0
     },
     {
-     "label": "Поддерживают",
-     "value": 14.0
+     "label": "Поставки остаются",
+     "value": 25.0
     },
     {
-     "label": "Не определились",
-     "value": 14.0
+     "label": "Украина остаётся получателем",
+     "value": 25.0
+    },
+    {
+     "label": "Только кошелёк всё чаще пред",
+     "value": 25.0
     }
    ],
+   "title": "То есть американское оружие остаётся. По",
+   "sobytiya": true,
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 43,
+  "scene": 29,
   "view": "charts.waterfall",
-  "dur": 11.5,
-  "anim": 11.5,
+  "dur": 8.9,
+  "anim": 8.9,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
    "start": {
-    "label": "Покупательная способность",
-    "value": 40.0
+    "label": "Поставки оружия",
+    "value": 1.0
    },
    "steps": [
     {
-     "label": "Социальная система",
-     "value": 30.0
+     "label": "Финансирование Европой",
+     "value": 1.0
     },
     {
-     "label": "Государственный долг",
-     "value": 30.0
+     "label": "Военный результат",
+     "value": 1.0
     }
    ],
    "end": {
     "label": "ИТОГ"
    },
+   "sobytiya": true,
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 44,
+  "scene": 31,
+  "view": "strike",
+  "dur": 9.0,
+  "anim": 3.0,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "text": "Стороны готовятся обсуждать компромиссы, но крупное обострение сразу меняет повестку",
+   "struck": "крупное обострение сразу меняет повестку",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 32,
+  "view": "sceny.relsy",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 10.4,
+  "channel": "5 МИНУТ",
+  "watermark": "5 МИНУТ",
+  "cfg": {
+   "view": "relsy",
+   "seconds": 10.4,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Кто теперь вообще имеет право требовать уступок",
+    "channel": "5 МИНУТ",
+    "watermark": "5 МИНУТ",
+    "dur": 10.4,
+    "sobytiya": [
+     "начинается другой разговор",
+     "Кто первый ударил",
+     "Кто ответил",
+     "Кто сорвал деэскалацию"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "Кто теперь вообще имеет право требовать уступок",
+   "channel": "5 МИНУТ",
+   "watermark": "5 МИНУТ",
+   "dur": 10.4,
+   "sobytiya": [
+    "начинается другой разговор",
+    "Кто первый ударил",
+    "Кто ответил",
+    "Кто сорвал деэскалацию"
+   ]
+  }
+ },
+ {
+  "scene": 33,
+  "view": "tape",
+  "dur": 6.2,
+  "anim": 2.4,
+  "tail_zoom": 0.04,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "text": "Переговоры при этом формально никто не отменяет",
+   "accent": "Переговоры",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 34,
   "view": "slider",
-  "dur": 12.0,
-  "anim": 12.0,
+  "dur": 13.7,
+  "anim": 13.7,
   "tail_zoom": 0.0,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
@@ -711,124 +457,96 @@
   "mode": "cli",
   "script": "build_chart_slider.py",
   "cfg": {
-   "title": "",
+   "title": "Путь к окончательному решению",
    "min": 0.0,
    "max": 100.0,
-   "low": 0.0,
-   "high": 100.0,
-   "marker_value": 50.0,
-   "marker_display": "50",
-   "seconds": 12.0,
+   "low": 20.0,
+   "high": 90.0,
+   "marker_value": 35.0,
+   "marker_display": "35",
+   "seconds": 13.7,
    "range_label": "РАЗБРОС ОЦЕНОК",
    "caption": "",
    "source": ""
   }
  },
  {
-  "scene": 45,
-  "view": "zal_g44",
-  "dur": 11.8,
-  "anim": 11.8,
+  "scene": 35,
+  "view": "zal_kub",
+  "dur": 9.6,
+  "anim": 2.6,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
    "channel": "5 МИНУТ",
-   "dur": 11.8,
+   "dur": 9.6,
    "sheets": [],
-   "text": "Объяснять, конечно, можно.",
-   "value": "14%",
+   "text": "Каждый раз новая причина",
+   "accent": "причина",
+   "kick": "От переговоров отказываться не нужно",
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 47,
-  "view": "sceny.globus_map",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 12.2,
-  "channel": "5 МИНУТ",
-  "watermark": "5 МИНУТ",
-  "cfg": {
-   "view": "globus",
-   "seconds": 12.2,
-   "fps": 30,
-   "t0": 0.0,
-   "kwargs": {
-    "text": "Вот ведь открытие.",
-    "channel": "5 МИНУТ",
-    "watermark": "5 МИНУТ",
-    "dur": 12.2,
-    "region": "Вот"
-   }
-  },
-  "kwargs": {
-   "text": "Вот ведь открытие.",
-   "channel": "5 МИНУТ",
-   "watermark": "5 МИНУТ",
-   "dur": 12.2,
-   "region": "Вот"
-  }
- },
- {
-  "scene": 48,
-  "view": "charts.cartogram",
-  "dur": 11.6,
-  "anim": 11.6,
+  "scene": 36,
+  "view": "charts.line",
+  "dur": 17.1,
+  "anim": 2.6,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "data": [
-    "Россия",
-    "Украина",
-    "Польша",
-    "Германия"
+   "x_labels": [
+    "Январь",
+    "Весна",
+    "Новая дата"
+   ],
+   "series": [
+    {
+     "name": "",
+     "values": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "source": "расчёт Киева на отсрочку",
+   "sobytiya": true,
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 37,
+  "view": "charts.map_dist",
+  "dur": 10.9,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "points": [
+    {
+     "label": "Вашингтон",
+     "lat": 38.9072,
+     "lon": -77.0369,
+     "accent": false
+    },
+    {
+     "label": "Киев",
+     "lat": 50.4501,
+     "lon": 30.5234,
+     "accent": false
+    }
    ],
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 49,
-  "view": "sceny.repliki",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 11.9,
-  "channel": "5 МИНУТ",
-  "watermark": "5 МИНУТ",
-  "cfg": {
-   "view": "repliki",
-   "seconds": 11.9,
-   "fps": 30,
-   "t0": 0.0,
-   "kwargs": {
-    "text": "Он предлагает европейский формат.",
-    "channel": "5 МИНУТ",
-    "watermark": "5 МИНУТ",
-    "dur": 11.9,
-    "repliki_": [
-     "Москвой",
-     "Европа",
-     "Макрон"
-    ]
-   }
-  },
-  "kwargs": {
-   "text": "Он предлагает европейский формат.",
-   "channel": "5 МИНУТ",
-   "watermark": "5 МИНУТ",
-   "dur": 11.9,
-   "repliki_": [
-    "Москвой",
-    "Европа",
-    "Макрон"
-   ]
-  }
- },
- {
-  "scene": 50,
+  "scene": 38,
   "view": "charts.slope",
-  "dur": 11.2,
+  "dur": 11.0,
   "anim": 2.6,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
@@ -836,209 +554,311 @@
   "kwargs": {
    "items": [
     {
-     "label": "Страны НАТО",
-     "from": 32.0,
-     "to": 7.0
+     "label": "Зима: энергокризис давит",
+     "from": 1.0,
+     "to": 1.0,
+     "to_label": "Весна: сезон закончился"
     },
     {
-     "label": "Коалиция Зеленского",
-     "from": 32.0,
-     "to": 37.0
+     "label": "Дальность ударов растёт",
+     "from": 1.0,
+     "to": 1.0,
+     "to_label": "Кто устойчивее — не ясно"
     }
    ],
-   "source": "НАТО",
+   "source": "политическая арифметика Киева",
+   "sobytiya": true,
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 51,
-  "view": "doc",
-  "dur": 11.3,
-  "anim": 3.4,
+  "scene": 39,
+  "view": "zal_shkala",
+  "dur": 8.9,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "channel": "5 МИНУТ",
+   "dur": 8.9,
+   "sheets": [],
+   "text": "Тяжёлый период прошёл",
+   "accent": "период",
+   "value": "60 %",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 40,
+  "view": "zal",
+  "dur": 9.7,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "text": "Сначала январь. Потом весна. Решение всегда впереди",
+   "words": [
+    "СРОК",
+    "ОТСРОЧКА"
+   ],
+   "sheets": [
+    "Январь",
+    "Весна",
+    "Встреча",
+    "Посредники",
+    "Заявление",
+    "Решение"
+   ],
+   "channel": "5 МИНУТ",
+   "dur": 9.7,
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 41,
+  "view": "film.film_strip",
+  "dur": 6.0,
+  "anim": 6.0,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "shots": [
+    "cards/photo/card_041.jpg",
+    "cards/photo/card_041_2.jpg",
+    "cards/photo/card_041_3.jpg"
+   ],
+   "title": "Цена дополнительных месяцев",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 42,
+  "view": "zal_slova",
+  "dur": 6.9,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "channel": "5 МИНУТ",
+   "dur": 6.9,
+   "sheets": [
+    "Главный риск"
+   ],
+   "text": "Новые поставки. Новые удары",
+   "accent": "Новые",
+   "na_polu": "РИСК КОНСТРУКЦИИ",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 43,
+  "view": "zal_pol",
+  "dur": 13.6,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "channel": "5 МИНУТ",
+   "dur": 13.6,
+   "sheets": [],
+   "text": "Чья версия событий победит?",
+   "accent": "версия",
+   "na_polu": "МОСКВА",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 45,
+  "view": "film.film_single",
+  "dur": 8.6,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "photo": "cards/photo/card_045.jpg",
+   "title": "Что может оказаться целью",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 46,
+  "view": "paper_hand",
+  "dur": 13.3,
+  "anim": 2.8,
   "tail_zoom": 0.04,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "text": "Европа слишком долго разговаривала со странами Глобального Юга так, будто Брюссель уже всё решил, а остальным осталось только поставить подпись.",
+   "text": "А значит, спор о последствиях будет идти с людьми, от которых зависят деньги, оружие и дальнейшая поддержка",
+   "accent": "последствиях",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 50,
+  "view": "sceny.pechat",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 7.6,
+  "channel": "5 МИНУТ",
+  "watermark": "5 МИНУТ",
+  "cfg": {
+   "view": "pechat",
+   "seconds": 7.6,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Направления будущих ударов",
+    "channel": "5 МИНУТ",
+    "watermark": "5 МИНУТ",
+    "dur": 7.6,
+    "stamp": "утверждено"
+   }
+  },
+  "kwargs": {
+   "text": "Направления будущих ударов",
+   "channel": "5 МИНУТ",
+   "watermark": "5 МИНУТ",
+   "dur": 7.6,
+   "stamp": "утверждено"
+  }
+ },
+ {
+  "scene": 51,
+  "view": "zal_schetchik",
+  "dur": 6.7,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "channel": "5 МИНУТ",
+   "dur": 6.7,
+   "sheets": [],
+   "text": "Новый раунд дороже старого",
+   "accent": "дороже",
+   "value": "2",
    "watermark": "5 МИНУТ"
   }
  },
  {
   "scene": 52,
-  "view": "charts.line",
-  "dur": 11.7,
-  "anim": 2.6,
+  "view": "charts.cartogram",
+  "dur": 12.3,
+  "anim": 12.3,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "x_labels": [
-    "Россия",
-    "Индия",
-    "Китай",
-    "Африка"
+   "data": [
+    "Украина",
+    "Россия"
    ],
-   "series": [
-    {
-     "name": "",
-     "values": [
-      7.0,
-      5.0,
-      6.0,
-      4.0
-     ]
-    }
-   ],
-   "source": "документы",
+   "mode": "bubble",
    "watermark": "5 МИНУТ"
   }
  },
  {
   "scene": 53,
-  "view": "zal_g48",
-  "dur": 12.1,
-  "anim": 12.1,
+  "view": "devices.device_scene",
+  "dur": 5.6,
+  "anim": 2.6,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 12.1,
-   "sheets": [],
-   "text": "Кто бы мог подумать.",
+   "content_path": "cards/photo/card_053.jpg",
+   "items": [
+    "Фронт не меняется",
+    "Противник не уступчивее"
+   ],
    "watermark": "5 МИНУТ"
   }
  },
  {
   "scene": 54,
-  "view": "zal_pol",
-  "dur": 11.5,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
+  "view": "sceny.tribuna",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.7,
   "channel": "5 МИНУТ",
+  "watermark": "5 МИНУТ",
+  "cfg": {
+   "view": "tribuna",
+   "seconds": 11.7,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Нужны новые миллиарды на продолжение",
+    "channel": "5 МИНУТ",
+    "watermark": "5 МИНУТ",
+    "dur": 11.7,
+    "role": "политолог",
+    "place": "Москва"
+   }
+  },
   "kwargs": {
+   "text": "Нужны новые миллиарды на продолжение",
    "channel": "5 МИНУТ",
-   "dur": 11.5,
-   "sheets": [],
-   "text": "Москва снова поднимает вопрос",
-   "na_polu": "Подписывайтесь",
-   "watermark": "5 МИНУТ"
+   "watermark": "5 МИНУТ",
+   "dur": 11.7,
+   "role": "политолог",
+   "place": "Москва"
   }
  },
  {
-  "scene": 56,
-  "view": "film.film_single",
-  "dur": 11.8,
+  "scene": 55,
+  "view": "torn_split.torn_split",
+  "dur": 5.0,
   "anim": 2.6,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "photo": "cards/photo/card_056.jpg",
-   "title": "НАТО 1997",
+   "a_path": "cards/photo/card_055.jpg",
+   "b_path": "cards/photo/card_055_2.jpg",
    "watermark": "5 МИНУТ"
   }
  },
  {
   "scene": 57,
-  "view": "tape",
-  "dur": 11.4,
-  "anim": 2.4,
-  "tail_zoom": 0.04,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Украинский конфликт невозможно окончательно урегулировать, если оставить нетронутой ту систему безопасности, которую",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 59,
-  "view": "duel",
-  "dur": 11.6,
-  "anim": 3.2,
-  "tail_zoom": 0.035,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "top": {
-    "who": "",
-    "text": "российских границ. Для НАТО безопасность означает как раз возможность эту…",
-    "accent": null,
-    "source": ""
-   },
-   "bottom": {
-    "who": "",
-    "text": "Для НАТО безопасность означает как раз возможность эту инфраструктуру сохранять",
-    "accent": null,
-    "source": ""
-   },
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 60,
-  "view": "photo",
-  "dur": 11.9,
-  "anim": 11.9,
-  "tail_zoom": 0.0,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "watermark": "5 МИНУТ",
-   "photo": "cards/photo/card_060.jpg",
-   "lines": [
-    "Встреча по видеоконференции",
-    "Обсуждение финансирования"
-   ]
-  }
- },
- {
-  "scene": 61,
-  "view": "sceny.tribuna",
+  "view": "sceny.kreslo",
   "mode": "cli",
   "script": "sceny_cli.py",
-  "dur": 11.2,
+  "dur": 5.4,
   "channel": "5 МИНУТ",
   "watermark": "5 МИНУТ",
   "cfg": {
-   "view": "tribuna",
-   "seconds": 11.2,
+   "view": "kreslo",
+   "seconds": 5.4,
    "fps": 30,
    "t0": 0.0,
    "kwargs": {
-    "text": "Танчики показывайте.",
+    "text": "Два лагеря не говорят друг с другом",
     "channel": "5 МИНУТ",
     "watermark": "5 МИНУТ",
-    "dur": 11.2,
-    "role": "Пожалуйста"
+    "dur": 5.4,
+    "role": "общественное мнение России",
+    "place": "Москва"
    }
   },
   "kwargs": {
-   "text": "Танчики показывайте.",
+   "text": "Два лагеря не говорят друг с другом",
    "channel": "5 МИНУТ",
    "watermark": "5 МИНУТ",
-   "dur": 11.2,
-   "role": "Пожалуйста"
+   "dur": 5.4,
+   "role": "общественное мнение России",
+   "place": "Москва"
   }
  },
  {
-  "scene": 62,
-  "view": "strike",
-  "dur": 11.2,
-  "anim": 3.0,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Поэтому даже если украинская часть когда нибудь сдвинется, европейская система безопасности останется огромным",
-   "struck": "нет",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 63,
+  "scene": 58,
   "view": "cinematic.depth_of_field",
   "dur": 11.6,
   "anim": 11.6,
@@ -1046,288 +866,150 @@
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "photo": "cards/photo/card_063.jpg",
+   "photo": "cards/photo/card_058.jpg",
+   "title": "Общий фон не меняется",
    "watermark": "5 МИНУТ"
   },
   "mode": "frame"
  },
  {
-  "scene": 66,
-  "view": "film.film_strip",
-  "dur": 11.9,
-  "anim": 11.9,
+  "scene": 59,
+  "view": "zal_ekran",
+  "dur": 7.1,
+  "anim": 7.1,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "shots": [
-    "cards/photo/card_066.jpg",
-    "cards/photo/card_066_2.jpg",
-    "cards/photo/card_066_3.jpg"
-   ],
-   "title": "ПАКЕТ ЗА ПАКЕТОМ",
+   "channel": "5 МИНУТ",
+   "dur": 7.1,
+   "sheets": [],
+   "text": "Давление без гарантий",
+   "say": "Не вопрос фотографий",
+   "author": "Элбридж Колби",
+   "role": "замминистра обороны США",
+   "source": "брифинг Пентагона",
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 67,
-  "view": "paper_typed",
-  "dur": 11.7,
-  "anim": 2.8,
-  "tail_zoom": 0.04,
+  "scene": 60,
+  "view": "zal_g44",
+  "dur": 14.6,
+  "anim": 14.6,
+  "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "text": "Студия девяносто пятый квартал продолжает работать.",
+   "channel": "5 МИНУТ",
+   "dur": 14.6,
+   "sheets": [],
+   "text": "К угрозам и ударам привыкают",
+   "value": "N+1",
+   "value_sub": "СКОЛЬКО ЕЩЁ ПОВЫШАТЬ СТАВКИ",
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 68,
-  "view": "vyrezka.figura",
-  "dur": 11.3,
+  "scene": 62,
+  "view": "quote",
+  "dur": 9.1,
   "anim": 2.6,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "photo": "cards/photo/card_068.jpg",
-   "author": "КАЛЛАС",
+   "text": "Есть даже возможность ещё раз отодвинуть неприятный разговор о компромиссах",
+   "accent": "компромиссах",
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 69,
+  "scene": 63,
+  "view": "zal_g18",
+  "dur": 8.9,
+  "anim": 8.9,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "channel": "5 МИНУТ",
+   "dur": 8.9,
+   "sheets": [],
+   "text": "Политик выигрывает время",
+   "value": "СЧЁТ",
+   "value_sub": "СТРАНЕ",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 64,
   "view": "zal_efir",
-  "dur": 12.1,
+  "dur": 6.1,
   "anim": 2.6,
   "tail_zoom": 0.045,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
    "channel": "5 МИНУТ",
-   "dur": 12.1,
+   "dur": 6.1,
    "sheets": [],
-   "text": "Новые условия и новые требования.",
-   "say": "Киев напоминает: я здесь",
-   "author": "Киев",
+   "text": "Счёт потихоньку растёт",
+   "say": "Мы только начинаем",
+   "author": "Евгений Хмара",
+   "role": "министр обороны Украины",
+   "source": "Рамштайн",
    "watermark": "5 МИНУТ"
   }
  },
  {
-  "scene": 70,
-  "view": "vyrezka.gazeta",
-  "dur": 11.5,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "photo": "cards/photo/card_070.jpg",
-   "author": "МАКРОН",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 71,
-  "view": "charts.cartogram",
-  "dur": 11.8,
-  "anim": 11.8,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "data": [
-    "Одесская",
-    "Донецкая"
-   ],
-   "level": "region",
-   "admin": "Украина",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 72,
-  "view": "sceny.kreslo",
+  "scene": 65,
+  "view": "sceny.lenta",
   "mode": "cli",
   "script": "sceny_cli.py",
-  "dur": 11.1,
+  "dur": 11.6,
   "channel": "5 МИНУТ",
   "watermark": "5 МИНУТ",
   "cfg": {
-   "view": "kreslo",
-   "seconds": 11.1,
+   "view": "lenta",
+   "seconds": 11.6,
    "fps": 30,
    "t0": 0.0,
    "kwargs": {
-    "text": "Он будет искать новую конструкцию.",
+    "text": "Что принесла стратегия, кто готов платить",
     "channel": "5 МИНУТ",
     "watermark": "5 МИНУТ",
-    "dur": 11.1,
-    "role": "Европейскую"
+    "dur": 11.6,
+    "soobshcheniya": [
+     "Одни спрашивают: что это дало?",
+     "Другие готовятся платить",
+     "Киев рискует получить не тот эффект"
+    ]
    }
   },
   "kwargs": {
-   "text": "Он будет искать новую конструкцию.",
+   "text": "Что принесла стратегия, кто готов платить",
    "channel": "5 МИНУТ",
    "watermark": "5 МИНУТ",
-   "dur": 11.1,
-   "role": "Европейскую"
+   "dur": 11.6,
+   "soobshcheniya": [
+    "Одни спрашивают: что это дало?",
+    "Другие готовятся платить",
+    "Киев рискует получить не тот эффект"
+   ]
   }
  },
  {
-  "scene": 74,
+  "scene": 66,
   "view": "pull",
-  "dur": 11.6,
+  "dur": 9.3,
   "anim": 2.6,
   "tail_zoom": 0.05,
   "watermark": "5 МИНУТ",
   "channel": "5 МИНУТ",
   "kwargs": {
-   "text": "Шольц говорит, что без России европейскую безопасность всё равно не построить.",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 75,
-  "view": "sceny.lenta",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 12.0,
-  "channel": "5 МИНУТ",
-  "watermark": "5 МИНУТ",
-  "cfg": {
-   "view": "lenta",
-   "seconds": 12.0,
-   "fps": 30,
-   "t0": 0.0,
-   "kwargs": {
-    "text": "Европа считает деньги и военную активность",
-    "channel": "5 МИНУТ",
-    "watermark": "5 МИНУТ",
-    "dur": 12.0,
-    "soobshcheniya": [
-     "Макрон призывает платить дальше",
-     "Беларусь показывает на аэродромы и базы"
-    ]
-   }
-  },
-  "kwargs": {
-   "text": "Европа считает деньги и военную активность",
-   "channel": "5 МИНУТ",
-   "watermark": "5 МИНУТ",
-   "dur": 12.0,
-   "soobshcheniya": [
-    "Макрон призывает платить дальше",
-    "Беларусь показывает на аэродромы и базы"
-   ]
-  }
- },
- {
-  "scene": 76,
-  "view": "marker_serif",
-  "dur": 11.4,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Но это уже стадия, когда отрицать необходимость большого разговора становится всё труднее.",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 77,
-  "view": "sceny.pechat",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 11.9,
-  "channel": "5 МИНУТ",
-  "watermark": "5 МИНУТ",
-  "cfg": {
-   "view": "pechat",
-   "seconds": 11.9,
-   "fps": 30,
-   "t0": 0.0,
-   "kwargs": {
-    "text": "Глядишь, такими темпами дойдут",
-    "channel": "5 МИНУТ",
-    "watermark": "5 МИНУТ",
-    "dur": 11.9,
-    "stamp": "утверждено"
-   }
-  },
-  "kwargs": {
-   "text": "Глядишь, такими темпами дойдут",
-   "channel": "5 МИНУТ",
-   "watermark": "5 МИНУТ",
-   "dur": 11.9,
-   "stamp": "утверждено"
-  }
- },
- {
-  "scene": 78,
-  "view": "sceny.repliki",
-  "mode": "cli",
-  "script": "sceny_cli.py",
-  "dur": 11.7,
-  "channel": "5 МИНУТ",
-  "watermark": "5 МИНУТ",
-  "cfg": {
-   "view": "repliki",
-   "seconds": 11.7,
-   "fps": 30,
-   "t0": 0.0,
-   "kwargs": {
-    "text": "А вот тут начнётся настоящее веселье.",
-    "channel": "5 МИНУТ",
-    "watermark": "5 МИНУТ",
-    "dur": 11.7,
-    "repliki_": [
-     "Желающих на уступки",
-     "Значительно меньше"
-    ]
-   }
-  },
-  "kwargs": {
-   "text": "А вот тут начнётся настоящее веселье.",
-   "channel": "5 МИНУТ",
-   "watermark": "5 МИНУТ",
-   "dur": 11.7,
-   "repliki_": [
-    "Желающих на уступки",
-    "Значительно меньше"
-   ]
-  }
- },
- {
-  "scene": 82,
-  "view": "quote",
-  "dur": 11.8,
-  "anim": 2.6,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "text": "Один спустя годы рассказывает, что его заставляли пить.",
-   "watermark": "5 МИНУТ"
-  }
- },
- {
-  "scene": 83,
-  "view": "zal_ekran",
-  "dur": 11.1,
-  "anim": 11.1,
-  "tail_zoom": 0.045,
-  "watermark": "5 МИНУТ",
-  "channel": "5 МИНУТ",
-  "kwargs": {
-   "channel": "5 МИНУТ",
-   "dur": 11.1,
-   "sheets": [],
-   "text": "Раньше спорили, кто кому наливал.",
-   "say": "Хотя теперь есть прогресс",
-   "author": "Хотя",
+   "text": "Времени станет больше, разрушений тоже, а вот желающих оплачивать следующий раунд от этого больше не становится",
+   "accent": "разрушений",
    "watermark": "5 МИНУТ"
   }
  }
