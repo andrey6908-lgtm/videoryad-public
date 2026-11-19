@@ -1115,7 +1115,7 @@ def load_text_font(fkey, size):
     return ImageFont.load_default()
 
 
-def render_text_png(text, tcolor, out_path, fkey="default"):
+def render_text_png(text, tcolor, out_path, fkey="default", style="plate"):
     """Превью надписи для ДАШБОРДА — рисуем ТЕМ ЖЕ кодом, что и сборку.
 
     ДО 2026-10-21 здесь жила СОБСТВЕННАЯ отрисовка: жёлтый капс с толстой
@@ -1135,7 +1135,7 @@ def render_text_png(text, tcolor, out_path, fkey="default"):
         if _here not in _sys.path:
             _sys.path.insert(0, _here)
         _bo = importlib.import_module("build_overlays")
-        if _bo._render_text_png(text, tcolor, out_path, fkey):
+        if _bo._render_text_png(text, tcolor, out_path, fkey, style):
             return True
     except Exception:
         pass
@@ -4034,7 +4034,8 @@ def run_live(scenes_path, images_dir, port):
                         else:
                             render_text_png(str(tb.get("words") or tb.get("text") or ""),
                                             str(tb.get("color") or "white"), tpng,
-                                            str(tb.get("font") or "default"))
+                                            str(tb.get("font") or "default"),
+                                            str(tb.get("style") or "plate"))
                     except Exception as _e:
                         print("  превью надписи сцены %s не нарисовалось: %s"
                               % (k, _e), flush=True)
@@ -4353,7 +4354,8 @@ def run_live(scenes_path, images_dir, port):
                     except Exception as _e:
                         print("  маска не перерисовалась: %s" % _e, flush=True)
                 else:
-                    render_text_png(words, color, png, fkey)  # для превью дашборда
+                    render_text_png(words, color, png, fkey,
+                                     str(tblock.get("style") or "plate"))  # для превью дашборда
                 with _overlays_txn() as ovs:
                     cur = ovs.get(str(sid), {})
                     _prev_text = cur.get("text") if isinstance(cur.get("text"), dict) else {}
