@@ -1,0 +1,700 @@
+{
+ "channel": "ПЛАНЕТА",
+ "scenes": [
+  {
+   "id": 1,
+   "start_sec": 0.0,
+   "duration_sec": 9.0,
+   "text": "",
+   "source": "card:prolog",
+   "source_query": "карточка"
+  },
+  {
+   "id": 2,
+   "start_sec": 9.0,
+   "duration_sec": 11.4,
+   "text": "",
+   "source": "local_donor",
+   "source_query": "5min-3-konflikt-ukraina-2011/scene_006.jpg"
+  },
+  {
+   "id": 3,
+   "start_sec": 20.4,
+   "duration_sec": 14.7,
+   "text": "",
+   "source": "card:zal_slova",
+   "source_query": "карточка"
+  },
+  {
+   "id": 4,
+   "start_sec": 35.1,
+   "duration_sec": 10.0,
+   "text": "",
+   "source": "local_donor",
+   "source_query": "5min-3-konflikt-ukraina-2011/scene_003.jpg"
+  },
+  {
+   "id": 5,
+   "start_sec": 45.1,
+   "duration_sec": 11.2,
+   "text": "",
+   "source": "local_donor",
+   "source_query": "5min-3-konflikt-ukraina-2011/scene_012.jpg",
+   "fx": "depth"
+  },
+  {
+   "id": 6,
+   "start_sec": 56.3,
+   "duration_sec": 9.3,
+   "text": "",
+   "source": "card:bubbles",
+   "source_query": "карточка"
+  },
+  {
+   "id": 7,
+   "start_sec": 65.6,
+   "duration_sec": 8.9,
+   "text": "",
+   "source": "card:bars",
+   "source_query": "карточка"
+  },
+  {
+   "id": 8,
+   "start_sec": 74.5,
+   "duration_sec": 10.4,
+   "text": "",
+   "source": "local_donor",
+   "source_query": "5min-3-konflikt-ukraina-2011/scene_008.mp4"
+  },
+  {
+   "id": 9,
+   "start_sec": 84.9,
+   "duration_sec": 9.4,
+   "text": "",
+   "source": "local_donor",
+   "source_query": "5min-3-konflikt-ukraina-2011/scene_017.jpg"
+  },
+  {
+   "id": 10,
+   "start_sec": 94.3,
+   "duration_sec": 10.7,
+   "text": "",
+   "source": "card:mehanizm",
+   "source_query": "карточка"
+  },
+  {
+   "id": 11,
+   "start_sec": 105.0,
+   "duration_sec": 7.2,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/НАТО"
+  },
+  {
+   "id": 12,
+   "start_sec": 112.2,
+   "duration_sec": 11.7,
+   "text": "",
+   "source": "local_donor",
+   "source_query": "5min-3-konflikt-ukraina-2011/scene_014.jpg"
+  },
+  {
+   "id": 13,
+   "start_sec": 123.9,
+   "duration_sec": 12.4,
+   "text": "",
+   "source": "card:radar",
+   "source_query": "карточка"
+  },
+  {
+   "id": 14,
+   "start_sec": 136.3,
+   "duration_sec": 9.6,
+   "text": "",
+   "source": "local_donor",
+   "source_query": "5min-3-konflikt-ukraina-2011/scene_016.jpg"
+  },
+  {
+   "id": 15,
+   "start_sec": 145.9,
+   "duration_sec": 9.8,
+   "text": "",
+   "source": "local_donor",
+   "source_query": "5min-3-konflikt-ukraina-2011/scene_056.jpg",
+   "fx": "inset"
+  },
+  {
+   "id": 16,
+   "start_sec": 155.7,
+   "duration_sec": 11.1,
+   "text": "",
+   "source": "local_donor",
+   "source_query": "5min-3-konflikt-ukraina-2011/scene_021.jpg"
+  },
+  {
+   "id": 17,
+   "start_sec": 166.8,
+   "duration_sec": 13.5,
+   "text": "",
+   "source": "local_donor",
+   "source_query": "5min-3-konflikt-ukraina-2011/scene_065.mp4",
+   "fx": "flash"
+  },
+  {
+   "id": 18,
+   "start_sec": 180.3,
+   "duration_sec": 8.8,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ЗДАНИЕ-БЕРЛАЙМОН-БРЮССЕЛЕ",
+   "fx": "panels"
+  },
+  {
+   "id": 19,
+   "start_sec": 189.1,
+   "duration_sec": 10.1,
+   "text": "",
+   "source": "local_donor",
+   "source_query": "5min-3-konflikt-ukraina-2011/scene_067.jpg",
+   "fx": "tear"
+  },
+  {
+   "id": 20,
+   "start_sec": 199.2,
+   "duration_sec": 7.4,
+   "text": "",
+   "source": "card:split",
+   "source_query": "карточка"
+  },
+  {
+   "id": 21,
+   "start_sec": 206.6,
+   "duration_sec": 14.6,
+   "text": "",
+   "source": "web_search",
+   "source_query": "Укрзализныця повреждённый вокзал после удара ноябрь 2026"
+  },
+  {
+   "id": 22,
+   "start_sec": 221.2,
+   "duration_sec": 9.7,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/МОСКОВСКИЙ-КРЕМЛЬ-СО",
+   "fx": "mosaic"
+  },
+  {
+   "id": 23,
+   "start_sec": 230.9,
+   "duration_sec": 6.2,
+   "text": "",
+   "source": "card:zal_shkala",
+   "source_query": "карточка"
+  },
+  {
+   "id": 24,
+   "start_sec": 237.1,
+   "duration_sec": 16.1,
+   "text": "",
+   "source": "card:network",
+   "source_query": "карточка"
+  },
+  {
+   "id": 25,
+   "start_sec": 253.2,
+   "duration_sec": 9.7,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ЗАЛ-ЗАСЕДАНИЙ-НАТО",
+   "fx": "wipe"
+  },
+  {
+   "id": 26,
+   "start_sec": 262.9,
+   "duration_sec": 10.0,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/КАЛЛАС"
+  },
+  {
+   "id": 27,
+   "start_sec": 272.9,
+   "duration_sec": 3.9,
+   "text": "",
+   "source": "card:repliki",
+   "source_query": "карточка «repliki» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 28,
+   "start_sec": 276.8,
+   "duration_sec": 12.1,
+   "text": "",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЗЕЛЕНСКИЙ"
+  },
+  {
+   "id": 29,
+   "start_sec": 288.9,
+   "duration_sec": 13.9,
+   "text": "",
+   "source": "card:zal",
+   "source_query": "карточка «zal» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 30,
+   "start_sec": 302.8,
+   "duration_sec": 12.5,
+   "text": "",
+   "source": "card:duel",
+   "source_query": "карточка"
+  },
+  {
+   "id": 31,
+   "start_sec": 315.3,
+   "duration_sec": 13.0,
+   "text": "",
+   "source": "card:torn",
+   "source_query": "карточка"
+  },
+  {
+   "id": 32,
+   "start_sec": 328.3,
+   "duration_sec": 11.8,
+   "text": "",
+   "source": "card:pechat",
+   "source_query": "карточка"
+  },
+  {
+   "id": 33,
+   "start_sec": 340.1,
+   "duration_sec": 10.8,
+   "text": "",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/jpNp3EZaEZrwnGrDfY44CwOlgchpqsuVohc_k40QCz1M41fGrdM3hP8vOHrRqyFKh7hRv8L3GtXWp9ihpfVWZGnTKOsRtWIOufJ9UlAK2c-EXi6ydKf-dwgqNu0mkr45SqTg4yJjzOq_OJQr6ALsDkIgnmN9PFYGfNyWSPwd-rLqB64oez3o5_We4VZFHVmtiWi93izsUXY_MaFCRmF_7mBPIUwvrrELG6daZkEQH5j4JSDiofBpjHbdMChuddsX-QWhgJVsvT5M7Za_FPCXMicilpohFU56ZHsSbKZyIsjIAbO4nWl1PDeEJ7UExpcqGHFXxKJ-XxxKRI7DEeYEVg.jpg"
+  },
+  {
+   "id": 34,
+   "start_sec": 350.9,
+   "duration_sec": 15.7,
+   "text": "",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/A9fnamHI0HaAchFhocY32yMNBSDBeXr6qfXGVNfJGgUpLWKUORfWtk6ohBUcBaxT-8KU_DKdrufqzDgKVIBDFFf5BdziPtsdNHCmqMkFzK21dTrRq8IHvwDf-oVlm91eMavza-_THsM1NUNKmtv1801Vj5yb-oASekd7EoxXcBOBYjgsPQIwnrx3WGWu5my1gFlqjj0EkU8L6S6-ox69RFj1o3BPKh9iHSYs7xadzmsu6sRWehJwDYaK8bHBZLz3TdGIXltGWcrTnoo-5JQYE4EQSm2aB6FZNXmLCmyQntURr6hFmcjOlVlnOarKuPGsl1pa4fAgsNAHaDFo_s_GBw.jpg"
+  },
+  {
+   "id": 35,
+   "start_sec": 366.6,
+   "duration_sec": 12.9,
+   "text": "",
+   "source": "card:kreslo",
+   "source_query": "карточка"
+  },
+  {
+   "id": 36,
+   "start_sec": 379.5,
+   "duration_sec": 10.5,
+   "text": "",
+   "source": "card:marker_serif",
+   "source_query": "карточка"
+  },
+  {
+   "id": 37,
+   "start_sec": 390.0,
+   "duration_sec": 13.0,
+   "text": "",
+   "source": "card:zal_efir",
+   "source_query": "карточка"
+  },
+  {
+   "id": 38,
+   "start_sec": 403.0,
+   "duration_sec": 11.8,
+   "text": "",
+   "source": "card:timeline",
+   "source_query": "карточка"
+  },
+  {
+   "id": 39,
+   "start_sec": 414.8,
+   "duration_sec": 9.6,
+   "text": "",
+   "source": "card:strike",
+   "source_query": "карточка"
+  },
+  {
+   "id": 40,
+   "start_sec": 424.4,
+   "duration_sec": 9.6,
+   "text": "",
+   "source": "card:zal_pol",
+   "source_query": "карточка"
+  },
+  {
+   "id": 41,
+   "start_sec": 434.0,
+   "duration_sec": 10.6,
+   "text": "",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/CcmkAhKQ2Qxrnelw8KkcuKvk4Bg4dpjcv0YTY3uzyVfmCDVBfbUpl77PRPA40drHXFMm1JBadsSuvVaqeKpNPZhjaubSu_p6tkOyqAm-8xGLZLAFAN93baukUdEPLXhPnIp4HJOLiwJHTPN9_rZz5DkHvG7drCl5xFdXSnR8yjMHAqutkPoh-V6Qo8H5dxQ2wLOnt1HHvVCwjKfNMumcmB9tyb45TxrjdSJUvCVVnyr0RnqKYOJNVfh8DVucTXUQormF3HBlq2vFf13xuDkD4gU19wBAcLZOzOp03Cz_r8KmWpM2slluOnyJMaUhRZKY_rcyOTBha28qAy0tWsXa1g.jpg"
+  },
+  {
+   "id": 42,
+   "start_sec": 444.6,
+   "duration_sec": 9.5,
+   "text": "",
+   "source": "card:zal_g18",
+   "source_query": "карточка"
+  },
+  {
+   "id": 43,
+   "start_sec": 454.1,
+   "duration_sec": 11.0,
+   "text": "",
+   "source": "card:map_regions",
+   "source_query": "карточка"
+  },
+  {
+   "id": 44,
+   "start_sec": 465.1,
+   "duration_sec": 11.5,
+   "text": "",
+   "source": "card:zal_makety",
+   "source_query": "карточка"
+  },
+  {
+   "id": 45,
+   "start_sec": 476.6,
+   "duration_sec": 12.7,
+   "text": "",
+   "source": "web_search",
+   "source_query": "Александр Стубб президент Финляндии заявление ноябрь 2026"
+  },
+  {
+   "id": 46,
+   "start_sec": 489.3,
+   "duration_sec": 13.2,
+   "text": "",
+   "source": "card:film_frame",
+   "source_query": "карточка"
+  },
+  {
+   "id": 47,
+   "start_sec": 502.5,
+   "duration_sec": 11.4,
+   "text": "",
+   "source": "card:film",
+   "source_query": "карточка"
+  },
+  {
+   "id": 48,
+   "start_sec": 513.9,
+   "duration_sec": 13.7,
+   "text": "",
+   "source": "card:slope",
+   "source_query": "карточка"
+  },
+  {
+   "id": 49,
+   "start_sec": 527.6,
+   "duration_sec": 11.3,
+   "text": "",
+   "source": "card:waterfall",
+   "source_query": "карточка"
+  },
+  {
+   "id": 50,
+   "start_sec": 538.9,
+   "duration_sec": 11.9,
+   "text": "",
+   "source": "card:globus_map",
+   "source_query": "карточка"
+  },
+  {
+   "id": 51,
+   "start_sec": 550.8,
+   "duration_sec": 12.1,
+   "text": "",
+   "source": "card:prohod",
+   "source_query": "карточка"
+  },
+  {
+   "id": 52,
+   "start_sec": 562.9,
+   "duration_sec": 12.0,
+   "text": "",
+   "source": "card:quote",
+   "source_query": "карточка"
+  },
+  {
+   "id": 53,
+   "start_sec": 574.9,
+   "duration_sec": 6.3,
+   "text": "",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/W_n8nD3voN_zSH_Qzg0RR0jCNdtUZczRM_EdntXqBIWxZsWnEeKuA8-VOaTEOKnTBZ9C4FA_yXc9MEPJvv0nkJCTfG_5q1W_s0xiDTpGlR9bOVbO14jOCTNoxrf8znCZ87i2AU9R7aLafvD2kuoBRRF0ENq-DbfL4iSOGz7GAjn31FuHYO7OvM1QxkDRAbllhEXcxh1QiqzxDiTkYQJp6kqNuW1G7Gc3lYjeyoYiDp7EaUjMpjTVycba8O6U8BPBySB8zJ9omoRe8LYqeZ8p_Y1kDcYWq0bt1makAUQjMf3FJAASeUkEKHeBZFcD023eRrBl6vlYziVMINZeSgHHyw.jpg"
+  },
+  {
+   "id": 54,
+   "start_sec": 581.2,
+   "duration_sec": 20.7,
+   "text": "",
+   "source": "card:bars",
+   "source_query": "карточка"
+  },
+  {
+   "id": 55,
+   "start_sec": 601.9,
+   "duration_sec": 12.3,
+   "text": "",
+   "source": "card:relsy",
+   "source_query": "карточка"
+  },
+  {
+   "id": 56,
+   "start_sec": 614.2,
+   "duration_sec": 13.2,
+   "text": "",
+   "source": "web_search",
+   "source_query": "Капитолий здание Конгресса США заседание 2026"
+  },
+  {
+   "id": 57,
+   "start_sec": 627.4,
+   "duration_sec": 11.4,
+   "text": "",
+   "source": "card:line",
+   "source_query": "карточка"
+  },
+  {
+   "id": 58,
+   "start_sec": 638.8,
+   "duration_sec": 6.6,
+   "text": "",
+   "source": "card:doc",
+   "source_query": "карточка"
+  },
+  {
+   "id": 59,
+   "start_sec": 645.4,
+   "duration_sec": 14.1,
+   "text": "",
+   "source": "card:zal_kub",
+   "source_query": "карточка"
+  },
+  {
+   "id": 60,
+   "start_sec": 659.5,
+   "duration_sec": 10.5,
+   "text": "",
+   "source": "card:pull",
+   "source_query": "карточка"
+  },
+  {
+   "id": 61,
+   "start_sec": 670.0,
+   "duration_sec": 8.8,
+   "text": "",
+   "source": "card:vyrezka",
+   "source_query": "карточка"
+  },
+  {
+   "id": 62,
+   "start_sec": 678.8,
+   "duration_sec": 14.4,
+   "text": "",
+   "source": "card:bubbles",
+   "source_query": "карточка"
+  },
+  {
+   "id": 63,
+   "start_sec": 693.2,
+   "duration_sec": 12.5,
+   "text": "",
+   "source": "card:vyrezka_kontur",
+   "source_query": "карточка"
+  },
+  {
+   "id": 64,
+   "start_sec": 705.7,
+   "duration_sec": 10.1,
+   "text": "",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/c2965aeb04.mp4?token=AB2OxvziH8nemEh4_i7g1t_LhMUTHvmnfh1r_K6DZpVDeGEssBxnATTWKD4t6J22E3op33_r3B-oNbH_HVa_6rzeLmkXeXYJbjIzEAtwEdXhpcYhd24sLRkdLYAW1ijaHMs0CN2GmFWJqtfAb7PsogbZMIPDTFSKXbaTnoG5tq2tlN57_Dfhz9E-B1akee8Hhd2IL_9uJzYPpn0CCzz7f8k6A4A_t6eAzUBoTn02PNuDAApqbqEVKsODgc3UHWsLZR5gf3VJBq_6Qw6eBeSKepk2qmhBp9loYJCbDPp8EGC7Cce-e_q7yUb-RNu2ULBBoIKe37kF2XeMjwa75UEwRg"
+  },
+  {
+   "id": 65,
+   "start_sec": 715.8,
+   "duration_sec": 13.9,
+   "text": "",
+   "source": "web_search",
+   "source_query": "Элбридж Колби Пентагон выступление НАТО Брюссель 2026"
+  },
+  {
+   "id": 66,
+   "start_sec": 729.7,
+   "duration_sec": 12.6,
+   "text": "",
+   "source": "card:lenta",
+   "source_query": "карточка"
+  },
+  {
+   "id": 67,
+   "start_sec": 742.3,
+   "duration_sec": 9.3,
+   "text": "",
+   "source": "card:tribuna",
+   "source_query": "карточка"
+  },
+  {
+   "id": 68,
+   "start_sec": 751.6,
+   "duration_sec": 13.5,
+   "text": "",
+   "source": "web_search",
+   "source_query": "Элбридж Колби покидает мероприятие НАТО Брюссель ноябрь 2026"
+  },
+  {
+   "id": 69,
+   "start_sec": 765.1,
+   "duration_sec": 13.4,
+   "text": "",
+   "source": "card:zal_g48",
+   "source_query": "карточка"
+  },
+  {
+   "id": 70,
+   "start_sec": 778.5,
+   "duration_sec": 11.3,
+   "text": "",
+   "source": "card:paper_typed",
+   "source_query": "карточка"
+  },
+  {
+   "id": 71,
+   "start_sec": 789.8,
+   "duration_sec": 13.3,
+   "text": "",
+   "source": "card:dof",
+   "source_query": "карточка"
+  },
+  {
+   "id": 72,
+   "start_sec": 803.1,
+   "duration_sec": 13.5,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/ТРАМП"
+  },
+  {
+   "id": 73,
+   "start_sec": 816.6,
+   "duration_sec": 10.0,
+   "text": "",
+   "source": "web_search",
+   "source_query": "военный завод США производство вооружений 2026"
+  },
+  {
+   "id": 74,
+   "start_sec": 826.6,
+   "duration_sec": 11.1,
+   "text": "",
+   "source": "card:zal_ekran",
+   "source_query": "карточка"
+  },
+  {
+   "id": 75,
+   "start_sec": 837.7,
+   "duration_sec": 12.0,
+   "text": "",
+   "source": "web_search",
+   "source_query": "Джаред Кушнер переговоры Украина ноябрь 2026"
+  },
+  {
+   "id": 76,
+   "start_sec": 849.7,
+   "duration_sec": 14.9,
+   "text": "",
+   "source": "card:photo",
+   "source_query": "карточка"
+  },
+  {
+   "id": 77,
+   "start_sec": 864.6,
+   "duration_sec": 13.1,
+   "text": "",
+   "source": "card:pie",
+   "source_query": "карточка «pie» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 78,
+   "start_sec": 877.7,
+   "duration_sec": 6.4,
+   "text": "",
+   "source": "web_search",
+   "source_query": "Москва Кремль переговоры позиция ноябрь 2026"
+  },
+  {
+   "id": 79,
+   "start_sec": 884.1,
+   "duration_sec": 19.2,
+   "text": "",
+   "source": "card:zal_shkala",
+   "source_query": "карточка"
+  },
+  {
+   "id": 80,
+   "start_sec": 903.3,
+   "duration_sec": 13.2,
+   "text": "",
+   "source": "card:zal_g44",
+   "source_query": "карточка"
+  },
+  {
+   "id": 81,
+   "start_sec": 916.5,
+   "duration_sec": 12.4,
+   "text": "",
+   "source": "card:paper_hand",
+   "source_query": "карточка"
+  },
+  {
+   "id": 82,
+   "start_sec": 928.9,
+   "duration_sec": 9.7,
+   "text": "",
+   "source": "card:map_dist",
+   "source_query": "карточка"
+  },
+  {
+   "id": 83,
+   "start_sec": 938.6,
+   "duration_sec": 9.6,
+   "text": "",
+   "source": "card:zal_g01",
+   "source_query": "карточка"
+  },
+  {
+   "id": 84,
+   "start_sec": 948.2,
+   "duration_sec": 9.7,
+   "text": "",
+   "source": "card:tape",
+   "source_query": "карточка"
+  },
+  {
+   "id": 85,
+   "start_sec": 957.9,
+   "duration_sec": 7.8,
+   "text": "",
+   "source": "card:map",
+   "source_query": "карточка"
+  },
+  {
+   "id": 86,
+   "start_sec": 965.7,
+   "duration_sec": 17.65,
+   "text": "",
+   "source": "card:wall",
+   "source_query": "карточка"
+  }
+ ]
+}
