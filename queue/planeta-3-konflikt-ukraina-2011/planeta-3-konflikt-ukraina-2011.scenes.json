@@ -1,0 +1,720 @@
+{
+ "channel": "ПЛАНЕТА",
+ "scenes": [
+  {
+   "id": 1,
+   "start_sec": 0.0,
+   "duration_sec": 10.42,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ЗДАНИЕ-БЕРЛАЙМОН-БРЮССЕЛЕ"
+  },
+  {
+   "id": 2,
+   "start_sec": 10.42,
+   "duration_sec": 9.66,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ЕВРОКОМИССИЯ",
+   "fx": "panels"
+  },
+  {
+   "id": 3,
+   "start_sec": 20.08,
+   "duration_sec": 11.57,
+   "text": "",
+   "source": "card:zal_slova",
+   "source_query": "карточка «zal_slova» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 4,
+   "start_sec": 31.65,
+   "duration_sec": 9.84,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ЕВРОПАРЛАМЕНТ",
+   "fx": "depth"
+  },
+  {
+   "id": 5,
+   "start_sec": 41.49,
+   "duration_sec": 10.43,
+   "text": "",
+   "source": "card:zal_efir",
+   "source_query": "карточка «zal_efir» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 6,
+   "start_sec": 51.92,
+   "duration_sec": 8.87,
+   "text": "",
+   "source": "card:bubbles",
+   "source_query": "карточка «bubbles» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 7,
+   "start_sec": 60.79,
+   "duration_sec": 10.79,
+   "text": "",
+   "source": "card:bars",
+   "source_query": "карточка «bars» — кадр рисуется в облаке, фетч за сценой не идёт",
+   "card": {
+    "kind": "bars",
+    "код": "A4",
+    "title": "Три стороны составляют условия",
+    "watermark": "ПЛАНЕТА",
+    "anim": 8.9
+   }
+  },
+  {
+   "id": 8,
+   "start_sec": 71.58,
+   "duration_sec": 9.96,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/ПУТИН",
+   "visual_prompt": "",
+   "fx": "subscribe"
+  },
+  {
+   "id": 9,
+   "start_sec": 81.54,
+   "duration_sec": 10.03,
+   "text": "",
+   "source": "card:prolog",
+   "source_query": "карточка «prolog» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 10,
+   "start_sec": 91.57,
+   "duration_sec": 11.44,
+   "text": "",
+   "source": "card:mehanizm",
+   "source_query": "карточка «mehanizm» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 11,
+   "start_sec": 103.01,
+   "duration_sec": 8.87,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/НАТО"
+  },
+  {
+   "id": 12,
+   "start_sec": 111.88,
+   "duration_sec": 6.08,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/ПУТИН"
+  },
+  {
+   "id": 13,
+   "start_sec": 117.96,
+   "duration_sec": 6.76,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ЕВРОКОМИССИЯ"
+  },
+  {
+   "id": 14,
+   "start_sec": 124.72,
+   "duration_sec": 9.34,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/НАТО",
+   "visual_prompt": "БАЗА/ВЕДОМСТВА/НАТО"
+  },
+  {
+   "id": 15,
+   "start_sec": 134.06,
+   "duration_sec": 12.82,
+   "text": "",
+   "source": "web_search",
+   "source_query": "Эстония парламент здание Таллин 2026",
+   "fx": "inset",
+   "visual_prompt": ""
+  },
+  {
+   "id": 16,
+   "start_sec": 146.88,
+   "duration_sec": 11.27,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/КАЛЛАС",
+   "visual_prompt": "БАЗА/ПЕРСОНЫ/КАЛЛАС",
+   "fx": "subscribe"
+  },
+  {
+   "id": 17,
+   "start_sec": 158.15,
+   "duration_sec": 13.73,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/ЗДАНИЕ-МИД-РОССИИ",
+   "fx": "flash",
+   "visual_prompt": ""
+  },
+  {
+   "id": 18,
+   "start_sec": 171.88,
+   "duration_sec": 9.69,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ЗДАНИЕ-БЕРЛАЙМОН-БРЮССЕЛЕ",
+   "fx": "panels"
+  },
+  {
+   "id": 19,
+   "start_sec": 181.57,
+   "duration_sec": 8.78,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/ЗДАНИЕ-МИД-РОССИИ",
+   "fx": "tear"
+  },
+  {
+   "id": 20,
+   "start_sec": 190.35,
+   "duration_sec": 11.4,
+   "text": "",
+   "source": "card:split",
+   "source_query": "карточка «split» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 21,
+   "start_sec": 201.75,
+   "duration_sec": 10.16,
+   "text": "",
+   "source": "web_search",
+   "source_query": "Укрзализныця повреждённый вокзал после удара ноябрь 2026"
+  },
+  {
+   "id": 22,
+   "start_sec": 211.91,
+   "duration_sec": 10.03,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/МОСКОВСКИЙ-КРЕМЛЬ-СО",
+   "fx": "mosaic"
+  },
+  {
+   "id": 23,
+   "start_sec": 221.94,
+   "duration_sec": 12.08,
+   "text": "",
+   "source": "card:zal_shkala",
+   "source_query": "карточка «zal_shkala» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 24,
+   "start_sec": 234.02,
+   "duration_sec": 12.95,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/МОСКОВСКИЙ-КРЕМЛЬ-СО"
+  },
+  {
+   "id": 25,
+   "start_sec": 246.97,
+   "duration_sec": 9.37,
+   "text": "",
+   "source": "card:paper_typed",
+   "source_query": "карточка «paper_typed» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 26,
+   "start_sec": 256.34,
+   "duration_sec": 10.63,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/КАЛЛАС",
+   "fx": "wipe"
+  },
+  {
+   "id": 27,
+   "start_sec": 266.97,
+   "duration_sec": 10.25,
+   "text": "",
+   "source": "card:repliki",
+   "source_query": "карточка «repliki» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 28,
+   "start_sec": 277.22,
+   "duration_sec": 9.19,
+   "text": "",
+   "source": "card:film",
+   "source_query": "карточка «film» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 29,
+   "start_sec": 286.41,
+   "duration_sec": 9.72,
+   "text": "",
+   "source": "card:zal",
+   "source_query": "карточка «zal» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 30,
+   "start_sec": 296.13,
+   "duration_sec": 14.57,
+   "text": "",
+   "source": "card:duel",
+   "source_query": "карточка «duel» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 31,
+   "start_sec": 310.7,
+   "duration_sec": 12.43,
+   "text": "",
+   "source": "card:torn",
+   "source_query": "карточка «torn» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 32,
+   "start_sec": 323.13,
+   "duration_sec": 10.68,
+   "text": "",
+   "source": "card:pechat",
+   "source_query": "карточка «pechat» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 33,
+   "start_sec": 333.81,
+   "duration_sec": 12.49,
+   "text": "",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/jpNp3EZaEZrwnGrDfY44CwOlgchpqsuVohc_k40QCz1M41fGrdM3hP8vOHrRqyFKh7hRv8L3GtXWp9ihpfVWZGnTKOsRtWIOufJ9UlAK2c-EXi6ydKf-dwgqNu0mkr45SqTg4yJjzOq_OJQr6ALsDkIgnmN9PFYGfNyWSPwd-rLqB64oez3o5_We4VZFHVmtiWi93izsUXY_MaFCRmF_7mBPIUwvrrELG6daZkEQH5j4JSDiofBpjHbdMChuddsX-QWhgJVsvT5M7Za_FPCXMicilpohFU56ZHsSbKZyIsjIAbO4nWl1PDeEJ7UExpcqGHFXxKJ-XxxKRI7DEeYEVg.jpg",
+   "fx": "subscribe"
+  },
+  {
+   "id": 34,
+   "start_sec": 346.3,
+   "duration_sec": 11.78,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/АЛЕКСАНДР-СТУББ-ПРЕЗИДЕНТ"
+  },
+  {
+   "id": 35,
+   "start_sec": 358.08,
+   "duration_sec": 13.95,
+   "text": "",
+   "source": "card:kreslo",
+   "source_query": "карточка «kreslo» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 36,
+   "start_sec": 372.03,
+   "duration_sec": 11.19,
+   "text": "",
+   "source": "card:marker_serif",
+   "source_query": "карточка «marker_serif» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 37,
+   "start_sec": 383.22,
+   "duration_sec": 12.8,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/РЯБКОВ",
+   "visual_prompt": "БАЗА/ПЕРСОНЫ/РЯБКОВ"
+  },
+  {
+   "id": 38,
+   "start_sec": 396.02,
+   "duration_sec": 11.33,
+   "text": "",
+   "source": "card:doc",
+   "source_query": "карточка «doc» — кадр рисуется в облаке, фетч не нужен",
+   "card": {
+    "kind": "timeline",
+    "kick": "СХЕМА",
+    "title": "Готовая страховка на будущий срыв",
+    "lines": [
+     "Выписывают требование от его имени",
+     "С достоинством отвергают",
+     "Виновный уже найден"
+    ],
+    "watermark": "ПЛАНЕТА",
+    "anim": 11.8
+   }
+  },
+  {
+   "id": 39,
+   "start_sec": 407.35,
+   "duration_sec": 4.81,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/НАТО",
+   "fx": "subscribe"
+  },
+  {
+   "id": 40,
+   "start_sec": 412.16,
+   "duration_sec": 9.93,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/АЛЕКСАНДР-СТУББ-ПРЕЗИДЕНТ",
+   "visual_prompt": "БАЗА/ПЕРСОНЫ/АЛЕКСАНДР-СТУББ-ПРЕЗИДЕНТ"
+  },
+  {
+   "id": 41,
+   "start_sec": 422.09,
+   "duration_sec": 8.88,
+   "text": "",
+   "source": "card:zal_makety",
+   "source_query": "карточка «zal_makety» — кадр рисуется в облаке, фетч не нужен",
+   "visual_prompt": ""
+  },
+  {
+   "id": 42,
+   "start_sec": 430.97,
+   "duration_sec": 10.29,
+   "text": "",
+   "source": "card:map_regions",
+   "source_query": "карточка «map_regions» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 43,
+   "start_sec": 441.26,
+   "duration_sec": 9.75,
+   "text": "",
+   "source": "card:zal_pol",
+   "source_query": "карточка «zal_pol» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 44,
+   "start_sec": 451.01,
+   "duration_sec": 11.8,
+   "text": "",
+   "source": "card:film_frame",
+   "source_query": "карточка «film_frame» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 45,
+   "start_sec": 462.81,
+   "duration_sec": 9.98,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/НАТО",
+   "visual_prompt": ""
+  },
+  {
+   "id": 46,
+   "start_sec": 472.79,
+   "duration_sec": 11.24,
+   "text": "",
+   "source": "card:waterfall",
+   "source_query": "карточка «waterfall» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 47,
+   "start_sec": 484.03,
+   "duration_sec": 11.31,
+   "text": "",
+   "source": "card:globus_map",
+   "source_query": "карточка «globus_map» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 48,
+   "start_sec": 495.34,
+   "duration_sec": 11.53,
+   "text": "",
+   "source": "card:prohod",
+   "source_query": "карточка «prohod» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 49,
+   "start_sec": 506.87,
+   "duration_sec": 11.07,
+   "text": "",
+   "source": "card:quote",
+   "source_query": "карточка «quote» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 50,
+   "start_sec": 517.94,
+   "duration_sec": 15.05,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/УИТКОФФ",
+   "fx": "subscribe"
+  },
+  {
+   "id": 51,
+   "start_sec": 532.99,
+   "duration_sec": 11.5,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ГОСДЕП-США"
+  },
+  {
+   "id": 52,
+   "start_sec": 544.49,
+   "duration_sec": 6.96,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ГОСДЕП-США",
+   "visual_prompt": "здание Госдепартамента США флаг вход Вашингтон 2026",
+   "overlays": []
+  },
+  {
+   "id": 53,
+   "start_sec": 551.45,
+   "duration_sec": 6.16,
+   "text": "",
+   "source": "card:relsy",
+   "source_query": "карточка «relsy» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 54,
+   "start_sec": 557.61,
+   "duration_sec": 12.93,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/КАПИТОЛИЙ-ВАШИНГТОНЕ-ДНЁМ",
+   "visual_prompt": "Капитолий США голосование Конгресс 2026"
+  },
+  {
+   "id": 55,
+   "start_sec": 570.54,
+   "duration_sec": 11.2,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ГОСДЕП-США"
+  },
+  {
+   "id": 56,
+   "start_sec": 581.74,
+   "duration_sec": 5.69,
+   "text": "",
+   "source": "card:zal_kub",
+   "source_query": "карточка «zal_kub» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 57,
+   "start_sec": 587.43,
+   "duration_sec": 11.66,
+   "text": "",
+   "source": "card:pull",
+   "source_query": "карточка «pull» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 58,
+   "start_sec": 599.09,
+   "duration_sec": 8.51,
+   "text": "",
+   "source": "card:bubbles",
+   "source_query": "карточка «bubbles» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 59,
+   "start_sec": 607.6,
+   "duration_sec": 11.92,
+   "text": "",
+   "source": "card:lenta",
+   "source_query": "карточка «lenta» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 60,
+   "start_sec": 619.52,
+   "duration_sec": 10.83,
+   "text": "",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/c2965aeb04.mp4?token=AB2OxvziH8nemEh4_i7g1t_LhMUTHvmnfh1r_K6DZpVDeGEssBxnATTWKD4t6J22E3op33_r3B-oNbH_HVa_6rzeLmkXeXYJbjIzEAtwEdXhpcYhd24sLRkdLYAW1ijaHMs0CN2GmFWJqtfAb7PsogbZMIPDTFSKXbaTnoG5tq2tlN57_Dfhz9E-B1akee8Hhd2IL_9uJzYPpn0CCzz7f8k6A4A_t6eAzUBoTn02PNuDAApqbqEVKsODgc3UHWsLZR5gf3VJBq_6Qw6eBeSKepk2qmhBp9loYJCbDPp8EGC7Cce-e_q7yUb-RNu2ULBBoIKe37kF2XeMjwa75UEwRg"
+  },
+  {
+   "id": 61,
+   "start_sec": 630.35,
+   "duration_sec": 9.36,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/ПЕНТАГОН-ВОЗДУХА",
+   "visual_prompt": "Элбридж Колби Пентагон выступление НАТО Брюссель 2026"
+  },
+  {
+   "id": 62,
+   "start_sec": 639.71,
+   "duration_sec": 9.06,
+   "text": "",
+   "source": "card:tribuna",
+   "source_query": "карточка «tribuna» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 63,
+   "start_sec": 648.77,
+   "duration_sec": 4.56,
+   "text": "",
+   "source": "web_search",
+   "source_query": "Элбридж Колби покидает мероприятие НАТО Брюссель ноябрь 2026"
+  },
+  {
+   "id": 64,
+   "start_sec": 653.33,
+   "duration_sec": 10.4,
+   "text": "",
+   "source": "card:zal_g48",
+   "source_query": "карточка «zal_g48» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 65,
+   "start_sec": 663.73,
+   "duration_sec": 12.44,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/УМЕРОВ",
+   "visual_prompt": "Рустем Умеров министр обороны Украины Брюссель НАТО 2026"
+  },
+  {
+   "id": 66,
+   "start_sec": 676.17,
+   "duration_sec": 14.05,
+   "text": "",
+   "source": "card:dof",
+   "source_query": "карточка «dof» — кадр рисуется в облаке, фетч за сценой не идёт",
+   "card": {
+    "kind": "dof",
+    "код": "A64",
+    "watermark": "ПЛАНЕТА",
+    "anim": 13.3
+   }
+  },
+  {
+   "id": 67,
+   "start_sec": 690.22,
+   "duration_sec": 11.65,
+   "text": "",
+   "source": "card:zal_ekran",
+   "source_query": "карточка «zal_ekran» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 68,
+   "start_sec": 701.87,
+   "duration_sec": 10.07,
+   "text": "",
+   "source": "web_search",
+   "source_query": "военный завод США производство вооружений 2026"
+  },
+  {
+   "id": 69,
+   "start_sec": 711.94,
+   "duration_sec": 9.22,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/КУШНЕР",
+   "visual_prompt": "БАЗА/ПЕРСОНЫ/КУШНЕР",
+   "fx": "tear"
+  },
+  {
+   "id": 70,
+   "start_sec": 721.16,
+   "duration_sec": 12.3,
+   "text": "",
+   "source": "card:photo",
+   "source_query": "карточка «photo» — кадр рисуется в облаке, фетч за сценой не идёт",
+   "card": {
+    "kind": "photo",
+    "lines": [
+     "Доходы от продажи вооружений",
+     "Один интерес — не одна кнопка"
+    ],
+    "watermark": "ПЛАНЕТА",
+    "anim": 14.9,
+    "photo": "/mnt/d/media-library/БАЗА/ВЛАСТЬ-США/БЕЛЫЙ-ДОМ-СО/01_1920x1080.jpg"
+   }
+  },
+  {
+   "id": 71,
+   "start_sec": 733.46,
+   "duration_sec": 15.35,
+   "text": "",
+   "source": "card:pie",
+   "source_query": "карточка «pie» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 72,
+   "start_sec": 748.81,
+   "duration_sec": 12.76,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-РОССИЯ/МОСКОВСКИЙ-КРЕМЛЬ-СО",
+   "visual_prompt": "БАЗА/ВЛАСТЬ-РОССИЯ/МОСКОВСКИЙ-КРЕМЛЬ-СО"
+  },
+  {
+   "id": 73,
+   "start_sec": 761.57,
+   "duration_sec": 12.18,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/КАПИТОЛИЙ-ВАШИНГТОНЕ-ДНЁМ",
+   "visual_prompt": "БАЗА/ВЛАСТЬ-США/КАПИТОЛИЙ-ВАШИНГТОНЕ-ДНЁМ",
+   "fx": "mosaic"
+  },
+  {
+   "id": 74,
+   "start_sec": 773.75,
+   "duration_sec": 13.45,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ЗДАНИЕ-БЕРЛАЙМОН-БРЮССЕЛЕ",
+   "visual_prompt": "Брюссель здание Совета Евросоюза флаги вход 2026"
+  },
+  {
+   "id": 75,
+   "start_sec": 787.2,
+   "duration_sec": 11.94,
+   "text": "",
+   "source": "card:paper_hand",
+   "source_query": "карточка «paper_hand» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 76,
+   "start_sec": 799.14,
+   "duration_sec": 8.77,
+   "text": "",
+   "source": "card:map_dist",
+   "source_query": "карточка «map_dist» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 77,
+   "start_sec": 807.91,
+   "duration_sec": 11.41,
+   "text": "",
+   "source": "card:zal_g01",
+   "source_query": "карточка «zal_g01» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 78,
+   "start_sec": 819.32,
+   "duration_sec": 9.28,
+   "text": "",
+   "source": "card:tape",
+   "source_query": "карточка «tape» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 79,
+   "start_sec": 828.6,
+   "duration_sec": 11.52,
+   "text": "",
+   "source": "card:map",
+   "source_query": "карточка «map» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 80,
+   "start_sec": 840.12,
+   "duration_sec": 4.17,
+   "text": "",
+   "source": "card:wall",
+   "source_query": "карточка «wall» — кадр рисуется в облаке, фетч за сценой не идёт",
+   "card": {
+    "kind": "wall",
+    "код": "A56",
+    "title": "Все, без кого договор не состоится",
+    "watermark": "ПЛАНЕТА",
+    "anim": 17.65
+   }
+  }
+ ]
+}
