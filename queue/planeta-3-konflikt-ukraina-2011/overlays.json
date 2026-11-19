@@ -1,0 +1,52 @@
+{
+  "21": {
+    "text": {
+      "words": "удары",
+      "sub": "давление на Украину",
+      "style": "mask_plate",
+      "pos": "ml",
+      "at": 0.5,
+      "sound": "pop"
+    }
+  },
+  "34": {
+    "text": {
+      "words": "альянс",
+      "sub": "вопрос о членстве",
+      "style": "mask_plate",
+      "pos": "ml",
+      "at": 0.5,
+      "sound": "whoosh"
+    }
+  },
+  "50": {
+    "text": {
+      "words": "посредники",
+      "sub": "американский интерес",
+      "style": "mask_plate",
+      "pos": "ml",
+      "at": 0.5,
+      "sound": "ding"
+    }
+  },
+  "68": {
+    "text": {
+      "words": "выгода",
+      "sub": "кто получает прибыль",
+      "style": "mask_plate",
+      "pos": "ml",
+      "at": 0.5,
+      "sound": "pop"
+    }
+  },
+  "2": {
+    "text": {
+      "words": "переговоры",
+      "sub": "без России",
+      "style": "mask_plate",
+      "pos": "ml",
+      "at": 0.5,
+      "sound": "pop"
+    }
+  }
+}
