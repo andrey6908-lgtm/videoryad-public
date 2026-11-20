@@ -1,0 +1,195 @@
+[
+ {
+  "scene": 25,
+  "view": "charts.cartogram",
+  "dur": 11.37,
+  "anim": 11.37,
+  "tail_zoom": 0.045,
+  "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "channel": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "kwargs": {
+   "data": [
+    "Эстония",
+    "Латвия",
+    "Литва"
+   ],
+   "kick": "ЗОНА РИСКА",
+   "mode": "bubble",
+   "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО"
+  }
+ },
+ {
+  "scene": 32,
+  "view": "cinematic.depth_of_field",
+  "dur": 12.62,
+  "anim": 12.62,
+  "tail_zoom": 0.0,
+  "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "channel": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "kwargs": {
+   "photo": "cards/photo/card_032.jpg",
+   "kick": "НА ПЕРЕДНЕМ ПЛАНЕ",
+   "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 41,
+  "view": "photo",
+  "dur": 10.92,
+  "anim": 10.92,
+  "tail_zoom": 0.0,
+  "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "channel": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "kwargs": {
+   "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+   "photo": "cards/photo/card_041.jpg",
+   "lines": [
+    "Польша укрепляет границу",
+    "и поддерживает Украину"
+   ]
+  }
+ },
+ {
+  "scene": 50,
+  "view": "slider",
+  "dur": 10.83,
+  "anim": 10.83,
+  "tail_zoom": 0.0,
+  "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "channel": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_slider.py",
+  "cfg": {
+   "title": "",
+   "min": 12.0,
+   "max": 15.0,
+   "low": 12.0,
+   "high": 15.0,
+   "marker_value": 10.0,
+   "marker_display": "10 млрд",
+   "seconds": 10.83,
+   "range_label": "РАЗБРОС ОЦЕНОК",
+   "caption": "",
+   "source": ""
+  }
+ },
+ {
+  "scene": 51,
+  "view": "bars",
+  "dur": 12.84,
+  "anim": 12.84,
+  "tail_zoom": 0.0,
+  "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "channel": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_bars.py",
+  "cfg": {
+   "title": "",
+   "caption": "",
+   "seconds": 12.84,
+   "bars": [
+    {
+     "label": "ЗАЯВЛЕНО",
+     "value": 1.0,
+     "color": "06C7C7"
+    },
+    {
+     "label": "ЗАКУПЛЕНО",
+     "value": 0.14,
+     "color": "EABD23"
+    }
+   ]
+  }
+ },
+ {
+  "scene": 56,
+  "view": "vyrezka.gazeta",
+  "dur": 12.84,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "channel": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "kwargs": {
+   "photo": "cards/photo/card_056.jpg",
+   "author": "ДЖО БАЙДЕН",
+   "role": "бывший президент США",
+   "kick": "СЧЁТ ЗА ЛОЯЛЬНОСТЬ",
+   "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО"
+  }
+ },
+ {
+  "scene": 76,
+  "view": "charts.network",
+  "dur": 12.48,
+  "anim": 12.48,
+  "tail_zoom": 0.045,
+  "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "channel": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО",
+  "kwargs": {
+   "nodes": [
+    {
+     "id": "Туда",
+     "label": "Туда",
+     "weight": 1.0
+    },
+    {
+     "id": "Евросоюза",
+     "label": "Евросоюза",
+     "weight": 2.0
+    },
+    {
+     "id": "Кэтрин",
+     "label": "Кэтрин",
+     "weight": 2.0
+    },
+    {
+     "id": "Эштон",
+     "label": "Эштон",
+     "weight": 2.0
+    },
+    {
+     "id": "Каллас",
+     "label": "Каллас",
+     "weight": 2.0
+    },
+    {
+     "id": "Германии",
+     "label": "Германии",
+     "weight": 1.0
+    }
+   ],
+   "links": [
+    {
+     "from": "Туда",
+     "to": "Евросоюза",
+     "weight": 1.0
+    },
+    {
+     "from": "Евросоюза",
+     "to": "Кэтрин",
+     "weight": 1.0
+    },
+    {
+     "from": "Кэтрин",
+     "to": "Эштон",
+     "weight": 1.0
+    },
+    {
+     "from": "Эштон",
+     "to": "Каллас",
+     "weight": 1.0
+    },
+    {
+     "from": "Каллас",
+     "to": "Германии",
+     "weight": 1.0
+    }
+   ],
+   "kick": "ВНЕШНИЙ КРУГ",
+   "watermark": "ПЕРЕВОД С ДИПЛОМАТИЧЕСКОГО"
+  }
+ }
+]
