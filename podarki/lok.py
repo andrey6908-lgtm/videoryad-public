@@ -875,22 +875,25 @@ def _koza_hozyayka(x, y, h_, t, vlevo=False):
     KOL, KOL2, ROG = "#c23c2e", "#8a2e22", "#7a5a34"
     s = f'<g transform="translate(0,{dy:.1f})">'
     s += ten(x, y + 6, w_ * .62, 16, .5)
-    # тело: один эллипс-барабан — надёжный силуэт на любом масштабе
-    bx, by_, brx, bry = x - sgn * w_ * .04, y - h_ * .40, w_ * .50, h_ * .20
+    # тело: компактный округлый барабан (козёл, не лама — короче и выше, чем
+    # было, R-0051-2: длинный плоский овал и вытянутая шея читались конём)
+    bx, by_, brx, bry = x - sgn * w_ * .04, y - h_ * .44, w_ * .40, h_ * .27
     # ноги: пара передних (со стороны морды) и пара задних, раздвоенное копыто
     leg_top = by_ + bry * .55
-    for fx in (bx + sgn * brx * .62, bx + sgn * brx * .22,
-               bx - sgn * brx * .22, bx - sgn * brx * .62):
-        lw = w_ * .085
+    for fx in (bx + sgn * brx * .60, bx + sgn * brx * .20,
+               bx - sgn * brx * .20, bx - sgn * brx * .60):
+        lw = w_ * .09
         s += f'<rect x="{fx-lw/2:.0f}" y="{leg_top:.0f}" width="{lw:.0f}" height="{y-10-leg_top:.0f}" rx="{lw*.4:.0f}" fill="{KOL2}" {o(5)}/>'
         s += f'<rect x="{fx-lw*.55:.0f}" y="{y-10:.0f}" width="{lw*.55:.0f}" height="10" fill="#2a1a14" {o(2)}/>'
         s += f'<rect x="{fx:.0f}" y="{y-10:.0f}" width="{lw*.55:.0f}" height="10" fill="#1a100c" {o(2)}/>'
     s += f'<ellipse cx="{bx:.0f}" cy="{by_:.0f}" rx="{brx:.0f}" ry="{bry:.0f}" fill="{KOL}" {o(7)}/>'
-    # шея: толстый мазок от груди к голове
-    nx0, ny0 = bx + sgn * brx * .78, by_ - bry * .35
-    hx, hy = x + sgn * w_ * .70, y - h_ * .84
+    # холка: невысокий горб над плечом — у ламы/коня его нет
+    s += f'<ellipse cx="{bx+sgn*brx*.5:.0f}" cy="{by_-bry*.7:.0f}" rx="{brx*.42:.0f}" ry="{bry*.5:.0f}" fill="{KOL}" {o(0)}/>'
+    # шея: короткий толстый мазок от груди к голове (не длинный, как у ламы)
+    nx0, ny0 = bx + sgn * brx * .80, by_ - bry * .45
+    hx, hy = x + sgn * w_ * .42, y - h_ * .78
     s += (f'<path d="M{nx0:.0f},{ny0:.0f} L{hx-sgn*h_*.02:.0f},{hy+h_*.14:.0f}"'
-          f' fill="none" stroke="{KOL}" stroke-width="{h_*.30:.0f}" stroke-linecap="round"/>')
+          f' fill="none" stroke="{KOL}" stroke-width="{h_*.34:.0f}" stroke-linecap="round"/>')
     # голова: череп (эллипс) + морда (эллипс поменьше, вынесена вперёд-вниз)
     skr = h_ * .155
     s += f'<ellipse cx="{hx:.0f}" cy="{hy:.0f}" rx="{skr:.0f}" ry="{skr*.92:.0f}" fill="{KOL}" {o(6)}/>'
@@ -924,6 +927,10 @@ def _koza_hozyayka(x, y, h_, t, vlevo=False):
     s += f'<ellipse cx="{snx+sgn*h_*.06:.0f}" cy="{sny:.0f}" rx="{h_*.018:.0f}" ry="{h_*.012:.0f}" fill="#1a1008"/>'
     s += (f'<path d="M{snx-sgn*h_*.02:.0f},{sny+h_*.065:.0f} q{sgn*h_*.06:.0f},{h_*.025:.0f} {sgn*h_*.1:.0f},0"'
           f' fill="none" stroke="#5a1a12" stroke-width="{max(2,h_*.01):.1f}"/>')
+    # бородка клинышком под мордой — верный знак козы, у ламы/коня её нет
+    bry0, brx0 = sny + h_ * .11, snx - sgn * h_ * .01
+    s += (f'<path d="M{brx0-h_*.028:.0f},{bry0:.0f} L{brx0+h_*.028:.0f},{bry0:.0f}'
+          f' L{brx0:.0f},{bry0+h_*.09:.0f} Z" fill="{ROG}" {o(3)}/>')
     # грива: три небольших язычка СТРОГО вдоль гребня шеи, не шире неё
     for k in range(3):
         p = .15 + .3 * k
@@ -1106,11 +1113,12 @@ def podarok_govorit(t):
     s += SL(Z_SRED, f'<ellipse cx="420" cy="700" rx="40" ry="16" fill="#efe3c8" {o(3)}/>')
     s += SL(Z_SRED, par(420, 684, t, 3, .4, 120, .5))
     s += SL(Z_SRED, f'<ellipse cx="1000" cy="680" rx="60" ry="30" fill="{KREM}" {o(4)}/>')
+    # печь — ДО фигуры (его слово 21.11: люди не закрываются мебелью)
+    s += SL(Z_SRED, pech(1140, 300, 460, 640, t, True, True, False))
     kiv = 5 * A.w(t, 1.4, .3)
     s += SL(Z_SRED, f'<g transform="rotate({kiv:.1f} 1150 940)">'
                     + figura(1150, 1060, 520, t, "#3a2c3c", "#ffe2a8", True, .2) + '</g>')
     s += SL(Z_SRED, f'<rect x="1030" y="1010" width="300" height="20" rx="6" fill="{TKAN}" opacity=".7"/>')
-    s += SL(Z_SRED, pech(1140, 300, 460, 640, t, True, True, False))
     s += SL(Z_SRED, _napolnenie(420, 600, 600, 260, t, 19, 6))
     s += SL(Z_SRED, f'<rect x="420" y="320" width="320" height="420" rx="10" fill="url(#derev)" {o(6)}/>')
     s += SL(Z_SRED, f'<rect x="440" y="350" width="280" height="160" rx="6" fill="url(#stekl)" opacity=".6" {o(4)}/>')
@@ -1146,6 +1154,17 @@ def babushka_i_cennik(t):
     cen_off = 46 * A.ease(A.seg(t, .3, .9))
     s += SL(Z_SRED, f'<rect x="{820+cen_off:.0f}" y="600" width="160" height="40" rx="6" fill="{TKAN}" {o(4)}/>')
     s += SL(Z_SRED, f'<rect x="{830+cen_off:.0f}" y="608" width="60" height="24" rx="3" fill="{KREM}" {o(2)}/>')
+    # полка с банками — ДО фигур (его слово 21.11: люди не закрываются
+    # мебелью; раньше стеллаж ложился прямо поверх покупательницы)
+    s += SL(Z_SRED, f'<rect x="700" y="260" width="420" height="340" rx="10" fill="url(#derev)" {o(6)}/>')
+    for i in range(3):
+        s += SL(Z_SRED, f'<rect x="720" y="{280+i*108:.0f}" width="380" height="90" rx="6" fill="none" {o(3)}/>')
+    rnd3 = random.Random(9)
+    for i in range(7):
+        jx = 740 + i * 52
+        jy = 280 + (i % 3) * 108 + 70
+        s += SL(Z_SRED, _banka(jx, jy, .7, rnd3.choice((MED, "#8c8275"))))
+    s += SL(Z_SRED, _napolnenie(420, 600, 300, 200, t, 19, 4))
     s += SL(Z_SRED, figura(430, 780, 480, t, "#8a6a4a", "#efe3c8", False, .0))
     ruk1, (r1x, r1y) = rukav(560, 600, 150, -4 + 6 * A.w(t, 1.9, .1), t, "#8a6a4a", "#efe3c8", .1)
     s += SL(Z_SRED, ruk1)
@@ -1157,15 +1176,6 @@ def babushka_i_cennik(t):
     s += SL(Z_SRED, f'<ellipse cx="{r2x:.0f}" cy="{r2y:.0f}" rx="24" ry="17" fill="#2a2c3c" {o(4)}/>')
     s += SL(Z_SRED, _varezhka(r2x, r2y - 10, 1.4, 0, TKAN))
     s += SL(Z_SRED, f'<rect x="{900-cen_off*.3:.0f}" y="620" width="140" height="130" rx="10" fill="{TKAN}" {o(5)}/>')
-    s += SL(Z_SRED, f'<rect x="700" y="260" width="420" height="340" rx="10" fill="url(#derev)" {o(6)}/>')
-    for i in range(3):
-        s += SL(Z_SRED, f'<rect x="720" y="{280+i*108:.0f}" width="380" height="90" rx="6" fill="none" {o(3)}/>')
-    rnd3 = random.Random(9)
-    for i in range(7):
-        jx = 740 + i * 52
-        jy = 280 + (i % 3) * 108 + 70
-        s += SL(Z_SRED, _banka(jx, jy, .7, rnd3.choice((MED, "#8c8275"))))
-    s += SL(Z_SRED, _napolnenie(420, 600, 300, 200, t, 19, 4))
     s += SL(Z_PERED, ramka_pp("oba", "#120e0e", .4))
     s += SL(Z_LETIT, luch(1560, 160, 160, 500, t, .18))
     s += vinetka(.4)
@@ -2005,6 +2015,8 @@ def muzh_zhena_i_korobochka_s_chasami(t):
     s += SL(Z_SRED, _elka(1400, 940, 640, t, 11, True))
     s += SL(Z_SRED, f'<rect x="420" y="280" width="280" height="500" rx="10" fill="url(#derev)" {o(6)}/>')
     s += SL(Z_SRED, f'<rect x="440" y="300" width="240" height="210" rx="6" fill="url(#stekl)" opacity=".5" {o(4)}/>')
+    # второй шкаф — ДО фигур, не поверх жены (его слово 21.11)
+    s += SL(Z_SRED, f'<rect x="1140" y="280" width="260" height="420" rx="10" fill="#5a3a4a" {o(6)}/>')
     s += SL(Z_SRED, _kovrik_pol(480, 900, 760, 110, TKAN2, KREM, 23))
     s += SL(Z_SRED, f'<ellipse cx="960" cy="820" rx="340" ry="60" fill="url(#derev)" {o(7)}/>')
     s += SL(Z_SRED, f'<rect x="760" y="772" width="400" height="30" rx="8" fill="#fff" opacity=".9" {o(3)}/>')
@@ -2027,7 +2039,6 @@ def muzh_zhena_i_korobochka_s_chasami(t):
     s += SL(Z_SRED, r2a + r2b)
     s += SL(Z_SRED, f'<ellipse cx="{r2ax:.0f}" cy="{r2ay:.0f}" rx="24" ry="17" fill="#7a2a44" {o(4)}/>')
     s += SL(Z_SRED, f'<ellipse cx="{r2bx:.0f}" cy="{r2by:.0f}" rx="24" ry="17" fill="#7a2a44" {o(4)}/>')
-    s += SL(Z_SRED, f'<rect x="1140" y="280" width="260" height="420" rx="10" fill="#5a3a4a" {o(6)}/>')
     s += SL(Z_SRED, _napolnenie(900, 580, 450, 170, t, 37, 6))
     s += SL(Z_PERED, ramka_pp("oba", "#120e0e", .4))
     s += SL(Z_LETIT, mokryy_sneg(t, 6, 5, .25, .5))
@@ -2045,6 +2056,8 @@ def monetka_za_chasy(t):
     s += SL(Z_SRED, polovicy(820))
     s += SL(Z_SRED, f'<rect x="420" y="280" width="280" height="460" rx="10" fill="url(#derev)" {o(6)}/>')
     s += SL(Z_SRED, f'<rect x="440" y="300" width="240" height="200" rx="6" fill="url(#stekl)" opacity=".5" {o(4)}/>')
+    # второй шкаф — ДО фигур, не поверх жены (его слово 21.11)
+    s += SL(Z_SRED, f'<rect x="1140" y="280" width="260" height="420" rx="10" fill="#5a3a4a" {o(6)}/>')
     s += SL(Z_SRED, hodiki(1420, 360, t, .95))
     s += SL(Z_SRED, _kovrik_pol(480, 900, 760, 110, TKAN2, KREM, 24))
     s += SL(Z_SRED, f'<ellipse cx="960" cy="820" rx="340" ry="60" fill="url(#derev)" {o(7)}/>')
@@ -2068,7 +2081,6 @@ def monetka_za_chasy(t):
     s += SL(Z_SRED, r2a + r2b)
     s += SL(Z_SRED, f'<ellipse cx="{r2ax:.0f}" cy="{r2ay:.0f}" rx="18" ry="7" fill="#ffe2a8" opacity=".5"/>')
     s += SL(Z_SRED, _chasy_karman(r2bx, r2by, .42, t, 1.0))
-    s += SL(Z_SRED, f'<rect x="1140" y="280" width="260" height="420" rx="10" fill="#5a3a4a" {o(6)}/>')
     s += SL(Z_SRED, _napolnenie(900, 580, 450, 150, t, 38, 6))
     s += SL(Z_PERED, ramka_pp("oba", "#120e0e", .4))
     s += SL(Z_LETIT, mokryy_sneg(t, 6, 5, .25, .5))
@@ -2330,6 +2342,10 @@ def nozh_na_razdelochnoy_doske(t):
     укроп_sw = 4 * A.w(t, 2.2)
     s += SL(Z_SRED, f'<g transform="rotate({укроп_sw:.1f} 1000 790)"><path d="M1000,790 l0,-50" stroke="{ZEL}" stroke-width="5"/>'
                     f'<path d="M1000,750 q-14,-10 -24,-4 M1000,750 q14,-10 24,-4" fill="none" stroke="{ZEL}" stroke-width="3"/></g>')
+    # шкафы по краям — ДО фигур, не поверх людей (его слово 21.11)
+    s += SL(Z_SRED, f'<rect x="420" y="280" width="260" height="420" rx="8" fill="{KAMEN2}" {o(5)}/>')
+    s += SL(Z_SRED, f'<rect x="1140" y="280" width="240" height="420" rx="8" fill="url(#derev)" {o(5)}/>')
+    s += SL(Z_SRED, f'<rect x="1156" y="300" width="208" height="180" rx="5" fill="url(#stekl)" opacity=".5" {o(3)}/>')
     s += SL(Z_SRED, figura(560, 1010, 500, t, "#efe3c8", "#9c7049", False, .0))
     # кисть не рисуем: рукав оканчивается обшлагом прямо на рукояти ножа —
     # нож рисуется ПОСЛЕ рукава, на его же конце (R-0051, его слово 15.11)
@@ -2342,10 +2358,7 @@ def nozh_na_razdelochnoy_doske(t):
     s += SL(Z_SRED, f'<ellipse cx="{r2x:.0f}" cy="{r2y:.0f}" rx="18" ry="7" fill="#9c7049" opacity=".6"/>')
     s += SL(Z_SRED, figura(1420, 1030, 320, t, "#2a4a6a", "#efe3c8", False, .3, naklon=-4))
     s += SL(Z_SRED, lampa(1700, 420, t, .9, True))
-    s += SL(Z_SRED, f'<rect x="420" y="280" width="260" height="420" rx="8" fill="{KAMEN2}" {o(5)}/>')
     s += SL(Z_SRED, _kovrik_pol(500, 900, 760, 110, TKAN2, KREM, 44))
-    s += SL(Z_SRED, f'<rect x="1140" y="280" width="240" height="420" rx="8" fill="url(#derev)" {o(5)}/>')
-    s += SL(Z_SRED, f'<rect x="1156" y="300" width="208" height="180" rx="5" fill="url(#stekl)" opacity=".5" {o(3)}/>')
     s += SL(Z_SRED, _napolnenie(420, 600, 760, 150, t, 44, 6))
     s += SL(Z_PERED, ramka_pp("oba", "#120e0e", .36))
     s += vinetka(.36)
@@ -2364,6 +2377,8 @@ def nozhnicy_za_kopeyku(t):
     s += SL(Z_SRED, polovicy(800))
     s += SL(Z_SRED, f'<rect x="420" y="280" width="280" height="460" rx="10" fill="url(#derev)" {o(6)}/>')
     s += SL(Z_SRED, f'<rect x="440" y="300" width="240" height="200" rx="6" fill="url(#stekl)" opacity=".5" {o(4)}/>')
+    # второй шкаф — ДО фигур, не поверх людей (его слово 21.11)
+    s += SL(Z_SRED, f'<rect x="1140" y="280" width="260" height="420" rx="10" fill="#5a3a4a" {o(6)}/>')
     s += SL(Z_SRED, _kovrik_pol(480, 900, 760, 110, TKAN, KREM, 31))
     s += SL(Z_SRED, stol(560, 780, 800, 34))
     s += SL(Z_SRED, f'<rect x="620" y="740" width="200" height="90" rx="10" fill="{ZHELEZ}" {o(5)}/>')
@@ -2392,7 +2407,6 @@ def nozhnicy_za_kopeyku(t):
     s += SL(Z_SRED, r2)
     s += SL(Z_SRED, f'<ellipse cx="{r2x:.0f}" cy="{r2y:.0f}" rx="22" ry="15" fill="#7a2a44" {o(4)}/>')
     s += SL(Z_SRED, svecha(960, 700, t, .2, .9))
-    s += SL(Z_SRED, f'<rect x="1140" y="280" width="260" height="420" rx="10" fill="#5a3a4a" {o(6)}/>')
     s += SL(Z_SRED, _napolnenie(420, 600, 1080, 100, t, 45, 6))
     s += SL(Z_PERED, ramka_pp("oba", "#120e0e", .4))
     s += SL(Z_LETIT, mokryy_sneg(t, 6, 5, .25, .5))

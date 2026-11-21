@@ -341,12 +341,20 @@ def nalozheniya(pl, t, proem=None):
         if proem:                  # под проём не лезем: сток не перекрываем
             px, py, pw, ph = proem
             vysota = 130 * len(poy[:2])
-            if py + ph + 24 + vysota <= 1040:
-                y0 = py + ph + 24
+            # «под проёмом» не значит «от самого его края» — если там уже
+            # стоит титр (yy продвинулась ниже низа проёма), пояснение
+            # ставим ПОСЛЕ него, а не поверх (его слово 21.11: «надписи не
+            # должны перекрывать друг друга»; было — оба считали y0 от py+ph
+            # независимо и садились в одну полосу).
+            nizhe = max(py + ph + 24, yy) if yy > py + ph else py + ph + 24
+            if nizhe + vysota <= 1040:
+                y0 = nizhe
             elif py - 24 - vysota >= 110:
                 y0 = py - 24 - vysota
             else:                  # проём занял кадр — ставим лентой у самого низа
                 y0 = 1040 - vysota
+        elif yy > 600:
+            y0 = max(y0, yy)       # без проёма — тоже не лезть на уже стоящий титр
         if len(poy) > 1:
             y0 = min(y0, 660)
         for i, (sovet, s_) in enumerate(poy[:2]):
