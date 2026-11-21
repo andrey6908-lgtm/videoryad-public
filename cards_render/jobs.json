@@ -1,0 +1,25 @@
+[
+ {
+  "scene": 39,
+  "view": "film.film_strip",
+  "dur": 10.32,
+  "anim": 10.32,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "shots": [
+    "cards/photo/card_039.jpg",
+    "cards/photo/card_039_2.jpg",
+    "cards/photo/card_039_3.jpg"
+   ],
+   "title": "БУДУЩЕЕ ВООРУЖЕНИЕ КИЕВА",
+   "captions": [
+    "Gripen",
+    "Су-34",
+    "ракета Meteor"
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ }
+]
