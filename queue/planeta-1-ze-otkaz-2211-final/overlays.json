@@ -12,10 +12,15 @@
   "8": {
     "text": {
       "words": "ГАРАНТИИ",
-      "sub": "торг вокруг НАТО",
-      "style": "mask_plate",
+      "color": "green",
       "pos": "ml",
-      "at": 0.5
+      "font": "default",
+      "sound": "zatvor",
+      "at": 0.5,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "торг вокруг НАТО",
+      "approved": true
     }
   },
   "14": {
@@ -51,10 +56,15 @@
   "28": {
     "text": {
       "words": "ЦЕНА ВОПРОСА",
-      "sub": "деньги на 2027-2030",
-      "style": "mask_plate",
+      "color": "green",
       "pos": "ml",
-      "at": 0.5
+      "font": "default",
+      "sound": "zatvor",
+      "at": 0.5,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "деньги на 2027-2030",
+      "approved": true
     }
   },
   "38": {
