@@ -1,0 +1,1132 @@
+[
+ {
+  "scene": 2,
+  "view": "zal_pol",
+  "dur": 11.5,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.5,
+   "sheets": [],
+   "text": "Это выглядит продуманно",
+   "na_polu": "РАСЧЁТ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 3,
+  "view": "zal_slova",
+  "dur": 11.8,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.8,
+   "sheets": [],
+   "text": "Смотрим не на слова, а на смысл",
+   "na_polu": "УГОЛ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 16,
+  "view": "doc",
+  "dur": 12.2,
+  "anim": 3.4,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Почти как банковский договор сначала вам улыбаются, потом выясняется, что улыбка тоже включена",
+   "mark": "БАНКОВСКИЙ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 17,
+  "view": "marker_serif",
+  "dur": 12.5,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Медведев приводит понятное сравнение: Украина шла к НАТО открыто, шаг за шагом",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 19,
+  "view": "charts.cartogram",
+  "dur": 9.5,
+  "anim": 9.5,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Иран",
+    "Россия"
+   ],
+   "title": "Если бы Москва предложила Ирану",
+   "mode": "bubble",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 22,
+  "view": "pull",
+  "dur": 12.3,
+  "anim": 2.6,
+  "tail_zoom": 0.05,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Такая арифметика работает, пока второй участник соглашается изображать калькулятор без батареек",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 23,
+  "view": "tape",
+  "dur": 12.6,
+  "anim": 2.4,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Для сдерживания нужна вера не только в исправность ракет, но и в готовность их применить",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 26,
+  "view": "zal_g48",
+  "dur": 11.1,
+  "anim": 11.1,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.1,
+   "sheets": [],
+   "text": "Вывод весит больше любых таблиц",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 27,
+  "view": "sceny.relsy",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.4,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "relsy",
+   "seconds": 11.4,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Путь к этой черте — крайне тяжёлый",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 11.4,
+    "sobytiya": [
+     "тяжёлая цепочка решений",
+     "приближение к поражению",
+     "обычные средства не держат"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "Путь к этой черте — крайне тяжёлый",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 11.4,
+   "sobytiya": [
+    "тяжёлая цепочка решений",
+    "приближение к поражению",
+    "обычные средства не держат"
+   ]
+  }
+ },
+ {
+  "scene": 28,
+  "view": "photo",
+  "dur": 11.7,
+  "anim": 11.7,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "watermark": "ПЛАНЕТА",
+   "photo": "cards/photo/card_028.jpg",
+   "title": "Путин принимает тяжёлые решения",
+   "lines": [
+    "долго сохраняет пространство для хода",
+    "пауза перед последней чертой"
+   ]
+  }
+ },
+ {
+  "scene": 29,
+  "view": "sceny.prolog",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 12.0,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "prolog",
+   "seconds": 12.0,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "РФ ЯДЕРКА МЕДВЕДЕВ",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 12.0,
+    "kick": "Москва · ноябрь 2026"
+   }
+  },
+  "kwargs": {
+   "text": "РФ ЯДЕРКА МЕДВЕДЕВ",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 12.0,
+   "kick": "Москва · ноябрь 2026"
+  }
+ },
+ {
+  "scene": 30,
+  "view": "paper_typed",
+  "dur": 12.3,
+  "anim": 2.8,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Поэтому новая статья Медведева не переворачивает игру одним своим появлением",
+   "accent": "Медведева",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 31,
+  "view": "sceny.tribuna",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 12.6,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "tribuna",
+   "seconds": 12.6,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Выступлений уже было достаточно",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 12.6,
+    "role": "российский чиновник"
+   }
+  },
+  "kwargs": {
+   "text": "Выступлений уже было достаточно",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 12.6,
+   "role": "российский чиновник"
+  }
+ },
+ {
+  "scene": 32,
+  "view": "film.film_strip",
+  "dur": 11.1,
+  "anim": 11.1,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "shots": [
+    "cards/photo/card_032.jpg",
+    "cards/photo/card_032_2.jpg",
+    "cards/photo/card_032_3.jpg",
+    "cards/photo/card_032_4.jpg"
+   ],
+   "title": "МИКРОФОН",
+   "captions": [
+    "Нефтеперерабатываю",
+    "Нефтеперерабатываю",
+    "Нефтеперерабатываю",
+    "Нефтеперерабатываю"
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 33,
+  "view": "sceny.globus_map",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.4,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "globus",
+   "seconds": 11.4,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Утверждается, что несколько лет",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 11.4,
+    "region": "Россия"
+   }
+  },
+  "kwargs": {
+   "text": "Утверждается, что несколько лет",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 11.4,
+   "region": "Россия"
+  }
+ },
+ {
+  "scene": 34,
+  "view": "zal_schetchik",
+  "dur": 11.7,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.7,
+   "sheets": [],
+   "text": "Предупреждение пришло заранее",
+   "value": "60",
+   "value_sub": "окно до пуска",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 35,
+  "view": "slider",
+  "dur": 12.0,
+  "anim": 12.0,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_slider.py",
+  "cfg": {
+   "title": "Окно до возможного запуска",
+   "min": 0.0,
+   "max": 60.0,
+   "low": 0.0,
+   "high": 60.0,
+   "marker_value": 30.0,
+   "marker_display": "30",
+   "seconds": 12.0,
+   "range_label": "РАЗБРОС ОЦЕНОК",
+   "caption": "от нескольких недель до декабря",
+   "source": ""
+  }
+ },
+ {
+  "scene": 36,
+  "view": "film.film_single",
+  "dur": 12.3,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_036.jpg",
+   "title": "Москва",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 37,
+  "view": "charts.network",
+  "dur": 12.6,
+  "anim": 12.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "nodes": [
+    {
+     "id": "США",
+     "label": "США",
+     "weight": 1.0
+    },
+    {
+     "id": "военная группировка в космосе",
+     "label": "военная группировка в космосе",
+     "weight": 1.0
+    },
+    {
+     "id": "оппонент",
+     "label": "оппонент",
+     "weight": 1.0
+    },
+    {
+     "id": "щит в ответ",
+     "label": "щит в ответ",
+     "weight": 1.0
+    }
+   ],
+   "links": [
+    {
+     "from": "США",
+     "to": "военная группировка в космосе",
+     "weight": 1.0
+    },
+    {
+     "from": "оппонент",
+     "to": "щит в ответ",
+     "weight": 1.0
+    }
+   ],
+   "title": "Кто первый принёс оружие",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 38,
+  "view": "duel",
+  "dur": 11.1,
+  "anim": 3.2,
+  "tail_zoom": 0.035,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "top": {
+    "who": "",
+    "text": "что оппонент тащит в ответ щит",
+    "accent": null,
+    "source": ""
+   },
+   "bottom": {
+    "who": "",
+    "text": "Им действительно не хватило суши",
+    "accent": null,
+    "source": ""
+   },
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 39,
+  "view": "charts.waterfall",
+  "dur": 11.4,
+  "anim": 11.4,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "start": {
+    "label": "США размещают оружие в космосе",
+    "value": 1.0
+   },
+   "steps": [
+    {
+     "label": "оппонент получает повод ответить",
+     "value": 1.0
+    },
+    {
+     "label": "виток эскалации",
+     "value": 1.0
+    }
+   ],
+   "end": {
+    "label": "ИТОГ"
+   },
+   "title": "Невинный вид после первого шага",
+   "sobytiya": true,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 40,
+  "view": "strike",
+  "dur": 11.7,
+  "anim": 3.0,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Всё удобно: моя дубинка охраняет порядок, ваша каска почему-то угрожает человечеству",
+   "struck": "моя дубинка охраняет порядок",
+   "fix": "и то, и это — просто оружие",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 41,
+  "view": "bars",
+  "dur": 12.0,
+  "anim": 12.0,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_bars.py",
+  "cfg": {
+   "title": "Цена не только в словах",
+   "caption": "",
+   "seconds": 12.0,
+   "bars": [
+    {
+     "label": "ЗАПАД",
+     "value": 0.5,
+     "color": "4A90E2"
+    },
+    {
+     "label": "РОССИЯ",
+     "value": 0.5,
+     "color": "48BB78"
+    }
+   ]
+  }
+ },
+ {
+  "scene": 42,
+  "view": "zal_g18",
+  "dur": 12.3,
+  "anim": 12.3,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.3,
+   "sheets": [],
+   "text": "Это не один погасший огонёк",
+   "value": "ТРЕТЬ",
+   "value_sub": "спутников без связи в первые часы",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 44,
+  "view": "devices.device_scene",
+  "dur": 11.1,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "content_path": "cards/photo/card_044.jpg",
+   "items": [
+    "эффект Кесслера",
+    "орбита превращается в свалку",
+    "каждый обломок — снаряд"
+   ],
+   "source": "NASA",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 45,
+  "view": "charts.slope",
+  "dur": 11.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "items": [
+    {
+     "label": "чистая орбита",
+     "from": 1.0,
+     "to": 1.0,
+     "to_label": "непроходимая свалка"
+    },
+    {
+     "label": "один обломок",
+     "from": 1.0,
+     "to": 1.0,
+     "to_label": "цепная реакция"
+    }
+   ],
+   "left_label": "Было",
+   "right_label": "Стало",
+   "title": "Эффект Кесслера",
+   "source": "эффект Кесслера",
+   "sobytiya": true,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 46,
+  "view": "cinematic.depth_of_field",
+  "dur": 11.7,
+  "anim": 11.7,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_046.jpg",
+   "title": "Германия готовит защиту спутников",
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 47,
+  "view": "sceny.mehanizm",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 12.0,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "mehanizm",
+   "seconds": 12.0,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Вторая готовит ответ",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 12.0,
+    "pary": [
+     "Вторая — Первая",
+     "Первая — Затем"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "Вторая готовит ответ",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 12.0,
+   "pary": [
+    "Вторая — Первая",
+    "Первая — Затем"
+   ]
+  }
+ },
+ {
+  "scene": 48,
+  "view": "paper_hand",
+  "dur": 12.3,
+  "anim": 2.8,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "У каждого на орбите свой шкаф с оружием",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 49,
+  "view": "split",
+  "dur": 12.6,
+  "anim": 2.0,
+  "tail_zoom": 0.06,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_049.jpg",
+   "text": "Свежие разведданные указывают на готовность России к эскалации.",
+   "author": "Фридрих Мерц",
+   "role": "канцлер Германии",
+   "accent": "Свежие разведданные указывают",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 50,
+  "view": "zal_efir",
+  "dur": 11.1,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.1,
+   "sheets": [],
+   "text": "Берлин готовит ответ на угрозу",
+   "say": "Воспринимаем данные о российском ядерном спутнике предельно серьёзно",
+   "author": "Правительство Германии",
+   "role": "официальный представитель правительства",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 51,
+  "view": "zal",
+  "dur": 11.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Необходимая цепочка расходов уже собрана",
+   "words": [
+    "БЮДЖЕТ"
+   ],
+   "sheets": [
+    "угроза получила имя",
+    "срочность обозначена",
+    "населению объяснили",
+    "расходы обоснованы",
+    "бюджет открывается",
+    "механизм запущен"
+   ],
+   "channel": "ПЛАНЕТА",
+   "dur": 11.4,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 52,
+  "view": "poster.poster",
+  "dur": 11.7,
+  "anim": 11.7,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "title": "Германия готовит ответ",
+   "hero_photo": "cards/photo/card_052.jpg",
+   "bottom": "расходы на защиту уже объяснимы",
+   "facts": [
+    {
+     "label": "кто",
+     "value": "Фридрих Мерц"
+    },
+    {
+     "label": "что",
+     "value": "новые разведданные"
+    }
+   ],
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 53,
+  "view": "zal_ekran",
+  "dur": 12.0,
+  "anim": 12.0,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.0,
+   "sheets": [
+    "КОСМИЧЕСКАЯ УГРОЗА",
+    "ПРЯМОЙ ЭФИР"
+   ],
+   "text": "Канцлер называет вещи прямо",
+   "say": "Свежие разведданные указывают на готовность России к дальнейшей эскалации",
+   "author": "Фридрих Мерц",
+   "role": "канцлер Германии",
+   "source": "заявление правительства",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 54,
+  "view": "cinematic.dossier",
+  "dur": 12.3,
+  "anim": 12.3,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "rows": [
+    "документ — Договор о космосе",
+    "год — тысяча девятьсот шестьдесят седьмой",
+    "запрет — ядерное оружие на орбите",
+    "статус — действует",
+    "вето две тысячи двадцать четвёртого — Россия"
+   ],
+   "kick": "Договор о космосе",
+   "title": "Договор о космосе",
+   "photo": "cards/photo/card_054.jpg",
+   "stamp": "ПЕРВОИСТОЧНИК",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 55,
+  "view": "charts.cartogram",
+  "dur": 12.6,
+  "anim": 12.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Россия",
+    "Китай"
+   ],
+   "title": "Вето Совбеза",
+   "accent": [
+    "Россия"
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 56,
+  "view": "sceny.pechat",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.1,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "pechat",
+   "seconds": 11.1,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Москва настаивает на мирном характере",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 11.1,
+    "stamp": "утверждено"
+   }
+  },
+  "kwargs": {
+   "text": "Москва настаивает на мирном характере",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 11.1,
+   "stamp": "утверждено"
+  }
+ },
+ {
+  "scene": 58,
+  "view": "charts.map_dist",
+  "dur": 11.7,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "points": [
+    {
+     "label": "Запорожье",
+     "lat": 47.84,
+     "lon": 35.14,
+     "accent": true
+    },
+    {
+     "label": "Киев",
+     "lat": 50.45,
+     "lon": 30.52,
+     "accent": false
+    }
+   ],
+   "title": "Мосты под ударом",
+   "admin": "Украина",
+   "place": "Украина",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 59,
+  "view": "charts.cartogram",
+  "dur": 12.0,
+  "anim": 12.0,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Запорожская область",
+    "Киевская область"
+   ],
+   "kick": "Запорожье · Киев",
+   "title": "Мосты под ударом",
+   "level": "region",
+   "admin": "Украина",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 61,
+  "view": "sceny.repliki",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 12.6,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "repliki",
+   "seconds": 12.6,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Каждый раз находится осведомлённый источник",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 12.6,
+    "repliki_": [
+     "Источник|Решение принято",
+     "Источник|Логистику перережут",
+     "Источник|Приказ подписан",
+     "Источник|Часы уже пошли"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "Каждый раз находится осведомлённый источник",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 12.6,
+   "repliki_": [
+    "Источник|Решение принято",
+    "Источник|Логистику перережут",
+    "Источник|Приказ подписан",
+    "Источник|Часы уже пошли"
+   ]
+  }
+ },
+ {
+  "scene": 62,
+  "view": "zal_g01",
+  "dur": 11.1,
+  "anim": 11.1,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.1,
+   "sheets": [],
+   "text": "Лично держит лампу",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 63,
+  "view": "sceny.kreslo",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.4,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "kreslo",
+   "seconds": 11.4,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Пока нет действий, это остаётся слухом",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 11.4,
+    "role": "обещанный удар"
+   }
+  },
+  "kwargs": {
+   "text": "Пока нет действий, это остаётся слухом",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 11.4,
+   "role": "обещанный удар"
+  }
+ },
+ {
+  "scene": 64,
+  "view": "sceny.lenta",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 11.7,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "lenta",
+   "seconds": 11.7,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Желание превращается в решение",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 11.7,
+    "soobshcheniya": [
+     "ИСТОЧНИК 1: ожидается удар по мостам",
+     "ИСТОЧНИК 2: подтверждает первого",
+     "ИСТОЧНИК 3: добавляет уверенный тон"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "Желание превращается в решение",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 11.7,
+   "soobshcheniya": [
+    "ИСТОЧНИК 1: ожидается удар по мостам",
+    "ИСТОЧНИК 2: подтверждает первого",
+    "ИСТОЧНИК 3: добавляет уверенный тон"
+   ]
+  }
+ },
+ {
+  "scene": 67,
+  "view": "cinematic.evidence_wall",
+  "dur": 12.6,
+  "anim": 12.6,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "shots": [
+    [
+     "cards/photo/card_067.jpg",
+     240,
+     380,
+     -4,
+     "штаб НАТО"
+    ],
+    [
+     "cards/photo/card_067_2.jpg",
+     800,
+     380,
+     3,
+     "космическое командование США"
+    ]
+   ],
+   "title": "Угроза работает только при угрозе ответа",
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 68,
+  "view": "zal_kub",
+  "dur": 11.1,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.1,
+   "sheets": [],
+   "text": "Сейф с оружием, ключ в кармане",
+   "kick": "Открыть его грозятся лишь после полного разгрома",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 70,
+  "view": "charts.line",
+  "dur": 11.7,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "x_labels": [
+    "Предложит иной ответ",
+    "Передаст новый сигнал",
+    "Обозначит очередной предел"
+   ],
+   "series": [
+    {
+     "name": "Поиск замены окончательному шагу",
+     "values": [
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "title": "Поиск замены окончательному шагу",
+   "source": "ход рассуждения Медведева",
+   "sobytiya": true,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 71,
+  "view": "zal_g44",
+  "dur": 12.0,
+  "anim": 12.0,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.0,
+   "sheets": [],
+   "text": "Дорога идёт через кризис",
+   "value": "60",
+   "value_sub": "дней называли в начале",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 72,
+  "view": "zal_shkala",
+  "dur": 12.3,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.3,
+   "sheets": [],
+   "text": "Страшных средств более чем достаточно",
+   "value": "ТРЕТЬ",
+   "value_sub": "спутников без связи сразу",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 73,
+  "view": "quote",
+  "dur": 12.6,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Оружие сдерживания теряет смысл не тогда, когда оно неисправно",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 74,
+  "view": "torn_split.torn_split",
+  "dur": 12.8,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "a_path": "cards/photo/card_074.jpg",
+   "b_path": "cards/photo/card_074_2.jpg",
+   "title": "Табличка на заборе",
+   "watermark": "ПЛАНЕТА"
+  }
+ }
+]
