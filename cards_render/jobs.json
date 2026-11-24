@@ -1,0 +1,17 @@
+[
+ {
+  "scene": 46,
+  "view": "cinematic.depth_of_field",
+  "dur": 11.7,
+  "anim": 11.7,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_046.jpg",
+   "title": "Германия готовит защиту спутников",
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ }
+]
