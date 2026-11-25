@@ -1,0 +1,29 @@
+[
+ {
+  "scene": 53,
+  "view": "charts.map_dist",
+  "dur": 6.2,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "points": [
+    {
+     "label": "Москва",
+     "lat": 55.751,
+     "lon": 37.618,
+     "accent": false
+    },
+    {
+     "label": "Киев",
+     "lat": 50.45,
+     "lon": 30.523,
+     "accent": false
+    }
+   ],
+   "kick": "ДВА МАРШРУТА",
+   "watermark": "5 МИНУТ"
+  }
+ }
+]
