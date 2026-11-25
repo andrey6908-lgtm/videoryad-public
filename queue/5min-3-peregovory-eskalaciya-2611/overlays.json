@@ -1,0 +1,154 @@
+{
+ "1": {
+  "text": {
+   "words": "А ПОБЕДА?",
+   "pos": "tc",
+   "at": 0.3,
+   "color": "yellow"
+  }
+ },
+ "2": {
+  "text": {
+   "words": "ПЯТЫЙ ГОД ВОЙНЫ",
+   "pos": "tl",
+   "at": 0.3,
+   "color": "white"
+  }
+ },
+ "4": {
+  "text": {
+   "words": "НЕ ПЕРЕМИРИЕ",
+   "pos": "mc",
+   "at": 0.3,
+   "color": "red"
+  }
+ },
+ "5": {
+  "text": {
+   "words": "ДЕЛО В ДЕНЬГАХ",
+   "pos": "tr",
+   "at": 0.3,
+   "color": "orange"
+  }
+ },
+ "7": {
+  "text": {
+   "words": "ВМЕСТО ФРОНТА — СТРОЙКА",
+   "pos": "ml",
+   "at": 0.3,
+   "color": "green"
+  }
+ },
+ "8": {
+  "text": {
+   "words": "БРЮССЕЛЬ ГОТОВИТ СВОЁ",
+   "pos": "mr",
+   "at": 0.3,
+   "color": "yellow"
+  }
+ },
+ "9": {
+  "text": {
+   "words": "ТУПИК",
+   "pos": "tc",
+   "at": 0.3,
+   "color": "white"
+  }
+ },
+ "10": {
+  "text": {
+   "words": "ТРОЕ В ОДНОЙ КОМНАТЕ",
+   "pos": "tl",
+   "at": 0.3,
+   "color": "red"
+  }
+ },
+ "11": {
+  "text": {
+   "words": "ОДНА ЦЕЛЬ НА СЛОВАХ",
+   "pos": "mc",
+   "at": 0.3,
+   "color": "orange"
+  }
+ },
+ "16": {
+  "text": {
+   "words": "ЭКОНОМИКА НЕ СРАБОТАЛА",
+   "pos": "tr",
+   "at": 0.3,
+   "color": "green"
+  }
+ },
+ "17": {
+  "text": {
+   "words": "ПОВОРОТ К ТЕРРИТОРИЯМ",
+   "pos": "ml",
+   "at": 0.3,
+   "color": "yellow"
+  }
+ },
+ "18": {
+  "text": {
+   "words": "НЕ В ДЕНЬГАХ СЧАСТЬЕ?",
+   "pos": "mr",
+   "at": 0.3,
+   "color": "yellow"
+  }
+ },
+ "24": {
+  "text": {
+   "words": "ДО ЯНВАРЯ",
+   "pos": "tc",
+   "at": 0.3,
+   "color": "white"
+  }
+ },
+ "26": {
+  "text": {
+   "words": "СЛОВО «КАПИТУЛЯЦИЯ»",
+   "pos": "tl",
+   "at": 0.3,
+   "color": "red"
+  }
+ },
+ "30": {
+  "text": {
+   "words": "48 РАКЕТ ЖДУТ",
+   "pos": "mc",
+   "at": 0.3,
+   "color": "orange"
+  }
+ },
+ "31": {
+  "text": {
+   "words": "ПОСТАВКА ОТЛОЖЕНА",
+   "pos": "tr",
+   "at": 0.3,
+   "color": "green"
+  }
+ },
+ "36": {
+  "text": {
+   "words": "ПУТИНУ НЕ ВЫГОДНО?",
+   "pos": "ml",
+   "at": 0.3,
+   "color": "yellow"
+  }
+ },
+ "52": {
+  "text": {
+   "words": "ОТВЕТ С ЮМОРОМ",
+   "pos": "mr",
+   "at": 0.3,
+   "color": "yellow"
+  }
+ },
+ "60": {
+  "text": {
+   "words": "СТАВКА НА ТЕРРИТОРИИ",
+   "pos": "tc",
+   "at": 0.3,
+   "color": "white"
+  }
+ }
+}
