@@ -1,0 +1,161 @@
+[
+ {
+  "scene": 13,
+  "view": "timeline",
+  "dur": 10.1,
+  "anim": 10.1,
+  "tail_zoom": 0.06,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "kick": "ПУБЛИЧНОЕ ДАВЛЕНИЕ",
+   "watermark": "5 МИНУТ",
+   "events": [
+    {
+     "date": "начало",
+     "text": "детали выносятся наружу"
+    },
+    {
+     "date": "дальше",
+     "text": "возмущение и борьба за правоту"
+    },
+    {
+     "date": "итог",
+     "text": "договориться трудно"
+    }
+   ]
+  }
+ },
+ {
+  "scene": 20,
+  "view": "forces",
+  "dur": 11.7,
+  "anim": 11.7,
+  "tail_zoom": 0.06,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "kick": "АМЕРИКАНСКИЙ ПОДХОД",
+   "watermark": "5 МИНУТ",
+   "rows": [
+    {
+     "who": "ДЕНЬГИ",
+     "want": "решают всё"
+    },
+    {
+     "who": "РЫНОК",
+     "want": "мерило отношений"
+    },
+    {
+     "who": "БЕЗОПАСНОСТЬ",
+     "want": "вторична"
+    }
+   ]
+  }
+ },
+ {
+  "scene": 30,
+  "view": "zal_g18",
+  "dur": 14.3,
+  "anim": 14.3,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "channel": "5 МИНУТ",
+   "dur": 14.3,
+   "sheets": [],
+   "text": "Хегсет не одобрил ракеты Патриот",
+   "value": "48",
+   "value_sub": "ПОД ВОПРОСОМ",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 31,
+  "view": "zal_shkala",
+  "dur": 14.2,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "channel": "5 МИНУТ",
+   "dur": 14.2,
+   "sheets": [],
+   "text": "США продали Киеву зенитные ракеты",
+   "accent": "зенитные",
+   "value": "500",
+   "value_sub": "ПОСТАВКА ПОЗЖЕ",
+   "source": "начало 2030-х",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 51,
+  "view": "charts.cartogram",
+  "dur": 19.4,
+  "anim": 19.4,
+  "tail_zoom": 0.045,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "data": [
+    "Россия",
+    "Украина",
+    "Белоруссия",
+    "Франция"
+   ],
+   "kick": "КТО УЧАСТВУЕТ",
+   "mode": "bubble",
+   "watermark": "5 МИНУТ"
+  }
+ },
+ {
+  "scene": 65,
+  "view": "sceny.globus_map",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 9.7,
+  "channel": "5 МИНУТ",
+  "watermark": "5 МИНУТ",
+  "cfg": {
+   "view": "globus",
+   "seconds": 9.7,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Исследование из Лондона",
+    "channel": "5 МИНУТ",
+    "watermark": "5 МИНУТ",
+    "dur": 9.7,
+    "region": "Великобритания"
+   }
+  },
+  "kwargs": {
+   "text": "Исследование из Лондона",
+   "channel": "5 МИНУТ",
+   "watermark": "5 МИНУТ",
+   "dur": 9.7,
+   "region": "Великобритания"
+  }
+ },
+ {
+  "scene": 72,
+  "view": "bullets",
+  "dur": 3.5,
+  "anim": 3.5,
+  "tail_zoom": 0.06,
+  "watermark": "5 МИНУТ",
+  "channel": "5 МИНУТ",
+  "kwargs": {
+   "kick": "ЧТО ПРОБУЮТ АМЕРИКАНЦЫ",
+   "watermark": "5 МИНУТ",
+   "items": [
+    "Деньги",
+    "Гарантии",
+    "Сроки"
+   ]
+  }
+ }
+]
