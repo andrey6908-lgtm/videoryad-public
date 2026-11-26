@@ -1,0 +1,1118 @@
+[
+ {
+  "scene": 2,
+  "view": "sceny.prolog",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 10.7,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "prolog",
+   "seconds": 10.7,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Это шикарный бизнес",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 10.7
+   }
+  },
+  "kwargs": {
+   "text": "Это шикарный бизнес",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 10.7
+  }
+ },
+ {
+  "scene": 3,
+  "view": "zal_slova",
+  "dur": 8.5,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 8.5,
+   "sheets": [],
+   "text": "Денег уже не хватает",
+   "na_polu": "35 ЛЕТ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 7,
+  "view": "zal_kub",
+  "dur": 7.7,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 7.7,
+   "sheets": [],
+   "text": "Евросоюз и Большая семёрка запустили кредитную программу",
+   "kick": "Брюссель",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 8,
+  "view": "devices.device_scene",
+  "dur": 10.8,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "content_path": "cards/photo/card_008.jpg",
+   "items": [
+    "ЕС и G7 — 45 млрд €, выдан в 2024 году",
+    "Погасить до 2042 года, ставка 3%",
+    "Проценты за весь срок — около 25 млрд €"
+   ],
+   "title": "Кредит Украине",
+   "source": "Данные Евросоюза",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 9,
+  "view": "zal_shkala",
+  "dur": 5.7,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 5.7,
+   "sheets": [],
+   "text": "Кредиторам нужна эта сумма",
+   "value": "70 МЛРД",
+   "value_sub": "€ к возврату",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 10,
+  "view": "paper_typed",
+  "dur": 8.5,
+  "anim": 2.8,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Обсуждаются новые десятки миллиардов, и общие обязательства, которые хотят закрывать доходами от российских активов, могут дойти до ста сорока миллиардов евро",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 11,
+  "view": "zal_g18",
+  "dur": 12.9,
+  "anim": 12.9,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 12.9,
+   "sheets": [],
+   "text": "Конструкция требует времени",
+   "kick": "ЕС",
+   "value": "35",
+   "value_sub": "лет минимум",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 13,
+  "view": "sceny.mehanizm",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 10.8,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "mehanizm",
+   "seconds": 10.8,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Сначала ваши средства блокируют",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 10.8,
+    "pary": [
+     "Механика — Сначала",
+     "Сначала — Затем"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "Сначала ваши средства блокируют",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 10.8,
+   "pary": [
+    "Механика — Сначала",
+    "Сначала — Затем"
+   ]
+  }
+ },
+ {
+  "scene": 15,
+  "view": "film.film_strip",
+  "dur": 14.3,
+  "anim": 14.3,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "shots": [
+    "cards/photo/card_015.jpg",
+    "cards/photo/card_015_2.jpg",
+    "cards/photo/card_015_3.jpg",
+    "cards/photo/card_015_4.jpg"
+   ],
+   "title": "ПРИНЦИПА",
+   "captions": [
+    "Дизельный-Генерато",
+    "Дизельный-Генерато",
+    "Дизельный-Генерато",
+    "Дизельный-Генерато"
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 16,
+  "view": "pull",
+  "dur": 7.0,
+  "anim": 2.6,
+  "tail_zoom": 0.05,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Их объём вырос до восьми с половиной миллиардов швейцарских франков, то есть превысил десять миллиардов долларов",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 17,
+  "view": "bars",
+  "dur": 8.0,
+  "anim": 8.0,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_bars.py",
+  "cfg": {
+   "title": "Заморозка активов",
+   "caption": "",
+   "seconds": 8.0,
+   "bars": [
+    {
+     "label": "ШВЕЙЦАРИЯ: РОСТ",
+     "value": 0.15,
+     "color": "4A90E2"
+    },
+    {
+     "label": "ЦБ РОССИИ: ПАДЕНИЕ",
+     "value": 0.09,
+     "color": "48BB78"
+    }
+   ]
+  }
+ },
+ {
+  "scene": 18,
+  "view": "film.film_single",
+  "dur": 12.9,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_018.jpg",
+   "title": "ЦБ России: резервы -9% за 18 мес → 6,8 млрд франков",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 19,
+  "view": "poster.poster",
+  "dur": 8.3,
+  "anim": 8.3,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "title": "Вклад под замком",
+   "hero_photo": "cards/photo/card_019.jpg",
+   "facts": [
+    {
+     "label": "Снять деньги",
+     "value": "нельзя"
+    },
+    {
+     "label": "Доход с вклада",
+     "value": "прекрасный"
+    }
+   ],
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 22,
+  "view": "marker_serif",
+  "dur": 11.0,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Это шикарный бизнес. Охренеть. Тут даже не требуется спорить о симпатиях к России",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 23,
+  "view": "cinematic.evidence_wall",
+  "dur": 12.2,
+  "anim": 12.2,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "shots": [
+    [
+     "cards/photo/card_023.jpg",
+     240,
+     380,
+     -4,
+     "Собственник капитала"
+    ],
+    [
+     "cards/photo/card_023_2.jpg",
+     800,
+     380,
+     3,
+     "Управляющие без согласия"
+    ]
+   ],
+   "title": "Кто чем управляет",
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 27,
+  "view": "sceny.kreslo",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 9.8,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "kreslo",
+   "seconds": 9.8,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Покинуть может голос избирателя",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 9.8,
+    "role": "избиратель"
+   }
+  },
+  "kwargs": {
+   "text": "Покинуть может голос избирателя",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 9.8,
+   "role": "избиратель"
+  }
+ },
+ {
+  "scene": 28,
+  "view": "charts.cartogram",
+  "dur": 10.5,
+  "anim": 10.5,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Германия",
+    "Франция",
+    "Польша",
+    "Италия"
+   ],
+   "mode": "bubble",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 29,
+  "view": "duel",
+  "dur": 11.7,
+  "anim": 3.2,
+  "tail_zoom": 0.035,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "top": {
+    "who": "",
+    "text": "партия получает большинство",
+    "accent": null,
+    "source": ""
+   },
+   "bottom": {
+    "who": "",
+    "text": "дезинформации и защиты европейского выбора",
+    "accent": null,
+    "source": ""
+   },
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 30,
+  "view": "cinematic.depth_of_field",
+  "dur": 4.3,
+  "anim": 4.3,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "photo": "cards/photo/card_030.jpg",
+   "title": "Занятная система подсчёта",
+   "watermark": "ПЛАНЕТА"
+  },
+  "mode": "frame"
+ },
+ {
+  "scene": 31,
+  "view": "strike",
+  "dur": 14.6,
+  "anim": 3.0,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Нужный результат подтверждает зрелость демократии",
+   "struck": "зрелость демократии",
+   "fix": "повод выяснить, кто испортил граждан",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 34,
+  "view": "zal",
+  "dur": 8.8,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Суммы соприкасаются с кошельком человека",
+   "words": [
+    "ИТОГ",
+    "СЧЁТ"
+   ],
+   "sheets": [
+    "210 млрд заморожено",
+    "35 лет выплат",
+    "Дом престарелых дороже",
+    "Потолок долга США",
+    "Германия экономит",
+    "Счёт обычного человека"
+   ],
+   "channel": "ПЛАНЕТА",
+   "dur": 8.8,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 36,
+  "view": "zal_g44",
+  "dur": 11.3,
+  "anim": 11.3,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.3,
+   "sheets": [],
+   "text": "Эту сумму понимает каждый",
+   "value": "3364 €",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 37,
+  "view": "doc",
+  "dur": 8.9,
+  "anim": 3.4,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Эта сумма не живёт в отчёте на сотнях страниц. Её нужно найти на собственном счёте. И если человек после этого голосует не так, как рассчитывали наверху, удобнее объявить его жертвой чужого влияния",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 38,
+  "view": "sceny.tribuna",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 9.4,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "tribuna",
+   "seconds": 9.4,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Смотрим не на речь чиновника, а на счёт гражданина",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 9.4,
+    "role": "чиновник"
+   }
+  },
+  "kwargs": {
+   "text": "Смотрим не на речь чиновника, а на счёт гражданина",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 9.4,
+   "role": "чиновник"
+  }
+ },
+ {
+  "scene": 39,
+  "view": "zal_g01",
+  "dur": 11.4,
+  "anim": 11.4,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.4,
+   "sheets": [],
+   "text": "Какой счёт получает гражданин",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 40,
+  "view": "cinematic.dossier",
+  "dur": 6.9,
+  "anim": 6.9,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "case": "Фридрих Мерц",
+   "rows": [
+    "Канцлер Германии",
+    "Говорит: расходы придётся выбирать осторожнее",
+    "Бюджетные планы требуют пересмотра",
+    "Затраты растут, финансы нужно приводить в порядок",
+    "Немецкие пенсионеры уже ищут уход за границей"
+   ],
+   "title": "ДОСЬЕ",
+   "photo": "cards/photo/card_040.jpg",
+   "stamp": "ПЕРВОИСТОЧНИК",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 42,
+  "view": "charts.network",
+  "dur": 8.8,
+  "anim": 8.8,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "nodes": [
+    {
+     "id": "Россия",
+     "label": "Россия",
+     "weight": 1.0
+    },
+    {
+     "id": "ЕС",
+     "label": "ЕС",
+     "weight": 2.0
+    },
+    {
+     "id": "Кредиторы",
+     "label": "Кредиторы",
+     "weight": 1.0
+    }
+   ],
+   "links": [
+    {
+     "from": "Россия",
+     "to": "ЕС",
+     "weight": 1.0
+    },
+    {
+     "from": "ЕС",
+     "to": "Кредиторы",
+     "weight": 1.0
+    }
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 43,
+  "view": "zal_pol",
+  "dur": 9.3,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 9.3,
+   "sheets": [
+    "расписана",
+    "Кредиторам показали длинный график"
+   ],
+   "text": "Но своих денег всё равно не хватает",
+   "na_polu": "ПРИШЛО",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 45,
+  "view": "tape",
+  "dur": 8.3,
+  "anim": 2.4,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Оно внимательно осматривает тех, кого проще убедить, обязать или просто поставить перед фактом",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 46,
+  "view": "sceny.globus_map",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 9.2,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "globus",
+   "seconds": 9.2,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Страны разные — движение одинаковое",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 9.2,
+    "region": "Европа"
+   }
+  },
+  "kwargs": {
+   "text": "Страны разные — движение одинаковое",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 9.2,
+   "region": "Европа"
+  }
+ },
+ {
+  "scene": 47,
+  "view": "charts.waterfall",
+  "dur": 8.5,
+  "anim": 8.5,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "start": {
+    "label": "Пенсионеры",
+    "value": 1.0
+   },
+   "steps": [
+    {
+     "label": "Работающие",
+     "value": 1.0
+    },
+    {
+     "label": "Налоги",
+     "value": 1.0
+    }
+   ],
+   "end": {
+    "label": "ИТОГ"
+   },
+   "sobytiya": true,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 48,
+  "view": "dok_word",
+  "dur": 10.3,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Он не отдавал посылку",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 49,
+  "view": "zal_schetchik",
+  "dur": 10.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 10.4,
+   "sheets": [],
+   "text": "Груз получил конкретную цену",
+   "value": "3364",
+   "value_sub": "€ в месяц",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 50,
+  "view": "charts.pie",
+  "dur": 8.4,
+  "anim": 8.4,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "segments": [
+    {
+     "label": "Плата за уход",
+     "value": 50.0
+    },
+    {
+     "label": "Пенсия",
+     "value": 50.0
+    }
+   ],
+   "sobytiya": true,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 51,
+  "view": "zal_g48",
+  "dur": 11.4,
+  "anim": 11.4,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.4,
+   "sheets": [],
+   "text": "На фоне миллиардов это мелочь",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 52,
+  "view": "torn_split.torn_split",
+  "dur": 8.1,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "a_path": "cards/photo/card_052.jpg",
+   "b_path": "cards/photo/card_052_2.jpg",
+   "title": "Даже хорошая пенсия рядом с таким",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 55,
+  "view": "zal_makety",
+  "dur": 9.1,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 9.1,
+   "sheets": [],
+   "text": "Биография получилась суровой",
+   "makety": [
+    "дом=ПРЕСТАРЕЛЫХ",
+    "банк=ПЕНСИЯ"
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 56,
+  "view": "dok_title",
+  "dur": 8.2,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Потом система выдаёт тебе прайс и желает счастливой дороги",
+   "accent": "счастливой",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 57,
+  "view": "quote",
+  "dur": 7.6,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Вопрос в очерёдности. Когда власти объявляют о нехватке средств, полезно смотреть",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 58,
+  "view": "sceny.repliki",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 7.2,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "repliki",
+   "seconds": 7.2,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "На военные программы суммы увеличиваются",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 7.2,
+    "repliki_": [
+     "Брюссель|держит доходы на десятилетия",
+     "Берлин|экономит и пересматривает расходы",
+     "Вашингтон|снова спорит о потолке долга",
+     "Пенсионер|ищет страну подешевле"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "На военные программы суммы увеличиваются",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 7.2,
+   "repliki_": [
+    "Брюссель|держит доходы на десятилетия",
+    "Берлин|экономит и пересматривает расходы",
+    "Вашингтон|снова спорит о потолке долга",
+    "Пенсионер|ищет страну подешевле"
+   ]
+  }
+ },
+ {
+  "scene": 59,
+  "view": "sceny.lenta",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 9.6,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "lenta",
+   "seconds": 9.6,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Там счёт идёт на десятки миллиардов",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 9.6,
+    "soobshcheniya": [
+     "Кредиты выдаются",
+     "Старые долги обслуживаются",
+     "Новые планы принимаются"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "Там счёт идёт на десятки миллиардов",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 9.6,
+   "soobshcheniya": [
+    "Кредиты выдаются",
+    "Старые долги обслуживаются",
+    "Новые планы принимаются"
+   ]
+  }
+ },
+ {
+  "scene": 61,
+  "view": "charts.cartogram",
+  "dur": 8.8,
+  "anim": 8.8,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "США"
+   ],
+   "accent": [
+    "США"
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 64,
+  "view": "sceny.relsy",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 12.4,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "relsy",
+   "seconds": 12.4,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Обычному человеку банк говорит коротко",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 12.4,
+    "sobytiya": [
+     "чтобы больше никогда не",
+     "Обычному человеку банк",
+     "сокращайте расходы",
+     "Государство действует"
+    ],
+    "рол_номер": 1
+   }
+  },
+  "kwargs": {
+   "text": "Обычному человеку банк говорит коротко",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 12.4,
+   "sobytiya": [
+    "чтобы больше никогда не",
+    "Обычному человеку банк",
+    "сокращайте расходы",
+    "Государство действует"
+   ],
+   "рол_номер": 1
+  }
+ },
+ {
+  "scene": 65,
+  "view": "charts.line",
+  "dur": 12.4,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "x_labels": [
+    "Заняли",
+    "Потолок",
+    "Подняли",
+    "Опять потолок"
+   ],
+   "series": [
+    {
+     "name": "",
+     "values": [
+      1.0,
+      1.0,
+      1.0,
+      1.0
+     ]
+    }
+   ],
+   "source": "Бюджет США",
+   "sobytiya": true,
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 66,
+  "view": "zal_ekran",
+  "dur": 8.9,
+  "anim": 8.9,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 8.9,
+   "sheets": [
+    "ЭФИР",
+    "ОБЗОР"
+   ],
+   "text": "Доллар хранится в резервах стран",
+   "say": "Надёжный инструмент",
+   "author": "Минфин США",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 68,
+  "view": "charts.radar",
+  "dur": 13.9,
+  "anim": 13.9,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "axes": [
+    "ЕС",
+    "Германия",
+    "Пенсионеры",
+    "Вашингтон"
+   ],
+   "series": [
+    {
+     "label": "",
+     "values": [
+      3.0,
+      4.0,
+      5.0,
+      2.0
+     ]
+    }
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 70,
+  "view": "charts.slope",
+  "dur": 13.1,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "items": [
+    {
+     "label": "Кредит",
+     "from": 45.0,
+     "to": 140.0
+    },
+    {
+     "label": "Резервы ЦБ",
+     "from": 7.5,
+     "to": 6.8
+    }
+   ],
+   "left_label": "Было",
+   "right_label": "Стало",
+   "source": "ЕС/G7",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 71,
+  "view": "paper_hand",
+  "dur": 9.0,
+  "anim": 2.8,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Только в этот момент человек понимает настоящую цену всех решений",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 73,
+  "view": "charts.cartogram",
+  "dur": 12.3,
+  "anim": 12.3,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Бавария",
+    "Саксония"
+   ],
+   "level": "region",
+   "admin": "Германия",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 74,
+  "view": "sceny.prohod",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 10.44,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "prohod",
+   "seconds": 10.44,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Печкин не злодей",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 10.44,
+    "tezisy": [
+     "Он не отдавал посылку",
+     "Бизнес на ней не разглядел"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "Печкин не злодей",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 10.44,
+   "tezisy": [
+    "Он не отдавал посылку",
+    "Бизнес на ней не разглядел"
+   ]
+  }
+ }
+]
