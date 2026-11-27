@@ -1,0 +1,410 @@
+[
+ {
+  "scene": 2,
+  "view": "charts.cartogram",
+  "dur": 10.84,
+  "anim": 10.84,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Германия",
+    "Россия"
+   ],
+   "mode": "bubble",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 10,
+  "view": "quote",
+  "dur": 9.17,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Когда Вашингтон предложил перейти от упаковки к содержимому, пространство между пятой статьёй и её отсутствием",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 12,
+  "view": "charts.cartogram",
+  "dur": 10.11,
+  "anim": 10.11,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Румыния",
+    "Польша",
+    "Украина"
+   ],
+   "accent": [
+    "Румыния"
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 16,
+  "view": "duel",
+  "dur": 13.13,
+  "anim": 3.2,
+  "tail_zoom": 0.035,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "top": {
+    "who": "",
+    "text": "Владимир Путин готов допустить ограниченные уступки ради сделки",
+    "accent": null,
+    "source": ""
+   },
+   "bottom": {
+    "who": "",
+    "text": "Владимир Зеленский при приближении к решающему моменту уходит в сторону",
+    "accent": null,
+    "source": ""
+   },
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 18,
+  "view": "zal_kub",
+  "dur": 4.69,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 4.69,
+   "sheets": [],
+   "text": "Куда ведёт канат и кто его натянул",
+   "kick": "СОГЛАШЕНИЕ, КОТОРОЕ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 24,
+  "view": "karta_brifing",
+  "dur": 13.13,
+  "anim": 13.13,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Всё движется до точки, где требуется настоящее решение",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 25,
+  "view": "sceny.relsy",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 16.04,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "relsy",
+   "seconds": 16.04,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Каждый предыдущий круг",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 16.04,
+    "sobytiya": [
+     "когда канатоходец замедлится",
+     "И что после этого?",
+     "Вы будете это менять или",
+     "Или участники опять"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "Каждый предыдущий круг",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 16.04,
+   "sobytiya": [
+    "когда канатоходец замедлится",
+    "И что после этого?",
+    "Вы будете это менять или",
+    "Или участники опять"
+   ]
+  }
+ },
+ {
+  "scene": 28,
+  "view": "zal_pol",
+  "dur": 7.29,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 7.29,
+   "sheets": [],
+   "text": "Европейская версия",
+   "na_polu": "НАПРЯЖЕНИЕ",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 32,
+  "view": "zal_g01",
+  "dur": 7.4,
+  "anim": 7.4,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 7.4,
+   "sheets": [],
+   "text": "Местом стала Ливия",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 42,
+  "view": "slider",
+  "dur": 10.31,
+  "anim": 10.31,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_slider.py",
+  "cfg": {
+   "title": "",
+   "min": 0.0,
+   "max": 100.0,
+   "low": 0.0,
+   "high": 100.0,
+   "marker_value": 50.0,
+   "marker_display": "50",
+   "seconds": 10.31,
+   "range_label": "РАЗБРОС ОЦЕНОК",
+   "caption": "",
+   "source": ""
+  }
+ },
+ {
+  "scene": 45,
+  "view": "strike",
+  "dur": 8.54,
+  "anim": 3.0,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "результат коротко. Обещание дали, но ни лицензии, ни ракет нет. На этом фоне меняется положение в Одесской области",
+   "struck": "ни лицензии, ни ракет нет",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 49,
+  "view": "charts.cartogram",
+  "dur": 9.38,
+  "anim": 9.38,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "data": [
+    "Одесская область"
+   ],
+   "level": "region",
+   "admin": "Украина",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 60,
+  "view": "sceny.lenta",
+  "mode": "cli",
+  "script": "sceny_cli.py",
+  "dur": 9.17,
+  "channel": "ПЛАНЕТА",
+  "watermark": "ПЛАНЕТА",
+  "cfg": {
+   "view": "lenta",
+   "seconds": 9.17,
+   "fps": 30,
+   "t0": 0.0,
+   "kwargs": {
+    "text": "Одна морская операция",
+    "channel": "ПЛАНЕТА",
+    "watermark": "ПЛАНЕТА",
+    "dur": 9.17,
+    "soobshcheniya": [
+     "Обращение в Совбез ООН",
+     "Два судебных направления",
+     "Международный суд",
+     "Международный уголовный суд"
+    ]
+   }
+  },
+  "kwargs": {
+   "text": "Одна морская операция",
+   "channel": "ПЛАНЕТА",
+   "watermark": "ПЛАНЕТА",
+   "dur": 9.17,
+   "soobshcheniya": [
+    "Обращение в Совбез ООН",
+    "Два судебных направления",
+    "Международный суд",
+    "Международный уголовный суд"
+   ]
+  }
+ },
+ {
+  "scene": 61,
+  "view": "charts.network",
+  "dur": 12.92,
+  "anim": 12.92,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "nodes": [
+    {
+     "id": "Ливия",
+     "label": "Ливия",
+     "weight": 3.0
+    },
+    {
+     "id": "ООН",
+     "label": "ООН",
+     "weight": 1.0
+    },
+    {
+     "id": "Суд в Гааге",
+     "label": "Суд в Гааге",
+     "weight": 1.0
+    },
+    {
+     "id": "НАТО",
+     "label": "НАТО",
+     "weight": 1.0
+    }
+   ],
+   "links": [
+    {
+     "from": "Ливия",
+     "to": "ООН",
+     "weight": 1.0
+    },
+    {
+     "from": "Ливия",
+     "to": "Суд в Гааге",
+     "weight": 1.0
+    },
+    {
+     "from": "Ливия",
+     "to": "НАТО",
+     "weight": 1.0
+    }
+   ],
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 62,
+  "view": "dok_word",
+  "dur": 10.42,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Великобритания занялась атомным подводным флотом",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 63,
+  "view": "paper_typed",
+  "dur": 8.65,
+  "anim": 2.8,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Первоначальный контракт с Babcock рассчитан на пять лет",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 67,
+  "view": "zal_schetchik",
+  "dur": 11.46,
+  "anim": 2.6,
+  "tail_zoom": 0.045,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "channel": "ПЛАНЕТА",
+   "dur": 11.46,
+   "sheets": [],
+   "text": "Дополнительно семьсот миллионов",
+   "accent": "Дополнительно",
+   "value": "700 МЛН",
+   "watermark": "ПЛАНЕТА"
+  }
+ },
+ {
+  "scene": 71,
+  "view": "bars",
+  "dur": 12.4,
+  "anim": 12.4,
+  "tail_zoom": 0.0,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {},
+  "mode": "cli",
+  "script": "build_chart_bars.py",
+  "cfg": {
+   "title": "Приоритет расходов Британии",
+   "caption": "",
+   "seconds": 12.4,
+   "bars": [
+    {
+     "label": "ЯДЕРНЫЕ СИЛЫ",
+     "value": 1.0,
+     "color": "4A90E2"
+    },
+    {
+     "label": "ОБЫЧНЫЕ ВООРУЖЕНИЯ",
+     "value": 0.4,
+     "color": "48BB78"
+    }
+   ]
+  }
+ },
+ {
+  "scene": 73,
+  "view": "doc",
+  "dur": 14.17,
+  "anim": 3.4,
+  "tail_zoom": 0.04,
+  "watermark": "ПЛАНЕТА",
+  "channel": "ПЛАНЕТА",
+  "kwargs": {
+   "text": "Лондон одновременно считает миллиарды для атомного флота и дни до готовности к крупной войне. Украине предлагают защиту, напоминающую пятую статью НАТО",
+   "watermark": "ПЛАНЕТА"
+  }
+ }
+]
