@@ -1,0 +1,92 @@
+{
+ "1": {
+  "text": {
+   "words": "переговоры",
+   "sub": "шанс на разговор с Москвой",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "9": {
+  "text": {
+   "words": "гарантии",
+   "sub": "как статья пятая НАТО",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "22": {
+  "text": {
+   "words": "эскалация",
+   "sub": "старый цикл возвращается",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "64": {
+  "text": {
+   "words": "британия",
+   "sub": "атомный флот и дни до войны",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "30": {
+  "text": {
+   "words": "ливия",
+   "sub": "атака у берегов Бенгази",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "47": {
+  "text": {
+   "words": "одесса",
+   "sub": "мосты под угрозой",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ },
+ "3": {
+  "photo": "overlays/scene_003.jpg",
+  "sound": "whoosh",
+  "at": 2.5,
+  "style": "up-left",
+  "shape": "rect",
+  "size": "m",
+  "scale": 1.0
+ },
+ "15": {
+  "photo": "overlays/scene_015.jpg",
+  "sound": "pop",
+  "at": 3.0,
+  "style": "left-middle",
+  "shape": "rect",
+  "size": "s",
+  "scale": 1.0
+ },
+ "48": {
+  "photo": "overlays/scene_048.jpg",
+  "sound": "pop",
+  "at": 2.5,
+  "style": "up-center",
+  "shape": "rect",
+  "size": "m",
+  "scale": 1.2
+ },
+ "54": {
+  "text": {
+   "words": "италия",
+   "sub": "реакция на удар",
+   "style": "mask_plate",
+   "pos": "ml",
+   "at": 0.5
+  }
+ }
+}
