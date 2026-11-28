@@ -1,0 +1,759 @@
+{
+ "channel": "ПЛАНЕТА",
+ "scenes": [
+  {
+   "id": 1,
+   "start_sec": 0.0,
+   "duration_sec": 8.35,
+   "text": "",
+   "source": "web_search",
+   "source_query": "саммит Евросоюза Брюссель заседание зал 2026"
+  },
+  {
+   "id": 2,
+   "start_sec": 8.35,
+   "duration_sec": 8.35,
+   "text": "",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЕВРОПА",
+   "fx": "depth"
+  },
+  {
+   "id": 3,
+   "start_sec": 16.7,
+   "duration_sec": 10.8,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "фасад здания Европарламента в Страсбурге, 2026"
+  },
+  {
+   "id": 4,
+   "start_sec": 27.5,
+   "duration_sec": 5.0,
+   "text": "",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ЕС-форумы-Украина"
+  },
+  {
+   "id": 5,
+   "start_sec": 32.5,
+   "duration_sec": 8.6,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ЕВРОКОМИССИЯ",
+   "fx": "mosaic"
+  },
+  {
+   "id": 6,
+   "start_sec": 41.1,
+   "duration_sec": 9.2,
+   "text": "",
+   "source": "direct_url",
+   "source_query": "https://cdn4.telesco.pe/file/tQMfDX0Fgmye5le2zPSXy5xA5CR0vJp_FchYxFEKWqfq_2K6kNuddzeMOt8BThrzmZyBxPVJN-iVkmMfmJnwS9RC9yBkM0wiwKLGF0_G34sh1tSaRdkOB7asr8Y3l7bVYcoeuszwSyJIX3A42yJVJF_rCMjkqsn5VlCx7RtF-26Zh-f5E5odVFtkpYmlAUhh-Ov5TAxJ7KYzqG5ex1gkEjhDpO4ooX5NuMM92mUMj0quNq0Kg12iAdItkdkBtqnMTnh90pYZp2mMKWVxqzfQNNuwg96EEl_BOu99cTTE0i6zYezIpNXD481ZI4LJw2VKi5JdEorzG-s-dEFKPrZAUA.jpg",
+   "fx": "panels"
+  },
+  {
+   "id": 7,
+   "start_sec": 50.3,
+   "duration_sec": 6.5,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "стол переговоров саммита лидеров Брюссель 2026",
+   "fx": "subscribe"
+  },
+  {
+   "id": 8,
+   "start_sec": 56.8,
+   "duration_sec": 15.6,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "закрытые двери консультационной комнаты Совета ЕС, Брюссель, 2026"
+  },
+  {
+   "id": 9,
+   "start_sec": 72.4,
+   "duration_sec": 4.3,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "микрофон у места Андрея Бабиша, премьер-министра Чехии, Брюссель, 2026"
+  },
+  {
+   "id": 10,
+   "start_sec": 76.7,
+   "duration_sec": 8.4,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/БУНДЕСВЕР",
+   "fx": "tear"
+  },
+  {
+   "id": 11,
+   "start_sec": 85.1,
+   "duration_sec": 7.6,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/АРМИЯ-США",
+   "fx": "wipe"
+  },
+  {
+   "id": 12,
+   "start_sec": 92.7,
+   "duration_sec": 9.1,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "стол делегации Венгрии в Совете ЕС, Брюссель, 2026"
+  },
+  {
+   "id": 13,
+   "start_sec": 101.8,
+   "duration_sec": 7.4,
+   "text": "",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/ГЕРМАНИЯ",
+   "fx": "flash"
+  },
+  {
+   "id": 14,
+   "start_sec": 109.2,
+   "duration_sec": 9.5,
+   "text": "",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/НАТО"
+  },
+  {
+   "id": 15,
+   "start_sec": 118.7,
+   "duration_sec": 11.4,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/МЕРЦ"
+  },
+  {
+   "id": 16,
+   "start_sec": 130.1,
+   "duration_sec": 9.6,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "кафедра канцлера Фридриха Мерца в Бундестаге, 2026"
+  },
+  {
+   "id": 17,
+   "start_sec": 139.7,
+   "duration_sec": 8.7,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/БУНДЕСВЕР"
+  },
+  {
+   "id": 18,
+   "start_sec": 148.4,
+   "duration_sec": 9.4,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/НАТО"
+  },
+  {
+   "id": 19,
+   "start_sec": 157.8,
+   "duration_sec": 6.4,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "молоток председателя на голосовании бюджета ЕС, Брюссель, 2026",
+   "fx": "subscribe"
+  },
+  {
+   "id": 20,
+   "start_sec": 164.2,
+   "duration_sec": 6.9,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "микрофоны правительства Словакии перед выступлением Роберта Фицо, 2026"
+  },
+  {
+   "id": 21,
+   "start_sec": 171.1,
+   "duration_sec": 6.5,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ЕВРОПАРЛАМЕНТ"
+  },
+  {
+   "id": 22,
+   "start_sec": 177.6,
+   "duration_sec": 9.0,
+   "text": "",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/НАТО"
+  },
+  {
+   "id": 23,
+   "start_sec": 186.6,
+   "duration_sec": 10.4,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "фасад федерального министерства финансов Германии, Берлин, 2026"
+  },
+  {
+   "id": 24,
+   "start_sec": 197.0,
+   "duration_sec": 7.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "центральный банк Венгрии в Будапеште, 2026"
+  },
+  {
+   "id": 25,
+   "start_sec": 204.0,
+   "duration_sec": 9.9,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Фридрих Мерц канцлер Германии выступление 2026"
+  },
+  {
+   "id": 26,
+   "start_sec": 213.9,
+   "duration_sec": 9.5,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "офис Фонда Кербера в Берлине, 2026"
+  },
+  {
+   "id": 27,
+   "start_sec": 223.4,
+   "duration_sec": 3.5,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "урна для голосования на выборах в Берлине, 2026"
+  },
+  {
+   "id": 28,
+   "start_sec": 226.9,
+   "duration_sec": 8.8,
+   "text": "",
+   "source": "card:bars",
+   "source_query": "карточка «bars» — кадр рисуется в облаке, фетч за сценой не идёт",
+   "card": {
+    "kind": "bars",
+    "код": "A4",
+    "kick": "поддержка военной помощи Украине в Германии",
+    "watermark": "ПЛАНЕТА",
+    "anim": 8.8
+   }
+  },
+  {
+   "id": 29,
+   "start_sec": 235.7,
+   "duration_sec": 8.4,
+   "text": "",
+   "source": "card:map_regions",
+   "source_query": "карточка «map_regions» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 30,
+   "start_sec": 244.1,
+   "duration_sec": 6.4,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "газопроводный узел на востоке Германии, 2026"
+  },
+  {
+   "id": 31,
+   "start_sec": 250.5,
+   "duration_sec": 11.9,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Фридрих Мерц перед журналистами после саммита, Брюссель, 2026"
+  },
+  {
+   "id": 32,
+   "start_sec": 262.4,
+   "duration_sec": 12.1,
+   "text": "",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/МЕРЦ"
+  },
+  {
+   "id": 33,
+   "start_sec": 274.5,
+   "duration_sec": 8.8,
+   "text": "",
+   "source": "local_library",
+   "source_query": "ПОЛИТИКА/АдГ"
+  },
+  {
+   "id": 34,
+   "start_sec": 283.3,
+   "duration_sec": 6.2,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ЦЕХ-НЕМЕЦКОГО-ЗАВОДА"
+  },
+  {
+   "id": 35,
+   "start_sec": 289.5,
+   "duration_sec": 11.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "депутаты АдГ в зале заседаний Бундестага во время голосования, 2026"
+  },
+  {
+   "id": 36,
+   "start_sec": 300.5,
+   "duration_sec": 12.8,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "коридор штаб-квартиры Еврокомиссии в Брюсселе, 2026",
+   "fx": "subscribe"
+  },
+  {
+   "id": 37,
+   "start_sec": 313.3,
+   "duration_sec": 8.2,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Алиса Вайдель лидер АдГ выступление Бундестаг 2026"
+  },
+  {
+   "id": 38,
+   "start_sec": 321.5,
+   "duration_sec": 8.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "жилой квартал Донецка с повреждёнными фасадами, 2022"
+  },
+  {
+   "id": 39,
+   "start_sec": 329.5,
+   "duration_sec": 9.9,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "пустой сектор Бундестага перед речью Алисы Вайдель, 2026"
+  },
+  {
+   "id": 40,
+   "start_sec": 339.4,
+   "duration_sec": 10.3,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Алиса Вайдель за кафедрой Бундестаг выступление 2026"
+  },
+  {
+   "id": 41,
+   "start_sec": 349.7,
+   "duration_sec": 7.8,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Алиса Вайдель интервью безопасность НАТО Россия 2026"
+  },
+  {
+   "id": 42,
+   "start_sec": 357.5,
+   "duration_sec": 12.3,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/ТРАМП",
+   "fx": "subscribe"
+  },
+  {
+   "id": 43,
+   "start_sec": 369.8,
+   "duration_sec": 3.7,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "стол с микрофонами дипломатических делегаций в Стамбуле, 2026"
+  },
+  {
+   "id": 44,
+   "start_sec": 373.5,
+   "duration_sec": 8.9,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "дворец Долмабахче в Стамбуле, 2022"
+  },
+  {
+   "id": 45,
+   "start_sec": 382.4,
+   "duration_sec": 9.6,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "комплекс российской дипломатической миссии в Берлине, 2026"
+  },
+  {
+   "id": 46,
+   "start_sec": 392.0,
+   "duration_sec": 9.6,
+   "text": "",
+   "source": "card:map",
+   "source_query": "карточка «map» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 47,
+   "start_sec": 401.6,
+   "duration_sec": 7.1,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "место Алисы Вайдель в зале Бундестага, 2026"
+  },
+  {
+   "id": 48,
+   "start_sec": 408.7,
+   "duration_sec": 14.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "пункт пропуска граница Украина Польша здание КПП"
+  },
+  {
+   "id": 49,
+   "start_sec": 422.7,
+   "duration_sec": 8.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "тележка с продуктами в супермаркете Edeka в Германии, 2026"
+  },
+  {
+   "id": 50,
+   "start_sec": 430.7,
+   "duration_sec": 3.6,
+   "text": "",
+   "source": "card:radar",
+   "source_query": "карточка «radar» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 51,
+   "start_sec": 434.3,
+   "duration_sec": 10.3,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "фасад федеральной канцелярии Германии, Берлин, 2026"
+  },
+  {
+   "id": 52,
+   "start_sec": 444.6,
+   "duration_sec": 5.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "здание штаб-квартиры партии АдГ в Берлине, 2026"
+  },
+  {
+   "id": 53,
+   "start_sec": 449.6,
+   "duration_sec": 10.2,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "вход в ведомство федерального канцлера Фридриха Мерца, Берлин, 2026"
+  },
+  {
+   "id": 54,
+   "start_sec": 459.8,
+   "duration_sec": 10.9,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Кикль лидер FPO Австрия выступление 2026"
+  },
+  {
+   "id": 55,
+   "start_sec": 470.7,
+   "duration_sec": 14.0,
+   "text": "",
+   "source": "card:krupnoe_chislo",
+   "source_query": "карточка «krupnoe_chislo» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 56,
+   "start_sec": 484.7,
+   "duration_sec": 10.6,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "фасад здания парламента Австрии, Вена, 2026",
+   "fx": "subscribe"
+  },
+  {
+   "id": 57,
+   "start_sec": 495.3,
+   "duration_sec": 8.2,
+   "text": "",
+   "source": "card:globus_map",
+   "source_query": "карточка «globus_map» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 58,
+   "start_sec": 503.5,
+   "duration_sec": 5.6,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ГРУЗОВОЙ-ПОЕЗД-КОНТЕЙНЕРАМИ"
+  },
+  {
+   "id": 59,
+   "start_sec": 509.1,
+   "duration_sec": 11.1,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/УНИВЕРСАЛЬНОЕ/РЕМОНТ-ДОРОГИ-АСФАЛЬТОУКЛАДЧИК"
+  },
+  {
+   "id": 60,
+   "start_sec": 520.2,
+   "duration_sec": 10.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "общежитие временного размещения мигрантов в Вене, 2026"
+  },
+  {
+   "id": 61,
+   "start_sec": 530.2,
+   "duration_sec": 6.1,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "именная табличка на кабинете Герберта Кикля в парламенте Австрии, 2026"
+  },
+  {
+   "id": 62,
+   "start_sec": 536.3,
+   "duration_sec": 11.1,
+   "text": "",
+   "source": "card:bubbles",
+   "source_query": "карточка «bubbles» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 63,
+   "start_sec": 547.4,
+   "duration_sec": 13.1,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Клаус Зельтенхайм Социал-демократическая партия Австрии пресс-конференция реальное фото"
+  },
+  {
+   "id": 64,
+   "start_sec": 560.5,
+   "duration_sec": 5.2,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Кикль FPO Вена пресс-конференция 2026"
+  },
+  {
+   "id": 65,
+   "start_sec": 565.7,
+   "duration_sec": 9.3,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-УКРАИНА/КАБИНЕТ-МИНИСТРОВ-УКРАИНЫ"
+  },
+  {
+   "id": 66,
+   "start_sec": 575.0,
+   "duration_sec": 11.5,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "пустая автобусная платформа на автовокзале Вены, Австрия, 2026"
+  },
+  {
+   "id": 67,
+   "start_sec": 586.5,
+   "duration_sec": 11.3,
+   "text": "",
+   "source": "card:kalendar",
+   "source_query": "карточка «kalendar» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 68,
+   "start_sec": 597.8,
+   "duration_sec": 9.3,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "закрытая дверь малого зала Совета ЕС, Брюссель, 2026"
+  },
+  {
+   "id": 69,
+   "start_sec": 607.1,
+   "duration_sec": 8.8,
+   "text": "",
+   "source": "card:pie",
+   "source_query": "карточка «pie» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 70,
+   "start_sec": 615.9,
+   "duration_sec": 14.6,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "Андрей Бабиш премьер Чехии выступление 2026"
+  },
+  {
+   "id": 71,
+   "start_sec": 630.5,
+   "duration_sec": 7.8,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "тракторы французских фермеров у префектуры, Франция, 2026"
+  },
+  {
+   "id": 72,
+   "start_sec": 638.3,
+   "duration_sec": 7.8,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "зерновой склад фермерского хозяйства во Франции, 2026"
+  },
+  {
+   "id": 73,
+   "start_sec": 646.1,
+   "duration_sec": 9.0,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-УКРАИНА/НАЦИОНАЛЬНЫЙ-БАНК-УКРАИНЫ"
+  },
+  {
+   "id": 74,
+   "start_sec": 655.1,
+   "duration_sec": 8.7,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "строящаяся автомагистраль в Чехии, 2026"
+  },
+  {
+   "id": 75,
+   "start_sec": 663.8,
+   "duration_sec": 8.3,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "фасад партийного офиса АдГ в Берлине, 2026"
+  },
+  {
+   "id": 76,
+   "start_sec": 672.1,
+   "duration_sec": 8.0,
+   "text": "",
+   "source": "web_search",
+   "source_query": "вход в министерство финансов Австрии, Вена, 2026"
+  },
+  {
+   "id": 77,
+   "start_sec": 680.1,
+   "duration_sec": 8.0,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ПЕРСОНЫ/ТРАМП"
+  },
+  {
+   "id": 78,
+   "start_sec": 688.1,
+   "duration_sec": 8.0,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ЗАЛ-ЕВРОПАРЛАМЕНТА-СТРАСБУРГЕ"
+  },
+  {
+   "id": 79,
+   "start_sec": 696.1,
+   "duration_sec": 6.1,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "входная группа представительства США при Евросоюзе, Брюссель, 2026"
+  },
+  {
+   "id": 80,
+   "start_sec": 702.2,
+   "duration_sec": 11.6,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЕДОМСТВА/ГОСДЕП-США"
+  },
+  {
+   "id": 81,
+   "start_sec": 713.8,
+   "duration_sec": 11.6,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/КОНТЕЙНЕРНЫЙ-ПОРТ-ЛОС-АНДЖЕЛЕСА"
+  },
+  {
+   "id": 82,
+   "start_sec": 725.4,
+   "duration_sec": 8.1,
+   "text": "",
+   "source": "card:network",
+   "source_query": "карточка «network» — кадр рисуется в облаке, фетч не нужен"
+  },
+  {
+   "id": 83,
+   "start_sec": 733.5,
+   "duration_sec": 6.4,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-ЕВРОПА-НАТО/ИСТРЕБИТЕЛЬ-EUROFIGHTER-РУЛЁЖКЕ"
+  },
+  {
+   "id": 84,
+   "start_sec": 739.9,
+   "duration_sec": 8.3,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/КОНТЕЙНЕРНЫЙ-ТЕРМИНАЛ-ПОРТА"
+  },
+  {
+   "id": 85,
+   "start_sec": 748.2,
+   "duration_sec": 5.6,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ВЛАСТЬ-США/КАПИТОЛИЙ-ВАШИНГТОНЕ-ДНЁМ"
+  },
+  {
+   "id": 86,
+   "start_sec": 753.8,
+   "duration_sec": 5.9,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "монеты евро на фоне флагов стран ЕС 2026"
+  },
+  {
+   "id": 87,
+   "start_sec": 759.7,
+   "duration_sec": 9.7,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "пункт пропуска на западной границе Украины, 2026"
+  },
+  {
+   "id": 88,
+   "start_sec": 769.4,
+   "duration_sec": 9.6,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "двери зала Совета ЕС перед голосованием, Брюссель, 2026"
+  },
+  {
+   "id": 89,
+   "start_sec": 779.0,
+   "duration_sec": 10.0,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "ящики европейской помощи на складе в Польше, 2026"
+  },
+  {
+   "id": 90,
+   "start_sec": 789.0,
+   "duration_sec": 7.4,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "автобусы у миграционного центра в Австрии, 2026"
+  },
+  {
+   "id": 91,
+   "start_sec": 796.4,
+   "duration_sec": 8.3,
+   "text": "",
+   "source": "local_library",
+   "source_query": "БАЗА/ЛОГИСТИКА-ЕВРОПА/ПОГРАНИЧНЫЙ-ПЕРЕХОД-МЕДЫКА"
+  },
+  {
+   "id": 92,
+   "start_sec": 804.7,
+   "duration_sec": 4.84,
+   "text": "",
+   "source": "press_photo",
+   "source_query": "грузовые палеты европейской помощи на терминале в Польше, 2026"
+  }
+ ]
+}
