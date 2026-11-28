@@ -1,0 +1,142 @@
+{
+  "1": {
+    "text": {
+      "words": "ОБХОД БЕЗ СОГЛАСИЯ",
+      "color": "yellow",
+      "pos": "mc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 0.3,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "как решать без несогласных",
+      "approved": true
+    }
+  },
+  "6": {
+    "text": {
+      "words": "БОЙКОТ БЮДЖЕТА",
+      "color": "yellow",
+      "pos": "mr",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 0.3,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "семь стран против",
+      "approved": true
+    }
+  },
+  "14": {
+    "text": {
+      "words": "НОВЫЕ ПРАВИЛА ИГРЫ",
+      "color": "orange",
+      "pos": "tc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 0.3,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "квалифицированное большинство",
+      "approved": true
+    }
+  },
+  "26": {
+    "text": {
+      "words": "НЕМЦЫ ПРОТИВ",
+      "color": "yellow",
+      "pos": "tc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 0.3,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "опросы против курса Мерца",
+      "approved": true
+    }
+  },
+  "37": {
+    "text": {
+      "words": "АТАКА ВАЙДЕЛЬ",
+      "color": "red",
+      "pos": "mc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 0.3,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "альтернативный взгляд АдГ",
+      "approved": true
+    }
+  },
+  "54": {
+    "text": {
+      "words": "СЧЁТ ОТ АВСТРИИ",
+      "color": "orange",
+      "pos": "tc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 0.3,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "план Кикля для мигрантов",
+      "approved": true
+    }
+  },
+  "71": {
+    "text": {
+      "words": "ВНУТРЕННИЙ ФРОНТ",
+      "color": "yellow",
+      "pos": "tc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 0.3,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "Чехия, Франция и выборы",
+      "approved": true
+    }
+  },
+  "77": {
+    "text": {
+      "words": "ТРАМП И ЕВРОПА",
+      "color": "red",
+      "pos": "mc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 0.3,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "торговый спор через океан",
+      "approved": true
+    }
+  },
+  "86": {
+    "text": {
+      "words": "ИТОГ СПОРА",
+      "color": "yellow",
+      "pos": "tc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 0.3,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "каждая страна защищает своё",
+      "approved": true
+    }
+  },
+  "88": {
+    "text": {
+      "words": "ГЛАВНЫЙ ВОПРОС",
+      "color": "green",
+      "pos": "tc",
+      "font": "default",
+      "sound": "whoosh",
+      "at": 0.3,
+      "scale": 1.0,
+      "style": "mask_plate",
+      "sub": "кто решает за несогласных",
+      "approved": true
+    }
+  }
+}
